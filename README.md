@@ -33,6 +33,7 @@ The last five are not in git (see [.gitignore](.gitignore)). `Tools/`, `Build/` 
 | [Server/README.md](Server/README.md) | Where the code comes from, the tools, building, changing code, updating. |
 | [Client/README.md](Client/README.md) | Setting up the game client, extracting the map data, creating an account. |
 | [Settings/README.md](Settings/README.md) | How the settings files work and the common changes. |
+| [Plan](Settings/Docs/Plan.md) | Start here for where the project is going: a single-player WoW with bots. The ideas, what already exists for each, what needs new code, the suggested order and the open decisions. |
 | [Modules](Settings/Docs/Modules.md) | What can be added: about 150 community modules by area (bots, solo play, classes, items, comfort, world), with a shortlist for us. None installed yet. |
 | [Bot chat](Settings/Docs/Bot-Chat.md) | Design: talking to bots through Claude, like in MapleStoryPlus. Not built yet. |
 
