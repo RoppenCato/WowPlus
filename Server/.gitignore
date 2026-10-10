@@ -129,6 +129,9 @@ __pycache__/
 #
 # ==================
 
+# WowPlus: mod-playerbots is merged into this repository
+!/modules/mod-playerbots
+
 # Live-stack e2e private / local tooling (scratch tests stay uncommitted)
 e2e/local/**
 !e2e/local/README.md
