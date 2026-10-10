@@ -33,6 +33,7 @@ The last five are not in git (see [.gitignore](.gitignore)). `Tools/`, `Build/` 
 | [Server/README.md](Server/README.md) | Where the code comes from, the tools, building, changing code, updating. |
 | [Client/README.md](Client/README.md) | Setting up the game client, extracting the map data, creating an account. |
 | [Settings/README.md](Settings/README.md) | How the settings files work and the common changes. |
+| [Modules](Settings/Docs/Modules.md) | What can be added: about 150 community modules by area (bots, solo play, classes, items, comfort, world), with a shortlist for us. None installed yet. |
 | [Bot chat](Settings/Docs/Bot-Chat.md) | Design: talking to bots through Claude, like in MapleStoryPlus. Not built yet. |
 
 ## Starting and stopping
@@ -61,6 +62,26 @@ Ports, all only reachable from this PC: 3724 (login), 8085 (world), 3307 (databa
 7. Put a 3.3.5a client in `Client/WoW/` and run `Extract-Client-Data.bat`: [Client/README.md](Client/README.md).
 8. Run `Start-Server.bat`. The first start fills the databases and creates the bots, which takes several minutes.
 9. Create your account in the world server window: [Client/README.md](Client/README.md#creating-an-account).
+
+## Troubleshooting
+
+Problems we ran into, and ones the guides warn about.
+
+| What you see | Cause | Fix |
+|--------------|-------|-----|
+| `Access denied for user 'acore'@'localhost' (using password: YES)` when a server starts | The password MySQL has for `acore` is not the one in `Settings/.env`. Happened during setup. | Open the MySQL prompt (`Tools\mysql\bin\mysql --defaults-file=Settings\mysql.ini`) and run `ALTER USER 'acore'@'localhost' IDENTIFIED BY 'the password from .env';` |
+| `'worldserver.exe' is not recognized as an internal or external command` although the file exists | The window it was started from does not run programs from the current folder. | Start through `Start-Server.bat`, which uses full paths. |
+| The world server stops right after the database part, complaining about `dbc`, maps or `DataDir` | The map data in `Data/` is missing. | Run `Extract-Client-Data.bat`, see [Client/README.md](Client/README.md). |
+| `Table 'playerbots_random_bots' doesn't exist` or `Unknown database 'acore_playerbots'` | The bots' database was not created or not filled. | Create it as in [Settings/README.md](Settings/README.md#creating-the-database-from-scratch). If the tables stay missing, import the files in `Server/modules/mod-playerbots/data/sql/playerbots/base/` into `acore_playerbots` by hand. |
+| Hundreds of compile errors in `mod-playerbots` | The core is not the Playerbots fork, or the core and the module are from different points in time. | Use `Update-Server.bat`, which always updates both together. |
+| Compile errors mentioning Boost | Boost 1.87 or newer. | Use Boost 1.78 to 1.83; we use 1.81. |
+| The compiler runs out of memory | Too many files compiled at once. | Lower `--parallel 4` in `Build-Server.bat`. |
+| CMake warnings about `CMP0167`, `BOOST_ROOT` or "deprecated" during the build | CMake 4 is newer than the project expects. | Harmless, ignore. |
+| GitHub warns about a file larger than 50 MB when pushing | `playerbots_travelnode_path.sql` in the module is 66 MB. | Harmless. The hard limit is 100 MB. |
+| A setting in `Settings/` seems to have no effect | It was changed in `Build/.../configs/` (overwritten on every start), or the name is misspelled. | Edit the file in `Settings/` and watch for a warning from `Start-Server.bat`. |
+| The game shows old or wrong data after a server change | The client's cache. | Close the game and delete `Client/WoW/Cache/`. |
+
+More: [AzerothCore common errors](https://www.azerothcore.org/wiki/common-errors) and [Playerbots troubleshooting](https://github.com/mod-playerbots/mod-playerbots/wiki/Troubleshooting).
 
 ## Backups
 

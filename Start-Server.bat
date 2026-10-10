@@ -39,10 +39,10 @@ cd /d "%BIN%"
 tasklist /fi "imagename eq authserver.exe" 2>nul | find /i "authserver.exe" >nul
 if errorlevel 1 (
   echo Starting login server...
-  start "WowPlus Authserver" /min authserver.exe
+  start "WowPlus Authserver" /min "%BIN%\authserver.exe"
 )
 
 echo Starting world server...
 echo To stop it, type:  server shutdown 5
-worldserver.exe
+"%BIN%\worldserver.exe"
 pause
