@@ -20,8 +20,8 @@ The reasons and decisions behind each feature are in [Settings/Docs/Plan.md](../
 |--------|------------|
 | A number or switch in a `.conf` file | Restart the server. No rebuild. |
 | A file in `Settings/SQL/` | Restart the server. No rebuild. |
-| Code in an existing `.cpp` file | `Build-Server.bat`, a few minutes: only that file is recompiled. |
-| A new `.cpp` file, or a new module | `Build-Server.bat`, ten minutes or more: every module is recompiled. This is why the files for planned features already exist as empty stubs. |
+| Code in `mod-wowplus`, changed or new files | `Build-Server.bat`, under a minute: only our files are recompiled. Measured 2026-10-10: 25 seconds for six files. |
+| A new module added to `Server/modules/`, or an update of the core or Playerbots | `Build-Server.bat`, ten minutes or more: every module is recompiled. |
 
 So decisions are collected and built together, and tuning is done in the settings.
 
