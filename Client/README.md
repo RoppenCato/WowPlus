@@ -38,7 +38,9 @@ If a step fails, the manual steps are on the [AzerothCore wiki](https://www.azer
 
 ## Project Reforged (HD graphics)
 
-**Status: the second game copy is ready, Reforged itself is not installed yet.**
+**Status (2026-10-10): the patch files are installed in `Reforged_3.3.5a/`. `Wow.exe` there is still the original: the EXE patcher, which Reforged calls mandatory, has not been run yet. DXVK and Lexara are not installed. Not tested in game yet.**
+
+Installed: patches A (HD), B, C, D, E, G, I, M, N, P and S (standard), version 1.4.2, 19.3 GB together. The game copy is 36 GB with them. Left out on purpose: U (upright orcs).
 
 [Project Reforged](https://projectreforged.github.io/wotlk/) is an HD overhaul of the 3.3.5a client: better character models, creatures, gear, buildings, environment, interface, spell effects and sound. It only changes the game client. The server needs no change, and the bots and the extracted map data are not affected. Version 1.4.2 (2026-09-18) at the time of writing.
 
@@ -52,18 +54,20 @@ Both copies log in to the same server with the same account. Game settings, key 
 
 Downloads: <https://projectreforged.github.io/wotlk/downloads/>
 
-| Patch | What it changes | Notes |
-|-------|-----------------|-------|
-| A | Character models, as an HD or an SD variant | Core. Pick one variant. |
-| C | Creatures | Core. Needs A. |
-| G | Gear and weapons | Core |
-| I | Interface | Core |
-| B, D, E | Buildings, world objects, environment | One set: all three or none |
-| M | Maps and loading screens | Optional |
-| N | Darker nights | Optional |
-| P | Spell effects | Optional |
-| S | Sounds and music | Optional. The standard version needs M; there is a standalone version that does not. |
-| U | Upright orcs | Optional. Needs A and C. |
+| Patch | What it changes | Size | Notes |
+|-------|-----------------|-----:|-------|
+| A | Character models, as an HD or an SD variant | 2.6 GB (HD) | Core. Pick one variant; we use HD. |
+| C | Creatures | 2.3 GB | Core. Needs A. |
+| G | Gear and weapons | 3.2 GB | Core |
+| I | Interface | 0.4 GB | Core |
+| B, D, E | Buildings, world objects, environment | 2.1 + 3.7 + 2.2 GB | One set: all three or none |
+| M | Maps and loading screens | 2.8 GB | Optional |
+| N | Darker nights | 3 MB | Optional. Remove `patch-N.mpq` if nights are too dark. |
+| P | Spell effects | 80 MB | Optional |
+| S | Sounds and music | 0.4 GB | Optional. The standard version needs M; there is a standalone version that does not. |
+| U | Upright orcs | 7 MB | Optional. Needs A and C. Not installed: we do not want it. |
+
+To remove a part again, close the game and delete its `patch-X.mpq` from `Client/Reforged_3.3.5a/Data/` (B, D and E only together; C and U need A).
 
 Also on that page:
 
@@ -108,7 +112,6 @@ What we did not check: the individual byte changes of each patch. The repo was t
 ### Things to know
 
 - **The patcher and the DLL are programs from individual GitHub accounts, and the patch files come from an anonymous storage host.** We have not verified them. Windows Defender may flag a modified `Wow.exe` or the DLL.
-- The patches are large (several GB together; the site lists no sizes).
 - Some server modules need client patches of their own (new races, new battlegrounds, see [Modules.md](../Settings/Docs/Modules.md)). Those can clash with Reforged's files and have to be checked one by one.
 - To go back to the plain game, just play with `ChromieCraft_3.3.5a/Wow.exe`.
 
