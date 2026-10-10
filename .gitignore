@@ -7,7 +7,10 @@
 /Build/
 # Map data extracted from the game client (dbc, maps, vmaps, mmaps): large, and not ours to redistribute
 /Data/
-# The game client: large, and not ours to redistribute
-/Client/WoW/
+# The game client and its downloads: large, and not ours to redistribute.
+# Everything in Client/ is ignored except our own two files.
+/Client/*
+!/Client/README.md
+!/Client/realmlist.wtf
 # Real passwords live here; Settings/.env.example is the committed template
 /Settings/.env
