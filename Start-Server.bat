@@ -41,6 +41,12 @@ if errorlevel 1 (
   echo Starting login server...
   start "WowPlus Authserver" /min "%BIN%\authserver.exe"
 )
+rem The login server marks the realm offline when it starts and the world server marks it
+rem online again, so the login server has to be up first.
+:waitauth
+ping -n 2 127.0.0.1 >nul
+netstat -an | find ":3724 " | find "LISTENING" >nul
+if errorlevel 1 goto waitauth
 
 echo Starting world server...
 echo To stop it, type:  server shutdown 5
