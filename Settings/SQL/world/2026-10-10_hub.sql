@@ -107,8 +107,9 @@ INSERT INTO wowplus_hub_menu (npc_entry, sort, label, vendor_entry) VALUES
     (9000002, 2, 'Bolts of cloth and special cloths', 9001012),
     (9000002, 3, 'Cured and heavy leathers', 9001013),
     (9000002, 4, 'Engineering parts', 9001014),
-    (9000002, 5, 'Elemental materials', 9001015),
-    (9000002, 6, 'Rare finds', 9001016);
+    (9000002, 5, 'Inks', 9001017),
+    (9000002, 6, 'Elemental materials', 9001015),
+    (9000002, 7, 'Rare finds', 9001016);
 INSERT IGNORE INTO wp_list SELECT 9001011, entry FROM item_template
     WHERE class = 7 AND subclass = 7 AND name LIKE '% Bar' AND NOT REGEXP_LIKE(name, 'Test|Deprecated|OLD|Unused', 'c');
 INSERT IGNORE INTO wp_list SELECT 9001012, entry FROM item_template
@@ -223,6 +224,16 @@ INSERT INTO wowplus_hub_menu (npc_entry, sort, label, vendor_entry, team, class_
     (9000008, 29, 'Level 80: Wrathful Gladiator (honor)', 34060, 'H', 0),
     (9000008, 30, 'Level 80: Wrathful Gladiator (arena)', 33936, '', 0),
     (9000008, 31, 'Level 80: Wrathful weapons (arena)', 34093, '', 0);
+
+-- Clean-up over all lists ----------------------------------------------------------------
+-- The game's "parts" category also holds the inks of inscription: they get a line of their own.
+UPDATE wp_list l JOIN item_template i ON i.entry = l.item SET l.list = 9001017
+    WHERE l.list = 9001014 AND (i.name LIKE '% Ink' OR i.name LIKE 'Ink of %');
+-- Leftovers the game never hands out: nameless "NPC Equip" props, grey junk, broken test items.
+-- (Found in the hub on 2026-10-10: the engineering parts started with eight "NPC Equip" entries.)
+DELETE l FROM wp_list l JOIN item_template i ON i.entry = l.item
+    WHERE i.Quality = 0 OR i.name LIKE 'NPC Equip%' OR i.name LIKE 'Broken % Elixir'
+       OR (i.ItemLevel = 0 AND l.list <> 9001002);
 
 -- Number the lists into npc_vendor: cheapest content first, 150 items at most per list
 -- (the game cannot show more in one vendor window).
