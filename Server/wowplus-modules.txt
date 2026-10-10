@@ -5,3 +5,5 @@ mod-dungeon-clear https://github.com/jrad7/mod-dungeon-clear master
 mod-player-bot-level-brackets https://github.com/DustinHendrickson/mod-player-bot-level-brackets main
 mod-aoe-loot https://github.com/azerothcore/mod-aoe-loot master
 mod-junk-to-gold https://github.com/noisiver/mod-junk-to-gold master
+mod-autobalance https://github.com/azerothcore/mod-autobalance master
+mod-random-enchants https://github.com/azerothcore/mod-random-enchants master

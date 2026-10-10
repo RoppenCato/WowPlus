@@ -138,6 +138,7 @@ __pycache__/
 !/modules/mod-junk-to-gold
 !/modules/mod-autobalance
 !/modules/mod-wowplus
+!/modules/mod-random-enchants
 
 # Live-stack e2e private / local tooling (scratch tests stay uncommitted)
 e2e/local/**

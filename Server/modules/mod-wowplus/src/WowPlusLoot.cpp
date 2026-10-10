@@ -497,7 +497,11 @@ namespace
         if (player->CanStoreNewItem(NULL_BAG, NULL_SLOT, dest, proto->ItemId, 1) == EQUIP_ERR_OK)
         {
             if (Item* item = player->StoreNewItem(dest, proto->ItemId, true, Item::GenerateItemRandomPropertyId(proto->ItemId)))
+            {
                 player->SendNewItem(item, 1, true, false);
+                // Tell other modules it was looted, so that for example random bonuses apply to it too
+                sScriptMgr->OnPlayerLootItem(player, item, 1, loot->sourceWorldObjectGUID);
+            }
             return;
         }
 
