@@ -136,6 +136,8 @@ __pycache__/
 !/modules/mod-player-bot-level-brackets
 !/modules/mod-aoe-loot
 !/modules/mod-junk-to-gold
+!/modules/mod-autobalance
+!/modules/mod-wowplus
 
 # Live-stack e2e private / local tooling (scratch tests stay uncommitted)
 e2e/local/**

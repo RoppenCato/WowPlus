@@ -71,12 +71,11 @@ Decided 2026-10-10:
 - **Bots pass on the extra drops.** They are always mine; since nothing binds, I hand bots what I do not want.
 - **Mounts get a loot table of their own, with its own chance.** Any kill that can give an extra drop also has a separate, small chance at a mount, so the mounts that are normally almost impossible to get are always possible.
 
-Still open, for the mount table:
-
-- Which mounts are in: only the rare drops (raid and dungeon boss mounts, rare world drops), or also vendor, reputation, profession and achievement mounts?
-- Does it follow level like the gear (flying mounts only once flying is possible), or can any mount drop at any level?
-- One flat chance, or rarer mounts at a lower chance than common ones?
-- Companion pets in the same way?
+- **All mounts are in the mount table**, not only the rare drops: vendor, reputation, profession and achievement mounts too.
+- **The mount table follows my level**, like the gear: a mount drops only once I am high enough to ride it.
+- **One flat chance** for the mount roll; no mount is rarer than another.
+- **Companion pets get the same treatment:** a table of their own, with its own flat chance.
+- **In a group the extra drops go straight into my bags**, with the normal "You receive loot" message, instead of onto the corpse. That is how bots pass: there is nothing for them to roll on. Alone, the extra drops are on the corpse or in the chest like any other loot. (Claude's design choice, 2026-10-10; say so if you would rather see them on the corpse in a group too.)
 
 - [ ] 2.1 The item lists: which items are in, which are out, banded by level and, above 50, by item level
 - [ ] 2.2 The extra drop roll in `mod-wowplus`, behind settings: chance by rarity and by enemy rank
