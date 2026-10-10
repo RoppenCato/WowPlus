@@ -7,7 +7,10 @@ The game client we play with: World of Warcraft **3.3.5a, build 12340**. The gam
 | Item | What it is |
 |------|------------|
 | `realmlist.wtf` | Tells the client to log in to our server on this PC (`127.0.0.1`). |
-| `ChromieCraft_3.3.5a/` | The game. Ours is the ChromieCraft download of the 3.3.5a client (enUS, 16.6 GB). Not in git, like everything else in this folder except the two files above. |
+| `ChromieCraft_3.3.5a/` | The game, **kept unmodified**. Ours is the ChromieCraft download of the 3.3.5a client (enUS, 16.6 GB). This is the copy the server's map data is extracted from, so nothing gets installed into it. |
+| `Reforged_3.3.5a/` | A second copy of the game, made 2026-10-10, for the [Project Reforged](#project-reforged-hd-graphics) HD graphics. Until Reforged is installed it is identical to the first. |
+
+Both game folders are not in git, like everything else in this folder except the two files at the top.
 
 ## Setting up the client
 
@@ -26,12 +29,67 @@ The **server** needs data extracted from an **enUS** (English US) client, becaus
 The server needs maps and game tables taken out of the client. This is done once, and again only if `Data/` is lost.
 
 1. Build the server first (`Build-Server.bat`), which also builds the extractors.
-2. Run `Extract-Client-Data.bat` in the main folder. It finds the game folder inside `Client/` by itself; to use a client somewhere else, drag that game folder onto the `.bat` file.
+2. Run `Extract-Client-Data.bat` in the main folder. It uses `Client/ChromieCraft_3.3.5a/`; to use a client somewhere else, drag that game folder onto the `.bat` file. Always use an unmodified client, never the Reforged copy.
 3. Wait. On our PC (8 cores) the first three steps took about 2 minutes and the last one (mmaps, the bots' pathfinding) about 11 minutes. On a slower PC the last step can take an hour or more.
 
 The result lands in `Data/`: `dbc`, `maps`, `vmaps`, `mmaps` and `Cameras`, about 7 GB in total, most of it mmaps.
 
 If a step fails, the manual steps are on the [AzerothCore wiki](https://www.azerothcore.org/wiki/server-setup).
+
+## Project Reforged (HD graphics)
+
+**Status: the second game copy is ready, Reforged itself is not installed yet.**
+
+[Project Reforged](https://projectreforged.github.io/wotlk/) is an HD overhaul of the 3.3.5a client: better character models, creatures, gear, buildings, environment, interface, spell effects and sound. It only changes the game client. The server needs no change, and the bots and the extracted map data are not affected. Version 1.4.2 (2026-09-18) at the time of writing.
+
+### Why a second copy
+
+Reforged replaces game files and requires a modified `Wow.exe`. The server's map data must come from an unmodified client, and the download we unpacked the game from is gone. So the original stays clean in `ChromieCraft_3.3.5a/` and Reforged goes into `Reforged_3.3.5a/`. If something breaks, delete `Reforged_3.3.5a/` and copy the original again.
+
+Both copies log in to the same server with the same account. Game settings, key bindings and addons are per copy (the `WTF/` and `Interface/AddOns/` folders), so an addon has to be put in the copy you play with.
+
+### The parts
+
+Downloads: <https://projectreforged.github.io/wotlk/downloads/>
+
+| Patch | What it changes | Notes |
+|-------|-----------------|-------|
+| A | Character models, as an HD or an SD variant | Core. Pick one variant. |
+| C | Creatures | Core. Needs A. |
+| G | Gear and weapons | Core |
+| I | Interface | Core |
+| B, D, E | Buildings, world objects, environment | One set: all three or none |
+| M | Maps and loading screens | Optional |
+| N | Darker nights | Optional |
+| P | Spell effects | Optional |
+| S | Sounds and music | Optional. The standard version needs M; there is a standalone version that does not. |
+| U | Upright orcs | Optional. Needs A and C. |
+
+Also on that page:
+
+| Tool | Needed? | What it is |
+|------|---------|------------|
+| St0ny's AIO WoW EXE Patcher | Required by Reforged | A script that modifies `Wow.exe` (memory limits, graphics and more). There is a "Project Reforged Preset" for it. |
+| DXVK | Strongly recommended by Reforged | A replacement `d3d9.dll` for the game folder, for better rendering performance. |
+| Lexara HD Font Renderer | Optional | Sharper fonts. |
+
+### Installing
+
+Everything goes into `Client/Reforged_3.3.5a/`, never into `ChromieCraft_3.3.5a/`.
+
+1. Download the patches you want. Start with the core ones (A, C, G, I).
+2. Put the patch files in `Client/Reforged_3.3.5a/Data/`. That is where 3.3.5a patch files normally go; the Reforged site itself does not say, so check their Discord (linked on their site) if the game does not pick them up.
+3. Run the EXE patcher in `Client/Reforged_3.3.5a/` with the Reforged preset, following its own instructions.
+4. Optionally add DXVK's `d3d9.dll` to `Client/Reforged_3.3.5a/`.
+5. Delete `Client/Reforged_3.3.5a/Cache/` if it exists.
+6. Start `Client/Reforged_3.3.5a/Wow.exe`.
+
+### Things to know
+
+- **The patcher and the DLL are programs from individual GitHub accounts, and the patch files come from an anonymous storage host.** We have not verified them. Windows Defender may flag a modified `Wow.exe` or the DLL.
+- The patches are large (several GB together; the site lists no sizes).
+- Some server modules need client patches of their own (new races, new battlegrounds, see [Modules.md](../Settings/Docs/Modules.md)). Those can clash with Reforged's files and have to be checked one by one.
+- To go back to the plain game, just play with `ChromieCraft_3.3.5a/Wow.exe`.
 
 ## Creating an account
 
