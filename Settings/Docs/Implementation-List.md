@@ -156,6 +156,35 @@ Decided 2026-10-10: **left for much later.** Loot, vendors, professions and trav
 - [ ] 7.4 Class quests: skills at their level, quests as optional adventures with better rewards
 - [ ] 7.5 Class by class: spell changes, then the bot behaviour for that class
 
+## Phase 8: The hub
+
+Decided 2026-10-10. The hub is **lean**: it covers what a solo player cannot reasonably get or do, and does not replace the cities. Class trainers, profession trainers, bank, mail, auction house, riding, reputation and emblem vendors all stay where they are in the world.
+
+In the hub:
+
+- **Cross-profession supplies:** the enchanting rods, vellums, vials, thread, flux, dyes and the other crafting reagents that are spread over many shops or made by another profession.
+- **Materials that are unrealistic to get alone**, and only those:
+  - made by another profession: smelted bars including Arcanite, Felsteel and Titansteel; bolts of cloth and the special cloths; cured leathers; engineering parts; alchemy transmutes
+  - very rare world materials: Black Lotus, Arcane Crystal, Righteous Orb, Dark Iron Ore, Fel Lotus, Frost Lotus, Titanium
+  - elemental materials: Essences, Primals and Eternals
+  - **not** raid and heroic drops (Primal Nether, Frozen Orb and the like): those are earned by doing the content
+- **Finished goods from other professions:** every glyph, cut gems, enchant scrolls, for gold.
+- **Tier token vendors,** Tier 4 to Tier 10.
+- **PvP vendors,** every season. **Paid in honor, as in the game, and kills give honor too:** enemies at my level in the world and in dungeons give a little honor, so PvP gear is a slow reward for simply playing.
+- **Weapon masters:** one NPC teaching every weapon skill the class can learn.
+- **Bots that hang around,** so it is not an empty room.
+- **Everything is there from the start.** Nothing to buy or unlock.
+
+Still open: where it is (a beautiful, unused place; candidates in the plan), and how arena points are handled for the items that cost them.
+
+- [ ] 8.1 Choose the place; first entry in the hearthstone menu
+- [ ] 8.2 The supplies vendor and the materials vendors, with prices
+- [ ] 8.3 Glyph, gem and enchant scroll vendors
+- [ ] 8.4 Tier token and PvP vendors (second spawns of the game's own, made usable by both factions)
+- [ ] 8.5 Honor from kills at my level (`mod-wowplus`); arena points
+- [ ] 8.6 The weapon master
+- [ ] 8.7 Bots in the hub
+
 ## Any time: Bot chat
 
 Its own build order is in [Bot-Chat.md](Bot-Chat.md).
