@@ -77,13 +77,13 @@ Decided 2026-10-10:
 - **Companion pets get the same treatment:** a table of their own, with its own flat chance.
 - **In a group the extra drops go straight into my bags**, with the normal "You receive loot" message, instead of onto the corpse. That is how bots pass: there is nothing for them to roll on. Alone, the extra drops are on the corpse or in the chest like any other loot. (Claude's design choice, 2026-10-10; say so if you would rather see them on the corpse in a group too.)
 
-- [ ] 2.1 The item lists: which items are in, which are out, banded by level and, above 50, by item level
-- [ ] 2.2 The extra drop roll in `mod-wowplus`, behind settings: chance by rarity and by enemy rank
-- [ ] 2.3 The 50 to 60, 60 to 70 and 70 to 80 look-ahead rules
-- [ ] 2.4 Optional weighting towards what the class can use
-- [ ] 2.5 Chests use the same lists, with their own chance
-- [ ] 2.5b The mount table: its own list and its own chance, rolled separately from gear
-- [ ] 2.6 Bots pass on the extra drops; bot gear settings so bots keep up
+- [~] 2.1 The item lists: which items are in, which are out, banded by level and, above 50, by item level
+- [~] 2.2 The extra drop roll in `mod-wowplus`, behind settings: chance by rarity and by enemy rank
+- [~] 2.3 The 50 to 60, 60 to 70 and 70 to 80 look-ahead rules
+- [~] 2.4 Weighting towards what the class can use
+- [~] 2.5 Chests use the same lists, with their own chance
+- [~] 2.5b The mount and pet tables: its own list and its own chance, rolled separately from gear
+- [~] 2.6 Bots pass on the extra drops (in a group they go straight to my bags); bot gear settings so bots keep up
 - [ ] 2.7 Bag pressure checked: AoE loot and junk selling tuned
 - [~] 2.8 Weapons and armour never bind (`Settings/SQL/world/2026-10-10_equipment-never-binds.sql`, applied at the next server start)
 
@@ -91,10 +91,11 @@ Decided 2026-10-10:
 
 Decided 2026-10-10:
 
-- **Random bonuses on drops, crafted items and quest rewards** (mod-random-enchants). Toned down from the module's defaults in `Settings/random_enchants.conf`: about 1 item in 3 gets one bonus, 1 in 8 two, 1 in 20 three.
+- **Random bonuses on drops, crafted items and quest rewards.** About 1 item in 3 gets a bonus.
+- **Rebalanced the same day, after a green ring came out with three strong bonuses.** mod-random-enchants picks the strength from the item's colour alone and lets any item roll three. Replaced by our own rule in `mod-wowplus` (the module stays installed for its list of bonuses, switched off): the strength follows the **item's level**, the colour shifts it by a tier, and the colour limits the number: green 1, blue 2, epic and legendary 3. Items that already rolled bonuses keep them.
 - **Upgrading and reforging: decide after playing with the loot.**
 
-- [ ] 3.1 Random bonuses on dropped, crafted and quest items
+- [~] 3.1 Random bonuses on dropped, crafted and quest items (`mod-wowplus`, settings `WowPlus.Bonus.*`)
 - [ ] 3.2 Upgrading or reforging for gold
 - [ ] 3.3 Experiment: one generated item copy in another rarity, to see what the client does with it
 
@@ -123,8 +124,8 @@ Decided 2026-10-10:
 
 - [ ] 5.1 Decide what makes crafting worth it next to the new drops
 - [~] 5.2 Number of professions and skill-up speed (settings `MaxPrimaryTradeSkill`, `SkillGain.*`, `SkillChance.*`)
-- [ ] 5.2b Three times the yield from gathering (mining, herbalism, skinning, fishing)
-- [ ] 5.2c Crafted equipment always gets at least one random bonus
+- [~] 5.2b Three times the yield from gathering (`mod-wowplus`, setting `WowPlus.Professions.GatherMultiplier`)
+- [~] 5.2c Crafted equipment always gets at least one random bonus (setting `WowPlus.Bonus.CraftedGuaranteed`)
 - [ ] 5.3 Where materials come from when playing alone
 - [ ] 5.4 Recipes that are locked behind raids or reputation
 - [ ] 5.5 Crafted gear boosted
@@ -141,9 +142,9 @@ Decided 2026-10-10:
 - Not chosen: the flight master whistle, riding earlier or faster, teleports to every flight point.
 
 - [~] 6.1 Hearthstone without cooldown (`mod-wowplus`, setting `WowPlus.Travel.Hearthstone.NoCooldown`)
-- [ ] 6.2 The hearthstone menu: Home, Cities, Dungeons, Raids, with sub-menus
-- [ ] 6.3 Unlocking: a city when I first enter it, a dungeon or raid when I first reach its entrance; remembered per character
-- [ ] 6.4 The place list: cities, Shattrath, Dalaran, every dungeon and raid entrance. Other places, decided 2026-10-10: the neutral hub towns (Booty Bay, Gadgetzan, Everlook, Ratchet, Area 52) and the Dark Portal.
+- [~] 6.2 The hearthstone menu: Home, Cities, Towns and landmarks, Dungeons and Raids per expansion (`mod-wowplus`, setting `WowPlus.Travel.Hearthstone.Menu`)
+- [~] 6.3 Unlocking: a city or town when I first enter it, a dungeon or raid when I first go inside; remembered per character
+- [~] 6.4 The place list: cities, Shattrath, Dalaran, every dungeon and raid entrance. Other places, decided 2026-10-10: the neutral hub towns (Booty Bay, Gadgetzan, Everlook, Ratchet, Area 52) and the Dark Portal.
 
 ## Phase 7: Classes
 

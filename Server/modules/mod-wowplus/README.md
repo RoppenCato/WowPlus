@@ -9,6 +9,21 @@ The reasons and decisions behind each feature are in [Settings/Docs/Plan.md](../
 | Feature | File | Settings |
 |---------|------|----------|
 | Extra loot: equipment for the player's level from any kill or chest, plus a mount table and a pet table | `src/WowPlusLoot.cpp` | `WowPlus.Loot.*` |
+| Random bonuses on looted, crafted and quest-reward equipment; strength follows item level, colour limits how many; crafted items always get one | `src/WowPlusBonuses.cpp` | `WowPlus.Bonus.*` |
+| Gathering gives a multiple of the normal amount | `src/WowPlusProfessions.cpp` | `WowPlus.Professions.*` |
+| Hearthstone without cooldown, and a hearthstone menu to the cities, towns, dungeons and raids a character has visited | `src/WowPlusTravel.cpp` | `WowPlus.Travel.*` |
+| Not built yet, files in place: surprise vendors, the hub, gold | `src/WowPlusVendors.cpp`, `WowPlusHub.cpp`, `WowPlusGold.cpp` | |
+
+## When a rebuild is needed
+
+| Change | What to do |
+|--------|------------|
+| A number or switch in a `.conf` file | Restart the server. No rebuild. |
+| A file in `Settings/SQL/` | Restart the server. No rebuild. |
+| Code in an existing `.cpp` file | `Build-Server.bat`, a few minutes: only that file is recompiled. |
+| A new `.cpp` file, or a new module | `Build-Server.bat`, ten minutes or more: every module is recompiled. This is why the files for planned features already exist as empty stubs. |
+
+So decisions are collected and built together, and tuning is done in the settings.
 
 ## Changing settings
 

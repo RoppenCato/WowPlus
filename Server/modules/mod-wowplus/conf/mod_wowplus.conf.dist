@@ -134,3 +134,112 @@ WowPlus.Loot.Collectibles.SkipKnown = 1
 #        Default: 1
 
 WowPlus.Travel.Hearthstone.NoCooldown = 1
+
+#
+#    WowPlus.Travel.Hearthstone.Menu
+#        1: using the hearthstone opens a menu with Home and every city, hub town, dungeon
+#        and raid the character has been to. A place unlocks on the first visit; travel is
+#        free. Until a character has unlocked something the hearthstone works as usual.
+#        Needs EnablePlayerSettings = 1 in worldserver.conf, or nothing is remembered.
+#        Default: 1
+
+WowPlus.Travel.Hearthstone.Menu = 1
+
+########################################
+# Random bonuses on equipment
+########################################
+#
+#    WowPlus.Bonus.Enable
+#        Looted, crafted and quest-reward weapons and armour can come with random bonuses.
+#        Default: 1
+
+WowPlus.Bonus.Enable = 1
+
+#
+#    WowPlus.Bonus.OnLoot / OnCraft / OnQuestReward
+#        Where bonuses can appear.
+#        Default: 1, 1, 1
+
+WowPlus.Bonus.OnLoot        = 1
+WowPlus.Bonus.OnCraft       = 1
+WowPlus.Bonus.OnQuestReward = 1
+
+#
+#    WowPlus.Bonus.CraftedGuaranteed
+#        1: crafted equipment always gets its first bonus. This is what makes crafting
+#        the reliable way to gear next to drops.
+#        Default: 1
+
+WowPlus.Bonus.CraftedGuaranteed = 1
+
+#
+#    WowPlus.Bonus.Chance1 / Chance2 / Chance3
+#        Chance in percent for a first, second and third bonus. Each one is only rolled
+#        if the one before succeeded. With 35, 40, 40: about 1 item in 3 gets a bonus,
+#        1 in 7 gets two (if its colour allows), 1 in 18 gets three.
+#        Default: 35, 40, 40
+
+WowPlus.Bonus.Chance1 = 35
+WowPlus.Bonus.Chance2 = 40
+WowPlus.Bonus.Chance3 = 40
+
+#
+#    WowPlus.Bonus.MaxCount.*
+#        The most bonuses an item of each colour can have (0 to 3).
+#        Default: 1, 2, 3, 3
+
+WowPlus.Bonus.MaxCount.Uncommon  = 1
+WowPlus.Bonus.MaxCount.Rare      = 2
+WowPlus.Bonus.MaxCount.Epic      = 3
+WowPlus.Bonus.MaxCount.Legendary = 3
+
+#
+#    WowPlus.Bonus.TierItemLevels
+#        There are five strengths of bonus; a typical one gives about +6, +8, +15, +22 and
+#        +29 to a stat. The item's level decides the strength: the weakest below the first
+#        number, the next from there, and so on. Four numbers, separated by spaces.
+#        Default: "30 70 115 200"
+#            below item level 30: tier 1; 30 to 69: tier 2 (levelling up to about 60);
+#            70 to 114: tier 3 (level 60 raids, Outland); 115 to 199: tier 4 (level 70,
+#            Northrend); 200 and above: tier 5 (level 80 heroics and raids).
+
+WowPlus.Bonus.TierItemLevels = "30 70 115 200"
+
+#
+#    WowPlus.Bonus.TierShift.*
+#        The colour moves the strength up or down by whole tiers. With -1 a green gets
+#        the tier below what its level says.
+#        Default: -1, 0, 0, 1
+
+WowPlus.Bonus.TierShift.Uncommon  = -1
+WowPlus.Bonus.TierShift.Rare      = 0
+WowPlus.Bonus.TierShift.Epic      = 0
+WowPlus.Bonus.TierShift.Legendary = 1
+
+#
+#    WowPlus.Bonus.Slots
+#        Technical: which three of the item's enchantment slots hold the bonuses.
+#        "0 1 5" are the permanent enchant, the temporary enchant and the socket bonus
+#        slot, known to show in the tooltip. Enchanting such an item replaces its first
+#        bonus. "7 8 9" would be the slots of "of the Bear" style suffixes; untested.
+#        Default: "0 1 5"
+
+WowPlus.Bonus.Slots = "0 1 5"
+
+#
+#    WowPlus.Bonus.Announce
+#        1: a chat line tells you when an item came with bonuses.
+#        Default: 1
+
+WowPlus.Bonus.Announce = 1
+
+########################################
+# Professions
+########################################
+#
+#    WowPlus.Professions.GatherMultiplier
+#        Herbs, ore, skinning and fishing give this many times the normal amount.
+#        1 = as in the game.
+#        Default: 3
+
+WowPlus.Professions.GatherMultiplier = 3
