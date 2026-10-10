@@ -124,3 +124,13 @@ WowPlus.Loot.Pet.Chance   = 0.2
 #        Default: 1
 
 WowPlus.Loot.Collectibles.SkipKnown = 1
+
+########################################
+# Travel
+########################################
+#
+#    WowPlus.Travel.Hearthstone.NoCooldown
+#        1: the hearthstone can be used again at once. 0: the game's normal 30 minutes.
+#        Default: 1
+
+WowPlus.Travel.Hearthstone.NoCooldown = 1

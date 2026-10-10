@@ -3,8 +3,10 @@
  */
 
 void AddSC_WowPlusLoot();
+void AddSC_WowPlusTravel();
 
 void Addmod_wowplusScripts()
 {
     AddSC_WowPlusLoot();
+    AddSC_WowPlusTravel();
 }

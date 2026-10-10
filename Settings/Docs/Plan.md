@@ -252,7 +252,33 @@ The tension: every shortcut removes a bit of world. The ideas that keep the worl
 | Ships and zeppelins that leave when you board | Yes | New code, to look at |
 | Bots that come to you instead of you fetching them: already there (`Playerbots.SummonWhenGroup = 1`) | n/a | Already there |
 
-## 11. Talking to bots
+## 11. A hub for the solo player
+
+*Idea (2026-10-10): one place where you get and do the things a solo player otherwise cannot, or only with a lot of running: vellums and rods for enchanting, other rare or annoying items. Maybe also all the vendors for PvP gear, tier gear and the like, so you do not have to run everywhere.*
+
+**Technically easy.** Placing an NPC is one row in the database, and no client patch is needed: the game gets NPC names and vendor lists from the server. An existing vendor can simply be given a second spawn in the hub and brings its whole stock and prices with it. New vendors of our own are a few rows more.
+
+What could be there:
+
+| Group | Contents | Mark |
+|-------|----------|------|
+| The things one profession needs from another | Enchanting rods (made by blacksmiths), vellums (inscription), glyphs for every class, alchemist stones, engineering parts, gems cut to order | SQL: a vendor of our own |
+| All the gear vendors in one row | Tier token vendors, emblem vendors, PvP vendors of every season, heirlooms. Second spawns of the existing NPCs. | SQL |
+| Every trainer | All classes, all professions including cooking, fishing and first aid, riding, weapon masters for every weapon | SQL |
+| Services | Bank, mailbox, auction house, repair, barber, stable master, innkeeper, talent reset, training dummies | SQL |
+| Our own additions | The surprise vendors and the travelling merchant's home (section 4), an enchanter NPC ([mod-npc-enchanter](https://github.com/azerothcore/mod-npc-enchanter)), transmog ([mod-transmog](https://github.com/azerothcore/mod-transmog)), portals | SQL / Module |
+| Life | Bots that hang around, so it is not a ghost town ([mod-playerbots-city-life](https://github.com/vrzgames/mod-playerbots-city-life)) | Module |
+
+Things to think through:
+
+- **PvP gear costs honor and arena points, which a solo player barely earns.** Putting the vendors in one place does not help if you cannot pay. Options: bots already queue for battlegrounds, so honor can be earned with them; or the hub sells PvP gear for gold; or PvP gear is simply in the loot pools (it is left out today).
+- **Tier gear** already has a second way in: the loot system drops tier pieces directly. The token vendors still matter for the tokens that raid bosses drop.
+- **It can hollow out the world.** If everything is in one room, the capitals and the travel system (section 10) lose their purpose. Three ways to keep some of it: the hub only carries what is *annoying* and the cities keep what is *normal*; or services unlock as you level; or you **buy each service for gold**, so the hub starts empty and grows, which also gives gold a purpose (section 8).
+- **A hub you furnish yourself exists as a module:** [mod-guildhouse](https://github.com/azerothcore/mod-guildhouse) gives a private place where you buy vendors, trainers, a bank, portals and so on, one by one, for gold. It may be most of this idea ready-made; the place and the list of what can be bought would be adjusted to ours.
+- **Where.** A place of its own that you teleport to (the classic choice is the unused "GM Island"; the guildhouse module uses it), or inside an existing city such as Dalaran or Shattrath, or a quiet neutral spot that already exists in the world (Caverns of Time, a corner of Booty Bay). It would be the first entry in the hearthstone menu.
+- **Both factions.** Some vendors only talk to one faction. For a hub of our own they can be set neutral.
+
+## 12. Talking to bots
 
 Designed separately in [Bot-Chat.md](Bot-Chat.md). It belongs in this plan because a single-player world needs company that answers.
 

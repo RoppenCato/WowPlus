@@ -15,9 +15,9 @@ What we do and in what order, ticked off as we go. The reasoning behind each ite
 - [x] 0.1 Server built, database created, client set up, bots online
 - [x] 0.2 The plan and this list written
 - [~] 0.3 First modules added: all six compile and load; each still to be tried in the game (see the table below)
-- [ ] 0.4 Our own module `mod-wowplus` created, empty, with one setting that proves it loads
+- [~] 0.4 Our own module `mod-wowplus` created (`Server/modules/mod-wowplus/`), holding the loot rule and the hearthstone change
 - [ ] 0.5 Reference lists generated into `Settings/Reference/`: items by level and rarity, creatures by level and rank, chests, dungeons and their bosses
-- [ ] 0.6 Decide: Lua engine (`mod-ale`) for quick scripts, or everything in our own module
+- [x] 0.6 Decided 2026-10-10: no Lua engine for now. Everything goes in our own module: one place and one way of doing things. To revisit if we want a community script that needs it.
 
 ### Modules added so far
 
@@ -89,7 +89,10 @@ Decided 2026-10-10:
 
 ## Phase 3: Items that can be special
 
-Decided: *nothing yet*
+Decided 2026-10-10:
+
+- **Random bonuses on drops, crafted items and quest rewards** (mod-random-enchants). Toned down from the module's defaults in `Settings/random_enchants.conf`: about 1 item in 3 gets one bonus, 1 in 8 two, 1 in 20 three.
+- **Upgrading and reforging: decide after playing with the loot.**
 
 - [ ] 3.1 Random bonuses on dropped, crafted and quest items
 - [ ] 3.2 Upgrading or reforging for gold
@@ -97,7 +100,10 @@ Decided: *nothing yet*
 
 ## Phase 4: Gold and vendors
 
-Decided: *nothing yet*
+Decided 2026-10-10:
+
+- **Gold level: comfortable.** Roughly three times the game's normal income. Mounts, training and repairs are never a worry; the best things on the surprise vendors are saved up for over a few sessions.
+- **The surprise vendors sell:** random blue gear for my level, recipes and patterns that normally drop in dungeons and raids or need reputation, a mount or pet or two at a high price, and crafting materials and consumables.
 
 - [ ] 4.1 Write down the target: gold per hour by level, and the price of the best things
 - [ ] 4.2 Gold sources tuned to the target
@@ -109,24 +115,39 @@ Decided: *nothing yet*
 
 ## Phase 5: Professions
 
-Decided: *nothing yet*
+Decided 2026-10-10:
+
+- **Crafting is the reliable way, with a guaranteed bonus.** Drops are luck; crafting lets me choose the slot and the item, and every crafted piece of equipment always comes with at least one random bonus. Plus what only professions make: bags, enchants, gems, potions.
+- **One character can learn every profession.**
+- **Much faster:** a skill-up on almost every craft, and three times as much from gathering.
 
 - [ ] 5.1 Decide what makes crafting worth it next to the new drops
-- [ ] 5.2 Number of professions and skill-up speed (settings)
+- [~] 5.2 Number of professions and skill-up speed (settings `MaxPrimaryTradeSkill`, `SkillGain.*`, `SkillChance.*`)
+- [ ] 5.2b Three times the yield from gathering (mining, herbalism, skinning, fishing)
+- [ ] 5.2c Crafted equipment always gets at least one random bonus
 - [ ] 5.3 Where materials come from when playing alone
 - [ ] 5.4 Recipes that are locked behind raids or reputation
 - [ ] 5.5 Crafted gear boosted
 
 ## Phase 6: Travel
 
-Decided: *nothing yet*
+Decided 2026-10-10:
 
-- [ ] 6.1 Choose from the travel ideas in the plan
-- [ ] 6.2 Build and try the chosen ones
+- **No hearthstone cooldown.**
+- **Teleports from the hearthstone.** Using the hearthstone opens a menu: my inn as now, plus the places I have unlocked.
+- **Places:** the capital cities of the races, Shattrath and Dalaran, and the entrances of dungeons and raids. Maybe a few other places that make sense. Each unlocks the first time I get there.
+- **In menus, not one long list:** grouped (for example Home, Cities, Dungeons, Raids, with dungeons and raids split by continent or expansion) so no page is bloated.
+- **Everything is free.**
+- Not chosen: the flight master whistle, riding earlier or faster, teleports to every flight point.
+
+- [~] 6.1 Hearthstone without cooldown (`mod-wowplus`, setting `WowPlus.Travel.Hearthstone.NoCooldown`)
+- [ ] 6.2 The hearthstone menu: Home, Cities, Dungeons, Raids, with sub-menus
+- [ ] 6.3 Unlocking: a city when I first enter it, a dungeon or raid when I first reach its entrance; remembered per character
+- [ ] 6.4 The place list: cities, Shattrath, Dalaran, every dungeon and raid entrance. Other places, decided 2026-10-10: the neutral hub towns (Booty Bay, Gadgetzan, Everlook, Ratchet, Area 52) and the Dark Portal.
 
 ## Phase 7: Classes
 
-Decided: *nothing yet*
+Decided 2026-10-10: **left for much later.** Loot, vendors, professions and travel are played with first.
 
 - [ ] 7.1 `Class-Changes.md`: goals per class, before anything is changed
 - [ ] 7.2 Decide whether we take on client patches
