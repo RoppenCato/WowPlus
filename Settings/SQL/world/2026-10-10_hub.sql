@@ -1,7 +1,7 @@
 -- Phase 8: the hub on GM Island (decided 2026-10-10).
 --
 -- A lean hub for the solo player: the things one cannot reasonably get or do alone.
--- Six NPCs stand in a row in front of the manor, facing the spot where the hearthstone
+-- Eight NPCs stand in a row in front of the manor, facing the spot where the hearthstone
 -- menu puts you. Each vendor opens a small menu of lists (the menu and the lists are data in
 -- this file; the menu itself is drawn by mod-wowplus, script npc_wowplus_hub_vendor).
 --
@@ -29,7 +29,9 @@ INSERT INTO wp_npc VALUES
     (9000003, 25263, 'Elowen Quill',     'Glyphs',            129, 'npc_wowplus_hub_vendor', 16217, 13.3),
     (9000004, 28701, 'Marn Facet',       'Cut Gems',          129, 'npc_wowplus_hub_vendor', 16223, 13.2),
     (9000005, 28693, 'Sel Runeweaver',   'Enchant Scrolls',   129, 'npc_wowplus_hub_vendor', 16229, 13.3),
-    (9000006, 11867, 'Hanzo Steelwind',  'Weapon Master',      16, '',                       16235, 13.8);
+    (9000006, 11867, 'Hanzo Steelwind',  'Weapon Master',      16, '',                       16235, 13.8),
+    (9000007, 28997, 'Ysolde Greaves',   'Tier Armor',        129, 'npc_wowplus_hub_vendor', 16241, 14.3),
+    (9000008, 12785, 'Corporal Dane',    'PvP Quartermaster', 129, 'npc_wowplus_hub_vendor', 16247, 14.9);
 
 -- one row per hub NPC, even if two would share a source
 DROP TEMPORARY TABLE IF EXISTS wp_ct2;
@@ -72,14 +74,16 @@ INSERT INTO creature_default_trainer (CreatureId, TrainerId) VALUES (9000006, 90
 -- ---------------------------------------------------------------------------------------
 -- 3. The vendor lists and the menu that leads to them.
 -- ---------------------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS wowplus_hub_menu (
+DROP TABLE IF EXISTS wowplus_hub_menu;
+CREATE TABLE wowplus_hub_menu (
     npc_entry INT UNSIGNED NOT NULL,
     sort INT UNSIGNED NOT NULL,
     label VARCHAR(100) NOT NULL,
-    vendor_entry INT UNSIGNED NOT NULL,
+    vendor_entry INT UNSIGNED NOT NULL COMMENT 'a list in npc_vendor: one of ours (9001000+) or the entry of one of the game''s own vendors',
+    team CHAR(1) NOT NULL DEFAULT '' COMMENT 'A = only shown to Alliance characters, H = only to Horde, empty = to everyone',
+    class_mask INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'only shown to these classes (1 warrior, 2 paladin, 4 hunter, 8 rogue, 16 priest, 32 death knight, 64 shaman, 128 mage, 256 warlock, 1024 druid; add them up); 0 = everyone',
     PRIMARY KEY (npc_entry, sort)
 ) COMMENT = 'WowPlus: the menu of each hub vendor; each line opens one vendor list';
-DELETE FROM wowplus_hub_menu;
 DELETE FROM npc_vendor WHERE entry BETWEEN 9001000 AND 9001999;
 
 -- Every list is first collected here, then numbered into npc_vendor.
@@ -87,7 +91,7 @@ DROP TEMPORARY TABLE IF EXISTS wp_list;
 CREATE TEMPORARY TABLE wp_list (list INT UNSIGNED NOT NULL, item INT UNSIGNED NOT NULL, PRIMARY KEY (list, item));
 
 -- Crafting supplies ---------------------------------------------------------------------
-INSERT INTO wowplus_hub_menu VALUES
+INSERT INTO wowplus_hub_menu (npc_entry, sort, label, vendor_entry) VALUES
     (9000001, 1, 'Enchanting rods and vellums', 9001001),
     (9000001, 2, 'Trade supplies: vials, thread, flux, dyes and the rest', 9001002);
 -- the rods a blacksmith makes for enchanters, and the vellums of inscription
@@ -98,7 +102,7 @@ INSERT IGNORE INTO wp_list SELECT DISTINCT 9001002, v.item FROM npc_vendor v JOI
     WHERE v.entry < 9000000 AND v.ExtendedCost = 0 AND i.class = 7;
 
 -- Materials -----------------------------------------------------------------------------
-INSERT INTO wowplus_hub_menu VALUES
+INSERT INTO wowplus_hub_menu (npc_entry, sort, label, vendor_entry) VALUES
     (9000002, 1, 'Bars', 9001011),
     (9000002, 2, 'Bolts of cloth and special cloths', 9001012),
     (9000002, 3, 'Cured and heavy leathers', 9001013),
@@ -122,7 +126,7 @@ INSERT IGNORE INTO wp_list SELECT 9001016, entry FROM item_template
     WHERE entry IN (13468, 12363, 12811, 11370, 22794, 36908, 36910);
 
 -- Glyphs, one list per class (the item subclass of a glyph is the class id) -----------------
-INSERT INTO wowplus_hub_menu VALUES
+INSERT INTO wowplus_hub_menu (npc_entry, sort, label, vendor_entry) VALUES
     (9000003, 1, 'Warrior', 9001101), (9000003, 2, 'Paladin', 9001102), (9000003, 3, 'Hunter', 9001103),
     (9000003, 4, 'Rogue', 9001104), (9000003, 5, 'Priest', 9001105), (9000003, 6, 'Death Knight', 9001106),
     (9000003, 7, 'Shaman', 9001107), (9000003, 8, 'Mage', 9001108), (9000003, 9, 'Warlock', 9001109),
@@ -131,7 +135,7 @@ INSERT IGNORE INTO wp_list SELECT 9001100 + subclass, entry FROM item_template
     WHERE class = 16 AND subclass BETWEEN 1 AND 11 AND NOT REGEXP_LIKE(name, 'Test|Deprecated|OLD|Unused', 'c');
 
 -- Cut gems, one list per colour (the item subclass of a gem is its colour) ------------------
-INSERT INTO wowplus_hub_menu VALUES
+INSERT INTO wowplus_hub_menu (npc_entry, sort, label, vendor_entry) VALUES
     (9000004, 1, 'Red', 9001200), (9000004, 2, 'Blue', 9001201), (9000004, 3, 'Yellow', 9001202),
     (9000004, 4, 'Purple', 9001203), (9000004, 5, 'Green', 9001204), (9000004, 6, 'Orange', 9001205),
     (9000004, 7, 'Meta', 9001206), (9000004, 8, 'Prismatic', 9001208);
@@ -147,8 +151,78 @@ CREATE TEMPORARY TABLE wp_scroll AS
 DROP TEMPORARY TABLE IF EXISTS wp_slot;
 CREATE TEMPORARY TABLE wp_slot AS
     SELECT slot, ROW_NUMBER() OVER (ORDER BY slot) AS n FROM (SELECT DISTINCT slot FROM wp_scroll) s;
-INSERT INTO wowplus_hub_menu SELECT 9000005, n, slot, 9001300 + n FROM wp_slot;
+INSERT INTO wowplus_hub_menu (npc_entry, sort, label, vendor_entry) SELECT 9000005, n, slot, 9001300 + n FROM wp_slot;
 INSERT IGNORE INTO wp_list SELECT 9001300 + s.n, sc.entry FROM wp_scroll sc JOIN wp_slot s ON s.slot = sc.slot;
+
+-- Tier armor ----------------------------------------------------------------------------
+-- These lines open the lists of the game's own token vendors, with their own prices
+-- (tokens from raid bosses, sometimes emblems). Nothing is copied, so they stay correct
+-- if the game data changes. A line is only shown to the classes that can use it.
+--   armour types as class masks: cloth 400, leather 1032, mail 68, plate 35
+INSERT INTO wowplus_hub_menu (npc_entry, sort, label, vendor_entry, team, class_mask) VALUES
+    (9000007,  1, 'Tier 4: Karazhan, Gruul, Magtheridon', 20616, '', 0),
+    (9000007,  2, 'Tier 5: Serpentshrine Cavern, Tempest Keep', 21906, '', 0),
+    (9000007,  3, 'Tier 6: Mount Hyjal, Black Temple', 23381, '', 0),
+    (9000007,  4, 'Tier 6: Sunwell Plateau', 25976, '', 0),
+    (9000007,  5, 'Tier 7 and 8: Naxxramas, Ulduar', 28995, '', 400),
+    (9000007,  6, 'Tier 7 and 8: Naxxramas, Ulduar', 28992, '', 1032),
+    (9000007,  7, 'Tier 7 and 8: Naxxramas, Ulduar', 29523, '', 68),
+    (9000007,  8, 'Tier 7 and 8: Naxxramas, Ulduar', 28997, '', 35),
+    (9000007,  9, 'Tier 9: Trial of the Crusader', 35577, 'A', 0),
+    (9000007, 10, 'Tier 9: Trial of the Crusader', 35578, 'H', 0),
+    (9000007, 11, 'Tier 9: Trial of the Grand Crusader', 35575, 'A', 0),
+    (9000007, 12, 'Tier 9: Trial of the Grand Crusader', 35576, 'H', 0),
+    (9000007, 13, 'Tier 9 and 10: emblem pieces', 35496, '', 400),
+    (9000007, 14, 'Tier 9 and 10: emblem pieces', 35497, '', 1032),
+    (9000007, 15, 'Tier 9 and 10: emblem pieces', 35500, '', 68),
+    (9000007, 16, 'Tier 9 and 10: emblem pieces', 35498, '', 35),
+    (9000007, 17, 'Tier 10: Icecrown Citadel', 37688, '', 1),
+    (9000007, 18, 'Tier 10: Icecrown Citadel', 37696, '', 2),
+    (9000007, 19, 'Tier 10: Icecrown Citadel', 37993, '', 4),
+    (9000007, 20, 'Tier 10: Icecrown Citadel', 37991, '', 8),
+    (9000007, 21, 'Tier 10: Icecrown Citadel', 38054, '', 16),
+    (9000007, 22, 'Tier 10: Icecrown Citadel', 38316, '', 32),
+    (9000007, 23, 'Tier 10: Icecrown Citadel', 38841, '', 64),
+    (9000007, 24, 'Tier 10: Icecrown Citadel', 38284, '', 128),
+    (9000007, 25, 'Tier 10: Icecrown Citadel', 38181, '', 256),
+    (9000007, 26, 'Tier 10: Icecrown Citadel', 37992, '', 1024);
+
+-- PvP gear ------------------------------------------------------------------------------
+-- Also the game's own vendors and prices: honor, and for the arena seasons arena points.
+-- Both are earned from ordinary kills (mod-wowplus, settings WowPlus.Honor.* and
+-- WowPlus.ArenaPoints.*), and no arena rating is asked for (WowPlus.Hub.NoRatingRequired).
+INSERT INTO wowplus_hub_menu (npc_entry, sort, label, vendor_entry, team, class_mask) VALUES
+    (9000008,  1, 'Level 60: armor', 12785, 'A', 0),
+    (9000008,  2, 'Level 60: armor', 12795, 'H', 0),
+    (9000008,  3, 'Level 60: weapons', 12784, 'A', 0),
+    (9000008,  4, 'Level 60: weapons', 12794, 'H', 0),
+    (9000008,  5, 'Trinkets, insignia and accessories', 12781, 'A', 0),
+    (9000008,  6, 'Trinkets, insignia and accessories', 12793, 'H', 0),
+    (9000008,  7, 'War mounts', 12783, 'A', 0),
+    (9000008,  8, 'War mounts', 12796, 'H', 0),
+    (9000008,  9, 'Level 70: honor gear', 12778, 'A', 0),
+    (9000008, 10, 'Level 70: honor gear', 12788, 'H', 0),
+    (9000008, 11, 'Level 70: Vengeful Gladiator (arena)', 19857, '', 0),
+    (9000008, 12, 'Level 70: Brutal Gladiator (arena)', 20278, '', 0),
+    (9000008, 13, 'Level 80: Savage Gladiator', 32834, 'A', 0),
+    (9000008, 14, 'Level 80: Savage Gladiator', 32832, 'H', 0),
+    (9000008, 15, 'Level 80: Hateful Gladiator', 32381, 'A', 0),
+    (9000008, 16, 'Level 80: Hateful Gladiator', 32383, 'H', 0),
+    (9000008, 17, 'Level 80: Deadly Gladiator (honor)', 32380, 'A', 0),
+    (9000008, 18, 'Level 80: Deadly Gladiator (honor)', 32385, 'H', 0),
+    (9000008, 19, 'Level 80: Deadly Gladiator (arena)', 31863, '', 0),
+    (9000008, 20, 'Level 80: Furious Gladiator (honor)', 34076, 'A', 0),
+    (9000008, 21, 'Level 80: Furious Gladiator (honor)', 34058, 'H', 0),
+    (9000008, 22, 'Level 80: Furious Gladiator (arena)', 33921, '', 0),
+    (9000008, 23, 'Level 80: Furious weapons (arena)', 34087, '', 0),
+    (9000008, 24, 'Level 80: Relentless Gladiator (honor)', 34075, 'A', 0),
+    (9000008, 25, 'Level 80: Relentless Gladiator (honor)', 34038, 'H', 0),
+    (9000008, 26, 'Level 80: Relentless Gladiator (arena)', 33927, '', 0),
+    (9000008, 27, 'Level 80: Relentless weapons (arena)', 34090, '', 0),
+    (9000008, 28, 'Level 80: Wrathful Gladiator (honor)', 34078, 'A', 0),
+    (9000008, 29, 'Level 80: Wrathful Gladiator (honor)', 34060, 'H', 0),
+    (9000008, 30, 'Level 80: Wrathful Gladiator (arena)', 33936, '', 0),
+    (9000008, 31, 'Level 80: Wrathful weapons (arena)', 34093, '', 0);
 
 -- Number the lists into npc_vendor: cheapest content first, 150 items at most per list
 -- (the game cannot show more in one vendor window).

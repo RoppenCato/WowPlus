@@ -281,3 +281,23 @@ WowPlus.Honor.Normal    = 10
 WowPlus.Honor.Elite     = 30
 WowPlus.Honor.Rare      = 60
 WowPlus.Honor.Boss      = 300
+
+#
+#    WowPlus.ArenaPoints.Normal / Elite / Rare / Boss
+#        The same kills give arena points, for the arena gear in the hub. Fractions are
+#        allowed: 0.2 means one point on about every fifth kill. For scale: an arena
+#        weapon costs 3000 to 4700 points. Switched off together with WowPlus.Honor.FromKills.
+#        Default: 0.2, 1, 3, 15
+
+WowPlus.ArenaPoints.Normal = 0.2
+WowPlus.ArenaPoints.Elite  = 1
+WowPlus.ArenaPoints.Rare   = 3
+WowPlus.ArenaPoints.Boss   = 15
+
+#
+#    WowPlus.Hub.NoRatingRequired
+#        1: arena gear that asks for a personal arena rating can be bought without one.
+#        The vendor window may still show the requirement in red; the purchase goes through.
+#        Default: 1
+
+WowPlus.Hub.NoRatingRequired = 1
