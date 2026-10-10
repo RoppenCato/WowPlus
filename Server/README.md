@@ -101,4 +101,4 @@ Take a backup first (`Backup-Database.bat`): database updates cannot be undone b
 
 ## Adding other modules
 
-Not done yet. In short: put the module in `modules/<name>/`, add `!/modules/<name>` to `Server/.gitignore` (it ignores unknown modules), rebuild, and add its settings file to `Settings/` and to the list in `Settings/Deploy-Settings.ps1`. The fork can lag behind standard AzerothCore, so a module written for the newest AzerothCore may need an older version of itself. Always read the module's own README.
+Not done yet. What exists is listed in [Settings/Docs/Modules.md](../Settings/Docs/Modules.md). In short: put the module in `modules/<name>/`, add `!/modules/<name>` to `Server/.gitignore` (it ignores unknown modules), rebuild, and add its settings file to `Settings/` and to the list in `Settings/Deploy-Settings.ps1`. The fork can lag behind standard AzerothCore, so a module written for the newest AzerothCore may need an older version of itself. Always read the module's own README.

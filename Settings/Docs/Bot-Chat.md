@@ -116,6 +116,15 @@ Small steps, each one usable on its own:
 - **Reply time.** 2 to 4 seconds in MapleStory. Fine for whispers, slow for party chat in a fight, so bots should not chat in combat.
 - **Language.** The MapleStory prompt asks for English. Decide whether bots should answer in the language they are written to in.
 
-## An existing alternative
+## Existing alternatives
 
-There is a community module, [mod-ollama-chat](https://github.com/DustinHendrickson/mod-ollama-chat), that makes playerbots talk through a language model running locally with Ollama. It covers more chat types out of the box, including bots talking among themselves. Reasons to still build our own: it uses Claude through the subscription we already have, the personality and knowledge design from MapleStoryPlus is known to work, and one bridge design serves both games. It is worth reading its code before step 2, to see how it hooks into chat and stays off the map threads.
+Community modules already do bot chat through a language model:
+
+| Module | What it is |
+|--------|------------|
+| [mod-ollama-chat](https://github.com/DustinHendrickson/mod-ollama-chat) | Bots talk through a model run locally with Ollama. The one the Playerbots project itself lists; it warns that it is heavy on CPU/GPU. |
+| [mod-llm-chatter](https://github.com/Hokken/mod-llm-chatter) | AI-written bot conversations for mod-playerbots. |
+| [mod-pbc](https://github.com/deseven/mod-pbc) | Character-focused, aimed at roleplay. |
+| [mod-llm-guide](https://github.com/Hokken/mod-llm-guide) | An in-game assistant that answers game questions, close to our "knowledge" part. |
+
+We have not tried any of them. Reasons to still build our own: it uses Claude through the subscription we already have, the personality and knowledge design from MapleStoryPlus is known to work, and one bridge design serves both games. Their code is worth reading before step 2, to see how they hook into chat and stay off the map threads. Trying one of them first is also a fair option. The full module overview is in [Modules.md](Modules.md).
