@@ -13,6 +13,7 @@ Everything we tweak lives here. The server never reads these files directly: `St
 | `.env.example` | Template for `.env`, which holds the database password. `.env` itself is not in git. |
 | `Deploy-Settings.ps1` | The script that applies the three `.conf` files to the built server. |
 | `SQL/` | Our own changes to game data. See [SQL/README.md](SQL/README.md). |
+| `Docs/` | Our own documentation and designs, such as the [bot chat](Docs/Bot-Chat.md). |
 
 ## How the .conf files work
 
