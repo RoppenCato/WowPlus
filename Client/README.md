@@ -79,10 +79,31 @@ Everything goes into `Client/Reforged_3.3.5a/`, never into `ChromieCraft_3.3.5a/
 
 1. Download the patches you want. Start with the core ones (A, C, G, I).
 2. Put the patch files in `Client/Reforged_3.3.5a/Data/`. That is where 3.3.5a patch files normally go; the Reforged site itself does not say, so check their Discord (linked on their site) if the game does not pick them up.
-3. Run the EXE patcher in `Client/Reforged_3.3.5a/` with the Reforged preset, following its own instructions.
+3. Patch `Wow.exe` with the EXE patcher, see [The EXE patcher](#the-exe-patcher) below.
 4. Optionally add DXVK's `d3d9.dll` to `Client/Reforged_3.3.5a/`.
 5. Delete `Client/Reforged_3.3.5a/Cache/` if it exists.
 6. Start `Client/Reforged_3.3.5a/Wow.exe`.
+
+### The EXE patcher
+
+[St0ny's AIO WoW EXE Patcher](https://github.com/Raz0r1337/St0nys-AIO-WoW-EXE-Patcher) is a PowerShell script (`apply_patches.ps1`, started by `patcher-win.bat`) that changes bytes in `Wow.exe`.
+
+How to run it:
+
+1. Download the newest zip from the repo's [Releases](https://github.com/Raz0r1337/St0nys-AIO-WoW-EXE-Patcher/releases) page.
+2. Unpack it and put `apply_patches.ps1` and `patcher-win.bat` in `Client/Reforged_3.3.5a/`, next to `Wow.exe`.
+3. Close the game, then double-click `patcher-win.bat`.
+4. Choose English, open the patch menu (`1`), press `R` for the **Reforged** preset, and confirm.
+
+What we checked on 2026-10-10 by reading the script (version 2026.10.10.7), without running it:
+
+- It makes no network connections, starts no other programs and does not touch the registry. It only reads and writes `Wow.exe` and two settings files of its own (`patcher_selection.ini`, `patcher_state.ini`) in the same folder.
+- It refuses to patch anything but the original 3.3.5a `Wow.exe`, which it recognises by its SHA256 fingerprint. Ours matches.
+- It keeps the original as `Wow.exe.ORI` and the previous version as `Wow.exe.BAK`. Its start menu can restore either (`3` = original).
+- The Reforged preset is described as safe. It includes the loader for the Lexara font renderer, which does nothing unless Lexara's DLL is in the folder.
+- The other preset, "St0nys_Wow.exe" (`S`), switches off the game's anti-cheat and adds movement changes. Harmless on our own server, but that `Wow.exe` must never be used on a public server.
+
+What we did not check: the individual byte changes of each patch. The repo was two weeks old with 17 stars at the time, so treat it as a small hobby project, and re-read the script if you download a newer version.
 
 ### Things to know
 
