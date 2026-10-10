@@ -1,0 +1,13 @@
+# Installed tools (MySQL, CMake, Boost, OpenSSL): re-download instead of backing up
+/Tools/
+# Live database files and local database backups (contain account data)
+/Database/
+/Backups/
+# Compiled server (binaries, deployed configs, logs): rebuilt by Build-Server.bat
+/Build/
+# Map data extracted from the game client (dbc, maps, vmaps, mmaps): large, and not ours to redistribute
+/Data/
+# The game client: large, and not ours to redistribute
+/Client/WoW/
+# Real passwords live here; Settings/.env.example is the committed template
+/Settings/.env
