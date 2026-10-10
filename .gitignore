@@ -12,5 +12,7 @@
 /Client/*
 !/Client/README.md
 !/Client/realmlist.wtf
+!/Client/Copy-Settings.bat
+!/Client/Copy-Settings.ps1
 # Real passwords live here; Settings/.env.example is the committed template
 /Settings/.env

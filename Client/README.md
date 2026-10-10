@@ -7,10 +7,11 @@ The game client we play with: World of Warcraft **3.3.5a, build 12340**. The gam
 | Item | What it is |
 |------|------------|
 | `realmlist.wtf` | Tells the client to log in to our server on this PC (`127.0.0.1`). |
+| `Copy-Settings.bat` | Copies game settings between the two game copies, to a new account or to a new character. See [Game settings](#game-settings-where-they-live-and-how-to-reuse-them). |
 | `ChromieCraft_3.3.5a/` | The game, **kept unmodified**. Ours is the ChromieCraft download of the 3.3.5a client (enUS, 16.6 GB). This is the copy the server's map data is extracted from, so nothing gets installed into it. |
 | `Reforged_3.3.5a/` | A second copy of the game, made 2026-10-10, for the [Project Reforged](#project-reforged-hd-graphics) HD graphics. Until Reforged is installed it is identical to the first. |
 
-Both game folders are not in git, like everything else in this folder except the two files at the top.
+Both game folders are not in git, like everything else in this folder except our own files at the top.
 
 ## Setting up the client
 
@@ -114,6 +115,36 @@ What we did not check: the individual byte changes of each patch. The repo was t
 - **The patcher and the DLL are programs from individual GitHub accounts, and the patch files come from an anonymous storage host.** We have not verified them. Windows Defender may flag a modified `Wow.exe` or the DLL.
 - Some server modules need client patches of their own (new races, new battlegrounds, see [Modules.md](../Settings/Docs/Modules.md)). Those can clash with Reforged's files and have to be checked one by one.
 - To go back to the plain game, just play with `ChromieCraft_3.3.5a/Wow.exe`.
+
+## Game settings: where they live and how to reuse them
+
+The game keeps its settings in the `WTF/` folder inside each game copy, in three layers:
+
+| Layer | File or folder | What is in it | Shared by |
+|-------|----------------|---------------|-----------|
+| Game copy | `WTF/Config.wtf` | Graphics, resolution, sound, the realmlist | Every account that uses this game copy. Nothing to do for a new account. |
+| Account | `WTF/Account/<ACCOUNT>/` | Key bindings, interface options, macros, addon settings | Every character on that account |
+| Character | `WTF/Account/<ACCOUNT>/<Realm>/<Character>/` | Chat windows, per-character options, per-character key bindings if you ticked that box | That character only |
+
+So graphics follow the game copy, and key bindings and options follow the account. A new **account** starts from defaults, and each of our two game copies has its own `WTF/`.
+
+Not in these files: **action bars** (which spell is on which button). They are stored on the server per character and cannot be copied this way.
+
+### Copy-Settings.bat
+
+Close the game, then double-click `Client/Copy-Settings.bat`. It asks what to do:
+
+| Choice | Use it when | What it copies |
+|--------|-------------|----------------|
+| 1. All settings from one game copy to the other | You set the game up in one copy and want the other to match | The whole `WTF/` folder: graphics, sound, every account and character |
+| 2. A new account gets the settings of an existing account | Right after `account create`, **before** the first login with the new account | The account layer, into both game copies |
+| 3. A new character gets the settings of an existing character | After creating the character, before logging in with it | The character layer, into both game copies |
+
+For choice 2, create the account first, run the script, then log in. If you log in first, the game writes default settings for the new account; run the script again afterwards to overwrite them.
+
+The game also keeps a copy of account and character settings on the server. For a brand-new account or character the server has none, so the copied files are the ones used.
+
+Graphics note: `Config.wtf` from the Reforged copy also works in the plain copy, but the two look different, so you may want different graphics settings in each. Choice 1 makes them identical.
 
 ## Creating an account
 
