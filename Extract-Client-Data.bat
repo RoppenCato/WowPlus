@@ -5,6 +5,8 @@ set "BIN=%ROOT%Build\bin\RelWithDebInfo"
 set "DATA=%ROOT%Data"
 set "CLIENT=%ROOT%Client\WoW"
 if not "%~1"=="" set "CLIENT=%~1"
+rem No Client\WoW: use the first folder in Client\ that holds a Wow.exe
+if not exist "%CLIENT%\Wow.exe" for /d %%d in ("%ROOT%Client\*") do if exist "%%d\Wow.exe" set "CLIENT=%%d"
 
 if not exist "%BIN%\map_extractor.exe" (
   echo The extractors are not built yet. Run Build-Server.bat first.

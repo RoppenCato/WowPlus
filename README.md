@@ -59,7 +59,7 @@ Ports, all only reachable from this PC: 3724 (login), 8085 (world), 3307 (databa
 4. Copy `Settings/.env.example` to `Settings/.env` and choose a database password.
 5. Create the database: [Settings/README.md](Settings/README.md#creating-the-database-from-scratch).
 6. Run `Build-Server.bat`.
-7. Put a 3.3.5a client in `Client/WoW/` and run `Extract-Client-Data.bat`: [Client/README.md](Client/README.md).
+7. Put a 3.3.5a client in a folder inside `Client/` and run `Extract-Client-Data.bat`: [Client/README.md](Client/README.md).
 8. Run `Start-Server.bat`. The first start fills the databases and creates the bots, which takes several minutes.
 9. Create your account in the world server window: [Client/README.md](Client/README.md#creating-an-account).
 
@@ -70,6 +70,7 @@ Problems we ran into, and ones the guides warn about.
 | What you see | Cause | Fix |
 |--------------|-------|-----|
 | `Access denied for user 'acore'@'localhost' (using password: YES)` when a server starts | The password MySQL has for `acore` is not the one in `Settings/.env`. Happened during setup. | Open the MySQL prompt (`Tools\mysql\bin\mysql --defaults-file=Settings\mysql.ini`) and run `ALTER USER 'acore'@'localhost' IDENTIFIED BY 'the password from .env';` |
+| The login server window closes at once; `logs/Auth.log` says `No valid realms specified` | The world server was closed without a clean shutdown (or stopped halfway through starting), which leaves the realm marked as offline. Happened after our first trial start. | `Start-Server.bat` now clears the mark on every start. By hand: `UPDATE acore_auth.realmlist SET flag = 0;` in the MySQL prompt, then start `authserver.exe` again. |
 | `'worldserver.exe' is not recognized as an internal or external command` although the file exists | The window it was started from does not run programs from the current folder. | Start through `Start-Server.bat`, which uses full paths. |
 | The world server stops right after the database part, complaining about `dbc`, maps or `DataDir` | The map data in `Data/` is missing. | Run `Extract-Client-Data.bat`, see [Client/README.md](Client/README.md). |
 | `Table 'playerbots_random_bots' doesn't exist` or `Unknown database 'acore_playerbots'` | The bots' database was not created or not filled. | Create it as in [Settings/README.md](Settings/README.md#creating-the-database-from-scratch). If the tables stay missing, import the files in `Server/modules/mod-playerbots/data/sql/playerbots/base/` into `acore_playerbots` by hand. |
@@ -79,7 +80,7 @@ Problems we ran into, and ones the guides warn about.
 | CMake warnings about `CMP0167`, `BOOST_ROOT` or "deprecated" during the build | CMake 4 is newer than the project expects. | Harmless, ignore. |
 | GitHub warns about a file larger than 50 MB when pushing | `playerbots_travelnode_path.sql` in the module is 66 MB. | Harmless. The hard limit is 100 MB. |
 | A setting in `Settings/` seems to have no effect | It was changed in `Build/.../configs/` (overwritten on every start), or the name is misspelled. | Edit the file in `Settings/` and watch for a warning from `Start-Server.bat`. |
-| The game shows old or wrong data after a server change | The client's cache. | Close the game and delete `Client/WoW/Cache/`. |
+| The game shows old or wrong data after a server change | The client's cache. | Close the game and delete the `Cache/` folder inside the game folder. |
 
 More: [AzerothCore common errors](https://www.azerothcore.org/wiki/common-errors) and [Playerbots troubleshooting](https://github.com/mod-playerbots/mod-playerbots/wiki/Troubleshooting).
 

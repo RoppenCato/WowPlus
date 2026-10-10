@@ -71,3 +71,11 @@ foreach ($name in $files.Keys) {
 }
 
 New-Item -ItemType Directory -Force (Join-Path $root 'Build\bin\RelWithDebInfo\logs') | Out-Null
+
+# If the world server was closed without a clean shutdown, the realm stays marked as
+# "offline + wrong version" and the login server then refuses to start. Clear that mark.
+# The world server sets the right state itself while it starts. Fails harmlessly when the
+# database is still empty (very first start).
+$ErrorActionPreference = 'Continue'
+& (Join-Path $root 'Tools\mysql\bin\mysql.exe') "--defaults-file=$(Join-Path $PSScriptRoot 'mysql.ini')" -e "UPDATE acore_auth.realmlist SET flag = flag & ~3" 2>&1 | Out-Null
+exit 0
