@@ -86,5 +86,18 @@ New-Item -ItemType Directory -Force (Join-Path $root 'Build\bin\RelWithDebInfo\l
 # The world server sets the right state itself while it starts. Fails harmlessly when the
 # database is still empty (very first start).
 $ErrorActionPreference = 'Continue'
+$mysql = Join-Path $root 'Tools\mysql\bin\mysql.exe'
+$myini = "--defaults-file=$(Join-Path $PSScriptRoot 'mysql.ini')"
+
+# Our own SQL changes: every file in Settings\SQL\world, \characters and \auth is applied on
+# every start, in name order. The files are written so that running them again is harmless.
+foreach ($db in 'world', 'characters', 'auth') {
+    foreach ($sql in Get-ChildItem (Join-Path $PSScriptRoot "SQL\$db") -Filter *.sql -ErrorAction SilentlyContinue | Sort-Object Name) {
+        Get-Content -LiteralPath $sql.FullName -Raw | & $mysql $myini "acore_$db" 2>&1 | Out-Null
+        if ($LASTEXITCODE -eq 0) { Write-Host "Applied SQL\$db\$($sql.Name)" }
+        else { Write-Warning "SQL\$db\$($sql.Name) failed. Run it by hand to see the error." }
+    }
+}
+
 & (Join-Path $root 'Tools\mysql\bin\mysql.exe') "--defaults-file=$(Join-Path $PSScriptRoot 'mysql.ini')" -e "UPDATE acore_auth.realmlist SET flag = flag & ~3" 2>&1 | Out-Null
 exit 0

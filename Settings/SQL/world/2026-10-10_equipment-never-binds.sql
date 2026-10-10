@@ -1,0 +1,13 @@
+-- Phase 2: weapons and armour never bind (decided 2026-10-10).
+-- Nothing binds when picked up or when equipped, so a find can be worn, then mailed to an
+-- alt or handed to a bot. Binding is a property of the item, so this holds for the item from
+-- every source (drops, quests, vendors, crafting).
+--
+-- class 2 = weapons, class 4 = armour. bonding 1 = on pickup, 2 = on equip, 3 = on use.
+-- Quest-bound items (bonding 4 and 5) are left alone.
+--
+-- After this changes, delete the Cache folder in the game folder, or tooltips still say
+-- "Binds when picked up" for items the game has already seen.
+--
+-- To undo: the original values are in Server/data/sql/base/db_world/item_template.sql
+UPDATE item_template SET bonding = 0 WHERE class IN (2, 4) AND bonding IN (1, 2, 3);
