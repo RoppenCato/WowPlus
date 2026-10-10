@@ -243,3 +243,15 @@ WowPlus.Bonus.Announce = 1
 #        Default: 3
 
 WowPlus.Professions.GatherMultiplier = 3
+
+########################################
+# Finding problems
+########################################
+#
+#    WowPlus.Loot.Debug
+#        1: every kill and chest writes a line to the server log (logs/Server.log) saying what
+#        the extra loot rule decided and why. For finding out why nothing drops. Leave at 0
+#        otherwise: with many bots it fills the log.
+#        Default: 0
+
+WowPlus.Loot.Debug = 0

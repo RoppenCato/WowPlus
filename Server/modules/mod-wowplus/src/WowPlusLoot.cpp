@@ -67,6 +67,7 @@ namespace
         float mountChance = 0.1f;                           // percent, flat
         float petChance = 0.2f;                             // percent, flat
         bool skipKnownCollectibles = true;
+        bool debug = false;
     };
 
     WowPlusLootConfig config;
@@ -235,6 +236,7 @@ namespace
         config.mountChance = sConfigMgr->GetOption<float>("WowPlus.Loot.Mount.Chance", 0.1f);
         config.petChance = sConfigMgr->GetOption<float>("WowPlus.Loot.Pet.Chance", 0.2f);
         config.skipKnownCollectibles = sConfigMgr->GetOption<bool>("WowPlus.Loot.Collectibles.SkipKnown", true);
+        config.debug = sConfigMgr->GetOption<bool>("WowPlus.Loot.Debug", false);
     }
 
     bool IsBot(Player const* player)
@@ -607,15 +609,29 @@ public:
 
         Player* player = FindRealPlayer(lootOwner, source);
         if (!player)
+        {
+            if (config.debug)
+                LOG_INFO("module", "WowPlus loot: {} killed or opened by {}: no human player nearby, nothing rolled", source->GetName(), lootOwner->GetName());
             return;
+        }
 
         // Nothing from enemies and areas that are far below the player
         if (sourceLevel && IsGrey(player->GetLevel(), sourceLevel))
+        {
+            if (config.debug)
+                LOG_INFO("module", "WowPlus loot: {} (level {}) is grey to {} (level {}), nothing rolled", source->GetName(), sourceLevel, player->GetName(), player->GetLevel());
             return;
+        }
 
-        if (roll_chance_f(config.chance[rank]))
-            if (ItemTemplate const* proto = PickEquipment(player, rank))
-                GiveItem(player, loot, proto);
+        bool const rolled = roll_chance_f(config.chance[rank]);
+        ItemTemplate const* equipment = rolled ? PickEquipment(player, rank) : nullptr;
+        if (equipment)
+            GiveItem(player, loot, equipment);
+
+        if (config.debug)
+            LOG_INFO("module", "WowPlus loot: {} (level {}, rank {}, chance {}%) for {} (level {}, {}): {}", source->GetName(), sourceLevel, uint32(rank),
+                config.chance[rank], player->GetName(), player->GetLevel(), player->GetGroup() ? "in a group, item goes to bags" : "alone, item goes on the corpse",
+                !rolled ? "roll failed" : equipment ? equipment->Name1 : "roll succeeded but no item fits");
 
         if (roll_chance_f(config.mountChance))
             if (ItemTemplate const* proto = PickCollectible(player, mounts, true))
