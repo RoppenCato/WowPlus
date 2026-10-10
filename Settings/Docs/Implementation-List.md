@@ -175,9 +175,12 @@ In the hub:
 - **Bots that hang around,** so it is not an empty room.
 - **Everything is there from the start.** Nothing to buy or unlock.
 
-Still open: where it is (a beautiful, unused place; candidates in the plan), and how arena points are handled for the items that cost them.
+- **Place: GM Island** (chosen 2026-10-10 after looking at Hyjal and the other candidates). A small grassy island with one manor house, far out at sea, on the Kalimdor map. Reached only through the hearthstone menu.
 
-- [ ] 8.1 Choose the place; first entry in the hearthstone menu
+Still open: how arena points are handled for the items that cost them.
+
+- [x] 8.1 Place chosen: GM Island
+- [ ] 8.1b The hub as first entry in the hearthstone menu, available from the start
 - [ ] 8.2 The supplies vendor and the materials vendors, with prices
 - [ ] 8.3 Glyph, gem and enchant scroll vendors
 - [ ] 8.4 Tier token and PvP vendors (second spawns of the game's own, made usable by both factions)
