@@ -1,0 +1,7 @@
+# Extra modules merged into Server/modules/, one per line: folder, repo, branch.
+# Update-Server.bat merges the newest version of each. The core and mod-playerbots are handled separately.
+mod-solo-lfg https://github.com/azerothcore/mod-solo-lfg master
+mod-dungeon-clear https://github.com/jrad7/mod-dungeon-clear master
+mod-player-bot-level-brackets https://github.com/DustinHendrickson/mod-player-bot-level-brackets main
+mod-aoe-loot https://github.com/azerothcore/mod-aoe-loot master
+mod-junk-to-gold https://github.com/noisiver/mod-junk-to-gold master

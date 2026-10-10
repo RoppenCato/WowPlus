@@ -129,8 +129,13 @@ __pycache__/
 #
 # ==================
 
-# WowPlus: mod-playerbots is merged into this repository
+# WowPlus: these modules are merged into this repository
 !/modules/mod-playerbots
+!/modules/mod-solo-lfg
+!/modules/mod-dungeon-clear
+!/modules/mod-player-bot-level-brackets
+!/modules/mod-aoe-loot
+!/modules/mod-junk-to-gold
 
 # Live-stack e2e private / local tooling (scratch tests stay uncommitted)
 e2e/local/**

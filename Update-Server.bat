@@ -43,6 +43,15 @@ echo Merging the playerbots module...
 git merge -X subtree=Server/modules/mod-playerbots -m "Merge upstream mod-playerbots into Server/modules/mod-playerbots" upstream-playerbots/master
 if errorlevel 1 goto conflict
 
+rem The extra modules listed in Server\wowplus-modules.txt
+for /f "eol=# tokens=1,2,3" %%a in (Server\wowplus-modules.txt) do (
+  echo Merging %%a...
+  git fetch --no-tags %%b %%c
+  if errorlevel 1 goto failed
+  git merge -X subtree=Server/modules/%%a -m "Merge upstream %%a into Server/modules/%%a" FETCH_HEAD
+  if errorlevel 1 goto conflict
+)
+
 call "%ROOT%Build-Server.bat"
 exit /b %errorlevel%
 

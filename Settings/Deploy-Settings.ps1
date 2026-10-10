@@ -18,6 +18,13 @@ if (-not (Test-Path $configs)) {
     throw "The server is not built yet ($configs is missing). Run Build-Server.bat first."
 }
 
+# Every other module: its default file is used as it is, unless a file with the module's
+# config name exists in this folder (for example Settings\SoloLfg.conf) with our changes.
+foreach ($dist in Get-ChildItem (Join-Path $configs 'modules') -Filter *.conf.dist -ErrorAction SilentlyContinue) {
+    $name = $dist.Name -replace '\.dist$', ''
+    if (-not $files.Contains($name)) { $files[$name] = "modules\$($dist.Name)" }
+}
+
 # Secrets from Settings/.env
 $envFile = Join-Path $PSScriptRoot '.env'
 if (-not (Test-Path $envFile)) {
@@ -36,7 +43,9 @@ foreach ($name in $files.Keys) {
 
     # Read our overrides: "Key = Value" lines, everything else is a comment
     $overrides = [ordered]@{}
-    foreach ($line in [IO.File]::ReadAllLines((Join-Path $PSScriptRoot $name))) {
+    $ours = Join-Path $PSScriptRoot $name
+    $ourLines = if (Test-Path $ours) { [IO.File]::ReadAllLines($ours) } else { @() }
+    foreach ($line in $ourLines) {
         if ($line -match '^\s*([^#\[\s=][^=]*?)\s*=\s*(.*?)\s*$') {
             $value = $Matches[2]
             foreach ($key in $secrets.Keys) { $value = $value.Replace("{$key}", $secrets[$key]) }
