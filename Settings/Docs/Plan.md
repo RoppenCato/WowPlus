@@ -93,6 +93,8 @@ Rules to decide, with a first proposal:
 | Left out | Quest items, test and unused items, PvP sets, items that start quests. To decide: class tier sets, crafted items (see professions), legendaries that belong to a questline. |
 | Bots | A bot in your group rolls like a player today. Decide whether bots may win these drops. |
 
+**Mounts (added 2026-10-10).** Mounts get a table of their own with its own chance, rolled separately from gear. The point is that mounts which are normally a one-in-a-hundred boss drop, or worse, are always possible from ordinary play. In this version of the game a mount is an item that teaches a spell when used, so mounts can be dropped like any other item. Same module, same hook; the open questions are in the [implementation list](Implementation-List.md).
+
 Things to watch: it will flood bags with gear, so it pairs well with auto-selling junk ([mod-junk-to-gold](https://github.com/noisiver/mod-junk-to-gold)) and with gold being useful (section 8). It also makes quest rewards and dungeon loot tables matter less, which may or may not be wanted.
 
 ## 3. Weapons and armour of any rarity

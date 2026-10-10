@@ -157,6 +157,18 @@ account set gmlevel <name> 3 -1
 
 The second line makes the account a game master (3 is the highest level, `-1` means on all realms). Then log in to the game with that name and password.
 
+## Test characters
+
+A ready-made high-level character for trying things (dungeon finder, loot, class changes) cannot be created from the server console, so this is how the first one was made on 2026-10-10. The server has to be **stopped** for the first part.
+
+1. Take a spare level 1 bot character of the wanted race and class (the bots are ordinary characters on accounts named `RNDBOT...`) and move it to our account in the database: set `account`, `level`, `money` and a position in a city in `acore_characters.characters`, and set `at_login = 1` so the game asks for a new name at the first login.
+2. Give it the class trainer's spells up to its level by copying them from `acore_world.trainer_spell` into `acore_characters.character_spell`. Ranks depend on the rank before, so this is repeated until nothing more is added. Spells that continue a talent are left out, because the talent is not chosen yet.
+3. Raise its weapon and defense skills in `acore_characters.character_skills`.
+4. Remove it from `acore_playerbots.playerbots_random_bots`, so the bot system forgets it.
+5. Start the server and mail it gear and supplies from the world server window: `send items <name> <subject> <text> <item id> <item id>:<count> ...` (at most 12 stacks per mail).
+
+The first one is an Undead mage, level 50, with 1000 gold. In its mailbox: a full set of blue cloth gear with staff and wand, four 18-slot bags, food, water and mage reagents. Its 41 talent points are unspent.
+
 ## Useful commands in game
 
 | Command | What it does |

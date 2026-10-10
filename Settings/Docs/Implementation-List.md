@@ -68,14 +68,23 @@ Decided 2026-10-10:
 - **Look-ahead: rising chance over the last 10 levels** before 60, 70 and 80. Tiny at 50, real by 58, first-raid epics possible near the end.
 - **At max level the pool follows my own gear:** banded by item level, moving up as what I wear improves, with a small chance to jump ahead.
 
-Still open: may bots win the extra drops?
+- **Bots pass on the extra drops.** They are always mine; since nothing binds, I hand bots what I do not want.
+- **Mounts get a loot table of their own, with its own chance.** Any kill that can give an extra drop also has a separate, small chance at a mount, so the mounts that are normally almost impossible to get are always possible.
+
+Still open, for the mount table:
+
+- Which mounts are in: only the rare drops (raid and dungeon boss mounts, rare world drops), or also vendor, reputation, profession and achievement mounts?
+- Does it follow level like the gear (flying mounts only once flying is possible), or can any mount drop at any level?
+- One flat chance, or rarer mounts at a lower chance than common ones?
+- Companion pets in the same way?
 
 - [ ] 2.1 The item lists: which items are in, which are out, banded by level and, above 50, by item level
 - [ ] 2.2 The extra drop roll in `mod-wowplus`, behind settings: chance by rarity and by enemy rank
 - [ ] 2.3 The 50 to 60, 60 to 70 and 70 to 80 look-ahead rules
 - [ ] 2.4 Optional weighting towards what the class can use
 - [ ] 2.5 Chests use the same lists, with their own chance
-- [ ] 2.6 Bots and the extra drops: may they roll, and bot gear settings so bots keep up
+- [ ] 2.5b The mount table: its own list and its own chance, rolled separately from gear
+- [ ] 2.6 Bots pass on the extra drops; bot gear settings so bots keep up
 - [ ] 2.7 Bag pressure checked: AoE loot and junk selling tuned
 - [~] 2.8 Weapons and armour never bind (`Settings/SQL/world/2026-10-10_equipment-never-binds.sql`, applied at the next server start)
 
