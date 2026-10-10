@@ -255,3 +255,29 @@ WowPlus.Professions.GatherMultiplier = 3
 #        Default: 0
 
 WowPlus.Loot.Debug = 0
+
+########################################
+# The hub
+########################################
+#
+#    WowPlus.Hub.Enable
+#        1: "The Hub" is in the hearthstone menu from the start. It is a small place on
+#        GM Island with vendors for what a solo player cannot reasonably get alone.
+#        The NPCs, what they sell and the prices are in Settings/SQL/world/..._hub.sql.
+#        Default: 1
+
+WowPlus.Hub.Enable = 1
+
+#
+#    WowPlus.Honor.FromKills
+#    WowPlus.Honor.Normal / Elite / Rare / Boss
+#        Enemies that are not grey to the player give honor, so that the PvP gear in the
+#        hub is a slow reward for simply playing. The numbers are honor per kill by the
+#        enemy's rank. For scale: a piece of level 80 PvP armour costs tens of thousands.
+#        Default: 1, 10, 30, 60, 300
+
+WowPlus.Honor.FromKills = 1
+WowPlus.Honor.Normal    = 10
+WowPlus.Honor.Elite     = 30
+WowPlus.Honor.Rare      = 60
+WowPlus.Honor.Boss      = 300

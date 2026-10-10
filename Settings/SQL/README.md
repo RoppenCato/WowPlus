@@ -44,3 +44,5 @@ Deleting the file does not undo it: the database keeps what the file did. Write 
 |------|--------------|
 | `world/2026-10-10_remove-attunements.sql` | Removes all 35 entry requirements for dungeons and raids (quests, heroic keys, achievements). Level requirements stay. |
 | `world/2026-10-10_equipment-never-binds.sql` | Weapons and armour no longer bind, neither on pickup nor when equipped. |
+| `world/2026-10-10_hearthstone-menu.sql` | Hands the hearthstone item to our travel menu. |
+| `world/2026-10-10_hub.sql` | The hub on GM Island: its NPCs, the weapon master, every vendor list, the menu that leads to them, and the prices. |

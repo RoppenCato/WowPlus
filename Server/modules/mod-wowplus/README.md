@@ -12,7 +12,8 @@ The reasons and decisions behind each feature are in [Settings/Docs/Plan.md](../
 | Random bonuses on looted, crafted and quest-reward equipment; strength follows item level, colour limits how many; crafted items always get one | `src/WowPlusBonuses.cpp` | `WowPlus.Bonus.*` |
 | Gathering gives a multiple of the normal amount | `src/WowPlusProfessions.cpp` | `WowPlus.Professions.*` |
 | Hearthstone without cooldown, and a hearthstone menu to the cities, towns, dungeons and raids a character has visited | `src/WowPlusTravel.cpp` | `WowPlus.Travel.*` |
-| Not built yet, files in place: surprise vendors, the hub, gold | `src/WowPlusVendors.cpp`, `WowPlusHub.cpp`, `WowPlusGold.cpp` | |
+| The hub: vendors with several lists behind a menu (the NPCs and lists are data in `Settings/SQL/world/..._hub.sql`), and honor from ordinary kills | `src/WowPlusHub.cpp` | `WowPlus.Hub.*`, `WowPlus.Honor.*` |
+| Not built yet, files in place: surprise vendors, gold | `src/WowPlusVendors.cpp`, `WowPlusGold.cpp` | |
 
 ## When a rebuild is needed
 

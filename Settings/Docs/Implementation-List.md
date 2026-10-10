@@ -177,15 +177,15 @@ In the hub:
 
 - **Place: GM Island** (chosen 2026-10-10 after looking at Hyjal and the other candidates). A small grassy island with one manor house, far out at sea, on the Kalimdor map. Reached only through the hearthstone menu.
 
-Still open: how arena points are handled for the items that cost them.
+- **All PvP items cost honor only, and none requires a rating** (decided 2026-10-10). Items that cost arena points in the game cost honor in the hub.
 
 - [x] 8.1 Place chosen: GM Island
-- [ ] 8.1b The hub as first entry in the hearthstone menu, available from the start
-- [ ] 8.2 The supplies vendor and the materials vendors, with prices
-- [ ] 8.3 Glyph, gem and enchant scroll vendors
-- [ ] 8.4 Tier token and PvP vendors (second spawns of the game's own, made usable by both factions)
-- [ ] 8.5 Honor from kills at my level (`mod-wowplus`); arena points
-- [ ] 8.6 The weapon master
+- [~] 8.1b The hub in the hearthstone menu, available from the start (`mod-wowplus`, setting `WowPlus.Hub.Enable`)
+- [~] 8.2 The supplies vendor and the materials vendor, with first-guess prices (`Settings/SQL/world/2026-10-10_hub.sql`)
+- [~] 8.3 Glyph, gem and enchant scroll vendors (same file)
+- [ ] 8.4 Tier token and PvP vendors. PvP items need their prices converted to honor-only ones the game client knows; not done yet
+- [~] 8.5 Honor from kills at my level (`mod-wowplus`, settings `WowPlus.Honor.*`)
+- [~] 8.6 The weapon master (same SQL file)
 - [ ] 8.7 Bots in the hub
 
 ## Any time: Bot chat

@@ -37,6 +37,14 @@ namespace
 
     bool hearthstoneNoCooldown = true;
     bool menuEnabled = true;
+    bool hubEnabled = true;
+
+    // Where the hearthstone menu puts you in the hub: on the lawn of GM Island, facing the row of vendors
+    constexpr uint32 HUB_MAP = 1;
+    constexpr float HUB_X = 16226.2f;
+    constexpr float HUB_Y = 16257.0f;
+    constexpr float HUB_Z = 13.3f;
+    constexpr float HUB_O = 1.57f;
 
     struct Place
     {
@@ -94,6 +102,7 @@ namespace
 
     constexpr uint32 ACTION_HOME = 1000;
     constexpr uint32 ACTION_BACK = 1001;
+    constexpr uint32 ACTION_HUB = 1002;
 
     char const* const EXPANSION_NAMES[3] = {"Classic", "The Burning Crusade", "Wrath of the Lich King"};
 
@@ -196,6 +205,9 @@ namespace
 
     bool HasAnything(Player* player)
     {
+        if (hubEnabled)
+            return true;                                    // the hub is known from the start
+
         if (player->GetPlayerSetting(SETTING_SOURCE, SETTING_PLACES).value)
             return true;
 
@@ -223,6 +235,8 @@ namespace
         if (page == PAGE_MAIN)
         {
             AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "Home", PAGE_MAIN, ACTION_HOME);
+            if (hubEnabled)
+                AddGossipItemFor(player, GOSSIP_ICON_TAXI, "The Hub", PAGE_MAIN, ACTION_HUB);
 
             bool cities = false;
             bool towns = false;
@@ -298,6 +312,7 @@ public:
     {
         hearthstoneNoCooldown = sConfigMgr->GetOption<bool>("WowPlus.Travel.Hearthstone.NoCooldown", true);
         menuEnabled = sConfigMgr->GetOption<bool>("WowPlus.Travel.Hearthstone.Menu", true);
+        hubEnabled = sConfigMgr->GetOption<bool>("WowPlus.Hub.Enable", true);
     }
 
     void OnStartup() override
@@ -382,6 +397,13 @@ public:
 
         if (!CanTravel(player))
             return;
+
+        if (action == ACTION_HUB)
+        {
+            if (hubEnabled)
+                player->TeleportTo(HUB_MAP, HUB_X, HUB_Y, HUB_Z, HUB_O);
+            return;
+        }
 
         if (sender == PAGE_GO_PLACE && action < PLACES.size() && HasPlace(player, action))
         {
