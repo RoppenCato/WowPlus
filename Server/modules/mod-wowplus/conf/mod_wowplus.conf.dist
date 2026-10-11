@@ -137,13 +137,14 @@ WowPlus.Travel.Hearthstone.NoCooldown = 1
 
 #
 #    WowPlus.Travel.Hearthstone.Menu
-#        1: using the hearthstone opens a menu with Home and every city, hub town, dungeon
-#        and raid the character has been to. A place unlocks on the first visit; travel is
-#        free. Until a character has unlocked something the hearthstone works as usual.
-#        Needs EnablePlayerSettings = 1 in worldserver.conf, or nothing is remembered.
-#        Default: 1
+#        1: using the hearthstone opens a menu with Home and every city, town, dungeon and
+#        raid entrance the character has visited.
+#        0: the hearthstone takes you home, as in the original game. Decided 2026-10-11:
+#        teleporting everywhere took the world between places away. The ways to travel by
+#        magic are now the hearthstone (home) and the keys to your rooms in the cities.
+#        Default: 0
 
-WowPlus.Travel.Hearthstone.Menu = 1
+WowPlus.Travel.Hearthstone.Menu = 0
 
 ########################################
 # Random bonuses on equipment

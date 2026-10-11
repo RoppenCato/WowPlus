@@ -36,7 +36,7 @@ namespace
     constexpr uint32 SETTING_INSTANCES = 1;                 // from here: one bit per map id, 32 per setting
 
     bool hearthstoneNoCooldown = true;
-    bool menuEnabled = true;
+    bool menuEnabled = false;                               // off since 2026-10-11: the hearthstone goes home, the room keys do the rest
 
     struct Place
     {
@@ -297,7 +297,7 @@ public:
     void OnAfterConfigLoad(bool /*reload*/) override
     {
         hearthstoneNoCooldown = sConfigMgr->GetOption<bool>("WowPlus.Travel.Hearthstone.NoCooldown", true);
-        menuEnabled = sConfigMgr->GetOption<bool>("WowPlus.Travel.Hearthstone.Menu", true);
+        menuEnabled = sConfigMgr->GetOption<bool>("WowPlus.Travel.Hearthstone.Menu", false);
     }
 
     void OnStartup() override

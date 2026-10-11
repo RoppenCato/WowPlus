@@ -5,7 +5,9 @@
 -- numbers: they take over items the game has but never hands out (old test lockboxes and deprecated keys).
 -- New numbers showed a question mark instead of an icon.
 --
--- - A key for each city, sold by that city's innkeepers. Using it lets
+-- - A key for each city, sold by that city's innkeepers. With the hearthstone, the keys are the only ways to
+--   travel by magic, so they are priced as something to save for: 15 gold in the smaller capitals, 25 in the
+--   larger, 250 in Shattrath, 1000 in Dalaran. They go on the keyring. Using it lets
 --   you claim any spot in that city as your room, and later brings you back there.
 -- - Furniture, sold by every city innkeeper. Using a piece inside your
 --   room puts it down where you stand. Each piece is an object of the game world; a few are
@@ -22,16 +24,16 @@ CREATE TABLE wowplus_home_cities (
     price INT UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 INSERT INTO wowplus_home_cities VALUES
-    ( 1,  2363, 1637, 'Orgrimmar',        30000),
-    ( 2,  3580, 1638, 'Thunder Bluff',    20000),
-    ( 3,  1918, 1497, 'the Undercity',    30000),
-    ( 4, 11085, 3487, 'Silvermoon City',  30000),
-    ( 5,  2789, 1519, 'Stormwind',        30000),
-    ( 6,  2790, 1537, 'Ironforge',        30000),
-    ( 7,  2791, 1657, 'Darnassus',        20000),
-    ( 8,  2792, 3557, 'the Exodar',       20000),
-    ( 9,  1253, 3703, 'Shattrath',       500000),
-    (10,  5916, 4395, 'Dalaran',        1500000);
+    ( 1,  2363, 1637, 'Orgrimmar',       250000),
+    ( 2,  3580, 1638, 'Thunder Bluff',   150000),
+    ( 3,  1918, 1497, 'the Undercity',   250000),
+    ( 4, 11085, 3487, 'Silvermoon City', 250000),
+    ( 5,  2789, 1519, 'Stormwind',       250000),
+    ( 6,  2790, 1537, 'Ironforge',       250000),
+    ( 7,  2791, 1657, 'Darnassus',       150000),
+    ( 8,  2792, 3557, 'the Exodar',      150000),
+    ( 9,  1253, 3703, 'Shattrath',      2500000),
+    (10,  5916, 4395, 'Dalaran',       10000000);
 
 -- The furniture ------------------------------------------------------------------------------
 -- object: the game object that is put down. 9200001 and up are made below.
@@ -122,7 +124,8 @@ DROP TEMPORARY TABLE wp_item;
 -- The game client decides the kind, material and icon of an item it knows, and the server checks ours
 -- against it at every start. Give each the values the client has, so the log stays clean.
 UPDATE item_template SET Material = 1, displayid = 9632 WHERE entry IN (SELECT item FROM wowplus_furniture);
-UPDATE item_template SET class = 13,
+-- BagFamily 256 puts them on the keyring.
+UPDATE item_template SET class = 13, BagFamily = 256,
     subclass  = IF(entry IN (1253, 1918, 2789, 2790, 2791, 2792), 1, 0),
     Material  = CASE entry WHEN 1253 THEN 1 WHEN 2363 THEN 0 WHEN 2789 THEN 4 WHEN 2790 THEN 4 WHEN 2791 THEN 4 WHEN 2792 THEN 4 ELSE Material END,
     displayid = CASE entry WHEN 1253 THEN 6707 WHEN 1918 THEN 6706 WHEN 2363 THEN 6708 WHEN 2789 THEN 6707 WHEN 2790 THEN 6707
