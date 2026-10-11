@@ -69,6 +69,7 @@ Decided 2026-10-10:
 - **At max level the pool follows my own gear:** banded by item level, moving up as what I wear improves, with a small chance to jump ahead.
 
 - **Rares always drop an extra item** (2026-10-11; first set to 60 percent). At least green like every extra drop, with better odds at blue and epic than an ordinary enemy: about 1 in 5 blue or better, 1 in 17 epic or better. Setting `WowPlus.Loot.Chance.Rare` in `Settings/mod_wowplus.conf`.
+- **Rares are a real fight, and always possible alone** (2026-10-11). Plain rares: twice the health and a quarter more damage than before (they were barely stronger than ordinary enemies). Rare elites, built for groups, are brought down to about 2.5 times the health and 1.6 times the damage of an ordinary enemy. The frames stay: silver dragon for rares, silver with wings for rare elites. Settings `Rate.Creature.Elite.RARE.*` and `RAREELITE.*` in `Settings/worldserver.conf`.
 - **Bots pass on the extra drops.** They are always mine; since nothing binds, I hand bots what I do not want.
 - **Mounts get a loot table of their own, with its own chance.** Any kill that can give an extra drop also has a separate, small chance at a mount, so the mounts that are normally almost impossible to get are always possible.
 
