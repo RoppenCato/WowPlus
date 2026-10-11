@@ -50,7 +50,35 @@ So the aim is not "everything earlier". It is: no stretch of levels where the cl
 - **A hunter has a pet from level 1** (Robin's example of misery: "not having a pet before 10"). A plain animal from the starting zone, given once, with the spells to call, dismiss, feed and revive it. Tame Beast is still level 10, from the trainer: the day you choose your own. Built in `mod-wowplus`, setting `WowPlus.Classes.HunterStarterPet`.
 - **A shaman gets the Totem of the Earthen Ring at level 4.** The totem quests also handed out the four totem items, without which totems cannot be cast, and a trainer cannot give items. This one relic replaces all four. Setting `WowPlus.Classes.ShamanTotemRelic`.
 
-Still to decide: the questions under "To decide" below, apart from number 3, which this answers.
+**2026-10-11: the early levels.** Built: `Settings/SQL/world/2026-10-11_early-levels.sql` and `mod-wowplus` (settings `WowPlus.Classes.*`). Not yet tested in the game.
+
+| Class | Change | Was |
+|-------|--------|-----|
+| Druid | Cat Form and Claw at 8 | 20 |
+| Druid | Rake at 10 | 24 |
+| Druid | Ferocious Bite at 12, the first finishing move | 32 |
+| Druid | Rip at 16, the second finishing move | 20 |
+| Druid | Ravage at 20, together with Prowl | 32 |
+| Druid | Bear Form stays at 10; the bear's abilities are not moved | |
+| Warrior | Bloodrage at 8 | 10 |
+| Paladin | Consecration at 14, Exorcism at 16 | 20, 20 |
+| Rogue | Dual Wield from level 1, and a second starting dagger. Poisons stay at 20. | 10 |
+| Priest | Shadowfiend at 10, to make level 10 exciting | 66 |
+| Priest, mage, warlock | A Lesser Magic Wand handed over at level 5 | bought |
+| Shaman | Water Shield at 14 | 20 |
+| Mage | Conjured water and food one step ahead: each rank is learned where the rank before it used to be, and the conjured items' own level requirement is lowered to match | |
+| Hunter, warlock | Fine as they are | |
+
+Robin on the finishing moves: *"It's boring to get the finishers so late."* And on the water: *"Now you get the level 5 water after you can actually buy it."*
+
+Prices at the trainer were lowered to fit the new levels; Shadowfiend cost almost 9 gold at 66.
+
+To watch when playing:
+
+- The cat's first ranks were sized for level 20 to 32, so it will hit hard at 8 to 16. Weaken them if it makes the early zones trivial.
+- Shadowfiend at 10 is the boldest move here: a pet meant for level 66. Its strength follows the priest's level, so it should fit, but it has not been seen at level 10.
+
+Still to decide: the questions under "To decide" below, apart from number 3, which is answered above.
 
 ## What the game does today
 

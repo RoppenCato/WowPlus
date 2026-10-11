@@ -282,6 +282,10 @@ Things to think through:
 
 Designed separately in [Bot-Chat.md](Bot-Chat.md). It belongs in this plan because a single-player world needs company that answers.
 
+## A rule for everything we build: baseline, range, seed
+
+Added 2026-10-11. Robin wants to be able to switch on randomness later, so that the game can still surprise the person who designed it (see [Ideas](Ideas.md)). To keep that possible, each feature is built with a **baseline** (the value Robin tuned), a **range** it may wander in, and a **seed** that decides where in the range it lands. With the switch off everything sits at its baseline. In practice: settings that could take a range, lists with more candidates than slots, and no value buried in code.
+
 ## What depends on what
 
 - **The level item lists (section 2) are the foundation.** Chests (5), random vendor stock (4) and the gold balance (8) all draw from them. Build them once, in our module.

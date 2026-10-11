@@ -323,3 +323,19 @@ WowPlus.Classes.HunterStarterPet = 1
 #        Default: 1
 
 WowPlus.Classes.ShamanTotemRelic = 1
+
+#
+#    WowPlus.Classes.RogueDualWield
+#        1: a rogue knows Dual Wield from level 1 (the game: level 10), and a new rogue is
+#        given a second starting dagger, once.
+#        Default: 1
+
+WowPlus.Classes.RogueDualWield = 1
+
+#
+#    WowPlus.Classes.CasterWand
+#        1: priests, mages and warlocks are handed a Lesser Magic Wand when they reach
+#        level 5, once. Characters above level 14 are not given one.
+#        Default: 1
+
+WowPlus.Classes.CasterWand = 1

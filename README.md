@@ -36,6 +36,7 @@ The last five are not in git (see [.gitignore](.gitignore)). `Tools/`, `Build/` 
 | [Plan](Settings/Docs/Plan.md) | Start here for where the project is going: a single-player WoW with bots. The ideas, what already exists for each, what needs new code, the suggested order and the open decisions. |
 | [Implementation list](Settings/Docs/Implementation-List.md) | The plan as ordered steps, ticked off as we go, with what was decided per phase and which modules are added. |
 | [Class changes](Settings/Docs/Class-Changes.md) | When each class gets its abilities today, which key abilities come late or only from quests, and the idea of a milestone every ten levels. Discussion, nothing changed yet. |
+| [Ideas](Settings/Docs/Ideas.md) | Things we might do. First entry: an "adventure switch" that brings back mystery for the one who designed it all. |
 | [Modules](Settings/Docs/Modules.md) | What can be added: about 150 community modules by area (bots, solo play, classes, items, comfort, world), with a shortlist for us. None installed yet. |
 | [Bot chat](Settings/Docs/Bot-Chat.md) | Design: talking to bots through Claude, like in MapleStoryPlus. Not built yet. |
 

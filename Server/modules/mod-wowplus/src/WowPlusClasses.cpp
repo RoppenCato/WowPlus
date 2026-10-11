@@ -2,14 +2,16 @@
  * WowPlus classes: small helps so that no class is missing its core while levelling alone.
  *
  * The rule (Settings/Docs/Class-Changes.md): keep the friction, remove the misery.
- * Abilities that used to come from class quests are taught by the class trainers instead
- * (data: Settings/SQL/world/..._class-quest-abilities.sql). This file covers what a trainer
- * cannot do:
+ * Most class changes are data: which level a trainer teaches what
+ * (Settings/SQL/world/..._class-quest-abilities.sql and ..._early-levels.sql).
+ * This file covers what a trainer cannot do:
  *
  * - A hunter has a pet from level 1. It is a plain starter animal; Tame Beast still comes at
  *   level 10, and that is the day the hunter chooses a pet of their own.
  * - A shaman gets the Totem of the Earthen Ring, which stands in for the four totem items the
  *   totem quests used to hand out. Without it the totem spells cannot be cast.
+ * - A rogue can dual wield from the start, and owns a second dagger to do it with.
+ * - Priests, mages and warlocks are handed their first wand at level 5.
  */
 
 #include "Chat.h"
@@ -30,11 +32,44 @@ namespace
     constexpr std::array<uint32, 4> HUNTER_PET_CARE_SPELLS = {883, 2641, 982, 6991};
     constexpr uint8 HUNTER_TAME_LEVEL = 10;
 
+    constexpr uint32 SPELL_DUAL_WIELD = 674;
+    constexpr uint32 ITEM_WORN_DAGGER = 2092;               // what a new rogue starts with
+    constexpr uint8 ROGUE_OLD_DUAL_WIELD_LEVEL = 10;
+
+    constexpr uint32 ITEM_LESSER_MAGIC_WAND = 11287;        // the classic first wand, usable from level 5
+    constexpr uint8 WAND_LEVEL = 5;
+    constexpr uint8 WAND_LAST_LEVEL = 14;                   // a character above this has long outgrown it
+
+    // What has been handed out is remembered per character (table character_settings)
     std::string const SETTING_SOURCE = "mod-wowplus-classes";
     constexpr uint32 SETTING_STARTER_PET_GIVEN = 0;
+    constexpr uint32 SETTING_ITEMS_GIVEN = 1;               // one bit per item below
+    constexpr uint32 GIVEN_WAND = 0x1;
+    constexpr uint32 GIVEN_SECOND_DAGGER = 0x2;
 
     bool hunterStarterPet = true;
     bool shamanTotemRelic = true;
+    bool rogueDualWield = true;
+    bool casterWand = true;
+
+    void Tell(Player* player, char const* text)
+    {
+        ChatHandler(player->GetSession()).SendSysMessage(text);
+    }
+
+    // Hands an item over once per character. False if it was given before or the bags are full.
+    bool GiveOnce(Player* player, uint32 flag, uint32 itemId)
+    {
+        uint32 const given = player->GetPlayerSetting(SETTING_SOURCE, SETTING_ITEMS_GIVEN).value;
+        if (given & flag)
+            return false;
+
+        if (!player->AddItem(itemId, 1))
+            return false;                                   // tried again at the next login or level
+
+        player->UpdatePlayerSetting(SETTING_SOURCE, SETTING_ITEMS_GIVEN, given | flag);
+        return true;
+    }
 
     // An animal from the hunter's own starting zone
     uint32 StarterPetFor(uint8 race)
@@ -78,8 +113,8 @@ namespace
         if (player->CreatePet(StarterPetFor(player->getRace())))
         {
             player->UpdatePlayerSetting(SETTING_SOURCE, SETTING_STARTER_PET_GIVEN, 1);
-            ChatHandler(player->GetSession()).SendSysMessage("An animal from these lands has taken to you. At level 10 your trainer "
-                "will teach you to tame a companion of your own choosing.");
+            Tell(player, "An animal from these lands has taken to you. At level 10 your trainer will teach you to tame a "
+                "companion of your own choosing.");
         }
     }
 
@@ -92,8 +127,47 @@ namespace
             return;
 
         if (player->AddItem(ITEM_TOTEM_OF_THE_EARTHEN_RING, 1))
-            ChatHandler(player->GetSession()).SendSysMessage("The elements answer you: you receive the Totem of the Earthen Ring. "
-                "Keep it with you to call your totems.");
+            Tell(player, "The elements answer you: you receive the Totem of the Earthen Ring. Keep it with you to call your totems.");
+    }
+
+    void HelpRogue(Player* player)
+    {
+        if (!rogueDualWield || player->getClass() != CLASS_ROGUE)
+            return;
+
+        if (!player->HasSpell(SPELL_DUAL_WIELD))
+            player->learnSpell(SPELL_DUAL_WIELD, false);
+
+        // A new rogue owns one dagger; one that is past the old Dual Wield level has found weapons already
+        if (player->GetLevel() < ROGUE_OLD_DUAL_WIELD_LEVEL && GiveOnce(player, GIVEN_SECOND_DAGGER, ITEM_WORN_DAGGER))
+            Tell(player, "You find a second dagger in your pack. A rogue fights with both hands.");
+    }
+
+    void HelpCaster(Player* player)
+    {
+        if (!casterWand)
+            return;
+
+        uint8 const playerClass = player->getClass();
+        if (playerClass != CLASS_PRIEST && playerClass != CLASS_MAGE && playerClass != CLASS_WARLOCK)
+            return;
+
+        if (player->GetLevel() < WAND_LEVEL || player->GetLevel() > WAND_LAST_LEVEL)
+            return;
+
+        if (GiveOnce(player, GIVEN_WAND, ITEM_LESSER_MAGIC_WAND))
+            Tell(player, "Your studies have earned you a wand of your own: you receive a Lesser Magic Wand.");
+    }
+
+    void HelpAll(Player* player)
+    {
+        if (player->GetSession()->IsHeadless())
+            return;                                         // bots are equipped by the bot module
+
+        HelpHunter(player);
+        HelpShaman(player);
+        HelpRogue(player);
+        HelpCaster(player);
     }
 }
 
@@ -106,6 +180,8 @@ public:
     {
         hunterStarterPet = sConfigMgr->GetOption<bool>("WowPlus.Classes.HunterStarterPet", true);
         shamanTotemRelic = sConfigMgr->GetOption<bool>("WowPlus.Classes.ShamanTotemRelic", true);
+        rogueDualWield = sConfigMgr->GetOption<bool>("WowPlus.Classes.RogueDualWield", true);
+        casterWand = sConfigMgr->GetOption<bool>("WowPlus.Classes.CasterWand", true);
     }
 };
 
@@ -116,19 +192,12 @@ public:
 
     void OnPlayerLogin(Player* player) override
     {
-        if (player->GetSession()->IsHeadless())
-            return;                                         // bots are equipped by the bot module
-
-        HelpHunter(player);
-        HelpShaman(player);
+        HelpAll(player);
     }
 
     void OnPlayerLevelChanged(Player* player, uint8 /*oldLevel*/) override
     {
-        if (player->GetSession()->IsHeadless())
-            return;
-
-        HelpShaman(player);
+        HelpAll(player);
     }
 };
 
