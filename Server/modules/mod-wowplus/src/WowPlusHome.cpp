@@ -27,6 +27,7 @@
 #include "Item.h"
 #include "Log.h"
 #include "Map.h"
+#include "MapMgr.h"
 #include "ObjectAccessor.h"
 #include "ObjectMgr.h"
 #include "Player.h"
@@ -85,6 +86,7 @@ namespace
         std::unordered_map<uint32, Room> rooms;             // by city zone
         std::vector<Piece> pieces;
         uint32 furnishedCity = 0;                           // the city whose furniture is out right now
+        uint32 furnishedMap = 0;                            // ...and the map it stands on
         time_t restedAt = 0;
     };
 
@@ -113,16 +115,37 @@ namespace
         if (object == objectByItem.end() || piece.spawned)
             return;
 
-        if (GameObject* go = player->SummonGameObject(object->second, piece.x, piece.y, piece.z, piece.o, 0, 0, 0, 0, 0))
-            piece.spawned = go->GetGUID();
+        // Put into the world the way the game's own objects are: belonging to nobody, turned to face the way
+        // the owner faced. (Objects summoned as the player's own vanished again unless they were of a kind
+        // that is used, such as the mailbox.)
+        Map* map = player->GetMap();
+        G3D::Quat const facing(0.0f, 0.0f, std::sin(piece.o / 2.0f), std::cos(piece.o / 2.0f));
+        GameObject* go = new GameObject();
+        if (!go->Create(map->GenerateLowGuid<HighGuid::GameObject>(), object->second, map, player->GetPhaseMask(), piece.x, piece.y, piece.z,
+            piece.o, facing, 255, GO_STATE_READY))
+        {
+            delete go;
+            return;
+        }
+
+        go->SetRespawnTime(0);
+        if (!map->AddToMap(go))
+        {
+            delete go;
+            return;
+        }
+
+        piece.spawned = go->GetGUID();
     }
 
-    void TakeAway(Player* player, Piece& piece)
+    // mapId: the map the piece was put out on, which is not always where the player is by now
+    void TakeAway(uint32 mapId, Piece& piece)
     {
         if (!piece.spawned)
             return;
 
-        if (GameObject* go = player->GetMap()->GetGameObject(piece.spawned))
+        Map* map = sMapMgr->FindMap(mapId, 0);
+        if (GameObject* go = map ? map->GetGameObject(piece.spawned) : nullptr)
         {
             go->SetRespawnTime(0);
             go->Delete();
@@ -130,10 +153,10 @@ namespace
         piece.spawned.Clear();
     }
 
-    void ClearRoom(Player* player, Home* home)
+    void ClearRoom(Home* home)
     {
         for (Piece& piece : home->pieces)
-            TakeAway(player, piece);
+            TakeAway(home->furnishedMap, piece);
         home->furnishedCity = 0;
     }
 
@@ -158,13 +181,14 @@ namespace
             auto room = home->rooms.find(home->furnishedCity);
             if (room == home->rooms.end() || room->second.map != player->GetMapId() ||
                 player->GetExactDist(room->second.x, room->second.y, room->second.z) > CLEAR_RANGE)
-                ClearRoom(player, home);
+                ClearRoom(home);
             return;
         }
 
         if (uint32 const city = RoomNear(player, home, FURNISH_RANGE))
         {
             home->furnishedCity = city;
+            home->furnishedMap = player->GetMapId();
             for (Piece& piece : home->pieces)
                 if (piece.city == city)
                     PutOut(player, piece);
@@ -181,7 +205,7 @@ namespace
             return false;
         }
 
-        TakeAway(player, piece);
+        TakeAway(home->furnishedMap, piece);
         CharacterDatabase.Execute("DELETE FROM wowplus_home_objects WHERE id = {}", piece.id);
         home->pieces.erase(home->pieces.begin() + index);
         return true;
@@ -296,15 +320,17 @@ public:
             } while (result->NextRow());
     }
 
-    // Leaving the map takes the objects with it (they belong to the player); forget them here too
+    // The furniture is only out while its owner is near: gone when they leave the map or the game
     void OnPlayerMapChanged(Player* player) override
     {
         if (Home* home = player->CustomData.Get<Home>(DATA_KEY))
-        {
-            for (Piece& piece : home->pieces)
-                piece.spawned.Clear();
-            home->furnishedCity = 0;
-        }
+            ClearRoom(home);
+    }
+
+    void OnPlayerLogout(Player* player) override
+    {
+        if (Home* home = player->CustomData.Get<Home>(DATA_KEY))
+            ClearRoom(home);
     }
 };
 
