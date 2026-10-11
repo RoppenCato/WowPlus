@@ -39,7 +39,8 @@ The last five are not in git (see [.gitignore](.gitignore)). `Tools/`, `Build/` 
 | [Ideas](Settings/Docs/Ideas.md) | Things we might do. First entry: an "adventure switch" that brings back mystery for the one who designed it all. |
 | [Reference lists](Settings/Reference/README.md) | Lists of what is in the game. So far: every rare enemy with its level and zone. |
 | [Modules](Settings/Docs/Modules.md) | What can be added: about 150 community modules by area (bots, solo play, classes, items, comfort, world), with a shortlist for us. None installed yet. |
-| [Bot chat](Settings/Docs/Bot-Chat.md) | Design: talking to bots through Claude, like in MapleStoryPlus. Not built yet. |
+| [Bots](Settings/Docs/Bots.md) | How the bots work, what we changed (levels, gear, buffs, sending them away, your guild), and what is still open. |
+| [Bot chat](Settings/Docs/Bot-Chat.md) | Talking to bots through Claude: who answers, who each bot is, what they remember. Needs `Start-Bot-Chat.bat`. |
 
 ## Starting and stopping
 
