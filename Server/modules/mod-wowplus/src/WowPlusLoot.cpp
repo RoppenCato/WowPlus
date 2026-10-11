@@ -68,6 +68,9 @@ namespace
         float petChance = 0.2f;                             // percent, flat
         bool skipKnownCollectibles = true;
         float bagChance = 0.5f;                             // percent, flat
+        float junkboxChance = 25.0f;                        // percent, per pocket picked
+        float junkboxGearChance = 35.0f;                    // percent, per junkbox opened
+        float tomeChance = 0.4f;                            // percent, per kill, for mages
         bool debug = false;
     };
 
@@ -113,6 +116,9 @@ namespace
         config.skipKnownCollectibles = sConfigMgr->GetOption<bool>("WowPlus.Loot.Collectibles.SkipKnown", true);
         config.debug = sConfigMgr->GetOption<bool>("WowPlus.Loot.Debug", false);
         config.bagChance = sConfigMgr->GetOption<float>("WowPlus.Loot.Bag.Chance", 0.5f);
+        config.junkboxChance = sConfigMgr->GetOption<float>("WowPlus.Loot.Pickpocket.JunkboxChance", 25.0f);
+        config.junkboxGearChance = sConfigMgr->GetOption<float>("WowPlus.Loot.Junkbox.GearChance", 35.0f);
+        config.tomeChance = sConfigMgr->GetOption<float>("WowPlus.Loot.Mage.TomeChance", 0.4f);
     }
 
     bool IsBot(Player const* player)
@@ -380,6 +386,34 @@ namespace
         }
     }
 
+    // What a rogue lifts from a pocket: the junkbox for the victim's level
+    constexpr std::array<uint32, 6> JUNKBOXES = {16882, 16883, 16884, 16885, 29569, 43575};
+
+    uint32 JunkboxFor(uint32 level)
+    {
+        return JUNKBOXES[level < 20 ? 0 : level < 30 ? 1 : level < 40 ? 2 : level < 60 ? 3 : level < 70 ? 4 : 5];
+    }
+
+    bool IsJunkbox(uint32 itemId)
+    {
+        return std::find(JUNKBOXES.begin(), JUNKBOXES.end(), itemId) != JUNKBOXES.end();
+    }
+
+    // The mage's collection: tomes that teach another shape for Polymorph (pig, serpent, turtle, black cat,
+    // rabbit, turkey). One the mage does not know yet, or nullptr.
+    ItemTemplate const* PickTome(Player* player)
+    {
+        static std::array<uint32, 6> const tomes = {4142, 44600, 22739, 44709, 44793, 44811};
+
+        std::vector<ItemTemplate const*> unknown;
+        for (uint32 itemId : tomes)
+            if (ItemTemplate const* proto = sObjectMgr->GetItemTemplate(itemId))
+                if (proto->RequiredLevel <= player->GetLevel() && !AlreadyKnown(player, proto) && !player->HasItemCount(itemId, 1, true))
+                    unknown.push_back(proto);
+
+        return unknown.empty() ? nullptr : unknown[urand(0, unknown.size() - 1)];
+    }
+
     // The plain, uncrafted bags of the early game. The 6-slot pouches already drop in the starting
     // zones; these carry the same idea on through the next zones, by the level of the enemy.
     uint32 PickBag(uint32 enemyLevel)
@@ -446,6 +480,33 @@ public:
     {
         if (!config.enabled || !lootOwner)
             return;
+
+        // A pocket picked: often a junkbox for the victim's level, unless the game put one there already
+        if (&store == &LootTemplates_Pickpocketing)
+        {
+            if (IsBot(lootOwner) || !roll_chance_f(config.junkboxChance))
+                return;
+
+            for (LootItem const& item : loot->items)
+                if (IsJunkbox(item.itemid))
+                    return;
+
+            Creature* victim = ObjectAccessor::GetCreature(*lootOwner, loot->sourceWorldObjectGUID);
+            loot->AddItem(LootStoreItem(JunkboxFor(victim ? victim->GetLevel() : lootOwner->GetLevel()), 0, 100.0f, false, LOOT_MODE_DEFAULT, 0, 1, 1));
+            return;
+        }
+
+        // A junkbox opened: sometimes a piece of gear from the surprise loot inside
+        if (&store == &LootTemplates_Item)
+        {
+            Item* box = lootOwner->GetItemByGuid(loot->containerGUID);
+            if (!box || !IsJunkbox(box->GetEntry()) || IsBot(lootOwner) || !roll_chance_f(config.junkboxGearChance))
+                return;
+
+            if (ItemTemplate const* gear = PickEquipment(lootOwner, RANK_CHEST))
+                loot->AddItem(LootStoreItem(gear->ItemId, 0, 100.0f, false, LOOT_MODE_DEFAULT, 0, 1, 1));
+            return;
+        }
 
         EnemyRank rank = RANK_NORMAL;
         WorldObject const* source = nullptr;
@@ -516,6 +577,12 @@ public:
             if (uint32 bagId = PickBag(sourceLevel))
                 if (ItemTemplate const* proto = sObjectMgr->GetItemTemplate(bagId))
                     GiveItem(player, loot, proto);
+
+        // A mage's polymorph collection: likelier from stronger enemies
+        if (player->getClass() == CLASS_MAGE && rank != RANK_CHEST &&
+            roll_chance_f(config.tomeChance * (rank == RANK_NORMAL ? 1.0f : rank == RANK_ELITE ? 4.0f : 25.0f)))
+            if (ItemTemplate const* proto = PickTome(player))
+                GiveItem(player, loot, proto);
 
         if (roll_chance_f(config.mountChance))
             if (ItemTemplate const* proto = PickCollectible(player, Mounts(), true))

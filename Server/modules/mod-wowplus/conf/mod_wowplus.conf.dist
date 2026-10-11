@@ -920,3 +920,47 @@ WowPlus.Home.DalaranKeyGold   = 5000
 
 WowPlus.Coach.Enable      = 1
 WowPlus.Coach.PriceFactor = 1
+
+########################################
+# Classes: something of their own (2026-10-11)
+########################################
+#
+#    More data for these is in Settings/SQL/world: ..._beasts-tameable.sql (hunters can tame
+#    many more kinds of beast, and rares) and ..._class-fun.sql (shamans drop four totems at
+#    once from level 20, druids get Travel Form at 14, the mage's polymorph tomes).
+#
+#    WowPlus.Classes.WarlockDemons
+#        1: an enslaved demon stays for as long as the warlock likes (it is gone on logout).
+#        An Infernal or a Doomguard stays too, in place of the ordinary demon: only one
+#        servant is out at a time. Ritual of Doom needs no helpers.
+#        Default: 1
+#
+#    WowPlus.Classes.RogueStealthSpeed
+#        1: rogues move at full speed in stealth.
+#        Default: 1
+#
+#    WowPlus.Classes.ShamanWolfIndoors
+#        1: Ghost Wolf form can be taken, and kept, indoors.
+#        Default: 1
+#
+#    WowPlus.Loot.Pickpocket.JunkboxChance
+#        The chance in percent that a picked pocket holds a junkbox for the victim's level.
+#        Default: 25
+#
+#    WowPlus.Loot.Junkbox.GearChance
+#        The chance in percent that an opened junkbox holds a piece of gear from the surprise
+#        loot, for the rogue's level.
+#        Default: 35
+#
+#    WowPlus.Loot.Mage.TomeChance
+#        The chance in percent, per kill, that a mage finds a polymorph tome it does not have
+#        yet (pig, serpent, turtle, black cat, rabbit, turkey). Four times this from elites,
+#        twenty-five times from rares and bosses.
+#        Default: 0.4
+
+WowPlus.Classes.WarlockDemons          = 1
+WowPlus.Classes.RogueStealthSpeed      = 1
+WowPlus.Classes.ShamanWolfIndoors      = 1
+WowPlus.Loot.Pickpocket.JunkboxChance  = 25
+WowPlus.Loot.Junkbox.GearChance        = 35
+WowPlus.Loot.Mage.TomeChance           = 0.4

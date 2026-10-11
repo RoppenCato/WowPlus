@@ -374,3 +374,18 @@ Not friction worth keeping, if they bother you:
 2. Level 60: accept the weaker rung, or put Mirror Image there and find something else for 80?
 3. Frostfire Bolt at 70: as it is (strong for five levels), weakened, or left at 75?
 4. Is the drinking misery? If so: a shorter Evocation cooldown, or faster mana regeneration out of combat, are both settings-level changes.
+
+## Something of their own (decided 2026-10-11)
+
+Robin picked from a list of ideas per class. His rule for this round: **do not hand out abilities that are talents**; those stay in the talent trees. That took out Charge in combat and stances without losing rage (warrior), Shadowstep (rogue) and exotic pets without the talent (hunter), even where they had been ticked. Paladins and priests: nothing this round.
+
+| Class | What changed | Where |
+|---|---|---|
+| Hunter | Many more kinds of beast can be tamed: basilisks, hydras, stags, rams, kodos, mammoths, foxes, worgs, beetles and others. Each uses the pet family it resembles. Rares and champions that are beasts can be tamed too. | `Settings/SQL/world/2026-10-11_beasts-tameable.sql` |
+| Warlock | An enslaved demon stays until you log out. An Infernal or a Doomguard stays as well, in place of your ordinary demon: one servant at a time. Ritual of Doom works alone. | `WowPlus.Classes.WarlockDemons` |
+| Mage | A collection: six tomes that teach another shape for Polymorph (pig, serpent, turtle, black cat, rabbit, turkey) can drop for mages, likelier from elites, rares and bosses. | `WowPlus.Loot.Mage.TomeChance` |
+| Rogue | A picked pocket often holds a junkbox, and a junkbox often holds a piece of gear for your level. Full speed in stealth. | `WowPlus.Loot.Pickpocket.JunkboxChance`, `WowPlus.Loot.Junkbox.GearChance`, `WowPlus.Classes.RogueStealthSpeed` |
+| Shaman | Call of the Elements (all four totems at once) from level 20 instead of 30. Ghost Wolf indoors. | `..._class-fun.sql`, `WowPlus.Classes.ShamanWolfIndoors` |
+| Druid | Travel Form at 14 instead of 16. | `..._class-fun.sql` |
+
+Not sure yet: the game client may itself refuse to start Ghost Wolf indoors before the server is asked, in which case the form would need a button of its own. A tamed champion is expected to have the size of an ordinary pet, not its own.

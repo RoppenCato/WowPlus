@@ -298,3 +298,13 @@ Robin was not sure about teleporting everywhere with the hearthstone: it took th
 - [~] The keys to your rooms are the other teleports. Price: 10 gold for the first, 20 for the second, 30 for the third..., Shattrath 1000, Dalaran 5000; bought in the innkeeper's conversation; on the keyring
 - [~] Coaches: every innkeeper sends you to any other inn of your side on the same continent, for a fare like a flight's; fade to black (addon `WowPlusCoach`), no time passing, no events on the road (`WowPlus.Coach.*`, `src/WowPlusCoach.cpp`)
 - [ ] Faster flights, boats that leave when you board, a faster ghost
+
+## Classes: something of their own (decided 2026-10-11, see [Class-Changes.md](Class-Changes.md))
+
+- [~] Hunter: many more beasts can be tamed, rares and champions too
+- [~] Warlock: enslaved demons stay; Infernal and Doomguard stay in place of the ordinary demon
+- [~] Mage: polymorph tomes drop
+- [~] Rogue: junkboxes from pockets with gear in them; full speed in stealth
+- [~] Shaman: four totems at once from 20; Ghost Wolf indoors
+- [~] Druid: Travel Form at 14
+- Not done on purpose: anything that is a talent (Charge in combat, stance rage, Shadowstep, exotic pets)
