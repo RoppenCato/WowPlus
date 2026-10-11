@@ -12,7 +12,8 @@ The reasons and decisions behind each feature are in [Settings/Docs/Plan.md](../
 | Random bonuses on looted, crafted and quest-reward equipment; strength follows item level, colour limits how many; crafted items always get one | `src/WowPlusBonuses.cpp` | `WowPlus.Bonus.*` |
 | Gathering gives a multiple of the normal amount | `src/WowPlusProfessions.cpp` | `WowPlus.Professions.*` |
 | Hearthstone without cooldown, and a hearthstone menu to the cities, towns, dungeons and raids a character has visited | `src/WowPlusTravel.cpp` | `WowPlus.Travel.*` |
-| The hub: vendors with several lists behind a menu (the NPCs and lists are data in `Settings/SQL/world/..._hub.sql`), and honor from ordinary kills | `src/WowPlusHub.cpp` | `WowPlus.Hub.*`, `WowPlus.Honor.*` |
+| Honor and arena points from ordinary kills, no arena rating needed | `src/WowPlusPvP.cpp` | `WowPlus.Honor.*`, `WowPlus.ArenaPoints.*` |
+| The auction house always has every crafting material, gem, glyph and enchant | `src/WowPlusAuction.cpp` | `WowPlus.Auction.Staples.*` |
 | Class helps: a hunter's starter pet, the shaman's totem relic (the trainer changes are data in `Settings/SQL/world/..._class-quest-abilities.sql`) | `src/WowPlusClasses.cpp` | `WowPlus.Classes.*` |
 | Surprise stock on the game's own vendors and themes for the wandering ones, from the world seed and the week | `src/WowPlusVendors.cpp` | `WowPlus.Vendors.*`, `WowPlus.World.Seed` |
 | The item pools all of the above draw from | `src/WowPlusItems.h`, `WowPlusItems.cpp` | |

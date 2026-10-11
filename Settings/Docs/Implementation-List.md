@@ -165,7 +165,9 @@ Reopened 2026-10-11. The goals, the data and the decisions are in [Class-Changes
 - [~] 7.4 Class quest abilities taught by the trainers (`Settings/SQL/world/2026-10-11_class-quest-abilities.sql`); hunter starter pet and shaman totem relic (`mod-wowplus`, settings `WowPlus.Classes.*`)
 - [ ] 7.5 Class by class: spell changes, then the bot behaviour for that class
 
-## Phase 8: The hub
+## Phase 8: The hub (removed 2026-10-11)
+
+**Removed on 2026-10-11.** Robin: with an auction house that always has the crafting materials, gems, glyphs and enchants, and the gear vendors standing in the cities anyway, the island is not needed. What follows is how the hub was planned and built, kept for the record. Still in use from it: honor and arena points from kills, and no rating requirement (`src/WowPlusPvP.cpp`).
 
 Decided 2026-10-10. The hub is **lean**: it covers what a solo player cannot reasonably get or do, and does not replace the cities. Class trainers, profession trainers, bank, mail, auction house, riding, reputation and emblem vendors all stay where they are in the world.
 
@@ -240,6 +242,6 @@ The whole picture is in [Bots.md](Bots.md) and [Bot-Chat.md](Bot-Chat.md).
 
 - [~] The auction house is kept stocked by `mod-ah-bot`: 4000 to 5000 auctions of gear, trade goods and profession items (`Settings/mod_ahbot.conf`, `Settings/SQL/world/2026-10-11_auction-house.sql`)
 - [~] One auction house for both factions (`AllowTwoSide.Interaction.Auction`)
-- [~] The hub's materials vendor is gone; Bram Coalhand is the hub's auctioneer instead
+- [~] The hub on GM Island is removed altogether, with its place in the hearthstone menu (`Settings/SQL/world/2026-10-11_remove-hub.sql`)
+- [~] The auction house always has every crafting material, gem, glyph and enchant scroll: two auctions of each of about 2000 items, put up again when bought (`mod-wowplus`, `src/WowPlusAuction.cpp`, settings `WowPlus.Auction.Staples.*`)
 - [ ] Decide: should the bot also buy what you put up for sale?
-- [ ] Decide: do the hub's glyph, gem and enchant vendors stay, now that there is an auction house?

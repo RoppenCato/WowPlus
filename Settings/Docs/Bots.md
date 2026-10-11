@@ -75,5 +75,5 @@ Bots of your level range gather in the zone you are in (`Playerbots.RandomBotCon
 ## Not built yet
 
 - **More for companions**: calling them from the hearthstone menu, fishing or cooking at the fire, reacting to what happens (a boss kill, a death, a level-up).
-- **Bots in the hub and cities** (module `mod-playerbots-city-life`).
+- **Bots in the cities** (module `mod-playerbots-city-life`).
 - **Tactics for old-world dungeons**: only where a dungeon turns out to play badly.

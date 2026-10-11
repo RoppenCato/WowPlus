@@ -257,22 +257,13 @@ WowPlus.Professions.GatherMultiplier = 3
 WowPlus.Loot.Debug = 0
 
 ########################################
-# The hub
+# Honor and arena points from kills
 ########################################
-#
-#    WowPlus.Hub.Enable
-#        1: "The Hub" is in the hearthstone menu from the start. It is a small place on
-#        GM Island with vendors for what a solo player cannot reasonably get alone.
-#        The NPCs, what they sell and the prices are in Settings/SQL/world/..._hub.sql.
-#        Default: 1
-
-WowPlus.Hub.Enable = 1
-
 #
 #    WowPlus.Honor.FromKills
 #    WowPlus.Honor.Normal / Elite / Rare / Boss
-#        Enemies that are not grey to the player give honor, so that the PvP gear in the
-#        hub is a slow reward for simply playing. The numbers are honor per kill by the
+#        Enemies that are not grey to the player give honor, so that the PvP gear sold in
+#        the cities is a slow reward for simply playing. The numbers are honor per kill by the
 #        enemy's rank. For scale: a piece of level 80 PvP armour costs tens of thousands.
 #        Default: 1, 10, 30, 60, 300
 
@@ -284,7 +275,7 @@ WowPlus.Honor.Boss      = 300
 
 #
 #    WowPlus.ArenaPoints.Normal / Elite / Rare / Boss
-#        The same kills give arena points, for the arena gear in the hub. Fractions are
+#        The same kills give arena points, for the arena gear. Fractions are
 #        allowed: 0.2 means one point on about every fifth kill. For scale: an arena
 #        weapon costs 3000 to 4700 points. Switched off together with WowPlus.Honor.FromKills.
 #        Default: 0.2, 1, 3, 15
@@ -295,12 +286,12 @@ WowPlus.ArenaPoints.Rare   = 3
 WowPlus.ArenaPoints.Boss   = 15
 
 #
-#    WowPlus.Hub.NoRatingRequired
+#    WowPlus.ArenaPoints.NoRatingRequired
 #        1: arena gear that asks for a personal arena rating can be bought without one.
 #        The vendor window may still show the requirement in red; the purchase goes through.
 #        Default: 1
 
-WowPlus.Hub.NoRatingRequired = 1
+WowPlus.ArenaPoints.NoRatingRequired = 1
 
 ########################################
 # Classes
@@ -732,3 +723,36 @@ WowPlus.BotChat.Moments.Chance    = 33
 WowPlus.BotChat.Meet.Chance       = 60
 WowPlus.BotChat.Rumour.Chance     = 30
 WowPlus.BotChat.Guild.GiftHours   = 3
+
+########################################
+# The auction house always has the staples
+########################################
+#
+#    The auction house is filled with all kinds of things by mod-ah-bot (Settings/mod_ahbot.conf),
+#    but that picks at random. This part makes sure that what a crafter needs is always
+#    there: every crafting material, every gem, every glyph, and every enchant scroll and
+#    other item enhancement. It replaces the vendors the hub used to have.
+#
+#    WowPlus.Auction.Staples
+#        Default: 1
+#
+#    WowPlus.Auction.Staples.Keep
+#        How many auctions of each of these items are kept up. One that is bought is put
+#        up again within a few minutes.
+#        Default: 2
+#
+#    WowPlus.Auction.Staples.SellerGUID
+#        The character the auctions are put up by (its number in the characters table). It
+#        must not be the one mod-ah-bot uses, and should be a character that is never
+#        online. 0: no staples.
+#        Default: 0
+#
+#    WowPlus.Auction.Staples.PriceFactor
+#        Prices are the item's own buy price (or, where it has none, a price from its item
+#        level and rarity), times this.
+#        Default: 1
+
+WowPlus.Auction.Staples             = 1
+WowPlus.Auction.Staples.Keep        = 2
+WowPlus.Auction.Staples.SellerGUID  = 0
+WowPlus.Auction.Staples.PriceFactor = 1
