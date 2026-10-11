@@ -520,3 +520,31 @@ WowPlus.Sprint.Winded.RefillDelay = 2
 WowPlus.Sprint.Winded.RefillSpeed = 0.75
 WowPlus.Sprint.VisualKit          = 10440
 WowPlus.Sprint.VisualInterval     = 0.7
+
+########################################
+# Experience
+########################################
+#
+#    The plain rates (kills, quests, exploring, rested) are settings of the server itself:
+#    Rate.XP.* and Rate.Rest.* in Settings/worldserver.conf. Experience in dungeons scaled
+#    for a small party: AutoBalance.RewardScaling.XP.Modifier in Settings/AutoBalance.conf.
+#
+#    WowPlus.XP.BotPartyShare
+#        Your share of a kill's experience in a party where everyone else is a bot. Five
+#        numbers: alone, party of 2, of 3, of 4, of 5. 1 is what you would get alone.
+#        The game's own split would be about 1, 0.5, 0.39, 0.33 and 0.28: with four bots you
+#        would kill four times as fast and gain nothing by it. All 1: bots cost no experience
+#        at all, and a full party levels several times as fast as going alone.
+#        Does not apply in a raid group or when another real player is in the party.
+#        Default: "1 0.75 0.6 0.5 0.45"
+#
+#    WowPlus.XP.FirstKill.RarePercent
+#    WowPlus.XP.FirstKill.BossPercent
+#        Bonus experience the first time a character kills each rare, and each dungeon or raid
+#        boss, in percent of the level the character is working on. Not for enemies too low
+#        to give experience. For comparison: a quest gives around 5. 0: no bonus.
+#        Default: 3 and 4
+
+WowPlus.XP.BotPartyShare          = "1 0.75 0.6 0.5 0.45"
+WowPlus.XP.FirstKill.RarePercent  = 3
+WowPlus.XP.FirstKill.BossPercent  = 4

@@ -50,3 +50,4 @@ Deleting the file does not undo it: the database keeps what the file did. Write 
 | `world/2026-10-11_early-levels.sql` | Early-level class changes: the druid's cat from 8, Bloodrage at 8, Consecration and Exorcism earlier, Shadowfiend at 10, Water Shield at 14, rogue Dual Wield from 1, and the mage's conjured food and water one step ahead. |
 | `world/2026-10-11_starter-weapons.sql` | The weaponsmiths of the eight starting areas sell every basic weapon, a shield, ammunition and a first wand. |
 | `world/2026-10-11_sprint.sql` | The hidden speed effect behind sprint on Shift (spell 100200, server only). |
+| `characters/2026-10-11_first-kills.sql` | The table that remembers which rares and bosses a character has killed once (first-kill experience bonus). |

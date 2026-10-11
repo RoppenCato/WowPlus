@@ -205,3 +205,14 @@ Its own build order is in [Bot-Chat.md](Bot-Chat.md).
 - [ ] B.1 The bridge without the game
 - [ ] B.2 The hook in the server
 - [ ] B.3 Game knowledge from the database
+
+## Experience (decided 2026-10-11)
+
+Goal: about 70 to 100 hours to level 80, not slow alone, and new places pay better than grinding. A "rubber band" (a bonus while below the area's level) was proposed and turned down as too complicated.
+
+- [~] Kills and quests give 1.5 times the experience (`Rate.XP.Kill`, `Rate.XP.Quest` in `Settings/worldserver.conf`)
+- [~] Discovering an area gives 3 times the experience (`Rate.XP.Explore`)
+- [~] Rested experience builds up 3 times as fast (`Rate.Rest.*`)
+- [~] A party of bots does not eat the experience: your share is 0.75 with one bot, down to 0.45 in a full party of five, where the game gives 0.5 down to 0.28 (`WowPlus.XP.BotPartyShare`). Less than alone on purpose, because the party kills much faster.
+- [~] A bonus the first time a character kills each rare (3 percent of the current level) and each dungeon or raid boss (4 percent). A quest is about 5. (`WowPlus.XP.FirstKill.*`)
+- [~] Dungeons scaled down for a small party gave very little experience (Sunken Temple, alone, level 50). Doubled, so a dungeon enemy is worth about what an enemy outdoors is (`AutoBalance.RewardScaling.XP.Modifier` in `Settings/AutoBalance.conf`). A first guess, to be tuned by playing.
