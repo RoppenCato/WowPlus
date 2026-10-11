@@ -131,6 +131,48 @@ So the champion system does not need invented enemies. It can promote from three
 
 The name search is a rough filter. It catches some things that are not individuals ("Winterskorn Elder", "Greymist Raider") and misses single-word names. A hand-checked list would be better than the pattern, and is the kind of choosing Claude could do in the sealed data file.
 
+### Vendors: what the game has
+
+Checked in our database, 2026-10-11:
+
+| What | How many | Note |
+|------|---------:|------|
+| Kinds of vendor placed in the open world | 1,913, at 2,836 spots | |
+| Vendors that stand still | 2,766 spots | Almost all of them |
+| Vendors that walk a route | 63 spots | The game's own wandering merchants. Examples: Kira Songshine "Traveling Baker", Greishan Ironstove "Traveling Merchant", Lizzarik the weapon dealer who walks the Barrens road, Zixil "Merchant Supreme" in Hillsbrad, the Darkmoon Faire traders. |
+| Vendors with limited stock | 431 vendors, 1,665 items | "One in stock, back in a few hours" is used all over the game already |
+| Vendors that exist in the data but are placed nowhere | 84 | Jeeves and Super-Seller 680 (the engineers' robots), Gnimo "Adventurous Tinker" (the mount vendor), plus spare copies of quartermasters |
+| Walking routes in the data | 7,413 | Patrols, caravans, guards: routes that already exist and could carry a merchant |
+
+### Can wandering vendors and new rares be added?
+
+Yes, both, with no client patch. The hub proved the basics: a new NPC is a few rows of data, its name and stock come from the server, and its looks are borrowed from an existing one.
+
+| To add | What it takes |
+|--------|---------------|
+| A vendor standing in a town | One NPC, one spawn, a stock list. Like the hub's. |
+| A vendor that walks | The same, plus a route. Either a new route (a list of points, which someone has to stand on in the game to record, or which is read from the map data) or one of the 7,413 routes that exist: a merchant walking a caravan's or a patrol's road. |
+| A vendor that is in a different town each time | The game has a system for exactly this, called pools: several possible spots, one of them active. It is how rares appear in one of several places. A merchant with five possible towns is a pool of five. |
+| A new rare | A copy of an existing enemy with the rare rank, a name, and a spawn. It then gets the silver dragon, the tougher stats and the guaranteed extra drop by itself, because all three follow the rank. |
+| A champion (an ordinary enemy promoted) | The same thing in place: change one enemy's rank, or put a rare copy where the ordinary one stood. |
+
+What decides the effort is not adding them but **placing them well**: a spot that is not inside a wall, a route that follows a road, an enemy that fits its zone. Three ways to get good places without Robin having to look:
+
+1. **Reuse the game's own places.** New rares take the spawn points of existing enemies; merchants take the routes of existing walkers, or stand where an existing NPC of the same faction stands in a town.
+2. **Read the map data,** as was done for the hub's lawn, to find flat open ground.
+3. **Robin places a few by hand** for the showpieces: stand there, type one command.
+
+For a seeded world the first is the workhorse, since a seed can pick among thousands of known-good places.
+
+### How vendors fit the modes
+
+- **City vendors:** the planned surprise vendors, one or two per capital, with stock drawn by the seed from the lists already decided (blue gear for the level range, recipes, a mount or pet, materials). Limited stock, so there is a reason to look in.
+- **Wandering vendors:** a handful on the roads, each with a theme (a recipe pedlar, a beast trader, a smuggler with oddities). The seed picks the roads.
+- **New vendors in towns:** in a "Living" world a few small towns have a trader who was not there before. The seed picks the towns and the trade.
+- **The game's own 63 walkers:** could be given a line or two of surprise stock, so that the merchants who already wander become worth stopping.
+
+All of it changes only when a new mode or seed is chosen, as decided.
+
 ### What "sealed content" becomes
 
 Not hidden systems, which Robin ruled out, but hidden *choices inside known systems*: which boar is the champion, what it carries, where the wanderer stands today. The seed makes most of them. Claude can make some by hand where a roll would be bland: choosing a fitting enemy for a zone, writing its rumour, picking an item that suits it. Those go in a data file Robin does not need to open, and everything in it obeys the three rules.
