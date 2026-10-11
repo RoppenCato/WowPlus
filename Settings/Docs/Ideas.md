@@ -173,6 +173,61 @@ For a seeded world the first is the workhorse, since a seed can pick among thous
 
 All of it changes only when a new mode or seed is chosen, as decided.
 
+### Surprise stock: Robin's direction and a first design (2026-10-11)
+
+Robin: *"Existing vendors should get an updated inventory with some potential good loot. Not sure how to balance it. Maybe a very small chance at mount or pet. Also potions, elixirs. This could be part of the 'random mode' idea too, so it should be able to be modified. Also wandering vendors: give them a better purpose than selling some useless food. Random themes of loot, so you could happen upon a pet vendor."*
+
+**Status: proposal. Not built.**
+
+**Ordinary vendors.** The vendors the game already has, all over the world, can each carry a little surprise stock on top of their normal goods.
+
+| Question | Proposal |
+|----------|----------|
+| How many vendors have something | About one in four. Most have nothing, so finding one that does is a small event, and checking vendors becomes worth it. |
+| How much | One to three extra items. |
+| What | Mostly a piece of gear, sometimes a potion, elixir or flask, rarely a recipe. |
+| For what level | **The zone's level, not the player's.** A vendor in Westfall stocks for level 10 to 20. The world is what it is; a vendor does not know who walks in. City vendors, which have no zone level, stock across a wide spread. |
+| How good | Mostly green, sometimes blue, rarely epic: the same proportions as the extra loot, rolled once more in the vendor's favour. |
+| How many of each | One in stock. Gone when bought, until the stock changes. |
+| Mount or pet | A very small chance per vendor, about 1 in 200. With some 1,900 vendors that is roughly ten in the whole world who have one. |
+
+**Balance is mostly price.** The player chooses what to buy, so a vendor is stronger than a drop of the same item. Price has to do the balancing:
+
+- The rule the hub uses: item level squared, times a factor for rarity. A level 20 green comes to about 2 gold 50, a level 20 blue about 9 gold, a level 60 blue about 60 gold, a level 60 epic about 300 gold, a level 80 epic 2,400 gold and up.
+- Surprise stock could carry a premium on top, as the price of choosing.
+- Mounts and pets at fixed high prices by the level they need.
+- And scarcity: one in stock, at one vendor in four.
+
+All of these are first guesses to be tuned against the "comfortable" gold level.
+
+**Wandering vendors with a theme.** The 63 spots where the game's own merchants walk a route today, mostly selling bread and mushrooms. Each gets a theme from the seed and a proper stock of it:
+
+| Theme | Sells |
+|-------|-------|
+| Beastmaster | Companion pets, several of them |
+| Stablehand | A mount or two for the level range |
+| Alchemist | Potions, elixirs and flasks, including ones that normally need a profession |
+| Armourer or weaponsmith | Blue gear of one kind for the zone's level |
+| Recipe pedlar | Recipes that normally drop or need reputation |
+| Jeweller | Cut gems |
+| Smuggler | Oddities: a few items well above the zone's level, at a steep price |
+
+Their old goods stay; the theme is added. New wanderers on roads that have none can come later.
+
+**Able to be modified.** Each number above (share of vendors, items per vendor, rarity weights, mount chance, price premium, which themes exist and how common) becomes a setting with a range, so that a mode can turn it: a "Merchant's year" has more vendors with stock and rarer goods, a "Perilous" one fewer.
+
+**When the stock changes.** Three options:
+
+| Option | How it works | For and against |
+|--------|--------------|-----------------|
+| Every server restart | New dice each start | Simple. But restarting becomes a way to re-roll until something good appears, and nothing in the world stays put. |
+| Only with a new mode or seed | The stock is part of the world | Matches "the world is what it is". But once every vendor is seen, there is no reason to look again. |
+| By the calendar *(suggested)* | The stock is worked out from the seed and the week. Same week, same stock, however often the server restarts. Next week, new stock. | A reason to come back, and no re-rolling by restart. In practice it does update "at a restart", as Robin guessed: the first one in a new week. |
+
+A mix is natural: **where** the wanderers are and **which theme** each has belongs to the world and changes only with the seed; **what is on the shelf** changes by the week.
+
+**How it would be built.** In our module, in the file that is waiting for it. Nothing is written to the database: the stock is worked out when the server starts and held in memory, so there is also nothing to peek at.
+
 ### What "sealed content" becomes
 
 Not hidden systems, which Robin ruled out, but hidden *choices inside known systems*: which boar is the champion, what it carries, where the wanderer stands today. The seed makes most of them. Claude can make some by hand where a roll would be bland: choosing a fitting enemy for a zone, writing its rumour, picking an item that suits it. Those go in a data file Robin does not need to open, and everything in it obeys the three rules.
