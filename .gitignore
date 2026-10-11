@@ -17,3 +17,6 @@
 !/Client/AddOns/
 # Real passwords live here; Settings/.env.example is the committed template
 /Settings/.env
+
+# Files made for sending to someone (Settings/Scripts/Make-Features-Share.py); rebuilt from docs/ at any time
+/Share/
