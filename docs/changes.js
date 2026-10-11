@@ -53,6 +53,32 @@ window.CHANGELOG = {
       ]
     },
     {
+      name: "Loot and items",
+      summary: "More reasons to look at what dropped.",
+      items: [
+        { title: "Any enemy can drop something great", kind: "feature", status: "confirmed", date: "2026-10-10",
+          text: "Every kill and every chest has a chance at an extra piece of gear for your level: usually green, sometimes rare, now and then epic, and once in a long while legendary.",
+          details: ["The chance of an extra drop: 6 percent from an ordinary enemy, 20 from an elite, 35 from a chest, always from a rare, a champion or a boss.",
+                    "What it is: about 92 in 100 green, 6 rare (blue), 2 epic, and 1 in 1000 legendary.",
+                    "Elites, rares and bosses roll the rarity two to four times and keep the best.",
+                    "It leans toward what your class can use.",
+                    "Very rarely it is a mount or a companion pet instead."] },
+        { title: "Great drops light up the screen", kind: "feature", status: "built", date: "2026-10-11",
+          text: "A rare, epic or legendary drop appears in the middle of the screen in its colour, with a beam of light, a flash at the edges and a sound.",
+          details: ["Two pulses for rare, four for epic, six for legendary."] },
+        { title: "Random bonuses on gear", kind: "feature", status: "built", date: "2026-10-10",
+          text: "Green and better gear can carry extra bonuses, more of them on better items; crafted gear always does." },
+        { title: "Gear never binds", kind: "tweak", status: "built", date: "2026-10-10",
+          text: "Anything you find can be handed on to a bot or another character." },
+        { title: "Bags from enemies", kind: "feature", status: "built", date: "2026-10-11",
+          text: "8, 10 and 12-slot bags can drop in the zones for levels 10 to 34." },
+        { title: "Loot everything at once, junk sells itself", kind: "tweak", status: "built", date: "2026-10-10",
+          text: "One loot picks up from every corpse nearby, and grey items turn into gold on the spot." },
+        { title: "Big hits, and a record", kind: "feature", status: "built", date: "2026-10-11",
+          text: "Critical hits are shown large, and beating your hardest hit ever gets a fanfare." }
+      ]
+    },
+    {
       name: "Getting around",
       summary: "Less of the same road twice, without taking the world away.",
       items: [
@@ -133,27 +159,6 @@ window.CHANGELOG = {
           text: "Bots pass on true things they \"heard\": a vendor with something odd this week, where a champion or a rare roams." },
         { title: "Gifts by mail", kind: "feature", status: "built", date: "2026-10-11",
           text: "Every few hours of play a guild mate sends a few potions with a short letter." },
-      ]
-    },
-    {
-      name: "Loot and items",
-      summary: "More reasons to look at what dropped.",
-      items: [
-        { title: "A surprise in the loot", kind: "feature", status: "confirmed", date: "2026-10-10",
-          text: "Enemies and chests can drop an extra piece of gear for your level, of any rarity.",
-          details: ["Better odds from elites, rares and bosses.", "Leans toward what your class can use.", "Very rarely a mount or a companion pet."] },
-        { title: "Random bonuses on gear", kind: "feature", status: "built", date: "2026-10-10",
-          text: "Green and better gear can carry extra bonuses, more of them on better items; crafted gear always does." },
-        { title: "Gear never binds", kind: "tweak", status: "built", date: "2026-10-10",
-          text: "Anything you find can be handed on to a bot or another character." },
-        { title: "Bags from enemies", kind: "feature", status: "built", date: "2026-10-11",
-          text: "8, 10 and 12-slot bags can drop in the zones for levels 10 to 34." },
-        { title: "Loot everything at once, junk sells itself", kind: "tweak", status: "built", date: "2026-10-10",
-          text: "One loot picks up from every corpse nearby, and grey items turn into gold on the spot." },
-        { title: "Loot that announces itself", kind: "feature", status: "built", date: "2026-10-11",
-          text: "A blue or better drop appears on screen in its colour, with a beam and a flash that pulses longer for better items." },
-        { title: "Big hits, and a record", kind: "feature", status: "built", date: "2026-10-11",
-          text: "Critical hits are shown large, and beating your hardest hit ever gets a fanfare." }
       ]
     },
     {
