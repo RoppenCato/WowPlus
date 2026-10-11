@@ -279,3 +279,13 @@ The whole picture is in [Bots.md](Bots.md) and [Bot-Chat.md](Bot-Chat.md).
 - [ ] The room on the hearthstone menu
 - [ ] Trophies, visitors and events
 - [ ] Crafted and found furniture
+
+## Gameplay feel (decided 2026-10-11)
+
+Robin: avoid making the game feel too fast and action-based. So no dodge and no kill-streak momentum.
+
+- [~] Loot that announces itself in its colour, big hits shown big, a record of your hardest hit with a fanfare (addon `WowPlusFlair`)
+- [ ] Faster recovery between fights
+- [ ] Enemies with a twist, telegraphed attacks on champions
+- [ ] The runner, rifts, ambushes
+- [ ] A difficulty you set yourself

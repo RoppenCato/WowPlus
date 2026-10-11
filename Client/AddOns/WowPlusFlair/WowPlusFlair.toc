@@ -1,0 +1,5 @@
+## Interface: 30300
+## Title: WowPlus Flair
+## Notes: Loot that announces itself in its colour, big hits shown big, and a fanfare when you beat your hardest hit. /flair
+## SavedVariablesPerCharacter: WowPlusFlairDB
+WowPlusFlair.lua
