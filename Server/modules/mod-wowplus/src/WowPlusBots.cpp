@@ -6,6 +6,8 @@
  * - Being alone: ".bots away" sends every free bot near the player somewhere else, and
  *   ".bots alone on" keeps doing that, for levelling in peace. Bots in the player's party
  *   stay; so do bots that belong to someone.
+ * - Recruiting: most bots are in guilds of their own. A bot you invite with /ginvite leaves its
+ *   bot guild first, so the invitation works on anyone.
  * - Guild mates keep up: a random bot in the player's guild is brought to the player's level,
  *   with gear to match, whenever it has fallen behind or is far ahead. Someone invited today
  *   has "caught up" by the next login.
@@ -23,12 +25,15 @@
 #include "CommandScript.h"
 #include "Config.h"
 #include "Group.h"
+#include "Guild.h"
+#include "GuildMgr.h"
 #include "Log.h"
 #include "Map.h"
 #include "ObjectAccessor.h"
 #include "ObjectMgr.h"
 #include "Player.h"
 #include "PlayerbotFactory.h"
+#include "PlayerbotAIConfig.h"
 #include "Playerbots.h"
 #include "RandomPlayerbotMgr.h"
 #include "ScriptMgr.h"
@@ -72,6 +77,7 @@ namespace
     uint32 buffMaxSeconds = 240;
     float buffRadius = 20.0f;
     float awayRadius = 200.0f;
+    bool guildRecruits = true;
     bool guildKeepsUp = true;
     uint32 guildLevelGap = 2;
     bool companionsEnabled = true;
@@ -406,6 +412,7 @@ public:
         buffMaxSeconds = std::max(buffMinSeconds, sConfigMgr->GetOption<uint32>("WowPlus.Bots.Buffs.MaxSeconds", 240));
         buffRadius = sConfigMgr->GetOption<float>("WowPlus.Bots.Buffs.Radius", 20.0f);
         awayRadius = sConfigMgr->GetOption<float>("WowPlus.Bots.Away.Radius", 200.0f);
+        guildRecruits = sConfigMgr->GetOption<bool>("WowPlus.Bots.Guild.Recruit", true);
         guildKeepsUp = sConfigMgr->GetOption<bool>("WowPlus.Bots.Guild.KeepUp", true);
         guildLevelGap = sConfigMgr->GetOption<uint32>("WowPlus.Bots.Guild.KeepUp.LevelGap", 2);
         companionsEnabled = sConfigMgr->GetOption<bool>("WowPlus.Bots.Companions.Enable", true);
@@ -676,8 +683,51 @@ public:
     }
 };
 
+// A real player invites someone to their guild. If that someone is a bot in a guild of bots, it leaves
+// that guild first; the game would otherwise refuse with "already in a guild". The invitation itself
+// then goes its normal way, and the bot accepts.
+class WowPlusBotsServer : public ServerScript
+{
+public:
+    WowPlusBotsServer() : ServerScript("WowPlusBotsServer", {SERVERHOOK_CAN_PACKET_RECEIVE}) { }
+
+    // Runs on the world thread, just before the game handles the packet
+    bool CanPacketReceive(WorldSession* session, WorldPacket const& packet) override
+    {
+        if (packet.GetOpcode() != CMSG_GUILD_INVITE || !guildRecruits)
+            return true;
+
+        Player* inviter = session->GetPlayer();
+        if (!inviter || IsBot(inviter) || !inviter->GetGuildId())
+            return true;
+
+        WorldPacket copy(packet);
+        std::string name;
+        copy >> name;
+        if (!normalizePlayerName(name))
+            return true;
+
+        Player* bot = ObjectAccessor::FindPlayerByName(name);
+        if (!bot || !IsBot(bot) || !bot->GetGuildId() || bot->GetGuildId() == inviter->GetGuildId() || bot->GetTeamId() != inviter->GetTeamId())
+            return true;
+
+        Guild* old = sGuildMgr->GetGuildById(bot->GetGuildId());
+        if (!old)
+            return true;
+
+        // Only out of a guild of bots: one led by a real player keeps its members
+        uint32 const leaderAccount = sCharacterCache->GetCharacterAccountIdByGuid(old->GetLeaderGUID());
+        if (!sPlayerbotAIConfig.IsInRandomAccountList(leaderAccount))
+            return true;
+
+        old->DeleteMember(bot->GetGUID(), false, false, false);
+        return true;
+    }
+};
+
 void AddSC_WowPlusBots()
 {
+    new WowPlusBotsServer();
     new WowPlusBotsWorld();
     new WowPlusBotsPlayer();
     new WowPlusBotsCommands();

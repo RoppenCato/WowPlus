@@ -840,3 +840,11 @@ WowPlus.Journal.Enable = 1
 
 WowPlus.BotChat.Channels                   = 1
 WowPlus.BotChat.Channels.UnaddressedChance = 25
+
+#
+#    WowPlus.Bots.Guild.Recruit
+#        1: a bot you invite to your guild with /ginvite leaves the bot guild it is in first, so
+#        you can recruit anyone of your faction. Bots in a guild led by a real player stay there.
+#        Default: 1
+
+WowPlus.Bots.Guild.Recruit = 1
