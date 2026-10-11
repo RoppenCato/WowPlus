@@ -174,6 +174,102 @@ Roughly in order of value for effort:
 6. Druid: Cat Form at 10.
 7. Paladin: Exorcism and Consecration earlier. The most needed of all, and the least clean, because their damage has to be scaled down.
 
+## Early-level changes: Robin's picks, with Claude's suggestions
+
+**Status: proposal, 2026-10-11. Waiting for a go-ahead. Nothing changed in the game.**
+
+All of these are changes to the level at which a trainer teaches something, or to starting items. No client patch, no code, and the trainer window shows the new levels correctly. Costs are a percentage of base mana for every spell below, so they stay fair at the earlier level.
+
+### Druid: the cat
+
+| Level | Robin's pick | Today | Note |
+|------:|--------------|------:|------|
+| 8 | Cat Form, with Claw | 20, 20 | |
+| 10 | Rake | 24 | |
+| 12 | Rip | 20 | The first finishing move |
+| 20 | Ravage | 32 | Needs stealth. Prowl is learned at 20, so it fits: level 20 becomes "you can stalk". |
+
+Suggested to go with it, so the rest of the cat does not bunch up behind:
+
+| Level | Ability | Today |
+|------:|---------|------:|
+| 16 | Tiger's Fury | 24 |
+| 20 | Prowl (stays), Ravage | 20, 32 |
+| 22 | Shred (stays) | 22 |
+| 26 | Dash (stays) | 26 |
+| 28 | Ferocious Bite | 32 |
+
+Things to know:
+
+- **These first ranks were sized for level 20 to 32.** Claw, Rake and Rip at 8 to 12 will hit harder than a level 8 to 12 character normally does. The cat's own attack power is low at that level, which softens it. Suggestion: try it as it is and weaken the first ranks only if it trivialises the early zones (their tooltips would then overstate the damage).
+- **The next ranks stay where they are** (Claw rank 2 at 28, Rip rank 2 at 28, Rake rank 2 at 34), so the early ranks last a long time. That evens out the strong start.
+
+### Druid: the bear
+
+The bear already has the pacing Robin is building for the cat: Bear Form with Growl and Maul at 10, Demoralizing Roar 10, Enrage 12, Bash 14, Swipe 16, Maul rank 2 at 18.
+
+Suggestion: **leave the bear's abilities where they are.** The only question is the form itself:
+
+- Bear Form stays at 10: level 8 is the cat, level 10 is the bear. Two moments, two levels apart. *(Suggested.)*
+- Or Bear Form at 8 too, so level 8 is "choose your animal" and everything else follows.
+
+### Warrior
+
+**Bloodrage at 8** (today 10). What it does: gives 20 rage at once and 10 more over the next ten seconds, at the price of some health (16% of base health), on a one-minute cooldown. It means a fight can start with an ability instead of with waiting for rage. No damage numbers; clean.
+
+### Paladin
+
+**Consecration at 14, Exorcism at 16** (both 20 today). Their first ranks are sized for 20, so they are slightly strong four to six levels early; Exorcism also has a 15 second cooldown, which limits it. Suggestion: move them as they are.
+
+### Rogue
+
+**Dual Wield from the start** (today 10). Poisons stay at 20.
+
+Suggestion to make it mean something: **a second dagger in the starting bags.** A new rogue owns one dagger, so Dual Wield at level 1 does nothing until a second weapon turns up.
+
+### Priest
+
+**A starting wand.** The catch: the game has no wand made for level 1. The choices:
+
+| Option | What it is |
+|--------|------------|
+| Hoodoo Wand in the starting bags | The weakest wand without a level requirement. It is still a level 11 quest reward: about 8 damage per second, four times a level 1 weapon. The first five levels would be very easy. |
+| Lesser Magic Wand, handed over at level 5 | The classic first wand, which needs level 5. It arrives by itself at 5 instead of having to be bought from an enchanter. *(Suggested.)* |
+| A weakened wand at level 1 | Take a wand nobody uses and lower its damage to fit level 1. Clean (item tooltips come from the server), a little more work. |
+
+Mages and warlocks use wands too. Same treatment for them, or priests only?
+
+### Shaman
+
+**Water Shield at 14** (today 20). Its first rank returns a small fixed amount of mana; six levels early that is still modest. Clean.
+
+### Mage: water one step ahead
+
+Today the water a mage conjures is always for a level five below what the mage can drink: the rank learned at 20 makes level 15 water. Robin's shift: each rank is learned one step earlier, so the mage always makes the water of the next tier.
+
+| Rank | Makes | Learned today | Learned after | Item needs level (today, after) |
+|-----:|-------|--------------:|--------------:|--------------------------------:|
+| 1 | Conjured Water | 4 | 4 | 1 |
+| 2 | Fresh Water | 10 | 6 | 5 |
+| 3 | Purified Water | 20 | 10 | 15, **10** |
+| 4 | Spring Water | 30 | 20 | 25, **20** |
+| 5 | Mineral Water | 40 | 30 | 35, **30** |
+| 6 | Sparkling Water | 50 | 40 | 45, **40** |
+| 7 | Crystal Water | 60 | 50 | 55, **50** |
+| 8 | Mountain Spring Water | 65 | 60 | 60 |
+| 9 | Glacier Water | 70 | 65 | 65 |
+
+The conjured items have their own level requirement, so those are lowered to match, or a level 10 mage could make the water and not drink it.
+
+Suggestions:
+
+- **Do the same for Conjure Food,** which has the identical problem two levels later (ranks at 6, 12, 22, 32 and so on).
+- **Conjure Refreshment** (75 and 80) is left alone; it is already current when learned.
+
+### One thing to verify in the game
+
+Every spell carries its own "level" in the game's data, besides the level the trainer asks. From reading the server code, nothing stops a level 8 druid from using Cat Form although the spell is marked level 20. This is the first thing to check after the change; if it does block, that marker can be lowered on the server as well.
+
 ## Per class
 
 ### Mage
