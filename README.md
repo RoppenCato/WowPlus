@@ -40,6 +40,7 @@ The last five are not in git (see [.gitignore](.gitignore)). `Tools/`, `Build/` 
 | [Reference lists](Settings/Reference/README.md) | Lists of what is in the game. So far: every rare enemy with its level and zone. |
 | [Modules](Settings/Docs/Modules.md) | What can be added: about 150 community modules by area (bots, solo play, classes, items, comfort, world), with a shortlist for us. None installed yet. |
 | [Bots](Settings/Docs/Bots.md) | How the bots work, what we changed (levels, gear, buffs, sending them away, your guild), and what is still open. |
+| [Housing](Settings/Docs/Housing.md) | Design for a room of your own in the cities: what the game allows, what it would give, what would happen there. Not built. |
 | [Bot chat](Settings/Docs/Bot-Chat.md) | Talking to bots through Claude: who answers, who each bot is, what they remember. Needs `Start-Bot-Chat.bat`. |
 
 ## Starting and stopping

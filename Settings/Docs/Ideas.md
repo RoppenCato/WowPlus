@@ -267,7 +267,7 @@ Per character rather than for the whole server, so that a test character can sta
 
 ### Your own place (Robin, 2026-10-11: "an awesome idea, get back to it")
 
-A room of your own: rented in an inn, or later a small house. Not built.
+A room of your own: rented in an inn, or later a small house. Not built. **Worked out in full in [Housing.md](Housing.md).**
 
 - Your companions gather there when they are not travelling with you.
 - Mail and gifts from guild mates arrive there; a chest holds what does not fit your bags.
