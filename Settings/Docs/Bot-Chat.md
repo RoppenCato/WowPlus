@@ -27,9 +27,13 @@ A line that is a bot command (`follow`, `stay`, `attack` ...) goes to the bot as
 
 - **A greeting.** When you come online, a guild mate usually says hello (70 percent of the time).
 - **Guild chat.** Every 5 to 10 minutes a guild mate says something by itself: about its day, the game, one of its favourite topics. Half the time another guild mate answers, and sometimes the first says one more thing. It ends there unless you join in. While you say nothing in guild chat the pauses grow, up to three times as long; they go back to normal as soon as you say something.
+- **Moments.** When you level up, die in a party, loot something blue or better, or kill a rare or a boss, one party member or guild mate may say something: about one moment in three, never two bots on the same one. A level that ends in 0 always gets a word.
+- **Meeting in the world.** A guild mate, or a bot you have talked with before, that comes within 20 yards of you waves and says something. The same bot not again within three hours.
+- **Rumours.** A guild mate who starts talking sometimes passes on something true: a vendor somewhere with an unusual item this week, or where a rare enemy of your level roams. They pass it on the way people do, roughly: the zone, not the spot. Ask a bot for news and it has one at hand.
+- **A gift.** About every three hours of play a guild mate mails you a few potions for your level, with a short letter.
 - **Companions** remark on things in party chat: see [Bots.md](Bots.md).
 
-Settings: `WowPlus.BotChat.Guild.*` in `Settings/mod_wowplus.conf`.
+Settings: `WowPlus.BotChat.Guild.*`, `WowPlus.BotChat.Moments.Chance`, `WowPlus.BotChat.Meet.Chance` and `WowPlus.BotChat.Rumour.Chance` in `Settings/mod_wowplus.conf`.
 
 ## Who a bot is
 

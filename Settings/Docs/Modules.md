@@ -22,7 +22,7 @@ A personal shortlist for a server that is mostly one player plus bots. To be dec
 |--------|-----|
 | [mod-player-bot-level-brackets](https://github.com/DustinHendrickson/mod-player-bot-level-brackets) | Keeps bots spread evenly over the level ranges, so there is always someone at your level. |
 | [mod-autobalance](https://github.com/azerothcore/mod-autobalance) or [mod-solocraft](https://github.com/azerothcore/mod-solocraft) | Makes dungeons and raids doable with fewer real players. Pick one, not both. |
-| [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot) | Fills the auction house, which is otherwise empty. Check first what Playerbots already does with the auction house. |
+| [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot) | Fills the auction house, which is otherwise empty. **Installed 2026-10-11** (Playerbots does not fill it). |
 | [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot), [mod-learn-spells](https://github.com/azerothcore/mod-learn-spells) | Small comforts with little risk. |
 | [mod-transmog](https://github.com/azerothcore/mod-transmog) | Change how gear looks. The most used module after the big systems. |
 | [mod-ale](https://github.com/azerothcore/mod-ale) | Lua scripting. Lets us change behaviour with small script files and no rebuild, and many community scripts need it. |
