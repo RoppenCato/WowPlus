@@ -5,6 +5,7 @@
  */
 
 #include "PlayerbotAI.h"
+#include "Config.h"
 #include "AiFactory.h"
 #include "BudgetValues.h"
 #include "ChannelMgr.h"
@@ -670,6 +671,8 @@ void PlayerbotAI::HandleCommand(uint32 type, std::string const& text, Player& fr
 {
     if (!bot)
         return;
+
+    wowPlusLastAsked = time(nullptr);                       // WowPlus: see TellMasterNoFacing
 
     std::string filtered = text;
 
@@ -3111,6 +3114,12 @@ bool PlayerbotAI::TellMasterNoFacing(std::string const text, PlayerbotSecurityLe
     }
 
     if (!IsTellAllowed(securityLevel))
+        return false;
+
+    // WowPlus: no unasked whispers to a real leader ("Hello, I follow you!", "Quest Available: ...").
+    // A bot still answers for a while after being spoken to, so commands get their replies.
+    if (sConfigMgr->GetOption<bool>("WowPlus.Bots.QuietWhispers", true) && !masterBotAI &&
+        time(nullptr) - wowPlusLastAsked > sConfigMgr->GetOption<int32>("WowPlus.Bots.QuietWhispers.AnswerSeconds", 20))
         return false;
 
     time_t lastSaid = whispers[text];

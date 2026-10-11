@@ -848,3 +848,15 @@ WowPlus.BotChat.Channels.UnaddressedChance = 25
 #        Default: 1
 
 WowPlus.Bots.Guild.Recruit = 1
+
+#
+#    WowPlus.Bots.QuietWhispers
+#        1: a bot in your party does not whisper you unasked ("Hello, I follow you!", "Quest
+#        Available: ...", "Eating ..."). It still answers for AnswerSeconds after you say
+#        something to it or in party chat, so a command gets its reply. Instead of the
+#        whispered hello, a bot that joins your party or guild says hello in that chat.
+#        (A small change inside the bot module, marked "WowPlus" in PlayerbotAI.cpp.)
+#        Default: 1 and 20
+
+WowPlus.Bots.QuietWhispers               = 1
+WowPlus.Bots.QuietWhispers.AnswerSeconds = 20

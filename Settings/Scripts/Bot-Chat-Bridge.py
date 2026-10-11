@@ -61,6 +61,12 @@ MAX_NOTES = 8                   # notes a bot keeps about one player
 MAX_NOTE_LENGTH = 110
 SAID_KEPT = 10                  # own recent lines a bot is shown so that it does not repeat itself
 STRANGER_KEEP_DAYS = 30         # notes of bots that are not guild mates are dropped after this long
+# How talkative bots are. Most of what people write in a game is plain and practical; these are the chances
+# that one message may have something extra. Raise them for livelier bots, lower them for quieter ones.
+QUESTION_CHANCE = 0.2           # ...ends with a question back to you (never two messages in a row)
+JOKE_CHANCE = 0.12              # ...has a joke or a tease in it
+PERSONAL_CHANCE = 0.12          # ...brings up the bot's own day or life without being asked
+SMILEY_CHANCE = 0.08            # ...has a :) in it
 BANTER_ANSWER_BACK_CHANCE = 0.4  # after one bot answers another, the chance the first says one more thing
 
 MOODS = ["cheerful", "tired after a long day", "a bit bored", "pleased with how today went", "grumpy",
@@ -488,6 +494,21 @@ def ask_claude(system, transcript):
 # Talking
 # ---------------------------------------------------------------------------------------------
 
+def manner(memory):
+    """How this one message is to be written: plain unless the dice say otherwise."""
+    last = (memory.get("said") or [""])[-1]
+    asked_last_time = last.rstrip().endswith("?")
+    rules = []
+    rules.append("You may end with a short question back." if random.random() < QUESTION_CHANCE and not asked_last_time
+                 else "Do not ask a question in this message.")
+    rules.append("A light joke or tease is welcome if one comes naturally." if random.random() < JOKE_CHANCE
+                 else "No joke in this message; say it plainly.")
+    rules.append("You may mention something from your own day." if random.random() < PERSONAL_CHANCE
+                 else "Do not bring up your own life in this message unless you were asked about it.")
+    rules.append("A :) is fine." if random.random() < SMILEY_CHANCE else "No smiley.")
+    return " ".join(rules)
+
+
 def conversation_key(q):
     # Party and guild chat are one talk that every bot in it follows; a whisper or /say is between two.
     channel = q.get("channel") or "whisper"
@@ -517,7 +538,7 @@ def speak(q, task, heard=None):
         log(f"[{channel}] {player}: {heard}")
     transcript = "Chat so far:\n" + ("\n".join(f"{who}: {line}" for who, line in turns) or "(nothing for a while)")
     # What to do goes last, where it weighs most
-    transcript += f"\n\nNow: {task}\nWrite what {bot} writes inside <msg></msg>."
+    transcript += f"\n\nNow: {task}\nFor this message: {manner(memory)}\nWrite what {bot} writes inside <msg></msg>."
     started = time.time()
     with slots:
         raw, error = ask_claude(system_prompt(q, memory), transcript)
@@ -646,6 +667,14 @@ def react(q):
     return [(q["bot"], line) for line in speak(q, task)[:1]]
 
 
+def joined(q):
+    """The bot has just joined the player's party or guild and says hello there."""
+    where = "guild" if q.get("channel") == "guild" else "party"
+    task = (f"You have just joined {q['player']}'s {where}. Say hello in the {where} chat the way people do: a word or "
+            "a few ('hey', 'hi all', 'thanks for the invite'). At most six words, and nothing else.")
+    return [(q["bot"], first_sentence(line)) for line in speak(q, task)[:1]]
+
+
 def meet(q):
     """The bot runs into the player out in the world. Only bots that know the player say something."""
     memory = load_memory(q["player"], q["bot"])
@@ -710,6 +739,8 @@ class Handler(BaseHTTPRequestHandler):
                     lines = open_talk(q)
                 elif kind == "greet":
                     lines = greet(q)
+                elif kind == "joined":
+                    lines = joined(q)
                 elif kind == "meet":
                     lines = meet(q)
                 elif kind == "event" and q.get("text"):

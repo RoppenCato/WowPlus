@@ -555,6 +555,10 @@ public:
 
     Player* GetBot() { return bot; }
     Player* GetMaster() { return master; }
+
+    // WowPlus: when a player last said something to this bot. With WowPlus.Bots.QuietWhispers the bot only
+    // whispers its leader shortly after being spoken to, so it answers commands but does not chatter unasked.
+    time_t wowPlusLastAsked = 0;
     Player* FindNewMaster();
 
     // Get the group leader or the master of the bot.

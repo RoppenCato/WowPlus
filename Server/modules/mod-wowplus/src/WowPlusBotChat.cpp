@@ -935,8 +935,58 @@ public:
     }
 };
 
+// A bot that joins the player's party or guild says hello there
+class WowPlusBotChatGroup : public GroupScript
+{
+public:
+    WowPlusBotChatGroup() : GroupScript("WowPlusBotChatGroup") { }
+
+    void OnAddMember(Group* group, ObjectGuid guid) override
+    {
+        Player* bot = ObjectAccessor::FindConnectedPlayer(guid);
+        if (!enabled || !partyEnabled || !bot || !IsBot(bot) || group->isRaidGroup())
+            return;
+
+        for (GroupReference* itr = group->GetFirstMember(); itr != nullptr; itr = itr->next())
+            if (Player* member = itr->GetSource())
+                if (!IsBot(member))
+                {
+                    Ask(bot, member, CHANNEL_PARTY, "joined", "", {});
+                    return;
+                }
+    }
+};
+
+class WowPlusBotChatGuild : public GuildScript
+{
+public:
+    WowPlusBotChatGuild() : GuildScript("WowPlusBotChatGuild") { }
+
+    void OnAddMember(Guild* guild, Player* bot, uint8& /*rank*/) override
+    {
+        if (!enabled || !guildEnabled || !bot || !IsBot(bot))
+            return;
+
+        Player* host = nullptr;
+        {
+            std::shared_lock<std::shared_mutex> lock(*HashMapHolder<Player>::GetLock());
+            for (auto const& [guid, other] : ObjectAccessor::GetPlayers())
+                if (other->IsInWorld() && !IsBot(other) && other->GetGuildId() == guild->GetId())
+                {
+                    host = other;
+                    break;
+                }
+        }
+
+        if (host)
+            Ask(bot, host, CHANNEL_GUILD, "joined", "", {});
+    }
+};
+
 void AddSC_WowPlusBotChat()
 {
+    new WowPlusBotChatGroup();
+    new WowPlusBotChatGuild();
     new WowPlusBotChatWorld();
     new WowPlusBotChatPlayer();
 }

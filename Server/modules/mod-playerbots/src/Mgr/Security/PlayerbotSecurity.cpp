@@ -5,6 +5,7 @@
  */
 
 #include "PlayerbotSecurity.h"
+#include "Config.h"
 #include "LFGMgr.h"
 #include "PlayerbotAIConfig.h"
 #include "Playerbots.h"
@@ -180,6 +181,11 @@ bool PlayerbotSecurity::CheckLevelFor(PlayerbotSecurityLevel level, bool silent,
 
     PlayerbotAI* fromBotAI = GET_PLAYERBOT_AI(from);
     if (silent || (fromBotAI && !IsSelfBot(from)))
+        return false;
+
+    // WowPlus: a bot does not explain itself with a canned line ("Invite me to your group first") when it
+    // will not take a command from someone. Talk is answered through the chat bridge instead.
+    if (sConfigMgr->GetOption<bool>("WowPlus.Bots.QuietWhispers", true))
         return false;
 
     PlayerbotAI* botAI = GET_PLAYERBOT_AI(bot);

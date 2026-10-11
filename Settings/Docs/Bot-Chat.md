@@ -36,6 +36,12 @@ A line that is a bot command (`follow`, `stay`, `attack` ...) goes to the bot as
 
 Settings: `WowPlus.BotChat.Guild.*`, `WowPlus.BotChat.Moments.Chance`, `WowPlus.BotChat.Meet.Chance` and `WowPlus.BotChat.Rumour.Chance` in `Settings/mod_wowplus.conf`.
 
+## How talkative they are
+
+Most of what people write in a game is plain and practical, so that is the default. Whether one message may end with a question, carry a joke, mention the bot's own day or have a smiley is decided by dice, with chances set at the top of `Settings/Scripts/Bot-Chat-Bridge.py` (`QUESTION_CHANCE` 0.2, `JOKE_CHANCE` 0.12, `PERSONAL_CHANCE` 0.12, `SMILEY_CHANCE` 0.08). A bot never asks a question two messages in a row. Raise the numbers for livelier bots.
+
+A bot that joins your party or guild says a short hello in that chat. It does not whisper you unasked, and it does not send the bot module's canned lines ("Hello, I follow you!", "Invite me to your group first").
+
 ## Who a bot is
 
 Each bot is played by a person from `Settings/Bots/People.json`: a first name, age, gender, home, occupation, home life, temper, humour, hobbies, a way of talking, a typing habit, a gaming habit, something going on in their life, and favourite topics. The person is chosen from the bot's name the first time it speaks, and then written down, so a bot stays the same person. Their mood changes from day to day.
