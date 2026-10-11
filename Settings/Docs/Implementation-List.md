@@ -271,3 +271,11 @@ The whole picture is in [Bots.md](Bots.md) and [Bot-Chat.md](Bot-Chat.md).
 - [~] Weather more often and heavier, from the world seed, with settings (`WowPlus.Weather.*`): 40 percent of the time, 40 percent of that heavy, in spells of 20 minutes, and also in zones the game gives none
 - [~] The journal: first kills, places discovered, levels, bounties, people met, letters and gifts, written per character and shown by the addon `WowPlusJournal` (`/journal`)
 - [ ] Rumours in the journal, and whether they turned out true
+
+## A room of your own (see [Housing.md](Housing.md))
+
+- [~] A key per city from its innkeepers, claim any spot in the city, the key brings you back
+- [~] 33 pieces of furniture from the innkeepers, placed freely, picked up again; bank chest, guild vault, mailbox, bed, fire, anvil, forge
+- [ ] The room on the hearthstone menu
+- [ ] Trophies, visitors and events
+- [ ] Crafted and found furniture

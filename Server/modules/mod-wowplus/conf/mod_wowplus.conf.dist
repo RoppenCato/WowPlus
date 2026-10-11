@@ -860,3 +860,28 @@ WowPlus.Bots.Guild.Recruit = 1
 
 WowPlus.Bots.QuietWhispers               = 1
 WowPlus.Bots.QuietWhispers.AnswerSeconds = 20
+
+########################################
+# A room of your own
+########################################
+#
+#    The innkeepers of the cities sell a key to a room in their city, and furniture. Use the
+#    key in that city to make the spot where you stand your room; after that the key brings
+#    you back there. Use a piece of furniture in your room to put it down where you stand.
+#    Prices and the list of furniture: Settings/SQL/world/..._home.sql. The whole idea:
+#    Settings/Docs/Housing.md.
+#
+#    WowPlus.Home.Enable
+#        Default: 1
+#
+#    WowPlus.Home.RoomRadius
+#        How far from the spot you claimed furniture can be put down, in yards.
+#        Default: 30
+#
+#    WowPlus.Home.MaxPieces
+#        The most pieces of furniture in one room.
+#        Default: 80
+
+WowPlus.Home.Enable     = 1
+WowPlus.Home.RoomRadius = 30
+WowPlus.Home.MaxPieces  = 80

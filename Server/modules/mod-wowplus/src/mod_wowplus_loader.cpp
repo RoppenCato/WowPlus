@@ -17,6 +17,7 @@ void AddSC_WowPlusBotChat();
 void AddSC_WowPlusAuction();
 void AddSC_WowPlusJournal();
 void AddSC_WowPlusWorld();
+void AddSC_WowPlusHome();
 
 void Addmod_wowplusScripts()
 {
@@ -35,4 +36,5 @@ void Addmod_wowplusScripts()
     AddSC_WowPlusAuction();
     AddSC_WowPlusJournal();
     AddSC_WowPlusWorld();
+    AddSC_WowPlusHome();
 }

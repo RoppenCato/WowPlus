@@ -54,3 +54,5 @@ Deleting the file does not undo it: the database keeps what the file did. Write 
 | `characters/2026-10-11_first-kills.sql` | The table that remembers which rares and bosses a character has killed once (first-kill experience bonus). |
 | `world/2026-10-11_champions.sql` | The champions: one or two named, stronger enemies per zone, chosen by the world seed. Puts everything back and chooses again on every start. |
 | `characters/2026-10-11_journal.sql` | The table the journal is written into. |
+| `world/2026-10-11_home.sql` | A room of your own: the key for each city, the furniture and its prices, and the innkeepers who sell them. |
+| `characters/2026-10-11_home.sql` | The tables for each character's rooms and where their furniture stands. |

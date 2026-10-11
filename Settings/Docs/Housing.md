@@ -1,6 +1,22 @@
 # A room of your own
 
-**Status: design only, 2026-10-11. Nothing here is built.**
+**Status: the first step is built (2026-10-11), not yet tried in the game. The rest of this page is the design.**
+
+## What is built
+
+Robin's decisions: you pick the spot yourself, furniture is placed freely, the room is bought once with no upkeep, and furniture is bought, crafted or found (bought is built; crafted and found are not).
+
+1. **Buy a key** from an innkeeper in a city. Each city has its own key: 2 to 3 gold in the capitals, 50 in Shattrath, 150 in Dalaran.
+2. **Claim your spot.** Stand anywhere in that city, on foot, and use the key: "Make this spot my room".
+3. **Come back any time.** Use the key anywhere: "Go to my room".
+4. **Furnish it.** The same innkeepers sell 33 pieces. Use a piece within 30 yards of your spot and it is put down where you stand, facing the way you face. The furniture is only in the world while you are near, so it is there for you alone.
+5. **Rearrange.** The key's menu picks up the nearest piece, or all of them. "Move my room to this spot" puts everything back in your bags and claims a new spot in the same city.
+
+Pieces that do something: the **Storage Chest** opens your bank, the **Guild Vault** your guild's, the **Mailbox** your mail, the **Bed** leaves you rested (once every half hour), the **Cozy Fire** is a cooking fire, the **Anvil** and **Forge** are for smithing, and chairs, benches and stools can be sat on.
+
+Where things are: the keys, the furniture list and the prices in `Settings/SQL/world/2026-10-11_home.sql`; the rules in `Server/modules/mod-wowplus/src/WowPlusHome.cpp`; settings `WowPlus.Home.*`.
+
+Not built yet: everything under "Things that happen there", trophies, the room on the hearthstone menu, crafted and found furniture, and turning or nudging a piece after it is placed.
 
 Robin: "Would be cool if you could purchase a room in different cities and things could happen there. You could teleport there, have storage and other things."
 
