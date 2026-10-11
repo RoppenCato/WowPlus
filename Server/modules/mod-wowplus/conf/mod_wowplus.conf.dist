@@ -886,3 +886,37 @@ WowPlus.Bots.QuietWhispers.AnswerSeconds = 20
 WowPlus.Home.Enable     = 1
 WowPlus.Home.RoomRadius = 30
 WowPlus.Home.MaxPieces  = 80
+
+#
+#    WowPlus.Home.FirstKeyGold
+#        What the key to a room costs, in gold. An innkeeper of the city offers it in
+#        conversation. The first key a character buys costs this, the second twice this, the
+#        third three times, and so on (Shattrath and Dalaran are not counted).
+#        Default: 10
+#
+#    WowPlus.Home.ShattrathKeyGold, WowPlus.Home.DalaranKeyGold
+#        Default: 1000 and 5000
+
+WowPlus.Home.FirstKeyGold     = 10
+WowPlus.Home.ShattrathKeyGold = 1000
+WowPlus.Home.DalaranKeyGold   = 5000
+
+########################################
+# Coaches between inns
+########################################
+#
+#    WowPlus.Coach.Enable
+#        1: every innkeeper has the line "I need a coach" and can send you to any other inn of
+#        your side on the same continent, for a fare. The screen fades to black (addon
+#        WowPlusCoach) and you arrive there. No coach is seen and no time passes.
+#        Default: 1
+#
+#    WowPlus.Coach.PriceFactor
+#        The fare is like a flight's: per thousand yards, 20 copper plus 0.6 copper times the
+#        square of the level of the land you travel to. So about 1 silver for a neighbouring
+#        inn at level 10, 15 silver for a long ride at level 30, around a gold in Northrend.
+#        This multiplies it.
+#        Default: 1
+
+WowPlus.Coach.Enable      = 1
+WowPlus.Coach.PriceFactor = 1

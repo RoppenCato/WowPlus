@@ -5,9 +5,10 @@
 -- numbers: they take over items the game has but never hands out (old test lockboxes and deprecated keys).
 -- New numbers showed a question mark instead of an icon.
 --
--- - A key for each city, sold by that city's innkeepers. With the hearthstone, the keys are the only ways to
---   travel by magic, so they are priced as something to save for: 15 gold in the smaller capitals, 25 in the
---   larger, 250 in Shattrath, 1000 in Dalaran. They go on the keyring. Using it lets
+-- - A key for each city, offered by that city's innkeepers in conversation. With the hearthstone, the keys
+--   are the only ways to travel by magic, so they cost: the first 10 gold, the second 20, the third 30 and
+--   so on; Shattrath 1000, Dalaran 5000 (settings WowPlus.Home.*KeyGold). The price column below is no
+--   longer used. They go on the keyring. Using it lets
 --   you claim any spot in that city as your room, and later brings you back there.
 -- - Furniture, sold by every city innkeeper. Using a piece inside your
 --   room puts it down where you stand. Each piece is an object of the game world; a few are
@@ -124,8 +125,8 @@ DROP TEMPORARY TABLE wp_item;
 -- The game client decides the kind, material and icon of an item it knows, and the server checks ours
 -- against it at every start. Give each the values the client has, so the log stays clean.
 UPDATE item_template SET Material = 1, displayid = 9632 WHERE entry IN (SELECT item FROM wowplus_furniture);
--- BagFamily 256 puts them on the keyring.
-UPDATE item_template SET class = 13, BagFamily = 256,
+-- BagFamily 256 puts them on the keyring. They cannot be sold back.
+UPDATE item_template SET class = 13, BagFamily = 256, BuyPrice = 0, SellPrice = 0,
     subclass  = IF(entry IN (1253, 1918, 2789, 2790, 2791, 2792), 1, 0),
     Material  = CASE entry WHEN 1253 THEN 1 WHEN 2363 THEN 0 WHEN 2789 THEN 4 WHEN 2790 THEN 4 WHEN 2791 THEN 4 WHEN 2792 THEN 4 ELSE Material END,
     displayid = CASE entry WHEN 1253 THEN 6707 WHEN 1918 THEN 6706 WHEN 2363 THEN 6708 WHEN 2789 THEN 6707 WHEN 2790 THEN 6707
@@ -133,7 +134,7 @@ UPDATE item_template SET class = 13, BagFamily = 256,
     WHERE entry IN (SELECT item FROM wowplus_home_cities);
 
 -- Who sells them -------------------------------------------------------------------------------
--- The innkeepers standing in each city: that city's key, and all the furniture.
+-- The innkeepers standing in each city sell all the furniture.
 DELETE FROM npc_vendor WHERE item BETWEEN 9200000 AND 9299999;
 DELETE FROM npc_vendor WHERE item IN (SELECT item FROM wowplus_furniture) OR item IN (SELECT item FROM wowplus_home_cities);
 DROP TEMPORARY TABLE IF EXISTS wp_inns;
@@ -141,8 +142,8 @@ CREATE TEMPORARY TABLE wp_inns AS
     SELECT DISTINCT c.id AS npc, c.zoneId AS zone
     FROM creature c JOIN creature_template ct ON ct.entry = c.id
     WHERE (ct.npcflag & 65536) AND c.zoneId IN (SELECT zone FROM wowplus_home_cities) AND ct.entry < 9000000;
-INSERT INTO npc_vendor (entry, slot, item, maxcount, incrtime, ExtendedCost, VerifiedBuild)
-    SELECT i.npc, 0, c.item, 0, 0, 0, 0 FROM wp_inns i JOIN wowplus_home_cities c ON c.zone = i.zone;
+-- (The keys are not on their shelves: an innkeeper offers the key in conversation, at a price that depends
+-- on how many rooms the character already has. See WowPlus.Home.*KeyGold in mod_wowplus.conf.)
 INSERT INTO npc_vendor (entry, slot, item, maxcount, incrtime, ExtendedCost, VerifiedBuild)
     SELECT i.npc, 0, f.item, 0, 0, 0, 0 FROM wp_inns i JOIN wowplus_furniture f;
 -- An innkeeper who sold nothing so far becomes a vendor (flag 128). This stays set.

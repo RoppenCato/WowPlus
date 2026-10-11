@@ -6,7 +6,7 @@
 
 Robin's decisions: you pick the spot yourself, furniture is placed freely, the room is bought once with no upkeep, and furniture is bought, crafted or found (bought is built; crafted and found are not).
 
-1. **Buy a key** from an innkeeper in a city. Each city has its own key: 2 to 3 gold in the capitals, 50 in Shattrath, 150 in Dalaran.
+1. **Buy a key** from an innkeeper in a city: a line in their conversation. The first key costs 10 gold, the second 20, the third 30 and so on; Shattrath is 1000 and Dalaran 5000. Keys go on the keyring. With the hearthstone, which only goes home, they are the only ways to travel by magic.
 2. **Claim your spot.** Stand anywhere in that city, on foot, and use the key: "Make this spot my room".
 3. **Come back any time.** Use the key anywhere: "Go to my room".
 4. **Furnish it.** The same innkeepers sell 33 pieces. Use a piece within 30 yards of your spot and it is put down where you stand, facing the way you face. The furniture is only in the world while you are near, so it is there for you alone.

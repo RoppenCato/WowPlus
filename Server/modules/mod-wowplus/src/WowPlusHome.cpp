@@ -18,6 +18,8 @@
  * wowplus_home_objects (what stands where).
  */
 
+#include "WowPlusHome.h"
+
 #include "Chat.h"
 #include "Config.h"
 #include "DataMap.h"
@@ -90,7 +92,13 @@ namespace
         time_t restedAt = 0;
     };
 
+    constexpr uint32 ZONE_SHATTRATH = 3703;
+    constexpr uint32 ZONE_DALARAN = 4395;
+
     bool enabled = true;
+    uint32 firstKeyGold = 10;
+    uint32 shattrathKeyGold = 1000;
+    uint32 dalaranKeyGold = 5000;
     float roomRadius = 30.0f;                               // furniture can be put down this far from the room's spot
     uint32 maxPieces = 80;
 
@@ -251,6 +259,65 @@ namespace
     }
 }
 
+// What a key costs this player. Shattrath and Dalaran have a price of their own; among the other cities
+// the first key costs FirstKeyGold, the second twice that, the third three times, and so on.
+bool WowPlus::RoomOffer(Player* player, uint32 zone, uint32& keyItem, std::string& cityName, uint32& price)
+{
+    if (!enabled)
+        return false;
+
+    Home* home = HomeOf(player);
+    uint32 owned = 0;
+    keyItem = 0;
+    for (auto const& [key, city] : cityByKey)
+    {
+        bool const has = player->HasItemCount(key, 1, true) || home->rooms.count(city.zone);
+        if (city.zone == zone)
+        {
+            if (has)
+                return false;
+            keyItem = key;
+            cityName = city.name;
+        }
+        else if (has && city.zone != ZONE_SHATTRATH && city.zone != ZONE_DALARAN)
+            ++owned;
+    }
+
+    if (!keyItem)
+        return false;
+
+    price = (zone == ZONE_SHATTRATH ? shattrathKeyGold : zone == ZONE_DALARAN ? dalaranKeyGold : firstKeyGold * (owned + 1)) * GOLD;
+    return true;
+}
+
+void WowPlus::BuyRoomKey(Player* player, uint32 keyItem)
+{
+    auto city = cityByKey.find(keyItem);
+    if (city == cityByKey.end())
+        return;
+
+    uint32 offered = 0;
+    uint32 price = 0;
+    std::string name;
+    if (!RoomOffer(player, city->second.zone, offered, name, price) || offered != keyItem)
+        return;
+
+    if (!player->HasEnoughMoney(price))
+    {
+        Tell(player, "You cannot afford it.");
+        return;
+    }
+
+    if (!player->AddItem(keyItem, 1))
+    {
+        Tell(player, "You have no room for the key.");
+        return;
+    }
+
+    player->ModifyMoney(-int32(price));
+    Tell(player, "You have the key to a room in " + name + ". Stand where you want your room to be, and use the key.");
+}
+
 class WowPlusHomeWorld : public WorldScript
 {
 public:
@@ -261,6 +328,9 @@ public:
         enabled = sConfigMgr->GetOption<bool>("WowPlus.Home.Enable", true);
         roomRadius = sConfigMgr->GetOption<float>("WowPlus.Home.RoomRadius", 30.0f);
         maxPieces = sConfigMgr->GetOption<uint32>("WowPlus.Home.MaxPieces", 80);
+        firstKeyGold = sConfigMgr->GetOption<uint32>("WowPlus.Home.FirstKeyGold", 10);
+        shattrathKeyGold = sConfigMgr->GetOption<uint32>("WowPlus.Home.ShattrathKeyGold", 1000);
+        dalaranKeyGold = sConfigMgr->GetOption<uint32>("WowPlus.Home.DalaranKeyGold", 5000);
     }
 
     void OnStartup() override

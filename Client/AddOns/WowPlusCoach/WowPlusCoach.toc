@@ -1,0 +1,4 @@
+## Interface: 30300
+## Title: WowPlus Coach
+## Notes: Fades the screen to black when you take a coach from an innkeeper.
+WowPlusCoach.lua

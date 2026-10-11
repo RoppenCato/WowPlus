@@ -289,3 +289,12 @@ Robin: avoid making the game feel too fast and action-based. So no dodge and no 
 - [ ] Enemies with a twist, telegraphed attacks on champions
 - [ ] The runner, rifts, ambushes
 - [ ] A difficulty you set yourself
+
+## Travel (decided 2026-10-11)
+
+Robin was not sure about teleporting everywhere with the hearthstone: it took the world between places away.
+
+- [~] The hearthstone has no cooldown but only goes home; its menu of cities, towns and dungeons is switched off (`WowPlus.Travel.Hearthstone.Menu`)
+- [~] The keys to your rooms are the other teleports. Price: 10 gold for the first, 20 for the second, 30 for the third..., Shattrath 1000, Dalaran 5000; bought in the innkeeper's conversation; on the keyring
+- [~] Coaches: every innkeeper sends you to any other inn of your side on the same continent, for a fare like a flight's; fade to black (addon `WowPlusCoach`), no time passing, no events on the road (`WowPlus.Coach.*`, `src/WowPlusCoach.cpp`)
+- [ ] Faster flights, boats that leave when you board, a faster ghost

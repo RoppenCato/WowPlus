@@ -8,7 +8,9 @@ Killing a rare enemy for the first time gives bonus experience, and rares always
 Enemies and chests can drop a surprise piece of gear for your level, sometimes even a mount or a pet.
 Vendors sometimes have one unusual item on the shelf, and it changes every week. Some travelling merchants have a theme.
 Dungeons and raids adjust to how many people are in the group, so small groups work.
-Your hearthstone has no cooldown and opens a menu with places you have already visited.
+Your hearthstone has no cooldown and takes you home.
+Any innkeeper can put you on a coach to another inn on the same continent for a small fare.
+Innkeepers in the cities sell the key to a room of your own, and furniture for it.
 The auction house is shared by both factions and always has crafting materials, gems, glyphs and enchant scrolls.
 Gear does not bind, so you can hand it on.
 Holding Shift lets you sprint for a few seconds on foot or while swimming.

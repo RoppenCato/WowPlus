@@ -18,6 +18,7 @@ void AddSC_WowPlusAuction();
 void AddSC_WowPlusJournal();
 void AddSC_WowPlusWorld();
 void AddSC_WowPlusHome();
+void AddSC_WowPlusCoach();
 
 void Addmod_wowplusScripts()
 {
@@ -37,4 +38,5 @@ void Addmod_wowplusScripts()
     AddSC_WowPlusJournal();
     AddSC_WowPlusWorld();
     AddSC_WowPlusHome();
+    AddSC_WowPlusCoach();
 }
