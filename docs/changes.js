@@ -5,15 +5,19 @@
  *   title    what it is, in a few words
  *   text     one sentence a player understands
  *   details  optional list of finer points (shown when the entry is opened)
- *   kind     "feature" (new), "tweak" (a change to how the game was), or "fix"
- *   status   "confirmed" (seen working in play), "built" (made, not yet seen in play), or "planned"
  *   date     optional, when it was made
+ *
+ * The page shows what the game has right now. So: no entries for ideas or plans, none for bugs of our
+ * own that were fixed, and when something is changed again or taken out, its entry is rewritten or removed.
+ *
+ * kind ("feature", "tweak", "fix") and status ("confirmed", "built") may be noted per entry; they are only
+ * shown, as labels with filters, if  showTags: true  is set below.
  */
 window.CHANGELOG = {
   title: "WowPlus",
   theme: "warcraft",          // the look of the page: "arcade", "warcraft" or "maple"
   tagline: "World of Warcraft 3.3.5a as a single-player adventure: a world full of bots who talk like people, with enough left to chance that it can still surprise the one who built it.",
-  intro: "Everything that is different from the original game, by area. Open an entry for the details. \"Built\" means it is made and the server runs with it, but it has not been seen working in play yet.",
+  intro: "What this server has that the original game does not, by area. Click a line for the details.",
   repo: "https://github.com/RoppenCato/WowPlus",
   updated: "2026-10-11",
   footer: "Built on AzerothCore and mod-playerbots.",
@@ -56,14 +60,12 @@ window.CHANGELOG = {
           text: "Hold Shift to run 30 percent faster on foot or swimming, for as long as stamina lasts.",
           details: ["A bar of 6 seconds, refilling in 8.", "Run it empty and you are winded for a moment.", "Does nothing while mounted, in a travel form, in stealth, or with another speed boost.", "A puff of dust at your feet."] },
         { title: "The hearthstone has no cooldown", kind: "tweak", status: "built", date: "2026-10-10",
-          text: "It takes you home whenever you like." },
+          text: "It takes you home whenever you like. Home, and the keys to your rooms, are the only ways to travel by magic." },
         { title: "Coaches between inns", kind: "feature", status: "built", date: "2026-10-11",
           text: "Any innkeeper can send you to another inn on the same continent, for a fare like a flight's.",
           details: ["119 inns.", "The screen fades to black and you arrive.", "About a silver or two nearby at low level, around a gold for a long ride in Northrend."] },
         { title: "Room keys as teleports", kind: "feature", status: "built", date: "2026-10-11",
           text: "The key to your room in a city brings you there from anywhere." },
-        { title: "The hearthstone no longer goes everywhere", kind: "tweak", status: "built", date: "2026-10-11",
-          text: "A menu of every city, town and dungeon was tried for a day and removed: it took the world between places away." }
       ]
     },
     {
@@ -80,8 +82,6 @@ window.CHANGELOG = {
           text: "A chest that opens your bank, a mailbox, and a vault for your guild." },
         { title: "A bed, a fire, an anvil and a forge", kind: "feature", status: "built", date: "2026-10-11",
           text: "Sleep for rested experience, cook on your own fire, smith at home." },
-        { title: "Visitors, trophies and things that happen there", kind: "feature", status: "planned",
-          text: "Companions who live there, guild mates dropping by, a neighbour, trophies on the wall, a stray cat." }
       ]
     },
     {
@@ -133,8 +133,6 @@ window.CHANGELOG = {
           text: "Bots pass on true things they \"heard\": a vendor with something odd this week, where a champion or a rare roams." },
         { title: "Gifts by mail", kind: "feature", status: "built", date: "2026-10-11",
           text: "Every few hours of play a guild mate sends a few potions with a short letter." },
-        { title: "The same people for another game", kind: "feature", status: "planned",
-          text: "The files that describe the people are written so MapleStoryPlus can use them too." }
       ]
     },
     {
@@ -170,8 +168,8 @@ window.CHANGELOG = {
           text: "The first time you kill each rare, champion or boss you get a bonus worth most of a quest." },
         { title: "Rested three times as fast", kind: "tweak", status: "built", date: "2026-10-11",
           text: "A session after a break starts quick." },
-        { title: "Dungeons alone give proper experience", kind: "fix", status: "built", date: "2026-10-11",
-          text: "Dungeons scaled down for one player gave very little; that is doubled." }
+        { title: "Proper experience in dungeons alone", kind: "tweak", status: "built", date: "2026-10-11",
+          text: "A dungeon enemy scaled down for one player is worth about what an enemy outdoors is." }
       ]
     },
     {
@@ -221,39 +219,5 @@ window.CHANGELOG = {
           text: "What you put up is bought if the price is reasonable, usually within a few hours." }
       ]
     },
-    {
-      name: "Fixes",
-      summary: "Things that went wrong and were put right.",
-      items: [
-        { title: "Crash when looting a grey item", kind: "fix", status: "built", date: "2026-10-11",
-          text: "The server crashed when a looted item had already been sold by the junk-selling module." },
-        { title: "No bots at low level", kind: "fix", status: "built", date: "2026-10-11",
-          text: "Arena teams pinned 72 of 100 bots at level 70 to 80; the teams are gone and the bots spread out." },
-        { title: "An Outland ring at a starter vendor", kind: "fix", status: "built", date: "2026-10-11",
-          text: "Vendors in areas without a level were stocked as if they stood in a city; a zone's level now comes from its quests." },
-        { title: "A first wand nobody could afford", kind: "fix", status: "built", date: "2026-10-11",
-          text: "A price rule had made the level 5 wand cost 85 silver; it is 2 silver." },
-        { title: "Furniture that vanished, and question-mark icons", kind: "fix", status: "built", date: "2026-10-11",
-          text: "Plain furniture disappeared when placed, and keys and furniture had no icons." },
-        { title: "Bots that talked too much", kind: "fix", status: "built", date: "2026-10-11",
-          text: "Long answers to short messages, constant jokes and questions, emote spam, and canned whispers." },
-        { title: "Realm shown as offline", kind: "fix", status: "confirmed", date: "2026-10-10",
-          text: "The realm stayed marked offline after an unclean shutdown." }
-      ]
-    },
-    {
-      name: "Ideas waiting",
-      summary: "Talked through, not built.",
-      items: [
-        { title: "Threat that grows where you do not go", kind: "feature", status: "planned", text: "Camps you clear stay quiet for a while; camps you ignore grow, and a champion moves in." },
-        { title: "Camping, and a night that matters", kind: "feature", status: "planned", text: "A tent and a fire almost anywhere; more danger and better finds after dark." },
-        { title: "A trial every ten levels", kind: "feature", status: "planned", text: "A challenge made for your class at 10, 20, 30, with a keepsake for winning." },
-        { title: "A rival and a mentor", kind: "feature", status: "planned", text: "One bot who races you, one who looks out for you." },
-        { title: "More quests from the world", kind: "feature", status: "planned", text: "Bounties on rares and dungeon bosses, courier runs, survey quests, work orders for crafters." },
-        { title: "Enemies with a twist", kind: "feature", status: "planned", text: "One in fifteen is enraged, shielded or calls a friend; champions wind up heavy blows you can avoid." },
-        { title: "The runner and rifts", kind: "feature", status: "planned", text: "A creature that flees with a pile of loot, and events that open nearby for ten minutes." },
-        { title: "A difficulty you set yourself", kind: "feature", status: "planned", text: "Harder enemies for more experience and better loot odds, in steps." }
-      ]
-    }
   ]
 };

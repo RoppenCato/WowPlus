@@ -5,7 +5,7 @@ A single web page that lists everything this project changes in the game, by are
 | File | What it is |
 |---|---|
 | `index.html` | The page. A template: it holds no content of its own and never needs editing. |
-| `changes.js` | The content: the project's name, and every change with its area, a sentence, optional details, its kind and its status. This is the only file to edit. |
+| `changes.js` | The content: the project's name, and every feature with its area, a sentence and optional details. This is the only file to edit. |
 
 ## Looking at it
 
@@ -25,12 +25,20 @@ Two things to know first:
 
 After that, every push that changes `changes.js` updates the page by itself within a minute or two.
 
+## What belongs on it
+
+What the game has **right now**, and nothing else:
+
+- No ideas or plans. An entry is added when the thing exists.
+- No bugs of our own that were fixed. A fix to the original game counts as a feature.
+- When something is changed again or removed, its entry is rewritten or deleted, not followed by a second entry.
+
 ## Adding a change
 
 Open `changes.js` and add an entry to the right area's `items`:
 
 ```js
-{ title: "Sprint on Shift", kind: "feature", status: "built", date: "2026-10-11",
+{ title: "Sprint on Shift", date: "2026-10-11",
   text: "Hold Shift to run faster on foot, for as long as stamina lasts.",
   details: ["A bar of 6 seconds, refilling in 8.", "Does nothing while mounted."] },
 ```
@@ -40,9 +48,7 @@ Open `changes.js` and add an entry to the right area's `items`:
 | `title` | What it is, in a few words. |
 | `text` | One sentence a player understands. |
 | `details` | Optional. A list of finer points, shown when the entry is opened. |
-| `kind` | `"feature"` (new), `"tweak"` (a change to how the game was), or `"fix"`. Left out: feature. |
-| `status` | `"confirmed"` (seen working in play), `"built"` (made, not yet seen in play), or `"planned"`. Left out: built. |
-| `date` | Optional. |
+| `date` | Optional. Not shown; for your own record. |
 
 A new area is a new block in `categories` with a `name`, a `summary` and its `items`. The colours are given out automatically; an area can ask for its own with `colour: "#ff8800"`.
 
