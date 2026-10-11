@@ -54,7 +54,77 @@ What makes this workable: Claude can test through the server log and the databas
 **9. Letters.**
 A lighter form of 8. Now and then a letter arrives in the in-game mailbox with a hint, a map coordinate or an item, written and sent on a schedule Robin does not know.
 
-### The switch itself
+### Robin's steer, 2026-10-11
+
+*"I like the idea of the world feeling exciting and mysterious."*
+
+| Idea | Verdict | Robin's words, shortened |
+|------|---------|--------------------------|
+| Class changes and spell levels | **Out.** Stay with our tuned version. | "Probably better kept with our tuned version." |
+| 1. Sealed dice | Yes, bounded | "Fun variations, not 'almost no drops'. And not overpowered." |
+| 2. World seed | Yes, as **modes chosen in the Settings folder** | "Randomize it there by different modes, that change the world in different ways, described in words and not exact content." |
+| 3. Draft | **No** | |
+| 4. Unidentified items | Yes, **optional** | "Should be optional to have or not." |
+| 5. Things that move | **Yes** | "Makes the world feel more alive. Wandering vendors, new vendors in towns." |
+| 6. Mutators | Maybe, **on zones** | "More like modifications that can happen to zones." |
+| 7. Rumours from bots | **Yes, strongly** | "We should try to utilise the bots a lot for these sorts of things." |
+| 8. Sealed content | Partly | "More in lines of you randomising the items, or choosing mobs." |
+| 9. Letters | Interesting | |
+
+Three rules that came with it:
+
+1. **The system is known, the instance is secret.** *"Things existing but never seeing them or knowing about their existence: I'd miss a whole system. The idea itself must be obvious so you know what to look for. It's not fun to know 'there's a big troll in this zone', but more fun hearing from a bot 'I'd be careful walking in these woods'."* So Robin always knows what *kinds* of things the world can do. What is never told is where, which, and when. Nothing is hidden so well that it could be missed entirely: every secret has a hint somewhere.
+2. **Never take control of the character away.** No twist may stun, mind-control, fear, slow to a crawl, or otherwise make the player a spectator. Twists change the world, not the hands on the keyboard.
+3. **Variation, not deprivation, and not power.** A roll may make something different or a little better or worse. It may not make a system pointless ("almost no drops") or hand out more than the tuned game would.
+
+### The shape this gives: a living world in known systems
+
+Seven systems. Robin knows all seven exist; the seed decides everything inside them.
+
+| System | What Robin knows | What the seed decides |
+|--------|------------------|-----------------------|
+| **Fortunes** | Luck is not the same everywhere. Some zones and some kinds of enemy are a little more generous, some a little less. | Which. The total stays the same: what one zone loses another gains, and nothing drops below a floor. |
+| **Champions** | In every zone a few ordinary enemies are more than they look: tougher, and carrying something worth having. | Which enemies, and what each carries: an item rolled from the loot pools for that level, a notch above what the zone normally gives. |
+| **Wanderers** | Merchants travel. Some towns have a trader who was not there before, and one roams the roads. | Who, where, when they move on, and what they stock from the lists the surprise vendors draw on. |
+| **Zone moods** | A zone can be in a mood: the dead are restless, the veins run rich, the predators hunt in packs. | Which zone has which mood, and for how long. A mood makes some enemies stronger, more numerous or more rewarding. It never touches the player's control. |
+| **Unidentified items** *(optional)* | An extra drop may hide what its bonuses are until it is identified. | Nothing new; it hides what the bonus rule already rolled. Its own switch, off unless wanted. |
+| **Rumours** | Bots hear things, and say them. | Which bot knows what. A bot in the right zone might warn about the woods, mention a trader on the road north, or complain that the boars have been dropping nothing lately. This is how every other system is found. |
+| **Letters** | Now and then the mail brings something. | When, from whom, and whether it is a hint, a coin or a small gift. |
+
+Rumours are the keystone. Without them the other systems are either invisible (rule 1 fails) or listed in a document (the mystery fails). With them, the way to learn what the world is doing is to talk to the people in it.
+
+### Modes, chosen in the Settings folder
+
+One small file in `Settings/`, for example `world.conf`, with two lines: the mode and the seed. Each mode is described in words, never in numbers:
+
+| Mode | In words |
+|------|----------|
+| Calm | The tuned game. Nothing moves, nothing varies. For testing. |
+| Living | The default adventure. Fortunes shift gently, a few champions per zone, merchants travel, moods come and go. |
+| Bountiful | A generous year. Fortunes lean kind, more wanderers with better stock, moods are mostly the rewarding ones. |
+| Perilous | A hard year. More champions and stronger ones, moods are mostly the dangerous ones, and the rewards rise with the danger. |
+| Merchant's year | Trade is everything. Many wanderers, rare stock, shifting prices. Fewer champions. |
+| Strange | The widest ranges of all, within the three rules. For when everything else feels familiar. |
+
+And a seed: a number, or the word `roll` to have a new one picked at the next start. The seed is never printed. Rolling again gives a different world inside the same mode.
+
+What each mode does to each system is a table of ranges in our module. Robin tunes those ranges once, knowing what a mode is *for*, and then stops looking.
+
+### What "sealed content" becomes
+
+Not hidden systems, which Robin ruled out, but hidden *choices inside known systems*: which boar is the champion, what it carries, where the wanderer stands today. The seed makes most of them. Claude can make some by hand where a roll would be bland: choosing a fitting enemy for a zone, writing its rumour, picking an item that suits it. Those go in a data file Robin does not need to open, and everything in it obeys the three rules.
+
+### A possible order
+
+1. **Wanderers,** because the surprise vendors are already planned and this is the same work with a seed.
+2. **Champions,** on top of the loot pools that exist.
+3. **Rumours, simple version:** bots say fixed lines in ordinary chat when near something. Needs no Claude connection; the bot module already has scripted speech.
+4. **Fortunes,** inside the loot rule.
+5. **Zone moods.**
+6. **Rumours, full version,** when the [bot chat](Bot-Chat.md) exists: ask a bot and it answers from what the seed has done.
+7. **Unidentified items** and **letters,** whenever wanted.
+
+### The switch itself (first sketch, replaced by the modes above)
 
 A single setting with three positions is probably enough:
 
