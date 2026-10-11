@@ -756,3 +756,21 @@ WowPlus.Auction.Staples             = 1
 WowPlus.Auction.Staples.Keep        = 2
 WowPlus.Auction.Staples.SellerGUID  = 0
 WowPlus.Auction.Staples.PriceFactor = 1
+
+########################################
+# Talents
+########################################
+#
+#    WowPlus.Classes.DualSpecLevel
+#        From this level every character has the second talent set (dual specialisation)
+#        for free. The game sells it at level 40 for 1000 gold. 0: not given.
+#        Default: 10
+#
+#    WowPlus.Classes.TalentResetButton
+#        1: the addon WowPlusTalents puts a "Reset talents" button in the talent window, and
+#        it works: the talents of the set you are using are handed back, free. Not in combat.
+#        (Resetting at a class trainer is free too: NoResetTalentsCost in Settings/worldserver.conf.)
+#        Default: 1
+
+WowPlus.Classes.DualSpecLevel     = 10
+WowPlus.Classes.TalentResetButton = 1

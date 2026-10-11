@@ -264,3 +264,40 @@ Per character rather than for the whole server, so that a test character can sta
 ## Other ideas
 
 *Nothing here yet.*
+
+### Your own place (Robin, 2026-10-11: "an awesome idea, get back to it")
+
+A room of your own: rented in an inn, or later a small house. Not built.
+
+- Your companions gather there when they are not travelling with you.
+- Mail and gifts from guild mates arrive there; a chest holds what does not fit your bags.
+- The hearthstone menu has it as a place.
+- Things you did leave marks: a trophy for a rare, a banner for a dungeon cleared.
+- Open questions: one fixed place or a choice of inns; whether it costs rent (a gold sink); how it is made private, since the game has no player housing (an instance of one's own, a phase, or simply a quiet real room that only you have a reason to visit).
+
+### A journal (Robin, 2026-10-11: "awesome")
+
+A book that writes itself. Not built.
+
+- What goes in: first kills of rares, champions and bosses; places discovered; who you met and where; letters and gifts; rumours you were told, and whether they turned out true; levels and deaths worth remembering.
+- How you read it: an item in your bags that opens pages (the game can show books), or a window from a small addon with tabs for the world, people and rumours.
+- Why it matters: it is the memory of the adventure layer. A rumour heard on Monday is still findable on Friday, and bounties and champions get ticked off.
+
+### Bounties (Robin, 2026-10-11)
+
+A board in each town with one to three targets from this week's world. Not built.
+
+- Targets: a champion or a rare of the area, an unusual item some vendor has this week, a number of a certain enemy in a zone that is having a hard week.
+- Real quests are possible: the server can add quests of its own to the database with a text, an objective and a reward, and the game shows them like any other, quest log and all. A board is an object or an NPC that offers them. A new set each week means generating them from the seed, like the champions.
+- Rewards: gold and experience, a token toward something special, a piece of gear for your level.
+- Bots know about them and mention them.
+
+### The sky and the clock (Robin asked what is possible, 2026-10-11)
+
+- The game has weather per zone (rain, snow, sandstorm, with a chance per season) and the server can set it. Possible: weather that lasts and moves, storms that matter (fewer enemies out, fish bite better), a clear week and a wet week by the seed.
+- The game runs on the real clock, with day and night. Possible: its own clock (a day in two hours), enemies or vendors that are only out at night, inns that fill in the evening, bots that go to bed.
+- A calendar of the world's own: a market day in each capital once a week, a festival that moves from town to town.
+
+### Bots doing visible things (Robin, 2026-10-11: "nice!")
+
+Fishing at lakes, sitting in inns in the evening by their own clock, duelling outside city gates, dancing on mailboxes, queueing at the bank. Not built; the companions already light fires and sit.

@@ -245,3 +245,22 @@ The whole picture is in [Bots.md](Bots.md) and [Bot-Chat.md](Bot-Chat.md).
 - [~] The hub on GM Island is removed altogether, with its place in the hearthstone menu (`Settings/SQL/world/2026-10-11_remove-hub.sql`)
 - [~] The auction house always has every crafting material, gem, glyph and enchant scroll: two auctions of each of about 2000 items, put up again when bought (`mod-wowplus`, `src/WowPlusAuction.cpp`, settings `WowPlus.Auction.Staples.*`)
 - [ ] Decide: should the bot also buy what you put up for sale?
+- [~] The auction house also buys what you put up, within vendor price times 3 (white), 5 (green), 12 (blue), 15 (epic)
+
+## Talents (decided 2026-10-11)
+
+- [~] The second talent set is free from level 10 (`WowPlus.Classes.DualSpecLevel`)
+- [~] Resetting talents is free (`NoResetTalentsCost`), and a "Reset talents" button in the talent window does it (addon `WowPlusTalents`)
+
+## Champions (decided 2026-10-11)
+
+- [~] One or two enemies per zone are champions, chosen by the world seed: a name, a rare's silver dragon, more health, bigger, a level higher, back after 4 to 8 hours. As rares they always drop an extra item and give the first-kill bonus. (`Settings/SQL/world/2026-10-11_champions.sql`, table `wowplus_champions`)
+- [ ] Champions in the bots' rumours, and on a bounty board
+
+## Ideas waiting (see [Ideas.md](Ideas.md))
+
+- [ ] Bounties, with real quests
+- [ ] A journal
+- [ ] Your own place
+- [ ] Weather and time of day
+- [ ] Bots doing visible things

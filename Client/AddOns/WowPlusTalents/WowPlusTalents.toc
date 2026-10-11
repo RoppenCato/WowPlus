@@ -1,0 +1,4 @@
+## Interface: 30300
+## Title: WowPlus Talents
+## Notes: Adds a Reset talents button to the talent window. Free on the WowPlus server.
+WowPlusTalents.lua

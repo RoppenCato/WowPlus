@@ -91,9 +91,16 @@ $myini = "--defaults-file=$(Join-Path $PSScriptRoot 'mysql.ini')"
 
 # Our own SQL changes: every file in Settings\SQL\world, \characters and \auth is applied on
 # every start, in name order. The files are written so that running them again is harmless.
+# The world seed (WowPlus.World.Seed) is handed to every SQL file as @wowplus_seed, for the files
+# that build something from it, such as the champions.
+$seed = 1
+foreach ($file in (Join-Path $PSScriptRoot 'mod_wowplus.conf'), (Join-Path $root 'Server\modules\mod-wowplus\conf\mod_wowplus.conf.dist')) {
+    $line = Get-Content $file -ErrorAction SilentlyContinue | Where-Object { $_ -match '^\s*WowPlus\.World\.Seed\s*=\s*(\d+)' } | Select-Object -First 1
+    if ($line -and $line -match '=\s*(\d+)') { $seed = [uint64]$Matches[1]; break }
+}
 foreach ($db in 'world', 'characters', 'auth') {
     foreach ($sql in Get-ChildItem (Join-Path $PSScriptRoot "SQL\$db") -Filter *.sql -ErrorAction SilentlyContinue | Sort-Object Name) {
-        Get-Content -LiteralPath $sql.FullName -Raw | & $mysql $myini "acore_$db" 2>&1 | Out-Null
+        ("SET @wowplus_seed = $seed;`n" + (Get-Content -LiteralPath $sql.FullName -Raw)) | & $mysql $myini "acore_$db" 2>&1 | Out-Null
         if ($LASTEXITCODE -eq 0) { Write-Host "Applied SQL\$db\$($sql.Name)" }
         else { Write-Warning "SQL\$db\$($sql.Name) failed. Run it by hand to see the error." }
     }

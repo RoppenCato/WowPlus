@@ -11,6 +11,9 @@
  * - A shaman gets the Totem of the Earthen Ring, which stands in for the four totem items the
  *   totem quests used to hand out. Without it the totem spells cannot be cast.
  * - A rogue can dual wield from the start.
+ * - Everyone gets the second talent set (dual specialisation) for free at level 10, and can
+ *   reset talents for free from the talent window (a button added by the addon WowPlusTalents,
+ *   which sends the request here).
  * - Optional, off by default: a second starting dagger for rogues and a first wand for casters
  *   at level 5. Since 2026-10-11 the weaponsmiths of the starting areas sell those instead.
  */
@@ -34,6 +37,9 @@ namespace
     constexpr uint8 HUNTER_TAME_LEVEL = 10;
 
     constexpr uint32 SPELL_DUAL_WIELD = 674;
+    constexpr uint32 SPELL_TEACH_SPEC_SWITCHING = 63680;    // teaches "activate primary / secondary spec"
+    constexpr uint32 SPELL_LEARN_SECOND_SPEC = 63624;
+    std::string const TALENT_ADDON_PREFIX = "WPT\t";
     constexpr uint32 ITEM_WORN_DAGGER = 2092;               // what a new rogue starts with
     constexpr uint8 ROGUE_OLD_DUAL_WIELD_LEVEL = 10;
 
@@ -53,6 +59,8 @@ namespace
     bool rogueDualWield = true;
     bool rogueSecondDagger = false;                         // off: the starting weaponsmiths sell one
     bool casterWand = false;                                // off: the starting weaponsmiths sell one
+    uint32 dualSpecLevel = 10;                              // 0: not given
+    bool talentResetButton = true;
 
     void Tell(Player* player, char const* text)
     {
@@ -161,11 +169,23 @@ namespace
             Tell(player, "Your studies have earned you a wand of your own: you receive a Lesser Magic Wand.");
     }
 
+    // The second talent set, as the trainers sell it at level 40 for 1000 gold
+    void GiveDualSpec(Player* player)
+    {
+        if (!dualSpecLevel || player->GetLevel() < dualSpecLevel || player->GetSpecsCount() >= 2)
+            return;
+
+        player->CastSpell(player, SPELL_TEACH_SPEC_SWITCHING, true, nullptr, nullptr, player->GetGUID());
+        player->CastSpell(player, SPELL_LEARN_SECOND_SPEC, true, nullptr, nullptr, player->GetGUID());
+        Tell(player, "You can now keep two sets of talents and switch between them: see the second tab of the talent window.");
+    }
+
     void HelpAll(Player* player)
     {
         if (player->GetSession()->IsHeadless())
             return;                                         // bots are equipped by the bot module
 
+        GiveDualSpec(player);
         HelpHunter(player);
         HelpShaman(player);
         HelpRogue(player);
@@ -185,6 +205,8 @@ public:
         rogueDualWield = sConfigMgr->GetOption<bool>("WowPlus.Classes.RogueDualWield", true);
         rogueSecondDagger = sConfigMgr->GetOption<bool>("WowPlus.Classes.RogueSecondDagger", false);
         casterWand = sConfigMgr->GetOption<bool>("WowPlus.Classes.CasterWand", false);
+        dualSpecLevel = sConfigMgr->GetOption<uint32>("WowPlus.Classes.DualSpecLevel", 10);
+        talentResetButton = sConfigMgr->GetOption<bool>("WowPlus.Classes.TalentResetButton", true);
     }
 };
 
@@ -201,6 +223,29 @@ public:
     void OnPlayerLevelChanged(Player* player, uint8 /*oldLevel*/) override
     {
         HelpAll(player);
+    }
+
+    using PlayerScript::OnPlayerCanUseChat;                 // keep the other overloads visible
+
+    // The "Reset talents" button of the addon WowPlusTalents: it whispers its own character. Nothing is passed on.
+    bool OnPlayerCanUseChat(Player* player, uint32 type, uint32 language, std::string& msg, Player* /*receiver*/) override
+    {
+        if (language != LANG_ADDON || type != CHAT_MSG_WHISPER || msg.compare(0, TALENT_ADDON_PREFIX.size(), TALENT_ADDON_PREFIX) != 0)
+            return true;
+
+        if (!talentResetButton || msg.substr(TALENT_ADDON_PREFIX.size()) != "reset")
+            return false;
+
+        if (player->IsInCombat() || player->InBattleground() || !player->IsAlive())
+        {
+            Tell(player, "You cannot reset your talents right now.");
+            return false;
+        }
+
+        player->resetTalents(true);
+        player->SendTalentsInfoData(false);
+        Tell(player, "Your talents have been reset.");
+        return false;
     }
 };
 
