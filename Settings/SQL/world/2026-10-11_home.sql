@@ -119,6 +119,16 @@ ALTER TABLE wp_item DROP COLUMN wp_entry, DROP COLUMN wp_name, DROP COLUMN wp_pr
 INSERT INTO item_template SELECT * FROM wp_item;
 DROP TEMPORARY TABLE wp_item;
 
+-- The game client decides the kind, material and icon of an item it knows, and the server checks ours
+-- against it at every start. Give each the values the client has, so the log stays clean.
+UPDATE item_template SET Material = 1, displayid = 9632 WHERE entry IN (SELECT item FROM wowplus_furniture);
+UPDATE item_template SET class = 13,
+    subclass  = IF(entry IN (1253, 1918, 2789, 2790, 2791, 2792), 1, 0),
+    Material  = CASE entry WHEN 1253 THEN 1 WHEN 2363 THEN 0 WHEN 2789 THEN 4 WHEN 2790 THEN 4 WHEN 2791 THEN 4 WHEN 2792 THEN 4 ELSE Material END,
+    displayid = CASE entry WHEN 1253 THEN 6707 WHEN 1918 THEN 6706 WHEN 2363 THEN 6708 WHEN 2789 THEN 6707 WHEN 2790 THEN 6707
+                           WHEN 2791 THEN 6707 WHEN 2792 THEN 6707 WHEN 3580 THEN 6713 WHEN 5916 THEN 7737 WHEN 11085 THEN 4287 ELSE displayid END
+    WHERE entry IN (SELECT item FROM wowplus_home_cities);
+
 -- Who sells them -------------------------------------------------------------------------------
 -- The innkeepers standing in each city: that city's key, and all the furniture.
 DELETE FROM npc_vendor WHERE item BETWEEN 9200000 AND 9299999;
