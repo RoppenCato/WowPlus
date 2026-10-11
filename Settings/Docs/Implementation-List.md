@@ -68,6 +68,7 @@ Decided 2026-10-10:
 - **Look-ahead: rising chance over the last 10 levels** before 60, 70 and 80. Tiny at 50, real by 58, first-raid epics possible near the end.
 - **At max level the pool follows my own gear:** banded by item level, moving up as what I wear improves, with a small chance to jump ahead.
 
+- **Rares always drop an extra item** (2026-10-11; first set to 60 percent). At least green like every extra drop, with better odds at blue and epic than an ordinary enemy: about 1 in 5 blue or better, 1 in 17 epic or better. Setting `WowPlus.Loot.Chance.Rare` in `Settings/mod_wowplus.conf`.
 - **Bots pass on the extra drops.** They are always mine; since nothing binds, I hand bots what I do not want.
 - **Mounts get a loot table of their own, with its own chance.** Any kill that can give an extra drop also has a separate, small chance at a mount, so the mounts that are normally almost impossible to get are always possible.
 
