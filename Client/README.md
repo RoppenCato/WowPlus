@@ -191,4 +191,4 @@ The folder `AddOns` here holds addons that belong to this server. `Start-Server.
 | `WowPlusTalents` | Adds a "Reset talents" button to the talent window. It asks first; it is free. |
 | `WowPlusJournal` | The journal that writes itself: what you killed and found, who you met. Open it with `/journal` or the small book by the minimap. A new line also flashes on screen. |
 | `WowPlusClock` | Sets the minimap clock to the world's time (a day and night pass in an hour). |
-| `WowPlusFlair` | Loot green or better appears on screen in its colour with a beam and a flash at the screen edges (longer for better items). Critical and near-record hits are shown large. Your hardest hit is remembered per character, with a fanfare when you beat it. `/flair` shows the record and the switches; `/flair test` shows the loot effect. |
+| `WowPlusFlair` | Loot blue or better appears on screen in its colour with a beam and a flash at the screen edges (longer for better items). Critical and near-record hits are shown large. Your hardest hit is remembered per character, with a fanfare when you beat it. `/flair` shows the record and the switches; `/flair test` shows the loot effect. |

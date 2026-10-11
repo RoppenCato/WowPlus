@@ -1,6 +1,6 @@
 -- WowPlus Flair: the game tells you when something good happens.
 --
---   Loot      When you loot something green or better, its name and icon appear in the middle of
+--   Loot      When you loot something blue or better, its name and icon appear in the middle of
 --             the screen in the item's colour, a beam of that colour rises behind it, and the edges of
 --             the screen flash. The better the item, the longer it pulses.
 --   Big hits  Your critical hits, and hits close to your best, are shown in large numbers of their own.
@@ -9,7 +9,7 @@
 -- Everything is done by this addon alone; the server is not involved.
 -- /flair shows your record and the switches: /flair loot, /flair hits, /flair record, /flair reset
 
-local LOOT_FROM_QUALITY = 2             -- 2 green, 3 blue, 4 epic: the lowest quality that is announced
+local LOOT_FROM_QUALITY = 3             -- 2 green, 3 blue, 4 epic: the lowest quality that is announced (Robin: not for greens)
 local BIG_HIT_SHARE = 0.75              -- a hit this close to the record counts as big even if it is no crit
 local RECORD_PAUSE = 20                 -- seconds between two record fanfares, so levelling up does not spam them
 local RECORD_QUIET_BELOW = 50           -- no fanfare for records smaller than this (the first hits of a new character)
