@@ -131,6 +131,7 @@ namespace
         uint32 areaLevelHigh;                               // ..to. Both 0: a city, any level
         uint32 npcFlags;
         bool wanderer;
+        uint32 zoneId;
     };
 
     std::mutex sightingMutex;
@@ -140,6 +141,7 @@ namespace
     // World thread only
     uint64 stockedPeriod = 0;
     std::unordered_map<uint32, std::vector<uint32>> ourItems;   // vendor entry -> the items we added
+    std::unordered_map<uint32, uint32> stockedZones;            // vendor entry -> the zone it was seen in
 
     uint64 CurrentPeriod()
     {
@@ -499,7 +501,10 @@ namespace
         }
 
         if (!shelf.Added().empty())
+        {
             ourItems[sighting.entry] = shelf.Added();
+            stockedZones[sighting.entry] = sighting.zoneId;
+        }
 
         if (config.debug)
         {
@@ -522,11 +527,35 @@ namespace
                 sObjectMgr->RemoveVendorItem(entry, itemId, false);
 
         ourItems.clear();
+        stockedZones.clear();
 
         std::lock_guard<std::mutex> lock(sightingMutex);
         sighted.clear();
         sightings.clear();
     }
+}
+
+// What someone who walked past might pass on: one stocked vendor, where it stands and what it has.
+// Empty when nothing has been stocked yet. World thread only.
+std::string WowPlus::VendorRumour()
+{
+    if (ourItems.empty())
+        return "";
+
+    auto vendor = ourItems.begin();
+    std::advance(vendor, urand(0, ourItems.size() - 1));
+    if (vendor->second.empty())
+        return "";
+
+    ItemTemplate const* item = sObjectMgr->GetItemTemplate(vendor->second[urand(0, vendor->second.size() - 1)]);
+    CreatureTemplate const* seller = sObjectMgr->GetCreatureTemplate(vendor->first);
+    AreaTableEntry const* zone = sAreaTableStore.LookupEntry(stockedZones[vendor->first]);
+    if (!item || !seller || !zone)
+        return "";
+
+    static char const* const rarity[] = {"poor", "common", "uncommon (green)", "rare (blue)", "epic (purple)", "legendary"};
+    return Acore::StringFormat("A vendor in {} ({}) has an unusual item for sale this week: {}, {} quality, for level {}.",
+        zone->area_name[0], seller->SubName.empty() ? "a merchant" : seller->SubName, item->Name1, rarity[std::min<uint32>(item->Quality, 5)], item->RequiredLevel);
 }
 
 class WowPlusVendorWorld : public WorldScript
@@ -593,7 +622,7 @@ public:
 
         std::lock_guard<std::mutex> lock(sightingMutex);
         if (sighted.insert(creature->GetEntry()).second)
-            sightings.push_back({creature->GetEntry(), areaLevel, areaLevelHigh, uint32(creature->GetNpcFlags()), wanderer});
+            sightings.push_back({creature->GetEntry(), areaLevel, areaLevelHigh, uint32(creature->GetNpcFlags()), wanderer, creature->GetZoneId()});
     }
 };
 

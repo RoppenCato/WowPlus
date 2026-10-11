@@ -8,6 +8,7 @@
 
 #include "Define.h"
 
+#include <string>
 #include <vector>
 
 struct ItemTemplate;
@@ -37,6 +38,10 @@ namespace WowPlus
 
     // The level from which a mount can be ridden. Some mounts carry no level of their own.
     uint32 MountLevel(ItemTemplate const* proto);
+
+    // A true sentence about one vendor's surprise stock this week, for bots to pass on (WowPlusVendors.cpp).
+    // Empty when there is none. World thread only.
+    std::string VendorRumour();
 }
 
 #endif

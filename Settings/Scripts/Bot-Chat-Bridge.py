@@ -43,6 +43,10 @@ MEMORY_DIR = os.path.join(STATE_DIR, GAME)
 ASSIGNMENTS_FILE = os.path.join(STATE_DIR, "Assignments.json")
 RELATIONS_FILE = os.path.join(STATE_DIR, "Relations.json")
 KNOWLEDGE_FILE = os.path.join(ROOT, "Settings", "Reference", "Bot-Knowledge.md")
+RARES_FILE = os.path.join(ROOT, "Settings", "Reference", "Rares.tsv")
+RARE_RUMOUR_CHANCE = 0.15       # how often a bot that starts talking passes on where a rare enemy lives
+VENDOR_RUMOUR_USE_CHANCE = 0.6  # how often it uses a vendor rumour the game handed it
+LETTER_SUBJECTS = ["Thought of you", "A little something", "For the road", "Found these", "Spare potions", "From a guild mate"]
 PORT = 8586
 MODEL = "haiku"
 IDLE_SECONDS = 10 * 60          # a conversation is put away after this much silence
@@ -349,10 +353,11 @@ WHERE_SPOKEN = {
     "say": "{player} is standing near you in the game world and talking out loud.",
     "party": "You are in a party with {player}, and this is the party chat.",
     "guild": "This is the chat of your guild.",
+    "mail": "You are writing {player} a short letter to send by in-game mail.",
 }
 
 
-def system_prompt(q, memory, task):
+def system_prompt(q, memory):
     bot, player = q["bot"], q["player"]
     if q.get("guildmate"):
         bond = f"You and {player} are in the same guild, <{q.get('guild') or 'the guild'}>. You are guild mates."
@@ -394,7 +399,6 @@ def system_prompt(q, memory, task):
         f"right now in {q.get('pzone') or 'Azeroth'}. {bond}\n"
         f"{remembered}\n"
         f"{WHERE_SPOKEN.get(q.get('channel'), WHERE_SPOKEN['whisper']).format(player=player)}{others}\n"
-        f"{task}\n"
         + (f"How chat sounds in this game: {style}\n" if style else "")
         + (f"About this server (every player knows this): {knowledge}\n" if knowledge else "")
         + repeated +
@@ -510,11 +514,12 @@ def speak(q, task, heard=None):
             log("    remembers: " + " | ".join(memory["notes"]))
     if heard:
         log(f"[{channel}] {player}: {heard}")
-    transcript = "\n".join(f"{who}: {line}" for who, line in turns) or "(nobody has said anything for a while)"
-    transcript += f"\n\nWrite {bot}'s next chat message inside <msg></msg>."
+    transcript = "Chat so far:\n" + ("\n".join(f"{who}: {line}" for who, line in turns) or "(nothing for a while)")
+    # What to do goes last, where it weighs most
+    transcript += f"\n\nNow: {task}\nWrite what {bot} writes inside <msg></msg>."
     started = time.time()
     with slots:
-        raw, error = ask_claude(system_prompt(q, memory, task), transcript)
+        raw, error = ask_claude(system_prompt(q, memory), transcript)
     if error:
         log(f"   ! {error}")
         return []
@@ -533,6 +538,9 @@ def speak(q, task, heard=None):
 def reply(q):
     """The bot answers something the player said."""
     task = "Answer the way a real player would in game chat."
+    if q.get("rumour"):
+        task += (f" Something you happen to know: {q['rumour']} {RUMOUR_RULES} Bring it up only if the player asks "
+                 "for news, tips, what is worth doing, or what you have seen lately; otherwise leave it out.")
     return [(q["bot"], line) for line in speak(q, task, heard=q["text"])]
 
 
@@ -551,9 +559,17 @@ def open_talk(q):
         topics += person["topics"]
     topic = random.choice(topics) if topics else "how your day is going"
     where = "guild chat" if q.get("channel") == "guild" else "party chat"
-    task = (f"Nobody is talking. Say one short thing in {where} by yourself, to nobody in particular, the way people "
-            f"do. It could be about: {topic}. Make it fit you and where your character is right now. One line. "
-            "Do not ask everyone a question every time, and do not greet.")
+    rumour = q.get("rumour") if random.random() < VENDOR_RUMOUR_USE_CHANCE else ""
+    if not rumour and random.random() < RARE_RUMOUR_CHANCE:
+        rumour = rare_rumour(q)
+    if rumour:
+        task = (f"Nobody is talking. Pass on something you know, in one line in {where}, to nobody in particular: "
+                f"{rumour} {RUMOUR_RULES}")
+        log(f"   rumour: {rumour}")
+    else:
+        task = (f"Nobody is talking. Say one short thing in {where} by yourself, to nobody in particular, the way "
+                f"people do. It could be about: {topic}. Make it fit you and where your character is right now. One "
+                "line. Do not ask everyone a question every time, and do not greet.")
     lines = [(q["bot"], line) for line in speak(q, task)[:1]]
     others = q.get("others_list", [])
     if not lines or not others or q.get("banter") != "1":
@@ -570,6 +586,78 @@ def open_talk(q):
         task3 = f"{other['name']} answered you. Say one more short thing back, then leave it."
         lines += [(q["bot"], line) for line in speak(q, task3)[:1]]
     return lines
+
+
+def rare_rumour(q):
+    """A rare enemy around the player's level and where it lives, from the reference list. '' if none."""
+    try:
+        level = int(q.get("plevel") or 0)
+    except ValueError:
+        return ""
+    fitting = []
+    if os.path.exists(RARES_FILE):
+        with io.open(RARES_FILE, encoding="utf-8") as f:
+            header = f.readline().rstrip("\n").split("\t")
+            for line in f:
+                row = dict(zip(header, line.rstrip("\n").split("\t")))
+                try:
+                    if row.get("zone") and level - 2 <= int(row["min_level"]) <= level + 4:
+                        fitting.append(row)
+                except (KeyError, ValueError):
+                    pass
+    if not fitting:
+        return ""
+    rare = random.choice(fitting)
+    return f"A rare enemy called {rare['name']} (level {rare['min_level']}) is known to roam {rare['zone']}."
+
+
+RUMOUR_RULES = ("It is true, but you only know it roughly, from passing by or from hearsay: name the zone but not "
+                "the exact spot or anyone's name, say what kind of thing an item is rather than reading out its level and quality, and say it the way people "
+                "pass things on ('I think', 'someone said', 'saw it the other day').")
+
+
+def react(q):
+    """Something just happened to the player and the bot noticed."""
+    where = "guild chat" if q.get("channel") == "guild" else "party chat"
+    task = (f"This just happened: {q['text']} React in one short line in {where}, as yourself: pleased for them, "
+            "teasing, sympathetic, whatever fits you and how well you know them. Do not describe what happened.")
+    return [(q["bot"], line) for line in speak(q, task)[:1]]
+
+
+def meet(q):
+    """The bot runs into the player out in the world. Only bots that know the player say something."""
+    memory = load_memory(q["player"], q["bot"])
+    if not q.get("guildmate") and not memory.get("notes"):
+        return []
+    task = (f"You just ran into {q['player']} out in the world, in {q.get('pzone') or 'the middle of nowhere'}, and "
+            "waved. Say one short thing out loud, the way you would to someone you know: a hello that fits what you "
+            "remember about them. Do not ask them to do something with you.")
+    return [(q["bot"], line) for line in speak(q, task)[:1]]
+
+
+def known_bots(q):
+    """The bots that have notes about this player, so the game knows who would recognise them."""
+    found = []
+    for path in glob.glob(os.path.join(MEMORY_DIR, safe_name(q["player"]), "*.json")):
+        try:
+            with io.open(path, encoding="utf-8") as f:
+                if json.load(f).get("notes"):
+                    found.append((os.path.splitext(os.path.basename(path))[0], "1"))
+        except (OSError, ValueError):
+            pass
+    return found
+
+
+def letter(q):
+    """A guild mate sends a small gift by mail. Returns the subject and the body."""
+    q = dict(q, channel="mail")
+    task = (f"You are sending {q['player']} a small gift by in-game mail: {q['text']}. Write the short letter that "
+            "goes with it: two or three sentences, friendly, in your own voice, perhaps with a reason (you had "
+            "spares, you made too many, they looked like they could use them). No greeting line and no signature.")
+    lines = speak(q, task)
+    if not lines:
+        return []
+    return [(q["bot"], random.choice(LETTER_SUBJECTS)), (q["bot"], " ".join(lines))]
 
 
 def parse_others(text):
@@ -592,13 +680,21 @@ class Handler(BaseHTTPRequestHandler):
         q["others_list"] = parse_others(q.get("others"))
         lines = []
         try:
-            if q.get("bot") and q.get("player"):
-                kind = q.get("kind") or "reply"
+            kind = q.get("kind") or "reply"
+            if kind == "known" and q.get("player"):
+                lines = known_bots(q)
+            elif q.get("bot") and q.get("player"):
                 if kind == "open":
                     lines = open_talk(q)
                 elif kind == "greet":
                     lines = greet(q)
-                elif q.get("text"):
+                elif kind == "meet":
+                    lines = meet(q)
+                elif kind == "event" and q.get("text"):
+                    lines = react(q)
+                elif kind == "letter" and q.get("text"):
+                    lines = letter(q)
+                elif kind == "reply" and q.get("text"):
                     lines = reply(q)
         except Exception as error:          # one bad request must not stop the window
             log(f"   ! {error}")

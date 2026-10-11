@@ -699,3 +699,36 @@ WowPlus.Bots.Companions.IdleSeconds          = 60
 WowPlus.Bots.Companions.Campfire             = 1
 WowPlus.Bots.Companions.Road.MinMinutes      = 3
 WowPlus.Bots.Companions.Road.MaxMinutes      = 7
+
+########################################
+# Bots noticing things
+########################################
+#
+#    WowPlus.BotChat.Moments.Chance
+#        When something happens to you (a level-up, a death in a party, a blue or better piece
+#        of loot, a rare or a boss killed), the chance in percent that one party member or
+#        guild mate says something. Never two bots on the same moment, and at least 45
+#        seconds between two comments. A level that ends in 0 always gets one.
+#        Default: 33
+#
+#    WowPlus.BotChat.Meet.Chance
+#        A guild mate, or a bot you have talked with before, that comes within 20 yards of
+#        you out in the world waves and says something, with this chance in percent. The same
+#        bot not again within three hours. 0: never.
+#        Default: 60
+#
+#    WowPlus.BotChat.Rumour.Chance
+#        The chance in percent that a guild mate who starts talking is handed a true rumour
+#        to pass on: a vendor somewhere with an unusual item this week. (A bot you ask for
+#        news always has one at hand.) They pass it on vaguely.
+#        Default: 30
+#
+#    WowPlus.BotChat.Guild.GiftHours
+#        About this many hours of play apart, a guild mate sends you a letter with a few
+#        potions for your level. 0: never.
+#        Default: 3
+
+WowPlus.BotChat.Moments.Chance    = 33
+WowPlus.BotChat.Meet.Chance       = 60
+WowPlus.BotChat.Rumour.Chance     = 30
+WowPlus.BotChat.Guild.GiftHours   = 3
