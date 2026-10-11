@@ -138,4 +138,77 @@ Our quest data has 129 class quests that teach something. Leaving out duplicates
 
 ## Per class
 
-*To be filled in, one class at a time, once the questions above are settled: the milestone at each ten levels, what moves where, and why.*
+### Mage
+
+**Status: proposal on paper, 2026-10-11. Nothing changed in the game.**
+
+#### Today
+
+| Levels | New abilities from the trainer | How it feels |
+|--------|--------------------------------|--------------|
+| 1-10 | Fireball, Frostbolt, Fire Blast, Arcane Missiles, Polymorph, Frost Nova, conjured food and water | Good. A new button every two levels. |
+| 11-20 | Arcane Explosion, Flamestrike, Blizzard, Blink, Evocation, Mana Shield, the first teleports | The best stretch. Blink at 20 changes the class. |
+| 21-30 | Scorch, Counterspell, Cone of Cold, mana gems, Ice Armor, Ice Block | Good. Ice Block at 30 is a real milestone. |
+| 31-40 | Mage Armor at 34, then only portals | Thin. Level 40 gives a portal. |
+| 41-50 | Nothing but two more portals | **Empty.** (Ice Barrier at 46 is only for those with the talent.) |
+| 51-60 | Arcane Brilliance at 56, a teleport at 60 | **Empty.** (Dragon's Breath at 56 is a talent again.) |
+| 61-70 | Molten Armor 62, Arcane Blast 64, Ice Lance 66, Invisibility 68, Spellsteal 70, Ritual of Refreshment 70 | Crowded: six abilities in nine levels. |
+| 71-80 | Frostfire Bolt 75, Mirror Image 80 | Fine. |
+
+From 35 to 61 a mage learns one buff and a handful of portals. That is 26 levels, about a third of the whole journey.
+
+#### The ladder
+
+One defining ability at every tenth level. **Bold** = moved.
+
+| Level | Milestone | What it adds to how you play | Today |
+|------:|-----------|------------------------------|-------|
+| 10 | Frost Nova | Control: freeze and step back | 10 |
+| 20 | Blink (with Evocation) | Movement, and your mana back | 20 |
+| 30 | Ice Block | Survival: undo a mistake | 30 |
+| 40 | **Invisibility** | Escape, and slipping past what you do not want to fight | 68 |
+| 50 | **Spellsteal** | Taking the enemy's magic for yourself; dungeons at this level are full of buffed casters | 70 |
+| 60 | **Molten Armor** and **Ice Lance** | A third armour to choose between, and an instant spell that punishes frozen targets | 62, 66 |
+| 70 | **Frostfire Bolt** (with Ritual of Refreshment) | A new main nuke | 75 |
+| 80 | Mirror Image | The capstone stays the capstone | 80 |
+
+And two smaller moves to break up the empty levels in between:
+
+| Level | Ability | Today |
+|------:|---------|-------|
+| 46 | **Arcane Brilliance** | 56 |
+| 64 | Arcane Blast | 64 (stays) |
+
+After this, the longest stretch without something new is about six levels instead of twenty-six.
+
+#### How clean each move is
+
+| Move | Numbers involved? | Verdict |
+|------|-------------------|---------|
+| Invisibility 68 to 40 | None | Clean |
+| Spellsteal 70 to 50 | None | Clean |
+| Arcane Brilliance 56 to 46 | It is the group version of Arcane Intellect; it gives the same amount as the single-target rank you already have | Clean |
+| Molten Armor 62 to 60 | A percentage, not a fixed number | Clean |
+| Ice Lance 66 to 60 | Fixed damage sized for level 66. Six levels early it is a little strong, and it is a weak spell unless the target is frozen. | Acceptable; watch it |
+| Frostfire Bolt 75 to 70 | Fixed damage sized for level 75. Five levels early it would out-damage Fireball and Frostbolt until 75. | Acceptable as a reward, or weaken its first rank (then the tooltip is wrong until we have a client patch) |
+| Arcane Blast | Fixed damage sized for 64, and it stacks. At 50 or 60 it would be far stronger than anything else. | **Not moved** |
+
+#### What the ladder cannot fix
+
+- There are only eight late abilities to draw on, and three of them are damage spells that do not move well. So 60 is the weakest rung: a third armour and an instant spell, useful but not class-changing in the way Blink or Invisibility are.
+- A mage's talents are where much of the excitement at 40 to 60 really comes from (Ice Barrier, Combustion, Presence of Mind, the Water Elemental at 60 for frost). The ladder does not touch talents.
+
+#### Misery to check, in Robin's sense
+
+Not friction worth keeping, if they bother you:
+
+- **Drinking.** A low-level mage spends a large share of play sitting down. Evocation comes at 20 and has an eight-minute cooldown.
+- **Conjuring.** Food and water come in ranks you must go back to a trainer for.
+- **Portals as "rewards".** Level 40 and 50 hand you a portal, which a solo player has little use for, and our hearthstone menu now does more.
+
+#### To decide for the mage
+
+1. Is the ladder right? In particular Invisibility at 40 and Spellsteal at 50.
+2. Level 60: accept the weaker rung, or put Mirror Image there and find something else for 80?
+3. Frostfire Bolt at 70: as it is (strong for five levels), weakened, or left at 75?
+4. Is the drinking misery? If so: a shorter Evocation cooldown, or faster mana regeneration out of combat, are both settings-level changes.
