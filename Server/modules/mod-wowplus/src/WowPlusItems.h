@@ -11,6 +11,8 @@
 #include <string>
 #include <vector>
 
+class Item;
+class Player;
 struct ItemTemplate;
 
 namespace WowPlus
@@ -38,6 +40,11 @@ namespace WowPlus
 
     // The level from which a mount can be ridden. Some mounts carry no level of their own.
     uint32 MountLevel(ItemTemplate const* proto);
+
+    // Is this item still in the player's bags, bank or on them? An item handed to a script hook can already have
+    // been destroyed by another module's hook that ran first (mod-junk-to-gold sells grey loot that way), and
+    // touching it then crashes the server. This looks for the pointer without touching the item.
+    bool StillCarried(Player* player, Item const* item);
 
     // A true sentence about one vendor's surprise stock this week, for bots to pass on (WowPlusVendors.cpp).
     // Empty when there is none. World thread only.

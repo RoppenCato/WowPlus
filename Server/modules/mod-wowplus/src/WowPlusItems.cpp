@@ -13,7 +13,9 @@
 #include "Field.h"
 #include "ItemTemplate.h"
 #include "Log.h"
+#include "Bag.h"
 #include "ObjectMgr.h"
+#include "Player.h"
 #include "QueryResult.h"
 #include "SpellInfo.h"
 #include "SpellMgr.h"
@@ -232,4 +234,26 @@ uint32 WowPlus::MountLevel(ItemTemplate const* proto)
         return 40;
 
     return 20;
+}
+
+bool WowPlus::StillCarried(Player* player, Item const* item)
+{
+    if (!player || !item)
+        return false;
+
+    // Everything the character holds directly: worn, backpack, bank, keyring, tokens
+    for (uint8 slot = EQUIPMENT_SLOT_START; slot < CURRENCYTOKEN_SLOT_END; ++slot)
+    {
+        Item* held = player->GetItemByPos(INVENTORY_SLOT_BAG_0, slot);
+        if (held == item)
+            return true;
+
+        // ...and what is inside the bags among those
+        if (Bag* bag = held ? held->ToBag() : nullptr)
+            for (uint32 inside = 0; inside < bag->GetBagSize(); ++inside)
+                if (bag->GetItemByPos(uint8(inside)) == item)
+                    return true;
+    }
+
+    return false;
 }

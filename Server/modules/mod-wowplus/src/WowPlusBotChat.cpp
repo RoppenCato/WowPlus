@@ -792,7 +792,8 @@ public:
 
     void OnPlayerLootItem(Player* player, Item* item, uint32 /*count*/, ObjectGuid /*lootguid*/) override
     {
-        if (IsBot(player) || !item)
+        // Another module may have sold the item already (grey loot): then there is nothing to say
+        if (IsBot(player) || !WowPlus::StillCarried(player, item))
             return;
 
         ItemTemplate const* proto = item->GetTemplate();

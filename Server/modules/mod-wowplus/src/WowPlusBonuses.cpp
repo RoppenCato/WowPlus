@@ -21,6 +21,7 @@
 #include "Player.h"
 #include "Random.h"
 #include "ScriptMgr.h"
+#include "WowPlusItems.h"
 #include "Tokenize.h"
 #include "StringConvert.h"
 
@@ -235,7 +236,8 @@ public:
 
     void OnPlayerLootItem(Player* player, Item* item, uint32 /*count*/, ObjectGuid /*lootguid*/) override
     {
-        if (config.onLoot)
+        // Another module may have sold the item already (grey loot)
+        if (config.onLoot && WowPlus::StillCarried(player, item))
             RollBonuses(player, item, false);
     }
 
