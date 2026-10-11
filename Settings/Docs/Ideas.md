@@ -110,6 +110,25 @@ And a seed: a number, or the word `roll` to have a new one picked at the next st
 
 What each mode does to each system is a table of ranges in our module. Robin tunes those ranges once, knowing what a mode is *for*, and then stops looking.
 
+Decided 2026-10-11:
+
+- **One world for everyone.** *"The world is what it is."* A second character meets the same champions and the same wanderers.
+- **The world changes only when a new mode or seed is chosen and the server is rebuilt or restarted.** Nothing drifts by itself in between. (So moods and wanderers hold still within a world; "moving daily" is dropped unless a mode is made for it.)
+
+### What the game already has to draw on
+
+Checked in our database, 2026-10-11:
+
+| Kind | How many | Use |
+|------|---------:|-----|
+| Rare and rare elite enemies placed in the open world | 391 kinds, at about 1,060 spawn points | The game's own "special" enemies. Easy to find: they are marked as rares. Spread over all levels: 13 below level 10, 69 at 10-19, 65 at 20-29, 49 at 30-39, 57 at 40-49, 71 at 50-59, 38 at 60-69, 22 at 70-79, 7 at 80. |
+| Rares that exist in the data but are placed nowhere | 79, of which about a dozen are real | Mostly developers' test entries and duplicates. A few genuine leftovers: Fjordune the Greater, Ushalac the Gloomdweller, Rezrelek the Winterax hero, Tatterhide, Capo the Mean, and a small group of "Alliance Peacekeepers" and "Ironforge Surveyors". They have no loot and are level 1 in the data, so they would need a level, stats and a home. |
+| Uniquely named hostile enemies that are not rares | about 377, found by name pattern | Enemies with a personal name and a single spawn: Blacktalon the Savage, Archmage Ataeric, Warlord Zol'Maz, Captain Halyndor, Thurman Agamand. 110 of them are quest targets. The other 267 are scenery with a name: the best raw material for champions. |
+
+So the champion system does not need invented enemies. It can promote from three wells: the game's rares (already special, could carry a rolled item on top of their own loot), the named-but-ordinary enemies (special by name, ordinary in play: promoting them fits the world), and ordinary enemies picked by the seed.
+
+The name search is a rough filter. It catches some things that are not individuals ("Winterskorn Elder", "Greymist Raider") and misses single-word names. A hand-checked list would be better than the pattern, and is the kind of choosing Claude could do in the sealed data file.
+
 ### What "sealed content" becomes
 
 Not hidden systems, which Robin ruled out, but hidden *choices inside known systems*: which boar is the champion, what it carries, where the wanderer stands today. The seed makes most of them. Claude can make some by hand where a roll would be bland: choosing a fitting enemy for a zone, writing its rumour, picking an item that suits it. Those go in a data file Robin does not need to open, and everything in it obeys the three rules.
