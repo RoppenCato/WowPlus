@@ -54,6 +54,7 @@
 #include "ScriptMgr.h"
 #include "WorldSession.h"
 #include "WowPlusItems.h"
+#include "WowPlusJournal.h"
 
 #include <boost/asio/ip/tcp.hpp>
 
@@ -315,7 +316,13 @@ namespace
             // Something true the bot may pass on: always at hand when answering, sometimes when starting a talk
             bool const answering = std::string_view(kind) == "reply";
             if (answering || (std::string_view(kind) == "open" && roll_chance_i(int32(rumourChance))))
-                body << "&rumour=" << UrlEncode(WowPlus::VendorRumour());
+            {
+                // A vendor's odd item or a champion's whereabouts
+                std::string rumour = roll_chance_i(50) ? WowPlus::ChampionRumour(player->GetLevel()) : "";
+                if (rumour.empty())
+                    rumour = WowPlus::VendorRumour();
+                body << "&rumour=" << UrlEncode(rumour);
+            }
         }
 
         ++requestsRunning;
@@ -478,6 +485,9 @@ namespace
         }
         draft.SendMailTo(trans, MailReceiver(player), MailSender(bot));
         CharacterDatabase.CommitTransaction(trans);
+
+        if (ItemTemplate const* gift = sObjectMgr->GetItemTemplate(talk.giftItem))
+            WowPlus::Journal(player, WowPlus::JOURNAL_PEOPLE, "A letter from " + bot->GetName() + ", with " + std::to_string(talk.giftCount) + " x " + gift->Name1 + ".");
         talk.giftItem = 0;
     }
 
@@ -538,6 +548,7 @@ namespace
                 continue;
 
             talk.sinceMeeting = 0;
+            WowPlus::Journal(player, WowPlus::JOURNAL_PEOPLE, "Ran into " + bot->GetName() + " in " + WowPlus::PlaceOf(player) + ".");
             bot->SetFacingToObject(player);
             bot->HandleEmoteCommand(EMOTE_ONESHOT_WAVE);
             Ask(bot, player, CHANNEL_SAY, "meet", "", {});
@@ -723,7 +734,9 @@ public:
 
             // A bot that has talked with the player privately knows them from now on
             if ((reply.channel == CHANNEL_WHISPER || reply.channel == CHANNEL_SAY) && !reply.lines.empty())
-                playerTalk[reply.player].knownBots.insert(reply.lines[0].speaker);
+                if (playerTalk[reply.player].knownBots.insert(reply.lines[0].speaker).second)
+                    if (Player* player = ObjectAccessor::FindConnectedPlayer(reply.player))
+                        WowPlus::Journal(player, WowPlus::JOURNAL_PEOPLE, "Got talking with " + reply.lines[0].speaker + " in " + WowPlus::PlaceOf(player) + ".");
         }
 
         for (auto line = pendingLines.begin(); line != pendingLines.end();)

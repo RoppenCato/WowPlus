@@ -38,6 +38,11 @@ DELETE FROM creature_template_spell WHERE CreatureID BETWEEN 9100000 AND 9199999
 DELETE FROM creature_equip_template WHERE CreatureID BETWEEN 9100000 AND 9199999;
 DELETE FROM creature_text WHERE CreatureID BETWEEN 9100000 AND 9199999;
 DELETE FROM smart_scripts WHERE source_type = 0 AND entryorguid BETWEEN 9100000 AND 9199999;
+DELETE FROM creature_queststarter WHERE quest BETWEEN 9100000 AND 9199999;
+DELETE FROM creature_questender WHERE quest BETWEEN 9100000 AND 9199999;
+DELETE FROM quest_offer_reward WHERE ID BETWEEN 9100000 AND 9199999;
+DELETE FROM quest_request_items WHERE ID BETWEEN 9100000 AND 9199999;
+DELETE FROM quest_template WHERE ID BETWEEN 9100000 AND 9199999;
 DELETE FROM wowplus_champions;
 
 -- Choose -----------------------------------------------------------------------------------
@@ -125,3 +130,55 @@ DROP TEMPORARY TABLE wp_copy;
 -- Put them in the world: that one spawn becomes the champion, and comes back after 4 to 8 hours
 UPDATE creature c JOIN wowplus_champions w ON w.guid = c.guid
     SET c.id = w.entry, c.spawntimesecs = 14400 + CRC32(CONCAT(@seed, ':time:', c.guid)) % 14400;
+
+-- Bounties -------------------------------------------------------------------------------------
+-- Every champion has a price on its head: a real quest, offered and paid by the innkeepers of
+-- its zone (where a zone has no inn, by its flight masters). Robin, 2026-10-11: "bounty boards
+-- with quests to kill the champions". A board would need a place chosen by hand in every town;
+-- the innkeeper is already there.
+-- The quest's number depends on the seed, so a new world's bounties are new quests even for a
+-- character that collected the old ones.
+SET @quest_base = 9100000 + (@seed % 90) * 1000 - 9100000;
+
+INSERT INTO quest_template (ID, QuestType, QuestLevel, MinLevel, QuestSortID, RewardXPDifficulty, RewardMoney, Flags,
+        RequiredNpcOrGo1, RequiredNpcOrGoCount1, LogTitle, LogDescription, QuestDescription, QuestCompletionLog, ObjectiveText1)
+    SELECT w.entry + @quest_base, 2, w.level + 1, GREATEST(1, w.level - 5), w.zone, 6, (w.level + 1) * (w.level + 1) * 6, 0,
+        w.entry, 1,
+        CONCAT('Bounty: ', w.name),
+        CONCAT('Kill ', w.name, ', the champion among the ', w.kind, 's of this land, and return for the bounty.'),
+        CONCAT('You look like you can handle yourself, $N.$B$BThere is one out there that folk have started to call ', w.name,
+               '. A ', w.kind, ', but bigger and meaner than any of its kind, and it has cost travellers dearly.$B$B',
+               'There is a purse put together for whoever ends it. Bring it down and the money is yours.'),
+        CONCAT('Return to the one who offered the bounty on ', w.name, '.'),
+        CONCAT(w.name, ' slain')
+    FROM wowplus_champions w;
+
+INSERT INTO quest_request_items (ID, EmoteOnComplete, EmoteOnIncomplete, CompletionText, VerifiedBuild)
+    SELECT w.entry + @quest_base, 0, 0, CONCAT('Is it done? Is ', w.name, ' dead?'), 0 FROM wowplus_champions w;
+INSERT INTO quest_offer_reward (ID, RewardText, VerifiedBuild)
+    SELECT w.entry + @quest_base, CONCAT('So ', w.name, ' is no more. The roads will be quieter for it, $N.$B$BHere is the purse, every coin of it. You have earned it.'), 0
+    FROM wowplus_champions w;
+
+-- Who offers them: the innkeepers standing in the champion's zone...
+DROP TEMPORARY TABLE IF EXISTS wp_givers;
+CREATE TEMPORARY TABLE wp_givers AS
+    SELECT DISTINCT c.id AS npc, c.zoneId AS zone, 1 AS inn
+    FROM creature c JOIN creature_template ct ON ct.entry = c.id
+    WHERE c.map IN (0, 1, 530, 571) AND c.zoneId > 0 AND (ct.npcflag & 65536) AND ct.entry < 9000000;
+-- ...and the flight masters of zones that have no inn
+DROP TEMPORARY TABLE IF EXISTS wp_inn_zones;
+CREATE TEMPORARY TABLE wp_inn_zones AS SELECT DISTINCT zone FROM wp_givers;
+INSERT INTO wp_givers
+    SELECT DISTINCT c.id, c.zoneId, 0
+    FROM creature c JOIN creature_template ct ON ct.entry = c.id
+    LEFT JOIN wp_inn_zones z ON z.zone = c.zoneId
+    WHERE c.map IN (0, 1, 530, 571) AND c.zoneId > 0 AND (ct.npcflag & 8192) AND ct.entry < 9000000 AND z.zone IS NULL;
+DROP TEMPORARY TABLE wp_inn_zones;
+
+INSERT IGNORE INTO creature_queststarter (id, quest)
+    SELECT g.npc, w.entry + @quest_base FROM wowplus_champions w JOIN wp_givers g ON g.zone = w.zone;
+INSERT IGNORE INTO creature_questender (id, quest)
+    SELECT g.npc, w.entry + @quest_base FROM wowplus_champions w JOIN wp_givers g ON g.zone = w.zone;
+-- They must be able to give quests (flag 2). This stays set even when the champions move on.
+UPDATE creature_template ct JOIN wp_givers g ON g.npc = ct.entry SET ct.npcflag = ct.npcflag | 2 WHERE (ct.npcflag & 2) = 0;
+DROP TEMPORARY TABLE wp_givers;

@@ -189,3 +189,5 @@ The folder `AddOns` here holds addons that belong to this server. `Start-Server.
 | `WowPlusSprint` | Hold Shift while running on foot or swimming to sprint. Shows a thin stamina bar below your character while stamina is not full; it turns red when you have run it empty. Hold Alt and drag the bar to move it, `/sprintbar reset` puts it back. The numbers are in `Settings/mod_wowplus.conf` (`WowPlus.Sprint.*`). |
 | `WowPlusBots` | A small bar of buttons for your bots: Follow, Stay, Attack, Flee, Call and Dismiss (your companions), Away and Alone (have the area to yourself). Drag it by the word "Bots"; `/botbar` hides or shows it, `/botbar reset` puts it back. |
 | `WowPlusTalents` | Adds a "Reset talents" button to the talent window. It asks first; it is free. |
+| `WowPlusJournal` | The journal that writes itself: what you killed and found, who you met. Open it with `/journal` or the small book by the minimap. A new line also flashes on screen. |
+| `WowPlusClock` | Sets the minimap clock to the world's time (a day and night pass in an hour). |

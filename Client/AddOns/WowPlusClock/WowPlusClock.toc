@@ -1,0 +1,4 @@
+## Interface: 30300
+## Title: WowPlus Clock
+## Notes: Shows the world's own time on the minimap clock. A day and night pass in an hour.
+WowPlusClock.lua

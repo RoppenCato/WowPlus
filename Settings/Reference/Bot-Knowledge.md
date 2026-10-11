@@ -13,3 +13,5 @@ The auction house is shared by both factions and always has crafting materials, 
 Gear does not bind, so you can hand it on.
 Holding Shift lets you sprint for a few seconds on foot or while swimming.
 You can learn every profession, and gathering gives more than it used to.
+A day and a night pass in about an hour here, and it rains and snows a lot.
+Every zone has one or two champions: a named enemy stronger than its kind. The innkeeper pays a bounty for it.

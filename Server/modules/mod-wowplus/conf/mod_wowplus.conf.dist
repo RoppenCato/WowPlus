@@ -774,3 +774,59 @@ WowPlus.Auction.Staples.PriceFactor = 1
 
 WowPlus.Classes.DualSpecLevel     = 10
 WowPlus.Classes.TalentResetButton = 1
+
+########################################
+# Day and night, and the weather
+########################################
+#
+#    WowPlus.World.DayMinutes
+#        How many real minutes a full day and night take. 60: you see dawn, noon, dusk and
+#        night every hour. Only the sky and the minimap clock follow this; daily resets and
+#        events stay on the real clock. The addon WowPlusClock sets the minimap clock to it.
+#        0: the game's normal real-time day.
+#        Default: 60
+#
+#    WowPlus.Weather.Enable
+#        1: the weather of every zone you are in is decided by this module, from the world
+#        seed and the time: more often and heavier than the game's own. 0: the game's own.
+#        Default: 1
+#
+#    WowPlus.Weather.Chance
+#        The chance in percent that a zone has weather during any one spell. The game's own
+#        is around 15 to 25 where a zone has weather at all.
+#        Default: 40
+#
+#    WowPlus.Weather.HeavyChance
+#        When there is weather, the chance in percent that it is heavy (a downpour, a
+#        blizzard, a sandstorm). The rest is split between light and medium.
+#        Default: 40
+#
+#    WowPlus.Weather.SpellMinutes
+#        How long one spell of weather (or of clear sky) lasts before it is decided anew.
+#        Default: 20
+#
+#    WowPlus.Weather.Everywhere
+#        1: zones the game gives no weather at all get rain too (snow in the cold ones, sand in
+#        the deserts), in the old world and Northrend. Not in Outland, and not in the capitals.
+#        0: only the zones the game itself gives weather.
+#        Default: 1
+
+WowPlus.World.DayMinutes     = 60
+WowPlus.Weather.Enable       = 1
+WowPlus.Weather.Chance       = 40
+WowPlus.Weather.HeavyChance  = 40
+WowPlus.Weather.SpellMinutes = 20
+WowPlus.Weather.Everywhere   = 1
+
+########################################
+# The journal
+########################################
+#
+#    WowPlus.Journal.Enable
+#        1: things worth remembering are written into a journal per character: rares,
+#        champions and bosses killed for the first time, places discovered, levels, bounties
+#        collected, people met, letters and gifts. The addon WowPlusJournal shows it
+#        (/journal, or the book by the minimap).
+#        Default: 1
+
+WowPlus.Journal.Enable = 1

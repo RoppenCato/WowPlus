@@ -28,6 +28,7 @@
 #include "StringConvert.h"
 #include "Tokenize.h"
 #include "WorldSession.h"
+#include "WowPlusJournal.h"
 
 #include <unordered_set>
 #include <vector>
@@ -144,6 +145,10 @@ public:
 
         CharacterDatabase.Execute("INSERT IGNORE INTO wowplus_first_kills (guid, entry) VALUES ({}, {})",
             player->GetGUID().GetCounter(), creature->GetEntry());
+
+        // Champions are the rares made by Settings/SQL/world/..._champions.sql
+        char const* what = boss ? "a boss" : creature->GetEntry() >= 9100000 ? "a champion" : "a rare";
+        WowPlus::Journal(player, WowPlus::JOURNAL_WORLD, "Killed " + creature->GetName() + ", " + what + ", in " + WowPlus::PlaceOf(player) + ".");
 
         uint32 const bonus = uint32(float(player->GetUInt32Value(PLAYER_NEXT_LEVEL_XP)) * percent / 100.0f);
         if (!bonus)

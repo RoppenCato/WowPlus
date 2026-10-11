@@ -255,12 +255,19 @@ The whole picture is in [Bots.md](Bots.md) and [Bot-Chat.md](Bot-Chat.md).
 ## Champions (decided 2026-10-11)
 
 - [~] One or two enemies per zone are champions, chosen by the world seed: a name, a rare's silver dragon, more health, bigger, a level higher, back after 4 to 8 hours. As rares they always drop an extra item and give the first-kill bonus. (`Settings/SQL/world/2026-10-11_champions.sql`, table `wowplus_champions`)
-- [ ] Champions in the bots' rumours, and on a bounty board
+- [~] A bounty on every champion: a real quest from the innkeepers of its zone (flight masters where there is no inn), paid in gold and experience. 86 of the 111 champions have someone to offer it; the rest stand in zones with neither.
+- [~] Bots pass on where a champion has been seen
+- [ ] Bounty boards as objects in towns, and bounties on other things than champions
 
 ## Ideas waiting (see [Ideas.md](Ideas.md))
 
-- [ ] Bounties, with real quests
-- [ ] A journal
+- [ ] Bounties on more than champions
 - [ ] Your own place
-- [ ] Weather and time of day
 - [ ] Bots doing visible things
+
+## The sky, the clock and the journal (decided 2026-10-11)
+
+- [~] A day and night pass in an hour (`WowPlus.World.DayMinutes`); the minimap clock shows the world's time (addon `WowPlusClock`)
+- [~] Weather more often and heavier, from the world seed, with settings (`WowPlus.Weather.*`): 40 percent of the time, 40 percent of that heavy, in spells of 20 minutes, and also in zones the game gives none
+- [~] The journal: first kills, places discovered, levels, bounties, people met, letters and gifts, written per character and shown by the addon `WowPlusJournal` (`/journal`)
+- [ ] Rumours in the journal, and whether they turned out true

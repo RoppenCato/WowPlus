@@ -1,0 +1,5 @@
+## Interface: 30300
+## Title: WowPlus Journal
+## Notes: A journal that writes itself: what you killed and found, who you met. /journal or the book by the minimap.
+## SavedVariablesPerCharacter: WowPlusJournalDB
+WowPlusJournal.lua

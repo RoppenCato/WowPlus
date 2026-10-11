@@ -53,3 +53,4 @@ Deleting the file does not undo it: the database keeps what the file did. Write 
 | `world/2026-10-11_sprint.sql` | The hidden speed effect behind sprint on Shift (spell 100200, server only). |
 | `characters/2026-10-11_first-kills.sql` | The table that remembers which rares and bosses a character has killed once (first-kill experience bonus). |
 | `world/2026-10-11_champions.sql` | The champions: one or two named, stronger enemies per zone, chosen by the world seed. Puts everything back and chooses again on every start. |
+| `characters/2026-10-11_journal.sql` | The table the journal is written into. |
