@@ -18,6 +18,8 @@ The reasons and decisions behind each feature are in [Settings/Docs/Plan.md](../
 | The item pools all of the above draw from | `src/WowPlusItems.h`, `WowPlusItems.cpp` | |
 | Sprint: hold Shift to run faster on foot while stamina lasts (with the addon in `Client/AddOns/WowPlusSprint`) | `src/WowPlusSprint.cpp` | `WowPlus.Sprint.*` |
 | Experience: your share of a kill in a party of bots, and a bonus for the first kill of each rare and boss | `src/WowPlusXP.cpp` | `WowPlus.XP.*` |
+| Bots: passing buffs, `.bots away` and `.bots alone` | `src/WowPlusBots.cpp` | `WowPlus.Bots.*` |
+| Bot chat through Claude, the game side (the bridge is `Settings/Scripts/Bot-Chat-Bridge.py`) | `src/WowPlusBotChat.cpp` | `WowPlus.BotChat.*` |
 | Not built yet, file in place: gold | `src/WowPlusGold.cpp` | |
 
 ## When a rebuild is needed

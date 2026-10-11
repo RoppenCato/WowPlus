@@ -30,6 +30,7 @@
 #include "PlayerbotGuildMgr.h"
 #include "PlayerbotRepository.h"
 #include "PlayerbotSpellRepository.h"
+#include "Config.h"
 #include "Playerbots.h"
 #include "QuestDef.h"
 #include "RandomItemMgr.h"
@@ -594,6 +595,34 @@ PlayerbotFactory::PlayerbotFactory(Player* bot, uint32 level, uint32 itemQuality
                                                                sPlayerbotAIConfig.RandomGearQualityLimit);
         this->itemQuality = sPlayerbotAIConfig.RandomGearQualityLimit;
         this->gearScoreLimit = gs;
+
+        // WowPlus: not every random bot is equally well dressed. Each bot belongs to a wardrobe
+        // class for good, decided by its GUID: plain (all green), mixed (green with some blue
+        // pieces), fine (all blue) or exceptional (blue with some epic pieces).
+        // Settings: WowPlus.Bots.Gear.* in mod_wowplus.conf. See Settings/Docs/Bots.md.
+        if (sConfigMgr->GetOption<bool>("WowPlus.Bots.Gear.Vary", true) && sRandomPlayerbotMgr.IsRandomBot(bot))
+        {
+            uint32 const roll = uint32((uint64(bot->GetGUID().GetCounter()) * 2654435761ULL >> 8) % 100);
+            uint32 const plain = sConfigMgr->GetOption<uint32>("WowPlus.Bots.Gear.PlainPercent", 55);
+            uint32 const mixed = sConfigMgr->GetOption<uint32>("WowPlus.Bots.Gear.MixedPercent", 35);
+            uint32 const fine = sConfigMgr->GetOption<uint32>("WowPlus.Bots.Gear.FinePercent", 8);
+            float const betterSlotChance = sConfigMgr->GetOption<float>("WowPlus.Bots.Gear.BetterSlotChance", 35.0f) / 100.0f;
+
+            if (roll < plain)
+                this->itemQuality = ITEM_QUALITY_UNCOMMON;
+            else if (roll < plain + mixed)
+            {
+                this->itemQuality = ITEM_QUALITY_RARE;
+                this->wowPlusLoweringChance = 1.0f - betterSlotChance;
+            }
+            else if (roll < plain + mixed + fine)
+                this->itemQuality = ITEM_QUALITY_RARE;
+            else
+            {
+                this->itemQuality = ITEM_QUALITY_EPIC;
+                this->wowPlusLoweringChance = 1.0f - betterSlotChance;
+            }
+        }
     }
 }
 
@@ -2450,7 +2479,7 @@ void PlayerbotFactory::InitEquipment(bool incremental, bool second_chance)
         }
 
         int32 desiredQuality = itemQuality;
-        if (urand(0, 100) < 100 * sPlayerbotAIConfig.RandomGearLoweringChance && desiredQuality > ITEM_QUALITY_NORMAL)
+        if (urand(0, 100) < 100 * std::max(sPlayerbotAIConfig.RandomGearLoweringChance, wowPlusLoweringChance) && desiredQuality > ITEM_QUALITY_NORMAL)
             desiredQuality--;
 
         do
@@ -4879,7 +4908,7 @@ void PlayerbotFactory::InitInventoryEquip()
     std::vector<uint32> ids;
 
     uint32 desiredQuality = itemQuality;
-    if (urand(0, 100) < 100 * sPlayerbotAIConfig.RandomGearLoweringChance && desiredQuality > ITEM_QUALITY_NORMAL)
+    if (urand(0, 100) < 100 * std::max(sPlayerbotAIConfig.RandomGearLoweringChance, wowPlusLoweringChance) && desiredQuality > ITEM_QUALITY_NORMAL)
     {
         desiredQuality--;
     }

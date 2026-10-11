@@ -12,6 +12,8 @@ void AddSC_WowPlusGold();
 void AddSC_WowPlusClasses();
 void AddSC_WowPlusSprint();
 void AddSC_WowPlusXP();
+void AddSC_WowPlusBots();
+void AddSC_WowPlusBotChat();
 
 void Addmod_wowplusScripts()
 {
@@ -25,4 +27,6 @@ void Addmod_wowplusScripts()
     AddSC_WowPlusClasses();
     AddSC_WowPlusSprint();
     AddSC_WowPlusXP();
+    AddSC_WowPlusBots();
+    AddSC_WowPlusBotChat();
 }

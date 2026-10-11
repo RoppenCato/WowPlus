@@ -216,3 +216,17 @@ Goal: about 70 to 100 hours to level 80, not slow alone, and new places pay bett
 - [~] A party of bots does not eat the experience: your share is 0.75 with one bot, down to 0.45 in a full party of five, where the game gives 0.5 down to 0.28 (`WowPlus.XP.BotPartyShare`). Less than alone on purpose, because the party kills much faster.
 - [~] A bonus the first time a character kills each rare (3 percent of the current level) and each dungeon or raid boss (4 percent). A quest is about 5. (`WowPlus.XP.FirstKill.*`)
 - [~] Dungeons scaled down for a small party gave very little experience (Sunken Temple, alone, level 50). Doubled, so a dungeon enemy is worth about what an enemy outdoors is (`AutoBalance.RewardScaling.XP.Modifier` in `Settings/AutoBalance.conf`). A first guess, to be tuned by playing.
+
+## Bots (decided 2026-10-11)
+
+The whole picture is in [Bots.md](Bots.md) and [Bot-Chat.md](Bot-Chat.md).
+
+- [~] Bots always accept party and guild invitations
+- [~] About half the bots gather in your level range, the rest stay spread out
+- [~] Bot gear varies per bot: most green, some with blues, a few really well geared
+- [~] Passing bots buff you now and then
+- [~] `.bots away` and `.bots alone on/off` to have the area to yourself
+- [~] Bot chat through Claude: whisper, /say, party and guild chat; a person per bot; memory notes per bot
+- [ ] Companions (one or two special bots)
+- [ ] Easy control (an addon with buttons)
+- [ ] Bots start conversations themselves

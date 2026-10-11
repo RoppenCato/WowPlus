@@ -548,3 +548,99 @@ WowPlus.Sprint.VisualInterval     = 0.7
 WowPlus.XP.BotPartyShare          = "1 0.75 0.6 0.5 0.45"
 WowPlus.XP.FirstKill.RarePercent  = 3
 WowPlus.XP.FirstKill.BossPercent  = 4
+
+########################################
+# Bots
+########################################
+#
+#    Most bot settings belong to the bot module: Settings/playerbots.conf. These are ours.
+#    The whole picture is in Settings/Docs/Bots.md.
+#
+#    WowPlus.Bots.Gear.Vary
+#        1: not every random bot is equally well dressed. Each bot belongs to one wardrobe
+#        class for good:
+#          plain        every piece green
+#          mixed        green, with some blue pieces
+#          fine         every piece blue
+#          exceptional  blue, with some epic pieces (whatever is left of 100 percent)
+#        A bot gets new gear when it levels up or is re-rolled, so a change here shows slowly.
+#        0: every bot gets the best gear the bot module allows (Playerbots.RandomGearQualityLimit).
+#        Default: 1
+#
+#    WowPlus.Bots.Gear.PlainPercent, MixedPercent, FinePercent
+#        How many bots of each class, in percent.
+#        Default: 55, 35 and 8 (which leaves 2 for exceptional)
+#
+#    WowPlus.Bots.Gear.BetterSlotChance
+#        For mixed and exceptional bots: the chance in percent that a piece is the better colour.
+#        Default: 35
+
+WowPlus.Bots.Gear.Vary             = 1
+WowPlus.Bots.Gear.PlainPercent     = 55
+WowPlus.Bots.Gear.MixedPercent     = 35
+WowPlus.Bots.Gear.FinePercent      = 8
+WowPlus.Bots.Gear.BetterSlotChance = 35
+
+#
+#    WowPlus.Bots.Buffs.Enable
+#        1: now and then a bot of your faction that is near you casts its class buff on you
+#        (Fortitude, Mark of the Wild, Arcane Intellect, a blessing), if you do not have it.
+#        Not in combat, and not from bots in your party, who buff by themselves.
+#        Default: 1
+#
+#    WowPlus.Bots.Buffs.MinSeconds, MaxSeconds
+#        The time between two such buffs is picked at random between these.
+#        Default: 90 and 240
+#
+#    WowPlus.Bots.Buffs.Radius
+#        How near the bot must be, in yards.
+#        Default: 20
+
+WowPlus.Bots.Buffs.Enable     = 1
+WowPlus.Bots.Buffs.MinSeconds = 90
+WowPlus.Bots.Buffs.MaxSeconds = 240
+WowPlus.Bots.Buffs.Radius     = 20
+
+#
+#    WowPlus.Bots.Away.Radius
+#        The chat commands ".bots away" (once) and ".bots alone on" (keeps going until
+#        ".bots alone off") send every free bot within this many yards somewhere else.
+#        Bots in your party stay.
+#        Default: 200
+
+WowPlus.Bots.Away.Radius = 200
+
+########################################
+# Bot chat through Claude
+########################################
+#
+#    Bots answer when you talk to them, as the people they are. Needs the bridge window:
+#    Start-Bot-Chat.bat (once before that: Login-Bot-Chat.bat). Without it bots stay quiet.
+#    Who each bot is, and what it remembers, is the bridge's business: Settings/Docs/Bot-Chat.md.
+#
+#    WowPlus.BotChat.Enable
+#        Default: 1
+#
+#    WowPlus.BotChat.Port
+#        The port on this PC the bridge listens on. Must match the bridge.
+#        Default: 8586
+#
+#    WowPlus.BotChat.Say
+#        1: /say is answered by a nearby bot you name, else the bot you have targeted, else
+#        the closest bot if one stands within ClosestRadius yards of you.
+#        Default: 1, and 8 yards
+#
+#    WowPlus.BotChat.Party, WowPlus.BotChat.Guild
+#        1: bots in your party or guild answer in that chat. A bot you name always answers;
+#        the bot that answered last keeps the talk going for two minutes; otherwise one of
+#        them answers with the UnaddressedChance in percent.
+#        Default: 1 and 50 for the party, 1 and 35 for the guild
+
+WowPlus.BotChat.Enable                   = 1
+WowPlus.BotChat.Port                     = 8586
+WowPlus.BotChat.Say                      = 1
+WowPlus.BotChat.Say.ClosestRadius        = 8
+WowPlus.BotChat.Party                    = 1
+WowPlus.BotChat.Party.UnaddressedChance  = 50
+WowPlus.BotChat.Guild                    = 1
+WowPlus.BotChat.Guild.UnaddressedChance  = 35
