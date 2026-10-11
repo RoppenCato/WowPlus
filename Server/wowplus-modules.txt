@@ -7,3 +7,4 @@ mod-aoe-loot https://github.com/azerothcore/mod-aoe-loot master
 mod-junk-to-gold https://github.com/noisiver/mod-junk-to-gold master
 mod-autobalance https://github.com/azerothcore/mod-autobalance master
 mod-random-enchants https://github.com/azerothcore/mod-random-enchants master
+mod-ah-bot https://github.com/azerothcore/mod-ah-bot master

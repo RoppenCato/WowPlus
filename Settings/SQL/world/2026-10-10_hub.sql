@@ -22,10 +22,12 @@ DELETE FROM creature_template WHERE entry BETWEEN 9000001 AND 9000099;
 DROP TEMPORARY TABLE IF EXISTS wp_npc;
 CREATE TEMPORARY TABLE wp_npc (entry INT UNSIGNED PRIMARY KEY, source INT UNSIGNED, name VARCHAR(100), subname VARCHAR(100),
     npcflag INT UNSIGNED, script VARCHAR(64), x FLOAT, z FLOAT);
--- npcflag: 129 = talks and sells, 16 = trainer
+-- npcflag: 129 = talks and sells, 16 = trainer, 2097152 = auctioneer
+-- Bram Coalhand sold raw materials at first. Since 2026-10-11 he is the auctioneer instead: materials come
+-- from the auction house (mod-ah-bot), which Robin preferred to a vendor with everything.
 INSERT INTO wp_npc VALUES
     (9000001,    66, 'Tilda Packwell',   'Crafting Supplies', 129, 'npc_wowplus_hub_vendor', 16205, 13.2),
-    (9000002,   514, 'Bram Coalhand',    'Materials',         129, 'npc_wowplus_hub_vendor', 16211, 13.7),
+    (9000002,   514, 'Bram Coalhand',    'Auctioneer',    2097152, '',                       16211, 13.7),
     (9000003, 25263, 'Elowen Quill',     'Glyphs',            129, 'npc_wowplus_hub_vendor', 16217, 13.3),
     (9000004, 28701, 'Marn Facet',       'Cut Gems',          129, 'npc_wowplus_hub_vendor', 16223, 13.2),
     (9000005, 28693, 'Sel Runeweaver',   'Enchant Scrolls',   129, 'npc_wowplus_hub_vendor', 16229, 13.3),
@@ -102,14 +104,7 @@ INSERT IGNORE INTO wp_list SELECT DISTINCT 9001002, v.item FROM npc_vendor v JOI
     WHERE v.entry < 9000000 AND v.ExtendedCost = 0 AND i.class = 7;
 
 -- Materials -----------------------------------------------------------------------------
-INSERT INTO wowplus_hub_menu (npc_entry, sort, label, vendor_entry) VALUES
-    (9000002, 1, 'Bars', 9001011),
-    (9000002, 2, 'Bolts of cloth and special cloths', 9001012),
-    (9000002, 3, 'Cured and heavy leathers', 9001013),
-    (9000002, 4, 'Engineering parts', 9001014),
-    (9000002, 5, 'Inks', 9001017),
-    (9000002, 6, 'Elemental materials', 9001015),
-    (9000002, 7, 'Rare finds', 9001016);
+-- No longer offered (see the note at the top): the lists are still built below but nobody sells them.
 INSERT IGNORE INTO wp_list SELECT 9001011, entry FROM item_template
     WHERE class = 7 AND subclass = 7 AND name LIKE '% Bar' AND NOT REGEXP_LIKE(name, 'Test|Deprecated|OLD|Unused', 'c');
 INSERT IGNORE INTO wp_list SELECT 9001012, entry FROM item_template

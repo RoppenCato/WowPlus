@@ -139,6 +139,7 @@ __pycache__/
 !/modules/mod-autobalance
 !/modules/mod-wowplus
 !/modules/mod-random-enchants
+!/modules/mod-ah-bot
 
 # Live-stack e2e private / local tooling (scratch tests stay uncommitted)
 e2e/local/**
