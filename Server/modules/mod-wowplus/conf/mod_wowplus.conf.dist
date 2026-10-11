@@ -326,16 +326,124 @@ WowPlus.Classes.ShamanTotemRelic = 1
 
 #
 #    WowPlus.Classes.RogueDualWield
-#        1: a rogue knows Dual Wield from level 1 (the game: level 10), and a new rogue is
-#        given a second starting dagger, once.
+#        1: a rogue knows Dual Wield from level 1 (the game: level 10).
 #        Default: 1
 
 WowPlus.Classes.RogueDualWield = 1
 
 #
+#    WowPlus.Classes.RogueSecondDagger
 #    WowPlus.Classes.CasterWand
-#        1: priests, mages and warlocks are handed a Lesser Magic Wand when they reach
-#        level 5, once. Characters above level 14 are not given one.
+#        Handing weapons out for free. Off: the weaponsmiths of the starting areas sell every
+#        basic weapon, a second dagger and a first wand among them, so they are bought.
+#        1 = a new rogue is given a second dagger / priests, mages and warlocks are given
+#        a Lesser Magic Wand at level 5, each once.
+#        Default: 0, 0
+
+WowPlus.Classes.RogueSecondDagger = 0
+WowPlus.Classes.CasterWand        = 0
+
+########################################
+# The world
+########################################
+#
+#    WowPlus.World.Seed
+#        The number that everything "random about the world" is worked out from: which
+#        vendors have surprise stock and what, which theme a wandering merchant has.
+#        The same seed is the same world. Change it for a different one.
 #        Default: 1
 
-WowPlus.Classes.CasterWand = 1
+WowPlus.World.Seed = 1
+
+########################################
+# Surprise stock on vendors
+########################################
+#
+#    WowPlus.Vendors.Enable
+#        1: the game's own vendors carry a little surprise stock, one of each item, for the
+#        level of their zone. Not innkeepers, food and drink sellers or stable masters, and
+#        not the vendors of the starting areas. Enabling this also raises the buy price of
+#        dropped equipment, recipes, mounts and pets to something worth their being sold.
+#        Default: 1
+
+WowPlus.Vendors.Enable = 1
+
+#
+#    WowPlus.Vendors.PeriodDays
+#        How long a stock holds. It is worked out from the seed and the period, so within a
+#        period it is the same however often the server restarts. A vendor that is in view
+#        when the period ends keeps its old shelf until the next restart.
+#        Default: 7
+
+WowPlus.Vendors.PeriodDays = 7
+
+#
+#    WowPlus.Vendors.Gear.GreenChance / BlueChance / EpicChance
+#        For vendors who sell armour or weapons: the chance in percent that they have one
+#        or two greens of the kind they sell, a blue, an epic. Each is rolled separately.
+#        Default: 60, 12, 1
+
+WowPlus.Vendors.Gear.GreenChance = 60
+WowPlus.Vendors.Gear.BlueChance  = 12
+WowPlus.Vendors.Gear.EpicChance  = 1
+
+#
+#    WowPlus.Vendors.Other.ConsumableChance / RecipeChance / GearChance
+#        For the other speciality vendors (trade goods, reagents, supplies and so on): the
+#        chance that they have a potion or elixir or two, a recipe, a single green.
+#        Default: 15, 4, 8
+
+WowPlus.Vendors.Other.ConsumableChance = 15
+WowPlus.Vendors.Other.RecipeChance     = 4
+WowPlus.Vendors.Other.GearChance       = 8
+
+#
+#    WowPlus.Vendors.MountChance / PetChance
+#        For any of those vendors: the chance of a mount, of a companion pet.
+#        0.25 is one vendor in 400.
+#        Default: 0.25, 0.5
+
+WowPlus.Vendors.MountChance = 0.25
+WowPlus.Vendors.PetChance   = 0.5
+
+#
+#    WowPlus.Vendors.Wanderers
+#        1: merchants who walk a route get a theme from the seed (beasts, mounts, potions,
+#        armour, weapons, recipes, oddities) and a real stock of it, added to what they sold.
+#        Default: 1
+
+WowPlus.Vendors.Wanderers = 1
+
+#
+#    WowPlus.Vendors.PriceFactor
+#        Prices of equipment are item level squared times a factor for the rarity (green 40,
+#        blue 150, epic 600 copper), then times this number. 2 doubles every such price.
+#    WowPlus.Vendors.MountPriceGold / PetPriceGold
+#        The least a mount or pet costs, in gold. A mount costs this times 1, 2, 5 or 10
+#        for the riding tier it needs (level 20, 40, 60, 70).
+#        Default: 1, 800, 40
+
+WowPlus.Vendors.PriceFactor    = 1
+WowPlus.Vendors.MountPriceGold = 800
+WowPlus.Vendors.PetPriceGold   = 40
+
+########################################
+# Bags from enemies
+########################################
+#
+#    WowPlus.Loot.Bag.Chance
+#        The small 6-slot pouches already drop in the starting zones. This carries the idea
+#        on: enemies of level 10 to 17 can drop a plain 8-slot bag, 18 to 25 a 10-slot sack,
+#        26 to 34 a 12-slot knapsack. Chance in percent per kill, not from grey enemies.
+#        For comparison: the game's own pouches drop from about 80 kinds of enemy at 0.19.
+#        Default: 0.5
+
+WowPlus.Loot.Bag.Chance = 0.5
+
+#
+#    WowPlus.Vendors.Debug
+#        1: every vendor that comes into view writes a line to logs/Server.log saying what
+#        surprise stock it was given. This spoils the surprise: for finding problems only.
+#        Default: 0
+
+WowPlus.Vendors.Debug = 0

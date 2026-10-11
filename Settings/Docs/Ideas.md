@@ -177,7 +177,7 @@ All of it changes only when a new mode or seed is chosen, as decided.
 
 Robin: *"Existing vendors should get an updated inventory with some potential good loot. Not sure how to balance it. Maybe a very small chance at mount or pet. Also potions, elixirs. This could be part of the 'random mode' idea too, so it should be able to be modified. Also wandering vendors: give them a better purpose than selling some useless food. Random themes of loot, so you could happen upon a pet vendor."*
 
-**Status: proposal. Not built.**
+**Status: first version built 2026-10-11** (`mod-wowplus`, `src/WowPlusVendors.cpp`, settings `WowPlus.Vendors.*` and `WowPlus.World.Seed`). Robin's decisions: stock changes weekly; every vendor that is not a "normal" one (inn, food, stable) has a chance; armour and weapon vendors have a high chance of greens and a low one of blues; the vendors of the starting areas get none. In a test start, 641 vendors came into view: 26 wanderers, and 255 of the 615 others had something. What follows is the proposal as it was written.
 
 **Ordinary vendors.** The vendors the game already has, all over the world, can each carry a little surprise stock on top of their normal goods.
 

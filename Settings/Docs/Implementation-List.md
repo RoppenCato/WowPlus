@@ -110,10 +110,10 @@ Decided 2026-10-10:
 
 - [ ] 4.1 Write down the target: gold per hour by level, and the price of the best things
 - [ ] 4.2 Gold sources tuned to the target
-- [ ] 4.3 Vendors with limited stock of rare things (SQL)
-- [ ] 4.4 Rotating stock by weekday (SQL)
+- [~] 4.3 Surprise stock on the game's own vendors, one of each, for the zone's level, changing weekly (`mod-wowplus`, settings `WowPlus.Vendors.*`). Armour and weapon vendors: usually a green, sometimes a blue. Other speciality vendors: now and then a potion, elixir or recipe. Very rarely a mount or pet. Not inns, food sellers, stables or starting areas.
+- [x] 4.4 Rotating stock: done as part of 4.3, by the week instead of the weekday
 - [ ] 4.5 Random daily stock from the item lists
-- [ ] 4.6 A travelling merchant
+- [~] 4.6 Wandering merchants: the game's own route-walking vendors get a theme from the world seed (beasts, mounts, potions, armour, weapons, recipes, oddities) and a stock of it. New wanderers on new roads: not yet.
 - [ ] 4.7 More chests in the world, chest tiers, locked chests with keys
 
 ## Phase 5: Professions

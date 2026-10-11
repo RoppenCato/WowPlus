@@ -28,15 +28,15 @@
 #include "SpellInfo.h"
 #include "SpellMgr.h"
 #include "WorldSession.h"
+#include "WowPlusItems.h"
 
 #include <array>
-#include <unordered_set>
 #include <vector>
 
 namespace
 {
-    constexpr uint8 MAX_LEVEL_INDEX = 84;                   // required levels 0..83
-    constexpr uint8 QUALITY_COUNT = 4;                      // uncommon, rare, epic, legendary
+    using namespace WowPlus;                                // MAX_LEVEL_INDEX, QUALITY_COUNT, the item pools
+
     constexpr std::array<uint8, 3> LEVEL_CAPS = {60, 70, 80};
 
     enum EnemyRank : uint8
@@ -67,136 +67,11 @@ namespace
         float mountChance = 0.1f;                           // percent, flat
         float petChance = 0.2f;                             // percent, flat
         bool skipKnownCollectibles = true;
+        float bagChance = 0.5f;                             // percent, flat
         bool debug = false;
     };
 
     WowPlusLootConfig config;
-
-    // Equipment by required level and rarity. Built once at startup, only read afterwards.
-    std::array<std::array<std::vector<ItemTemplate const*>, QUALITY_COUNT>, MAX_LEVEL_INDEX> equipment;
-    std::vector<ItemTemplate const*> mounts;
-    std::vector<ItemTemplate const*> pets;
-
-    bool NameLooksUnused(std::string const& name)
-    {
-        static std::array<char const*, 14> const markers =
-        {
-            "Test", "TEST", "Deprecated", "DEPRECATED", "DEP ", "OLD", "(old", "Monster -", "[PH]", "PH ",
-            "Unused", "UNUSED", "QA", "NPC Equip"
-        };
-
-        for (char const* marker : markers)
-            if (name.find(marker) != std::string::npos)
-                return true;
-
-        return false;
-    }
-
-    bool NameLooksPvP(std::string const& name)
-    {
-        static std::array<char const*, 20> const markers =
-        {
-            "Gladiator's", "Grand Marshal's", "High Warlord's", "Field Marshal's", "Warlord's", "Marshal's",
-            "General's", "Lieutenant Commander's", "Champion's", "Knight-", "Legionnaire's", "Blood Guard's",
-            "Sergeant", "Vindicator's", "Guardian's", "Veteran's", "Medallion of the", "Insignia of the",
-            "Battlemaster's", "Titan-Forged"
-        };
-
-        for (char const* marker : markers)
-            if (name.find(marker) != std::string::npos)
-                return true;
-
-        return false;
-    }
-
-    // Every item the game can really hand out: dropped, sold, a quest reward, or crafted.
-    // Items outside this set are leftovers that were never obtainable.
-    std::unordered_set<uint32> LoadObtainableItems()
-    {
-        std::unordered_set<uint32> obtainable;
-
-        static std::array<char const*, 7> const queries =
-        {
-            "SELECT DISTINCT Item FROM creature_loot_template WHERE Reference = 0",
-            "SELECT DISTINCT Item FROM reference_loot_template WHERE Reference = 0",
-            "SELECT DISTINCT Item FROM gameobject_loot_template WHERE Reference = 0",
-            "SELECT DISTINCT Item FROM item_loot_template WHERE Reference = 0",
-            "SELECT DISTINCT item FROM npc_vendor WHERE item > 0",
-            "SELECT RewardItem1 FROM quest_template UNION SELECT RewardItem2 FROM quest_template "
-            "UNION SELECT RewardItem3 FROM quest_template UNION SELECT RewardItem4 FROM quest_template",
-            "SELECT RewardChoiceItemID1 FROM quest_template UNION SELECT RewardChoiceItemID2 FROM quest_template "
-            "UNION SELECT RewardChoiceItemID3 FROM quest_template UNION SELECT RewardChoiceItemID4 FROM quest_template "
-            "UNION SELECT RewardChoiceItemID5 FROM quest_template UNION SELECT RewardChoiceItemID6 FROM quest_template"
-        };
-
-        for (char const* query : queries)
-            if (QueryResult result = WorldDatabase.Query(query))
-                do
-                    obtainable.insert((*result)[0].Get<uint32>());
-                while (result->NextRow());
-
-        // Crafted items: anything a spell creates
-        for (uint32 spellId = 0; spellId < sSpellMgr->GetSpellInfoStoreSize(); ++spellId)
-            if (SpellInfo const* spellInfo = sSpellMgr->GetSpellInfo(spellId))
-                for (SpellEffectInfo const& effect : spellInfo->GetEffects())
-                    if (effect.Effect == SPELL_EFFECT_CREATE_ITEM && effect.ItemType)
-                        obtainable.insert(effect.ItemType);
-
-        obtainable.erase(0);
-        return obtainable;
-    }
-
-    void BuildPools()
-    {
-        for (auto& byQuality : equipment)
-            for (auto& pool : byQuality)
-                pool.clear();
-        mounts.clear();
-        pets.clear();
-
-        std::unordered_set<uint32> const obtainable = LoadObtainableItems();
-        uint32 equipmentCount = 0;
-
-        for (auto const& [entry, proto] : *sObjectMgr->GetItemTemplateStore())
-        {
-            if (NameLooksUnused(proto.Name1) || proto.Duration || proto.HasFlag(ITEM_FLAG_CONJURED))
-                continue;
-
-            if (proto.Class == ITEM_CLASS_MISC && proto.SubClass == ITEM_SUBCLASS_JUNK_MOUNT)
-            {
-                mounts.push_back(&proto);
-                continue;
-            }
-
-            if (proto.Class == ITEM_CLASS_MISC && proto.SubClass == ITEM_SUBCLASS_JUNK_PET)
-            {
-                pets.push_back(&proto);
-                continue;
-            }
-
-            if (proto.Class != ITEM_CLASS_WEAPON && proto.Class != ITEM_CLASS_ARMOR)
-                continue;
-
-            if (proto.InventoryType == INVTYPE_NON_EQUIP || proto.InventoryType == INVTYPE_BAG ||
-                proto.InventoryType == INVTYPE_TABARD || proto.InventoryType == INVTYPE_BODY)
-                continue;
-
-            if (proto.Quality < ITEM_QUALITY_UNCOMMON || proto.Quality > ITEM_QUALITY_LEGENDARY)
-                continue;
-
-            if (!proto.RequiredLevel || proto.RequiredLevel >= MAX_LEVEL_INDEX)
-                continue;
-
-            if (proto.StartQuest || NameLooksPvP(proto.Name1) || !obtainable.count(entry))
-                continue;
-
-            equipment[proto.RequiredLevel][proto.Quality - ITEM_QUALITY_UNCOMMON].push_back(&proto);
-            ++equipmentCount;
-        }
-
-        LOG_INFO("server.loading", ">> WowPlus loot: {} equipment items, {} mounts, {} companion pets in the pools",
-            equipmentCount, mounts.size(), pets.size());
-    }
 
     void LoadConfig()
     {
@@ -237,6 +112,7 @@ namespace
         config.petChance = sConfigMgr->GetOption<float>("WowPlus.Loot.Pet.Chance", 0.2f);
         config.skipKnownCollectibles = sConfigMgr->GetOption<bool>("WowPlus.Loot.Collectibles.SkipKnown", true);
         config.debug = sConfigMgr->GetOption<bool>("WowPlus.Loot.Debug", false);
+        config.bagChance = sConfigMgr->GetOption<float>("WowPlus.Loot.Bag.Chance", 0.5f);
     }
 
     bool IsBot(Player const* player)
@@ -394,7 +270,7 @@ namespace
                 maxItemLevel = base + uint32(float(config.capStep) * (jump ? config.capJumpFactor : 1.0f));
             }
 
-            for (ItemTemplate const* proto : equipment[requiredLevel][rarity])
+            for (ItemTemplate const* proto : Equipment(requiredLevel, rarity))
             {
                 // Legendaries are too few to band by item level
                 if (rarity < 3 && (proto->ItemLevel < minItemLevel || proto->ItemLevel > maxItemLevel))
@@ -447,22 +323,6 @@ namespace
                 return true;
 
         return false;
-    }
-
-    // Mounts teach riding ranks at 20, 40, 60 and 70; some have no level of their own.
-    uint32 MountLevel(ItemTemplate const* proto)
-    {
-        if (proto->RequiredLevel)
-            return proto->RequiredLevel;
-
-        if (proto->RequiredSkillRank >= 300)
-            return 70;
-        if (proto->RequiredSkillRank >= 225)
-            return 60;
-        if (proto->RequiredSkillRank >= 150)
-            return 40;
-
-        return 20;
     }
 
     ItemTemplate const* PickCollectible(Player* player, std::vector<ItemTemplate const*> const& pool, bool isMount)
@@ -520,6 +380,24 @@ namespace
         }
     }
 
+    // The plain, uncrafted bags of the early game. The 6-slot pouches already drop in the starting
+    // zones; these carry the same idea on through the next zones, by the level of the enemy.
+    uint32 PickBag(uint32 enemyLevel)
+    {
+        static std::array<uint32, 4> const eightSlot = {856, 2657, 5573, 5574};     // Blue, Red, Green, White Leather Bag
+        static std::array<uint32, 4> const tenSlot = {804, 857, 5575, 5576};        // Large Blue, Red, Green, Brown Sack
+        static constexpr uint32 twelveSlot = 1725;                                 // Large Knapsack
+
+        if (enemyLevel >= 10 && enemyLevel <= 17)
+            return eightSlot[urand(0, eightSlot.size() - 1)];
+        if (enemyLevel >= 18 && enemyLevel <= 25)
+            return tenSlot[urand(0, tenSlot.size() - 1)];
+        if (enemyLevel >= 26 && enemyLevel <= 34)
+            return twelveSlot;
+
+        return 0;
+    }
+
     bool IsGrey(uint32 playerLevel, uint32 sourceLevel)
     {
         return sourceLevel <= Acore::XP::GetGrayLevel(uint8(playerLevel));
@@ -554,7 +432,7 @@ public:
 
     void OnStartup() override
     {
-        BuildPools();
+        BuildItemPools();
     }
 };
 
@@ -633,12 +511,18 @@ public:
                 config.chance[rank], player->GetName(), player->GetLevel(), player->GetGroup() ? "in a group, item goes to bags" : "alone, item goes on the corpse",
                 !rolled ? "roll failed" : equipment ? equipment->Name1 : "roll succeeded but no item fits");
 
+        // Bags come from enemies only, and by the enemy's level: they belong to the zone
+        if (rank != RANK_CHEST && roll_chance_f(config.bagChance))
+            if (uint32 bagId = PickBag(sourceLevel))
+                if (ItemTemplate const* proto = sObjectMgr->GetItemTemplate(bagId))
+                    GiveItem(player, loot, proto);
+
         if (roll_chance_f(config.mountChance))
-            if (ItemTemplate const* proto = PickCollectible(player, mounts, true))
+            if (ItemTemplate const* proto = PickCollectible(player, Mounts(), true))
                 GiveItem(player, loot, proto);
 
         if (roll_chance_f(config.petChance))
-            if (ItemTemplate const* proto = PickCollectible(player, pets, false))
+            if (ItemTemplate const* proto = PickCollectible(player, Pets(), false))
                 GiveItem(player, loot, proto);
     }
 };

@@ -10,8 +10,9 @@
  *   level 10, and that is the day the hunter chooses a pet of their own.
  * - A shaman gets the Totem of the Earthen Ring, which stands in for the four totem items the
  *   totem quests used to hand out. Without it the totem spells cannot be cast.
- * - A rogue can dual wield from the start, and owns a second dagger to do it with.
- * - Priests, mages and warlocks are handed their first wand at level 5.
+ * - A rogue can dual wield from the start.
+ * - Optional, off by default: a second starting dagger for rogues and a first wand for casters
+ *   at level 5. Since 2026-10-11 the weaponsmiths of the starting areas sell those instead.
  */
 
 #include "Chat.h"
@@ -50,7 +51,8 @@ namespace
     bool hunterStarterPet = true;
     bool shamanTotemRelic = true;
     bool rogueDualWield = true;
-    bool casterWand = true;
+    bool rogueSecondDagger = false;                         // off: the starting weaponsmiths sell one
+    bool casterWand = false;                                // off: the starting weaponsmiths sell one
 
     void Tell(Player* player, char const* text)
     {
@@ -139,7 +141,7 @@ namespace
             player->learnSpell(SPELL_DUAL_WIELD, false);
 
         // A new rogue owns one dagger; one that is past the old Dual Wield level has found weapons already
-        if (player->GetLevel() < ROGUE_OLD_DUAL_WIELD_LEVEL && GiveOnce(player, GIVEN_SECOND_DAGGER, ITEM_WORN_DAGGER))
+        if (rogueSecondDagger && player->GetLevel() < ROGUE_OLD_DUAL_WIELD_LEVEL && GiveOnce(player, GIVEN_SECOND_DAGGER, ITEM_WORN_DAGGER))
             Tell(player, "You find a second dagger in your pack. A rogue fights with both hands.");
     }
 
@@ -181,7 +183,8 @@ public:
         hunterStarterPet = sConfigMgr->GetOption<bool>("WowPlus.Classes.HunterStarterPet", true);
         shamanTotemRelic = sConfigMgr->GetOption<bool>("WowPlus.Classes.ShamanTotemRelic", true);
         rogueDualWield = sConfigMgr->GetOption<bool>("WowPlus.Classes.RogueDualWield", true);
-        casterWand = sConfigMgr->GetOption<bool>("WowPlus.Classes.CasterWand", true);
+        rogueSecondDagger = sConfigMgr->GetOption<bool>("WowPlus.Classes.RogueSecondDagger", false);
+        casterWand = sConfigMgr->GetOption<bool>("WowPlus.Classes.CasterWand", false);
     }
 };
 

@@ -62,9 +62,9 @@ So the aim is not "everything earlier". It is: no stretch of levels where the cl
 | Druid | Bear Form stays at 10; the bear's abilities are not moved | |
 | Warrior | Bloodrage at 8 | 10 |
 | Paladin | Consecration at 14, Exorcism at 16 | 20, 20 |
-| Rogue | Dual Wield from level 1, and a second starting dagger. Poisons stay at 20. | 10 |
+| Rogue | Dual Wield from level 1. Poisons stay at 20. The second dagger is bought, see below. | 10 |
 | Priest | Shadowfiend at 10, to make level 10 exciting | 66 |
-| Priest, mage, warlock | A Lesser Magic Wand handed over at level 5 | bought |
+| Every class | **The weaponsmiths of the starting areas sell every basic weapon:** sword, mace, axe, dagger, staff, the two-handed ones, bow, gun, thrown, shield, and a first wand (usable from 5). Changed the same day from handing a dagger and a wand out for free: Robin wanted them bought. `Settings/SQL/world/2026-10-11_starter-weapons.sql` | not sold |
 | Shaman | Water Shield at 14 | 20 |
 | Mage | Conjured water and food one step ahead: each rank is learned where the rank before it used to be, and the conjured items' own level requirement is lowered to match | |
 | Hunter, warlock | Fine as they are | |

@@ -48,3 +48,4 @@ Deleting the file does not undo it: the database keeps what the file did. Write 
 | `world/2026-10-10_hub.sql` | The hub on GM Island: its NPCs, the weapon master, every vendor list, the menu that leads to them, and the prices. |
 | `world/2026-10-11_class-quest-abilities.sql` | The class trainers teach what the class quests used to: stances, Tame Beast, poisons, totems, demons, Bear Form and the rest. |
 | `world/2026-10-11_early-levels.sql` | Early-level class changes: the druid's cat from 8, Bloodrage at 8, Consecration and Exorcism earlier, Shadowfiend at 10, Water Shield at 14, rogue Dual Wield from 1, and the mage's conjured food and water one step ahead. |
+| `world/2026-10-11_starter-weapons.sql` | The weaponsmiths of the eight starting areas sell every basic weapon, a shield, ammunition and a first wand. |
