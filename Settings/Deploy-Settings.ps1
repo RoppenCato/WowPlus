@@ -99,5 +99,15 @@ foreach ($db in 'world', 'characters', 'auth') {
     }
 }
 
+# Our own addons (Client\AddOns) are copied into every game copy, so the game always has the
+# version that matches the server. A running game picks them up after /reload or a restart.
+foreach ($client in Get-ChildItem (Join-Path $root 'Client') -Directory -ErrorAction SilentlyContinue | Where-Object { Test-Path (Join-Path $_.FullName 'Wow.exe') }) {
+    foreach ($addon in Get-ChildItem (Join-Path $root 'Client\AddOns') -Directory -ErrorAction SilentlyContinue) {
+        $to = Join-Path $client.FullName "Interface\AddOns\$($addon.Name)"
+        New-Item -ItemType Directory -Force $to | Out-Null
+        Copy-Item (Join-Path $addon.FullName '*') $to -Recurse -Force
+    }
+}
+
 & (Join-Path $root 'Tools\mysql\bin\mysql.exe') "--defaults-file=$(Join-Path $PSScriptRoot 'mysql.ini')" -e "UPDATE acore_auth.realmlist SET flag = flag & ~3" 2>&1 | Out-Null
 exit 0

@@ -179,3 +179,11 @@ The first one is an Undead mage, level 50, with 1000 gold. In its mailbox: a ful
 | `/w <botname> follow` | Whisper a bot in your party to control it (`follow`, `stay`, `attack`, ...). |
 
 All bot commands: [Playerbot Commands](https://github.com/mod-playerbots/mod-playerbots/wiki/Playerbot-Commands). All GM commands: [GM commands](https://www.azerothcore.org/wiki/gm-commands).
+
+## Our own addons
+
+The folder `AddOns` here holds addons that belong to this server. `Start-Server.bat` copies them into every game copy (`Interface\AddOns`) each time it starts, so you never install them by hand. If the game was open at that moment, type `/reload` in chat.
+
+| Addon | What it does |
+|---|---|
+| `WowPlusSprint` | Hold Shift while running on foot to sprint. Shows a thin stamina bar below your character while stamina is not full; it turns red when you have run it empty. Hold Alt and drag the bar to move it, `/sprintbar reset` puts it back. The numbers are in `Settings/mod_wowplus.conf` (`WowPlus.Sprint.*`). |

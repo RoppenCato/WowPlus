@@ -196,6 +196,7 @@ In the hub:
 - [~] 8.5 Honor and arena points from kills at my level, no rating required (`mod-wowplus`, settings `WowPlus.Honor.*`, `WowPlus.ArenaPoints.*`, `WowPlus.Hub.NoRatingRequired`)
 - [~] 8.6 The weapon master (same SQL file)
 - [ ] 8.7 Bots in the hub
+- [~] Sprint on Shift (2026-10-11): hold Shift to run 20 percent faster on foot. About 10 seconds of stamina, 20 to refill, drains twice as fast in combat. Walking only: nothing while mounted, in cat, travel or wolf form, in stealth, swimming, or with any other speed boost. Server part in `mod-wowplus` (`WowPlus.Sprint.*`), stamina bar and Shift key in the addon `Client/AddOns/WowPlusSprint`. Not yet tried in game.
 
 ## Any time: Bot chat
 

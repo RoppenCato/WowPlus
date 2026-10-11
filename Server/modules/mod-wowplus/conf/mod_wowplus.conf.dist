@@ -447,3 +447,52 @@ WowPlus.Loot.Bag.Chance = 0.5
 #        Default: 0
 
 WowPlus.Vendors.Debug = 0
+
+########################################
+# Sprint on Shift
+########################################
+#
+#    Hold Shift while running on foot to run a little faster, for as long as stamina lasts.
+#    Needs the addon WowPlusSprint in the game (Client/AddOns, copied in by Start-Server.bat):
+#    it tells the server that Shift is held and shows the stamina bar.
+#    Sprint is for walking only. It does nothing while mounted, in cat, travel or ghost wolf
+#    form, in stealth, while swimming, or while another speed boost is active (Aspect of the
+#    Cheetah, rogue Sprint, Dash and so on).
+#
+#    WowPlus.Sprint.Enable
+#        Default: 1
+#
+#    WowPlus.Sprint.SpeedPercent
+#        How much faster. Keep it below the class abilities (cheetah, cat and wolf give 30 to
+#        40) and far below a first mount (60).
+#        Default: 20
+#
+#    WowPlus.Sprint.Seconds
+#        How long a full stamina bar lasts, out of combat.
+#        Default: 10
+#
+#    WowPlus.Sprint.RefillSeconds
+#        How long an empty bar takes to refill.
+#        Default: 20
+#
+#    WowPlus.Sprint.RefillDelay
+#        Seconds after sprinting stops before the bar starts to refill.
+#        Default: 2
+#
+#    WowPlus.Sprint.CombatDrain
+#        In combat, stamina drains this many times faster. 1: no difference. 2: an escape,
+#        not a way to outrun everything.
+#        Default: 2
+#
+#    WowPlus.Sprint.RestartPercent
+#        A bar that was run empty must refill this far before sprint works again (the bar is
+#        red until then). Stops the stutter of sprinting on the last drop.
+#        Default: 25
+
+WowPlus.Sprint.Enable         = 1
+WowPlus.Sprint.SpeedPercent   = 20
+WowPlus.Sprint.Seconds        = 10
+WowPlus.Sprint.RefillSeconds  = 20
+WowPlus.Sprint.RefillDelay    = 2
+WowPlus.Sprint.CombatDrain    = 2
+WowPlus.Sprint.RestartPercent = 25

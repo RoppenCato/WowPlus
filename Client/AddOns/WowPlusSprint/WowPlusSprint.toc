@@ -1,0 +1,5 @@
+## Interface: 30300
+## Title: WowPlus Sprint
+## Notes: Hold Shift to sprint on foot. Shows the stamina bar. Needs the WowPlus server.
+## SavedVariablesPerCharacter: WowPlusSprintDB
+WowPlusSprint.lua

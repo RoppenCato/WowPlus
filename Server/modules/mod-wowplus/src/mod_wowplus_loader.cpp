@@ -10,6 +10,7 @@ void AddSC_WowPlusVendors();
 void AddSC_WowPlusHub();
 void AddSC_WowPlusGold();
 void AddSC_WowPlusClasses();
+void AddSC_WowPlusSprint();
 
 void Addmod_wowplusScripts()
 {
@@ -21,4 +22,5 @@ void Addmod_wowplusScripts()
     AddSC_WowPlusHub();
     AddSC_WowPlusGold();
     AddSC_WowPlusClasses();
+    AddSC_WowPlusSprint();
 }

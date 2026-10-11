@@ -16,6 +16,7 @@ The reasons and decisions behind each feature are in [Settings/Docs/Plan.md](../
 | Class helps: a hunter's starter pet, the shaman's totem relic (the trainer changes are data in `Settings/SQL/world/..._class-quest-abilities.sql`) | `src/WowPlusClasses.cpp` | `WowPlus.Classes.*` |
 | Surprise stock on the game's own vendors and themes for the wandering ones, from the world seed and the week | `src/WowPlusVendors.cpp` | `WowPlus.Vendors.*`, `WowPlus.World.Seed` |
 | The item pools all of the above draw from | `src/WowPlusItems.h`, `WowPlusItems.cpp` | |
+| Sprint: hold Shift to run faster on foot while stamina lasts (with the addon in `Client/AddOns/WowPlusSprint`) | `src/WowPlusSprint.cpp` | `WowPlus.Sprint.*` |
 | Not built yet, file in place: gold | `src/WowPlusGold.cpp` | |
 
 ## When a rebuild is needed

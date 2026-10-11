@@ -14,5 +14,6 @@
 !/Client/realmlist.wtf
 !/Client/Copy-Settings.bat
 !/Client/Copy-Settings.ps1
+!/Client/AddOns/
 # Real passwords live here; Settings/.env.example is the committed template
 /Settings/.env
