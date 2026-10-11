@@ -186,4 +186,4 @@ The folder `AddOns` here holds addons that belong to this server. `Start-Server.
 
 | Addon | What it does |
 |---|---|
-| `WowPlusSprint` | Hold Shift while running on foot to sprint. Shows a thin stamina bar below your character while stamina is not full; it turns red when you have run it empty. Hold Alt and drag the bar to move it, `/sprintbar reset` puts it back. The numbers are in `Settings/mod_wowplus.conf` (`WowPlus.Sprint.*`). |
+| `WowPlusSprint` | Hold Shift while running on foot or swimming to sprint. Shows a thin stamina bar below your character while stamina is not full; it turns red when you have run it empty. Hold Alt and drag the bar to move it, `/sprintbar reset` puts it back. The numbers are in `Settings/mod_wowplus.conf` (`WowPlus.Sprint.*`). |

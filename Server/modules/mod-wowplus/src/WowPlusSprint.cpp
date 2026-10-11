@@ -1,13 +1,14 @@
 /*
- * WowPlus sprint: hold Shift to run a little faster on foot, for as long as stamina lasts.
+ * WowPlus sprint: hold Shift to run or swim faster for a short burst, for as long as stamina lasts.
+ * Short bursts are rewarded: a bar that is run empty leaves the character winded, and refills slower.
  *
  * The game client never tells the server which keys are held. A small addon
  * (Client/AddOns/WowPlusSprint) does: it sends a hidden addon message when Shift goes down or
  * up, and draws the stamina bar. The server owns the stamina and decides everything.
  *
  * The speed comes from a hidden passive aura (spell 100200, Settings/SQL/world/..._sprint.sql).
- * Sprint is for walking only: it does nothing while mounted, in a travelling form, in stealth,
- * while swimming, or while any other speed boost is active (Aspect of the Cheetah, rogue
+ * Sprint is for travelling on foot and swimming: it does nothing while mounted, in a travelling
+ * form, in stealth, or while any other speed boost is active (Aspect of the Cheetah, rogue
  * Sprint, Dash, Ghost Wolf and so on). It must never be the better choice than those.
  *
  * Messages, prefix WPS:
@@ -39,10 +40,14 @@ namespace
     std::string const DATA_KEY = "wowplus-sprint";
 
     bool enabled = true;
-    int32 speedPercent = 20;
-    float drainPerSecond = FULL / 10.0f;
-    float refillPerSecond = FULL / 20.0f;
-    uint32 refillDelay = 2000;
+    int32 speedPercent = 30;
+    float drainPerSecond = FULL / 6.0f;
+    float refillPerSecond = FULL / 8.0f;
+    uint32 refillDelay = 1000;
+    uint32 windedRefillDelay = 2000;                        // after the bar was run empty
+    float windedRefillSpeed = 0.75f;
+    uint32 visualKit = 10440;                               // a small puff of dust at the feet
+    uint32 visualInterval = 700;
     float combatDrain = 2.0f;
     float restartAt = FULL * 0.25f;                         // an emptied bar must refill this far first
 
@@ -56,6 +61,7 @@ namespace
         int32 sentRate = 0;
         bool sentExhausted = false;
         uint32 sinceSync = 0;
+        uint32 sinceVisual = 0;
     };
 
     void Send(Player* player, std::string const& text)
@@ -75,20 +81,21 @@ namespace
 
     bool HasOtherSpeedBoost(Player* player)
     {
-        for (AuraEffect const* effect : player->GetAuraEffectsByType(SPELL_AURA_MOD_INCREASE_SPEED))
-            if (effect->GetId() != SPELL_WOWPLUS_SPRINT && effect->GetAmount() > 0)
-                return true;
+        for (AuraType type : {SPELL_AURA_MOD_INCREASE_SPEED, SPELL_AURA_MOD_INCREASE_SWIM_SPEED})
+            for (AuraEffect const* effect : player->GetAuraEffectsByType(type))
+                if (effect->GetId() != SPELL_WOWPLUS_SPRINT && effect->GetAmount() > 0)
+                    return true;
 
         return false;
     }
 
-    // Sprint is for walking: on foot, in the open, with no other speed boost.
+    // Sprint is for going on foot or swimming, with no other speed boost.
     bool CanSprintNow(Player* player)
     {
         if (!player->IsAlive() || player->IsMounted() || player->IsInFlight() || player->GetVehicle())
             return false;
 
-        if (player->HasUnitState(UNIT_STATE_ROOT | UNIT_STATE_STUNNED) || player->HasUnitMovementFlag(MOVEMENTFLAG_SWIMMING))
+        if (player->HasUnitState(UNIT_STATE_ROOT | UNIT_STATE_STUNNED))
             return false;
 
         switch (player->GetShapeshiftForm())
@@ -119,9 +126,11 @@ namespace
             return;
         }
 
+        // Effect 0 is run speed, effect 1 swim speed
         if (Aura* aura = player->AddAura(SPELL_WOWPLUS_SPRINT, player))
-            if (AuraEffect* effect = aura->GetEffect(EFFECT_0))
-                effect->ChangeAmount(speedPercent);
+            for (uint8 index : {EFFECT_0, EFFECT_1})
+                if (AuraEffect* effect = aura->GetEffect(index))
+                    effect->ChangeAmount(speedPercent);
     }
 
     void Update(Player* player, SprintState& state, uint32 diff)
@@ -145,11 +154,13 @@ namespace
         }
         else if (state.stamina < FULL)
         {
+            // Winded (the bar was run empty): a longer wait and a slower refill until sprint is back
+            float const refill = refillPerSecond * (state.exhausted ? windedRefillSpeed : 1.0f);
             state.idle += diff;
-            if (state.idle >= refillDelay)
+            if (state.idle >= (state.exhausted ? windedRefillDelay : refillDelay))
             {
-                state.stamina = std::min(FULL, state.stamina + refillPerSecond * seconds);
-                rate = int32(refillPerSecond);
+                state.stamina = std::min(FULL, state.stamina + refill * seconds);
+                rate = int32(refill);
 
                 if (state.exhausted && state.stamina >= restartAt)
                     state.exhausted = false;
@@ -157,6 +168,14 @@ namespace
         }
 
         SetRunning(player, state, run && !state.exhausted);
+
+        // Dust at the feet while sprinting on land
+        state.sinceVisual += diff;
+        if (state.running && visualKit && state.sinceVisual >= visualInterval && !player->HasUnitMovementFlag(MOVEMENTFLAG_SWIMMING))
+        {
+            state.sinceVisual = 0;
+            player->SendPlaySpellVisual(visualKit);
+        }
 
         if (state.stamina >= FULL)
             rate = 0;
@@ -177,10 +196,14 @@ public:
     void OnAfterConfigLoad(bool /*reload*/) override
     {
         enabled = sConfigMgr->GetOption<bool>("WowPlus.Sprint.Enable", true);
-        speedPercent = sConfigMgr->GetOption<int32>("WowPlus.Sprint.SpeedPercent", 20);
-        drainPerSecond = FULL / std::max(1.0f, sConfigMgr->GetOption<float>("WowPlus.Sprint.Seconds", 10.0f));
-        refillPerSecond = FULL / std::max(1.0f, sConfigMgr->GetOption<float>("WowPlus.Sprint.RefillSeconds", 20.0f));
-        refillDelay = uint32(std::max(0.0f, sConfigMgr->GetOption<float>("WowPlus.Sprint.RefillDelay", 2.0f)) * 1000.0f);
+        speedPercent = sConfigMgr->GetOption<int32>("WowPlus.Sprint.SpeedPercent", 30);
+        drainPerSecond = FULL / std::max(1.0f, sConfigMgr->GetOption<float>("WowPlus.Sprint.Seconds", 6.0f));
+        refillPerSecond = FULL / std::max(1.0f, sConfigMgr->GetOption<float>("WowPlus.Sprint.RefillSeconds", 8.0f));
+        refillDelay = uint32(std::max(0.0f, sConfigMgr->GetOption<float>("WowPlus.Sprint.RefillDelay", 1.0f)) * 1000.0f);
+        windedRefillDelay = uint32(std::max(0.0f, sConfigMgr->GetOption<float>("WowPlus.Sprint.Winded.RefillDelay", 2.0f)) * 1000.0f);
+        windedRefillSpeed = std::clamp(sConfigMgr->GetOption<float>("WowPlus.Sprint.Winded.RefillSpeed", 0.75f), 0.05f, 1.0f);
+        visualKit = sConfigMgr->GetOption<uint32>("WowPlus.Sprint.VisualKit", 10440);
+        visualInterval = uint32(std::max(0.2f, sConfigMgr->GetOption<float>("WowPlus.Sprint.VisualInterval", 0.7f)) * 1000.0f);
         combatDrain = std::max(0.0f, sConfigMgr->GetOption<float>("WowPlus.Sprint.CombatDrain", 2.0f));
         restartAt = FULL * std::clamp(sConfigMgr->GetOption<float>("WowPlus.Sprint.RestartPercent", 25.0f), 0.0f, 100.0f) / 100.0f;
     }
@@ -198,7 +221,7 @@ public:
             return;
         }
 
-        LOG_INFO("server.loading", ">> WowPlus sprint: +{} percent on foot while Shift is held", speedPercent);
+        LOG_INFO("server.loading", ">> WowPlus sprint: +{} percent on foot and swimming while Shift is held", speedPercent);
     }
 };
 

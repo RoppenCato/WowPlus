@@ -452,32 +452,34 @@ WowPlus.Vendors.Debug = 0
 # Sprint on Shift
 ########################################
 #
-#    Hold Shift while running on foot to run a little faster, for as long as stamina lasts.
+#    Hold Shift while running on foot or swimming for a short burst of speed, for as long as
+#    stamina lasts. Short bursts pay off: stop before the bar is empty and it refills quickly;
+#    run it empty and you are winded for a moment.
 #    Needs the addon WowPlusSprint in the game (Client/AddOns, copied in by Start-Server.bat):
 #    it tells the server that Shift is held and shows the stamina bar.
-#    Sprint is for walking only. It does nothing while mounted, in cat, travel or ghost wolf
-#    form, in stealth, while swimming, or while another speed boost is active (Aspect of the
-#    Cheetah, rogue Sprint, Dash and so on).
+#    Sprint does nothing while mounted, in cat, travel, aquatic or ghost wolf form, in
+#    stealth, or while another speed boost is active (Aspect of the Cheetah, rogue Sprint,
+#    Dash and so on).
 #
 #    WowPlus.Sprint.Enable
 #        Default: 1
 #
 #    WowPlus.Sprint.SpeedPercent
-#        How much faster. Keep it below the class abilities (cheetah, cat and wolf give 30 to
-#        40) and far below a first mount (60).
-#        Default: 20
+#        How much faster. 30 equals Aspect of the Cheetah and cat form at its peak, but sprint
+#        is only on part of the time. A first mount is 60.
+#        Default: 30
 #
 #    WowPlus.Sprint.Seconds
 #        How long a full stamina bar lasts, out of combat.
-#        Default: 10
+#        Default: 6
 #
 #    WowPlus.Sprint.RefillSeconds
-#        How long an empty bar takes to refill.
-#        Default: 20
+#        How long an empty bar takes to refill at normal speed.
+#        Default: 8
 #
 #    WowPlus.Sprint.RefillDelay
 #        Seconds after sprinting stops before the bar starts to refill.
-#        Default: 2
+#        Default: 1
 #
 #    WowPlus.Sprint.CombatDrain
 #        In combat, stamina drains this many times faster. 1: no difference. 2: an escape,
@@ -485,14 +487,36 @@ WowPlus.Vendors.Debug = 0
 #        Default: 2
 #
 #    WowPlus.Sprint.RestartPercent
-#        A bar that was run empty must refill this far before sprint works again (the bar is
-#        red until then). Stops the stutter of sprinting on the last drop.
+#        Winded: a bar that was run empty must refill this far before sprint works again
+#        (the bar is red until then).
 #        Default: 25
+#
+#    WowPlus.Sprint.Winded.RefillDelay
+#        Seconds before a bar that was run empty starts to refill.
+#        Default: 2
+#
+#    WowPlus.Sprint.Winded.RefillSpeed
+#        Refill speed while winded, as a share of the normal speed. 1: no penalty.
+#        Default: 0.75
+#
+#    WowPlus.Sprint.VisualKit
+#        The effect shown at the feet while sprinting on land (a number from the game's
+#        SpellVisualKit list). 10440: a small puff of dust. 1066: a bigger one.
+#        12499: the swirl of the rogue's Sprint. 0: nothing.
+#        Default: 10440
+#
+#    WowPlus.Sprint.VisualInterval
+#        Seconds between two puffs.
+#        Default: 0.7
 
-WowPlus.Sprint.Enable         = 1
-WowPlus.Sprint.SpeedPercent   = 20
-WowPlus.Sprint.Seconds        = 10
-WowPlus.Sprint.RefillSeconds  = 20
-WowPlus.Sprint.RefillDelay    = 2
-WowPlus.Sprint.CombatDrain    = 2
-WowPlus.Sprint.RestartPercent = 25
+WowPlus.Sprint.Enable             = 1
+WowPlus.Sprint.SpeedPercent       = 30
+WowPlus.Sprint.Seconds            = 6
+WowPlus.Sprint.RefillSeconds      = 8
+WowPlus.Sprint.RefillDelay        = 1
+WowPlus.Sprint.CombatDrain        = 2
+WowPlus.Sprint.RestartPercent     = 25
+WowPlus.Sprint.Winded.RefillDelay = 2
+WowPlus.Sprint.Winded.RefillSpeed = 0.75
+WowPlus.Sprint.VisualKit          = 10440
+WowPlus.Sprint.VisualInterval     = 0.7
