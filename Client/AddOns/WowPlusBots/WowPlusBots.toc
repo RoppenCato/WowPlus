@@ -1,0 +1,5 @@
+## Interface: 30300
+## Title: WowPlus Bots
+## Notes: A small bar of buttons for your bots: follow, stay, attack, call your companions, have the area to yourself.
+## SavedVariablesPerCharacter: WowPlusBotsDB
+WowPlusBots.lua

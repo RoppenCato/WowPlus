@@ -227,6 +227,10 @@ The whole picture is in [Bots.md](Bots.md) and [Bot-Chat.md](Bot-Chat.md).
 - [~] Passing bots buff you now and then
 - [~] `.bots away` and `.bots alone on/off` to have the area to yourself
 - [~] Bot chat through Claude: whisper, /say, party and guild chat; a person per bot; memory notes per bot
-- [ ] Companions (one or two special bots)
-- [ ] Easy control (an addon with buttons)
-- [ ] Bots start conversations themselves
+- [~] Companions: two guild mates you choose, `.bots call` and `.bots dismiss`, a fire and small things when you rest, gestures and remarks on the road
+- [~] Easy control: our own small button bar (addon `WowPlusBots`)
+- [~] Bots speak first: a greeting at login, guild chat every 5 to 10 minutes with a short answer from another bot
+- [~] Guild mates keep up with your level and gear
+- [~] The people behind the bots as files that MapleStoryPlus can share (`Settings/Bots`)
+- [ ] MapleStoryPlus reads the shared files
+- [ ] Topics from outside (news, weather)

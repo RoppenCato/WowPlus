@@ -37,13 +37,43 @@ Two things to know:
 
 Create a guild the normal way (a guild master sells the charter; bots sign it when asked) and invite bots with `/ginvite <name>`. They always accept.
 
-A random bot in a guild led by a real player is left alone by the system that moves bot levels around, so your guild mates stay who they are and keep levelling on their own. Their gear and talents are kept between sessions. They are also kept "awake" while you are online.
+- **Guild mates keep up with you.** A bot in your guild that is more than two levels below or above you is brought to your level, with gear, spells and talents to match. This is checked every half minute while you are online, so someone invited today has caught up when you next log in. (`WowPlus.Bots.Guild.KeepUp`)
+- **They stay who they are.** The system that spreads bot levels leaves a real player's guild alone, and their gear and talents are kept between sessions.
+- **They remember you for good**, greet you when you come online, and talk in guild chat by themselves now and then: see [Bot-Chat.md](Bot-Chat.md).
 
-Guild mates are the bots that remember you for good: see [Bot-Chat.md](Bot-Chat.md).
+## Companions
+
+Up to two guild mates you choose.
+
+| Command | What it does |
+|---|---|
+| `.bots companion add <name>` | A guild mate becomes a companion. |
+| `.bots companion remove <name>` | No longer a companion; stays in the guild. |
+| `.bots companion list` | Who they are and whether they are online. |
+| `.bots call` | They join your party and come to you. |
+| `.bots dismiss` | They leave the party and go their own way. |
+
+While they travel with you they do small things by themselves:
+
+- **When you rest** (stand still for a minute): one lights a campfire, and now and then one sits down, eats, laughs, dances or says something in party chat.
+- **On the road:** a gesture or a remark every three to seven minutes.
+
+Settings: `WowPlus.Bots.Companions.*`.
+
+## The bot bar
+
+A small addon of our own, `WowPlusBots`, gives you one row of buttons instead of typed commands: Follow, Stay, Attack, Flee, Call, Dismiss, Away, Alone. Drag it by the word "Bots" to move it; `/botbar` hides or shows it. It is installed by `Start-Server.bat` like our other addons.
+
+## The people behind the bots
+
+Who each bot is comes from files in [Settings/Bots](../Bots/README.md): a list of 240 people, topics, and a style per game. They are written so that MapleStoryPlus can use the same files.
+
+## Bots around you
+
+Bots of your level range gather in the zone you are in (`Playerbots.RandomBotConcentrateInPlayerZone`). `.bots alone on` keeps them away when you want the place to yourself.
 
 ## Not built yet
 
-- **Companions**: one or two bots that are especially yours, with their own extras (called to you from the hearthstone menu, things they do on their own when you rest, such as lighting a fire). The memory and guild parts they build on are done; the rest is waiting for decisions.
-- **Easy control**: buttons instead of typed commands. There are existing addons made for this bot module; none is installed yet.
+- **More for companions**: calling them from the hearthstone menu, fishing or cooking at the fire, reacting to what happens (a boss kill, a death, a level-up).
 - **Bots in the hub and cities** (module `mod-playerbots-city-life`).
 - **Tactics for old-world dungeons**: only where a dungeon turns out to play badly.

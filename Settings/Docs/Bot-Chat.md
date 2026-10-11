@@ -1,6 +1,6 @@
 # Bot chat: talking to bots through Claude
 
-**Status: first version built 2026-10-11.** The bridge is tested on its own. The game side has not been tried in the game yet.
+**Status: built 2026-10-11.** The bridge is tested on its own. The game side has not been tried in the game yet.
 
 Talk to a bot and it answers like the person playing that character: someone with an age, a job, a temper and hobbies, who knows the game and remembers you.
 
@@ -23,19 +23,28 @@ Close the window with Ctrl+C rather than the X: the bots then write down what th
 
 A line that is a bot command (`follow`, `stay`, `attack` ...) goes to the bot as a command and gets no chat answer, unless it is a question.
 
+## Bots speaking first
+
+- **A greeting.** When you come online, a guild mate usually says hello (70 percent of the time).
+- **Guild chat.** Every 5 to 10 minutes a guild mate says something by itself: about its day, the game, one of its favourite topics. Half the time another guild mate answers, and sometimes the first says one more thing. It ends there unless you join in. While you say nothing in guild chat the pauses grow, up to three times as long; they go back to normal as soon as you say something.
+- **Companions** remark on things in party chat: see [Bots.md](Bots.md).
+
+Settings: `WowPlus.BotChat.Guild.*` in `Settings/mod_wowplus.conf`.
+
 ## Who a bot is
 
-Each bot's person is made up from its name: age, where they live, their work, temper, humour, two hobbies, way of talking, why they play, and something going on in their life right now. The same name always gives the same person, so nothing has to be stored for it. Their mood changes from day to day.
+Each bot is played by a person from `Settings/Bots/People.json`: a first name, age, gender, home, occupation, home life, temper, humour, hobbies, a way of talking, a typing habit, a gaming habit, something going on in their life, and favourite topics. The person is chosen from the bot's name the first time it speaks, and then written down, so a bot stays the same person. Their mood changes from day to day.
 
-The lists these are picked from are at the top of `Settings/Scripts/Bot-Chat-Bridge.py`. Add to them freely; note that changing a list changes who existing bots are.
+The lists, the people, the topics and the style of each game are plain files you can edit: see [Settings/Bots](../Bots/README.md). They are written so that MapleStoryPlus can use the same files; `Styles/wow.md` is what keeps WoW chat sounding like WoW.
 
 The bot also knows its own character (level, race, class, where it is), yours, and whether you are guild mates or in a party together.
 
+**Against repeating themselves:** a bot is shown the last ten lines it said to you and told not to reuse their wording, jokes or openings.
 ## What a bot remembers
 
 After a stretch of talk (eight lines, or four minutes of silence) the bot's notes about you are brought up to date: at most eight short lines such as "He plays a mage", "We joked about murlocs", "Wants to run Deadmines this week". Next time those notes are part of what the bot knows.
 
-- Kept in `Database/BotChat/<your character>/<bot>.json`, a few hundred bytes per bot. Plain text; you can read or edit them.
+- Kept in `Database/BotChat/wow/<your character>/<bot>.json`, a few hundred bytes per bot. Plain text; you can read or edit them.
 - **Guild mates keep their notes for good.**
 - **Strangers** keep theirs too, since it costs almost nothing, but notes of a stranger you have not spoken to for 30 days are thrown away.
 - Party and guild chat are one conversation that every bot in it follows. The bots that spoke in it remember it.
@@ -71,7 +80,6 @@ python Settings/Scripts/Bot-Chat-Bridge.py --bot Mirelda --say "hey, how's it go
 
 ## Ideas for later
 
-- Bots that start a conversation themselves (a guild mate greeting you when you log in, a party member commenting on a boss kill).
 - Facts looked up from the database for exact answers (where an item drops, where a rare lives), as in MapleStoryPlus.
 - Rumours: a bot passing on a hint about something the world is hiding.
 - Companions with a richer memory and more to say.

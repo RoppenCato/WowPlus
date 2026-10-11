@@ -1,24 +1,33 @@
 /*
- * WowPlus bot chat: bots answer through Claude. See Settings/Docs/Bot-Chat.md.
+ * WowPlus bot chat: bots talk through Claude. See Settings/Docs/Bot-Chat.md.
  *
  * This file is only the game's side of it. When a real player says something a bot should
- * answer, the bot's and the player's details and the text go to the bridge, a small program in
- * its own window (Start-Bot-Chat.bat, Settings/Scripts/Bot-Chat-Bridge.py). The bridge knows who
- * each bot is, remembers earlier talks, asks Claude, and sends the lines back; the bot then
- * says them. If the bridge is not running, bots simply stay quiet.
+ * answer, or it is time for a bot to say something by itself, the bot's and the player's
+ * details go to the bridge, a small program in its own window (Start-Bot-Chat.bat,
+ * Settings/Scripts/Bot-Chat-Bridge.py). The bridge knows who each bot is, remembers earlier
+ * talks, asks Claude, and sends lines back, each with the name of the bot that says it. If the
+ * bridge is not running, bots simply stay quiet.
  *
- * Who answers:
+ * Who answers the player:
  * - a whisper: the bot whispered to
  * - /say: a nearby bot named in the text, else the bot the player has targeted, else the
  *   closest bot if one stands right next to the player
  * - party and guild chat: a bot named in the text, else the bot that answered last (a talk
  *   that is going on), else sometimes one of them (the chance is a setting)
  * Something that is a bot command ("follow", "stay", ...) is left to the bot module, unless it
- * is a question.
+ * is a question or a whole sentence.
+ *
+ * Bots speaking first:
+ * - a guild mate greets the player who comes online
+ * - every few minutes a guild mate says something in guild chat, and sometimes another answers.
+ *   It ends there unless the player joins in; while the player stays silent the pauses grow.
+ * - companions remark on things in party chat (asked for by WowPlusBots.cpp)
  *
  * Asking Claude takes seconds, so it happens on helper threads; the answer is handed back to
- * the world thread, which makes the bot speak.
+ * the world thread, which makes the bots speak.
  */
+
+#include "WowPlusBotChat.h"
 
 #include "Chat.h"
 #include "ChatHelper.h"
@@ -57,9 +66,12 @@ namespace
     char const* const CHANNEL_NAMES[] = {"whisper", "say", "party", "guild"};
 
     constexpr uint32 MAX_REQUESTS_AT_ONCE = 4;
-    constexpr uint32 REPLY_TIMEOUT_SECONDS = 100;
+    constexpr uint32 REPLY_TIMEOUT_SECONDS = 150;
     constexpr uint32 TALK_GOES_ON_SECONDS = 120;            // the bot that answered last keeps answering this long
     constexpr uint32 MAX_TEXT_LENGTH = 250;
+    constexpr uint32 COMMAND_MAX_WORDS = 4;                 // anything longer is talk, not a bot command
+    constexpr uint32 TICK = 5000;                           // ms between looks at who might speak first
+    constexpr uint32 MAX_PAUSE_GROWTH = 3;                  // unanswered openers stretch the pause up to this many times
 
     bool enabled = true;
     std::string bridgePort = "8586";
@@ -70,28 +82,45 @@ namespace
     float sayClosestRadius = 8.0f;
     uint32 partyUnaddressedChance = 50;
     uint32 guildUnaddressedChance = 35;
+    bool guildOpeners = true;
+    uint32 guildOpenMinMinutes = 5;
+    uint32 guildOpenMaxMinutes = 10;
+    uint32 guildBanterChance = 50;
+    uint32 guildGreetChance = 70;
+
+    struct SpokenLine
+    {
+        std::string speaker;                                // the bot's name
+        std::string text;
+    };
 
     struct Reply
     {
-        ObjectGuid bot;
         ObjectGuid player;
         Channel channel;
-        std::vector<std::string> lines;
+        std::vector<SpokenLine> lines;
     };
 
     struct PendingLine
     {
         uint32 delay;                                       // ms until the bot says it
-        ObjectGuid bot;
         ObjectGuid player;
         Channel channel;
-        std::string text;
+        SpokenLine line;
     };
 
     struct LastTalk
     {
         ObjectGuid bot;
         time_t at = 0;
+    };
+
+    // What a real player's guild chat is up to
+    struct GuildTalk
+    {
+        uint32 untilOpener = 0;                             // ms
+        uint32 untilGreeting = 0;                           // ms, 0: no greeting due
+        uint32 unanswered = 0;                              // openers since the player last spoke in guild chat
     };
 
     // Shared with the helper threads. Never freed, so a thread that outlives the shutdown cannot touch freed memory.
@@ -103,6 +132,8 @@ namespace
     // World thread only
     std::vector<PendingLine> pendingLines;
     std::unordered_map<ObjectGuid, LastTalk> lastTalk[4];   // per channel: real player -> the bot that answered last
+    std::unordered_map<ObjectGuid, GuildTalk> guildTalk;    // real player -> their guild chat
+    uint32 sinceTick = 0;
 
     bool IsBot(Player const* player)
     {
@@ -150,10 +181,15 @@ namespace
         return entry ? entry->name[0] : "";
     }
 
-    // Runs on a helper thread. Posts the form to the bridge and reads the reply lines.
-    void AskBridge(std::string port, std::string body, ObjectGuid bot, ObjectGuid player, Channel channel)
+    char const* GenderOf(Player* player)
     {
-        std::vector<std::string> lines;
+        return player->getGender() == GENDER_FEMALE ? "female" : "male";
+    }
+
+    // Runs on a helper thread. Posts the form to the bridge and reads the lines: "bot name<tab>text".
+    void AskBridge(std::string port, std::string body, ObjectGuid player, Channel channel)
+    {
+        std::vector<SpokenLine> lines;
         try
         {
             boost::asio::ip::tcp::iostream stream;
@@ -172,9 +208,14 @@ namespace
                         line.pop_back();
 
                     if (!inBody)
+                    {
                         inBody = line.empty();
-                    else if (!line.empty())
-                        lines.push_back(line.substr(0, 255));
+                        continue;
+                    }
+
+                    std::size_t const tab = line.find('\t');
+                    if (tab != std::string::npos && tab > 0 && tab + 1 < line.size())
+                        lines.push_back({line.substr(0, tab), line.substr(tab + 1, 255)});
                 }
                 bridgeWasMissing = false;
             }
@@ -188,41 +229,48 @@ namespace
         if (!lines.empty())
         {
             std::lock_guard<std::mutex> lock(replyMutex);
-            replies.push_back({bot, player, channel, std::move(lines)});
+            replies.push_back({player, channel, std::move(lines)});
         }
 
         --requestsRunning;
     }
 
-    void Ask(Player* bot, Player* player, Channel channel, std::string const& text, std::vector<Player*> const& others)
+    // kind: "reply" (the player said `text`), "open" (the bot starts talking), "greet" (the player came online)
+    void Ask(Player* bot, Player* player, Channel channel, char const* kind, std::string const& text,
+        std::vector<Player*> const& others, bool banter = false)
     {
         if (requestsRunning >= MAX_REQUESTS_AT_ONCE)
             return;
 
-        std::string otherNames;
+        // The other bots present, as "name:gender:race:class:level"
+        std::string otherBots;
+        uint32 listed = 0;
         for (Player* other : others)
-            if (other != bot && otherNames.size() < 120)
-                otherNames += (otherNames.empty() ? "" : ", ") + other->GetName();
+            if (other != bot && listed++ < 8)
+                otherBots += (otherBots.empty() ? "" : ",") + other->GetName() + ":" + GenderOf(other) + ":" + RaceOf(other) +
+                    ":" + ClassOf(other) + ":" + std::to_string(other->GetLevel());
 
         bool const sameGuild = player->GetGuildId() && player->GetGuildId() == bot->GetGuildId();
         bool const sameParty = player->GetGroup() && player->GetGroup() == bot->GetGroup();
 
         std::ostringstream body;
-        body << "player=" << UrlEncode(player->GetName())
+        body << "kind=" << kind
+             << "&player=" << UrlEncode(player->GetName())
              << "&pclass=" << UrlEncode(ClassOf(player)) << "&prace=" << UrlEncode(RaceOf(player))
              << "&plevel=" << uint32(player->GetLevel()) << "&pzone=" << UrlEncode(ZoneOf(player))
              << "&bot=" << UrlEncode(bot->GetName())
              << "&bclass=" << UrlEncode(ClassOf(bot)) << "&brace=" << UrlEncode(RaceOf(bot))
              << "&blevel=" << uint32(bot->GetLevel()) << "&bzone=" << UrlEncode(ZoneOf(bot))
-             << "&bgender=" << (bot->getGender() == GENDER_FEMALE ? "female" : "male")
+             << "&bgender=" << GenderOf(bot)
              << "&channel=" << CHANNEL_NAMES[channel]
              << "&guildmate=" << (sameGuild ? 1 : 0) << "&party=" << (sameParty ? 1 : 0)
              << "&guild=" << UrlEncode(sameGuild ? player->GetGuildName() : "")
-             << "&others=" << UrlEncode(otherNames)
+             << "&banter=" << (banter ? 1 : 0)
+             << "&others=" << UrlEncode(otherBots)
              << "&text=" << UrlEncode(text.substr(0, MAX_TEXT_LENGTH));
 
         ++requestsRunning;
-        std::thread(AskBridge, bridgePort, body.str(), bot->GetGUID(), player->GetGUID(), channel).detach();
+        std::thread(AskBridge, bridgePort, body.str(), player->GetGUID(), channel).detach();
 
         if (channel != CHANNEL_WHISPER)
             lastTalk[channel][player->GetGUID()] = {bot->GetGUID(), time(nullptr)};
@@ -233,6 +281,9 @@ namespace
     {
         if (text.find('?') != std::string::npos)
             return false;                                   // a question is talk, whatever word it starts with
+
+        if (std::count(text.begin(), text.end(), ' ') >= int32(COMMAND_MAX_WORDS))
+            return false;                                   // so is a whole sentence
 
         PlayerbotAI* botAI = GET_PLAYERBOT_AI(bot);
         if (!botAI || !botAI->GetAiObjectContext())
@@ -286,35 +337,129 @@ namespace
         return roll_chance_i(int32(unaddressedChance)) ? bots[urand(0, bots.size() - 1)] : nullptr;
     }
 
-    void Speak(PendingLine const& line)
+    std::vector<Player*> GuildBotsOf(Player* player)
     {
-        Player* bot = ObjectAccessor::FindConnectedPlayer(line.bot);
-        Player* player = ObjectAccessor::FindConnectedPlayer(line.player);
-        if (!bot || !player || !bot->IsInWorld() || !player->IsInWorld())
+        std::vector<Player*> bots;
+        if (!player->GetGuildId())
+            return bots;
+
+        std::shared_lock<std::shared_mutex> lock(*HashMapHolder<Player>::GetLock());
+        for (auto const& [guid, other] : ObjectAccessor::GetPlayers())
+            if (other != player && other->IsInWorld() && IsBot(other) && other->GetGuildId() == player->GetGuildId())
+                bots.push_back(other);
+
+        return bots;
+    }
+
+    std::vector<Player*> PartyBotsOf(Player* player)
+    {
+        std::vector<Player*> bots;
+        if (Group* group = player->GetGroup())
+            for (GroupReference* itr = group->GetFirstMember(); itr != nullptr; itr = itr->next())
+                if (Player* member = itr->GetSource())
+                    if (member != player && member->IsInWorld() && IsBot(member))
+                        bots.push_back(member);
+
+        return bots;
+    }
+
+    void Speak(PendingLine const& pending)
+    {
+        Player* bot = ObjectAccessor::FindPlayerByName(pending.line.speaker);
+        Player* player = ObjectAccessor::FindConnectedPlayer(pending.player);
+        if (!bot || !player || !IsBot(bot) || !player->IsInWorld())
             return;
 
-        switch (line.channel)
+        std::string const& text = pending.line.text;
+        switch (pending.channel)
         {
             case CHANNEL_WHISPER:
-                bot->Whisper(line.text, LANG_UNIVERSAL, player);
+                bot->Whisper(text, LANG_UNIVERSAL, player);
                 break;
             case CHANNEL_SAY:
-                bot->Say(line.text, LANG_UNIVERSAL);
+                bot->Say(text, LANG_UNIVERSAL);
                 break;
             case CHANNEL_PARTY:
-                if (Group* group = bot->GetGroup())
+                if (Group* group = bot->GetGroup(); group && group == player->GetGroup())
                 {
                     WorldPacket data;
-                    ChatHandler::BuildChatPacket(data, CHAT_MSG_PARTY, LANG_UNIVERSAL, bot, nullptr, line.text);
+                    ChatHandler::BuildChatPacket(data, CHAT_MSG_PARTY, LANG_UNIVERSAL, bot, nullptr, text);
                     group->BroadcastPacket(&data, false);
                 }
                 break;
             case CHANNEL_GUILD:
-                if (Guild* guild = bot->GetGuild())
-                    guild->BroadcastToGuild(bot->GetSession(), false, line.text, LANG_UNIVERSAL);
+                if (Guild* guild = bot->GetGuild(); guild && bot->GetGuildId() == player->GetGuildId())
+                    guild->BroadcastToGuild(bot->GetSession(), false, text, LANG_UNIVERSAL);
                 break;
         }
     }
+
+    uint32 NextOpenerIn(GuildTalk const& talk)
+    {
+        uint32 const growth = 1 + std::min(talk.unanswered, MAX_PAUSE_GROWTH - 1);
+        return urand(guildOpenMinMinutes, std::max(guildOpenMinMinutes, guildOpenMaxMinutes)) * MINUTE * IN_MILLISECONDS * growth;
+    }
+
+    // Guild mates speaking first: a greeting after login, and something now and then
+    void UpdateGuildTalk(uint32 elapsed)
+    {
+        std::vector<Player*> realPlayers;
+        {
+            std::shared_lock<std::shared_mutex> lock(*HashMapHolder<Player>::GetLock());
+            for (auto const& [guid, player] : ObjectAccessor::GetPlayers())
+                if (player->IsInWorld() && !IsBot(player) && player->GetGuildId())
+                    realPlayers.push_back(player);
+        }
+
+        for (Player* player : realPlayers)
+        {
+            auto [entry, isNew] = guildTalk.try_emplace(player->GetGUID());
+            GuildTalk& talk = entry->second;
+            if (isNew)
+            {
+                talk.untilOpener = NextOpenerIn(talk);
+                talk.untilGreeting = roll_chance_i(int32(guildGreetChance)) ? urand(8, 20) * IN_MILLISECONDS : 0;
+            }
+
+            if (talk.untilGreeting)
+            {
+                if (talk.untilGreeting > elapsed)
+                    talk.untilGreeting -= elapsed;
+                else
+                {
+                    talk.untilGreeting = 0;
+                    std::vector<Player*> const bots = GuildBotsOf(player);
+                    if (!bots.empty())
+                        Ask(bots[urand(0, bots.size() - 1)], player, CHANNEL_GUILD, "greet", "", bots);
+                }
+                continue;
+            }
+
+            if (!guildOpeners)
+                continue;
+
+            if (talk.untilOpener > elapsed)
+            {
+                talk.untilOpener -= elapsed;
+                continue;
+            }
+
+            std::vector<Player*> const bots = GuildBotsOf(player);
+            if (!bots.empty())
+            {
+                Ask(bots[urand(0, bots.size() - 1)], player, CHANNEL_GUILD, "open", "", bots,
+                    bots.size() >= 2 && roll_chance_i(int32(guildBanterChance)));
+                ++talk.unanswered;
+            }
+            talk.untilOpener = NextOpenerIn(talk);
+        }
+    }
+}
+
+void WowPlus::BotRemarksInParty(Player* bot, Player* player)
+{
+    if (enabled && partyEnabled)
+        Ask(bot, player, CHANNEL_PARTY, "open", "", PartyBotsOf(player));
 }
 
 class WowPlusBotChatWorld : public WorldScript
@@ -332,24 +477,37 @@ public:
         sayClosestRadius = sConfigMgr->GetOption<float>("WowPlus.BotChat.Say.ClosestRadius", 8.0f);
         partyUnaddressedChance = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Party.UnaddressedChance", 50);
         guildUnaddressedChance = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Guild.UnaddressedChance", 35);
+        guildOpeners = sConfigMgr->GetOption<bool>("WowPlus.BotChat.Guild.SpeakFirst", true);
+        guildOpenMinMinutes = std::max<uint32>(1, sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Guild.SpeakFirst.MinMinutes", 5));
+        guildOpenMaxMinutes = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Guild.SpeakFirst.MaxMinutes", 10);
+        guildBanterChance = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Guild.SpeakFirst.AnswerChance", 50);
+        guildGreetChance = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Guild.GreetChance", 70);
     }
 
     void OnUpdate(uint32 diff) override
     {
+        if (!enabled)
+            return;
+
         std::vector<Reply> arrived;
         {
             std::lock_guard<std::mutex> lock(replyMutex);
             arrived.swap(replies);
         }
 
-        // Several lines come one after another, with a pause as if typed
+        // Lines come one after another with a pause as if typed, longer when another bot takes over
         for (Reply const& reply : arrived)
         {
             uint32 delay = 0;
-            for (std::string const& text : reply.lines)
+            std::string previous;
+            for (SpokenLine const& line : reply.lines)
             {
-                pendingLines.push_back({delay, reply.bot, reply.player, reply.channel, text});
-                delay += 1200 + uint32(text.size()) * 40;
+                if (!previous.empty() && previous != line.speaker)
+                    delay += urand(2500, 6000);
+
+                pendingLines.push_back({delay, reply.player, reply.channel, line});
+                delay += 1200 + uint32(line.text.size()) * 40;
+                previous = line.speaker;
             }
         }
 
@@ -365,6 +523,14 @@ public:
             Speak(*line);
             line = pendingLines.erase(line);
         }
+
+        sinceTick += diff;
+        if (sinceTick >= TICK)
+        {
+            if (guildEnabled)
+                UpdateGuildTalk(sinceTick);
+            sinceTick = 0;
+        }
     }
 };
 
@@ -374,6 +540,13 @@ public:
     WowPlusBotChatPlayer() : PlayerScript("WowPlusBotChatPlayer") { }
 
     using PlayerScript::OnPlayerCanUseChat;                 // keep the other overloads visible
+
+    void OnPlayerLogout(Player* player) override
+    {
+        guildTalk.erase(player->GetGUID());
+        for (auto& channel : lastTalk)
+            channel.erase(player->GetGUID());
+    }
 
     // /say
     bool OnPlayerCanUseChat(Player* player, uint32 type, uint32 language, std::string& msg) override
@@ -412,7 +585,7 @@ public:
         }
 
         if (speaker && !IsBotCommand(speaker, msg))
-            Ask(speaker, player, CHANNEL_SAY, msg, nearby);
+            Ask(speaker, player, CHANNEL_SAY, "reply", msg, nearby);
 
         return true;
     }
@@ -424,26 +597,21 @@ public:
             return true;
 
         if (!IsBotCommand(receiver, msg))
-            Ask(receiver, player, CHANNEL_WHISPER, msg, {});
+            Ask(receiver, player, CHANNEL_WHISPER, "reply", msg, {});
 
         return true;
     }
 
     // Party chat
-    bool OnPlayerCanUseChat(Player* player, uint32 type, uint32 language, std::string& msg, Group* group) override
+    bool OnPlayerCanUseChat(Player* player, uint32 type, uint32 language, std::string& msg, Group* /*group*/) override
     {
         if (!enabled || !partyEnabled || (type != CHAT_MSG_PARTY && type != CHAT_MSG_PARTY_LEADER) || language == LANG_ADDON || IsBot(player))
             return true;
 
-        std::vector<Player*> bots;
-        for (GroupReference* itr = group->GetFirstMember(); itr != nullptr; itr = itr->next())
-            if (Player* member = itr->GetSource())
-                if (member != player && member->IsInWorld() && IsBot(member))
-                    bots.push_back(member);
-
+        std::vector<Player*> const bots = PartyBotsOf(player);
         if (Player* speaker = ChooseSpeaker(player, CHANNEL_PARTY, msg, bots, partyUnaddressedChance))
             if (!IsBotCommand(speaker, msg))
-                Ask(speaker, player, CHANNEL_PARTY, msg, bots);
+                Ask(speaker, player, CHANNEL_PARTY, "reply", msg, bots);
 
         return true;
     }
@@ -454,17 +622,17 @@ public:
         if (!enabled || !guildEnabled || type != CHAT_MSG_GUILD || language == LANG_ADDON || IsBot(player) || !player->GetGuildId())
             return true;
 
-        std::vector<Player*> bots;
+        // The player takes part: the bots' own remarks go back to their normal pace
+        if (auto talk = guildTalk.find(player->GetGUID()); talk != guildTalk.end())
         {
-            std::shared_lock<std::shared_mutex> lock(*HashMapHolder<Player>::GetLock());
-            for (auto const& [guid, other] : ObjectAccessor::GetPlayers())
-                if (other != player && other->IsInWorld() && IsBot(other) && other->GetGuildId() == player->GetGuildId())
-                    bots.push_back(other);
+            talk->second.unanswered = 0;
+            talk->second.untilOpener = NextOpenerIn(talk->second);
         }
 
+        std::vector<Player*> const bots = GuildBotsOf(player);
         if (Player* speaker = ChooseSpeaker(player, CHANNEL_GUILD, msg, bots, guildUnaddressedChance))
             if (!IsBotCommand(speaker, msg))
-                Ask(speaker, player, CHANNEL_GUILD, msg, bots);
+                Ask(speaker, player, CHANNEL_GUILD, "reply", msg, bots);
 
         return true;
     }

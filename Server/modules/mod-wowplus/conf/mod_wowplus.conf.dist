@@ -644,3 +644,58 @@ WowPlus.BotChat.Party                    = 1
 WowPlus.BotChat.Party.UnaddressedChance  = 50
 WowPlus.BotChat.Guild                    = 1
 WowPlus.BotChat.Guild.UnaddressedChance  = 35
+
+#
+#    WowPlus.BotChat.Guild.GreetChance
+#        The chance in percent that a guild mate greets you when you come online.
+#        Default: 70
+#
+#    WowPlus.BotChat.Guild.SpeakFirst
+#        1: every few minutes a guild mate says something in guild chat by itself (the time
+#        is picked between MinMinutes and MaxMinutes). With AnswerChance in percent another
+#        guild mate answers, briefly. It ends there unless you join in. While you say nothing
+#        in guild chat the pauses grow, up to three times as long.
+#        Default: 1, 5 to 10 minutes, 50
+
+WowPlus.BotChat.Guild.GreetChance              = 70
+WowPlus.BotChat.Guild.SpeakFirst               = 1
+WowPlus.BotChat.Guild.SpeakFirst.MinMinutes    = 5
+WowPlus.BotChat.Guild.SpeakFirst.MaxMinutes    = 10
+WowPlus.BotChat.Guild.SpeakFirst.AnswerChance  = 50
+
+########################################
+# Guild mates and companions
+########################################
+#
+#    WowPlus.Bots.Guild.KeepUp
+#        1: a bot in your guild stays around your level. One that is more than LevelGap
+#        levels below or above you is brought to your level (give or take one), with gear,
+#        spells and talents to match. Checked every half minute while you are online, so
+#        someone invited today has caught up when you next log in. Not while the bot is in
+#        a fight or a dungeon.
+#        Default: 1, and 2 levels
+#
+#    WowPlus.Bots.Companions.Enable
+#        Companions are up to two guild mates you choose:
+#          .bots companion add <name>     .bots companion remove <name>     .bots companion list
+#          .bots call      they join your party and come to you
+#          .bots dismiss   they leave the party
+#        While they travel with you they do small things by themselves.
+#        Default: 1
+#
+#    WowPlus.Bots.Companions.IdleSeconds, Campfire
+#        After you have stood still this long, a companion lights a fire (if Campfire is 1),
+#        and now and then one sits down, eats, laughs, dances or says something.
+#        Default: 60 and 1
+#
+#    WowPlus.Bots.Companions.Road.MinMinutes, MaxMinutes
+#        On the road, a companion makes a gesture or a remark this often.
+#        Default: 3 and 7
+
+WowPlus.Bots.Guild.KeepUp                    = 1
+WowPlus.Bots.Guild.KeepUp.LevelGap           = 2
+WowPlus.Bots.Companions.Enable               = 1
+WowPlus.Bots.Companions.IdleSeconds          = 60
+WowPlus.Bots.Companions.Campfire             = 1
+WowPlus.Bots.Companions.Road.MinMinutes      = 3
+WowPlus.Bots.Companions.Road.MaxMinutes      = 7
