@@ -9,6 +9,24 @@ Started 2026-10-11 from two ideas of Robin's:
 
 The technical background (what the server can change alone and what needs a client patch) is in the [plan](Plan.md), section 9.
 
+## The rule: keep the friction, remove the misery
+
+Robin, 2026-10-11: *"A game like WoW is partly fun because of friction. Getting Tame Beast at 10 is fun, but not having a pet before 10 is miserable."*
+
+This is the test every class change has to pass. Friction is what makes a reward feel earned: the quest for Tame Beast, saving for a mount, the walk to a trainer. Misery is being without something the class needs in order to work, while waiting for a level number. The two often sit in the same place, and the job is to separate them:
+
+- **Keep the moment.** The quest, the milestone, the thing you go out and earn stays, and stays at its level.
+- **Fix the gap before it.** If the class is broken or dull until that moment, it gets something to play with in the meantime, usually a weaker or simpler version.
+- **Do not hand out the reward early.** Giving Tame Beast at level 1 would remove the misery and the moment together. Giving a hunter a plain starter pet at level 1, and leaving Tame Beast at 10 as the day you choose your own, removes only the misery.
+
+Questions to ask of any ability before moving it:
+
+1. Is the wait for it fun (something to look forward to, a quest worth doing), or just empty?
+2. Is the class playable and enjoyable without it until then?
+3. If we move it, what moment is lost, and is something left in its place?
+
+So the aim is not "everything earlier". It is: no stretch of levels where the class is missing its core, no stretch of twenty levels with nothing new, and the big moments left where they are or made bigger.
+
 ## What the game does today
 
 When each class first gets a new ability from its trainer, counted per ten levels. Taken from our server's trainer data on 2026-10-11.
