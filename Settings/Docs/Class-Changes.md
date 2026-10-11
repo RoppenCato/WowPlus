@@ -136,6 +136,44 @@ Our quest data has 129 class quests that teach something. Leaving out duplicates
 5. Start with the abilities that have no numbers (clean, no wrong tooltips), and leave the damage abilities for when we have a client patch?
 6. One class first as a trial, and which?
 
+## Early levels: what each class lacks most
+
+Asked 2026-10-11: the most lacking aspect at 1-10 and at 10-20 for each class, like the hunter's missing pet, as candidates for easy fixes. **Status: assessment, nothing changed.**
+
+The levels of the abilities are from our server's trainer data. Which gap hurts most is Claude's judgement from that data and from how these classes are generally known to play in this version; it has not been play-tested by us. Death knights start at 55 and are left out.
+
+| Class | Most lacking at 1-10 | Most lacking at 10-20 | Easy fix to consider | How clean |
+|-------|----------------------|-----------------------|----------------------|-----------|
+| Warrior | **Staying alive between fights.** No self-heal of any kind, so it eats after every second fight. Rage starts empty, so each fight opens with auto-attacks. | **No way to fight more than one enemy** until Cleave at 20. Still no healing. | Bloodrage (10) from level 1 or 4, so fights start with rage. Cleave or Thunder Clap is already at 6, so the real gap is sustain: see "everyone" below. | Clean: Bloodrage has no damage numbers |
+| Paladin | **Nothing to press.** A seal, Judgement at 4, then waiting for auto-attacks. It is safe but it is the dullest start in the game. | **Still nothing to press** until Exorcism and Consecration, both at 20. | Exorcism (20) to about 8 and Consecration (20) to about 14, so there is a rotation before 20. | Needs their first rank weakened; tooltip then overstates |
+| Hunter | **No pet** (fixed: starter pet from level 1). Also cannot shoot at close range, so anything that reaches it is a melee fight with a weak melee attack. | **Mana.** Aspect of the Viper comes at 20. Otherwise in good shape once it has a pet. | Aspect of the Viper (20) to 10 or 12. | Clean: it works in percentages |
+| Rogue | **Staying alive.** No self-heal, Evasion at 8, Sprint at 10. Fine against one enemy, in trouble against two. | **No poisons until 20, and no way at all to hit several enemies.** Fan of Knives, the only one, comes at 80. | Poisons (20) to 10. Fan of Knives (80) to somewhere between 20 and 40: its damage is a percentage of weapon damage, so it scales by itself. | Both clean |
+| Priest | **Killing speed and mana.** Smite and one damage-over-time spell, then out of mana and wanding. Without a wand it is slower still. | **The same, until Mind Flay or Holy Fire at 20.** The slowest leveller of all until Shadowform at 40. | A wand in the starting bags, so the first levels are not spent without one. Cheaper damage spells at low level. Shadowfiend (66) much earlier: it is a pet whose strength follows the priest's level, and it gives mana back. | Wand: clean. Costs: the modifier route, to be tried. Shadowfiend: clean. |
+| Shaman | **Totems needed the quests** (fixed: trainer and relic). Otherwise a decent start. | **Mana.** Water Shield, the class's mana engine, comes at 20. | Water Shield (20) to 8 or 10. | Nearly clean: its first rank returns a fixed, small amount |
+| Mage | **Drinking.** Strong, but out of mana after two or three fights and sitting down. | **Drinking still.** Evocation at 20 helps once per eight minutes. | Shorter Evocation cooldown; or see "everyone" below. | Clean: one row in the cooldown table |
+| Warlock | Little. It has a pet from level 1 and a self-heal and mana loop early (Life Tap 6, Drain Life 14). | **Soul shards.** Summoning a demon costs a shard, shards fill the bags, and running out means farming them. | Summoning without a shard, or a shard returned when the demon is dismissed. | Needs code or a spell data change; to look at |
+| Druid | **No form at all.** For ten levels it is a weak caster with two damage spells. Bear Form at 10 is the moment (now from the trainer). | **The only form is the bear,** which survives everything and kills slowly. Cat Form, the damage form, comes at 20. Travel Form at 16. | Cat Form (20) to 10, alongside the bear, so that level 10 is "choose your animal". Or leave it: ten levels as a bear is a real part of the class. | Clean: forms have no damage numbers of their own |
+
+### Everyone
+
+Three things are the same for every class at these levels and are probably the largest single source of low-level tedium:
+
+- **Sitting down to eat and drink.** Health and mana come back slowly at low level, so a large share of the first twenty levels is spent seated. `worldserver.conf` has rates for health and mana regeneration; our module could also apply a boost only below a chosen level, so that the higher levels keep their balance.
+- **No mount until 20.** This is friction of the good kind for most people, and the hearthstone menu already softens travel. Listed for completeness.
+- **Bag space.** With the extra loot dropping, four small bags fill fast. Junk selling helps; bigger starting bags would be an easy fix.
+
+### Which are the cheapest wins
+
+Roughly in order of value for effort:
+
+1. Faster regeneration out of combat at low levels: helps all nine classes at once.
+2. Rogue: Poisons at 10, Fan of Knives much earlier.
+3. Hunter and shaman: their mana ability at 10 instead of 20.
+4. Priest: a starting wand, and Shadowfiend early.
+5. Warrior: Bloodrage from the start.
+6. Druid: Cat Form at 10.
+7. Paladin: Exorcism and Consecration earlier. The most needed of all, and the least clean, because their damage has to be scaled down.
+
 ## Per class
 
 ### Mage
