@@ -36,6 +36,7 @@
 #include "WowPlusBotChat.h"
 
 #include "Channel.h"
+#include "CharacterCache.h"
 #include "ChannelMgr.h"
 #include "Chat.h"
 #include "ChatHelper.h"
@@ -54,6 +55,7 @@
 #include "Player.h"
 #include "Playerbots.h"
 #include "ScriptMgr.h"
+#include "SocialMgr.h"
 #include "WorldSession.h"
 #include "WowPlusItems.h"
 #include "WowPlusJournal.h"
@@ -118,6 +120,7 @@ namespace
     uint32 meetChance = 60;
     uint32 rumourChance = 30;
     uint32 giftHours = 3;
+    bool knownBecomeFriends = true;
 
     struct SpokenLine
     {
@@ -477,6 +480,27 @@ namespace
     }
 
     // The letter has been written: lines are the subject and the body. The gift was chosen when it was asked for.
+    // A bot the player has talked with more than once goes on their friends list. Besides being how you
+    // would keep track of people you met, the bot module leaves friends at their level, so someone you got
+    // to know at level 12 is not level 60 the next time you see them.
+    void Befriend(ObjectGuid playerGuid, std::string const& botName)
+    {
+        if (!knownBecomeFriends)
+            return;
+
+        Player* player = ObjectAccessor::FindConnectedPlayer(playerGuid);
+        ObjectGuid bot = sCharacterCache->GetCharacterGuidByName(botName);
+        if (!player || !bot || !player->GetSocial() || player->GetSocial()->HasFriend(bot))
+            return;
+
+        // Leave room for the friends the player adds by hand
+        if (player->GetSocial()->GetNumberOfSocialsWithFlag(SOCIAL_FLAG_FRIEND) + 10 >= SOCIALMGR_FRIEND_LIMIT)
+            return;
+
+        if (player->GetSocial()->AddToSocialList(bot, SOCIAL_FLAG_FRIEND))
+            sSocialMgr->SendFriendStatus(player, ObjectAccessor::FindConnectedPlayer(bot) ? FRIEND_ADDED_ONLINE : FRIEND_ADDED_OFFLINE, bot, false);
+    }
+
     void SendGift(Reply const& reply)
     {
         Player* player = ObjectAccessor::FindConnectedPlayer(reply.player);
@@ -705,6 +729,7 @@ public:
         meetChance = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Meet.Chance", 60);
         rumourChance = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Rumour.Chance", 30);
         giftHours = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Guild.GiftHours", 3);
+        knownBecomeFriends = sConfigMgr->GetOption<bool>("WowPlus.BotChat.KnownBecomeFriends", true);
     }
 
     void OnUpdate(uint32 diff) override
@@ -723,7 +748,11 @@ public:
             if (reply.channel == CHANNEL_KNOWN)
             {
                 for (SpokenLine const& line : reply.lines)
+                {
                     playerTalk[reply.player].knownBots.insert(line.speaker);
+                    if (line.text == "2")
+                        Befriend(reply.player, line.speaker);
+                }
                 continue;
             }
 

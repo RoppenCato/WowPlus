@@ -26,6 +26,9 @@ Boss tactics exist for every Northrend dungeon, a few Outland ones and most raid
 | **Passing buffs** | Now and then a bot of your faction that is near you casts its class buff on you. | `WowPlus.Bots.Buffs.*` |
 | **Being alone** | `.bots away` sends every free bot near you somewhere else, once. `.bots alone on` keeps them away until `.bots alone off`. Your party stays. | `WowPlus.Bots.Away.Radius` |
 | **Talk** | The module's canned replies and joke spam are off. Bots answer through Claude instead: [Bot-Chat.md](Bot-Chat.md). | `Playerbots.RandomBotTalk`, `WowPlus.BotChat.*` |
+| **All Horde, really** | The module fills the world from a fixed set of accounts and falls back on Alliance characters when it runs out of Horde ones (8 of 100 did). There are now enough accounts for 150 Horde bots. | `Playerbots.RandomBotAccountCount`; `Settings/Deploy-Settings.ps1` hands the extra accounts over at start |
+| **Playing all the time** | Every bot plays all the time, wherever it is. The module's default lets bots far from you think one tenth of the time; measured over half an hour, all bots together then handed in 7 quests, and 55 when always active. It costs 1.2 processor cores for 100 bots. | `Playerbots.BotActiveAlone` |
+| **People you know stay** | A bot you have talked with more than once is put on your friends list. The module leaves bots on a friends list (and in your guild) at their level, so someone you met at level 12 is not level 60 next week. Remove them from the list to let them go. | `WowPlus.BotChat.KnownBecomeFriends` |
 | **Small things** | Bots walk indoors, greet, and use emotes. | `Settings/playerbots.conf` |
 
 Two things to know:
@@ -66,11 +69,36 @@ A small addon of our own, `WowPlusBots`, gives you one row of buttons instead of
 
 ## The people behind the bots
 
-Who each bot is comes from files in [Settings/Bots](../Bots/README.md): a list of 240 people, topics, and a style per game. They are written so that MapleStoryPlus can use the same files.
+Who each bot is comes from files in [Settings/Bots](../Bots/README.md): 300 people, each with a background, topics, and a style per game. They are written so that MapleStoryPlus can use the same files.
 
 ## Bots around you
 
 Bots of your level range gather in the zone you are in (`Playerbots.RandomBotConcentrateInPlayerZone`). `.bots alone on` keeps them away when you want the place to yourself.
+
+## Health check
+
+`python Settings/Scripts/Test-Bots.py` looks at the database, the logs and the bot module's source and prints pass or fail. It changes nothing. Run it after a restart, a settings change, or an update of the bot module.
+
+| Check | What a fail means | What to do |
+|---|---|---|
+| World server running | Nothing answers on port 8085. | `Start-Server.bat`. |
+| Bots in the world | Fewer or more bots online than `Playerbots.MinRandomBots` / `MaxRandomBots`. Normal for the first three minutes after a start. | Wait; if it stays, read `Playerbots.log`. |
+| Factions | Bots of a faction that is switched off are in the world. The module fills places with the other faction when it runs out of characters. | Raise `Playerbots.RandomBotAccountCount` in `Settings/playerbots.conf` by a few and restart twice (once to make the accounts, once to use them). |
+| Healers | Fewer than 10 or more than 30 in 100 have a healing spec. | The chances per spec are `Playerbots.RandomClassSpecProb.*`. |
+| Bots around your level | You are online and fewer than 3 in 10 bots are within your ten levels. It takes about 15 minutes after logging in. | `Playerbots.LevelBrackets.Dynamic.RealPlayerWeight`. |
+| Bot log size | Over 3000 lines an hour: the log is at debug level. | `Logger.playerbots = 4,...` in `Settings/worldserver.conf`. |
+| Settings the server asked for | A module is asking for a setting that is not there. | The line names the setting. |
+| World update time | One round of updating the world took over 100 ms: the server is too busy. | Fewer bots, or `Playerbots.BotActiveAlone` below 100. |
+| Our changes in the bot module | One of our three changes inside `mod-playerbots` is gone, usually after updating the module. | Put it back; the check names which. They are marked "WowPlus" in the source. |
+
+Two slower checks watch the bots for a while:
+
+- `--watch 10` saves all characters, waits ten minutes, saves again, and lists bots that did not move, earn or level, and bots that were dead at both ends.
+- `--deaths 20` looks every two minutes for twenty minutes and lists bots that were dead in more than three looks.
+
+The line "Healers" counts by talent spec. The module's own summary in `Playerbots.log` ("tank, heal, dps") only counts a healer while it is healing in a group, so it shows 3 where there are 17.
+
+`Settings/Scripts/Send-Server-Command.ps1 "saveall"` types a command into the world server's window; the slow checks use it.
 
 ## Not built yet
 

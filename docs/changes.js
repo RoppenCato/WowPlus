@@ -19,7 +19,7 @@ window.CHANGELOG = {
   tagline: "World of Warcraft 3.3.5a as a single-player adventure: a world full of bots who talk like people, with enough left to chance that it can still surprise the one who built it.",
   intro: "What this server has that the original game does not, by area. Click a line for the details.",
   repo: "https://github.com/RoppenCato/WowPlus",
-  updated: "2026-10-11",
+  updated: "2026-10-12",
   footer: "Built on AzerothCore and mod-playerbots.",
 
   categories: [
@@ -116,6 +116,10 @@ window.CHANGELOG = {
       items: [
         { title: "Bots of your faction, around your level", kind: "tweak", status: "built", date: "2026-10-11",
           text: "All bots play your side; about half gather in your level range and zone, the rest stay spread out." },
+        { title: "A world that keeps going", kind: "tweak", status: "built", date: "2026-10-12",
+          text: "Every bot plays all the time, also far from you: they quest, level and travel while you are elsewhere." },
+        { title: "People you know stay", kind: "feature", status: "built", date: "2026-10-12",
+          text: "A bot you have talked with more than once lands on your friends list, and keeps its level like a guild mate does." },
         { title: "Bots dress differently", kind: "tweak", status: "built", date: "2026-10-11",
           text: "Most wear green, some have a few blues, a few are really well geared, and they pick the right armour for their class." },
         { title: "Passing buffs", kind: "feature", status: "built", date: "2026-10-11",

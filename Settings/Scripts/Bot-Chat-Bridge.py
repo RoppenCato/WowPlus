@@ -563,13 +563,15 @@ def meet(q):
 
 
 def known_bots(q):
-    """The bots that have notes about this player, so the game knows who would recognise them."""
+    """The bots that have notes about this player, so the game knows who would recognise them.
+    "2" marks the ones that have talked with the player more than once: the game puts those on the friends list."""
     found = []
     for path in glob.glob(os.path.join(MEMORY_DIR, safe_name(q["player"]), "*.json")):
         try:
             with io.open(path, encoding="utf-8") as f:
-                if json.load(f).get("notes"):
-                    found.append((os.path.splitext(os.path.basename(path))[0], "1"))
+                memory = json.load(f)
+                if memory.get("notes"):
+                    found.append((os.path.splitext(os.path.basename(path))[0], "2" if memory.get("talks", 0) >= 2 else "1"))
         except (OSError, ValueError):
             pass
     return found

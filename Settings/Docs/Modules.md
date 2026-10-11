@@ -20,7 +20,7 @@ A personal shortlist for a server that is mostly one player plus bots. To be dec
 
 | Module | Why |
 |--------|-----|
-| [mod-player-bot-level-brackets](https://github.com/DustinHendrickson/mod-player-bot-level-brackets) | Keeps bots spread evenly over the level ranges, so there is always someone at your level. |
+| [mod-player-bot-level-brackets](https://github.com/DustinHendrickson/mod-player-bot-level-brackets) | Not built any more (2026-10-12): the bot module does this itself now (`Playerbots.LevelBrackets.*`). The source is still in the folder; `Build-Server.bat` leaves it out. |
 | [mod-autobalance](https://github.com/azerothcore/mod-autobalance) or [mod-solocraft](https://github.com/azerothcore/mod-solocraft) | Makes dungeons and raids doable with fewer real players. Pick one, not both. |
 | [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot) | Fills the auction house, which is otherwise empty. **Installed 2026-10-11** (Playerbots does not fill it). |
 | [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot), [mod-learn-spells](https://github.com/azerothcore/mod-learn-spells) | Small comforts with little risk. |

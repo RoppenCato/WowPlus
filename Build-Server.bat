@@ -8,6 +8,7 @@ set "OUT=%ROOT%Build\bin\RelWithDebInfo"
 echo Configuring...
 "%CMAKE%" -S "%ROOT%Server" -B "%ROOT%Build" -G "Visual Studio 17 2022" -A x64 ^
   -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static -DWITH_WARNINGS=0 ^
+  -DMODULE_MOD-PLAYER-BOT-LEVEL-BRACKETS=disabled ^
   -DBOOST_ROOT="%ROOTF%Tools/boost" ^
   -DOPENSSL_ROOT_DIR="%ROOTF%Tools/openssl" ^
   -DMYSQL_ROOT_DIR="%ROOTF%Tools/mysql"

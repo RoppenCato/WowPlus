@@ -725,6 +725,15 @@ WowPlus.BotChat.Meet.Chance       = 60
 WowPlus.BotChat.Rumour.Chance     = 30
 WowPlus.BotChat.Guild.GiftHours   = 3
 
+#
+#    WowPlus.BotChat.KnownBecomeFriends
+#        A bot you have talked with more than once is put on your friends list. The bot
+#        module leaves bots on a friends list at their level, so the people you got to
+#        know stay who they were. Remove one from the list and it is free to change again.
+#        Default: 1
+
+WowPlus.BotChat.KnownBecomeFriends = 1
+
 ########################################
 # The auction house always has the staples
 ########################################

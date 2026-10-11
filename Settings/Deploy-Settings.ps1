@@ -106,6 +106,24 @@ foreach ($db in 'world', 'characters', 'auth') {
     }
 }
 
+# Bots of one faction only. The bot module fills the world from a fixed set of accounts and counts on
+# half the characters in them being of each faction; when one faction is switched off and there are
+# too few characters of the other, it fills the last places with the faction that was switched off.
+# Extra accounts (Playerbots.RandomBotAccountCount in Settings\playerbots.conf) are made by the
+# module but left unused, so here they are handed to the pool for bots in the world when it is short.
+$bots = @{ RandomBotAllianceRatio = 50; RandomBotHordeRatio = 50; MaxRandomBots = 500 }
+foreach ($line in Get-Content (Join-Path $PSScriptRoot 'playerbots.conf') -ErrorAction SilentlyContinue) {
+    if ($line -match '^\s*Playerbots\.(RandomBotAllianceRatio|RandomBotHordeRatio|MaxRandomBots)\s*=\s*(\d+)') { $bots[$Matches[1]] = [int]$Matches[2] }
+}
+$wanted = if ($bots.RandomBotAllianceRatio -eq 0 -and $bots.RandomBotHordeRatio -gt 0) { '2,5,6,8,10' }
+          elseif ($bots.RandomBotHordeRatio -eq 0 -and $bots.RandomBotAllianceRatio -gt 0) { '1,3,4,7,11' }
+if ($wanted) {
+    $have = & $mysql $myini -N -e "SELECT COUNT(*) FROM acore_characters.characters c JOIN acore_playerbots.playerbots_account_type t ON t.account_id = c.account WHERE t.account_type = 1 AND c.race IN ($wanted)" 2>$null
+    if ($LASTEXITCODE -eq 0 -and [int]$have -lt $bots.MaxRandomBots) {
+        & $mysql $myini -e "UPDATE acore_playerbots.playerbots_account_type SET account_type = 1 WHERE account_type = 0" 2>&1 | Out-Null
+    }
+}
+
 # Our own addons (Client\AddOns) are copied into every game copy, so the game always has the
 # version that matches the server. A running game picks them up after /reload or a restart.
 foreach ($client in Get-ChildItem (Join-Path $root 'Client') -Directory -ErrorAction SilentlyContinue | Where-Object { Test-Path (Join-Path $_.FullName 'Wow.exe') }) {
