@@ -35,6 +35,8 @@
 
 #include "WowPlusBotChat.h"
 
+#include "Channel.h"
+#include "ChannelMgr.h"
 #include "Chat.h"
 #include "ChatHelper.h"
 #include "Config.h"
@@ -76,12 +78,13 @@ namespace
         CHANNEL_SAY,
         CHANNEL_PARTY,
         CHANNEL_GUILD,
+        CHANNEL_ZONE,                                       // General, Trade and the like: the reply goes to the same channel
         CHANNEL_KNOWN,                                      // not a chat: the bridge lists the bots that remember the player
         CHANNEL_MAIL                                        // not a chat: the bridge writes a letter
     };
 
-    char const* const CHANNEL_NAMES[] = {"whisper", "say", "party", "guild", "known", "mail"};
-    constexpr uint32 TALK_CHANNELS = 4;
+    char const* const CHANNEL_NAMES[] = {"whisper", "say", "party", "guild", "general", "known", "mail"};
+    constexpr uint32 TALK_CHANNELS = 5;
 
     constexpr uint32 MAX_REQUESTS_AT_ONCE = 4;
     constexpr uint32 REPLY_TIMEOUT_SECONDS = 150;
@@ -104,6 +107,8 @@ namespace
     float sayClosestRadius = 8.0f;
     uint32 partyUnaddressedChance = 50;
     uint32 guildUnaddressedChance = 35;
+    bool zoneChannelsEnabled = true;
+    uint32 zoneUnaddressedChance = 25;
     bool guildOpeners = true;
     uint32 guildOpenMinMinutes = 5;
     uint32 guildOpenMaxMinutes = 10;
@@ -125,6 +130,7 @@ namespace
         ObjectGuid player;
         Channel channel;
         std::vector<SpokenLine> lines;
+        std::string channelName;                            // for CHANNEL_ZONE
     };
 
     struct PendingLine
@@ -133,6 +139,7 @@ namespace
         ObjectGuid player;
         Channel channel;
         SpokenLine line;
+        std::string channelName;
     };
 
     struct LastTalk
@@ -221,7 +228,7 @@ namespace
     }
 
     // Runs on a helper thread. Posts the form to the bridge and reads the lines: "bot name<tab>text".
-    void AskBridge(std::string port, std::string body, ObjectGuid player, Channel channel)
+    void AskBridge(std::string port, std::string body, ObjectGuid player, Channel channel, std::string channelName)
     {
         std::vector<SpokenLine> lines;
         try
@@ -263,7 +270,7 @@ namespace
         if (!lines.empty())
         {
             std::lock_guard<std::mutex> lock(replyMutex);
-            replies.push_back({player, channel, std::move(lines)});
+            replies.push_back({player, channel, std::move(lines), std::move(channelName)});
         }
 
         --requestsRunning;
@@ -279,7 +286,7 @@ namespace
      *       "known"  no bot: which bots remember this player?
      */
     void Ask(Player* bot, Player* player, Channel channel, char const* kind, std::string const& text,
-        std::vector<Player*> const& others, bool banter = false)
+        std::vector<Player*> const& others, bool banter = false, std::string const& channelName = "")
     {
         if (requestsRunning >= MAX_REQUESTS_AT_ONCE)
             return;
@@ -326,7 +333,7 @@ namespace
         }
 
         ++requestsRunning;
-        std::thread(AskBridge, bridgePort, body.str(), player->GetGUID(), channel).detach();
+        std::thread(AskBridge, bridgePort, body.str(), player->GetGUID(), channel, channelName).detach();
 
         if (bot && channel != CHANNEL_WHISPER && channel < TALK_CHANNELS)
             lastTalk[channel][player->GetGUID()] = {bot->GetGUID(), time(nullptr)};
@@ -458,6 +465,11 @@ namespace
             case CHANNEL_GUILD:
                 if (Guild* guild = bot->GetGuild(); guild && bot->GetGuildId() == player->GetGuildId())
                     guild->BroadcastToGuild(bot->GetSession(), false, text, LANG_UNIVERSAL);
+                break;
+            case CHANNEL_ZONE:
+                if (ChannelMgr* channels = ChannelMgr::forTeam(bot->GetTeamId()))
+                    if (::Channel* chat = channels->GetChannel(pending.channelName, bot, false))
+                        chat->Say(bot->GetGUID(), text, LANG_UNIVERSAL);  // says nothing if the bot is not in the channel
                 break;
             default:
                 break;
@@ -687,6 +699,8 @@ public:
         guildOpenMaxMinutes = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Guild.SpeakFirst.MaxMinutes", 10);
         guildBanterChance = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Guild.SpeakFirst.AnswerChance", 50);
         guildGreetChance = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Guild.GreetChance", 70);
+        zoneChannelsEnabled = sConfigMgr->GetOption<bool>("WowPlus.BotChat.Channels", true);
+        zoneUnaddressedChance = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Channels.UnaddressedChance", 25);
         momentChance = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Moments.Chance", 33);
         meetChance = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Meet.Chance", 60);
         rumourChance = sConfigMgr->GetOption<uint32>("WowPlus.BotChat.Rumour.Chance", 30);
@@ -727,7 +741,7 @@ public:
                 if (!previous.empty() && previous != line.speaker)
                     delay += urand(2500, 6000);
 
-                pendingLines.push_back({delay, reply.player, reply.channel, line});
+                pendingLines.push_back({delay, reply.player, reply.channel, line, reply.channelName});
                 delay += 1200 + uint32(line.text.size()) * 40;
                 previous = line.speaker;
             }
@@ -872,6 +886,29 @@ public:
         if (Player* speaker = ChooseSpeaker(player, CHANNEL_PARTY, msg, bots, partyUnaddressedChance))
             if (!IsBotCommand(speaker, msg))
                 Ask(speaker, player, CHANNEL_PARTY, "reply", msg, bots);
+
+        return true;
+    }
+
+    // General, Trade, LocalDefense and the like: the bots that are in the channel and in the player's zone
+    bool OnPlayerCanUseChat(Player* player, uint32 type, uint32 language, std::string& msg, ::Channel* channel) override
+    {
+        if (!enabled || !zoneChannelsEnabled || type != CHAT_MSG_CHANNEL || language == LANG_ADDON || IsBot(player) || !channel ||
+            !channel->IsConstant() || channel->IsLFG())
+            return true;
+
+        std::vector<Player*> bots;
+        {
+            std::shared_lock<std::shared_mutex> lock(*HashMapHolder<Player>::GetLock());
+            for (auto const& [guid, other] : ObjectAccessor::GetPlayers())
+                if (other != player && other->IsInWorld() && IsBot(other) && other->GetZoneId() == player->GetZoneId() &&
+                    other->GetTeamId() == player->GetTeamId())
+                    bots.push_back(other);
+        }
+
+        if (Player* speaker = ChooseSpeaker(player, CHANNEL_ZONE, msg, bots, zoneUnaddressedChance))
+            if (!IsBotCommand(speaker, msg))
+                Ask(speaker, player, CHANNEL_ZONE, "reply", msg, bots, false, channel->GetName());
 
         return true;
     }

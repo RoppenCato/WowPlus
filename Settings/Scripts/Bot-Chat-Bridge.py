@@ -353,6 +353,7 @@ WHERE_SPOKEN = {
     "say": "{player} is standing near you in the game world and talking out loud.",
     "party": "You are in a party with {player}, and this is the party chat.",
     "guild": "This is the chat of your guild.",
+    "general": "This is the zone's General chat channel, which everyone in the zone reads. Keep it brief.",
     "mail": "You are writing {player} a short letter to send by in-game mail.",
 }
 
@@ -490,7 +491,7 @@ def ask_claude(system, transcript):
 def conversation_key(q):
     # Party and guild chat are one talk that every bot in it follows; a whisper or /say is between two.
     channel = q.get("channel") or "whisper"
-    return (q["player"].lower(), channel) if channel in ("party", "guild") else (q["player"].lower(), q["bot"].lower())
+    return (q["player"].lower(), channel) if channel in ("party", "guild", "general") else (q["player"].lower(), q["bot"].lower())
 
 
 def speak(q, task, heard=None):
@@ -537,11 +538,32 @@ def speak(q, task, heard=None):
 
 def reply(q):
     """The bot answers something the player said."""
-    task = "Answer the way a real player would in game chat."
-    if q.get("rumour"):
+    # People answer in kind: a word gets a few words, not a paragraph (Robin, 2026-10-11: a bot answered "sure"
+    # with three lines, which looks unnatural)
+    words = len(q["text"].split())
+    if words <= 3:
+        size = ("They wrote only a word or two, so answer the same way: at most 8 words, one line, no question back "
+                "unless it is needed, and nothing about yourself.")
+    elif words <= 10:
+        size = "They wrote one short line, so answer with one short line of your own: at most 15 words."
+    else:
+        size = "Answer in one or two short lines, no longer than what they wrote."
+    task = "Answer the way a real player would in game chat. " + size
+    if q.get("rumour") and words > 3:
         task += (f" Something you happen to know: {q['rumour']} {RUMOUR_RULES} Bring it up only if the player asks "
                  "for news, tips, what is worth doing, or what you have seen lately; otherwise leave it out.")
-    return [(q["bot"], line) for line in speak(q, task, heard=q["text"])]
+    lines = speak(q, task, heard=q["text"])
+    if words <= 3:
+        lines = [first_sentence(lines[0])] if lines else []
+    elif words <= 10:
+        lines = lines[:1]
+    return [(q["bot"], line) for line in lines]
+
+
+def first_sentence(line):
+    """The first sentence of a line, for when a short answer came back long anyway."""
+    cut = re.search(r"[.!?](\s|$)", line)
+    return line[:cut.end()].strip() if cut and cut.end() < len(line) else line
 
 
 def greet(q):

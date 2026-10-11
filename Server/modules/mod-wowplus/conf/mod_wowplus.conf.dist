@@ -830,3 +830,13 @@ WowPlus.Weather.Everywhere   = 1
 #        Default: 1
 
 WowPlus.Journal.Enable = 1
+
+#
+#    WowPlus.BotChat.Channels
+#        1: bots answer in General, Trade and the other zone channels too: a bot of your zone
+#        that you name always answers, the one that answered last keeps the talk going, and
+#        otherwise one of them answers with the UnaddressedChance in percent.
+#        Default: 1 and 25
+
+WowPlus.BotChat.Channels                   = 1
+WowPlus.BotChat.Channels.UnaddressedChance = 25

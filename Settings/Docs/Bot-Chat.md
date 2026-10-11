@@ -20,6 +20,7 @@ Close the window with Ctrl+C rather than the X: the bots then write down what th
 | `/say` | A nearby bot you name. If you name nobody: the bot you have targeted. If you have no target: the closest bot, if it stands within 8 yards. |
 | Party chat | A bot you name. If you name nobody: the bot that answered last keeps the talk going for two minutes; otherwise one of them answers half the time. |
 | Guild chat | The same as party chat, with a one-in-three chance when nobody is named. |
+| General, Trade and other zone channels | A bot of your zone that you name; otherwise the one that answered last, or one of them a quarter of the time. |
 
 A line that is a bot command (`follow`, `stay`, `attack` ...) goes to the bot as a command and gets no chat answer, unless it is a question.
 
@@ -63,7 +64,7 @@ For everything else about the game, Claude's own knowledge of patch 3.3.5 is use
 
 ## Rules the bots follow
 
-- At most three short lines per reply.
+- At most three short lines per reply, and never more than what was said to them: a word or two gets a few words back.
 - They stay the person they are and never say they are an AI.
 - They know nothing about you beyond what you told them, and nothing about this PC. Lines containing an email address, a file path or details of the computer never reach the game.
 - They do not promise trades, gifts or meetings they cannot keep.
