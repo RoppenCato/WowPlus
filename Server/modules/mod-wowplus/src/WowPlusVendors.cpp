@@ -6,7 +6,8 @@
  *   them may, very rarely, have a mount or a companion pet.
  * - The merchants who walk a route get a theme (beasts, mounts, potions, armour, weapons,
  *   recipes, oddities) and a real stock of it, on top of what they sold before.
- * - Stock is for the level of the zone the vendor stands in, not for the player who walks in.
+ * - Stock is for the levels of the area the vendor stands in (read from the area's quests), not
+ *   for the player who walks in.
  * - Innkeepers, food and drink sellers and stable masters are left alone, and so are the
  *   vendors of the starting areas.
  *
@@ -20,15 +21,20 @@
 
 #include "Config.h"
 #include "Creature.h"
+#include "DatabaseEnv.h"
 #include "DBCStores.h"
+#include "Field.h"
 #include "GameTime.h"
 #include "ItemTemplate.h"
 #include "Log.h"
 #include "ObjectMgr.h"
+#include "QuestDef.h"
+#include "QueryResult.h"
 #include "ScriptMgr.h"
 #include "StringFormat.h"
 #include "WowPlusItems.h"
 
+#include <algorithm>
 #include <array>
 #include <mutex>
 #include <unordered_map>
@@ -40,6 +46,7 @@ namespace
     using namespace WowPlus;
 
     constexpr uint32 MAX_VENDOR_LIST = 145;                 // the game shows at most 150 items; leave room
+    constexpr std::size_t MIN_QUESTS_FOR_AREA_LEVEL = 5;    // fewer quests say too little about an area
     constexpr uint32 STARTING_AREA_LEVEL = 5;               // vendors in areas up to this level get nothing
     constexpr uint32 OUR_NPC_ENTRIES_FROM = 9000000;        // the hub and other NPCs of our own
 
@@ -120,7 +127,8 @@ namespace
     struct Sighting
     {
         uint32 entry;
-        uint32 areaLevel;                                   // 0: no level, such as a city
+        uint32 areaLevel;                                   // the levels the area is meant for, from..
+        uint32 areaLevelHigh;                               // ..to. Both 0: a city, any level
         uint32 npcFlags;
         bool wanderer;
     };
@@ -162,16 +170,24 @@ namespace
     // one, far too low for something you get to choose. Raised once at startup, in memory:
     // item level squared, times a factor for the rarity (the rule the hub uses). The sell
     // price is not touched, so buying and selling again always loses money.
-    // Side effect: the few vendors in the game that already sold such items for gold charge more too.
+    // Items that a vendor of the game itself sells for money keep the game's price: a first
+    // wand, a racial mount and a vendor pet must not become dearer because of this.
+    std::unordered_set<uint32> soldByTheGame;
+
     void RaisePrice(ItemTemplate const* proto, uint32 atLeastCopper)
     {
-        if (uint32(proto->BuyPrice) < atLeastCopper)
+        if (uint32(proto->BuyPrice) < atLeastCopper && !soldByTheGame.count(proto->ItemId))
             const_cast<ItemTemplate*>(proto)->BuyPrice = int32(atLeastCopper);
     }
 
     void SetPrices()
     {
         static std::array<float, QUALITY_COUNT> const factorByRarity = {40.0f, 150.0f, 600.0f, 2000.0f};
+
+        if (QueryResult result = WorldDatabase.Query("SELECT DISTINCT item FROM npc_vendor WHERE item > 0 AND ExtendedCost = 0 AND entry < {}", OUR_NPC_ENTRIES_FROM))
+            do
+                soldByTheGame.insert((*result)[0].Get<uint32>());
+            while (result->NextRow());
 
         for (uint32 level = 1; level < MAX_LEVEL_INDEX; ++level)
         {
@@ -234,10 +250,75 @@ namespace
         return trade;
     }
 
-    // The level a zone-less vendor (a city) stocks for: anything
-    uint32 StockLevel(Dice& dice, uint32 areaLevel)
+    // The level one piece of stock is picked for: somewhere in the area's range, or anything in a city
+    uint32 StockLevel(Dice& dice, Sighting const& sighting)
     {
-        return areaLevel ? areaLevel : dice.Range(10, 78);
+        return sighting.areaLevel ? dice.Range(sighting.areaLevel, sighting.areaLevelHigh) : dice.Range(10, 78);
+    }
+
+    // The levels each area is meant for, read from its quests: the middle half of their levels.
+    // (The game's own area list carries a level for only some areas, and none for whole zones.)
+    struct LevelRange
+    {
+        uint32 low;
+        uint32 high;
+    };
+
+    std::unordered_map<uint32, LevelRange> areaLevels;      // by area or zone id
+
+    void BuildAreaLevels()
+    {
+        std::unordered_map<uint32, std::vector<uint32>> questLevels;
+        for (auto const& [id, quest] : sObjectMgr->GetQuestTemplates())
+            if (quest->GetZoneOrSort() > 0 && quest->GetQuestLevel() > 0)
+                questLevels[uint32(quest->GetZoneOrSort())].push_back(uint32(quest->GetQuestLevel()));
+
+        for (auto& [areaId, levels] : questLevels)
+        {
+            if (levels.size() < MIN_QUESTS_FOR_AREA_LEVEL)
+                continue;
+
+            std::sort(levels.begin(), levels.end());
+            areaLevels[areaId] = {levels[levels.size() / 4], levels[levels.size() * 3 / 4]};
+        }
+    }
+
+    // False: this vendor gets no surprise stock (a starting area, or a place of unknown level)
+    bool FindAreaLevels(uint32 areaId, uint32& low, uint32& high)
+    {
+        low = high = 0;
+
+        AreaTableEntry const* area = sAreaTableStore.LookupEntry(areaId);
+        if (!area)
+            return false;
+
+        AreaTableEntry const* zone = area->zone ? sAreaTableStore.LookupEntry(area->zone) : area;
+        if (!zone)
+            zone = area;
+
+        // Cities: any level
+        if ((area->flags | zone->flags) & (AREA_FLAG_CAPITAL | AREA_FLAG_SLAVE_CAPITAL))
+            return true;
+
+        auto found = areaLevels.find(area->ID);
+        if (found == areaLevels.end())
+            found = areaLevels.find(zone->ID);
+
+        if (found != areaLevels.end())
+        {
+            low = found->second.low;
+            high = found->second.high;
+        }
+        else if (area->area_level > 0)
+            low = high = uint32(area->area_level);
+        else
+            return false;
+
+        if (high <= STARTING_AREA_LEVEL)
+            return false;
+
+        low = std::max<uint32>(low, STARTING_AREA_LEVEL + 1);
+        return true;
     }
 
     // classFilter: ITEM_CLASS_WEAPON, ITEM_CLASS_ARMOR, or MAX_ITEM_CLASS for either
@@ -313,10 +394,8 @@ namespace
         std::vector<uint32> _added;
     };
 
-    void StockWanderer(Dice& stock, Theme theme, uint32 areaLevel, Shelf& shelf)
+    void StockWanderer(Dice& stock, Theme theme, uint32 level, Shelf& shelf)
     {
-        uint32 const level = StockLevel(stock, areaLevel);
-
         switch (theme)
         {
             case THEME_BEASTMASTER:
@@ -368,7 +447,7 @@ namespace
         {
             // The theme belongs to the world: it depends on the seed, not on the week
             Dice world(config.seed, 0, sighting.entry);
-            StockWanderer(stock, Theme(world.Range(0, THEME_COUNT - 1)), sighting.areaLevel, shelf);
+            StockWanderer(stock, Theme(world.Range(0, THEME_COUNT - 1)), StockLevel(stock, sighting), shelf);
         }
         else
         {
@@ -385,35 +464,35 @@ namespace
 
                 if (stock.Chance(config.gearGreenChance))
                     for (uint32 i = stock.Range(1, 2); i > 0; --i)
-                        shelf.Put(PickGear(stock, StockLevel(stock, sighting.areaLevel), 0, kind, &trade));
+                        shelf.Put(PickGear(stock, StockLevel(stock, sighting), 0, kind, &trade));
 
                 if (stock.Chance(config.gearBlueChance))
-                    shelf.Put(PickGear(stock, StockLevel(stock, sighting.areaLevel), 1, kind, &trade));
+                    shelf.Put(PickGear(stock, StockLevel(stock, sighting), 1, kind, &trade));
 
                 if (stock.Chance(config.gearEpicChance))
-                    shelf.Put(PickGear(stock, StockLevel(stock, sighting.areaLevel), 2, kind, &trade));
+                    shelf.Put(PickGear(stock, StockLevel(stock, sighting), 2, kind, &trade));
             }
             else
             {
                 if (stock.Chance(config.otherConsumableChance))
                     for (uint32 i = stock.Range(1, 2); i > 0; --i)
                     {
-                        uint32 const level = StockLevel(stock, sighting.areaLevel);
+                        uint32 const level = StockLevel(stock, sighting);
                         shelf.Put(PickFromLevels(stock, &Consumables, LevelBelow(level, 10), level + 3));
                     }
 
                 if (stock.Chance(config.otherRecipeChance))
                 {
-                    uint32 const level = StockLevel(stock, sighting.areaLevel);
+                    uint32 const level = StockLevel(stock, sighting);
                     shelf.Put(PickFromLevels(stock, &Recipes, LevelBelow(level, 10), level + 5));
                 }
 
                 if (stock.Chance(config.otherGearChance))
-                    shelf.Put(PickGear(stock, StockLevel(stock, sighting.areaLevel), 0, MAX_ITEM_CLASS, nullptr));
+                    shelf.Put(PickGear(stock, StockLevel(stock, sighting), 0, MAX_ITEM_CLASS, nullptr));
             }
 
             if (stock.Chance(config.mountChance))
-                shelf.Put(PickMount(stock, std::max<uint32>(StockLevel(stock, sighting.areaLevel), 20)));
+                shelf.Put(PickMount(stock, std::max<uint32>(StockLevel(stock, sighting), 20)));
 
             if (stock.Chance(config.petChance) && !Pets().empty())
                 shelf.Put(stock.Pick(Pets()));
@@ -430,8 +509,8 @@ namespace
                     names += Acore::StringFormat("{}{} ({}g)", names.empty() ? "" : ", ", proto->Name1, proto->BuyPrice / GOLD);
 
             CreatureTemplate const* vendor = sObjectMgr->GetCreatureTemplate(sighting.entry);
-            LOG_INFO("module", "WowPlus vendors: {} <{}>, zone level {}{}: {}", vendor ? vendor->Name : "?", vendor ? vendor->SubName : "",
-                sighting.areaLevel, sighting.wanderer ? ", wanderer" : "", names.empty() ? "nothing" : names);
+            LOG_INFO("module", "WowPlus vendors: {} <{}>, area levels {}-{}{}: {}", vendor ? vendor->Name : "?", vendor ? vendor->SubName : "",
+                sighting.areaLevel, sighting.areaLevelHigh, sighting.wanderer ? ", wanderer" : "", names.empty() ? "nothing" : names);
         }
     }
 
@@ -463,6 +542,7 @@ public:
     void OnStartup() override
     {
         BuildItemPools();
+        BuildAreaLevels();
         if (config.enabled)
             SetPrices();
 
@@ -505,22 +585,15 @@ public:
             return;
 
         uint32 areaLevel = 0;
-        if (AreaTableEntry const* area = sAreaTableStore.LookupEntry(creature->GetAreaId()))
-        {
-            areaLevel = area->area_level > 0 ? uint32(area->area_level) : 0;
-            if (!areaLevel && area->zone)
-                if (AreaTableEntry const* zone = sAreaTableStore.LookupEntry(area->zone))
-                    areaLevel = zone->area_level > 0 ? uint32(zone->area_level) : 0;
-        }
-
-        if (areaLevel && areaLevel <= STARTING_AREA_LEVEL)
+        uint32 areaLevelHigh = 0;
+        if (!FindAreaLevels(creature->GetAreaId(), areaLevel, areaLevelHigh))
             return;
 
         bool const wanderer = config.wanderers && creature->GetDefaultMovementType() == WAYPOINT_MOTION_TYPE;
 
         std::lock_guard<std::mutex> lock(sightingMutex);
         if (sighted.insert(creature->GetEntry()).second)
-            sightings.push_back({creature->GetEntry(), areaLevel, uint32(creature->GetNpcFlags()), wanderer});
+            sightings.push_back({creature->GetEntry(), areaLevel, areaLevelHigh, uint32(creature->GetNpcFlags()), wanderer});
     }
 };
 

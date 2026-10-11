@@ -37,3 +37,7 @@ INSERT IGNORE INTO npc_vendor (entry, slot, item, maxcount, incrtime, ExtendedCo
         11287   -- Lesser Magic Wand (needs level 5)
     )
     JOIN creature_template ct ON ct.entry = v.entry;
+-- The first wand has to be affordable at level 5, when a character owns a few silver.
+-- The game prices the Lesser Magic Wand at 25 silver (it is meant to be made by enchanters).
+-- Now: 2 silver to buy, 40 copper when sold.
+UPDATE item_template SET BuyPrice = 200, SellPrice = 40 WHERE entry = 11287;
