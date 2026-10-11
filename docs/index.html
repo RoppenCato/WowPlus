@@ -1,0 +1,243 @@
+<!doctype html>
+<!--
+  A changes page for a game server project. This file is a template: it holds no content of its own.
+  Everything it shows comes from changes.js next to it. To use it for another project, copy this file
+  as it is and write a changes.js for that project. See README.md in this folder.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changes</title>
+<style>
+  :root {
+    --bg: #0a0c16; --bg2: #121528; --card: #151933; --card2: #1b2040; --line: #2a3060;
+    --text: #e8eaf6; --dim: #9aa0c4; --accent: #ffb84d; --accent2: #7c5cff; --good: #4ade80; --plan: #60a5fa; --fix: #f87171; --tweak: #c084fc;
+    --glow: 0 0 40px rgba(124, 92, 255, .25);
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg: #f4f5fb; --bg2: #e9ebf7; --card: #ffffff; --card2: #f3f4fc; --line: #d6d9ee;
+      --text: #1b1e36; --dim: #5a6088; --accent: #c26a00; --accent2: #5b3fe0; --good: #15803d; --plan: #1d4ed8; --fix: #b91c1c; --tweak: #7e22ce;
+      --glow: 0 0 30px rgba(91, 63, 224, .12); }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; }
+  a { color: var(--accent); }
+
+  /* The top */
+  header { position: relative; overflow: hidden; padding: 72px 16px 56px; text-align: center;
+    background: radial-gradient(1200px 500px at 20% -10%, rgba(124, 92, 255, .35), transparent 60%),
+                radial-gradient(900px 500px at 85% 0%, rgba(255, 184, 77, .28), transparent 60%), var(--bg2);
+    border-bottom: 1px solid var(--line); }
+  header::before { content: ""; position: absolute; inset: -50%; pointer-events: none;
+    background: conic-gradient(from 0deg, transparent 0 70%, rgba(255, 184, 77, .10) 80%, transparent 90%);
+    animation: sweep 14s linear infinite; }
+  @keyframes sweep { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { header::before { animation: none; } html { scroll-behavior: auto; } }
+  h1 { position: relative; margin: 0; font-size: clamp(40px, 9vw, 84px); letter-spacing: -1px; line-height: 1;
+    background: linear-gradient(90deg, var(--accent), #fff3d6 45%, var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 4px 24px rgba(255, 184, 77, .25)); }
+  @media (prefers-color-scheme: light) { h1 { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; } }
+  .tagline { position: relative; margin: 14px auto 0; max-width: 720px; color: var(--dim); font-size: 18px; }
+  .stats { position: relative; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px; }
+  .stat { min-width: 120px; padding: 12px 18px; border: 1px solid var(--line); border-radius: 14px; background: color-mix(in srgb, var(--card) 80%, transparent); box-shadow: var(--glow); }
+  .stat b { display: block; font-size: 28px; color: var(--accent); line-height: 1.1; }
+  .stat span { color: var(--dim); font-size: 13px; text-transform: uppercase; letter-spacing: .8px; }
+  .meta { position: relative; margin-top: 18px; color: var(--dim); font-size: 14px; }
+
+  /* The controls */
+  .controls { position: sticky; top: 0; z-index: 5; padding: 12px 16px; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .controls-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  input[type=search] { flex: 1 1 240px; min-width: 0; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; }
+  input[type=search]:focus { outline: 2px solid var(--accent2); outline-offset: 1px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--dim); font: inherit; font-size: 14px; cursor: pointer; }
+  .chip[aria-pressed=true] { color: var(--bg); background: var(--accent); border-color: var(--accent); font-weight: 600; }
+  .chip:focus-visible, summary:focus-visible, .jump a:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 80px; }
+  .intro { color: var(--dim); max-width: 760px; margin: 8px 0 24px; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .jump a { text-decoration: none; padding: 6px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); font-size: 14px; }
+  .jump a:hover { border-color: var(--hue, var(--accent)); }
+  .jump small { color: var(--dim); margin-left: 4px; }
+
+  /* A category */
+  section { margin-bottom: 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); overflow: hidden; box-shadow: var(--glow); scroll-margin-top: 80px; }
+  section > h2 { margin: 0; padding: 18px 20px 6px; font-size: 24px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  section > h2::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--hue); box-shadow: 0 0 14px var(--hue); align-self: center; }
+  section > h2 small { color: var(--dim); font-size: 14px; font-weight: 400; }
+  section > p { margin: 0; padding: 0 20px 14px; color: var(--dim); }
+  .items { border-top: 1px solid var(--line); }
+
+  /* An item */
+  details { border-bottom: 1px solid var(--line); }
+  details:last-child { border-bottom: 0; }
+  summary { list-style: none; cursor: pointer; padding: 13px 20px; display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { background: var(--card2); }
+  .title { font-weight: 600; }
+  .title::before { content: "▸"; display: inline-block; width: 1.1em; color: var(--hue); transition: transform .15s; }
+  details[open] .title::before { transform: rotate(90deg); }
+  details.plain .title::before { content: "•"; transform: none; }
+  details.plain summary { cursor: default; }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .tag { font-size: 12px; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+  .tag.feature { color: var(--accent); } .tag.fix { color: var(--fix); } .tag.tweak { color: var(--tweak); }
+  .tag.confirmed { color: var(--good); } .tag.built { color: var(--dim); } .tag.planned { color: var(--plan); }
+  .short { grid-column: 1 / -1; color: var(--dim); font-size: 15px; padding-left: 1.1em; }
+  .more { padding: 0 20px 16px calc(20px + 1.1em); }
+  .more ul { margin: 0; padding-left: 20px; }
+  .more li { margin: 4px 0; }
+  .more .when { color: var(--dim); font-size: 13px; margin-top: 8px; }
+  mark { background: color-mix(in srgb, var(--accent) 45%, transparent); color: inherit; border-radius: 3px; }
+  .empty { text-align: center; color: var(--dim); padding: 60px 0; }
+  footer { text-align: center; color: var(--dim); font-size: 14px; padding: 0 16px 40px; }
+  @media (max-width: 560px) { summary { grid-template-columns: 1fr; } .tags { justify-content: flex-start; padding-left: 1.1em; } }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title">Changes</h1>
+  <p class="tagline" id="tagline"></p>
+  <div class="stats" id="stats"></div>
+  <div class="meta" id="meta"></div>
+</header>
+
+<div class="controls">
+  <div class="controls-inner">
+    <input type="search" id="search" placeholder="Search the changes..." aria-label="Search the changes">
+    <div class="chips" id="kinds" role="group" aria-label="Kind"></div>
+    <div class="chips" id="statuses" role="group" aria-label="Status"></div>
+  </div>
+</div>
+
+<main>
+  <p class="intro" id="intro"></p>
+  <nav class="jump" id="jump" aria-label="Categories"></nav>
+  <div id="list"></div>
+  <p class="empty" id="empty" hidden>Nothing matches.</p>
+</main>
+<footer id="footer"></footer>
+
+<script src="changes.js"></script>
+<script>
+(function () {
+  var data = window.CHANGELOG || { title: "Changes", categories: [] };
+  var KINDS = { feature: "New", fix: "Fix", tweak: "Change" };
+  var STATUSES = { confirmed: "Confirmed in play", built: "Built", planned: "Planned" };
+  var HUES = ["#ffb84d", "#7c5cff", "#4ade80", "#38bdf8", "#f472b6", "#fb923c", "#a3e635", "#22d3ee", "#e879f9", "#facc15", "#f87171", "#2dd4bf"];
+  var chosen = { kind: null, status: null }, query = "";
+
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+
+  document.title = data.title + ": what has changed";
+  document.getElementById("title").textContent = data.title;
+  document.getElementById("tagline").textContent = data.tagline || "";
+  document.getElementById("intro").textContent = data.intro || "";
+
+  var all = [];
+  data.categories.forEach(function (c) { (c.items || []).forEach(function (i) { all.push(i); }); });
+  function count(f) { return all.filter(f).length; }
+
+  var stats = document.getElementById("stats");
+  [[all.length, "changes"], [data.categories.length, "areas"], [count(function (i) { return i.status === "confirmed"; }), "confirmed in play"],
+   [count(function (i) { return i.status === "planned"; }), "planned"]].forEach(function (s) {
+    var box = el("div", "stat"); box.appendChild(el("b", null, s[0])); box.appendChild(el("span", null, s[1])); stats.appendChild(box);
+  });
+
+  var meta = document.getElementById("meta");
+  if (data.updated) meta.appendChild(document.createTextNode("Last updated " + data.updated));
+  if (data.repo) { if (data.updated) meta.appendChild(document.createTextNode("  ·  ")); var a = el("a", null, "The project on GitHub"); a.href = data.repo; meta.appendChild(a); }
+  document.getElementById("footer").textContent = data.footer || "";
+
+  function chips(holder, names, key) {
+    Object.keys(names).forEach(function (value) {
+      if (!count(function (i) { return (i[key] || (key === "kind" ? "feature" : "built")) === value; })) return;
+      var b = el("button", "chip", names[value]); b.type = "button"; b.setAttribute("aria-pressed", "false");
+      b.onclick = function () {
+        chosen[key] = chosen[key] === value ? null : value;
+        Array.prototype.forEach.call(holder.children, function (o) { o.setAttribute("aria-pressed", String(o === b && chosen[key] === value)); });
+        draw();
+      };
+      holder.appendChild(b);
+    });
+  }
+  chips(document.getElementById("kinds"), KINDS, "kind");
+  chips(document.getElementById("statuses"), STATUSES, "status");
+
+  function marked(text) {
+    var span = document.createDocumentFragment();
+    if (!query) { span.appendChild(document.createTextNode(text)); return span; }
+    var lower = text.toLowerCase(), at = 0, hit;
+    while ((hit = lower.indexOf(query, at)) >= 0) {
+      span.appendChild(document.createTextNode(text.slice(at, hit)));
+      span.appendChild(el("mark", null, text.slice(hit, hit + query.length)));
+      at = hit + query.length;
+    }
+    span.appendChild(document.createTextNode(text.slice(at)));
+    return span;
+  }
+
+  function matches(item) {
+    if (chosen.kind && (item.kind || "feature") !== chosen.kind) return false;
+    if (chosen.status && (item.status || "built") !== chosen.status) return false;
+    if (!query) return true;
+    return [item.title, item.text].concat(item.details || []).join(" ").toLowerCase().indexOf(query) >= 0;
+  }
+
+  function draw() {
+    var list = document.getElementById("list"), jump = document.getElementById("jump"), shownAny = false;
+    list.textContent = ""; jump.textContent = "";
+    data.categories.forEach(function (category, index) {
+      var items = (category.items || []).filter(matches);
+      if (!items.length) return;
+      shownAny = true;
+      var hue = category.colour || HUES[index % HUES.length];
+
+      var link = el("a", null, category.name); link.href = "#" + slug(category.name); link.style.setProperty("--hue", hue);
+      link.appendChild(el("small", null, items.length)); jump.appendChild(link);
+
+      var section = el("section"); section.id = slug(category.name); section.style.setProperty("--hue", hue);
+      var h2 = el("h2", null, category.name); h2.appendChild(el("small", null, items.length + (items.length === 1 ? " change" : " changes"))); section.appendChild(h2);
+      if (category.summary) section.appendChild(el("p", null, category.summary));
+      var holder = el("div", "items");
+
+      items.forEach(function (item) {
+        var hasMore = (item.details && item.details.length) || item.date;
+        var d = el("details", hasMore ? null : "plain");
+        var s = el("summary");
+        var title = el("span", "title"); title.appendChild(marked(item.title)); s.appendChild(title);
+        var tags = el("span", "tags");
+        var kind = item.kind || "feature", status = item.status || "built";
+        tags.appendChild(el("span", "tag " + kind, KINDS[kind] || kind));
+        tags.appendChild(el("span", "tag " + status, STATUSES[status] || status));
+        s.appendChild(tags);
+        if (item.text) { var short = el("span", "short"); short.appendChild(marked(item.text)); s.appendChild(short); }
+        d.appendChild(s);
+        if (hasMore) {
+          var more = el("div", "more");
+          if (item.details && item.details.length) {
+            var ul = el("ul"); item.details.forEach(function (line) { var li = el("li"); li.appendChild(marked(line)); ul.appendChild(li); }); more.appendChild(ul);
+          }
+          if (item.date) more.appendChild(el("div", "when", item.date));
+          d.appendChild(more);
+          if (query && (item.details || []).join(" ").toLowerCase().indexOf(query) >= 0) d.open = true;
+        } else {
+          s.addEventListener("click", function (e) { e.preventDefault(); });
+        }
+        holder.appendChild(d);
+      });
+      section.appendChild(holder); list.appendChild(section);
+    });
+    document.getElementById("empty").hidden = shownAny;
+  }
+
+  document.getElementById("search").addEventListener("input", function () { query = this.value.trim().toLowerCase(); draw(); });
+  draw();
+})();
+</script>
+</body>
+</html>
