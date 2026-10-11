@@ -11,6 +11,7 @@
  */
 window.CHANGELOG = {
   title: "WowPlus",
+  theme: "warcraft",          // the look of the page: "arcade", "warcraft" or "maple"
   tagline: "World of Warcraft 3.3.5a as a single-player adventure: a world full of bots who talk like people, with enough left to chance that it can still surprise the one who built it.",
   intro: "Everything that is different from the original game, by area. Open an entry for the details. \"Built\" means it is made and the server runs with it, but it has not been seen working in play yet.",
   repo: "https://github.com/RoppenCato/WowPlus",

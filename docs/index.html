@@ -14,34 +14,104 @@
     --bg: #0a0c16; --bg2: #121528; --card: #151933; --card2: #1b2040; --line: #2a3060;
     --text: #e8eaf6; --dim: #9aa0c4; --accent: #ffb84d; --accent2: #7c5cff; --good: #4ade80; --plan: #60a5fa; --fix: #f87171; --tweak: #c084fc;
     --glow: 0 0 40px rgba(124, 92, 255, .25);
+    --radius: 18px; --radius-small: 10px; --pill: 999px;
+    --font: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; --font-head: var(--font);
+    --title: linear-gradient(90deg, var(--accent), #fff3d6 45%, var(--accent2));
+    --hero: radial-gradient(1200px 500px at 20% -10%, rgba(124, 92, 255, .35), transparent 60%),
+            radial-gradient(900px 500px at 85% 0%, rgba(255, 184, 77, .28), transparent 60%), var(--bg2);
+    --frame: 1px solid var(--line); --head-case: none; --head-space: -1px;
   }
   @media (prefers-color-scheme: light) {
     :root { --bg: #f4f5fb; --bg2: #e9ebf7; --card: #ffffff; --card2: #f3f4fc; --line: #d6d9ee;
       --text: #1b1e36; --dim: #5a6088; --accent: #c26a00; --accent2: #5b3fe0; --good: #15803d; --plan: #1d4ed8; --fix: #b91c1c; --tweak: #7e22ce;
-      --glow: 0 0 30px rgba(91, 63, 224, .12); }
+      --glow: 0 0 30px rgba(91, 63, 224, .12); --title: linear-gradient(90deg, var(--accent), var(--accent2)); }
   }
+
+  /* Theme "warcraft": dark stone and gold, the colours of item quality for the labels.
+     Chosen with  theme: "warcraft"  in changes.js. */
+  :root[data-theme=warcraft] {
+    --bg: #0c0906; --bg2: #171009; --card: #19120a; --card2: #241a0e; --line: #5c4520;
+    --text: #eadfc4; --dim: #a8997a; --accent: #ffd100; --accent2: #c8811a;
+    --good: #1eff00; --plan: #a335ee; --fix: #ff4a3d; --tweak: #3d9bff;
+    --glow: inset 0 0 0 1px rgba(0, 0, 0, .9), inset 0 0 28px rgba(0, 0, 0, .55), 0 6px 24px rgba(0, 0, 0, .6);
+    --radius: 6px; --radius-small: 4px; --pill: 4px;
+    --font: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    --font-head: "Cinzel", "Trajan Pro", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    --title: linear-gradient(180deg, #fff2a8 0%, #ffd100 38%, #c8811a 72%, #7a4a0c 100%);
+    --hero: radial-gradient(900px 420px at 50% -20%, rgba(255, 170, 40, .30), transparent 65%),
+            radial-gradient(700px 400px at 50% 120%, rgba(160, 40, 10, .22), transparent 70%),
+            linear-gradient(180deg, #1d140a, #0c0906);
+    --frame: 1px solid #8a6a2f; --head-case: uppercase; --head-space: 3px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root[data-theme=warcraft] {
+      --bg: #e9dcba; --bg2: #dccb9f; --card: #f6ecd0; --card2: #efe2bf; --line: #b99a5a;
+      --text: #33240f; --dim: #6b583a; --accent: #8a5a00; --accent2: #a8480f;
+      --good: #1b7a12; --plan: #7b2bb8; --fix: #b3261e; --tweak: #1f5fb8;
+      --glow: inset 0 0 0 1px rgba(255, 255, 255, .5), 0 4px 16px rgba(80, 50, 10, .25);
+      --title: linear-gradient(180deg, #b87400 0%, #8a5a00 50%, #5a3200 100%);
+      --hero: radial-gradient(900px 420px at 50% -20%, rgba(255, 190, 80, .55), transparent 65%), linear-gradient(180deg, #e3d3a6, #d6c391);
+      --frame: 1px solid #8a6a2f;
+    }
+  }
+  :root[data-theme=warcraft] header::before { background: conic-gradient(from 0deg, transparent 0 72%, rgba(255, 200, 80, .09) 82%, transparent 92%); }
+  :root[data-theme=warcraft] h1 { filter: drop-shadow(0 3px 0 rgba(0, 0, 0, .85)) drop-shadow(0 0 22px rgba(255, 170, 40, .35)); }
+  :root[data-theme=warcraft] section > h2 { color: var(--accent); text-shadow: 0 1px 0 rgba(0, 0, 0, .6); }
+  :root[data-theme=warcraft] section > h2::before { border-radius: 0; transform: rotate(45deg); width: 10px; height: 10px; }
+  :root[data-theme=warcraft] .title::before { content: "◆"; font-size: .7em; }
+  :root[data-theme=warcraft] details[open] .title::before { transform: none; color: var(--accent); }
+  :root[data-theme=warcraft] .chip[aria-pressed=true] { color: #1a1206; }
+  :root[data-theme=warcraft] .tag.built { color: #9d9d9d; }
+  @media (prefers-color-scheme: light) {
+    :root[data-theme=warcraft] h1 { filter: drop-shadow(0 1px 0 rgba(255, 255, 255, .6)); }
+    :root[data-theme=warcraft] section > h2 { text-shadow: none; }
+    :root[data-theme=warcraft] .chip[aria-pressed=true] { color: #fff7dd; }
+    :root[data-theme=warcraft] .tag.built { color: var(--dim); }
+  }
+
+  /* Theme "maple": warm and round, orange and leaf green. Chosen with  theme: "maple"  in changes.js. */
+  :root[data-theme=maple] {
+    --bg: #fff7ea; --bg2: #ffe9c7; --card: #ffffff; --card2: #fff3dc; --line: #f1cf96;
+    --text: #40280f; --dim: #8a6a45; --accent: #f07d00; --accent2: #3f9b2f;
+    --good: #2e8b1f; --plan: #2b78c5; --fix: #d43c2c; --tweak: #9a4fc0;
+    --glow: 0 6px 0 rgba(240, 125, 0, .18); --radius: 22px; --radius-small: 14px;
+    --font: "Trebuchet MS", "Segoe UI", system-ui, sans-serif; --font-head: var(--font);
+    --title: linear-gradient(180deg, #ffb02e, #f07d00 60%, #c95a00);
+    --hero: radial-gradient(800px 400px at 15% 0%, rgba(255, 190, 70, .65), transparent 60%),
+            radial-gradient(700px 400px at 90% 10%, rgba(120, 200, 90, .45), transparent 60%), var(--bg2);
+    --frame: 2px solid var(--line);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root[data-theme=maple] {
+      --bg: #1c130a; --bg2: #2a1a0b; --card: #2a1d10; --card2: #36260f; --line: #5c4220;
+      --text: #ffeccf; --dim: #c2a57c; --accent: #ffa531; --accent2: #7ed56a;
+      --good: #7ed56a; --plan: #7db9f0; --fix: #ff7a66; --tweak: #cf9aee;
+      --glow: 0 6px 0 rgba(0, 0, 0, .35);
+      --hero: radial-gradient(800px 400px at 15% 0%, rgba(240, 125, 0, .35), transparent 60%),
+              radial-gradient(700px 400px at 90% 10%, rgba(63, 155, 47, .28), transparent 60%), var(--bg2);
+    }
+  }
+  :root[data-theme=maple] .chip[aria-pressed=true] { color: #fff; }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 var(--font); }
+  h1, h2, .stat b { font-family: var(--font-head); }
   a { color: var(--accent); }
 
   /* The top */
   header { position: relative; overflow: hidden; padding: 72px 16px 56px; text-align: center;
-    background: radial-gradient(1200px 500px at 20% -10%, rgba(124, 92, 255, .35), transparent 60%),
-                radial-gradient(900px 500px at 85% 0%, rgba(255, 184, 77, .28), transparent 60%), var(--bg2);
-    border-bottom: 1px solid var(--line); }
+    background: var(--hero); border-bottom: var(--frame); }
   header::before { content: ""; position: absolute; inset: -50%; pointer-events: none;
     background: conic-gradient(from 0deg, transparent 0 70%, rgba(255, 184, 77, .10) 80%, transparent 90%);
     animation: sweep 14s linear infinite; }
   @keyframes sweep { to { transform: rotate(360deg); } }
   @media (prefers-reduced-motion: reduce) { header::before { animation: none; } html { scroll-behavior: auto; } }
-  h1 { position: relative; margin: 0; font-size: clamp(40px, 9vw, 84px); letter-spacing: -1px; line-height: 1;
-    background: linear-gradient(90deg, var(--accent), #fff3d6 45%, var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent;
+  h1 { position: relative; margin: 0; font-size: clamp(40px, 9vw, 84px); letter-spacing: var(--head-space); line-height: 1.05; text-transform: var(--head-case);
+    background: var(--title); -webkit-background-clip: text; background-clip: text; color: transparent;
     filter: drop-shadow(0 4px 24px rgba(255, 184, 77, .25)); }
-  @media (prefers-color-scheme: light) { h1 { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; } }
   .tagline { position: relative; margin: 14px auto 0; max-width: 720px; color: var(--dim); font-size: 18px; }
   .stats { position: relative; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px; }
-  .stat { min-width: 120px; padding: 12px 18px; border: 1px solid var(--line); border-radius: 14px; background: color-mix(in srgb, var(--card) 80%, transparent); box-shadow: var(--glow); }
+  .stat { min-width: 120px; padding: 12px 18px; border: var(--frame); border-radius: var(--radius-small); background: color-mix(in srgb, var(--card) 80%, transparent); box-shadow: var(--glow); }
   .stat b { display: block; font-size: 28px; color: var(--accent); line-height: 1.1; }
   .stat span { color: var(--dim); font-size: 13px; text-transform: uppercase; letter-spacing: .8px; }
   .meta { position: relative; margin-top: 18px; color: var(--dim); font-size: 14px; }
@@ -49,22 +119,22 @@
   /* The controls */
   .controls { position: sticky; top: 0; z-index: 5; padding: 12px 16px; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   .controls-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-  input[type=search] { flex: 1 1 240px; min-width: 0; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; }
+  input[type=search] { flex: 1 1 240px; min-width: 0; padding: 10px 14px; border-radius: var(--radius-small); border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; }
   input[type=search]:focus { outline: 2px solid var(--accent2); outline-offset: 1px; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .chip { padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--dim); font: inherit; font-size: 14px; cursor: pointer; }
+  .chip { padding: 7px 12px; border-radius: var(--pill); border: 1px solid var(--line); background: var(--card); color: var(--dim); font: inherit; font-size: 14px; cursor: pointer; }
   .chip[aria-pressed=true] { color: var(--bg); background: var(--accent); border-color: var(--accent); font-weight: 600; }
   .chip:focus-visible, summary:focus-visible, .jump a:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
 
   main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 80px; }
   .intro { color: var(--dim); max-width: 760px; margin: 8px 0 24px; }
   .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-  .jump a { text-decoration: none; padding: 6px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); font-size: 14px; }
+  .jump a { text-decoration: none; padding: 6px 12px; border-radius: var(--radius-small); border: 1px solid var(--line); background: var(--card); color: var(--text); font-size: 14px; }
   .jump a:hover { border-color: var(--hue, var(--accent)); }
   .jump small { color: var(--dim); margin-left: 4px; }
 
   /* A category */
-  section { margin-bottom: 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); overflow: hidden; box-shadow: var(--glow); scroll-margin-top: 80px; }
+  section { margin-bottom: 26px; border: var(--frame); border-radius: var(--radius); background: var(--card); overflow: hidden; box-shadow: var(--glow); scroll-margin-top: 80px; }
   section > h2 { margin: 0; padding: 18px 20px 6px; font-size: 24px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
   section > h2::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--hue); box-shadow: 0 0 14px var(--hue); align-self: center; }
   section > h2 small { color: var(--dim); font-size: 14px; font-weight: 400; }
@@ -83,7 +153,7 @@
   details.plain .title::before { content: "•"; transform: none; }
   details.plain summary { cursor: default; }
   .tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-  .tag { font-size: 12px; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+  .tag { font-size: 12px; padding: 2px 9px; border-radius: var(--pill); font-family: "Segoe UI", system-ui, sans-serif; border: 1px solid currentColor; white-space: nowrap; }
   .tag.feature { color: var(--accent); } .tag.fix { color: var(--fix); } .tag.tweak { color: var(--tweak); }
   .tag.confirmed { color: var(--good); } .tag.built { color: var(--dim); } .tag.planned { color: var(--plan); }
   .short { grid-column: 1 / -1; color: var(--dim); font-size: 15px; padding-left: 1.1em; }
@@ -125,9 +195,17 @@
 <script>
 (function () {
   var data = window.CHANGELOG || { title: "Changes", categories: [] };
+  // The look: "arcade" (the default), "warcraft" or "maple". The styles for each are at the top of this file.
+  document.documentElement.setAttribute("data-theme", data.theme || "arcade");
   var KINDS = { feature: "New", fix: "Fix", tweak: "Change" };
   var STATUSES = { confirmed: "Confirmed in play", built: "Built", planned: "Planned" };
-  var HUES = ["#ffb84d", "#7c5cff", "#4ade80", "#38bdf8", "#f472b6", "#fb923c", "#a3e635", "#22d3ee", "#e879f9", "#facc15", "#f87171", "#2dd4bf"];
+  var PALETTES = {
+    arcade:   ["#ffb84d", "#7c5cff", "#4ade80", "#38bdf8", "#f472b6", "#fb923c", "#a3e635", "#22d3ee", "#e879f9", "#facc15", "#f87171", "#2dd4bf"],
+    // The colours of the classes
+    warcraft: ["#ffd100", "#c79c6e", "#69ccf0", "#abd473", "#f58cba", "#ff7d0a", "#9482c9", "#0070de", "#c41f3b", "#fff569", "#00ff96", "#a330c9"],
+    maple:    ["#f07d00", "#3f9b2f", "#e0457b", "#2b9fd9", "#b565d9", "#d9a400", "#1fae9a", "#e2572b", "#6b8e23", "#d2691e", "#4f7fd9", "#c0428f"]
+  };
+  var HUES = PALETTES[data.theme] || PALETTES.arcade;
   var chosen = { kind: null, status: null }, query = "";
 
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }

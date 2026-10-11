@@ -48,6 +48,10 @@ A new area is a new block in `categories` with a `name`, a `summary` and its `it
 
 Also change `updated` at the top of the file.
 
+## The look
+
+`theme` at the top of `changes.js` chooses it: `"warcraft"` (dark stone and gold, labels in the colours of item quality), `"maple"` (warm and round, orange and leaf green) or `"arcade"` (dark blue and neon; also what you get with no theme). Each follows the light or dark setting of the reader's device. The colours and shapes of each are at the top of `index.html`, under a comment with the theme's name.
+
 The page is written in plain text with quotes around every value. A missing comma or quote makes the whole page come up empty; if that happens, the last thing edited is where to look.
 
 ## Using it for another project
