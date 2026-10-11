@@ -16,9 +16,15 @@ StaticPopupDialogs["WOWPLUS_RESET_TALENTS"] = {
 local function AddButton()
     if WowPlusTalentsReset or not PlayerTalentFrame then return end
     local button = CreateFrame("Button", "WowPlusTalentsReset", PlayerTalentFrame, "UIPanelButtonTemplate")
-    button:SetWidth(110)
+    button:SetWidth(100)
     button:SetHeight(22)
-    button:SetPoint("TOPRIGHT", PlayerTalentFrame, "TOPRIGHT", -50, -40)
+    -- Below the window, in line with the Arcane / Fire / Frost / Glyphs tabs and to the right of them: the
+    -- only place nothing else of the talent window uses
+    if PlayerTalentFrameTab4 then
+        button:SetPoint("LEFT", PlayerTalentFrameTab4, "RIGHT", 8, 2)
+    else
+        button:SetPoint("BOTTOMRIGHT", PlayerTalentFrame, "BOTTOMRIGHT", -44, 52)
+    end
     button:SetText("Reset talents")
     button:SetScript("OnClick", function() StaticPopup_Show("WOWPLUS_RESET_TALENTS") end)
 end
