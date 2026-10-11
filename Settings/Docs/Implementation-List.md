@@ -150,10 +150,17 @@ Decided 2026-10-10:
 
 Decided 2026-10-10: **left for much later.** Loot, vendors, professions and travel are played with first.
 
+Reopened 2026-10-11. The goals, the data and the decisions are in [Class-Changes.md](Class-Changes.md). The rule: **keep the friction, remove the misery.**
+
+- **Abilities from class quests are taught by the trainer** at the level the quest was offered; the quests stay as optional adventures.
+- **New milestone abilities come from the trainer too.**
+- **A hunter has a starter pet from level 1**; Tame Beast stays at 10.
+- The idea being worked on: a defining ability every ten levels, filling the empty levels 41 to 60.
+
 - [ ] 7.1 `Class-Changes.md`: goals per class, before anything is changed
 - [ ] 7.2 Decide whether we take on client patches
 - [ ] 7.3 Spell levels and automatic learning
-- [ ] 7.4 Class quests: skills at their level, quests as optional adventures with better rewards
+- [~] 7.4 Class quest abilities taught by the trainers (`Settings/SQL/world/2026-10-11_class-quest-abilities.sql`); hunter starter pet and shaman totem relic (`mod-wowplus`, settings `WowPlus.Classes.*`)
 - [ ] 7.5 Class by class: spell changes, then the bot behaviour for that class
 
 ## Phase 8: The hub

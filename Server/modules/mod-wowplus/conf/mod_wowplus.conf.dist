@@ -301,3 +301,25 @@ WowPlus.ArenaPoints.Boss   = 15
 #        Default: 1
 
 WowPlus.Hub.NoRatingRequired = 1
+
+########################################
+# Classes
+########################################
+#
+#    WowPlus.Classes.HunterStarterPet
+#        1: a new hunter has a plain animal from their starting zone as a pet from level 1,
+#        and knows how to call, dismiss, feed and revive it. Tame Beast still comes from
+#        the trainer at level 10. The starter pet is given once; if it is abandoned it
+#        does not come back.
+#        Default: 1
+
+WowPlus.Classes.HunterStarterPet = 1
+
+#
+#    WowPlus.Classes.ShamanTotemRelic
+#        1: a shaman of level 4 or higher who does not have it gets the Totem of the
+#        Earthen Ring, which replaces the four totem items the totem quests gave. The
+#        totem spells themselves come from the trainer.
+#        Default: 1
+
+WowPlus.Classes.ShamanTotemRelic = 1

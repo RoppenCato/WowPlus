@@ -27,6 +27,31 @@ Questions to ask of any ability before moving it:
 
 So the aim is not "everything earlier". It is: no stretch of levels where the class is missing its core, no stretch of twenty levels with nothing new, and the big moments left where they are or made bigger.
 
+## Decided so far
+
+**2026-10-11: abilities from class quests are taught by the trainer.** Robin: *"Playing solo makes those class quests quite miserable, so I think those abilities need to be gained from the trainer."* The class quests were built for a time when a guild helped you through them. Alone they are chores, and several hold back something the class needs in order to work. So:
+
+- The trainer teaches, at the level the quest was offered, what the quest taught. Built: `Settings/SQL/world/2026-10-11_class-quest-abilities.sql`.
+
+  | Class | Level | From the trainer now |
+  |-------|------:|----------------------|
+  | Warrior | 10 | Defensive Stance, Sunder Armor, Taunt |
+  | Warrior | 30 | Berserker Stance, Intercept |
+  | Paladin | 12 | Redemption |
+  | Hunter | 10 | Tame Beast and the pet commands; Feed Pet, Revive Pet |
+  | Rogue | 20 | Poisons |
+  | Shaman | 4, 10, 20 | Stoneskin Totem, Searing Totem, Healing Stream Totem |
+  | Warlock | 10, 20, 30 | Voidwalker, Succubus, Felhunter |
+  | Warlock | 50, 60 | Inferno, Ritual of Doom |
+  | Druid | 10, 14 | Bear Form with Growl and Maul; Cure Poison |
+
+- The quests themselves stay in the game, untouched, for whoever wants the adventure.
+- **New milestone abilities also come from the trainer**, not from new quests.
+- **A hunter has a pet from level 1** (Robin's example of misery: "not having a pet before 10"). A plain animal from the starting zone, given once, with the spells to call, dismiss, feed and revive it. Tame Beast is still level 10, from the trainer: the day you choose your own. Built in `mod-wowplus`, setting `WowPlus.Classes.HunterStarterPet`.
+- **A shaman gets the Totem of the Earthen Ring at level 4.** The totem quests also handed out the four totem items, without which totems cannot be cast, and a trainer cannot give items. This one relic replaces all four. Setting `WowPlus.Classes.ShamanTotemRelic`.
+
+Still to decide: the questions under "To decide" below, apart from number 3, which this answers.
+
 ## What the game does today
 
 When each class first gets a new ability from its trainer, counted per ten levels. Taken from our server's trainer data on 2026-10-11.
