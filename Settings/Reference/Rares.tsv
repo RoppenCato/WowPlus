@@ -1,0 +1,392 @@
+entry	name	kind	min_level	max_level	continent	zone	zone_from	spawn_points	has_loot
+14281	Jimmy the Bleeder	rare	23	23	Eastern Kingdoms	Alterac Mountains	list	1	1
+14223	Cranky Benj	rare	32	32	Eastern Kingdoms	Alterac Mountains	list	1	1
+14222	Araga	rare	35	35	Eastern Kingdoms	Alterac Mountains	list	3	1
+14221	Gravis Slipknot	rare	36	36	Eastern Kingdoms	Alterac Mountains	list	1	1
+2452	Skhowl	rare	36	36	Eastern Kingdoms	Alterac Mountains	list	1	1
+2258	Stone Fury	rare	37	37	Eastern Kingdoms	Alterac Mountains	list	1	1
+2453	Lo'Grosh	rare	39	39	Eastern Kingdoms	Alterac Mountains	list	1	1
+2447	Narillasanz	rare elite	44	44	Eastern Kingdoms	Alterac Mountains	list	1	1
+2600	Singer	rare	34	34	Eastern Kingdoms	Arathi Highlands	list	1	1
+2603	Kovork	rare	36	36	Eastern Kingdoms	Arathi Highlands	list	1	1
+2606	Nimar the Slayer	rare	37	37	Eastern Kingdoms	Arathi Highlands	list	4	1
+2604	Molok the Crusher	rare	39	39	Eastern Kingdoms	Arathi Highlands	list	1	1
+2609	Geomancer Flintdagger	rare	40	40	Eastern Kingdoms	Arathi Highlands	list	1	1
+2605	Zalas Witherbark	rare	40	40	Eastern Kingdoms	Arathi Highlands	list	4	1
+2779	Prince Nazjak	rare	41	41	Eastern Kingdoms	Arathi Highlands	list	1	1
+2751	War Golem	rare	36	36	Eastern Kingdoms	Badlands	list	3	1
+2850	Broken Tooth	rare	37	37	Eastern Kingdoms	Badlands	list	4	1
+2753	Barnabus	rare	38	38	Eastern Kingdoms	Badlands	nearest	3	1
+7057	Digmaster Shovelphlange	rare elite	38	38	Eastern Kingdoms	Badlands	nearest	1	1
+2744	Shadowforge Commander	rare	40	40	Eastern Kingdoms	Badlands	list	4	1
+2749	Siege Golem	rare elite	40	40	Eastern Kingdoms	Badlands	list	14	1
+14224	7:XT	rare	41	41	Eastern Kingdoms	Badlands	list	7	1
+2754	Anathemus	rare elite	45	45	Eastern Kingdoms	Badlands	list	1	1
+2752	Rumbler	rare	45	45	Eastern Kingdoms	Badlands	list	4	1
+2931	Zaricotl	rare elite	55	55	Eastern Kingdoms	Badlands	list	3	1
+8924	The Behemoth	rare	50	50	Eastern Kingdoms	Blackrock Mountain	list	1	1
+9046	Scarshield Quartermaster	rare	55	55	Eastern Kingdoms	Blackrock Mountain	list	1	1
+8296	Mojo the Twisted	rare	48	48	Eastern Kingdoms	Blasted Lands	list	4	1
+8302	Deatheye	rare	49	49	Eastern Kingdoms	Blasted Lands	list	13	1
+8303	Grunter	rare	50	50	Eastern Kingdoms	Blasted Lands	list	18	1
+8300	Ravage	rare	51	51	Eastern Kingdoms	Blasted Lands	list	14	1
+8299	Spiteflayer	rare	52	52	Eastern Kingdoms	Blasted Lands	list	15	1
+8301	Clack the Reaver	rare	53	53	Eastern Kingdoms	Blasted Lands	list	17	1
+8298	Akubar the Seer	rare	54	54	Eastern Kingdoms	Blasted Lands	list	8	1
+8297	Magronos the Unyielding	rare	56	56	Eastern Kingdoms	Blasted Lands	list	10	1
+8304	Dreadscorn	rare	57	57	Eastern Kingdoms	Blasted Lands	list	1	1
+10077	Deathmaw	rare	53	53	Eastern Kingdoms	Burning Steppes	list	4	1
+9604	Gorgon'och	rare	54	54	Eastern Kingdoms	Burning Steppes	list	5	1
+9602	Hahk'Zor	rare	54	54	Eastern Kingdoms	Burning Steppes	list	4	1
+10078	Terrorspark	rare	55	55	Eastern Kingdoms	Burning Steppes	list	8	1
+8981	Malfunctioning Reaver	rare	56	56	Eastern Kingdoms	Burning Steppes	list	5	1
+8978	Thauris Balgarr	rare	57	57	Eastern Kingdoms	Burning Steppes	list	9	1
+8979	Gruklash	rare	59	59	Eastern Kingdoms	Burning Steppes	list	7	1
+8976	Hematos	rare elite	60	60	Eastern Kingdoms	Burning Steppes	list	1	1
+10119	Volchan	rare elite	60	60	Eastern Kingdoms	Burning Steppes	list	1	1
+1137	Edan the Howler	rare	9	9	Eastern Kingdoms	Dun Morogh	list	2	1
+1132	Timber	rare	10	10	Eastern Kingdoms	Dun Morogh	list	3	1
+8503	Gibblewilt	rare	11	11	Eastern Kingdoms	Dun Morogh	list	2	1
+1260	Great Father Arctikus	rare	11	11	Eastern Kingdoms	Dun Morogh	list	6	1
+1130	Bjarn	rare	12	12	Eastern Kingdoms	Dun Morogh	list	4	1
+1119	Hammerspine	rare	12	12	Eastern Kingdoms	Dun Morogh	list	1	1
+521	Lupos	rare	23	23	Eastern Kingdoms	Duskwood	list	16	1
+574	Naraxis	rare	27	27	Eastern Kingdoms	Duskwood	list	1	1
+503	Lord Malathrom	rare	31	31	Eastern Kingdoms	Duskwood	list	7	1
+771	Commander Felstrom	rare	32	32	Eastern Kingdoms	Duskwood	list	10	1
+507	Fenros	rare	32	32	Eastern Kingdoms	Duskwood	list	8	1
+534	Nefaru	rare	34	34	Eastern Kingdoms	Duskwood	list	3	1
+11383	High Priestess Hai'watna	rare elite	57	57	Eastern Kingdoms	Duskwood	nearest	4	1
+10817	Duggan Wildhammer	rare	55	55	Eastern Kingdoms	Eastern Plaguelands	list	4	1
+10827	Deathspeaker Selendre	rare	56	56	Eastern Kingdoms	Eastern Plaguelands	list	1	1
+10825	Gish the Unmoving	rare	56	56	Eastern Kingdoms	Eastern Plaguelands	list	1	1
+10821	Hed'mush the Rotting	rare	57	57	Eastern Kingdoms	Eastern Plaguelands	list	1	1
+10826	Lord Darkscythe	rare	57	57	Eastern Kingdoms	Eastern Plaguelands	list	1	1
+10822	Warlord Thresh'jin	rare	58	58	Eastern Kingdoms	Eastern Plaguelands	list	1	1
+10828	High General Abbendis	rare elite	59	59	Eastern Kingdoms	Eastern Plaguelands	list	1	1
+10823	Zul'Brin Warpbranch	rare	59	59	Eastern Kingdoms	Eastern Plaguelands	list	1	1
+16184	Nerubian Overseer	rare elite	60	60	Eastern Kingdoms	Eastern Plaguelands	list	1	1
+10824	Ranger Lord Hawkspear	rare	60	60	Eastern Kingdoms	Eastern Plaguelands	list	1	1
+99	Morgaine the Sly	rare	10	10	Eastern Kingdoms	Elwynn Forest	list	1	1
+471	Mother Fang	rare	10	10	Eastern Kingdoms	Elwynn Forest	list	1	1
+79	Narg the Taskmaster	rare	10	10	Eastern Kingdoms	Elwynn Forest	list	1	1
+61	Thuros Lightfingers	rare	11	11	Eastern Kingdoms	Elwynn Forest	list	8	1
+472	Fedfennel	rare	12	12	Eastern Kingdoms	Elwynn Forest	list	4	1
+100	Gruff Swiftbite	rare	12	12	Eastern Kingdoms	Elwynn Forest	list	5	1
+14279	Creepthess	rare	24	24	Eastern Kingdoms	Hillsbrad Foothills	list	1	1
+14280	Big Samras	rare	27	27	Eastern Kingdoms	Hillsbrad Foothills	list	1	1
+14278	Ro'Bark	rare	28	28	Eastern Kingdoms	Hillsbrad Foothills	list	1	1
+14275	Tamra Stormpike	rare elite	28	28	Eastern Kingdoms	Hillsbrad Foothills	list	1	1
+14276	Scargil	rare	30	30	Eastern Kingdoms	Hillsbrad Foothills	list	1	1
+14277	Lady Zephris	rare	33	33	Eastern Kingdoms	Hillsbrad Foothills	list	1	1
+1425	Grizlak	rare	15	15	Eastern Kingdoms	Loch Modan	list	1	1
+14268	Lord Condar	rare	15	16	Eastern Kingdoms	Loch Modan	list	4	1
+14267	Emogg the Crusher	rare elite	19	19	Eastern Kingdoms	Loch Modan	list	1	1
+14266	Shanda the Spinner	rare	19	19	Eastern Kingdoms	Loch Modan	list	1	1
+1399	Magosh	rare	21	21	Eastern Kingdoms	Loch Modan	list	1	1
+1398	Boss Galgosh	rare	22	22	Eastern Kingdoms	Loch Modan	list	1	1
+2476	Large Loch Crocolisk	rare	22	22	Eastern Kingdoms	Loch Modan	list	2	1
+14271	Ribchaser	rare	17	17	Eastern Kingdoms	Redridge Mountains	list	15	1
+14272	Snarlflare	rare	18	18	Eastern Kingdoms	Redridge Mountains	list	12	1
+14270	Squiddic	rare	19	19	Eastern Kingdoms	Redridge Mountains	list	31	1
+14269	Seeker Aqualon	rare	21	21	Eastern Kingdoms	Redridge Mountains	list	3	1
+616	Chatter	rare	23	23	Eastern Kingdoms	Redridge Mountains	list	14	1
+14273	Boulderheart	rare	25	25	Eastern Kingdoms	Redridge Mountains	list	1	1
+947	Rohh the Silent	rare	26	26	Eastern Kingdoms	Redridge Mountains	list	13	1
+584	Kazon	rare	27	27	Eastern Kingdoms	Redridge Mountains	list	4	1
+8279	Faulty War Golem	rare	46	46	Eastern Kingdoms	Searing Gorge	list	5	1
+8280	Shleipnarr	rare	47	47	Eastern Kingdoms	Searing Gorge	list	1	1
+8277	Rekk'tilac	rare	48	48	Eastern Kingdoms	Searing Gorge	list	5	1
+8281	Scald	rare	49	49	Eastern Kingdoms	Searing Gorge	list	2	1
+8283	Slave Master Blackheart	rare	50	50	Eastern Kingdoms	Searing Gorge	list	5	1
+8278	Smoldar	rare	50	50	Eastern Kingdoms	Searing Gorge	list	1	1
+8282	Highlord Mastrogonde	rare elite	51	51	Eastern Kingdoms	Searing Gorge	list	4	1
+12431	Gorefang	rare	13	13	Eastern Kingdoms	Silverpine Forest	list	1	1
+12432	Old Vicejaw	rare	14	14	Eastern Kingdoms	Silverpine Forest	list	1	1
+12433	Krethis Shadowspinner	rare	15	15	Eastern Kingdoms	Silverpine Forest	list	1	1
+1920	Dalaran Spellscribe	rare	21	21	Eastern Kingdoms	Silverpine Forest	list	1	1
+2283	Ravenclaw Regent	rare	22	22	Eastern Kingdoms	Silverpine Forest	list	1	1
+1944	Rot Hide Bruiser	rare	22	22	Eastern Kingdoms	Silverpine Forest	list	1	1
+1948	Snarlmane	rare	23	23	Eastern Kingdoms	Silverpine Forest	list	1	1
+3581	Sewer Beast	rare	50	50	Eastern Kingdoms	Stormwind City	list	6	1
+14487	Gluggle	rare	37	37	Eastern Kingdoms	Stranglethorn Vale	list	4	1
+14488	Roloch	rare	38	38	Eastern Kingdoms	Stranglethorn Vale	list	6	1
+14491	Kurmokk	rare	42	42	Eastern Kingdoms	Stranglethorn Vale	list	11	1
+14492	Verifonix	rare	42	42	Eastern Kingdoms	Stranglethorn Vale	list	6	1
+14490	Rippa	rare	44	44	Eastern Kingdoms	Stranglethorn Vale	list	2	1
+2541	Lord Sakrasis	rare	45	45	Eastern Kingdoms	Stranglethorn Vale	list	2	1
+1552	Scale Belly	rare	45	45	Eastern Kingdoms	Stranglethorn Vale	list	4	1
+1106	Lost One Cook	rare	37	37	Eastern Kingdoms	Swamp of Sorrows	list	6	1
+763	Lost One Chieftain	rare	39	39	Eastern Kingdoms	Swamp of Sorrows	list	5	1
+14448	Molt Thorn	rare	42	42	Eastern Kingdoms	Swamp of Sorrows	list	19	1
+14446	Fingat	rare	43	43	Eastern Kingdoms	Swamp of Sorrows	list	7	1
+14447	Gilmorian	rare	43	43	Eastern Kingdoms	Swamp of Sorrows	list	1	1
+14445	Lord Captain Wyrmak	rare elite	45	45	Eastern Kingdoms	Swamp of Sorrows	list	18	1
+1063	Jade	rare	47	47	Eastern Kingdoms	Swamp of Sorrows	nearest	2	1
+5399	Veyzhak the Cannibal	rare	48	48	Eastern Kingdoms	Swamp of Sorrows	nearest	1	1
+5400	Zekkis	rare	48	48	Eastern Kingdoms	Swamp of Sorrows	nearest	1	1
+8211	Old Cliff Jumper	rare	42	42	Eastern Kingdoms	The Hinterlands	list	1	1
+8219	Zul'arek Hatefowler	rare	43	43	Eastern Kingdoms	The Hinterlands	list	2	1
+8210	Razortalon	rare	44	44	Eastern Kingdoms	The Hinterlands	list	1	1
+8218	Witherheart the Stalker	rare	45	45	Eastern Kingdoms	The Hinterlands	list	1	1
+8216	Retherokk the Berserker	rare	48	48	Eastern Kingdoms	The Hinterlands	list	1	1
+8214	Jalinde Summerdrake	rare	49	49	Eastern Kingdoms	The Hinterlands	list	1	1
+8212	The Reak	rare	49	49	Eastern Kingdoms	The Hinterlands	list	1	1
+8215	Grimungous	rare elite	50	50	Eastern Kingdoms	The Hinterlands	list	1	1
+8213	Ironback	rare	51	51	Eastern Kingdoms	The Hinterlands	list	1	1
+8217	Mith'rethis the Enchanter	rare elite	52	52	Eastern Kingdoms	The Hinterlands	list	1	1
+1531	Lost Soul	rare	6	7	Eastern Kingdoms	Tirisfal Glades	list	4	1
+1936	Farmer Solliden	rare	8	8	Eastern Kingdoms	Tirisfal Glades	list	1	1
+1533	Tormented Spirit	rare	8	9	Eastern Kingdoms	Tirisfal Glades	list	1	1
+10356	Bayne	rare	10	10	Eastern Kingdoms	Tirisfal Glades	list	1	1
+1910	Muad	rare	10	10	Eastern Kingdoms	Tirisfal Glades	list	1	1
+10357	Ressan the Needler	rare	11	11	Eastern Kingdoms	Tirisfal Glades	list	1	1
+1911	Deeb	rare	12	12	Eastern Kingdoms	Tirisfal Glades	list	1	1
+10358	Fellicent's Shade	rare	12	12	Eastern Kingdoms	Tirisfal Glades	list	1	1
+10359	Sri'skulk	rare	13	13	Eastern Kingdoms	Tirisfal Glades	list	1	1
+1847	Foulmane	rare	52	52	Eastern Kingdoms	Western Plaguelands	list	1	1
+1848	Lord Maldazzar	rare	56	56	Eastern Kingdoms	Western Plaguelands	list	2	1
+1844	Foreman Marcrid	rare	58	58	Eastern Kingdoms	Western Plaguelands	list	1	1
+1850	Putridius	rare elite	58	58	Eastern Kingdoms	Western Plaguelands	list	1	1
+1885	Scarlet Smith	rare	58	59	Eastern Kingdoms	Western Plaguelands	list	1	1
+1841	Scarlet Executioner	rare elite	60	60	Eastern Kingdoms	Western Plaguelands	list	1	1
+1837	Scarlet Judge	rare	60	60	Eastern Kingdoms	Western Plaguelands	list	1	1
+1838	Scarlet Interrogator	rare elite	61	61	Eastern Kingdoms	Western Plaguelands	list	1	1
+1843	Foreman Jerris	rare elite	62	62	Eastern Kingdoms	Western Plaguelands	list	1	1
+1851	The Husk	rare	62	62	Eastern Kingdoms	Western Plaguelands	list	1	1
+1839	Scarlet High Clerist	rare elite	63	63	Eastern Kingdoms	Western Plaguelands	list	1	1
+1424	Master Digger	rare	15	15	Eastern Kingdoms	Westfall	list	1	1
+519	Slark	rare	15	15	Eastern Kingdoms	Westfall	list	1	1
+596	Brainwashed Noble	rare	18	18	Eastern Kingdoms	Westfall	nearest	1	1
+599	Marisa du'Paige	rare	18	18	Eastern Kingdoms	Westfall	nearest	1	1
+506	Sergeant Brashclaw	rare	18	18	Eastern Kingdoms	Westfall	list	1	1
+520	Brack	rare	19	19	Eastern Kingdoms	Westfall	list	1	1
+572	Leprithus	rare	19	19	Eastern Kingdoms	Westfall	list	2	1
+573	Foe Reaper 4000	rare	20	20	Eastern Kingdoms	Westfall	list	41	1
+462	Vultros	rare	26	26	Eastern Kingdoms	Westfall	list	16	1
+2090	Ma'ruk Wyrmscale	rare	23	23	Eastern Kingdoms	Wetlands	list	1	1
+1037	Dragonmaw Battlemaster	rare	24	25	Eastern Kingdoms	Wetlands	list	1	1
+14425	Gnawbone	rare	24	24	Eastern Kingdoms	Wetlands	list	6	1
+1112	Leech Widow	rare	24	24	Eastern Kingdoms	Wetlands	list	1	1
+14424	Mirelow	rare	25	25	Eastern Kingdoms	Wetlands	list	22	1
+2108	Garneg Charskull	rare	29	29	Eastern Kingdoms	Wetlands	list	1	1
+14433	Sludginn	rare	30	30	Eastern Kingdoms	Wetlands	list	1	1
+1140	Razormaw Matriarch	rare	31	31	Eastern Kingdoms	Wetlands	list	1	1
+11498	Skarr the Unbreakable	rare elite	58	58	Kalimdor		unknown	1	1
+11447	Mushgog	rare elite	60	60	Kalimdor		unknown	1	1
+11497	The Razza	rare elite	60	60	Kalimdor		unknown	1	1
+3735	Apothecary Falthis	rare	22	22	Kalimdor	Ashenvale	list	1	1
+10559	Lady Vespia	rare	22	22	Kalimdor	Ashenvale	list	1	1
+10644	Mist Howler	rare	22	22	Kalimdor	Ashenvale	list	4	1
+10643	Mugglefin	rare	23	23	Kalimdor	Ashenvale	list	2	1
+10641	Branch Snapper	rare	25	25	Kalimdor	Ashenvale	list	1	1
+10639	Rorgish Jowl	rare	25	25	Kalimdor	Ashenvale	list	1	1
+3773	Akkrilus	rare	26	26	Kalimdor	Ashenvale	list	2	1
+10642	Eck'alom	rare	27	27	Kalimdor	Ashenvale	list	1	1
+10640	Oakpaw	rare	27	27	Kalimdor	Ashenvale	list	1	1
+3792	Terrowulf Packlord	rare	31	32	Kalimdor	Ashenvale	list	1	1
+12037	Ursol'lok	rare	31	31	Kalimdor	Ashenvale	list	1	1
+10647	Prince Raze	rare	32	32	Kalimdor	Ashenvale	list	1	1
+8660	The Evalcharr	rare	48	48	Kalimdor	Azshara	list	1	1
+6118	Varo'then's Ghost	rare	48	48	Kalimdor	Azshara	list	1	1
+6651	Gatekeeper Rageroar	rare	49	50	Kalimdor	Azshara	list	1	1
+6648	Antilos	rare	50	50	Kalimdor	Azshara	list	1	1
+6650	General Fangferror	rare	50	51	Kalimdor	Azshara	list	1	1
+6649	Lady Sesspira	rare	51	51	Kalimdor	Azshara	list	1	1
+6647	Magister Hawkhelm	rare	51	52	Kalimdor	Azshara	list	1	1
+6652	Master Feardred	rare	51	52	Kalimdor	Azshara	list	1	1
+13896	Scalebeard	rare elite	52	52	Kalimdor	Azshara	list	1	1
+6646	Monnos the Elder	rare elite	53	54	Kalimdor	Azshara	list	1	1
+2175	Shadowclaw	rare	13	13	Kalimdor	Darkshore	list	1	1
+2191	Licillin	rare	14	14	Kalimdor	Darkshore	list	1	1
+7017	Lord Sinslayer	rare	15	16	Kalimdor	Darkshore	list	1	1
+2186	Carnivous the Breaker	rare	16	16	Kalimdor	Darkshore	list	1	1
+7015	Flagglemurk the Cruel	rare	16	16	Kalimdor	Darkshore	list	1	1
+2184	Lady Moongazer	rare	17	17	Kalimdor	Darkshore	list	1	1
+2192	Firecaller Radison	rare	19	19	Kalimdor	Darkshore	list	1	1
+2172	Strider Clutchmother	rare	20	20	Kalimdor	Darkshore	list	1	1
+7016	Lady Vespira	rare	22	22	Kalimdor	Darkshore	list	1	1
+18241	Crusty	rare	31	32	Kalimdor	Desolace	list	1	1
+14225	Prince Kellen	rare	33	33	Kalimdor	Desolace	list	1	1
+14228	Giggler	rare	34	34	Kalimdor	Desolace	list	1	1
+14229	Accursed Slitherblade	rare	35	35	Kalimdor	Desolace	list	1	1
+14227	Hissperak	rare	37	37	Kalimdor	Desolace	list	1	1
+14226	Kaskk	rare	40	40	Kalimdor	Desolace	list	1	1
+11688	Cursed Centaur	rare	43	43	Kalimdor	Desolace	list	1	1
+5826	Geolord Mottle	rare	9	9	Kalimdor	Durotar	list	1	1
+5808	Warlord Kolkanis	rare	9	9	Kalimdor	Durotar	list	1	1
+5809	Watch Commander Zalaphil	rare	9	9	Kalimdor	Durotar	list	1	1
+5824	Captain Flat Tusk	rare elite	11	11	Kalimdor	Durotar	list	1	1
+5823	Death Flayer	rare	11	11	Kalimdor	Durotar	list	1	1
+5822	Felweaver Scornn	rare elite	11	11	Kalimdor	Durotar	list	1	1
+14230	Burgle Eye	rare	37	37	Kalimdor	Dustwallow Marsh	list	1	1
+14231	Drogoth the Roamer	rare	37	37	Kalimdor	Dustwallow Marsh	list	2	1
+14236	Lord Angler	rare	37	37	Kalimdor	Dustwallow Marsh	list	1	1
+14233	Ripscale	rare	37	37	Kalimdor	Dustwallow Marsh	list	2	1
+4380	Darkmist Widow	rare	38	38	Kalimdor	Dustwallow Marsh	list	1	1
+14232	Dart	rare	38	38	Kalimdor	Dustwallow Marsh	list	1	1
+14237	Oozeworm	rare	38	38	Kalimdor	Dustwallow Marsh	list	1	1
+14234	Hayoc	rare	39	39	Kalimdor	Dustwallow Marsh	list	1	1
+14235	The Rot	rare	40	40	Kalimdor	Dustwallow Marsh	list	1	1
+4339	Brimgore	rare elite	41	41	Kalimdor	Dustwallow Marsh	list	1	1
+14339	Death Howl	rare	49	49	Kalimdor	Felwood	list	3	1
+14344	Mongress	rare	50	50	Kalimdor	Felwood	list	1	1
+14342	Ragepaw	rare	51	51	Kalimdor	Felwood	list	1	1
+14345	The Ongar	rare	51	51	Kalimdor	Felwood	list	1	1
+14343	Olm the Wise	rare	52	52	Kalimdor	Felwood	list	3	1
+14340	Alshirr Banebreath	rare	54	54	Kalimdor	Felwood	list	1	1
+7104	Dessecus	rare elite	56	56	Kalimdor	Felwood	list	1	1
+7137	Immolatus	rare elite	56	56	Kalimdor	Felwood	list	1	1
+5356	Snarler	rare	42	42	Kalimdor	Feralas	list	1	1
+5352	Old Grizzlegut	rare	43	43	Kalimdor	Feralas	list	1	1
+5354	Gnarl Leafbrother	rare	44	44	Kalimdor	Feralas	list	1	1
+5345	Diamond Head	rare	45	45	Kalimdor	Feralas	list	1	1
+5343	Lady Szallah	rare	46	46	Kalimdor	Feralas	list	1	1
+5350	Qirot	rare	47	47	Kalimdor	Feralas	list	1	1
+5347	Antilus the Soarer	rare	48	48	Kalimdor	Feralas	list	1	1
+5346	Bloodroar the Stalker	rare	48	48	Kalimdor	Feralas	list	1	1
+5349	Arash-ethis	rare	49	49	Kalimdor	Feralas	list	1	1
+3068	Mazzranache	rare	9	9	Kalimdor	Mulgore	list	1	1
+5786	Snagglespear	rare	9	9	Kalimdor	Mulgore	list	1	1
+5807	The Rake	rare	10	10	Kalimdor	Mulgore	list	1	1
+5787	Enforcer Emilgund	rare	11	11	Kalimdor	Mulgore	list	1	1
+5785	Sister Hatelash	rare elite	11	11	Kalimdor	Mulgore	list	1	1
+3056	Ghost Howl	rare	12	12	Kalimdor	Mulgore	list	1	1
+14476	Krellack	rare	56	56	Kalimdor	Silithus	list	1	1
+14472	Gretheer	rare	57	57	Kalimdor	Silithus	list	1	1
+14475	Rex Ashil	rare elite	57	57	Kalimdor	Silithus	list	1	1
+14477	Grubthor	rare	58	58	Kalimdor	Silithus	list	1	1
+14478	Huricanian	rare	58	58	Kalimdor	Silithus	list	1	1
+14474	Zora	rare elite	59	59	Kalimdor	Silithus	list	1	1
+14473	Lapress	rare elite	60	60	Kalimdor	Silithus	list	1	1
+14479	Twilight Lord Everun	rare	60	60	Kalimdor	Silithus	list	1	1
+14471	Setis	rare elite	61	61	Kalimdor	Silithus	list	1	1
+5932	Taskmaster Whipfang	rare elite	22	22	Kalimdor	Stonetalon Mountains	list	1	1
+5931	Foreman Rigger	rare elite	24	24	Kalimdor	Stonetalon Mountains	list	1	1
+4015	Pridewing Patriarch	rare	25	25	Kalimdor	Stonetalon Mountains	list	2	1
+5916	Sentinel Amarassan	rare elite	27	27	Kalimdor	Stonetalon Mountains	list	1	1
+5928	Sorrow Wing	rare	27	27	Kalimdor	Stonetalon Mountains	list	1	1
+5930	Sister Riven	rare elite	28	28	Kalimdor	Stonetalon Mountains	list	2	1
+5915	Brother Ravenoak	rare elite	29	29	Kalimdor	Stonetalon Mountains	list	1	1
+4030	Vengeful Ancient	rare	29	30	Kalimdor	Stonetalon Mountains	list	1	1
+4066	Nal'taszar	rare	30	30	Kalimdor	Stonetalon Mountains	list	1	1
+8208	Murderous Blisterpaw	rare	43	43	Kalimdor	Tanaris	list	1	1
+8199	Warleader Krazzilak	rare elite	45	45	Kalimdor	Tanaris	list	1	1
+8207	Greater Firebird	rare	46	46	Kalimdor	Tanaris	list	1	1
+8200	Jin'Zallah the Sandbringer	rare elite	46	46	Kalimdor	Tanaris	list	1	1
+8203	Kregg Keelhaul	rare	47	47	Kalimdor	Tanaris	list	1	1
+8202	Cyclok the Mad	rare	48	48	Kalimdor	Tanaris	list	1	1
+8205	Haarka the Ravenous	rare	50	50	Kalimdor	Tanaris	list	1	1
+8201	Omgorn the Lost	rare	50	50	Kalimdor	Tanaris	list	3	1
+8204	Soriid the Devourer	rare	50	50	Kalimdor	Tanaris	list	1	1
+14432	Threggil	rare	6	6	Kalimdor	Teldrassil	list	1	1
+14428	Uruson	rare	7	7	Kalimdor	Teldrassil	list	1	1
+14431	Fury Shelda	rare	8	8	Kalimdor	Teldrassil	list	1	1
+14430	Duskstalker	rare	9	9	Kalimdor	Teldrassil	list	1	1
+14429	Grimmaw	rare	11	11	Kalimdor	Teldrassil	list	1	1
+3535	Blackmoss the Fetid	rare	13	13	Kalimdor	Teldrassil	list	1	1
+5865	Dishu	rare	13	13	Kalimdor	The Barrens	list	1	1
+3270	Elder Mystic Razorsnout	rare elite	15	15	Kalimdor	The Barrens	list	1	1
+3470	Rathorian	rare	15	15	Kalimdor	The Barrens	list	1	1
+5837	Stonearm	rare	15	15	Kalimdor	The Barrens	list	1	1
+3672	Boahn	rare	17	17	Kalimdor	The Barrens	list	1	1
+5838	Brokespear	rare	17	17	Kalimdor	The Barrens	list	1	1
+5841	Rocklance	rare elite	17	17	Kalimdor	The Barrens	list	1	1
+5829	Snort the Heckler	rare	17	17	Kalimdor	The Barrens	list	1	1
+3652	Trigore the Lasher	rare	17	17	Kalimdor	The Barrens	nearest	1	1
+5835	Foreman Grills	rare	18	18	Kalimdor	The Barrens	list	1	1
+5836	Engineer Whirleygig	rare	19	19	Kalimdor	The Barrens	list	1	1
+5863	Geopriest Gukk'rok	rare	19	19	Kalimdor	The Barrens	list	1	1
+5830	Sister Rathtalon	rare elite	19	19	Kalimdor	The Barrens	list	1	1
+3295	Sludge Beast	rare	19	19	Kalimdor	The Barrens	list	1	1
+5842	Takk the Leaper	rare elite	19	19	Kalimdor	The Barrens	list	1	1
+3398	Gesharahan	rare elite	20	20	Kalimdor	The Barrens	list	1	1
+5831	Swiftmane	rare elite	21	21	Kalimdor	The Barrens	list	1	1
+5797	Aean Swiftriver	rare elite	22	22	Kalimdor	The Barrens	list	1	1
+5800	Marcus Bel	rare elite	22	22	Kalimdor	The Barrens	list	1	1
+5864	Swinegart Spearhide	rare elite	22	22	Kalimdor	The Barrens	list	1	1
+5828	Humar the Pridelord	rare elite	23	23	Kalimdor	The Barrens	list	1	1
+5849	Digger Flameforge	rare	24	24	Kalimdor	The Barrens	list	1	1
+5799	Hannah Bladeleaf	rare elite	24	24	Kalimdor	The Barrens	list	1	1
+5847	Heggin Stonewhisker	rare	24	24	Kalimdor	The Barrens	list	1	1
+3253	Silithid Harvester	rare	24	24	Kalimdor	The Barrens	list	1	1
+5832	Thunderstomp	rare	24	24	Kalimdor	The Barrens	list	1	1
+5834	Azzere the Skyblade	rare	25	25	Kalimdor	The Barrens	list	1	1
+5848	Malgin Barleybrew	rare	25	25	Kalimdor	The Barrens	list	1	1
+5798	Thora Feathermoon	rare elite	25	25	Kalimdor	The Barrens	list	1	1
+5859	Hagg Taurenbane	rare elite	26	26	Kalimdor	The Barrens	list	1	1
+5827	Brontus	rare elite	27	27	Kalimdor	The Barrens	list	1	1
+5851	Captain Gerogg Hammertoe	rare elite	27	27	Kalimdor	The Barrens	list	1	1
+7895	Ambassador Bloodrage	rare	35	35	Kalimdor	The Barrens	list	1	1
+14426	Harb Foulmountain	rare	27	27	Kalimdor	Thousand Needles	list	1	1
+14427	Gibblesnik	rare	28	28	Kalimdor	Thousand Needles	list	1	1
+5933	Achellios the Banished	rare	31	31	Kalimdor	Thousand Needles	list	1	1
+5934	Heartrazor	rare elite	32	32	Kalimdor	Thousand Needles	list	1	1
+5937	Vile Sting	rare elite	35	35	Kalimdor	Thousand Needles	list	1	1
+4132	Silithid Ravager	rare	36	36	Kalimdor	Thousand Needles	list	1	1
+5935	Ironeye the Invincible	rare elite	37	37	Kalimdor	Thousand Needles	list	1	1
+6581	Ravasaur Matriarch	rare	50	50	Kalimdor	Un'Goro Crater	list	1	1
+6585	Uhk'loc	rare	52	53	Kalimdor	Un'Goro Crater	list	1	1
+6582	Clutchmother Zavas	rare	54	54	Kalimdor	Un'Goro Crater	list	1	1
+6583	Gruff	rare elite	57	57	Kalimdor	Un'Goro Crater	list	1	1
+6584	King Mosh	rare elite	60	60	Kalimdor	Un'Goro Crater	list	1	1
+10197	Mezzir the Howler	rare	55	55	Kalimdor	Winterspring	list	1	1
+10196	General Colbatann	rare elite	56	57	Kalimdor	Winterspring	list	1	1
+10200	Rak'shiri	rare	57	57	Kalimdor	Winterspring	list	1	1
+10202	Azurous	rare elite	59	59	Kalimdor	Winterspring	list	1	1
+10199	Grizzle Snowpaw	rare	59	59	Kalimdor	Winterspring	list	1	1
+10198	Kashoch the Reaver	rare elite	60	60	Kalimdor	Winterspring	list	1	1
+10201	Lady Hederine	rare elite	61	61	Kalimdor	Winterspring	list	1	1
+18692	Hemathion	rare	68	68	Outland	Blade's Edge Mountains	list	2	1
+18690	Morcrush	rare	68	68	Outland	Blade's Edge Mountains	list	4	1
+18693	Speaker Mar'grom	rare	68	68	Outland	Blade's Edge Mountains	list	4	1
+22060	Fenissa the Assassin	rare	18	18	Outland	Bloodmyst Isle	list	3	1
+16855	Tregla	rare	10	10	Outland	Eversong Woods	list	1	1
+16854	Eldinarcus	rare	11	11	Outland	Eversong Woods	list	3	1
+22062	Dr. Whitherlimb	rare	18	18	Outland	Ghostlands	list	4	1
+18677	Mekthorg the Wild	rare	61	61	Outland	Hellfire Peninsula	list	4	1
+18678	Fulgorge	rare	62	62	Outland	Hellfire Peninsula	list	3	1
+18679	Vorakem Doomspeaker	rare	62	62	Outland	Hellfire Peninsula	list	4	1
+17144	Goretooth	rare	65	65	Outland	Nagrand	list	5	1
+18684	Bro'Gaz the Clanless	rare	66	66	Outland	Nagrand	list	3	1
+18683	Voidhunter Yar	rare	68	68	Outland	Nagrand	list	1	1
+18698	Ever-Core the Punisher	rare	68	68	Outland	Netherstorm	list	3	1
+18697	Chief Engineer Lorthander	rare	69	69	Outland	Netherstorm	list	3	1
+20932	Nuramoc	rare elite	70	70	Outland	Netherstorm	list	3	1
+18694	Collidus the Warp-Watcher	rare	68	68	Outland	Shadowmoon Valley	list	3	1
+18696	Kraator	rare	68	68	Outland	Shadowmoon Valley	list	4	1
+18695	Ambassador Jerrikar	rare	69	69	Outland	Shadowmoon Valley	list	5	1
+18686	Doomsayer Jurim	rare	64	64	Outland	Terokkar Forest	list	3	1
+18685	Okrek	rare	64	64	Outland	Terokkar Forest	list	4	1
+18689	Crippler	rare	65	65	Outland	Terokkar Forest	list	5	1
+18682	Bog Lurker	rare	63	63	Outland	Zangarmarsh	list	3	1
+18681	Coilfang Emissary	rare	63	63	Outland	Zangarmarsh	list	4	1
+18680	Marticar	rare	63	63	Outland	Zangarmarsh	list	3	1
+32435	Vern	rare	80	80	Northrend		unknown	1	0
+32358	Fumblub Gearwind	rare elite	71	71	Northrend	Borean Tundra	list	1	1
+32361	Icehorn	rare	71	71	Northrend	Borean Tundra	list	3	1
+32357	Old Crystalbark	rare elite	71	72	Northrend	Borean Tundra	list	4	1
+32409	Crazed Indu'le Survivor	rare elite	73	73	Northrend	Dragonblight	list	1	1
+32417	Scarlet Highlord Daion	rare elite	73	73	Northrend	Dragonblight	list	4	1
+32400	Tukemuth	rare elite	73	73	Northrend	Dragonblight	list	8	1
+32429	Seething Hate	rare elite	73	73	Northrend	Grizzly Hills	list	3	1
+32438	Syreian the Bonecarver	rare elite	73	73	Northrend	Grizzly Hills	list	6	1
+38453	Arcturis	rare elite	74	74	Northrend	Grizzly Hills	nearest	1	1
+32422	Grocklar	rare elite	74	74	Northrend	Grizzly Hills	list	6	1
+32398	King Ping	rare elite	71	71	Northrend	Howling Fjord	list	5	1
+32377	Perobas the Bloodthirster	rare elite	71	71	Northrend	Howling Fjord	list	3	1
+32386	Vigdis the War Maiden	rare elite	71	71	Northrend	Howling Fjord	list	6	1
+32487	Putridus the Ancient	rare elite	79	80	Northrend	Icecrown	list	5	1
+32501	High Thane Jorfus	rare elite	80	80	Northrend	Icecrown	list	3	1
+32495	Hildana Deathstealer	rare elite	80	80	Northrend	Icecrown	list	4	1
+32481	Aotona	rare elite	75	75	Northrend	Sholazar Basin	nearest	6	1
+32485	King Krush	rare elite	75	75	Northrend	Sholazar Basin	list	3	1
+32517	Loque'nahak	rare elite	76	76	Northrend	Sholazar Basin	list	8	1
+32500	Dirkee	rare elite	80	80	Northrend	The Storm Peaks	list	4	1
+35189	Skoll	rare elite	80	80	Northrend	The Storm Peaks	nearest	1	1
+32491	Time-Lost Proto Drake	rare elite	80	80	Northrend	The Storm Peaks	nearest	4	1
+32630	Vyragosa	rare elite	80	80	Northrend	The Storm Peaks	list	4	1
+32471	Griegen	rare elite	75	75	Northrend	Zul'Drak	list	7	1
+32475	Terror Spinner	rare elite	76	76	Northrend	Zul'Drak	list	3	1
+33776	Gondria	rare elite	77	77	Northrend	Zul'Drak	nearest	6	1
+32447	Zul'drak Sentinel	rare elite	77	77	Northrend	Zul'Drak	list	2	1
