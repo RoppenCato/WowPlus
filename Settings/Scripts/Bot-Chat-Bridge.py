@@ -41,6 +41,7 @@ BOTS_DIR = os.path.join(ROOT, "Settings", "Bots")
 STATE_DIR = os.path.join(ROOT, "Database", "BotChat")
 MEMORY_DIR = os.path.join(STATE_DIR, GAME)
 ASSIGNMENTS_FILE = os.path.join(STATE_DIR, "Assignments.json")
+RELATIONS_FILE = os.path.join(STATE_DIR, "Relations.json")
 KNOWLEDGE_FILE = os.path.join(ROOT, "Settings", "Reference", "Bot-Knowledge.md")
 PORT = 8586
 MODEL = "haiku"
@@ -66,6 +67,9 @@ slots = threading.Semaphore(MAX_AT_ONCE)
 conversations = {}              # key -> {"turns": [(who, text)], "last": time, "new": count, "bots": {bot: info}}
 people = []
 assignments = {}
+relations = {}
+traits = {}
+SCANDINAVIAN = ("Swedish", "Norwegian", "Danish")
 
 
 def log(text):
@@ -124,6 +128,17 @@ def load_people():
             assignments = json.load(f)
     except (OSError, ValueError):
         assignments = {}
+    global relations, traits
+    try:
+        with io.open(RELATIONS_FILE, encoding="utf-8") as f:
+            relations = json.load(f)
+    except (OSError, ValueError):
+        relations = {}
+    try:
+        with io.open(os.path.join(BOTS_DIR, "Traits.json"), encoding="utf-8") as f:
+            traits = json.load(f)
+    except (OSError, ValueError):
+        traits = {}
 
 
 def person_for(bot, gender=""):
@@ -150,11 +165,48 @@ def describe(person):
     if not person:
         return "an ordinary person who likes games"
     woman = person["gender"] == "female"
-    return (f"{person['first_name']}, a {person['age']}-year-old {'woman' if woman else 'man'} from {person['home']}. "
-            f"Work: {person['occupation']}. Home life: {person['living']}. Temper: {person['temper']}. "
-            f"Humour: {person['humour']}. Outside games: {' and '.join(person['hobbies'])}. "
-            f"Way of talking: {person['style']}; {person['typing_habit']}. Games: {person['gaming']}. "
+    country = person.get("country", "")
+    where = person["home"] if not country or country.replace("the ", "") in person["home"] else f"{person['home']} in {country}"
+    return (f"{person['first_name']}, a {person['age']}-year-old {'woman' if woman else 'man'} from {where}. "
+            f"Work: {person['occupation']}. Home life: {person['living']}. "
+            f"Temper: {person['temper']}. Humour: {person['humour']}. Outside games: {' and '.join(person['hobbies'])}. "
+            f"Way of talking: {person['style']}; {person['typing_habit']}. Games: {person['gaming']}; "
+            f"{person.get('experience', 'knows the game reasonably well')}. "
             f"Going on in your life: {person['life_now']}. Things you like to talk about: {', '.join(person['topics'])}.")
+
+
+def local_time(person):
+    """What the clock says where this person lives, in words Claude can use."""
+    if not person or "utc" not in person:
+        return ""
+    now = datetime.datetime.now(datetime.timezone.utc)
+    summer = person.get("summer")
+    # Clocks go forward an hour in summer: April to October in the north, October to March in the south
+    forward = (summer == "north" and 4 <= now.month <= 10) or (summer == "south" and (now.month >= 10 or now.month <= 3))
+    there = now + datetime.timedelta(hours=person["utc"] + (1 if forward else 0))
+    hour = there.hour
+    part = ("the middle of the night" if hour < 5 else "early morning" if hour < 8 else "morning" if hour < 12 else
+            "afternoon" if hour < 17 else "evening" if hour < 22 else "late evening")
+    return (f"Where you live it is {there.strftime('%H:%M')} on {there.strftime('%A')}, {part}. Players here are spread "
+            "over the world, so for others it may be another time of day; you know that, and it can come up "
+            "naturally (being up late, just out of bed, on a lunch break), but do not mention the time in every line.")
+
+
+def how_they_know(bot, other):
+    """How two bots know each other outside the game, if they do. Decided once per pair, then kept."""
+    kinds = traits.get("relations") or []
+    if not kinds or bot.lower() == other.lower():
+        return ""
+    pair = "|".join(sorted((bot.lower(), other.lower())))
+    with lock:
+        mine = relations.setdefault(GAME, {})
+        if pair not in mine:
+            roll = zlib.crc32(("wowplus:knows:" + pair).encode())
+            mine[pair] = kinds[(roll // 100) % len(kinds)] if roll % 100 < traits.get("known_percent", 10) else ""
+            os.makedirs(STATE_DIR, exist_ok=True)
+            with io.open(RELATIONS_FILE, "w", encoding="utf-8") as f:
+                json.dump(relations, f, indent=1, sort_keys=True)
+        return mine[pair]
 
 
 def mood_today(bot):
@@ -316,13 +368,28 @@ def system_prompt(q, memory, task):
                 "the way they open; say something new.\n") if said else ""
     names = ", ".join(o["name"] for o in q.get("others_list", []))
     others = f" Also here: {names}." if names else ""
+    person = person_for(bot, q.get("bgender", ""))
+    known = []
+    for o in q.get("others_list", []):
+        how = how_they_know(bot, o["name"])
+        if how:
+            them = person_for(o["name"], o.get("gender", ""))
+            known.append(f"{o['name']} is played by {them['first_name'] if them else 'someone'}, whom you know outside the "
+                         f"game: you are {how}.")
+    acquainted = (" ".join(known) + " You talk to them like someone you have known for years.\n") if known else ""
+    language = ""
+    if person and person.get("language") in SCANDINAVIAN:
+        language = (f"- Write English. Only if {player} writes to you in Swedish, answer in {person['language']} "
+                    "instead, the way Scandinavians answer each other in their own languages.\n")
     knowledge = " ".join(read_lines(KNOWLEDGE_FILE))
     style = " ".join(read_lines(os.path.join(BOTS_DIR, "Styles", GAME + ".md")))
     return (
         f"You are the person who plays {bot} in World of Warcraft: Wrath of the Lich King (patch 3.3.5), on a small "
         f"private server. Your character {bot} is a level {q.get('blevel', '?')} {q.get('bgender', '')} "
         f"{q.get('brace', '')} {q.get('bclass', '')}, right now in {q.get('bzone') or 'Azeroth'}.\n"
-        f"About you, the person: {describe(person_for(bot, q.get('bgender', '')))} Mood today: {mood_today(bot)}.\n"
+        f"About you, the person: {describe(person)} Mood today: {mood_today(bot)}.\n"
+        f"{local_time(person)}\n"
+        f"{acquainted}"
         f"The other player is {player}, a level {q.get('plevel', '?')} {q.get('prace', '')} {q.get('pclass', '')}, "
         f"right now in {q.get('pzone') or 'Azeroth'}. {bond}\n"
         f"{remembered}\n"
@@ -334,6 +401,8 @@ def system_prompt(q, memory, task):
         "Rules:\n"
         f"- At most {MAX_LINES} short lines, each under 120 characters. Usually one line is enough. "
         "Finish your sentence.\n"
+        + (language or "- Write English, whatever your own language is. You may let a word of it slip very rarely.\n") +
+        "- Do not ask the other player how to do things in the game; if you are new, you find out by yourself.\n"
         "- Write like a person typing in a game: relaxed, correctly spelled. No strings of 'lol', and do not start "
         "every line the same way.\n"
         "- You are a whole person, not only a player: you can talk about your day, your work, your hobbies and what "
@@ -369,7 +438,8 @@ def clean(reply):
         reply = "\n".join(line for line in re.sub(r"</?msg>", "", reply).splitlines() if not META.search(line))
     reply = reply.replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
     reply = reply.replace("—", ", ").replace("–", "-").replace("…", "...")
-    reply = reply.encode("ascii", "ignore").decode("ascii").replace("|", "")     # "|" starts colour codes in WoW chat
+    # Keep the letters of European languages, drop everything else (emoji, other scripts). "|" starts colour codes.
+    reply = "".join(c for c in reply if c == "\n" or " " <= c <= "~" or "\u00c0" <= c <= "\u00ff").replace("|", "")
     lines = []
     for raw in reply.splitlines():
         raw = raw.strip().strip('"').strip()
