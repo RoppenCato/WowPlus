@@ -16,8 +16,8 @@ local serverOff = false
 local sinceCheck, sinceHello, answered = 0, 0, false
 
 local bar = CreateFrame("StatusBar", "WowPlusSprintBar", UIParent)
-bar:SetWidth(150)
-bar:SetHeight(7)
+bar:SetWidth(80)
+bar:SetHeight(6)
 bar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
 bar:SetMinMaxValues(0, FULL)
 bar:SetValue(FULL)
