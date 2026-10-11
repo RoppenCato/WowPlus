@@ -38,13 +38,22 @@ Settings: `WowPlus.BotChat.Guild.*`, `WowPlus.BotChat.Moments.Chance`, `WowPlus.
 
 ## How talkative they are
 
-Most of what people write in a game is plain and practical, so that is the default. Whether one message may end with a question, carry a joke, mention the bot's own day or have a smiley is decided by dice, with chances set at the top of `Settings/Scripts/Bot-Chat-Bridge.py` (`QUESTION_CHANCE` 0.2, `JOKE_CHANCE` 0.12, `PERSONAL_CHANCE` 0.12, `SMILEY_CHANCE` 0.08). A bot never asks a question two messages in a row. Raise the numbers for livelier bots.
+Most of what people write in a game is plain and practical, so that is the default. Whether one message may end with a question, carry a joke, mention the bot's own day or have a smiley is decided by dice, with chances set at the top of `Settings/Scripts/Bot-Chat-Bridge.py` (`QUESTION_CHANCE` 0.2, `JOKE_CHANCE` 0.12, `PERSONAL_CHANCE` 0.12). A bot never asks a question two messages in a row. Raise the numbers for livelier bots.
+
+The length of an answer is drawn too: often two to five words, now and then more, and people of few words draw from the short end. Hello, goodbye and thanks get the person's own word and nothing else. A laugh word stays only with a joke, or half the time when you laughed first. Bots are told they are players and not guides: no tips nobody asked for, no "glad I could help".
 
 A bot that joins your party or guild says a short hello in that chat. It does not whisper you unasked, and it does not send the bot module's canned lines ("Hello, I follow you!", "Invite me to your group first").
 
 ## Who a bot is
 
-Each bot is played by a person from `Settings/Bots/People.json`: a first name, age, gender, home, occupation, home life, temper, humour, hobbies, a way of talking, a typing habit, a gaming habit, something going on in their life, and favourite topics. The person is chosen from the bot's name the first time it speaks, and then written down, so a bot stays the same person. Their mood changes from day to day.
+Each bot is played by one of 300 people. The person is chosen from the bot's name the first time it speaks, and then written down, so a bot stays the same person. Every part of a person, where it is kept and how to change it is in the [character sheet](../Bots/Character-Sheet.md). In short:
+
+- **A life.** The facts are in `Settings/Bots/People.json`. The rest (their story, the people around them by name, small true details, opinions, something going on that moves along every two weeks, what pulls them from the keyboard) is in `Settings/Bots/Backgrounds/<id>.json`, written by Claude Sonnet once per person. `Make-Bot-Backgrounds.py` writes many at once; otherwise the bridge has a person written the first time their bot speaks, and the bot has its whole life from the next talk on.
+- **A voice.** Twelve sample lines per person, the words they lean on and the ones they would never use. On top of that, fixed typing habits that code applies to every line, so they hold whatever the model writes: lower case or capitals, full stops, exclamation marks, apostrophes, shorthand (thx, u, idk), few words or many, and their own word for hello, goodbye, yes, "you're welcome" and laughing.
+- **How well they know you.** A stranger is friendly and keeps their life private. After you have talked, or as a guild mate, something from their day may come up. A friend (a guild mate you have talked with, or anyone after four talks) names the people in their life and can be in a bad mood in front of you.
+- **Today.** The time and weekday where they live, and a mood.
+
+To hear whether they sound like different people, without the game: `python Settings/Scripts/Test-Bot-Voices.py`.
 
 The lists, the people, the topics and the style of each game are plain files you can edit: see [Settings/Bots](../Bots/README.md). They are written so that MapleStoryPlus can use the same files; `Styles/wow.md` is what keeps WoW chat sounding like WoW.
 
@@ -80,7 +89,8 @@ For everything else about the game, Claude's own knowledge of patch 3.3.5 is use
 | Part | File | What it does |
 |---|---|---|
 | The game side | `Server/modules/mod-wowplus/src/WowPlusBotChat.cpp` | Decides which bot answers, sends the details to the bridge on a helper thread, and makes the bot say the lines that come back, with a typing pause between lines. Settings: `WowPlus.BotChat.*`. |
-| The bridge | `Settings/Scripts/Bot-Chat-Bridge.py` | A small web server on this PC only (`127.0.0.1:8586`). Builds the person, keeps the conversation, loads and updates the notes, asks Claude, cleans the reply. |
+| The bridge | `Settings/Scripts/Bot-Chat-Bridge.py` | A small web server on this PC only (`127.0.0.1:8586`). The part that is about this game: the world, the channels, the conversation, the notes about you, when bots speak. |
+| The people | `Settings/Scripts/bot_minds.py` with `Settings/Bots` | Who plays which bot, their life and voice as text for Claude, their typing habits applied to every line, asking Claude, cleaning the reply. Not about one game; MapleStoryPlus uses the same file. |
 | Claude | Claude Code running Haiku | Writes the reply. Uses your Claude login, no API key. Every reply is a fresh run with no tools and no access to anything on the PC. |
 
 Test without the game:

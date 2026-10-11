@@ -228,7 +228,7 @@ The whole picture is in [Bots.md](Bots.md) and [Bot-Chat.md](Bot-Chat.md).
 - [~] Bot gear varies per bot: most green, some with blues, a few really well geared
 - [~] Passing bots buff you now and then
 - [~] `.bots away` and `.bots alone on/off` to have the area to yourself
-- [~] Bot chat through Claude: whisper, /say, party and guild chat; a person per bot; memory notes per bot
+- [~] Bot chat through Claude: whisper, /say, party and guild chat; a person per bot with a full background, own voice and typing habits (Settings/Bots/Character-Sheet.md); memory notes per bot
 - [~] Companions: two guild mates you choose, `.bots call` and `.bots dismiss`, a fire and small things when you rest, gestures and remarks on the road
 - [~] Easy control: our own small button bar (addon `WowPlusBots`)
 - [~] Bots speak first: a greeting at login, guild chat every 5 to 10 minutes with a short answer from another bot

@@ -6,6 +6,8 @@ The files here describe the people behind the bots. Nothing in them is about one
 |---|---|---|
 | `Traits.json` | The lists people are put together from: first names, ages, homes, occupations, home life, tempers, humour, hobbies, ways of talking, typing habits, gaming habits, what is going on in their life, favourite topics. | Yes. Then run `python Settings/Scripts/Make-Bot-People.py` to add people from the new lists. |
 | `People.json` | The people: 300 of them, one per line. Each has a first name, gender, age, home with country, language and time zone, occupation, home life, temper, humour, two hobbies, a way of talking, a typing habit, a gaming habit, how experienced they are, something going on in their life, and three favourite topics. | Yes, by hand, one person at a time. The script keeps what is there and only adds missing people (`--fresh` starts over). |
+| `Backgrounds/<id>.json` | The person in full: life story, the people around them, small true details, opinions, something going on in six steps, their voice and twelve sample lines. Written by Claude from the facts in `People.json`. | Yes, by hand. Or have it written again: `python Settings/Scripts/Make-Bot-Backgrounds.py --ids 17`. |
+| `Character-Sheet.md` | Every part a bot is made of, how to write people in full, and how to test that they sound different. Start here. | |
 | `Topics.md` | Things bots bring up by themselves: an everyday section and one per game. | Yes. Works at once. |
 | `Styles/wow.md`, `Styles/maplestory.md` | How chat sounds in each game: its words, its abbreviations, its tone. This is what keeps a WoW bot sounding like WoW and a Maple bot like Maple, even when the same person plays both. | Yes. Works at once. |
 
@@ -29,7 +31,7 @@ What is personal to this PC is kept outside the repository, in `Database/BotChat
 
 ## Using the same files from MapleStoryPlus
 
-Not connected yet. The MapleStoryPlus bridge still has its own small lists. To share, it would read `People.json`, `Topics.md` (sections `everyday` and `maplestory`) and `Styles/maplestory.md` from this folder, and keep its own `maplestory` section in `Assignments.json` and its own history folder. The same person could then play a bot in both games.
+Everything about who the bots are is in this folder and in one script, `Settings/Scripts/bot_minds.py`, and none of it is about one game. A game's bridge creates `Minds(bots_dir, state_dir, "maplestory")` and asks it for the person, the text about them, their voice, and for the typing habits to be applied to a reply. MapleStoryPlus has a copy of the folder and the scripts; `Update-From-WowPlus.md` in its `Settings/Bots` says what was copied and what its bridge needs. When people or backgrounds change here, copy `People.json`, `Traits.json` and `Backgrounds/` across so that the same person plays in both.
 
 ## Later
 
