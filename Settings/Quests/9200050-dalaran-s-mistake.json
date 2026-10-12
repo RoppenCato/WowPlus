@@ -1,0 +1,49 @@
+{
+  "id": 9200050,
+  "title": "Dalaran's Mistake",
+  "level": 23,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 209,
+  "type": "slay",
+  "after": 9200049,
+  "giver": 2708,
+  "turn_in": 2708,
+  "objectives": [
+    {
+      "creature": 4275,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "His name is Arugal.\n\nWhen the Scourge was tearing through Lordaeron and our own ranks were failing, he proposed to summon the worgen to fight for us. He was advised against it. He did it. The beasts slaughtered the dead and then turned on the wizards who had called them.\n\nIt broke him. Mad with guilt, he took the worgen for his children and shut himself in the Baron's keep. He has since cursed Pyrewood, so that its people are wolves by night. The Kirin Tor sent a sorcerer, Ashcrombe, to see what had become of him, not knowing how far he had fallen. Ashcrombe has not returned.\n\nEnd it, $N. He was one of ours, and he is past any other help.",
+    "objectives": "Kill Archmage Arugal at the top of Shadowfang Keep, then return to Archmage Malin in the Mage Quarter of Stormwind.",
+    "progress": "He keeps to the highest tower, with the worst of his children about him.",
+    "completion": "It is done, then. I had hoped to feel relief. I find I only feel that it should have been one of us who went.\n\nRemember him fairly, if you remember him. He was not wicked when he began. He was frightened, and proud, and he reached for a power he had been told to leave alone. Every mage who ever lived has stood where he stood.\n\nDalaran is in your debt, $N. Take this."
+  },
+  "reward": {
+    "money": 1800,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": [
+      {
+        "item": 3461,
+        "count": 1
+      },
+      {
+        "item": 3431,
+        "count": 1
+      },
+      {
+        "item": 1273,
+        "count": 1
+      },
+      {
+        "item": 3400,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Shadowfang Keep, 2 of 2 for the Alliance: Arugal summoned the worgen against the Scourge against advice, went mad with guilt, adopted them and cursed Pyrewood; the Kirin Tor sent Sorcerer Ashcrombe unaware."
+}

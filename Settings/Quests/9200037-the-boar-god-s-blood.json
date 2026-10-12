@@ -1,0 +1,45 @@
+{
+  "id": 9200037,
+  "title": "The Boar God's Blood",
+  "level": 17,
+  "min_level": 14,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 17,
+  "type": "visit",
+  "giver": 3448,
+  "turn_in": 3448,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": -193.0,
+        "y": -3191.0,
+        "radius": 110
+      },
+      "text": "Look upon the thorns of Thorn Hill"
+    },
+    {
+      "talk": 3430,
+      "text": "Ask Mangletooth about Agamaggan",
+      "says": [
+        "You! Come here. <snort> You ask Mangletooth about the Great Boar? No orc ever asks.",
+        "Agamaggan has left his body behind to protect us, and he gives of his spirit so we may protect him. <snort> The thorns are his. Where his blood fell, they grew.",
+        "You burn the thorns. You call us beasts when we come back. <snort> Would you leave your father's bones to strangers?"
+      ]
+    }
+  ],
+  "texts": {
+    "details": "The orcs burn the thorns and the quilboar return. They burn them again. No one at the Crossroads asks why a people would die for a hill of briars.\n\nMy people have shared this land with the quilboar far longer than the orcs have, $N, and we have fought them the whole time. But we know what the thorns are to them.\n\nGo east to Thorn Hill and look at how the vines grow. Then go south to Camp Taurajo. A Razormane named Mangletooth is caged there. He will talk; he has nothing left but talk. Ask him about Agamaggan.",
+    "objectives": "Look upon the thorns of Thorn Hill and ask Mangletooth, the quilboar held at Camp Taurajo, about Agamaggan. Then return to Tonga Runetotem at the Crossroads.",
+    "progress": "Thorn Hill lies east of the Crossroads. Camp Taurajo is a long road south.",
+    "completion": "His father's bones. Yes. That is how they see it, and they are not wrong.\n\nAgamaggan was the Great Boar, one of the Ancients, among the first and mightiest beings of this world. When the Burning Legion came, ten thousand years ago, he fought beside Cenarius. He slew demons past counting and stood against Mannoroth himself, and he died so that others could reach the Well of Eternity.\n\nWhere his blood fell, the thorns rose. The quilboar believe they are his children. Every briar patch in the Barrens is holy ground to them, $N. That is why they do not leave."
+  },
+  "reward": {
+    "money": 900,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, The Boar God's Blood: Agamaggan the Ancient died fighting the Legion in the War of the Ancients; thorns grew from his blood; the quilboar hold themselves his children and the thorn lands holy."
+}

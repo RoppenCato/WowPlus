@@ -1,0 +1,25 @@
+{
+  "id": 9200044,
+  "title": "South to the Mill",
+  "level": 20,
+  "min_level": 17,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 130,
+  "type": "deliver",
+  "giver": 1952,
+  "turn_in": 2215,
+  "objectives": [],
+  "texts": {
+    "details": "You have done what can be done here with the numbers I have. It is time you saw the front.\n\nSouth and east, past the lake, are the Hillsbrad Foothills. Pretty country. More blood has been spilled on it than on any field in the world. The living still farm there, from a town called Southshore, and they still think the land is theirs.\n\nOurs is Tarren Mill. The Scourge destroyed it, and we took what was left; it is the southernmost ground the Dark Lady holds. Report to High Executor Darthalia. Tell her Silverpine sends her a blade, and regrets that it is only one.",
+    "objectives": "Travel south-east to the Hillsbrad Foothills and report to High Executor Darthalia at Tarren Mill.",
+    "completion": "One blade. Hadrec is generous as ever.\n\nYou stand in Tarren Mill, $N, the edge of everything the Forsaken hold. Southshore is a short ride down the river, and we have been at war with it since the day we came. Our apothecaries are at work here on something that should settle the matter.\n\nUntil it is ready, we do it the old way. Go and show the living what is what."
+  },
+  "reward": {
+    "money": 1200,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Silverpine to Hillsbrad: the most blood-soaked field in the world; Tarren Mill, destroyed by the Scourge and claimed as the Forsaken's southernmost holding, at war with Southshore; the apothecaries' new plague."
+}

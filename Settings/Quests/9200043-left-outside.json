@@ -1,0 +1,49 @@
+{
+  "id": 9200043,
+  "title": "Left Outside",
+  "level": 17,
+  "min_level": 14,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 130,
+  "type": "kill",
+  "after": 9200042,
+  "giver": 6389,
+  "turn_in": 6389,
+  "objectives": [
+    {
+      "creature": 1924,
+      "count": 8
+    }
+  ],
+  "texts": {
+    "details": "So now you know what howls in the south of this forest. They are not beasts that wandered in. They are what Arugal called up, and what he made of the people the wall left out.\n\nThe Moonrage are the worst of it. The Bloodhowlers run the ground between Pyrewood and the wall, and nothing of ours gets down that road while they do.\n\nKill eight of them, $N. Not for Gilneas. Gilneas has made it very plain that it wants nothing from anyone. For the road, and because the Dark Lady means to have this forest.",
+    "objectives": "Kill 8 Moonrage Bloodhowlers in the south of Silverpine Forest, then return to Deathguard Podrig at the Sepulcher.",
+    "progress": "They keep to the south, between Pyrewood Village and the wall.",
+    "completion": "Eight fewer. The road will be quieter for a while.\n\nI think about that gate more than I should. A king shut out his own villages to keep his kingdom clean, and the curse he was hiding from went and grew at the foot of his wall.\n\nThere is something in that for the living to learn, if they were the learning kind. Here. You have earned it."
+  },
+  "reward": {
+    "money": 900,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 5610,
+        "count": 1
+      },
+      {
+        "item": 1302,
+        "count": 1
+      },
+      {
+        "item": 6481,
+        "count": 1
+      },
+      {
+        "item": 5627,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 2: the Moonrage worgen between Pyrewood and the wall. Uses an enemy no quest used."
+}

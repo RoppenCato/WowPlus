@@ -1,0 +1,31 @@
+{
+  "id": 9200047,
+  "title": "A Tauren Among Thieves",
+  "level": 18,
+  "min_level": 15,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 1581,
+  "type": "slay",
+  "giver": 3978,
+  "turn_in": 3978,
+  "objectives": [
+    {
+      "creature": 646,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Travelers bring me tales, $N, and one of them will not leave me.\n\nAcross the sea, in the human land of Westfall, there is an old gold mine. It was the richest in all their kingdoms. They abandoned it in the first war with the orcs and came to think it haunted. Now a brotherhood of outlaws lives in it. They were masons once, cheated of their wages by their own lords. With goblin help they are building a warship in a cavern under the hills.\n\nAnd the first mate of that ship is a tauren. They call him Mr. Smite. One of ours, serving human brigands under a mountain. Go there. He will not come home, and he should not be left as he is.",
+    "objectives": "Kill Mr. Smite in the Deadmines, beneath Moonbrook in Westfall, then return to Sage Truthseeker on the Elder Rise in Thunder Bluff.",
+    "progress": "The way in is under a barn in a ruined town called Moonbrook. Do not go alone.",
+    "completion": "So it was true. A son of the plains, dead in the dark with a thief's rank on him.\n\nI do not know what road took him there, and now no one will. I will speak his name to the Earthmother once, and then not again.\n\nTell me what else you saw in that place. A ship, you say, in a cave? Then the tale is not finished."
+  },
+  "reward": {
+    "money": 1300,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Deadmines, 1 of 2 for the Horde: the mines' history, the Defias as cheated masons, the goblin-built ship, and Mr. Smite, a tauren and its first mate. Invented: Sage Truthseeker's concern for him."
+}

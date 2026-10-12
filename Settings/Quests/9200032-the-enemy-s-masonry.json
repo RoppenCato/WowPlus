@@ -1,0 +1,63 @@
+{
+  "id": 9200032,
+  "title": "The Enemy's Masonry",
+  "level": 17,
+  "min_level": 14,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 38,
+  "type": "visit",
+  "after": 9200031,
+  "giver": 1105,
+  "turn_in": 1105,
+  "objectives": [
+    {
+      "talk": 1093,
+      "text": "Ask Chief Engineer Hinderweir who built the dam",
+      "says": [
+        "Who built her? Not a Bronzebeard, an' it pains me to say it. The Stonewrought Dam was raised under Franclorn Forgewright. A Dark Iron. He invented the stonewrought method she's named for.",
+        "She more than doubled the Loch. Take her away an' half this water goes north. Most o' the Wetlands down there would be under it.",
+        "An' now his own clan comes creepin' up here to bring her down. I've had to double the watch. The finest thing a Dark Iron ever made, an' it's Dark Irons I guard it from."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -4727.0,
+        "y": -3305.0,
+        "radius": 60
+      },
+      "text": "Walk out onto the Stonewrought Dam"
+    }
+  ],
+  "texts": {
+    "details": "Go north, to the far end of the Loch, and walk out onto the Stonewrought Dam. There is nothing built by mortal hands on Azeroth to equal it. Elves used to come from Quel'Thalas only to look.\n\nEvery dwarf in Thelsamar will tell you it is the pride of Ironforge. Ask Chief Engineer Hinderweir, who keeps it, whose hands actually raised it. Watch his face when he answers.\n\nThen stand at the edge and look down the far side, $N. All that marsh below is there because of the wall under your boots.",
+    "objectives": "Ask Chief Engineer Hinderweir VII who built the Stonewrought Dam and walk out onto it, then return to Jern Hornhelm in Thelsamar.",
+    "progress": "Follow the Loch north until the land stops. The dam is what's stopping it.",
+    "completion": "Forgewright. He told you, then. Good; some of them won't.\n\nThat's the whole of it, $N. Two statues in the south to remind us the Dark Irons are our enemies, and a dam in the north to remind us they were our kin, and the best builders among us. Then the war, and Thaurissan's folly, and now their sappers come to pull down their own masterwork.\n\nFolk like a history with one side in it. This is not one of those. Here, for the walking."
+  },
+  "reward": {
+    "money": 850,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 7738,
+        "count": 1
+      },
+      {
+        "item": 5630,
+        "count": 1
+      },
+      {
+        "item": 6481,
+        "count": 1
+      },
+      {
+        "item": 3586,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 2: the Stonewrought Dam was built under the Dark Iron architect Franclorn Forgewright, more than doubled the Loch and made the Wetlands what they are, and is now under attack by Dark Irons."
+}

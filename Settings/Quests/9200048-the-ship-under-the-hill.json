@@ -1,0 +1,53 @@
+{
+  "id": 9200048,
+  "title": "The Ship Under the Hill",
+  "level": 19,
+  "min_level": 16,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 1581,
+  "type": "kill",
+  "after": 9200047,
+  "giver": 3978,
+  "turn_in": 3978,
+  "objectives": [
+    {
+      "creature": 647,
+      "count": 1
+    },
+    {
+      "creature": 639,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "A warship that has never seen the sky. I have thought on it all night.\n\nThe humans' own quarrel is not ours. But a ship built in secret is built to fall on someone by surprise, and its makers have made friends of goblins and pirates. The sea it will sail is the sea our own ships cross.\n\nIts captain is a goblin, Greenskin. Its master is the man who raised the brotherhood: Edwin VanCleef, who built the humans' great city with his own hands and was cast out of it. Return to the mine, $N. End the captain, and end the builder. I would hear how such a man dies.",
+    "objectives": "Kill Captain Greenskin and Edwin VanCleef in the Deadmines, then return to Sage Truthseeker on the Elder Rise in Thunder Bluff.",
+    "progress": "The ship lies at the very bottom, beyond the foundry.",
+    "completion": "He fought to the end, on the deck of the thing he built. I thought he might.\n\nThere is a lesson in him, and it is not a simple one. He was wronged. Those who wronged him still rule. And yet look at what he made of his wrong: burned farms, a dead town, a cave full of the desperate.\n\nThe humans will call this a victory over bandits. Remember that it was a mason you killed, $N. Take this, and walk in balance."
+  },
+  "reward": {
+    "money": 1600,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": [
+      {
+        "item": 3558,
+        "count": 1
+      },
+      {
+        "item": 6480,
+        "count": 1
+      },
+      {
+        "item": 6721,
+        "count": 1
+      },
+      {
+        "item": 15424,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Deadmines, 2 of 2 for the Horde: Captain Greenskin and Edwin VanCleef, who rebuilt Stormwind and was driven out. Invented: that the Sage fears the ship."
+}

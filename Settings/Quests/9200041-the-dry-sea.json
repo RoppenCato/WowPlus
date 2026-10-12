@@ -1,0 +1,25 @@
+{
+  "id": 9200041,
+  "title": "The Dry Sea",
+  "level": 25,
+  "min_level": 22,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 17,
+  "type": "deliver",
+  "giver": 3418,
+  "turn_in": 10537,
+  "objectives": [],
+  "texts": {
+    "details": "South of Taurajo the road runs out, and the land with it. There is a lift there, down the cliff. At the bottom is Thousand Needles.\n\nThe old ones say a river ran through that canyon once. When the world was sundered the land was thrust up, the water left it, and the lake in the east dried to salt. Only the needles of stone are left standing.\n\nCentaur roam the canyon floor. Our people live on the tops of the spires, and walk between them on bridges. Cross to Freewind Post and find Cliffwatcher Longhorn. He fights the Grimtotem there, and he will need you.",
+    "objectives": "Take the Great Lift down into Thousand Needles and present yourself to Cliffwatcher Longhorn at Freewind Post.",
+    "completion": "From Taurajo? Then you have walked the bridges and looked down. Most do not like it the first time.\n\nThe centaur keep to the floor and cannot climb, so up here we are safe from them. The Grimtotem are another matter. They are tauren, and the spires are no wall to them. They are fanatics, $N, and they have turned on their own kind.\n\nFar to the east, where the salt is, goblins and gnomes race machines across the dry lake. I do not understand it either."
+  },
+  "reward": {
+    "money": 1900,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from the Barrens to Thousand Needles: a river canyon thrust above the water when the world was sundered, its lake dried to salt; centaur on the floor, tauren on the spires, the Grimtotem, and the racers on the Shimmering Flats."
+}

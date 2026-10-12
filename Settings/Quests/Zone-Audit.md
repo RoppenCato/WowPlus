@@ -87,14 +87,14 @@ Made by `Settings/Scripts/Make-Zone-Audit.py` on 2026-10-12. Run it again after 
 | 5-10 | Teldrassil | Kalimdor | 3 (14%) passing through | 56 (243%) | 3 | 13 | enough |
 | 5-10 | Tirisfal Glades | Eastern Kingdoms | 51 (146%) | – | 4 | 7 | enough |
 | 5-11 | Durotar | Kalimdor | 47 (103%) | 3 (7%) passing through | 4 | 14 | enough |
-| 12-17 | Silverpine Forest | Eastern Kingdoms | 44 (71%) | 4 (7%) passing through |  | 11 | enough |
+| 12-17 | Silverpine Forest | Eastern Kingdoms | 47 (78%) | 4 (7%) passing through | 3 | 10 | enough |
 | 12-18 | Ghostlands | Eastern Kingdoms | 63 (118%) | – |  | 10 | enough |
-| 12-18 | Westfall | Eastern Kingdoms | 7 (11%) passing through | 36 (94%) |  | 7 | enough |
+| 12-18 | Westfall | Eastern Kingdoms | 7 (11%) passing through | 40 (100%) | 4 | 7 | enough |
 | 14-18 | Bloodmyst Isle | Kalimdor | – | 74 (130%) |  | 7 | enough |
-| 14-20 | Darkshore | Kalimdor | 11 (18%) passing through | 73 (102%) |  | 18 | enough |
-| 14-21 | The Barrens | Kalimdor | 94 (119%) | 22 (22%) passing through |  | 21 | enough |
+| 14-18 | Loch Modan | Eastern Kingdoms | – | 44 (102%) | 3 | 4 | enough |
+| 14-20 | Darkshore | Kalimdor | 11 (18%) passing through | 76 (107%) | 3 | 16 | enough |
+| 14-21 | The Barrens | Kalimdor | 99 (126%) | 22 (22%) passing through | 5 | 21 | enough |
 | 14-55 | Darnassus | Kalimdor | – | 21 |  | 0 | city |
-| 15-18 | Loch Modan | Eastern Kingdoms | – | 41 (115%) |  | 4 | enough |
 | 15-22 | Redridge Mountains | Eastern Kingdoms | – | 37 (43%) |  | 3 | A +21 |
 | 21-26 | Stonetalon Mountains | Kalimdor | 31 (46%) | 25 (40%) |  | 14 | H +14, A +18 |
 | 23-50 | Thunder Bluff | Kalimdor | 32 | – |  | 0 | city |
@@ -158,8 +158,8 @@ For every five levels: the zones a side can level in (at least 3 quests there), 
 |---|---|---|---|---|
 | 1-5 | 4: Eversong Woods, Mulgore, Tirisfal Glades, Durotar | 4 | 4: Azuremyst Isle, Dun Morogh, Elwynn Forest, Teldrassil | 4 |
 | 6-10 | 4: Eversong Woods, Mulgore, Tirisfal Glades, Durotar | 4 | 4: Azuremyst Isle, Dun Morogh, Elwynn Forest, Teldrassil | 4 |
-| 11-15 | 4: Durotar, Silverpine Forest, Ghostlands, The Barrens | 4 | 5: Westfall, Bloodmyst Isle, Darkshore, Loch Modan, Redridge Mountains | 4 |
-| 16-20 | 3: Silverpine Forest, Ghostlands, The Barrens | 3 | 5: Westfall, Bloodmyst Isle, Darkshore, Loch Modan, Redridge Mountains | 4 |
+| 11-15 | 4: Durotar, Silverpine Forest, Ghostlands, The Barrens | 4 | 5: Westfall, Bloodmyst Isle, Loch Modan, Darkshore, Redridge Mountains | 4 |
+| 16-20 | 3: Silverpine Forest, Ghostlands, The Barrens | 3 | 5: Westfall, Bloodmyst Isle, Loch Modan, Darkshore, Redridge Mountains | 4 |
 | 21-25 | 3: The Barrens, Stonetalon Mountains, Ashenvale | 1 | 5: Redridge Mountains, Stonetalon Mountains, Ashenvale, Wetlands, Duskwood | 0 |
 | 26-30 | 4: Stonetalon Mountains, Ashenvale, Hillsbrad Foothills, Thousand Needles | 0 | 6: Stonetalon Mountains, Ashenvale, Wetlands, Duskwood, Hillsbrad Foothills, Thousand Needles | 0 |
 | 31-35 | 3: Hillsbrad Foothills, Thousand Needles, Desolace | 0 | 4: Hillsbrad Foothills, Thousand Needles, Desolace, Alterac Mountains | 0 |
@@ -179,11 +179,11 @@ Quests that belong to a dungeon or raid, by the level of the place. They are not
 
 | Levels | Place | Kind | Horde quests | Alliance quests | Experience, Horde | Experience, Alliance | Give gear | Note |
 |---|---|---|---|---|---|---|---|---|
-| 16-16 | Ragefire Chasm | dungeon | 6 | 0 | 14,445 | 0 | 3 | few for Alliance |
+| 16-16 | Ragefire Chasm | dungeon | 6 | 2 | 14,445 | 5,025 | 4 | few for Alliance |
 | 17-21 | Wailing Caverns | dungeon | 9 | 5 | 22,957 | 16,425 | 4 |  |
-| 18-20 | Deadmines | dungeon | 0 | 5 | 0 | 14,625 | 5 | few for Horde |
+| 18-20 | Deadmines | dungeon | 2 | 5 | 6,375 | 14,625 | 6 | few for Horde |
 | 22-27 | Blackfathom Deeps | dungeon | 6 | 5 | 19,852 | 22,350 | 6 |  |
-| 25-27 | Shadowfang Keep | dungeon | 3 | 0 | 14,250 | 0 | 3 | few for Alliance |
+| 23-26 | Shadowfang Keep | dungeon | 3 | 2 | 14,250 | 8,025 | 4 | few for Alliance |
 | 26-27 | Stormwind Stockade | dungeon | 0 | 6 | 0 | 29,025 | 3 | few for Horde |
 | 26-30 | Razorfen Kraul | dungeon | 4 | 4 | 19,875 | 20,625 | 5 |  |
 | 30-30 | Ashenvale (which dungeon or wing is not told) | dungeon | 1 | 0 | 5,475 | 0 | 1 | few for Horde and Alliance |
@@ -265,15 +265,15 @@ Quests that belong to a dungeon or raid, by the level of the place. They are not
 
 ### The quests of each dungeon and raid
 
-**Ragefire Chasm** (dungeon, 16-16): Hidden Enemies (16, Horde); Returning the Lost Satchel (16, Horde); Searching for the Lost Satchel (16, Horde); Slaying the Beast (16, Horde); The Power to Destroy... (16, Horde); The Power to Destroy... (16, Horde).
+**Ragefire Chasm** (dungeon, 16-16): Under the Enemy's City (15, Alliance); Hidden Enemies (16, Horde); Returning the Lost Satchel (16, Horde); Searching for the Lost Satchel (16, Horde); Slaying the Beast (16, Horde); The Invoker and the Satyr (16, Alliance); The Power to Destroy... (16, Horde); The Power to Destroy... (16, Horde).
 
 **Wailing Caverns** (dungeon, 17-21): Hamuul Runetotem (16, Horde); Nara Wildmane (16, Horde); Deviate Hides (17); Serpentbloom (18, Horde); Smart Drinks (18); Trouble at the Docks (18); Deviate Eradication (21); Leaders of the Fang (22, Horde); The Glowing Shard (26).
 
-**Deadmines** (dungeon, 18-20): Red Silk Bandanas (17, Alliance); Collecting Memories (18, Alliance); Oh Brother. . . (20, Alliance); Underground Assault (20, Alliance); The Defias Brotherhood (22, Alliance).
+**Deadmines** (dungeon, 18-20): Red Silk Bandanas (17, Alliance); A Tauren Among Thieves (18, Horde); Collecting Memories (18, Alliance); The Ship Under the Hill (19, Horde); Oh Brother. . . (20, Alliance); Underground Assault (20, Alliance); The Defias Brotherhood (22, Alliance).
 
 **Blackfathom Deeps** (dungeon, 22-27): Allegiance to the Old Gods (22, Horde); The Essence of Aku'Mai (22, Horde); Trouble in the Deeps (22, Horde); Knowledge in the Deeps (23, Alliance); In Search of Thaelrid (24, Alliance); Researching the Corruption (24, Alliance); Twilight Falls (25, Alliance); Allegiance to the Old Gods (26, Horde); Amongst the Ruins (27, Horde); Blackfathom Villainy (27, Alliance); Blackfathom Villainy (27, Horde).
 
-**Shadowfang Keep** (dungeon, 25-27): Deathstalkers in Shadowfang (25, Horde); The Book of Ur (26, Horde); Arugal Must Die (27, Horde).
+**Shadowfang Keep** (dungeon, 23-26): The Baron's Household (22, Alliance); Dalaran's Mistake (23, Alliance); Deathstalkers in Shadowfang (25, Horde); The Book of Ur (26, Horde); Arugal Must Die (27, Horde).
 
 **Stormwind Stockade** (dungeon, 26-27): What Comes Around... (25, Alliance); Crime and Punishment (26, Alliance); Quell The Uprising (26, Alliance); The Color of Blood (26, Alliance); The Fury Runs Deep (27, Alliance); The Stockade Riots (29, Alliance).
 
@@ -533,10 +533,10 @@ Going from level 12 to 18 costs 78,100 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 44 | 0 | 55,394 | 71% | 15 | 10:5 11:5 12:4 14:6 15:5 16:8 17:3 18:3 20:3 21:1 22:1 | nothing; it carries itself |
+| Horde | 47 | 0 | 60,839 | 78% | 16 | 10:5 11:5 12:4 14:6 15:5 16:9 17:4 18:3 20:4 21:1 22:1 | nothing; it carries itself |
 | Alliance | 4 | 0 | 5,625 | 7% | 1 | 14:1 17:1 18:2 | only passing through |
 
-**Enemies no quest uses:** Moonrage Bloodhowler (15-16, 33 of them), Ravenclaw Slave (11-12, 26 of them), Reef Frenzy (14-15, 16 of them), Moonrage Darkrunner (11-12, 14 of them), Rot Hide Gladerunner (11-12, 11 of them), Ravenclaw Raider (12-13, 11 of them), Ravenclaw Servant (13-14, 9 of them), Rot Hide Mystic (12-13, 8 of them), Ravenclaw Champion (14-15, 8 of them), Corrupt Water Spirit (19-20, 8 of them), and 1 more.
+**Enemies no quest uses:** Ravenclaw Slave (11-12, 26 of them), Reef Frenzy (14-15, 16 of them), Moonrage Darkrunner (11-12, 14 of them), Rot Hide Gladerunner (11-12, 11 of them), Ravenclaw Raider (12-13, 11 of them), Ravenclaw Servant (13-14, 9 of them), Rot Hide Mystic (12-13, 8 of them), Ravenclaw Champion (14-15, 8 of them), Corrupt Water Spirit (19-20, 8 of them), Hand of Ravenclaw (15-16, 5 of them).
 
 **Places nothing is asked of you:** Olsen's Farthing (21 enemies), The Decrepit Ferry (11 enemies).
 
@@ -559,7 +559,7 @@ Going from level 12 to 19 costs 95,900 experience.
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
 | Horde | 7 | 0 | 10,560 | 11% | 3 | 16:5 19:1 20:1 | only passing through |
-| Alliance | 36 | 1 | 90,270 | 94% | 13 | 9:1 10:5 12:4 13:2 14:3 15:2 16:5 17:1 18:6 19:1 20:1 44:5 | nothing; it carries itself |
+| Alliance | 40 | 1 | 95,715 | 100% | 14 | 9:1 10:5 12:5 13:2 14:3 15:3 16:6 17:1 18:7 19:1 20:1 44:5 | nothing; it carries itself |
 
 **Enemies no quest uses:** Coyote (10-11, 43 of them), Shore Crawler (17-18, 22 of them), Coyote Packleader (11-12, 21 of them), Sand Crawler (13-14, 17 of them), Sea Crawler (15-16, 12 of them), Kobold Digger (12-13, 7 of them), Dust Devil (18-19, 7 of them).
 
@@ -575,6 +575,16 @@ Going from level 14 to 19 costs 75,100 experience.
 
 **Places nothing is asked of you:** Bristlelimb Enclave (32 enemies).
 
+### Loch Modan (14-18, Eastern Kingdoms)
+
+Going from level 14 to 19 costs 75,100 experience.
+
+| Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
+|---|---|---|---|---|---|---|---|
+| Alliance | 44 | 1 | 76,687 | 102% | 17 | 10:4 11:2 12:4 14:1 15:12 16:1 17:3 18:8 19:1 20:4 22:1 39:1 43:1 44:1 | nothing; it carries itself |
+
+**Enemies no quest uses:** Loch Frenzy (12-13, 26 of them), Young Threshadon (19-20, 21 of them), Dark Iron Insurgent (18-19, 7 of them), Lord Condar (15-16, 4 of them).
+
 ### Darkshore (14-20, Kalimdor)
 
 Going from level 14 to 21 costs 115,200 experience.
@@ -582,11 +592,9 @@ Going from level 14 to 21 costs 115,200 experience.
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
 | Horde | 11 | 0 | 20,535 | 18% | 5 | 12:1 14:2 15:1 16:1 17:2 18:1 20:2 22:1 | only passing through |
-| Alliance | 73 | 1 | 117,201 | 102% | 23 | 1:1 10:4 12:5 13:5 14:10 15:5 16:5 17:7 18:7 19:3 20:12 21:1 22:2 24:2 28:2 31:2 | nothing; it carries itself |
+| Alliance | 76 | 1 | 123,351 | 107% | 24 | 1:1 10:4 12:5 13:5 14:10 15:5 16:5 17:7 18:8 19:3 20:14 21:1 22:2 24:2 28:2 31:2 | nothing; it carries itself |
 
-**Enemies no quest uses:** Foreststrider Fledgling (11-13, 98 of them), Thistle Bear (11-12, 81 of them), Foreststrider (14-16, 48 of them), Coastal Frenzy (14-16, 46 of them), Stormscale Myrmidon (18-19, 34 of them), Blackwood Warrior (16-17, 27 of them), Moonkin (12-13, 26 of them), Stormscale Sorceress (19-20, 23 of them), Raging Moonkin (12-14, 22 of them), Stormscale Warrior (20-21, 19 of them), and 8 more.
-
-**Places nothing is asked of you:** Ruins of Mathystra (77 enemies).
+**Enemies no quest uses:** Foreststrider Fledgling (11-13, 98 of them), Thistle Bear (11-12, 81 of them), Foreststrider (14-16, 48 of them), Coastal Frenzy (14-16, 46 of them), Blackwood Warrior (16-17, 27 of them), Moonkin (12-13, 26 of them), Raging Moonkin (12-14, 22 of them), Stormscale Warrior (20-21, 19 of them), Stormscale Siren (16-17, 19 of them), Stormscale Wave Rider (15-16, 17 of them), and 6 more.
 
 ### The Barrens (14-21, Kalimdor)
 
@@ -594,7 +602,7 @@ Going from level 14 to 22 costs 137,600 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 94 | 5 | 163,715 | 119% | 29 | 10:10 11:1 12:2 13:3 14:10 15:9 16:8 17:1 18:9 19:4 20:10 21:3 22:2 23:1 24:4 25:5 26:4 27:3 29:2 30:2 33:1 | nothing; it carries itself |
+| Horde | 99 | 5 | 173,315 | 126% | 30 | 10:10 11:1 12:2 13:3 14:10 15:9 16:8 17:3 18:9 19:4 20:11 21:3 22:2 23:2 24:4 25:6 26:4 27:3 29:2 30:2 33:1 | nothing; it carries itself |
 | Alliance | 22 | 4 | 30,712 | 22% | 10 | 14:7 16:3 18:4 20:1 21:1 24:1 25:1 26:1 27:1 30:2 | only passing through |
 
 **Enemies no quest uses:** Hecklefang Hyena (15-16, 108 of them), Barrens Giraffe (15-16, 75 of them), Venture Co. Drudger (14-15, 51 of them), Wandering Barrens Giraffe (18-19, 37 of them), Hecklefang Stalker (22-23, 37 of them), Hecklefang Snarler (18-19, 28 of them), Lost Barrens Kodo (14-15, 27 of them), Slimeshell Makrura (18-19, 26 of them), Burning Blade Bruiser (10-11, 26 of them), Dreadmaw Crocolisk (9-11, 24 of them), and 11 more.
@@ -612,16 +620,6 @@ Going from level 14 to 56 costs 2,663,000 experience.
 | Alliance | 21 | 0 | 77,615 | 3% | 3 | 10:2 11:1 12:2 14:1 20:1 50:4 53:1 54:1 55:3 60:4 73:1 | not a levelling zone |
 
 **Enemies no quest uses:** none of note.
-
-### Loch Modan (15-18, Eastern Kingdoms)
-
-Going from level 15 to 19 costs 62,800 experience.
-
-| Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
-|---|---|---|---|---|---|---|---|
-| Alliance | 41 | 1 | 72,067 | 115% | 16 | 10:4 11:2 12:3 14:1 15:12 16:1 17:2 18:8 19:1 20:3 22:1 39:1 43:1 44:1 | nothing; it carries itself |
-
-**Enemies no quest uses:** Loch Frenzy (12-13, 26 of them), Young Threshadon (19-20, 21 of them), Dark Iron Insurgent (18-19, 7 of them), Lord Condar (15-16, 4 of them).
 
 ### Redridge Mountains (15-22, Eastern Kingdoms)
 
@@ -1338,3 +1336,27 @@ Going from level 80 to 81 costs 0 experience.
 | 9200024 | What the Tide Kept | Tirisfal Glades | 9 | horde | collect |
 | 9200025 | The Archbishop's Grave | Tirisfal Glades | 8 | horde | visit |
 | 9200026 | Thin on the Ground | Tirisfal Glades | 10 | horde | deliver |
+| 9200027 | Masons, Not Bandits | Westfall | 12 | alliance | visit |
+| 9200028 | What They Did with the Land | Westfall | 15 | alliance | visit |
+| 9200029 | The Architect Who Stayed | Westfall | 16 | alliance | deliver |
+| 9200030 | Where the Light Fails | Westfall | 18 | alliance | deliver |
+| 9200031 | Two Kings Facing South | Loch Modan | 12 | alliance | visit |
+| 9200032 | The Enemy's Masonry | Loch Modan | 17 | alliance | visit |
+| 9200033 | Through Dun Algaz | Loch Modan | 20 | alliance | deliver |
+| 9200034 | The Queen's People | Darkshore | 18 | alliance | visit |
+| 9200035 | No Kin of Ours | Darkshore | 20 | alliance | kill |
+| 9200036 | The Forest Road | Darkshore | 20 | alliance | deliver |
+| 9200037 | The Boar God's Blood | The Barrens | 17 | horde | visit |
+| 9200038 | The Razorfen | The Barrens | 23 | horde | visit |
+| 9200039 | The Cut Mountain | The Barrens | 17 | horde | deliver |
+| 9200040 | Timber for Orgrimmar | The Barrens | 20 | horde | deliver |
+| 9200041 | The Dry Sea | The Barrens | 25 | horde | deliver |
+| 9200042 | The Closed Gate | Silverpine Forest | 16 | horde | visit |
+| 9200043 | Left Outside | Silverpine Forest | 17 | horde | kill |
+| 9200044 | South to the Mill | Silverpine Forest | 20 | horde | deliver |
+| 9200045 | Under the Enemy's City | Ragefire Chasm | 15 | alliance | slay |
+| 9200046 | The Invoker and the Satyr | Ragefire Chasm | 16 | alliance | kill |
+| 9200047 | A Tauren Among Thieves | The Deadmines | 18 | horde | slay |
+| 9200048 | The Ship Under the Hill | The Deadmines | 19 | horde | kill |
+| 9200049 | The Baron's Household | Shadowfang Keep | 22 | alliance | kill |
+| 9200050 | Dalaran's Mistake | Shadowfang Keep | 23 | alliance | slay |

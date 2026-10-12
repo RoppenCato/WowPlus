@@ -1,0 +1,31 @@
+{
+  "id": 9200045,
+  "title": "Under the Enemy's City",
+  "level": 15,
+  "min_level": 12,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 2437,
+  "type": "slay",
+  "giver": 332,
+  "turn_in": 332,
+  "objectives": [
+    {
+      "creature": 11520,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "SI:7 has eyes in places the King would rather not hear about. One of them is under Orgrimmar.\n\nThere is a chasm beneath the orc city, a maze of burning caves. Two things live in it. One is a clan of troggs that came up out of the lava tunnels; the Horde tried to treat with them and failed. The other concerns me more. A sect of the Shadow Council has gone to ground there. They call themselves the Searing Blade, and they serve the Burning Legion.\n\nThe Legion's servants are everyone's enemy, $N, whoever's cellar they hide in. Their strongest is a felguard, Taragaman the Hungerer. Go into the chasm and kill it.",
+    "objectives": "Kill Taragaman the Hungerer in Ragefire Chasm, beneath Orgrimmar, then return to Master Mathias Shaw in Old Town, Stormwind.",
+    "progress": "The way in is beneath Orgrimmar itself. You will want companions, and you will not want to be seen.",
+    "completion": "A felguard, dead under the Warchief's own floor. Good.\n\nHere is what amuses me. My sources say Thrall wants that cult dead as badly as we do, and has been sending his own people down after it. For once Stormwind and Orgrimmar are hunting the same quarry. Neither of us will ever admit it.\n\nThe felguard was the muscle. It was not the mind."
+  },
+  "reward": {
+    "money": 1200,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Ragefire Chasm, 1 of 2 for the Alliance: the chasm beneath Orgrimmar, the Ragefire troggs, and the Searing Blade, a sect of the Shadow Council led by the felguard Taragaman. Invented: SI:7's interest."
+}

@@ -1,0 +1,45 @@
+{
+  "id": 9200042,
+  "title": "The Closed Gate",
+  "level": 16,
+  "min_level": 13,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 130,
+  "type": "visit",
+  "giver": 6389,
+  "turn_in": 6389,
+  "objectives": [
+    {
+      "talk": 1938,
+      "text": "Ask Dalar Dawnweaver about Arugal",
+      "says": [
+        "Arugal? A charlatan. He propped up weak magic with enchanted trinkets and called it mastery.",
+        "When the Scourge came he summoned the worgen to fight them, against all advice. The beasts killed the dead, and then they turned on the living.",
+        "They overran the keep of Baron Silverlaine, above Pyrewood. Arugal, driven mad with guilt, took the keep and calls the worgen his children. Then he cursed the village at its foot. Men by day. Wolves by night."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -610.0,
+        "y": 1440.0,
+        "radius": 70
+      },
+      "text": "Go to the foot of the Greymane Wall"
+    }
+  ],
+  "texts": {
+    "details": "There is a wall across the south of this forest, from the mountains to the sea. Have you asked yourself who builds a wall like that, and against whom?\n\nIt was not built against us. It was built before there was a plague. Go south and look at it, $N. Go as far as the gate, and look at who is still sitting in front of it.\n\nAnd before you go, speak to Dalar Dawnweaver here. The village under that wall was left on the wrong side of it, and he can tell you what became of the place.",
+    "objectives": "Ask Dalar Dawnweaver at the Sepulcher about Arugal and go to the foot of the Greymane Wall in the south of Silverpine, then return to Deathguard Podrig at the Sepulcher.",
+    "progress": "Follow the road south, past Pyrewood. You will know it when you see it.",
+    "completion": "You saw them. The living, camped at a gate that does not open.\n\nGenn Greymane, King of Gilneas, built that wall. After the Second War he begrudged the gold his kingdom paid for the orc camps and for Nethergarde Keep. The Alliance, he said, had given Gilneas nothing but dead Gilneans. So he left it, and walled his kingdom in.\n\nThe line he chose left Pyrewood and Ambermill outside. His own people. When the Scourge came the refugees ran to that gate, and it stayed shut. We were Lordaeron, $N. We know what it is to be left."
+  },
+  "reward": {
+    "money": 800,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, The Wall: Genn Greymane withdrew Gilneas from the Alliance and built the wall before the Third War, leaving Pyrewood and Ambermill outside and refugees at a gate that never opened; Arugal, the worgen and Pyrewood's curse."
+}

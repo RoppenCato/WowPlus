@@ -1,0 +1,53 @@
+{
+  "id": 9200046,
+  "title": "The Invoker and the Satyr",
+  "level": 16,
+  "min_level": 13,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 2437,
+  "type": "kill",
+  "after": 9200045,
+  "giver": 332,
+  "turn_in": 332,
+  "objectives": [
+    {
+      "creature": 11518,
+      "count": 1
+    },
+    {
+      "creature": 11519,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Two more lead the Searing Blade, and they are the ones who do its thinking.\n\nJergosh the Invoker is an orc warlock. He is the reason I do not take the Horde's word that it has put demons behind it; there are still orcs who would drink that cup again. Bazzalan is a satyr, and what one of those is doing in the pay of orcish cultists I would dearly like to know. You will not be able to ask him.\n\nThey keep to the deepest part of the chasm, past where the felguard stood. Kill both, $N, and the Shadow Council loses its foothold under that city.",
+    "objectives": "Kill Jergosh the Invoker and Bazzalan in Ragefire Chasm, then return to Master Mathias Shaw in Old Town, Stormwind.",
+    "progress": "Deeper than the felguard. They will not be alone.",
+    "completion": "Both. Then the Searing Blade has no head, and the Shadow Council has one less hole to hide in.\n\nI will see that a word of this reaches the right ear in Orgrimmar, by a road that cannot be traced to us. Let the Warchief wonder who did his work for him.\n\nYou have done the Alliance a service it will never thank you for in public, $N. SI:7 does its thanking in private."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": [
+      {
+        "item": 3449,
+        "count": 1
+      },
+      {
+        "item": 5311,
+        "count": 1
+      },
+      {
+        "item": 6502,
+        "count": 1
+      },
+      {
+        "item": 7328,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Ragefire Chasm, 2 of 2 for the Alliance: Jergosh the Invoker and the satyr Bazzalan, leaders of the Searing Blade; Thrall also wants the cult destroyed."
+}

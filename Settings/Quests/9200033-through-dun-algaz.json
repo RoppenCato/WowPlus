@@ -1,0 +1,25 @@
+{
+  "id": 9200033,
+  "title": "Through Dun Algaz",
+  "level": 20,
+  "min_level": 17,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 38,
+  "type": "deliver",
+  "giver": 1343,
+  "turn_in": 2104,
+  "objectives": [],
+  "texts": {
+    "details": "Ye mean to go down through Dun Algaz to the Wetlands? Then ye'd best know what's in the tunnels, an' what's past them.\n\nOrcs. Dragonmaw. In the Second War their clan held Grim Batol an' rode the red dragons in chains. When the dragons got loose they burned every Dragonmaw camp they could find, an' what was left o' the clan ran south into these hills. They've had the pass under siege since.\n\nPast them it's cold swamp to the sea. The only friendly roof is Menethil Harbor, on the coast. Find Captain Stoutfist there. Tell him Algaz Station still holds its end o' the road.",
+    "objectives": "Go down through Dun Algaz and bring Mountaineer Stormpike's word to Captain Stoutfist in Menethil Harbor, in the Wetlands.",
+    "completion": "Algaz Station holds? Then the road's open at one end, at least.\n\nWelcome to Menethil, $N. Dwarves an' men built her together an' named her for old King Terenas. She's all the Alliance has in this marsh. North o' here the Dark Irons sit in Dun Modr, an' beyond the Span it's Lordaeron, an' ye know what walks there now.\n\nWe're the wall between that an' Khaz Modan. If ye've an axe, I've Dragonmaw that want it."
+  },
+  "reward": {
+    "money": 1200,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Loch Modan to the Wetlands: the Dragonmaw besieging Dun Algaz and why they fled Grim Batol; Menethil Harbor, named for King Terenas; Dun Modr under the Dark Irons."
+}

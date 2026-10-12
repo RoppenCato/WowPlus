@@ -1,0 +1,45 @@
+{
+  "id": 9200027,
+  "title": "Masons, Not Bandits",
+  "level": 12,
+  "min_level": 9,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 40,
+  "type": "visit",
+  "giver": 491,
+  "turn_in": 491,
+  "objectives": [
+    {
+      "talk": 467,
+      "text": "Hear the Defias Traitor's account",
+      "says": [
+        "Bandit? I was a stonemason. Half the Brotherhood was. We rebuilt Stormwind after the orcs razed it. Every tower you are so proud of.",
+        "When the work was done, the House of Nobles would not pay what was promised. Our guildmaster, VanCleef, demanded it. They answered by ordering the guild disbanded.",
+        "So we rioted. In the middle of it the Queen was struck dead, and the King drove us out. The red we wear is for the blood of the oppressed. That is what they told me when they tied it on."
+      ]
+    },
+    {
+      "talk": 233,
+      "text": "Ask Farmer Saldean how Westfall fell",
+      "says": [
+        "How did they take Westfall? Nobody stopped them, that's how. We were still getting over the orcs.",
+        "They fouled the harvest watchers so the machines turned on the folk they were built to help. They burned fields and salted the earth. A farm with no farmer on it suits a smuggler fine.",
+        "Stormwind says it will get to Westfall eventually. Until then there's Stoutmantle and his militia, and there's us."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "Every recruit I arm asks me the same thing: who are these people? And every one of them expects me to say \"thieves.\"\n\nIt is not that simple, $N, and you will fight better for knowing it. We are holding one of them at the foot of the tower. He was caught trying to make off with Saldean's wagon, and he has been talking to save his neck. Hear what he says the Brotherhood is.\n\nThen ride north to Saldean's farm and ask the farmer what it looked like from the other side.",
+    "objectives": "Hear out the Defias Traitor at Sentinel Hill and ask Farmer Saldean at Saldean's Farm how Westfall fell, then return to Quartermaster Lewis at Sentinel Hill.",
+    "progress": "The prisoner is by the tower. Saldean's place is up the road to the north.",
+    "completion": "Masons. Yes. The men who raised Stormwind's walls a second time, and were shown the door when the bill came.\n\nDo not mistake me. They have burned this land, and I will arm anyone who will stand against them. But they did not start as bandits, and the ones who made them so are not in Westfall. They sit in Stormwind."
+  },
+  "reward": {
+    "money": 500,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 3, What Stormwind Owed: the Defias were the Stonemasons' Guild that rebuilt Stormwind, went unpaid, rioted, and were driven out; and how they took Westfall."
+}

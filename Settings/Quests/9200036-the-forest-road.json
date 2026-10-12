@@ -1,0 +1,25 @@
+{
+  "id": 9200036,
+  "title": "The Forest Road",
+  "level": 20,
+  "min_level": 17,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 148,
+  "type": "deliver",
+  "giver": 3693,
+  "turn_in": 3663,
+  "objectives": [],
+  "texts": {
+    "details": "You are going south, into Ashenvale. It is the heart of our lands, $N, and it is not at peace.\n\nIn the east the orcs are felling the forest. They have lumber camps there and a fortified post, and they cut as though the trees were theirs. Demons still hold Felfire Hill and Demon Fall, left from the war. Satyrs sit in the old ruins, at Xavian, Satyrnaar and Night Run. And on the Zoram Strand, to the west, there are naga.\n\nAstranaar is our stronghold there. But the road reaches Maestra's Post first. Delgren the Purifier keeps watch at the Post. Tell him Auberdine still holds the coast behind him.",
+    "objectives": "Follow the road south into Ashenvale and bring Terenthis's word to Delgren the Purifier at Maestra's Post.",
+    "completion": "Auberdine holds? That is welcome. I have had little good news from the north.\n\nMy own war is with the Shadow Council. They are mortals who serve the Legion willingly, and they are here in this forest. But you will find every enemy Terenthis named, and more. Raene Wolfrunner in Astranaar struggles to cleanse the furbolgs of the taint that has taken them.\n\nRest here, $N. Then follow the road south and east to Astranaar. Ashenvale has need of you."
+  },
+  "reward": {
+    "money": 1200,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Darkshore to Ashenvale: the orcs logging the east, demons at Felfire Hill and Demon Fall, satyrs in the ruins, naga on the Zoram Strand, the Shadow Council, Astranaar and Raene Wolfrunner."
+}

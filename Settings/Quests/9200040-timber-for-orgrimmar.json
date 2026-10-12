@@ -1,0 +1,25 @@
+{
+  "id": 9200040,
+  "title": "Timber for Orgrimmar",
+  "level": 20,
+  "min_level": 17,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 17,
+  "type": "deliver",
+  "giver": 8582,
+  "turn_in": 12737,
+  "objectives": [],
+  "texts": {
+    "details": "Past this rampart the plain ends and the forest begins. Ashenvale. It is night elf country, and they have not forgiven us for being in it.\n\nThe Horde needs wood, and that forest is where it comes from. The Warsong cut it at their lumber camp in the east, and Splintertree Post stands guard over the road. The Horde is growing, and what it builds, it builds from those trees.\n\nIt is not only elves in there. Demons from the old war still hold Felfire Hill and Demon Fall, and satyrs lurk in the ruins. Keep to the road, find Mastok Wrilehiss at Splintertree, and tell him Kadrak has the gate.",
+    "objectives": "Pass the Mor'shan Rampart into Ashenvale and report to Mastok Wrilehiss at Splintertree Post.",
+    "completion": "Kadrak has the gate. Good. Then what we cut can still get home.\n\nYou see how it is here, $N. We are a post with a wall around it and a forest around that. The elves hold Astranaar to the west and they watch every tree we take. The demons hate us both.\n\nThe Warsong will keep cutting, because the Horde must build. Our work is to see that they can. Sharpen something."
+  },
+  "reward": {
+    "money": 1200,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from the Barrens to Ashenvale: the Horde fells the forest at the Warsong Lumber Camp to fuel its growth, guarded by Splintertree Post; demons at Felfire Hill and Demon Fall, satyrs in the ruins, night elves at Astranaar."
+}

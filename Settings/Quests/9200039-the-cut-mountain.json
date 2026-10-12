@@ -1,0 +1,25 @@
+{
+  "id": 9200039,
+  "title": "The Cut Mountain",
+  "level": 17,
+  "min_level": 14,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 17,
+  "type": "deliver",
+  "giver": 3429,
+  "turn_in": 4198,
+  "objectives": [],
+  "texts": {
+    "details": "You are heading for Stonetalon? Then go with your eyes open. It is not the Barrens.\n\nThe road in climbs through Windshear Crag, and you will smell it before you see it. The goblins of the Venture Company have cut down nearly every tree there and fouled the water with oil. Near our border a band of Grimtotem, tauren who answer to no one, have seized a village and hold its people. Higher up are harpies, and a vale that burned and never stopped.\n\nThe tauren hold Sun Rock Retreat, in the middle of it all. Find Braelyn Firehand there and tell her the Crossroads sent you.",
+    "objectives": "Take the road north-west into the Stonetalon Mountains and present yourself to Braelyn Firehand at Sun Rock Retreat.",
+    "completion": "Thork sent you? Good. We are few up here and the mountain has many masters.\n\nYou came through the Crag, so you have seen what the goblins do to a forest. The night elves have seen it too, and they do not much care which of us held the axe. Their druids and dryads have a grip on the high ground that we have not been able to loosen.\n\nThe peak above us is sacred to the tauren and to the elves both, $N. That should be a reason for peace. So far it has only been a reason to fight."
+  },
+  "reward": {
+    "money": 950,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from the Barrens to Stonetalon: the Venture Company's felling of Windshear Crag, the Grimtotem, harpies, the Charred Vale, Sun Rock Retreat, and Stonetalon Peak sacred to tauren and night elves alike."
+}

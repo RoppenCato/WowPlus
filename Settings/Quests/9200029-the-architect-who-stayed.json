@@ -1,0 +1,43 @@
+{
+  "id": 9200029,
+  "title": "The Architect Who Stayed",
+  "level": 16,
+  "min_level": 13,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 40,
+  "type": "deliver",
+  "after": 9200028,
+  "giver": 491,
+  "turn_in": 1646,
+  "objectives": [],
+  "texts": {
+    "details": "There is one man who can tell you what VanCleef was before he was the enemy, and he is not in Westfall.\n\nBaros Alexston worked beside him when Stormwind was rebuilt. When the guild marched out, Alexston was offered the post of city architect if he stayed. He took it. He has been VanCleef's enemy ever since, and I do not think it sits easily with him.\n\nYou will find him at City Hall, in Cathedral Square. Tell him you have seen his father's farm. Then ask him about his friend.",
+    "objectives": "Speak with Baros Alexston at City Hall in Cathedral Square, Stormwind.",
+    "completion": "You have seen the farm. Then you have seen more of it than I have, these last years.\n\nEdwin. We elected him guildmaster, you know. He was the best of us: an architect, a fighter, and a romantic, which is the dangerous part. He raised half this city, and he led the building of Nethergarde Keep besides. When the nobles would not pay, and then ordered the guild dissolved, he could not let it lie.\n\nI was offered this office to stay. I stayed. I do not ask you to think well of me for it, $N. Take this, and thank you for telling me."
+  },
+  "reward": {
+    "money": 900,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 3449,
+        "count": 1
+      },
+      {
+        "item": 5311,
+        "count": 1
+      },
+      {
+        "item": 3458,
+        "count": 1
+      },
+      {
+        "item": 23410,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 3 of 3, and a road to Stormwind: Edwin VanCleef as his old friend knew him, guildmaster, architect of Stormwind and Nethergarde; and why Baros Alexston stayed."
+}

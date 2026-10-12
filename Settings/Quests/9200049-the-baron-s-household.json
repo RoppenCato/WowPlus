@@ -1,0 +1,35 @@
+{
+  "id": 9200049,
+  "title": "The Baron's Household",
+  "level": 22,
+  "min_level": 19,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 209,
+  "type": "kill",
+  "giver": 2708,
+  "turn_in": 2708,
+  "objectives": [
+    {
+      "creature": 3887,
+      "count": 1
+    },
+    {
+      "creature": 4278,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Dalaran owes a debt in Silverpine Forest, $N, and I mean to see some part of it paid.\n\nThere is a keep there, above the village of Pyrewood. It was the seat of Baron Silverlaine. During the war against the Scourge, one of our order summoned creatures called worgen to fight the dead. They turned on the living and overran that keep. The Baron and his family were slain.\n\nHe has not left. His ghost walks his own hall, and the captain of his guard, Commander Springvale, a paladin of the Silver Hand, still holds the walls for him in death. They were loyal men, and it was our mistake that killed them. Go to Shadowfang Keep and give them rest.",
+    "objectives": "Lay Baron Silverlaine and Commander Springvale to rest in Shadowfang Keep, in Silverpine Forest, then return to Archmage Malin in the Mage Quarter of Stormwind.",
+    "progress": "The keep stands in the south of Silverpine, above Pyrewood Village. It is Forsaken country now. Go in company.",
+    "completion": "Then the Baron's watch is over, and his commander's with it. Thank you.\n\nThe keep was called Silverlaine once. No one uses that name now. They call it Shadowfang, after what lives there.\n\nI said one of our order was to blame. He is still in that keep, $N, at the very top. And until he is dealt with, nothing we do for the dead there will last."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Shadowfang Keep, 1 of 2 for the Alliance: once the seat of Baron Silverlaine, overrun by the worgen a Dalaran mage summoned; his ghost and Commander Springvale, paladin of the Silver Hand. Invented: Archmage Malin's sense of debt."
+}

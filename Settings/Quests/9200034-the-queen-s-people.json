@@ -1,0 +1,45 @@
+{
+  "id": 9200034,
+  "title": "The Queen's People",
+  "level": 18,
+  "min_level": 15,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 148,
+  "type": "visit",
+  "giver": 10219,
+  "turn_in": 10219,
+  "objectives": [
+    {
+      "talk": 3649,
+      "text": "Ask Thundris Windweaver about Mathystra",
+      "says": [
+        "Mathystra was a city of our people before the Sundering. When the Well of Eternity was destroyed, the city was destroyed with it.",
+        "We did not rebuild. Those who lived left the place to the sea and made villages further south. The young go there sometimes, hunting Highborne relics. We bury some of them.",
+        "The Stormscale have it now. Naga. They guard those stones against everyone, as though the ruin were still theirs to guard."
+      ]
+    },
+    {
+      "place": {
+        "map": 1,
+        "x": 7414.0,
+        "y": -985.0,
+        "radius": 150
+      },
+      "text": "Look upon the Ruins of Mathystra"
+    }
+  ],
+  "texts": {
+    "details": "The Temple sent me to learn why the sea is casting its creatures onto this shore. I have no answer yet. But I have begun to wonder about the things that come out of the sea and do not die.\n\nFar up the coast, past the Tower of Althalaxx, lie the Ruins of Mathystra. There are naga in them. I want you to understand what you are looking at before you draw a blade there, $N.\n\nAsk Thundris what Mathystra was. Then go north and look upon it from the edge. Do not go in. Come back and I will tell you whose faces those are.",
+    "objectives": "Ask Thundris Windweaver in Auberdine about Mathystra and look upon the Ruins of Mathystra far to the north, then return to Gwennyth Bly'Leggonde in Auberdine.",
+    "progress": "The ruins lie at the northern end of Darkshore, on the shore. Stay at the edge.",
+    "completion": "You saw them. Look past the scales and the coils, at the women especially. You know that face.\n\nThey were Highborne. Queen Azshara's own court, in her city of Zin-Azshari, the proudest of all our people. When the Well collapsed, the sea took them down with it. They did not drown. In the deep they were changed, and Azshara with them.\n\nThey built a city under the waves and named it Nazjatar. For ten thousand years they have waited there, $N, meaning to take back the surface that was theirs. Now they are coming up."
+  },
+  "reward": {
+    "money": 1100,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, The Queen's People: Mathystra was a night elf city destroyed in the Sundering; the naga are Azshara's Highborne, changed in the deep, who built Nazjatar and mean to retake the surface. Uses a place the game asks little of."
+}

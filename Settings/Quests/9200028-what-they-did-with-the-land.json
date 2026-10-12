@@ -1,0 +1,46 @@
+{
+  "id": 9200028,
+  "title": "What They Did with the Land",
+  "level": 15,
+  "min_level": 12,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 40,
+  "type": "visit",
+  "after": 9200027,
+  "giver": 491,
+  "turn_in": 491,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -10663.0,
+        "y": 1774.0,
+        "radius": 80
+      },
+      "text": "Look over the Alexston Farmstead"
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -11036.0,
+        "y": 1464.0,
+        "radius": 70
+      },
+      "text": "Look into Moonbrook"
+    }
+  ],
+  "texts": {
+    "details": "You have heard it told. Now go and see it.\n\nWest of here, by the coast, is the Alexston Farmstead. A boy grew up on that farm who went to Stormwind and became a stonemason, alongside VanCleef. The Brotherhood burned it and moved in. Baros Alexston is city architect of Stormwind now. He did not follow his guild out of the gate.\n\nThen go south to Moonbrook. It was a town. There was a schoolhouse. They say the way down into the Deadmines is under a barn there, and that most of the Brotherhood lives below.\n\nKeep to the edges, $N. Look, and come back.",
+    "objectives": "Look over the Alexston Farmstead and into the town of Moonbrook, then return to Quartermaster Lewis at Sentinel Hill.",
+    "progress": "The farmstead is west, near the coast. Moonbrook is in the south-west. Neither is safe.",
+    "completion": "A burned farm and a dead town. That is what a grievance looks like after a few years of feeding.\n\nThe mines under Moonbrook were the greatest gold workings in human lands, once. They were abandoned in the First War and folk said they were haunted, so nobody went near. VanCleef did. A man who builds cities knows what to do with a hole in the ground."
+  },
+  "reward": {
+    "money": 700,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 2 of 3: the Alexston Farmstead, where Baros Alexston grew up, burned and taken; Moonbrook, a broken town over the Deadmines, once the greatest gold mine in human lands."
+}

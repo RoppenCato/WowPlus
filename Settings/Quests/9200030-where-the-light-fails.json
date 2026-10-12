@@ -1,0 +1,25 @@
+{
+  "id": 9200030,
+  "title": "Where the Light Fails",
+  "level": 18,
+  "min_level": 15,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 40,
+  "type": "deliver",
+  "giver": 821,
+  "turn_in": 264,
+  "objectives": [],
+  "texts": {
+    "details": "You are bound east, over the river? Then hear a soldier's warning, because you will not get one from Stormwind.\n\nThat forest was the southern part of Elwynn once. Now they call it Duskwood, and the sun does not get through. The dead walk out of the cemetery at Raven Hill. There are wolf-men in the trees, spiders the size of ponies, and ogres down out of Deadwind Pass. I cannot tell you why, and I have not met anyone who can.\n\nWhat I can tell you is that they have done what we did. The town of Darkshire raised its own militia, the Night Watch. Find its commander, Althea Ebonlocke, and tell her the People's Militia sends its regards. She will know what that is worth.",
+    "objectives": "Carry Captain Danuvin's regards to Commander Althea Ebonlocke of the Night Watch in Darkshire, in Duskwood.",
+    "completion": "From Sentinel Hill? Then you are from the one place in the kingdom that understands us.\n\nWe have long since stopped waiting on Stormwind. Lord Ebonlocke, my kinsman, governs what is left. The Watch keeps the road and the town. Our skill is not in question, but our numbers are small, and the dark has everything else.\n\nYou came through the forest alive, $N. That is the only test we have. There is work for you here if you can stand the place."
+  },
+  "reward": {
+    "money": 1100,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Westfall to Duskwood: once southern Elwynn, now a cursed land of undead, worgen, spiders and ogres; Darkshire and the Night Watch under Althea Ebonlocke, abandoned by Stormwind as Westfall was."
+}

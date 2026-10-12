@@ -1,0 +1,45 @@
+{
+  "id": 9200031,
+  "title": "Two Kings Facing South",
+  "level": 12,
+  "min_level": 9,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 38,
+  "type": "visit",
+  "giver": 1105,
+  "turn_in": 1105,
+  "objectives": [
+    {
+      "talk": 1092,
+      "text": "Ask Captain Rugelfuss whose statues they are",
+      "says": [
+        "The statues? Madoran Bronzebeard an' Khardros Wildhammer. When High King Anvilmar died, three clans went to war for Ironforge. The Bronzebeards won it, an' put the Wildhammers an' the Dark Irons out.",
+        "The Dark Irons never forgave it. Their thane, Thaurissan, marched on Ironforge while his wife Modgud struck the Wildhammers at Grim Batol. Both were thrown back.",
+        "So Thaurissan called up somethin' he couldn't master. It killed him, raised Blackrock Mountain, an' burned the land for leagues. That's why the kings face south, friend. That's where it came from."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -5934.0,
+        "y": -2559.0,
+        "radius": 70
+      },
+      "text": "Stand before the statues in the Valley of Kings"
+    }
+  ],
+  "texts": {
+    "details": "The League sends me to dig up what the titans left. But I've a fondness for history that's only a few hundred years old, and folk walk past the best of it without lifting their heads.\n\nYou came in by the Valley of Kings, $N? Then you passed under two stone dwarves the height of a mountain, and I'll wager nobody told you who they are, or what they're looking at.\n\nGo back down the south road. Stand in front of them properly. Then ask Captain Rugelfuss in the tower there. He's stood guard under them long enough to know.",
+    "objectives": "Stand before the statues in the Valley of Kings and ask Captain Rugelfuss whose they are, then return to Jern Hornhelm in Thelsamar.",
+    "progress": "South road, where the pass from Dun Morogh comes out. Ye can't miss them. That's rather the point.",
+    "completion": "The War of the Three Hammers. Aye, he told it right.\n\nHere's the part I like. The kings never saw those statues. It was their sons who had them raised, after Madoran and Khardros were dead: two old allies, set at the southern approach, staring at what used to be Dark Iron country. A warning in stone.\n\nNow. There is one more piece of Dark Iron work in Loch Modan, and it is a great deal bigger than a statue."
+  },
+  "reward": {
+    "money": 550,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, Three Hammers: the statues of Madoran Bronzebeard and Khardros Wildhammer in the Valley of Kings, and the war that put the Dark Irons out of Ironforge and raised Blackrock Mountain."
+}

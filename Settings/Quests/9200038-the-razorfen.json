@@ -1,0 +1,63 @@
+{
+  "id": 9200038,
+  "title": "The Razorfen",
+  "level": 23,
+  "min_level": 18,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 17,
+  "type": "visit",
+  "after": 9200037,
+  "giver": 3448,
+  "turn_in": 3448,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": -1749.0,
+        "y": -1694.0,
+        "radius": 150
+      },
+      "text": "Cross the thorns of Agama'gor"
+    },
+    {
+      "place": {
+        "map": 1,
+        "x": -4465.0,
+        "y": -1717.0,
+        "radius": 70
+      },
+      "text": "Stand before Razorfen Kraul"
+    }
+  ],
+  "texts": {
+    "details": "If you would understand the quilboar, you must see their greatest place, and it is far to the south.\n\nGo by way of Agama'gor, west of the Gold Road beyond the Lushwater Oasis. It is Bristleback land. The Bristlebacks and the Razormane hate each other nearly as much as they hate us, and you will see why no chieftain has ever led them all.\n\nThen go on south, almost to the Great Lift. Where the thorns stand as high as hills, that is the Razorfen. They say it is the place where the Great Boar fell, and that the vines there are his very body. The crone Charlga Razorflank rules the Kraul. Do not go in alone, $N. Stand before it and come back.",
+    "objectives": "Cross Agama'gor and stand before Razorfen Kraul in the far south of the Barrens, then return to Tonga Runetotem at the Crossroads.",
+    "progress": "Agama'gor is south and west of here. The Razorfen is at the southern end of the Barrens.",
+    "completion": "You have stood at the holiest place of a people the Horde calls a nuisance.\n\nThere is a second Razorfen further south again, the Downs. It was the capital of all the quilboar, and they say its gate is the Great Boar's own jaws. The tribe that held it made a pact with the Scourge, and the dead rule there now. Think on that: the body of an Ancient who died fighting the Legion, given over to the Lich King by his own children.\n\nI do not ask you to spare the quilboar, $N. I ask you to know what you are cutting. Take this."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 6664,
+        "count": 1
+      },
+      {
+        "item": 5355,
+        "count": 1
+      },
+      {
+        "item": 15470,
+        "count": 1
+      },
+      {
+        "item": 5313,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 2: the feud of Razormane and Bristleback; Razorfen Kraul under Charlga Razorflank, said to be Agamaggan's body; Razorfen Downs, the old capital, given to the Scourge by the Razorfen tribe."
+}

@@ -155,5 +155,29 @@ The picker looks further out from where the enemy lives when the nearby ground i
 | `9200024-what-the-tide-kept.json` | Level 9. Bring 4 Elven Cup Relics from the Vile Fin murlocs of the north coast. Choice of four rewards. |
 | `9200025-the-archbishop-s-grave.json` | Tirisfal Glades, level 8, Horde. Dark Cleric Beryl in Brill sends you to the grave at Faol's Rest. |
 | `9200026-thin-on-the-ground.json` | Tirisfal to Silverpine, level 10. Deathguard Linnea sends you to High Executor Hadrec at the Sepulcher. |
+| `9200027-masons-not-bandits.json` | Westfall, level 12, Alliance. Quartermaster Lewis at Sentinel Hill: hear the Defias Traitor and Farmer Saldean. First of three. |
+| `9200028-what-they-did-with-the-land.json` | Level 15. Look over the Alexston Farmstead and into Moonbrook. |
+| `9200029-the-architect-who-stayed.json` | Westfall to Stormwind, level 16. Speak with Baros Alexston at City Hall. Choice of four rewards. |
+| `9200030-where-the-light-fails.json` | Westfall to Duskwood, level 18. Captain Danuvin sends you to Commander Althea Ebonlocke in Darkshire. |
+| `9200031-two-kings-facing-south.json` | Loch Modan, level 12, Alliance. Jern Hornhelm in Thelsamar: stand before the statues in the Valley of Kings and ask Captain Rugelfuss whose they are. First of two. |
+| `9200032-the-enemy-s-masonry.json` | Level 17. Ask Chief Engineer Hinderweir who built the Stonewrought Dam and walk out onto it. Choice of four rewards. |
+| `9200033-through-dun-algaz.json` | Loch Modan to the Wetlands, level 20. Mountaineer Stormpike at Algaz Station sends you to Captain Stoutfist in Menethil Harbor. |
+| `9200034-the-queen-s-people.json` | Darkshore, level 18, Alliance. Gwennyth Bly'Leggonde in Auberdine: ask Thundris about Mathystra and look upon the ruins. First of two. |
+| `9200035-no-kin-of-ours.json` | Level 20. Kill 6 Stormscale Myrmidons and 5 Stormscale Sorceresses in the Ruins of Mathystra. Choice of four rewards. |
+| `9200036-the-forest-road.json` | Darkshore to Ashenvale, level 20. Terenthis in Auberdine sends you to Delgren the Purifier at Maestra's Post. |
+| `9200037-the-boar-god-s-blood.json` | The Barrens, level 17, Horde. Tonga Runetotem at the Crossroads: look upon Thorn Hill and ask Mangletooth, caged at Camp Taurajo, about Agamaggan. First of two. |
+| `9200038-the-razorfen.json` | Level 23. Cross Agama'gor and stand before Razorfen Kraul. Choice of four rewards. |
+| `9200039-the-cut-mountain.json` | The Barrens to Stonetalon, level 17. Thork at the Crossroads sends you to Braelyn Firehand at Sun Rock Retreat. |
+| `9200040-timber-for-orgrimmar.json` | The Barrens to Ashenvale, level 20. Kadrak at the Mor'shan Rampart sends you to Mastok Wrilehiss at Splintertree Post. |
+| `9200041-the-dry-sea.json` | The Barrens to Thousand Needles, level 25. Kirge Sternhorn at Camp Taurajo sends you to Cliffwatcher Longhorn at Freewind Post. |
+| `9200042-the-closed-gate.json` | Silverpine Forest, level 16, Horde. Deathguard Podrig at the Sepulcher: ask Dalar Dawnweaver about Arugal and go to the foot of the Greymane Wall. First of two. |
+| `9200043-left-outside.json` | Level 17. Kill 8 Moonrage Bloodhowlers. Choice of four rewards. |
+| `9200044-south-to-the-mill.json` | Silverpine to Hillsbrad, level 20. High Executor Hadrec sends you to High Executor Darthalia at Tarren Mill. |
+| `9200045-under-the-enemy-s-city.json` | Ragefire Chasm, level 15, Alliance. Master Mathias Shaw in Stormwind: kill Taragaman the Hungerer. First of two. |
+| `9200046-the-invoker-and-the-satyr.json` | Ragefire Chasm, level 16, Alliance. Kill Jergosh the Invoker and Bazzalan. Choice of four rewards. |
+| `9200047-a-tauren-among-thieves.json` | The Deadmines, level 18, Horde. Sage Truthseeker in Thunder Bluff: kill Mr. Smite. First of two. |
+| `9200048-the-ship-under-the-hill.json` | The Deadmines, level 19, Horde. Kill Captain Greenskin and Edwin VanCleef. Choice of four rewards. |
+| `9200049-the-baron-s-household.json` | Shadowfang Keep, level 22, Alliance. Archmage Malin in Stormwind: lay Baron Silverlaine and Commander Springvale to rest. First of two. |
+| `9200050-dalaran-s-mistake.json` | Shadowfang Keep, level 23, Alliance. Kill Archmage Arugal. Choice of four rewards. |
 
 Written with the quest-writing skill (`.claude/skills/write-quests`). Not played yet. The stories used so far are in `Stories.md`. The tool's first test quest, "Bold Wolves of the Plains", was removed: the zone's own "Poison Water" already sends players after the same wolves.
