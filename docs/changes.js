@@ -142,6 +142,8 @@ window.CHANGELOG = {
         { title: "Companions", kind: "feature", status: "built", date: "2026-10-11",
           text: "Up to two guild mates you choose, called to your side and sent off again.",
           details: ["When you rest, one lights a campfire; they sit, eat, laugh, dance or say something.", "On the road, a gesture or a remark every few minutes."] },
+        { title: "One menu for everything", kind: "feature", status: "built", date: "2026-10-12",
+          text: "A Menu button lists what you can ask of the bots and the server: group orders, marks, companions, the windows. Nothing to type or remember." },
         { title: "A bar of buttons", kind: "feature", status: "built", date: "2026-10-11",
           text: "Follow, Stay, Attack, Flee, Call, Dismiss, Away and Alone, instead of typed commands." },
         { title: "Quiet bots", kind: "tweak", status: "built", date: "2026-10-11",

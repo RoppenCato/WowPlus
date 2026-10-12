@@ -1,0 +1,5 @@
+## Interface: 30300
+## Title: WowPlus Menu
+## Notes: One button with a menu of everything you can ask of the bots and of this server, so that nothing needs to be typed or remembered. /wp opens it.
+## SavedVariablesPerCharacter: WowPlusMenuDB
+WowPlusMenu.lua

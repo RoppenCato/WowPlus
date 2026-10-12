@@ -76,6 +76,21 @@ Who each bot is comes from files in [Settings/Bots](../Bots/README.md): 300 peop
 
 Bots of your level range gather in the zone you are in (`Playerbots.RandomBotConcentrateInPlayerZone`). `.bots alone on` keeps them away when you want the place to yourself.
 
+## The menu
+
+A **Menu** button (addon `WowPlus Menu`; restart the game once after it is first installed) opens a menu of everything you can ask for, so that no command has to be typed or remembered. `/wp` opens it at the mouse. Drag the button with the right mouse button; `/wp reset` puts it back, `/wp hide` hides it.
+
+| Section | What is in it |
+|---|---|
+| Windows | Group board, journal, show or hide the bot bar, put the bot bar or sprint bar back in place. |
+| My group | Follow, stay, attack my target, tank takes my target, run to me, come here at once, spread out, drink, buffs again, get up, release spirit, ready check, leave the group. |
+| Marks on my target | Skull, moon, cross, square, star, take the mark off. |
+| The person I have targeted | Invite to group, invite to guild, add to friends, make a companion, no longer a companion. |
+| Companions | Call them, send them off, who are they. |
+| Bots around me | Send them away once, keep them away, let them come back. |
+
+The "My group" entries say a word in party chat that the bot module's bots act on. Follow, stay, attack and run to me were on the bot bar already; the others are the module's own commands and have not been tried here yet. To add or change entries, edit the list `MENU` at the top of `Client/AddOns/WowPlusMenu/WowPlusMenu.lua`.
+
 ## Finding a group
 
 The **Group** button on the bot bar (or `/board`) opens a board of people looking for a group: pick who comes along to a dungeon or raid, or post your own group and see who answers. See [Group-Board.md](Group-Board.md).
