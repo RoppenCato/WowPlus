@@ -735,6 +735,75 @@ WowPlus.BotChat.Guild.GiftHours   = 3
 WowPlus.BotChat.KnownBecomeFriends = 1
 
 ########################################
+# The group board
+########################################
+#
+#    A window (addon WowPlus Group, /board) that lists people looking for a group: bots that
+#    are really in the world, near your level and free, always with a couple of tanks and
+#    healers. Invite someone, or post your own group and see who answers. Explained in
+#    Settings/Docs/Group-Board.md.
+#
+#    WowPlus.Board.Enable
+#        1: the board is there, and this module brings invited bots to you (at once for a bot
+#        invited the ordinary way, after a while for people from the board). The bot module's
+#        own Playerbots.SummonWhenGroup is switched off while this is 1.
+#        Default: 1
+#
+#    WowPlus.Board.People
+#        How many people the board lists.
+#        Default: 14
+#
+#    WowPlus.Board.LevelRange
+#        People within this many levels of you are listed.
+#        Default: 3
+#
+#    WowPlus.Board.Stay.MinMinutes, WowPlus.Board.Stay.MaxMinutes
+#        How long someone stays on the board before making room for someone else.
+#        Default: 4, 10
+#
+#    WowPlus.Board.BusyChance
+#        The chance in percent that a stranger you invite "has just found a group". People you
+#        know (guild, friends list) and people who answered your post never do. 0: never.
+#        Default: 8
+#
+#    WowPlus.Board.RaidCap
+#        The most people in a raid put together from the board, you included. A party is five;
+#        choosing a raid under "Going to" allows this many. 25 or 40 are possible; expect more
+#        to go wrong with many bots.
+#        Default: 10
+#
+#    WowPlus.Board.Travel.MinSeconds, WowPlus.Board.Travel.MaxSeconds
+#        How long someone you invited takes to stand at the entrance, or to walk up to you.
+#        Default: 40, 110
+#
+#    WowPlus.Board.LeaveAfterMinutes
+#        After a dungeon or raid, people from the board say goodbye and leave when you have
+#        been outside this long. 0: they stay until you remove them.
+#        Default: 5
+#
+#    WowPlus.Board.Post.Minutes
+#        How long your own post stays up.
+#        Default: 5
+#
+#    WowPlus.Board.Post.MinSeconds, WowPlus.Board.Post.MaxSeconds
+#        The time between two people answering your post.
+#        Default: 12, 40
+
+WowPlus.Board.Enable             = 1
+WowPlus.Board.People             = 14
+WowPlus.Board.LevelRange         = 3
+WowPlus.Board.Stay.MinMinutes    = 4
+WowPlus.Board.Stay.MaxMinutes    = 10
+WowPlus.Board.BusyChance         = 8
+WowPlus.Board.RaidCap            = 10
+WowPlus.Board.Travel.MinSeconds  = 40
+WowPlus.Board.Travel.MaxSeconds  = 110
+WowPlus.Board.LeaveAfterMinutes  = 5
+WowPlus.Board.Post.Minutes       = 5
+WowPlus.Board.Post.MinSeconds    = 12
+WowPlus.Board.Post.MaxSeconds    = 40
+
+########################################
 # The auction house always has the staples
 ########################################
 #

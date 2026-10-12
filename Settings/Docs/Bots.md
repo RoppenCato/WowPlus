@@ -75,6 +75,10 @@ Who each bot is comes from files in [Settings/Bots](../Bots/README.md): 300 peop
 
 Bots of your level range gather in the zone you are in (`Playerbots.RandomBotConcentrateInPlayerZone`). `.bots alone on` keeps them away when you want the place to yourself.
 
+## Finding a group
+
+The **Group** button on the bot bar (or `/board`) opens a board of people looking for a group: pick who comes along to a dungeon or raid, or post your own group and see who answers. See [Group-Board.md](Group-Board.md).
+
 ## Health check
 
 `python Settings/Scripts/Test-Bots.py` looks at the database, the logs and the bot module's source and prints pass or fail. It changes nothing. Run it after a restart, a settings change, or an update of the bot module.

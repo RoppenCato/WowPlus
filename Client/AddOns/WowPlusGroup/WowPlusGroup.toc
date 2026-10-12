@@ -1,0 +1,5 @@
+## Interface: 30300
+## Title: WowPlus Group
+## Notes: A board of people looking for a group: pick who comes along, or post your own group and see who answers. /board, or Group on the bot bar.
+## SavedVariablesPerCharacter: WowPlusGroupDB
+WowPlusGroup.lua

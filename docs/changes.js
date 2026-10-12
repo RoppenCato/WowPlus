@@ -116,6 +116,9 @@ window.CHANGELOG = {
       items: [
         { title: "Bots of your faction, around your level", kind: "tweak", status: "built", date: "2026-10-11",
           text: "All bots play your side; about half gather in your level range and zone, the rest stay spread out." },
+        { title: "A board of people looking for a group", kind: "feature", status: "built", date: "2026-10-12",
+          text: "A list of who is free near your level, with their role and a note in their own words. Pick who comes along, or post your group and see who whispers.",
+          details: ["Always a couple of tanks and healers to choose from; the list changes as people come and go.", "They take a minute to arrive and wait at the dungeon entrance.", "A raid from the board holds up to 10.", "After the run they say goodbye and go; the journal keeps who you ran with."] },
         { title: "People you know stay", kind: "feature", status: "built", date: "2026-10-12",
           text: "A bot you have talked with more than once lands on your friends list, and keeps its level like a guild mate does." },
         { title: "Bots dress differently", kind: "tweak", status: "built", date: "2026-10-11",

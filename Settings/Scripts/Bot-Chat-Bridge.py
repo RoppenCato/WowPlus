@@ -543,6 +543,12 @@ def react(q):
     return [(q["bot"], line) for line in speak(q, task, lean=True)[:1]]
 
 
+def tell(q):
+    """The bot says one line in party chat about something it did or is about to do, given in plain words."""
+    task = q["text"] + " One short line in party chat, your own way; at most eight words."
+    return [(q["bot"], first_sentence(line)) for line in speak(q, task)[:1]]
+
+
 def joined(q):
     """The bot has just joined the player's party or guild and says hello there."""
     where = "guild" if q.get("channel") == "guild" else "party"
@@ -590,13 +596,74 @@ def letter(q):
 
 
 def parse_others(text):
-    """'Name:gender:Race:Class:level, ...' as the game server sends it."""
+    """'Name:gender:Race:Class:level[:role], ...' as the game server sends it."""
     found = []
     for part in (text or "").split(","):
         bits = [b.strip() for b in part.split(":")]
         if bits and bits[0]:
-            found.append(dict(zip(("name", "gender", "race", "class", "level"), bits)))
+            found.append(dict(zip(("name", "gender", "race", "class", "level", "role"), bits)))
     return found
+
+
+BOARD_NOTE_KEPT = 30 * 60       # a person's note on the group board is kept this long before a new one is written
+BOARD_WORDS = [2, 3, 3, 4, 4, 5, 6, 7]
+board_notes = {}                # bot -> (time, note)
+
+
+def board_note(q, other):
+    """What one person wrote next to their name on the looking-for-group board."""
+    bot = other["name"]
+    kept = board_notes.get(bot.lower())
+    if kept and time.time() - kept[0] < BOARD_NOTE_KEPT:
+        return kept[1]
+    role = other.get("role") or "damage"
+    q = dict(q, bot=bot, bgender=other.get("gender", ""), brace=other.get("race", ""), bclass=other.get("class", ""),
+             blevel=other.get("level", "?"), bzone="", channel="board", others_list=[], guildmate=False, party=False)
+    person = minds.person_for(bot, q["bgender"])
+    if WRITE_PEOPLE_IN_FULL:
+        minds.want_background(person)
+    dungeons = q.get("text") or ""
+    angle = random.choice([
+        "just your role and that you are looking",
+        "a dungeon you would like to run" + (f" (for your level there are: {dungeons})" if dungeons else ""),
+        "that you are up for anything",
+        "how much time you have tonight",
+        "your role, and one thing about how you play it",
+        "that you would like a quiet, friendly run" if person and "sarcas" not in person.get("temper", "") else "that you want a group that knows what it is doing",
+    ])
+    task = (f"You have put yourself on the server's looking-for-group board as a {role}. Write the few words that stand "
+            f"next to your name there: {angle}. About {random.choice(BOARD_WORDS)} words, never more than eight. Not a "
+            "greeting, not a sentence about yourself as a person, nothing addressed to anyone. The way people write such "
+            "notes: 'healer lf wc or sfk', 'tank, got an hour', 'dps up for anything'.")
+    transcript = f"Now: {task}\nWrite the note inside <msg></msg>."
+    with slots:
+        raw, error = minds.ask(system_prompt(q, {"notes": [], "said": []}), transcript)
+    if error:
+        log(f"   ! board note for {bot}: {error}")
+        return ""
+    lines = minds.in_their_hand(person, minds.chat_lines(raw, 1, 60), keep=[bot], laugh=False)
+    note = first_sentence(lines[0]) if lines else ""
+    if note:
+        board_notes[bot.lower()] = (time.time(), note)
+        log(f"[board] {bot} ({role}): {note}")
+    return note
+
+
+def board(q):
+    """The notes for everyone new on the board, written side by side."""
+    from concurrent.futures import ThreadPoolExecutor
+    others = q.get("others_list", [])
+    with ThreadPoolExecutor(max_workers=MAX_AT_ONCE) as pool:
+        notes = list(pool.map(lambda other: board_note(q, other), others))
+    return [(other["name"], note) for other, note in zip(others, notes) if note]
+
+
+def apply_for_group(q):
+    """The bot whispers the player to ask for a place in the group the player posted."""
+    task = (f"{q['player']} has posted on the looking-for-group board. {q['text']} Whisper them to ask for a place, the "
+            "way people do: your role and that you would like to come, in a few words ('healer here, inv?', 'can tank "
+            "if you still need one'). At most eight words.")
+    return [(q["bot"], first_sentence(line)) for line in speak(q, task)[:1]]
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -611,6 +678,8 @@ class Handler(BaseHTTPRequestHandler):
             kind = q.get("kind") or "reply"
             if kind == "known" and q.get("player"):
                 lines = known_bots(q)
+            elif kind == "board" and q.get("player"):
+                lines = board(q)
             elif q.get("bot") and q.get("player"):
                 if kind == "open":
                     lines = open_talk(q)
@@ -622,6 +691,10 @@ class Handler(BaseHTTPRequestHandler):
                     lines = meet(q)
                 elif kind == "event" and q.get("text"):
                     lines = react(q)
+                elif kind == "tell" and q.get("text"):
+                    lines = tell(q)
+                elif kind == "apply" and q.get("text"):
+                    lines = apply_for_group(q)
                 elif kind == "letter" and q.get("text"):
                     lines = letter(q)
                 elif kind == "reply" and q.get("text"):

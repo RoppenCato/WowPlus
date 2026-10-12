@@ -13,6 +13,7 @@ local BUTTONS = {
     { "Call",    ".bots call",    "COMMAND", "Your companions join your party and come to you." },
     { "Dismiss", ".bots dismiss", "COMMAND", "Your companions leave the party and go their own way." },
     { "Away",    ".bots away",    "COMMAND", "Every free bot near you goes somewhere else, once." },
+    { "Group",   "",              "BOARD",   "The board of people looking for a group: pick who comes along, or post your own group." },
 }
 
 local WIDTH, HEIGHT, GAP = 52, 20, 2
@@ -48,7 +49,13 @@ bar:SetScript("OnDragStop", function(self)
 end)
 
 local function Send(text, where)
-    if where == "PARTY" then
+    if where == "BOARD" then
+        if WowPlusGroup_Toggle then
+            WowPlusGroup_Toggle()
+        else
+            DEFAULT_CHAT_FRAME:AddMessage("Bots: the addon WowPlus Group is not loaded. Restart the game once to pick it up.")
+        end
+    elseif where == "PARTY" then
         if GetNumPartyMembers() == 0 and GetNumRaidMembers() == 0 then
             DEFAULT_CHAT_FRAME:AddMessage("Bots: you are not in a party. Invite a bot, or press Call for your companions.")
             return

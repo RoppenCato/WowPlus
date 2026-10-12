@@ -135,6 +135,10 @@ def quick():
     else:
         report(None, "Levels", f"{spread} (nobody is playing, so they are spread evenly)")
 
+    # The board brings invited bots over itself, so the bot module must not do it as well
+    started = [line for line in tail(os.path.join(LOGS, "Server.log"), 7 * 86400) if "WowPlus board:" in line]
+    report(bool(started) or None, "Group board", started[-1].split("WowPlus board:")[1].strip() if started else "no start line in Server.log yet")
+
     # The people you got to know keep their level: they are on a friends list or in your guild
     protected = int(sql("SELECT COUNT(DISTINCT s.friend) FROM acore_characters.character_social s JOIN acore_characters.characters c ON c.guid = s.friend "
                         "JOIN acore_auth.account a ON a.id = c.account WHERE s.flags & 1 AND a.username LIKE 'RNDBOT%'")[0][0])

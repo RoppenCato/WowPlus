@@ -34,6 +34,7 @@
  */
 
 #include "WowPlusBotChat.h"
+#include "WowPlusBoard.h"
 
 #include "Channel.h"
 #include "CharacterCache.h"
@@ -82,10 +83,12 @@ namespace
         CHANNEL_GUILD,
         CHANNEL_ZONE,                                       // General, Trade and the like: the reply goes to the same channel
         CHANNEL_KNOWN,                                      // not a chat: the bridge lists the bots that remember the player
-        CHANNEL_MAIL                                        // not a chat: the bridge writes a letter
+        CHANNEL_MAIL,                                       // not a chat: the bridge writes a letter
+        CHANNEL_APPLY,                                      // a whisper from someone answering the player's group post
+        CHANNEL_BOARD                                       // not a chat: the notes people put on the group board
     };
 
-    char const* const CHANNEL_NAMES[] = {"whisper", "say", "party", "guild", "general", "known", "mail"};
+    char const* const CHANNEL_NAMES[] = {"whisper", "say", "party", "guild", "general", "known", "mail", "whisper", "board"};
     constexpr uint32 TALK_CHANNELS = 5;
 
     constexpr uint32 MAX_REQUESTS_AT_ONCE = 4;
@@ -287,6 +290,8 @@ namespace
      *       "meet"   the bot ran into the player out in the world
      *       "letter" the bot sends the gift named in `text` by mail
      *       "known"  no bot: which bots remember this player?
+     *       "tell"   the bot says in its own words what `text` describes ("You have arrived at the entrance")
+     *       "apply"  the bot asks for a place in the group the player posted
      */
     void Ask(Player* bot, Player* player, Channel channel, char const* kind, std::string const& text,
         std::vector<Player*> const& others, bool banter = false, std::string const& channelName = "")
@@ -452,6 +457,7 @@ namespace
         switch (pending.channel)
         {
             case CHANNEL_WHISPER:
+            case CHANNEL_APPLY:
                 bot->Whisper(text, LANG_UNIVERSAL, player);
                 break;
             case CHANNEL_SAY:
@@ -461,7 +467,7 @@ namespace
                 if (Group* group = bot->GetGroup(); group && group == player->GetGroup())
                 {
                     WorldPacket data;
-                    ChatHandler::BuildChatPacket(data, CHAT_MSG_PARTY, LANG_UNIVERSAL, bot, nullptr, text);
+                    ChatHandler::BuildChatPacket(data, group->isRaidGroup() ? CHAT_MSG_RAID : CHAT_MSG_PARTY, LANG_UNIVERSAL, bot, nullptr, text);
                     group->BroadcastPacket(&data, false);
                 }
                 break;
@@ -703,6 +709,34 @@ void WowPlus::BotRemarksInParty(Player* bot, Player* player)
         Ask(bot, player, CHANNEL_PARTY, "open", "", PartyBotsOf(player));
 }
 
+void WowPlus::BotReactsInParty(Player* bot, Player* player, std::string const& happened)
+{
+    if (enabled && partyEnabled)
+        Ask(bot, player, CHANNEL_PARTY, "tell", happened, PartyBotsOf(player));
+}
+
+void WowPlus::BotApplies(Player* bot, Player* player, std::string const& wanted)
+{
+    if (enabled)
+        Ask(bot, player, CHANNEL_APPLY, "apply", wanted, {});
+}
+
+bool WowPlus::AskBoardNotes(Player* player, std::string const& people, std::string const& dungeons)
+{
+    if (!enabled || requestsRunning >= MAX_REQUESTS_AT_ONCE)
+        return false;
+
+    std::ostringstream body;
+    body << "kind=board&player=" << UrlEncode(player->GetName())
+         << "&pclass=" << UrlEncode(ClassOf(player)) << "&prace=" << UrlEncode(RaceOf(player))
+         << "&plevel=" << uint32(player->GetLevel()) << "&pzone=" << UrlEncode(ZoneOf(player))
+         << "&channel=board&others=" << UrlEncode(people) << "&text=" << UrlEncode(dungeons.substr(0, MAX_TEXT_LENGTH));
+
+    ++requestsRunning;
+    std::thread(AskBridge, bridgePort, body.str(), player->GetGUID(), CHANNEL_BOARD, std::string()).detach();
+    return true;
+}
+
 class WowPlusBotChatWorld : public WorldScript
 {
 public:
@@ -759,6 +793,15 @@ public:
             if (reply.channel == CHANNEL_MAIL)
             {
                 SendGift(reply);
+                continue;
+            }
+
+            if (reply.channel == CHANNEL_BOARD)
+            {
+                std::vector<std::pair<std::string, std::string>> notes;
+                for (SpokenLine const& line : reply.lines)
+                    notes.emplace_back(line.speaker, line.text);
+                WowPlus::BoardNotesArrived(reply.player, notes);
                 continue;
             }
 
