@@ -210,5 +210,23 @@ The picker looks further out from where the enemy lives when the nearby ground i
 | `9200079-the-earthmother-s-patience.json` | Stonetalon Mountains, level 23, Horde. Kill 8 Venture Co. Loggers and 6 Venture Co. Deforesters in Windshear Crag, then return to Tammra Windfield at Sun Rock Retreat. Follows 9200078. Choice of four rewards. |
 | `9200080-the-wyverns-lake.json` | Stonetalon Mountains, level 24, Horde. Go to the shore of Mirkfallon Lake, north of Sun Rock Retreat, then return to Maggran Earthbinder. |
 | `9200081-the-company-s-ledger.json` | Stonetalon Mountains, level 22, Alliance. Kill 8 Venture Co. Operators and 6 Venture Co. Loggers in Windshear Crag, then return to Kaela Shadowspear. Choice of four rewards. |
+| `9200082-children-of-the-dead-son.json` | Desolace, level 33, Horde. Ask Maurin Bonesplitter at Ghost Walker Post where the centaur came from and look upon Kolkar Village, then return to Takata Steelblade. |
+| `9200083-a-year-of-war.json` | Desolace, level 33, Horde. Kill 6 Kolkar Maulers and 6 Kolkar Windchasers at Kolkar Village, then return to Takata Steelblade at Ghost Walker Post. Follows 9200082. Choice of four rewards. |
+| `9200084-the-forest-lord-s-grandchildren.json` | Desolace, level 33, Alliance. Look upon Kolkar Village in eastern Desolace, then return to Talendria at Nijel's Point. |
+| `9200085-no-kin-of-the-forest.json` | Desolace, level 33, Alliance. Kill 6 Kolkar Battle Lords and 4 Kolkar Destroyers at Kolkar Village, then return to Talendria at Nijel's Point. Follows 9200084. Choice of four rewards. |
+| `9200086-the-land-of-bones.json` | Stonetalon Mountains, level 30, Horde. Go west through the Charred Vale and south into Desolace, and report to Takata Steelblade at Ghost Walker Post. |
+| `9200087-beyond-the-burned-vale.json` | Stonetalon Mountains, level 30, Alliance. Go south-west through the Charred Vale into Desolace and report to Kreldig Ungor at Nijel's Point. |
+| `9200088-no-others-have-a-right.json` | Thousand Needles, level 28, Horde. Ask Rau Cliffrunner at Freewind Post who the Grimtotem are and look upon Darkcloud Pinnacle, then return to Cliffwatcher Longhorn. |
+| `9200089-blood-of-our-blood.json` | Thousand Needles, level 29, Horde. Kill 6 Grimtotem Stompers and 5 Grimtotem Geomancers at Darkcloud Pinnacle, then return to Cliffwatcher Longhorn at Freewind Post. Follows 9200088. Choice of four rewards. |
+| `9200090-the-first-kingdom.json` | Arathi Highlands, level 35, Alliance. Ask Apprentice Kryten at Refuge Pointe how men came by magic and look upon Stromgarde Keep, then return to Captain Nials. Choice of four rewards. |
+| `9200091-you-will-carry-my-hammer.json` | Arathi Highlands, level 35, Horde. Hear Gor'mul speak of the internment camps, then return to Drum Fel in Hammerfall. Choice of four rewards. |
+| `9200092-the-empire-in-the-jungle.json` | Stranglethorn Vale, level 33, Horde. Go to the Kal'ai Ruins north of Grom'gol Base Camp, then return to Kin'weelay. Choice of four rewards. |
+| `9200093-the-colonel-s-men.json` | Duskwood, level 30, Alliance. Cross south into Stranglethorn Vale and bring Commander Ebonlocke's word to Lieutenant Doren at the Rebel Camp. |
+| `9200094-the-admiral-s-daughter.json` | Dustwallow Marsh, level 35, Alliance. Ask Archmage Tervosh in Theramore about the Admiral's death, then return to Captain Garran Vimes. |
+| `9200095-the-king-who-sold-the-pass.json` | Alterac Mountains, level 36, Alliance. Look upon the Ruins of Alterac, high in the Alterac Mountains, then return to Loremaster Dibbs in Southshore. |
+| `9200096-the-oldest-fort.json` | Swamp of Sorrows, level 37, Horde. Ask Helgrum the Swift how old Stonard is, then return to Dispatch Commander Ruag in Stonard. |
+| `9200097-what-the-dreamer-drowned.json` | Swamp of Sorrows, level 38, Horde. Go to the shore of the Pool of Tears, east of Stonard, then return to Dispatch Commander Ruag. Follows 9200096. Choice of four rewards. |
+| `9200098-the-lost.json` | Swamp of Sorrows, level 37, Alliance. Hear Magtoor's account at the Harborage and look upon the Fallow Sanctuary, then return to Anchorite Avuun. Choice of four rewards. |
+| `9200099-the-makers-vault.json` | Badlands, level 40, Alliance. Go to Hammertoe's Digsite in the Badlands, then return to Sigrun Ironhew. Choice of four rewards. |
 
 Written with the quest-writing skill (`.claude/skills/write-quests`). Not played yet. The stories used so far are in `Stories.md`. The tool's first test quest, "Bold Wolves of the Plains", was removed: the zone's own "Poison Water" already sends players after the same wolves.

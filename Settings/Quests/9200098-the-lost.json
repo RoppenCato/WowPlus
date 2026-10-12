@@ -1,0 +1,62 @@
+{
+  "id": 9200098,
+  "title": "The Lost",
+  "level": 37,
+  "min_level": 33,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 8,
+  "type": "visit",
+  "giver": 17127,
+  "turn_in": 17127,
+  "objectives": [
+    {
+      "talk": 1776,
+      "text": "Hear Magtoor's account",
+      "says": [
+        "You would hear it? Few ask. We were draenei, once. As he is. You would not think it, to look.",
+        "A sickness was loosed on our city, Shattrath, in the war with the orcs. Those it did not kill, it twisted. We are called the Broken. The Light no longer answers us.",
+        "Some of us came through the Portal to this world, hoping for a new life. Then the way home closed. Many could not bear it. They cursed the Light and let go of themselves. Those are the Lost Ones."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -9988.0,
+        "y": -3584.0,
+        "radius": 140
+      },
+      "text": "Look upon the Fallow Sanctuary"
+    }
+  ],
+  "texts": {
+    "details": "I came to this swamp from the Exodar because I was told there were draenei here. There are. I was not prepared for them.\n\nI am still learning how to look at my own people, $N. Perhaps you will find it easier. Magtoor leads those who live in this village. He will tell you what they are, if you ask him gently.\n\nThen walk north and east a little, to the place called the Fallow Sanctuary. Do not go in. Only see who lives there. They were his kin, not long ago.",
+    "objectives": "Hear Magtoor's account at the Harborage and look upon the Fallow Sanctuary, then return to Anchorite Avuun.",
+    "progress": "The Sanctuary is not far to the north-east. They will attack if you come close.",
+    "completion": "You saw. They do not know us. They hardly know themselves.\n\nThe Broken here in the Harborage held on. They trade with whoever comes, your Alliance and the Horde alike, and ask only to be left in peace. The ones in the Sanctuary let go. One of them, Noboru, hunts through the swamp with a band and kills whatever he meets, his own former people most of all.\n\nI was taught that those who fall from the Light chose to. I look at Magtoor, and I do not think he chose anything. Thank you for looking with me, $N."
+  },
+  "reward": {
+    "money": 5000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 33232,
+        "count": 1
+      },
+      {
+        "item": 33243,
+        "count": 1
+      },
+      {
+        "item": 33252,
+        "count": 1
+      },
+      {
+        "item": 4975,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Broken were draenei twisted by the affliction loosed on Shattrath; some crossed the Dark Portal, and when it closed many cursed the Light and sank into violence as Lost Ones; the Broken of the Harborage under Magtoor deal with both sides and are in conflict with the Lost Ones of the Fallow Sanctuary; Noboru's band. Invented: Avuun's unease."
+}

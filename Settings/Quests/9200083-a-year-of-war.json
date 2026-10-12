@@ -1,0 +1,53 @@
+{
+  "id": 9200083,
+  "title": "A Year of War",
+  "level": 33,
+  "min_level": 29,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 405,
+  "type": "kill",
+  "after": 9200082,
+  "giver": 5641,
+  "turn_in": 5641,
+  "objectives": [
+    {
+      "creature": 4634,
+      "count": 6
+    },
+    {
+      "creature": 4635,
+      "count": 6
+    }
+  ],
+  "texts": {
+    "details": "In the last war the Horde and my people drove the centaur out of the Barrens. Most of them fell back here, to the land that bore them.\n\nThey have not stayed fallen. Their mother has been pouring her strength into them, and the warbands are riding out again. It is the Kolkar of this very village who trouble Durotar and the Barrens now.\n\nSo this is a year of war, $N. It was always going to be. Six of their maulers and six of their windchasers. Let the next band ride out smaller.",
+    "objectives": "Kill 6 Kolkar Maulers and 6 Kolkar Windchasers at Kolkar Village, then return to Takata Steelblade at Ghost Walker Post.",
+    "progress": "The village you looked on. This time, go in.",
+    "completion": "It is done, and it will need doing again. That is the nature of them.\n\nI have fought the centaur all my life and I will tell you what I never say to the young. I pity them. They were made in a wrong union, they killed the one who made them, and they have been trying to cut that shame out of the world ever since, as if it were in us and not in them.\n\nPity does not stay my hand. But it is there. Take this."
+  },
+  "reward": {
+    "money": 4500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 15455,
+        "count": 1
+      },
+      {
+        "item": 3753,
+        "count": 1
+      },
+      {
+        "item": 6793,
+        "count": 1
+      },
+      {
+        "item": 6797,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 2: the Horde and tauren drove the centaur from the Barrens in the Third War and most retreated to Desolace; Theradras has infused them with power and the Kolkar raid Durotar and the Barrens."
+}

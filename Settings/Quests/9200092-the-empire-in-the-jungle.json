@@ -1,0 +1,53 @@
+{
+  "id": 9200092,
+  "title": "The Empire in the Jungle",
+  "level": 33,
+  "min_level": 29,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 33,
+  "type": "visit",
+  "giver": 2519,
+  "turn_in": 2519,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -12149.0,
+        "y": 19.0,
+        "radius": 80
+      },
+      "text": "Go to the Kal'ai Ruins"
+    }
+  ],
+  "texts": {
+    "details": "Ya walk in dis jungle an' ya trip on carved stone every hundred steps, an' ya never ask who carved it, mon?\n\nDis was Gurubashi land. All of it. De jungle trolls had an empire here dat stood up to de Zandalari demselves. De Darkspear were part of it. So were de Bloodscalp an' de Skullsplitter dat try ta eat ya now.\n\nNorth of here, off de road, be de Kal'ai Ruins. Nobody lives dere. Go an' stand in dem a while, $N. Den come back an' Kin'weelay tell ya how an empire dies.",
+    "objectives": "Go to the Kal'ai Ruins north of Grom'gol Base Camp, then return to Kin'weelay.",
+    "progress": "North, between de road an' de river. Old stone, all grown over.",
+    "completion": "Here be how. De empire grew weak, an' its priests grew desperate. Dey called up a god ta make dem strong again. Hakkar. De Soulflayer. De Blood God.\n\nHe wanted blood, an' den more blood, an' de most faithful of his priests, de Atal'ai, wanted ta bring him inta de world in de flesh. De Zandalari saw where dat road went. Dey came wit' an army, an' Gurubashi who had had enough rose up beside dem, an' dey threw Hakkar down in Zul'Gurub.\n\nAfter dat de empire fell ta pieces. Bloodscalp, Skullsplitter, Darkspear, each tribe for itself. Dat be what ya standin' in, mon. A piece of someting dat thought it would last for ever."
+  },
+  "reward": {
+    "money": 4500,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 4120,
+        "count": 1
+      },
+      {
+        "item": 33242,
+        "count": 1
+      },
+      {
+        "item": 33259,
+        "count": 1
+      },
+      {
+        "item": 33263,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Gurubashi Empire of the jungle trolls; its priests called forth Hakkar the Soulflayer; the Atal'ai sought to bring him into the world; the Zandalari and Gurubashi dissidents defeated him at Zul'Gurub; the Bloodscalp, Skullsplitter and Darkspear broke away."
+}

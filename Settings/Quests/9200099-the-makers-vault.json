@@ -1,0 +1,53 @@
+{
+  "id": 9200099,
+  "title": "The Makers' Vault",
+  "level": 40,
+  "min_level": 36,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 3,
+  "type": "visit",
+  "giver": 2860,
+  "turn_in": 2860,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -6431.0,
+        "y": -3402.0,
+        "radius": 80
+      },
+      "text": "Go to Hammertoe's Digsite"
+    }
+  ],
+  "texts": {
+    "details": "Ye've the look o' someone who thinks this is a hole in the ground wi' dwarves round it. Aye, well. It is. But it's the most important hole in the world, to my folk.\n\nEast o' here is Hammertoe's dig. Go an' look at what he's turned up, $N: the worked stone, the shapes of it. None o' that was made by dwarves. None o' it was made by anyone ye've a name for.\n\nMind yourself. The Shadowforge are sniffin' round the digs. Dark Irons. They want what's under there as badly as we do. Come back when ye've seen it, an' I'll tell ye what Uldaman is.",
+    "objectives": "Go to Hammertoe's Digsite in the Badlands, then return to Sigrun Ironhew.",
+    "progress": "East, across the ravine. Ye'll see the scaffolds.",
+    "completion": "It's a vault. Built by the titans' own keepers, an' buried in these mountains before there was any such thing as a dwarf.\n\nThe legends say the titans tried their hand at makin' a folk out o' stone. The first try went wrong. That was the troggs. So they locked the troggs away down there, an' tried again, an' the second try was us.\n\nSomewhere at the bottom are the Discs of Norgannon, that hold the whole secret o' how we were made. There's a guardian set over them, a great stone keeper called Archaedas. We've been driven out twice, $N. The Shadowforge mean to have the Discs for their fire lord. I mean to read them first."
+  },
+  "reward": {
+    "money": 5300,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 4744,
+        "count": 1
+      },
+      {
+        "item": 6794,
+        "count": 1
+      },
+      {
+        "item": 33256,
+        "count": 1
+      },
+      {
+        "item": 6746,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Uldaman is a vault of the titan keepers; legends say the titans made the troggs from stone, locked the failure away and then created the dwarves; the Discs of Norgannon hold the secret of dwarven creation, guarded by Archaedas; the Shadowforge Dark Irons seek them for Ragnaros; the League has been driven out."
+}

@@ -1,0 +1,53 @@
+{
+  "id": 9200089,
+  "title": "Blood of Our Blood",
+  "level": 29,
+  "min_level": 25,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 400,
+  "type": "kill",
+  "after": 9200088,
+  "giver": 10537,
+  "turn_in": 10537,
+  "objectives": [
+    {
+      "creature": 10759,
+      "count": 6
+    },
+    {
+      "creature": 10760,
+      "count": 5
+    }
+  ],
+  "texts": {
+    "details": "I have asked the Earthmother whether there is another way. If she has answered, I have not heard it.\n\nThe Grimtotem do not parley. They are known for it: attack without cause, slaughter, and gone. A village of our people in the Stonetalon Mountains learned that. I will not have Freewind learn it.\n\nCross to the Pinnacle, $N. Six of their stompers, five of their geomancers. I ask it of you because I do not think I could ask it of a tauren.",
+    "objectives": "Kill 6 Grimtotem Stompers and 5 Grimtotem Geomancers at Darkcloud Pinnacle, then return to Cliffwatcher Longhorn at Freewind Post.",
+    "progress": "The bridges to the Pinnacle are guarded. So is everything on it.",
+    "completion": "It is done. I will make the offerings for them tonight, though they would spit to know it.\n\nHear me, $N. The Crone is patient and she is clever. As long as she sits at the council fire, no one in Thunder Bluff will call this what it is. They will say: renegades, the Needles are far away.\n\nI watch from a cliff. I know what I see coming. Take this, and my thanks."
+  },
+  "reward": {
+    "money": 2900,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 6744,
+        "count": 1
+      },
+      {
+        "item": 7751,
+        "count": 1
+      },
+      {
+        "item": 6973,
+        "count": 1
+      },
+      {
+        "item": 5817,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 2: the Grimtotem's reputation for unprovoked attack and slaughter; their attack on a tauren village in Stonetalon."
+}

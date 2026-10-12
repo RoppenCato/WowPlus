@@ -1,0 +1,36 @@
+{
+  "id": 9200084,
+  "title": "The Forest Lord's Grandchildren",
+  "level": 33,
+  "min_level": 29,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 405,
+  "type": "visit",
+  "giver": 11715,
+  "turn_in": 11715,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": -960.0,
+        "y": 917.0,
+        "radius": 150
+      },
+      "text": "Look upon Kolkar Village"
+    }
+  ],
+  "texts": {
+    "details": "Look at this land. Bone and grey rock, and a sky that never clears. My people lived here once; these are our ruins that Nijel's Point is built among. We withdrew, and the Legion's wars and the centaur did the rest.\n\nYou will fight the centaur here, $N. Everyone does. I would have you look at them first, with a clear eye, because there is something about them that we kaldorei do not say in front of strangers.\n\nGo south and east, to where the Kolkar make their village under the eastern mountains. Look upon it. Then come back, and I will tell you whose blood they carry.",
+    "objectives": "Look upon Kolkar Village in eastern Desolace, then return to Talendria at Nijel's Point.",
+    "progress": "South of the Point, against the eastern range. Do not go among them yet.",
+    "completion": "They carry the blood of Cenarius.\n\nThe Forest Lord had a son, Zaetar. Zaetar took for his mate Theradras, a princess of the earth elementals. From that union came the centaur: Kolk, Gelk, Magra, Maraudos and Veng were the first, and the tribes still bear their names. They were born misshapen and filled with rage, and they slew their father.\n\nTheradras entombed his spirit in her caverns, to the west. The centaur call the place Maraudon. So you see, $N. The grandchildren of the one who taught us everything are the scourge of this land. We do not speak of it often."
+  },
+  "reward": {
+    "money": 4000,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, The Forest Lord's Grandchildren: the same origin told by a night elf; Nijel's Point stands among night elven ruins; Desolace was ruined by the Legion's wars and the centaur after the night elves withdrew."
+}

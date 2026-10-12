@@ -1,0 +1,36 @@
+{
+  "id": 9200095,
+  "title": "The King Who Sold the Pass",
+  "level": 36,
+  "min_level": 32,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 36,
+  "type": "visit",
+  "giver": 2277,
+  "turn_in": 2277,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": 430.0,
+        "y": -250.0,
+        "radius": 150
+      },
+      "text": "Look upon the Ruins of Alterac"
+    }
+  ],
+  "texts": {
+    "details": "You have met the Syndicate, the heirs of a traitor. I think you should see the inheritance.\n\nNorth of the foothills, high in the mountains, is the city of Alterac. I say is. Go up the road past the yeti caves and look at it, $N. You need not go close. The ogres of the Crushridge have the streets now, and they are not good neighbours.\n\nThen come back, and I will tell you the end of King Perenolde's story. It is not the end he hoped for.",
+    "objectives": "Look upon the Ruins of Alterac, high in the Alterac Mountains, then return to Loremaster Dibbs in Southshore.",
+    "progress": "North, up into the mountains. Marshal Redpath pays for ogre heads, if you find yourself among them.",
+    "completion": "A city with ogres for citizens. Yes.\n\nWhen his treason was found out, the Alliance besieged Alterac and Terenas put it under martial law. But Perenolde was an anointed king, and one does not simply hang a king. So they shut him in his own palace, emptied his treasury into the war chest, and argued for weeks over what to do with him.\n\nStromgarde demanded his eastern lands. Others schemed for the rest. In the end he died, half mad, still under guard, and Lordaeron quietly took what it wanted of the mountains. No one ever ruled in that city again. His people scattered. His son became a bandit. That is what it costs, $N, to sell a pass."
+  },
+  "reward": {
+    "money": 5000,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "After Aiden Perenolde's betrayal Alterac was besieged and put under martial law; the king was held under house arrest, his treasury taken; Thoras Trollbane demanded the eastern lands; Perenolde, unstable, died, and Lordaeron partly annexed the mountains; the Alteraci scattered; the ruins belong to the Crushridge ogres."
+}

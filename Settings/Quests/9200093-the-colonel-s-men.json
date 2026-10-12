@@ -1,0 +1,25 @@
+{
+  "id": 9200093,
+  "title": "The Colonel's Men",
+  "level": 30,
+  "min_level": 26,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 10,
+  "type": "deliver",
+  "giver": 264,
+  "turn_in": 469,
+  "objectives": [],
+  "texts": {
+    "details": "South of the river the forest changes. The dark ends, and the heat begins. Stranglethorn.\n\nSome years ago Stormwind sent an expedition into that jungle under a Colonel Kurzen, by every account a talented and noble officer. Something happened to him there. The reports that reached us spoke of foul magic, and of a man no longer himself. Most of his soldiers stayed with him. A few would not, and they made a camp of their own just over the border.\n\nThey are still loyal to Stormwind, which is more than Stormwind has earned. Find their commander, Lieutenant Doren. Tell him the Night Watch knows what it is to be left to it.",
+    "objectives": "Cross south into Stranglethorn Vale and bring Commander Ebonlocke's word to Lieutenant Doren at the Rebel Camp.",
+    "completion": "From the Night Watch? Then you will understand us quicker than most.\n\nThe Colonel was the best officer I ever served under, $N. I want that known. What is in that compound now wears his face and gives his orders, and it is not him. We have learned there is an ogre mage behind it, working his mind like a puppet's strings.\n\nI mean to have his head. It is the only kindness left that I can do him. If you will help, there is a great deal to do."
+  },
+  "reward": {
+    "money": 2700,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Duskwood to Stranglethorn: Colonel Kurzen, a talented and noble officer of Stormwind, corrupted by foul magic, his mind possessed by the Mosh'ogg ogre mage Mai'Zoth; the Rebel Camp under Lieutenant Doren, still loyal to Stormwind."
+}

@@ -1,0 +1,25 @@
+{
+  "id": 9200087,
+  "title": "Beyond the Burned Vale",
+  "level": 30,
+  "min_level": 26,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 406,
+  "type": "deliver",
+  "giver": 3994,
+  "turn_in": 5638,
+  "objectives": [],
+  "texts": {
+    "details": "The Peak is quiet for the moment, and I can spare you. There are others who cannot.\n\nSouth-west of here lies the Charred Vale, and on its southern border a pass that few take. It leads down into Desolace. Our people built cities there before the Sundering. Nothing stands now but broken stone, and the centaur ride over it. The Burning Legion's servants have crept in besides.\n\nAmong the old ruins in the northern hills the Alliance keeps a single town, Nijel's Point. Go there, $N. Seek out Kreldig Ungor, and tell him the Talon Den has not forgotten the south.",
+    "objectives": "Go south-west through the Charred Vale into Desolace and report to Kreldig Ungor at Nijel's Point.",
+    "completion": "The Talon Den remembers us? Ha! That's more than Ironforge does.\n\nWelcome to Nijel's Point, $N. Don't let the view fool ye, it gets worse the further ye go. Centaur east an' south, demons in the middle, an' naga creepin' up the coast in the north-west.\n\nStill. There's a great deal lyin' about in a land that old, for them as know where to look. I do. Stay a while."
+  },
+  "reward": {
+    "money": 2700,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Stonetalon to Desolace (Alliance): the pass south of the Charred Vale, night elven ruins, centaur, demons, naga in the north-west, Nijel's Point and Kreldig Ungor."
+}

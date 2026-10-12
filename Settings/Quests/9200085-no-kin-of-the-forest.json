@@ -1,0 +1,53 @@
+{
+  "id": 9200085,
+  "title": "No Kin of the Forest",
+  "level": 33,
+  "min_level": 29,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 405,
+  "type": "kill",
+  "after": 9200084,
+  "giver": 11715,
+  "turn_in": 11715,
+  "objectives": [
+    {
+      "creature": 4636,
+      "count": 6
+    },
+    {
+      "creature": 4637,
+      "count": 4
+    }
+  ],
+  "texts": {
+    "details": "Knowing their blood does not mean sparing them. Cenarius would not know them, and he would not have suffered what they do to this land.\n\nTheir mother, Theradras, still lives in Maraudon, and she has been feeding them her strength. That is why the warbands grow bolder each season. The Kolkar are the smallest of the tribes and the nearest to us, and their battle lords are the ones who lead the raids.\n\nSix of the battle lords, $N, and four of their destroyers. Let it be said that Nijel's Point did not sit behind its hills.",
+    "objectives": "Kill 6 Kolkar Battle Lords and 4 Kolkar Destroyers at Kolkar Village, then return to Talendria at Nijel's Point.",
+    "progress": "They keep to the heart of the village.",
+    "completion": "Good. The Point will rest easier.\n\nThere is a thing I wonder, in the long watches. Zaetar was a son of the Forest Lord, a keeper of living things. What did he see in a daughter of stone? And what would his children have been, if they had been born whole?\n\nIt is an idle thought. They are what they are. Take this, with the thanks of Nijel's Point."
+  },
+  "reward": {
+    "money": 4500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 6900,
+        "count": 1
+      },
+      {
+        "item": 4124,
+        "count": 1
+      },
+      {
+        "item": 15588,
+        "count": 1
+      },
+      {
+        "item": 6806,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 2: Theradras infuses her children with power; the Kolkar are the smallest tribe."
+}

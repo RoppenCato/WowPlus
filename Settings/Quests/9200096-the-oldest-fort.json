@@ -1,0 +1,36 @@
+{
+  "id": 9200096,
+  "title": "The Oldest Fort",
+  "level": 37,
+  "min_level": 33,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 8,
+  "type": "visit",
+  "giver": 7623,
+  "turn_in": 7623,
+  "objectives": [
+    {
+      "talk": 1442,
+      "text": "Ask Helgrum the Swift how old Stonard is",
+      "says": [
+        "How old? Older than Orgrimmar. Older than the Warchief. This is one of the first places an orc ever built on this world.",
+        "When the Dark Portal first opened, the old Horde came through into a swamp. The Black Morass, it was called then. They raised two forts in it: Stonard and Rockard.",
+        "Rockard is gone. Ogres hold it and have given it an ogre's name. Stonard was lost for a time too. When the new Horde turned its eyes this way again, we raised it up where it stood."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "Grunts come through Stonard and see a wet fort at the end of the world. They ask what they did to be sent here.\n\nThey have it backwards, $N. This is not the end of anything. It is where we began.\n\nHelgrum has been here longer than any of us. Ask him how old these walls are. It will do you good to know what you are standing in.",
+    "objectives": "Ask Helgrum the Swift how old Stonard is, then return to Dispatch Commander Ruag in Stonard.",
+    "progress": "Helgrum is close by. He is never far from the command post.",
+    "completion": "One of the oldest orc settlements on Azeroth. Now you know.\n\nAnd look at us. Our wayfinders and cartographers are still mapping this swamp, as though we arrived last season. The old Horde held it for years and never troubled to learn it. They only passed through, on their way to burn something.\n\nWe mean to do better. South of here the road runs to the Blasted Lands, and the Portal our fathers came through. We are the nearest post of the Horde to it. Someone should be."
+  },
+  "reward": {
+    "money": 5000,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, The Oldest Fort: Stonard was established by the old Horde in the Black Morass after the first opening of the Dark Portal, one of the oldest orc settlements on Azeroth with Rockard (now the ogres' Dreadmaul Hold); re-established by the new Horde; its wayfinders still map the swamp; it is among the nearest Horde outposts to the Dark Portal."
+}

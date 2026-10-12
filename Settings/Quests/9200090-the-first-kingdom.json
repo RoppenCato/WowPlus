@@ -1,0 +1,62 @@
+{
+  "id": 9200090,
+  "title": "The First Kingdom",
+  "level": 35,
+  "min_level": 31,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 45,
+  "type": "visit",
+  "giver": 2700,
+  "turn_in": 2700,
+  "objectives": [
+    {
+      "talk": 2788,
+      "text": "Ask Apprentice Kryten how men came by magic",
+      "says": [
+        "How did humans learn magic? Here, in this country. Nearly three thousand years ago the Amani trolls were about to overrun both men and elves.",
+        "The high elves of Quel'Thalas came to King Thoradin for soldiers. In return they agreed to teach one hundred men the arcane. One hundred. Every human mage since comes down from them.",
+        "Thoradin's army drew the trolls to the foot of the Alterac Mountains, and the hundred and their teachers burned them there. The elves swore friendship to Thoradin's line for ever after."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -1620.0,
+        "y": -1900.0,
+        "radius": 120
+      },
+      "text": "Look upon Stromgarde Keep"
+    }
+  ],
+  "texts": {
+    "details": "You see a canyon full of tired soldiers. I would have you see what we are tired for.\n\nSpeak to young Kryten; he is apprenticed to the mages and has the history of his craft by heart. Then ride south-west, to the city on the cliff. Stromgarde. Do not try to enter. The Syndicate holds one part of it and the ogres another, and our prince fights for the rest.\n\nOnly look at it, $N. Then I will tell you what stood there before it had that name.",
+    "objectives": "Ask Apprentice Kryten at Refuge Pointe how men came by magic and look upon Stromgarde Keep, then return to Captain Nials.",
+    "progress": "The city lies south-west, on the cliffs above the sea.",
+    "completion": "Before it was Stromgarde it was Strom, and before there was a Stormwind or a Lordaeron, it was the only city of men.\n\nThe tribes were scattered and the trolls were killing them one at a time. Thoradin of the Arathi made them one people, by marriage, by gifts of land, and by the sword where he had to. He called the kingdom Arathor, raised Strom, and built the wall you passed on the way in.\n\nIn time the great families went north and south and founded the kingdoms you know. Strom was left to the Trollbanes, and renamed. Every human throne in the world began on that cliff, $N. We are guarding the cradle."
+  },
+  "reward": {
+    "money": 4700,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 4121,
+        "count": 1
+      },
+      {
+        "item": 4107,
+        "count": 1
+      },
+      {
+        "item": 3765,
+        "count": 1
+      },
+      {
+        "item": 33269,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Thoradin of the Arathi united the human tribes against the Amani, founded Arathor and Strom and built Thoradin's Wall; the high elves taught a hundred men magic in exchange for aid; the trolls were destroyed at the foot of the Alterac Mountains; the noble families later left to found Lordaeron and Stormwind, and Strom became Stromgarde under the Trollbanes."
+}

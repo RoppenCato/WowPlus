@@ -1,0 +1,45 @@
+{
+  "id": 9200088,
+  "title": "No Others Have a Right",
+  "level": 28,
+  "min_level": 24,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 400,
+  "type": "visit",
+  "giver": 10537,
+  "turn_in": 10537,
+  "objectives": [
+    {
+      "talk": 4722,
+      "text": "Ask Rau Cliffrunner who the Grimtotem are",
+      "says": [
+        "The Grimtotem are tauren. That is the first thing, and the hardest. They are of our blood and they have never joined the Horde. They are the only tribe that has not.",
+        "Their matriarch is the Elder Crone, Magatha. She sits in Thunder Bluff itself, with every right of our people. And her warriors kill tauren here.",
+        "They believe Kalimdor is theirs. Not the orcs', not the elves'. Not ours either, if we will not agree with them."
+      ]
+    },
+    {
+      "place": {
+        "map": 1,
+        "x": -4959.0,
+        "y": -1981.0,
+        "radius": 150
+      },
+      "text": "Look upon Darkcloud Pinnacle"
+    }
+  ],
+  "texts": {
+    "details": "You have come down the Lift expecting centaur. There are centaur. They are not what keeps me awake.\n\nLook north-west from this spire. That great mesa with the black tents is Darkcloud Pinnacle. Those are tauren up there, $N, and they have attacked this post more than once.\n\nI want you to understand it before I ask you to do anything about it, because it is a hard thing to be asked. Speak with Rau; he leads this post. Then go as near the Pinnacle as you safely can, and look.",
+    "objectives": "Ask Rau Cliffrunner at Freewind Post who the Grimtotem are and look upon Darkcloud Pinnacle, then return to Cliffwatcher Longhorn.",
+    "progress": "The Pinnacle stands to the north-west. You will see the bridges.",
+    "completion": "Tauren killing tauren. I did not think I would live to see it.\n\nTheir chief on the Pinnacle is Arnak Grimtotem, the Crone's own nephew. So do not let anyone tell you that these are outcasts she cannot answer for. She answers for them at the council fire in Thunder Bluff, and smiles.\n\nThey hold that no one else has a right to this land. Not even us."
+  },
+  "reward": {
+    "money": 2600,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, No Others Have a Right: the Grimtotem are the only tauren tribe never to join the Horde; Magatha, the Elder Crone, sits in Thunder Bluff; they attack Freewind Post and believe no others have a right to Kalimdor, even tauren who disagree; Arnak Grimtotem, her nephew, is chief at Darkcloud Pinnacle."
+}

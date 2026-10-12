@@ -1,0 +1,36 @@
+{
+  "id": 9200094,
+  "title": "The Admiral's Daughter",
+  "level": 35,
+  "min_level": 31,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 15,
+  "type": "visit",
+  "giver": 4944,
+  "turn_in": 4944,
+  "objectives": [
+    {
+      "talk": 4967,
+      "text": "Ask Archmage Tervosh about the Admiral's death",
+      "says": [
+        "You ask about the Admiral. Very well. Better you hear it from one who was here.",
+        "Daelin Proudmoore came to Theramore looking for his daughter. He found her at peace with the orcs, and he could not bear it. He took the city from her and made war on Durotar from our harbor.",
+        "Lady Jaina begged him to stop. When he would not, she showed the Horde how to reach him, and asked only that her own people be spared. They kept their word. He died in the citadel above us. She knelt by him and asked why he had not listened."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "You will hear things said about Lady Proudmoore, $N. In Stormwind, and worse in Kul Tiras. That she is soft on the Horde. That she let her own father die.\n\nThe second is true, and I will not hide it from you. But you should hear how it was from someone who saw it, and not from a sailor in a tavern.\n\nArchmage Tervosh is in the tower with her. He was here. Ask him.",
+    "objectives": "Ask Archmage Tervosh in Theramore about the Admiral's death, then return to Captain Garran Vimes.",
+    "progress": "The tower, in the middle of the isle. He will make time for you.",
+    "completion": "So now you know.\n\nKul Tiras has not forgiven her. It has turned its back on the Alliance altogether, and what it feels for the Lady is bitter.\n\nThe Admiral was a great sailor and a brave one, and by the end there was nothing in him but hatred. She saw that before any of us. This city is alive because of what she did, $N. So are the men he would have spent. Remember that when you hear the taverns talk."
+  },
+  "reward": {
+    "money": 4700,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Theramore's side of the Admiral's War: Daelin Proudmoore seized Theramore and attacked Durotar; Jaina helped the Horde and asked that her people be spared; he died in the citadel; Kul Tiras isolated itself and is bitter toward her."
+}

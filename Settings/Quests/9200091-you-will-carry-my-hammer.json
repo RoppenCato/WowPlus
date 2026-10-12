@@ -1,0 +1,53 @@
+{
+  "id": 9200091,
+  "title": "You Will Carry My Hammer",
+  "level": 35,
+  "min_level": 31,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 45,
+  "type": "visit",
+  "giver": 2771,
+  "turn_in": 2771,
+  "objectives": [
+    {
+      "talk": 2792,
+      "text": "Hear Gor'mul speak of the camps",
+      "says": [
+        "The camps. You want to hear of the camps. Hm. There is not much to tell. We sat.",
+        "They did not need to chain us. Something had gone out of us when the war was lost. We did not fight. We did not care. Even Doomhammer felt it, when he hid among us for a time.",
+        "I was in such a place when the young Warchief came to break it open. I did not get up. Others did. I still do not know why I could not."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "You stand in Hammerfall. Do you know whose hammer?\n\nThis was one of the camps where the humans kept us after the Second War. I will not tell you what a camp was. There is one here who was in them. Gor'mul. He does very little now, and he will tell you why if you ask.\n\nHear him, $N. Then come back to me, and I will tell you what happened on this ground.",
+    "objectives": "Hear Gor'mul speak of the internment camps, then return to Drum Fel in Hammerfall.",
+    "progress": "He is here, by the fire. He is always by the fire.",
+    "completion": "Now hear the rest.\n\nOrgrim Doomhammer was Warchief of the Horde when we lost. The humans took him at Blackrock Spire. He escaped, and lived for years as a hermit, until he found a young orc in the mountains who beat him in a duel and then showed him mercy. Thrall.\n\nTogether they broke four camps. This was the fifth. Human knights were waiting. A lance took Doomhammer in the back. With his last breath he made Thrall Warchief. \"You will wear my armor and carry my hammer,\" he said. And: \"You will lead them to victory, and you will lead them to peace.\"\n\nThe Warchief wears that black plate still. He had the hole in the back mended. He would not replace it."
+  },
+  "reward": {
+    "money": 4700,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 15455,
+        "count": 1
+      },
+      {
+        "item": 33247,
+        "count": 1
+      },
+      {
+        "item": 16794,
+        "count": 1
+      },
+      {
+        "item": 6738,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Orgrim Doomhammer was captured at Blackrock Spire, escaped, lived as a hermit, met Thrall, and with him freed four internment camps; at the fifth, where Hammerfall now stands, a knight's lance killed him, and he named Thrall Warchief and gave him his hammer and armor; the lethargy of the camps."
+}

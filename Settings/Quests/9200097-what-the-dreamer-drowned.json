@@ -1,0 +1,54 @@
+{
+  "id": 9200097,
+  "title": "What the Dreamer Drowned",
+  "level": 38,
+  "min_level": 34,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 8,
+  "type": "visit",
+  "after": 9200096,
+  "giver": 7623,
+  "turn_in": 7623,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -10430.0,
+        "y": -3660.0,
+        "radius": 90
+      },
+      "text": "Go to the shore of the Pool of Tears"
+    }
+  ],
+  "texts": {
+    "details": "There is one thing in this swamp the old Horde never found, and it is the reason half the travellers who come through Stonard come at all.\n\nEast of here the ground sinks into a great black lake. The Pool of Tears. There is a temple under it. Not beside it. Under it.\n\nGo to the shore, $N, and look out over the water. Do not go in. There are dragons in that marsh, the green kind, and they are not there by accident. When you have seen it, I will tell you who drowned a temple, and why.",
+    "objectives": "Go to the shore of the Pool of Tears, east of Stonard, then return to Dispatch Commander Ruag.",
+    "progress": "East along the road, then into the marsh. Stay on the shore.",
+    "completion": "Trolls built it. The Atal'ai, priests of a blood god called Hakkar. When their empire in the south cast him down, they fled here and raised a temple to call him back.\n\nThe one who stopped them was a dragon. Ysera, queen of the green flight, the Dreamer. She learned what they intended, and she sank the whole temple into the deepest bog in the swamp. Then she set her own kin to guard the ruin, so that no one would finish the work.\n\nSo that is what lies under the Pool, $N. And the guards have been down there a very long time, beside something that drives living things mad."
+  },
+  "reward": {
+    "money": 5200,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 4133,
+        "count": 1
+      },
+      {
+        "item": 4119,
+        "count": 1
+      },
+      {
+        "item": 33252,
+        "count": 1
+      },
+      {
+        "item": 5247,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 2: the Atal'ai fled the fall of the Gurubashi Empire and built the Temple of Atal'Hakkar to summon Hakkar; Ysera sank it into the bog and set green dragons to guard it; the temple's energy drives living creatures to madness."
+}

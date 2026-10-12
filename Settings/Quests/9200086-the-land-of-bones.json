@@ -1,0 +1,25 @@
+{
+  "id": 9200086,
+  "title": "The Land of Bones",
+  "level": 30,
+  "min_level": 26,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 406,
+  "type": "deliver",
+  "giver": 11860,
+  "turn_in": 5641,
+  "objectives": [],
+  "texts": {
+    "details": "You have walked Stonetalon from the Crag to the lake. There is one road out of these mountains you have not taken, and I would not send you down it unwarned.\n\nWest of here is the Charred Vale. Beyond its southern edge the hills fall away into Desolace. It is grey rock and old bones under a sky that is always about to storm. The centaur were born there, and it is theirs. Demons hold parts of it, and their mortal servants, the Burning Blade.\n\nWe have a post there, above the valley of the great kodo bones. Find Takata Steelblade at Ghost Walker Post, $N. Tell him Sun Rock sends a spear.",
+    "objectives": "Go west through the Charred Vale and south into Desolace, and report to Takata Steelblade at Ghost Walker Post.",
+    "completion": "A spear from Sun Rock. It is welcome; we do not get many.\n\nYou stand above the Kodo Graveyard, $N. Look down. Those bones were here before my grandmother's grandmother. We keep watch over them.\n\nThe Burning Blade is to the north, in the old fortress. The centaur are everywhere else. Rest. Then I will have work for you."
+  },
+  "reward": {
+    "money": 2700,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Stonetalon to Desolace (Horde): the Charred Vale, a grey waste of bones, birthplace of the centaur, the Burning Blade at Thunder Axe Fortress, Ghost Walker Post above the Kodo Graveyard."
+}

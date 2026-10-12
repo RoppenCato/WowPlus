@@ -1,0 +1,45 @@
+{
+  "id": 9200082,
+  "title": "Children of the Dead Son",
+  "level": 33,
+  "min_level": 29,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 405,
+  "type": "visit",
+  "giver": 5641,
+  "turn_in": 5641,
+  "objectives": [
+    {
+      "talk": 4498,
+      "text": "Ask Maurin Bonesplitter where the centaur came from",
+      "says": [
+        "You would know what the centaur are? My people have fought them for more than a thousand years. A year of peace, and always a year of war after it.",
+        "They had a father. Zaetar, a son of the forest lord Cenarius. He lay with Theradras, a princess of the earth elementals, and their children were born twisted and full of hate.",
+        "The first five were Kolk, Gelk, Magra, Maraudos and Veng, and each made a tribe. Before they were grown, they murdered Zaetar. They killed their own father for the shame of what they were."
+      ]
+    },
+    {
+      "place": {
+        "map": 1,
+        "x": -960.0,
+        "y": 917.0,
+        "radius": 150
+      },
+      "text": "Look upon Kolkar Village"
+    }
+  ],
+  "texts": {
+    "details": "You have fought centaur in the Barrens and in the Needles, and you have come to the place they come from. Here they are not raiders. Here they are at home, and the land looks like them.\n\nBefore you raise a weapon in Desolace, $N, learn what you are raising it against. Maurin, beside me, keeps the old tellings. Hear him.\n\nThen go north, along the eastern hills, to the village of the Kolkar. They are the least of the tribes here. Look at how they live. Do not go in.",
+    "objectives": "Ask Maurin Bonesplitter at Ghost Walker Post where the centaur came from and look upon Kolkar Village, then return to Takata Steelblade.",
+    "progress": "The Kolkar village lies north of here, against the eastern mountains.",
+    "completion": "So you know. Every centaur who ever lived descends from a murder.\n\nTheir mother did not abandon them. Theradras took Zaetar's spirit and sealed it in her own caverns, in the west of this land. The centaur named that place Maraudon, and it is the holiest ground they have: their father's tomb, kept by the mother who still loves them.\n\nThree of the tribes here bend the knee to her. One does not: the Magram. Remember that. It is the only crack in them."
+  },
+  "reward": {
+    "money": 4000,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, Children of the Dead Son: the centaur are the offspring of Zaetar, son of Cenarius, and the earth princess Theradras; the first five khans; they murdered Zaetar, whose spirit Theradras entombed in Maraudon; the Magram alone are not loyal to her; a thousand years of war with the tauren."
+}
