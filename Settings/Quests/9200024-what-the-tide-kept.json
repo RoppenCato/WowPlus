@@ -1,0 +1,63 @@
+{
+  "id": 9200024,
+  "title": "What the Tide Kept",
+  "level": 9,
+  "min_level": 6,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 85,
+  "type": "collect",
+  "after": 9200023,
+  "giver": 11945,
+  "turn_in": 11945,
+  "objectives": [
+    {
+      "item": 5330,
+      "count": 4,
+      "drops_from": [
+        {
+          "creature": 1543,
+          "chance": 35
+        },
+        {
+          "creature": 1544,
+          "chance": 35
+        },
+        {
+          "creature": 1545,
+          "chance": 35
+        }
+      ]
+    }
+  ],
+  "texts": {
+    "details": "If the elves lived here, even for a few years, they left things behind. Cups, combs, the small things people leave when they go in a hurry.\n\nThe fishermen used to say that the murlocs on the north shore hoard old silver in their huts, and that it was never ours. The Vile Fin have been on that coast longer than Brill has stood.\n\nBring me what they have, $N. Four pieces would be enough to be sure.",
+    "objectives": "Bring 4 Elven Cup Relics from the Vile Fin murlocs of the north coast to Claire Willower in Brill.",
+    "progress": "The Vile Fin keep to the north shore, from the lake's mouth east along the coast.",
+    "completion": "Elven work. Look at the leaf along the rim, and the script under it. Plainer than what the traders used to bring down from Quel'Thalas, and far older. Made by people who had just crossed an ocean.\n\nSo it is true. They were here, they fled, and no one ever learned from what.\n\nAnd then the plague came to this ground first, and the dead king chose this ground for his seat. I do not say these things are joined, $N. I keep records. I only write down that it is the same ground."
+  },
+  "reward": {
+    "money": 360,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 9514,
+        "count": 1
+      },
+      {
+        "item": 7116,
+        "count": 1
+      },
+      {
+        "item": 10638,
+        "count": 1
+      },
+      {
+        "item": 5275,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 2: proof of the elves' first settlement, and the open question of what lies under Tirisfal."
+}

@@ -1,0 +1,45 @@
+{
+  "id": 9200016,
+  "title": "Once of Our Blood",
+  "level": 6,
+  "min_level": 3,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 141,
+  "type": "visit",
+  "giver": 11942,
+  "turn_in": 11942,
+  "objectives": [
+    {
+      "talk": 2151,
+      "text": "Ask Moon Priestess Amara what a satyr is",
+      "says": [
+        "A satyr is not a beast, and it was not born a demon. Every one of them was once kaldorei.",
+        "Ten thousand years ago Lord Xavius, counselor to Queen Azshara, opened the way for the Burning Legion. When he failed, Sargeras remade him: horns, hooves, and a hunger to corrupt.",
+        "Xavius carried that curse home to his own kind, and the Highborne who accepted it were the first satyrs. They chose it. That is why we do not forgive them."
+      ]
+    },
+    {
+      "talk": 2150,
+      "text": "Hear what Zenn Foulhoof has to say",
+      "says": [
+        "Ahh, a visitor for poor Zenn! So few stop. The Sentinels tell such unkind stories.",
+        "Zenn was not always as you see him. Zenn remembers silver towers, and a queen so bright it hurt to look at her. Does your priestess tell you that part?",
+        "We are family, little one, you and Zenn. Old family. Come back when no one is watching, and Zenn will tell you what your elders are afraid you might learn."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "There is a creature on the road south of Dolanaar that calls itself Zenn Foulhoof and asks small favors of the young. The Sentinels say: it is a satyr, do not listen. They do not say what a satyr is.\n\nYou should know, $N, before one of them speaks sweetly to you. Ask Moon Priestess Amara. The Sisterhood remembers what the rest of us would sooner forget.\n\nThen go and hear Zenn for yourself. Listen to how he talks. Give him nothing.",
+    "objectives": "Ask Moon Priestess Amara in Dolanaar what a satyr is and hear out Zenn Foulhoof on the road south of the village, then return to Orenthil Whisperwind in Dolanaar.",
+    "progress": "Did he call you friend? They always do.",
+    "completion": "Family. Yes. That is the worst of it, because it is true.\n\nAnd you see how it is done. Not a threat. A kindness, a secret, a hint that your elders are hiding something from you. That is how Xavius spoke to the Highborne, and it is how every satyr has spoken since.\n\nHe remembers the queen? Then he is one of the old ones. Ten thousand years, and still asking favors of children by the roadside."
+  },
+  "reward": {
+    "money": 90,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, Once of Our Blood: satyrs were night elves, Highborne who took Xavius's curse by choice, and they corrupt by kindness."
+}

@@ -81,12 +81,12 @@ Made by `Settings/Scripts/Make-Zone-Audit.py` on 2026-10-12. Run it again after 
 |---|---|---|---|---|---|---|---|
 | 5-9 | Eversong Woods | Eastern Kingdoms | 73 (215%) | – |  | 10 | enough |
 | 5-10 | Azuremyst Isle | Kalimdor | – | 65 (132%) |  | 17 | enough |
-| 5-10 | Dun Morogh | Eastern Kingdoms | 15 (2%) passing through | 63 (149%) |  | 14 | enough |
+| 5-10 | Dun Morogh | Eastern Kingdoms | 15 (2%) passing through | 66 (160%) | 3 | 13 | enough |
 | 5-10 | Elwynn Forest | Eastern Kingdoms | – | 53 (113%) | 5 | 8 | enough |
 | 5-10 | Mulgore | Kalimdor | 46 (130%) | 3 (8%) passing through | 6 | 9 | enough |
-| 5-10 | Teldrassil | Kalimdor | 3 (14%) passing through | 53 (233%) |  | 13 | enough |
-| 5-10 | Tirisfal Glades | Eastern Kingdoms | 47 (132%) | – |  | 7 | enough |
-| 5-11 | Durotar | Kalimdor | 43 (93%) | 3 (7%) passing through |  | 14 | enough |
+| 5-10 | Teldrassil | Kalimdor | 3 (14%) passing through | 56 (243%) | 3 | 13 | enough |
+| 5-10 | Tirisfal Glades | Eastern Kingdoms | 51 (146%) | – | 4 | 7 | enough |
+| 5-11 | Durotar | Kalimdor | 47 (103%) | 3 (7%) passing through | 4 | 14 | enough |
 | 12-17 | Silverpine Forest | Eastern Kingdoms | 44 (71%) | 4 (7%) passing through |  | 11 | enough |
 | 12-18 | Ghostlands | Eastern Kingdoms | 63 (118%) | – |  | 10 | enough |
 | 12-18 | Westfall | Eastern Kingdoms | 7 (11%) passing through | 36 (94%) |  | 7 | enough |
@@ -464,9 +464,9 @@ Going from level 5 to 11 costs 30,400 experience.
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
 | Horde | 15 | 12 | 464 | 2% | 6 | 1:1 20:2 30:7 34:2 35:3 | only passing through |
-| Alliance | 63 | 20 | 45,431 | 149% | 25 | 1:3 2:1 3:3 4:2 5:7 6:3 7:3 8:2 9:3 10:6 11:3 12:2 20:2 22:1 23:1 26:2 27:2 28:1 30:12 34:2 35:1 75:1 | nothing; it carries itself |
+| Alliance | 66 | 20 | 48,558 | 160% | 26 | 1:3 2:1 3:3 4:2 5:7 6:3 7:4 8:2 9:4 10:7 11:3 12:2 20:2 22:1 23:1 26:2 27:2 28:1 30:12 34:2 35:1 75:1 | nothing; it carries itself |
 
-**Enemies no quest uses:** Winter Wolf (7-8, 23 of them), Rockjaw Ambusher (9-10, 18 of them), Juvenile Snow Leopard (5-6, 15 of them), Frostmane Snowstrider (8-9, 15 of them), Snow Tracker Wolf (6-7, 12 of them), Dark Iron Spy (9-10, 12 of them), Frostmane Hideskinner (9-10, 11 of them), Rockjaw Raider (3-4, 10 of them), Frostmane Shadowcaster (9-10, 8 of them), Frostmane Novice (3-4, 8 of them), and 4 more.
+**Enemies no quest uses:** Winter Wolf (7-8, 23 of them), Rockjaw Ambusher (9-10, 18 of them), Juvenile Snow Leopard (5-6, 15 of them), Snow Tracker Wolf (6-7, 12 of them), Dark Iron Spy (9-10, 12 of them), Frostmane Hideskinner (9-10, 11 of them), Rockjaw Raider (3-4, 10 of them), Frostmane Shadowcaster (9-10, 8 of them), Frostmane Novice (3-4, 8 of them), Frostmane Troll (7-8, 7 of them), and 3 more.
 
 ### Elwynn Forest (5-10, Eastern Kingdoms)
 
@@ -496,7 +496,7 @@ Going from level 5 to 11 costs 30,400 experience.
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
 | Horde | 3 | 0 | 4,379 | 14% | 1 | 10:1 12:1 60:1 | only passing through |
-| Alliance | 53 | 0 | 70,905 | 233% | 22 | 1:2 2:1 3:2 4:5 5:8 6:3 7:5 8:3 9:5 10:6 11:4 12:4 47:1 55:1 56:1 57:1 60:1 | nothing; it carries itself |
+| Alliance | 56 | 0 | 73,777 | 243% | 23 | 1:2 2:1 3:2 4:5 5:8 6:4 7:5 8:4 9:5 10:7 11:4 12:4 47:1 55:1 56:1 57:1 60:1 | nothing; it carries itself |
 
 **Enemies no quest uses:** Gnarlpine Defender (7-8, 51 of them), Gnarlpine Warrior (6-7, 34 of them), Gnarlpine Augur (8-9, 25 of them), Gnarlpine Pathfinder (9-10, 14 of them), Gnarlpine Gardener (5-6, 13 of them), Vicious Grell (7, 11 of them), Gnarlpine Avenger (9-10, 11 of them), Shadow Sprite (5-6, 10 of them), Gnarlpine Ursa (5-6, 10 of them), Rascal Sprite (5-6, 8 of them), and 3 more.
 
@@ -508,7 +508,7 @@ Going from level 5 to 11 costs 30,400 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 47 | 0 | 40,246 | 132% | 20 | 1:2 2:2 3:2 4:2 5:6 6:3 7:4 8:6 9:5 10:5 11:4 12:3 13:1 20:1 55:1 | nothing; it carries itself |
+| Horde | 51 | 0 | 44,251 | 146% | 21 | 1:2 2:2 3:2 4:2 5:6 6:3 7:4 8:8 9:6 10:6 11:4 12:3 13:1 20:1 55:1 | nothing; it carries itself |
 
 **Enemies no quest uses:** Hungering Dead (7-8, 10 of them), Tirisfal Farmer (6-7, 9 of them), Scarlet Vanguard (10-11, 9 of them), Tirisfal Farmhand (5-6, 8 of them), Scarlet Neophyte (10-11, 5 of them), Shambling Horror (8-9, 4 of them), Lost Soul (6-7, 4 of them).
 
@@ -520,7 +520,7 @@ Going from level 5 to 12 costs 39,100 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 43 | 0 | 36,273 | 93% | 21 | 1:3 2:1 3:2 4:3 5:5 7:6 8:4 9:5 10:2 11:2 12:7 13:1 14:1 20:1 | nothing; it carries itself |
+| Horde | 47 | 0 | 40,195 | 103% | 23 | 1:3 2:1 3:2 4:3 5:5 7:7 8:5 9:6 10:2 11:3 12:7 13:1 14:1 20:1 | nothing; it carries itself |
 | Alliance | 3 | 0 | 2,722 | 7% | 1 | 9:1 11:1 20:1 | only passing through |
 
 **Enemies no quest uses:** Elder Mottled Boar (8-9, 120 of them), Dire Mottled Boar (6-7, 114 of them), Clattering Scorpid (5-6, 71 of them), Armored Scorpid (7-8, 62 of them), Bloodtalon Taillasher (6-8, 58 of them), Venomtail Scorpid (9-10, 42 of them), Bloodtalon Scythemaw (8-10, 36 of them), Felstalker (3-4, 16 of them), Dustwind Harpy (7-8, 16 of them), Dustwind Pillager (7-8, 12 of them), and 4 more.
@@ -1324,3 +1324,17 @@ Going from level 80 to 81 costs 0 experience.
 | 9200010 | Under the Whip | Elwynn Forest | 9 | alliance | slay |
 | 9200011 | Arms for the Militia | Elwynn Forest | 9 | alliance | deliver |
 | 9200012 | Word for Three Corners | Elwynn Forest | 10 | alliance | deliver |
+| 9200013 | Older Than the Forge | Dun Morogh | 7 | alliance | visit |
+| 9200014 | The Rememberer | Dun Morogh | 9 | alliance | kill |
+| 9200015 | Troggs in the Diggings | Dun Morogh | 10 | alliance | deliver |
+| 9200016 | Once of Our Blood | Teldrassil | 6 | alliance | visit |
+| 9200017 | The Gardener of Starbreeze | Teldrassil | 8 | alliance | slay |
+| 9200018 | No Answer from Darnassus | Teldrassil | 10 | alliance | deliver |
+| 9200019 | Sails from the East | Durotar | 7 | horde | visit |
+| 9200020 | The Admiral's Last Order | Durotar | 8 | horde | collect |
+| 9200021 | For the Darkspear | Durotar | 9 | horde | deliver |
+| 9200022 | Bigger Game | Durotar | 11 | horde | deliver |
+| 9200023 | The First Landing | Tirisfal Glades | 8 | horde | visit |
+| 9200024 | What the Tide Kept | Tirisfal Glades | 9 | horde | collect |
+| 9200025 | The Archbishop's Grave | Tirisfal Glades | 8 | horde | visit |
+| 9200026 | Thin on the Ground | Tirisfal Glades | 10 | horde | deliver |

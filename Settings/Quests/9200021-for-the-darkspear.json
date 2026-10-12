@@ -1,0 +1,43 @@
+{
+  "id": 9200021,
+  "title": "For the Darkspear",
+  "level": 9,
+  "min_level": 6,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 14,
+  "type": "deliver",
+  "after": 9200020,
+  "giver": 11943,
+  "turn_in": 10540,
+  "objectives": [],
+  "texts": {
+    "details": "Take the letter to Orgrimmar. Not to the Warchief. Thrall has made his peace with Proudmoore's daughter, and I will not trouble it.\n\nTake it to Vol'jin of the Darkspear, who sits beside him in Grommash Hold. It was his people's isles that burned first.\n\nGo by the road north, and look up at the gate when you reach it. Durotar is named for Durotan, the Warchief's father. Orgrimmar is named for Orgrim Doomhammer. We named this land for our dead, $N. The humans on the coast are not the only ones who remember.",
+    "objectives": "Bring the Admiral's letter to Vol'jin in Grommash Hold, in the Valley of Wisdom in Orgrimmar.",
+    "completion": "\"No terms.\" Ya, dat be Proudmoore. I can hear him.\n\nDe Darkspear remember de fire on de water, mon. We gonna remember it a long time. But I tell ya what I told my people: de daughter is not de father. Thrall be right about dat, an' de ones in dat keep never learned it.\n\nYa did right, bringin' dis here. Take someting from de Darkspear for it."
+  },
+  "reward": {
+    "money": 380,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 5337,
+        "count": 1
+      },
+      {
+        "item": 28143,
+        "count": 1
+      },
+      {
+        "item": 3440,
+        "count": 1
+      },
+      {
+        "item": 22969,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 3 of 3, and the road to Orgrimmar: what Durotar and Orgrimmar are named for, and Vol'jin's answer."
+}

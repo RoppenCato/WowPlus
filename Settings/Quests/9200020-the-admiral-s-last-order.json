@@ -1,0 +1,61 @@
+{
+  "id": 9200020,
+  "title": "The Admiral's Last Order",
+  "level": 8,
+  "min_level": 5,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 14,
+  "type": "collect",
+  "after": 9200019,
+  "giver": 11943,
+  "turn_in": 11943,
+  "creatures": [
+    {
+      "id": 9210005,
+      "kind": "enemy",
+      "like": 3129,
+      "name": "Quartermaster Tidewell",
+      "title": "Proudmoore's Rearguard",
+      "level": 8,
+      "health": 1.5,
+      "size": 1.05,
+      "map": 1,
+      "x": -60.0,
+      "y": -5130.0,
+      "z": 13.2,
+      "o": 3.0,
+      "respawn": 180
+    }
+  ],
+  "objectives": [
+    {
+      "item": 6279,
+      "count": 1,
+      "drops_from": [
+        {
+          "creature": 9210005,
+          "chance": 100
+        }
+      ]
+    }
+  ],
+  "texts": {
+    "details": "Here is my part. Proudmoore's marines came up from the coast and we held them at Razor Hill. Then the Warchief and the Mok'Nathal, Rexxar, took the fight across the sea to Theramore, and the Admiral died there. His own daughter Jaina stood aside and let us pass. She had tried to stop him.\n\nThe fleet went home. The men in Tiragarde did not. All this time, and they hold that keep as if he were coming back.\n\nI want to know what they were told, $N. One of their officers, Tidewell, keeps the stores on the shore below the keep. Officers keep letters. Bring me his.",
+    "objectives": "Kill Quartermaster Tidewell on the shore below Tiragarde Keep and bring the Musty Letter he carries to Magga in Razor Hill.",
+    "progress": "He will have it on him. A man who holds a beach for years holds on to the order that put him there.",
+    "completion": "Give it here. My eyes are slow with their letters.\n\n\"Hold the landing until relieved. No terms with the greenskins. D.P.\"\n\nThat is all of it. He never wrote again. He was dead before the season turned, and nobody came to tell them.\n\nThey are holding a beach for a dead man, $N. I thought I would be glad to know it."
+  },
+  "reward": {
+    "money": 200,
+    "xp_difficulty": 5,
+    "items": [
+      {
+        "item": 117,
+        "count": 4
+      }
+    ],
+    "choices": []
+  },
+  "idea": "Chain 2 of 3: Proudmoore's siege, Rexxar and Theramore, Jaina standing aside, and the garrison nobody relieved."
+}

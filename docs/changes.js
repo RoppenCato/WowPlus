@@ -249,7 +249,19 @@ window.CHANGELOG = {
           text: "Elwynn Forest, levels 6 to 9, Alliance, three quests: a miner locked out of the Fargodeep wants to know what kobolds are, why the dark is death to them, and who is driving them.",
           details: ["Starts with Edrin Halloway in Goldshire, a person new to the world.", "Uses two new kinds of task: going to a place, and hearing someone out."] },
         { title: "Something on the road", kind: "feature", status: "built", date: "2026-10-12",
-          text: "Quests that start in one zone and end in the next, so the journey has a thread: from Westbrook Garrison to Sentinel Hill, and from Eastvale to the Three Corners in Redridge." }
+          text: "Quests that start in one zone and end in the next and tell you what waits there. So far: Elwynn to Westfall and to Redridge, Dun Morogh to Loch Modan, Teldrassil to Darkshore, Durotar to the Barrens, Tirisfal to Silverpine." },
+        { title: "The Ones Who Were Here First", kind: "feature", status: "built", date: "2026-10-12",
+          text: "Dun Morogh, levels 7 to 9, Alliance, two quests: why the Frostmane trolls are in the mountains at all, and whose mountains they were.",
+          details: ["Starts with Yori Crackhelm in Kharanos."] },
+        { title: "Once of Our Blood", kind: "feature", status: "built", date: "2026-10-12",
+          text: "Teldrassil, levels 6 to 8, Alliance, two quests: what a satyr is, heard from a priestess and then from the satyr himself, and the one who watches over fallen Starbreeze.",
+          details: ["Starts with Orenthil Whisperwind in Dolanaar."] },
+        { title: "The Admiral's War", kind: "feature", status: "built", date: "2026-10-12",
+          text: "Durotar, levels 7 to 9, Horde, three quests: why there are humans in a keep on the orcs' coast, what they were ordered to do, and who should be told. Ends in Orgrimmar.",
+          details: ["Starts with Magga in Razor Hill."] },
+        { title: "What Sleeps Beneath", kind: "feature", status: "built", date: "2026-10-12",
+          text: "Tirisfal Glades, levels 8 to 9, Horde, two quests: where the name Tirisfal comes from, and who lived in the glades long before Lordaeron and left in a hurry.",
+          details: ["Starts with Claire Willower in Brill.", "Dark Cleric Beryl also sends you to an archbishop's grave nobody visits."] }
       ]
     },
     {

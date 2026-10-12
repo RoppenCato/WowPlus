@@ -1,0 +1,25 @@
+{
+  "id": 9200022,
+  "title": "Bigger Game",
+  "level": 11,
+  "min_level": 8,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 14,
+  "type": "deliver",
+  "giver": 3194,
+  "turn_in": 3338,
+  "objectives": [],
+  "texts": {
+    "details": "Ya done wit' scorpids an' tigers, mon? Den ya ready for de Barrens. West over de river, past Far Watch, an' de land opens so wide ya can't see de end of it.\n\nDere be lions dat hunt in prides, an' raptors smart enough ta steal from ya. De quilboar hold de thorn hills an' de centaur ride where dey please. De Horde got one town in de middle of it all, de Crossroads, an' not enough spears.\n\nFind Sergra Darkthorn dere. She be de best hunter de orcs got. Tell her Vel'rin sends someone who can skin what dey kill.",
+    "objectives": "Cross into the Barrens and present yourself to Sergra Darkthorn at the Crossroads.",
+    "completion": "Vel'rin says so? He does not say it often.\n\nThen listen. Every hide and haunch on the caravans to Orgrimmar comes off this plain. The Barrens feeds the Horde, and it will kill you if you walk it carelessly. The quilboar and the centaur were fighting over it long before we came, and neither has agreed that we may stay.\n\nRest, $N. Then we will see what you can hunt."
+  },
+  "reward": {
+    "money": 350,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Durotar to the Barrens: what the plain is, who holds it, and that the Horde holds it thinly."
+}

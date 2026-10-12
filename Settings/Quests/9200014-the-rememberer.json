@@ -1,0 +1,71 @@
+{
+  "id": 9200014,
+  "title": "The Rememberer",
+  "level": 9,
+  "min_level": 6,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 1,
+  "type": "kill",
+  "after": 9200013,
+  "giver": 11941,
+  "turn_in": 11941,
+  "creatures": [
+    {
+      "id": 9210003,
+      "kind": "enemy",
+      "like": 1124,
+      "name": "Jin'zakk the Rememberer",
+      "title": "Frostmane Elder",
+      "level": 10,
+      "health": 1.6,
+      "size": 1.1,
+      "map": 0,
+      "x": -5545.0,
+      "y": 455.0,
+      "z": 382.9,
+      "o": 4.6,
+      "respawn": 180
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210003,
+      "count": 1
+    },
+    {
+      "creature": 1121,
+      "count": 5
+    }
+  ],
+  "texts": {
+    "details": "I've been listenin' to the mountaineers since ye went. There's an old troll below Frostmane Hold, out west, who doesn't raid. He sits by a fire an' talks, an' the young trolls come an' hear him. Jin'zakk. A rememberer, his own kind call him.\n\nHe keeps the tale o' every valley we took from them, an' he tells it till they're ready to die gettin' one back. The raids on the south road start at his fire, an' the snowstriders carry his word from camp to camp.\n\nSenir wants him dead, an' five o' the striders with him. I'll no' pretend it's a clean thing I'm askin', $N. All he's doin' is tellin' the truth.",
+    "objectives": "Kill Jin'zakk the Rememberer below Frostmane Hold and 5 Frostmane Snowstriders, then return to Yori Crackhelm in Kharanos.",
+    "progress": "He'll be at his fire below the Hold. The striders run the snow between there an' the lake.",
+    "completion": "Then it's done, an' the south road will be quieter for a season.\n\nIt won't last. A tale doesn't die with the one who tells it. Some young troll heard every word, an' he'll be sittin' at that fire by spring.\n\nBut I'll tell ye what I'm goin' to do, $N. When I've bairns o' my own an' they ask why the trolls hate us, I'm goin' to tell them. Here. Ye earned it."
+  },
+  "reward": {
+    "money": 400,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 10638,
+        "count": 1
+      },
+      {
+        "item": 5275,
+        "count": 1
+      },
+      {
+        "item": 3160,
+        "count": 1
+      },
+      {
+        "item": 3586,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 2: the Frostmane keep the memory of the land they lost, and the war is two and a half thousand years old."
+}

@@ -1,0 +1,45 @@
+{
+  "id": 9200019,
+  "title": "Sails from the East",
+  "level": 7,
+  "min_level": 4,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 14,
+  "type": "visit",
+  "giver": 11943,
+  "turn_in": 11943,
+  "objectives": [
+    {
+      "talk": 3188,
+      "text": "Ask Master Gadrin about the Admiral's ships",
+      "says": [
+        "Ya ask about de Admiral's ships? Dey came on us first, mon. De Darkspear had only just made a home on de Echo Isles.",
+        "Kul Tiras, dey call demselves. Sea humans. Dey burned de villages from de water before we saw a single face.",
+        "We left our dead an' crossed to de mainland wit' what we could carry. Den Zalazane took what de humans left. Twice de Darkspear lost dose isles, an' de first time was to dat fleet."
+      ]
+    },
+    {
+      "place": {
+        "map": 1,
+        "x": -189.0,
+        "y": -5021.0,
+        "radius": 75
+      },
+      "text": "Look over Tiragarde Keep"
+    }
+  ],
+  "texts": {
+    "details": "You have seen the humans in the keep on the coast? Tiragarde. The young ones ask me why there are humans in Durotar at all, and Gar'Thok only says \"kill them.\" That is an order. It is not an answer.\n\nI was at Razor Hill when their ships came, $N. I will tell you my part after. First hear the trolls' part, because they paid before we did. Speak with Master Gadrin in Sen'jin Village, to the south.\n\nThen go to the coast and look at Tiragarde Keep. Look at how it is built, and which way its walls face.",
+    "objectives": "Ask Master Gadrin in Sen'jin Village about the Admiral's ships and look over Tiragarde Keep, then return to Magga in Razor Hill.",
+    "progress": "The keep is on the coast, east and south of here. You need not go inside to see it.",
+    "completion": "The walls face inland. You saw. It was not built against the sea. It was built against us.\n\nTheir admiral was Daelin Proudmoore of Kul Tiras. In the old war he led the humans' fleets, and orcs on dragons burned his son's ships with the son aboard. He never forgave it.\n\nWhen he found us here, on the far side of the world, living quietly, he did not ask what we had become. He landed."
+  },
+  "reward": {
+    "money": 100,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 3, The Admiral's War: why there are humans in Durotar. Kul Tiras, Daelin Proudmoore, and the burning of the Echo Isles."
+}

@@ -1,0 +1,45 @@
+{
+  "id": 9200013,
+  "title": "Older Than the Forge",
+  "level": 7,
+  "min_level": 4,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 1,
+  "type": "visit",
+  "giver": 11941,
+  "turn_in": 11941,
+  "objectives": [
+    {
+      "talk": 1252,
+      "text": "Ask Senir Whitebeard about the Frostmane",
+      "says": [
+        "The Frostmane are ice trolls, an' they were huntin' these slopes before there was a dwarf in the world to bother them.",
+        "When our forebears came west out o' Uldaman an' cut Ironforge into the mountain, the trolls were already here. We didn't ask their leave.",
+        "Two an' a half thousand years we've pushed them back, valley by valley. Coldridge an' the Hold are what's left. To a Frostmane, we're the raiders."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -5175.0,
+        "y": -206.0,
+        "radius": 60
+      },
+      "text": "Look over Shimmer Ridge"
+    }
+  ],
+  "texts": {
+    "details": "Every bairn in Kharanos is told the same thing: stay off the west slopes or the Frostmane will have ye. Nobody tells them why the trolls are there at all, or why they hate us so.\n\nI asked my da once an' got a clip round the ear. So I'm askin' you, $N. Senir Whitebeard keeps the reports on the Frostmane; if anyone knows the old tale, he does.\n\nThen go up to Shimmer Ridge, north o' the village, where their seers sit. Don't go in among them. Just look at what they're doin' up there.",
+    "objectives": "Ask Senir Whitebeard in Kharanos about the Frostmane trolls and look over Shimmer Ridge, then return to Yori Crackhelm in Kharanos.",
+    "progress": "Did Senir tell ye, or did he clip yer ear as well?",
+    "completion": "So it was theirs first. I half knew it. Ye can hear it in how the old ones won't talk about it.\n\nAn' the seers on the ridge. That's no war camp, is it? They sit round their fires an' the shimmerweed, an' the young ones sit an' listen. They're keepin' somethin' up there, $N. I think it's the tale Senir just told you, from the other side."
+  },
+  "reward": {
+    "money": 110,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, The Ones Who Were Here First: the Frostmane are ice trolls who held Dun Morogh before the dwarves came out of Uldaman and built Ironforge."
+}

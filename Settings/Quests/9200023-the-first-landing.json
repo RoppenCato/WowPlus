@@ -1,0 +1,45 @@
+{
+  "id": 9200023,
+  "title": "The First Landing",
+  "level": 8,
+  "min_level": 5,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 85,
+  "type": "visit",
+  "giver": 11945,
+  "turn_in": 11945,
+  "objectives": [
+    {
+      "talk": 2128,
+      "text": "Ask Cain Firesong what Tirisfal means",
+      "says": [
+        "Tirisfal? Every apprentice in Dalaran learns that name, though few are told why.",
+        "Near three thousand years ago the first human mages and the elves of Quel'Thalas met in these glades and formed a secret order to hunt demons. They poured their power into one champion: the Guardian of Tirisfal.",
+        "The last Guardian was Medivh, and you know how that ended. But ask yourself why the elves chose this place to meet. They had been here before."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": 2294.0,
+        "y": 826.0,
+        "radius": 140
+      },
+      "text": "Stand at the water of Stillwater Pond"
+    }
+  ],
+  "texts": {
+    "details": "Before the plague I kept the parish records in Brill. Births, burials, boundary stones. I keep them still. No one has told me to stop.\n\nThere is a thing in the oldest pages that bothered me long before I died. This land was called Tirisfal before there was a Lordaeron, and not by men.\n\nCain Firesong, the mage here, studied in Dalaran. Ask him what the name meant to his order. Then walk out to Stillwater Pond, west of the town, and stand at the water a while. Tell me if you notice what I noticed.",
+    "objectives": "Ask Cain Firesong in Brill what the name Tirisfal means and stand at the water of Stillwater Pond, then return to Claire Willower in Brill.",
+    "progress": "The pond lies west of Brill, on the way to the Agamand mills.",
+    "completion": "You noticed. Nothing moves on that water, and no wind takes it. It is Stillwater on the oldest survey I have, from before there was a Brill.\n\nHere is what the old pages say. Seven thousand years ago the high elves, exiles from across the sea, made their first landing on this coast and settled in these glades. Within a few years some of them began to go mad. They said something evil slept under the ground here. They left what they had built and went north, and founded Quel'Thalas.\n\nIt is in no history of Lordaeron, $N. We built a kingdom on top of it and never asked."
+  },
+  "reward": {
+    "money": 120,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, What Sleeps Beneath: the Council of Tirisfal, and the high elves who landed here first and fled something under the ground."
+}
