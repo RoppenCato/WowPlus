@@ -1,0 +1,45 @@
+{
+  "id": 9200104,
+  "title": "Profit Above Loyalty",
+  "level": 42,
+  "min_level": 37,
+  "max_level": 0,
+  "side": "both",
+  "zone": 440,
+  "type": "visit",
+  "giver": 7407,
+  "turn_in": 7407,
+  "objectives": [
+    {
+      "talk": 7564,
+      "text": "Ask Marin Noggenfogger how Gadgetzan stays neutral",
+      "says": [
+        "Neutral? Friend, neutral is the most expensive thing I sell. You think it comes free?",
+        "This is Steamwheedle ground. Biggest cartel there is. Horde gold, Alliance gold, it all spends the same, and anybody who forgets that inside my walls gets pounded flat by a bruiser. Bad for trade otherwise.",
+        "Gadgetzan, Ratchet, Booty Bay, Everlook. Same deal in every one of them. Bring a fat wallet or a useful pair of hands and nobody asks which flag you bow to."
+      ]
+    },
+    {
+      "place": {
+        "map": 1,
+        "x": -7624.0,
+        "y": -4456.0,
+        "radius": 150
+      },
+      "text": "See the water towers at Waterspring Field"
+    }
+  ],
+  "texts": {
+    "details": "You've been in town an hour and nobody's stabbed you. Notice that? Orcs and dwarves drinking at the same bar? That's not an accident, pal. That's engineering.\n\nGo ask the Baron how it works. Noggenfogger. He runs the place now; I used to. He'll give you the speech.\n\nThen take a walk south-east to the Waterspring Field and look at my towers. You want to know what a city in a desert is really built on, it ain't gold.",
+    "objectives": "Ask Marin Noggenfogger in Gadgetzan how the town stays neutral and see the water towers at Waterspring Field, then return to Chief Engineer Bilgewhizzle.",
+    "progress": "Noggenfogger's right here in town. The towers are out south-east. Mind the bandits.",
+    "completion": "See 'em? Every drop this town drinks comes out of those towers. The Water Company built 'em and keeps 'em.\n\nAnd you saw who's sitting on 'em. Wastewanders. Bandits. They figured out what you just figured out: you don't have to take Gadgetzan. You just have to take the water.\n\nThat's the cartel's whole philosophy in one field, $N. Find the thing everybody needs, stand next to it, and be very polite to both sides."
+  },
+  "reward": {
+    "money": 8500,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Gadgetzan is the seat of the Steamwheedle Cartel, the largest goblin cartel, neutral because goblins believe in profit above loyalty and enforced by bruisers; Marin Noggenfogger leads it, Bilgewhizzle formerly; the Water Company's towers at Waterspring Field are vital to it and the Wastewander bandits hold them."
+}

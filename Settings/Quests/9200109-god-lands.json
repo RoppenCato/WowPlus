@@ -1,0 +1,53 @@
+{
+  "id": 9200109,
+  "title": "God Lands",
+  "level": 50,
+  "min_level": 45,
+  "max_level": 0,
+  "side": "both",
+  "zone": 490,
+  "type": "visit",
+  "giver": 9270,
+  "turn_in": 9270,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": -6276.0,
+        "y": -1558.0,
+        "radius": 45
+      },
+      "text": "Find the Northern Crystal Pylon"
+    }
+  ],
+  "texts": {
+    "details": "We came down into this crater to study it, and now we are mostly occupied with not being eaten by it. But I have not given up on the study.\n\nThere are things on the rim that nothing living here could have made. Pylons, of worked crystal. One stands on the northern ridge, not far east of the Refuge. Go and look at it, $N. Do not expect it to do anything; it needs crystals of the right colours to wake, and a gnome named Collie has the manual.\n\nOnly see it. Then I will tell you what we have pieced together about this place.",
+    "objectives": "Find the Northern Crystal Pylon on the northern ridge of Un'Goro Crater, then return to Williden Marshal at Marshal's Refuge.",
+    "progress": "East of here along the northern rim, up on the ridge.",
+    "completion": "There are three of them: north, west and east. There is none in the south, and no one can tell me why.\n\nThe name of this place is not Kalimdor's. Un'Goro is a word in the tongue of the qiraji, the insect lords of Silithus, and it means \"God Lands.\" When their swarms overran the south a thousand years ago, this was the one land they could not take.\n\nOne scholar believes it was the home of the titans when they walked this world, and that the pylons mark where they would return. I am a naturalist; I do not go so far. But the land is ancient beyond memory, $N, and something has been keeping it that way."
+  },
+  "reward": {
+    "money": 12000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 11875,
+        "count": 1
+      },
+      {
+        "item": 18411,
+        "count": 1
+      },
+      {
+        "item": 15813,
+        "count": 1
+      },
+      {
+        "item": 12021,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Un'Goro means \"God Lands\" in the Qiraji language; the qiraji could not take it; three crystal pylons stand north, west and east, a southern one mysteriously absent; Geologist Larksbane's theory that it was the titans' home, and that the pylons mark where they could return; J.D. Collie's manual."
+}

@@ -1,0 +1,53 @@
+{
+  "id": 9200103,
+  "title": "The Last Tribe",
+  "level": 46,
+  "min_level": 41,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 47,
+  "type": "visit",
+  "giver": 14736,
+  "turn_in": 14736,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -444.0,
+        "y": -3970.0,
+        "radius": 150
+      },
+      "text": "Look upon Jintha'Alor"
+    }
+  ],
+  "texts": {
+    "details": "Ya come ta Revantusk Village an' ya wonder why forest trolls be feedin' ya instead of eatin' ya. Fair question, mon.\n\nIn de last great war de forest trolls stood wit' de Horde. Zul'jin himself took de Warchief's hand, for a promise dat de orcs would help raise de Amani empire again. Den de Horde lost, an' most of our kind turned deir backs on de orcs. De Revantusk did not. We paid for dat. Dey drove us down here ta de sea.\n\nGo up inta de hills an' look at Jintha'Alor, de city of de Vilebranch. Dose be de ones who call us weaklings. Look, an' come back.",
+    "objectives": "Look upon the Vilebranch city of Jintha'Alor, then return to Primal Torntusk at Revantusk Village.",
+    "progress": "West an' up from de village. A whole hill cut inta steps.",
+    "completion": "Ya seen it. Dey raided us from dere. Dey took our Elder, an' dey killed de captain of our guard. Deir priestess means ta give de Elder ta de Blood God, de faceless one.\n\nWhen ya new Warchief came callin', we remembered de old Horde. De recklessness. De rot in it. So we would not join. But we gave our word: friendship, an' help when help be needed. An' we keep our word.\n\nWe be de last tribe of forest trolls ta serve de Horde, mon. We be proud of dat. Now maybe ya know what it cost."
+  },
+  "reward": {
+    "money": 9500,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 9658,
+        "count": 1
+      },
+      {
+        "item": 9632,
+        "count": 1
+      },
+      {
+        "item": 19125,
+        "count": 1
+      },
+      {
+        "item": 9637,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Revantusk fought beside the old Horde after Zul'jin accepted Doomhammer's alliance and its promise to restore the Amani Empire; attacked for their loyalty they moved to the coast; remembering the old Horde's recklessness and corruption they declined to rejoin but made a pact of friendship; the Vilebranch captured Elder Torntusk for sacrifice to the Blood God; \"the last tribe of Forest Trolls to serve the Horde\"."
+}

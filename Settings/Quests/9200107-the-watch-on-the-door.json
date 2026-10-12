@@ -1,0 +1,53 @@
+{
+  "id": 9200107,
+  "title": "The Watch on the Door",
+  "level": 48,
+  "min_level": 43,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 4,
+  "type": "visit",
+  "giver": 5385,
+  "turn_in": 5385,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -11806.0,
+        "y": -3214.0,
+        "radius": 130
+      },
+      "text": "Go to the Dark Portal"
+    }
+  ],
+  "texts": {
+    "details": "You have come to the end of the kingdom, $N, and the reason there is a keep here is two days' walk to the south.\n\nThis land was a marsh once. The Black Morass. It was through this marsh that the Horde first came into our world, by a gate of dark magic. The power that spilled from that gate withered everything it touched. When the gate was destroyed at the end of the Second War, the fires of its breaking burned the earth red.\n\nGo and look at what is left of it. The Dark Portal. Then come back, and understand why mages and paladins sit in a desert watching a doorway.",
+    "objectives": "Go to the Dark Portal in the south of the Blasted Lands, then return to Watcher Mahar Ba at Nethergarde Keep.",
+    "progress": "South, through the red waste. You will see the lightning long before you see the stone.",
+    "completion": "You have seen the door every orc in this world came through.\n\nThe Archmage Khadgar founded this keep after the war, so that there would always be eyes on it. The wizards of Dalaran keep that watch still. The same hands that raised Stormwind anew built these walls. The masons were never paid for either, I am told.\n\nIt leads now to what is left of the orcs' own world. And what remains of the Burning Legion here has gone to ground in the Tainted Scar, under a demon named Kazzak. The ogres serve him. That is what we watch, $N. I do not expect to be relieved."
+  },
+  "reward": {
+    "money": 11000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 11875,
+        "count": 1
+      },
+      {
+        "item": 18411,
+        "count": 1
+      },
+      {
+        "item": 15813,
+        "count": 1
+      },
+      {
+        "item": 12021,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Blasted Lands were the Black Morass, warped by the magic of the Dark Portal and burned red when it was destroyed in the Second War; Khadgar established Nethergarde Keep, where Dalaran's wizards watch the Portal; Kazzak and the Legion's remnant in the Tainted Scar, served by Dreadmaul ogres; the Stonemasons under VanCleef built Nethergarde."
+}

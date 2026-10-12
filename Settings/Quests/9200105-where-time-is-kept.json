@@ -1,0 +1,53 @@
+{
+  "id": 9200105,
+  "title": "Where Time Is Kept",
+  "level": 48,
+  "min_level": 43,
+  "max_level": 0,
+  "side": "both",
+  "zone": 440,
+  "type": "visit",
+  "giver": 7564,
+  "turn_in": 7564,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": -8177.0,
+        "y": -4658.0,
+        "radius": 120
+      },
+      "text": "Go to the mouth of the Caverns of Time"
+    }
+  ],
+  "texts": {
+    "details": "I'll tell you the one piece of real estate in Tanaris I can't buy, lease or get a survey of.\n\nEast of here, in the mountains, there's a cave mouth with dragons sitting in front of it. Bronze ones. They've been there longer than the desert has. My guys go to take measurements and come back a week before they left, with a headache.\n\nYou look like you can take care of yourself. Go to the mouth of the place. Don't poke anything. Come back and tell me what they're guarding, because I've got customers asking.",
+    "objectives": "Go to the mouth of the Caverns of Time in the east of Tanaris, then return to Marin Noggenfogger in Gadgetzan.",
+    "progress": "East, into the mountains past the Waterspring Field. Look for something big and bronze.",
+    "completion": "Yeah. That's what the druids told me too, the ones that pass through.\n\nThey call it the Caverns of Time. The bronze dragons have kept it since the world was young, under some old charge to guard time itself and keep the rest of us from meddling with it. The big one at the door is Anachronos.\n\nHere's a thing. A thousand years back, when the bugs came boiling out of Silithus, those dragons wouldn't lift a claw. Said it was the business of lesser creatures. Then the bugs hit that cave, and all of a sudden it was everybody's war. I respect that, $N. That's a business decision. Here, for the legwork."
+  },
+  "reward": {
+    "money": 11000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 11875,
+        "count": 1
+      },
+      {
+        "item": 18411,
+        "count": 1
+      },
+      {
+        "item": 15813,
+        "count": 1
+      },
+      {
+        "item": 12021,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Caverns of Time are the bronze dragonflight's home, where they guard the timeways and keep mortals out; Anachronos sits outside; in the War of the Shifting Sands the bronze flight refused to help until the silithid attacked the Caverns."
+}

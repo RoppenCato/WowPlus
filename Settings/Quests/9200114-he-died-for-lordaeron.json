@@ -1,0 +1,53 @@
+{
+  "id": 9200114,
+  "title": "He Died for Lordaeron",
+  "level": 54,
+  "min_level": 49,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 28,
+  "type": "visit",
+  "giver": 10837,
+  "turn_in": 10837,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": 1000.0,
+        "y": -1823.0,
+        "radius": 40
+      },
+      "text": "Stand before Uther's Tomb"
+    }
+  ],
+  "texts": {
+    "details": "You serve the Dark Lady, and you have been taught to despise the Light and all who carry it. Good. Now I am going to send you to a paladin's grave, and you are going to stand before it with your head uncovered.\n\nFar east of here, south of Andorhal, on Sorrow Hill. Uther the Lightbringer. There is a living priest there who keeps it. Leave him be. He will not thank you, but leave him be.\n\nRead the stone, $N. Then come back, and I will tell you why a Forsaken should.",
+    "objectives": "Stand before Uther's Tomb on Sorrow Hill in the Western Plaguelands, then return to High Executor Derrington at the Bulwark.",
+    "progress": "East along the road, past Andorhal, then south up the hill.",
+    "completion": "\"Uther lived and died to defend the Kingdom of Lordaeron.\" You read it.\n\nThat was our kingdom. We were its farmers and its soldiers. He died for us, near Andorhal, carrying our king's ashes. And the one who cut him down was the same prince who murdered that king, and then murdered us, and raised us to serve him.\n\nWe have no love for the Light, $N. It has none for us. But I was a man of Lordaeron once, and I will not hear that old knight mocked by anyone who was not. Nor should you."
+  },
+  "reward": {
+    "money": 12500,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 15791,
+        "count": 1
+      },
+      {
+        "item": 15861,
+        "count": 1
+      },
+      {
+        "item": 11918,
+        "count": 1
+      },
+      {
+        "item": 15413,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The same history from a Forsaken: Uther died defending Lordaeron, the Forsaken's own kingdom, at the hands of Arthas, who made them. Invented: High Executor Derrington's respect."
+}

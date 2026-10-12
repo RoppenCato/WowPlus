@@ -1,0 +1,53 @@
+{
+  "id": 9200115,
+  "title": "A Thousand Heroes",
+  "level": 56,
+  "min_level": 51,
+  "max_level": 0,
+  "side": "both",
+  "zone": 139,
+  "type": "visit",
+  "giver": 11034,
+  "turn_in": 11034,
+  "objectives": [
+    {
+      "talk": 11036,
+      "text": "Ask Leonid Barthalomew how the Argent Dawn began",
+      "says": [
+        "How did we begin? In a quarrel. After the Highlord Mograine was slain, those who had followed him could not agree on what to become.",
+        "Most became the Scarlet Crusade. You have met them. They will have no one beside them who is not human, and they see the plague in every stranger's face.",
+        "A few of us would not go that road. We came out here, to this chapel, and we said: anyone who will fight the dead may stand with us. Anyone. Even those of the Horde."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "You stand on holy ground, $N, and I mean that more exactly than most who say it.\n\nThis was a little country chapel once. Now it is the heart of our order, and what lies under it is the reason the Scourge has thrown itself at these walls again and again.\n\nLeonid can tell you how we came to be here. Hear him first. Then I will tell you what we keep.",
+    "objectives": "Ask Leonid Barthalomew the Revered how the Argent Dawn began, then return to Lord Maxwell Tyrosus at Light's Hope Chapel.",
+    "progress": "Leonid is here in the chapel grounds.",
+    "completion": "Beneath this floor lie a thousand heroes of the Light.\n\nAfter Lordaeron was scourged, we went out in secret, I and a few others, and dug them up from where they had fallen, and carried them here, so that the Lich King could never raise them against the living. They rest in a sanctum under the chapel.\n\nThe Scourge came for them. When Kel'Thuzad's army fell on this chapel, those who lie below woke, long enough to help us hold. Later the Lich King came himself. Here, on this ground, the Ashbringer was put into Tirion Fordring's hand, and the Lich King was wounded and fled. Our order and the old Silver Hand became one that day: the Argent Crusade. Walk softly here, $N."
+  },
+  "reward": {
+    "money": 11000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 15791,
+        "count": 1
+      },
+      {
+        "item": 15861,
+        "count": 1
+      },
+      {
+        "item": 11918,
+        "count": 1
+      },
+      {
+        "item": 15413,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Argent Dawn split from what became the Scarlet Crusade after Alexandros Mograine's death, made Light's Hope its base and admitted all races, even the Horde; Lord Maxwell and others exhumed about a thousand heroes of the Light and reinterred them beneath the chapel; at the Battle for Light's Hope Tirion received the Ashbringer and injured the Lich King, and formed the Argent Crusade."
+}

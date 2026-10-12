@@ -1,0 +1,53 @@
+{
+  "id": 9200116,
+  "title": "The City That Burned",
+  "level": 57,
+  "min_level": 52,
+  "max_level": 0,
+  "side": "both",
+  "zone": 139,
+  "type": "visit",
+  "giver": 11039,
+  "turn_in": 11039,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": 3312.0,
+        "y": -3383.0,
+        "radius": 120
+      },
+      "text": "Go to the gates of Stratholme"
+    }
+  ],
+  "texts": {
+    "details": "Every soldier I send north goes to Stratholme, sooner or later. Before you go to fight there, go once only to look.\n\nIt lies at the northern end of this land. You need not enter. Stand before the gates and see what is left of the second city of Lordaeron. There are fires in it that have not gone out since the day it fell.\n\nThen come back, and I will tell you what happened on that day. It is not a tale with a villain you can easily point to. That is why you should hear it.",
+    "objectives": "Go to the gates of Stratholme in the north of the Eastern Plaguelands, then return to Duke Nicholas Zverenhoff at Light's Hope Chapel.",
+    "progress": "North, to the end of the road. You will see the smoke.",
+    "completion": "The plague came to Stratholme in grain from Andorhal. By the time Prince Arthas reached the gates, with Uther and Jaina Proudmoore beside him, the people had baked it and eaten it. They were dying, and would rise.\n\nHe ordered the city purged. Every soul, before they could turn. Uther refused him. So did Jaina. He called it treason, and did it without them. \"Better that these people die by my hand,\" he told the demon who had planned it all, \"than serve as your slaves in death.\"\n\nMany who died rose anyway. He sailed north after the demon, and came back as you know. Was he wrong at the gates, $N? I have asked myself for years. I only know what he became."
+  },
+  "reward": {
+    "money": 11000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 15791,
+        "count": 1
+      },
+      {
+        "item": 15861,
+        "count": 1
+      },
+      {
+        "item": 11918,
+        "count": 1
+      },
+      {
+        "item": 15413,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Culling of Stratholme: infected grain from Andorhal under the dreadlord Mal'Ganis; Arthas ordered the city purged before its people could rise; Uther and Jaina refused and he called it treason; his words to Mal'Ganis (quoted); many rose anyway and the city fell to the Scourge; Arthas followed Mal'Ganis to Northrend."
+}

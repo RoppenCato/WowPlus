@@ -1,0 +1,53 @@
+{
+  "id": 9200111,
+  "title": "Where Lothar Fell",
+  "level": 52,
+  "min_level": 47,
+  "max_level": 0,
+  "side": "both",
+  "zone": 46,
+  "type": "visit",
+  "giver": 9563,
+  "turn_in": 9563,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -7738.0,
+        "y": -2063.0,
+        "radius": 150
+      },
+      "text": "Walk the Ruins of Thaurissan"
+    }
+  ],
+  "texts": {
+    "details": "You want to know about the mountain. Everybody does. Sit. I've been looking at it longer than is good for a man.\n\nNorth-east of here there's a field of broken stone. That was a city. Thaurissan, capital of the Dark Iron dwarves, after they were thrown out of the Redridge country. Go and walk through it, $N. See how the stone ran like wax.\n\nThen come back, and I'll tell you what happened to it, and what happened later at the foot of that mountain, to a better man than either of us.",
+    "objectives": "Walk the Ruins of Thaurissan in the Burning Steppes, then return to Ragged John at Flame Crest.",
+    "progress": "North-east, in the middle of the Steppes. Watch the sky for dragons.",
+    "completion": "Their thane was a sorcerer, and mad. He meant to call up elementals against his enemies. He called up Ragnaros instead, the Firelord. The arrival melted the mountains and threw up that volcano where the blast was. That's Blackrock. That's why there's no Thaurissan.\n\nDark Irons hold the deeps of it now, with their fire lord. Black dragons and their orcs hold the top. They fight each other without end.\n\nAnd at the foot of it, at the close of the Second War, the Warchief Doomhammer killed Anduin Lothar, the Lion of Azeroth. It did the orcs no good. The Alliance saw him fall and went mad with it, and broke the Horde that same day. Two peoples lost their best on that slope, $N."
+  },
+  "reward": {
+    "money": 12500,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 11875,
+        "count": 1
+      },
+      {
+        "item": 18411,
+        "count": 1
+      },
+      {
+        "item": 15813,
+        "count": 1
+      },
+      {
+        "item": 12021,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Dark Irons, exiled from Redridge, founded Thaurissan; their Sorcerer-Thane summoned Ragnaros, whose arrival melted mountains and forged the volcano; Dark Irons hold Blackrock's deeps and Nefarian's black dragons the upper levels, in constant battle; Orgrim Doomhammer slew Anduin Lothar by the foot of the volcano, and his death spurred the Alliance to crush the Horde."
+}

@@ -1,0 +1,62 @@
+{
+  "id": 9200113,
+  "title": "The Lightbringer",
+  "level": 54,
+  "min_level": 49,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 28,
+  "type": "visit",
+  "giver": 10838,
+  "turn_in": 10838,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": 1000.0,
+        "y": -1823.0,
+        "radius": 40
+      },
+      "text": "Stand before Uther's Tomb"
+    },
+    {
+      "talk": 1854,
+      "text": "Hear High Priest Thel'danis read the stone",
+      "says": [
+        "You have come to pay your respects. Good. Few do, now. I will read it to you, for the letters are weathered.",
+        "\"Here lies Uther the Lightbringer. First Paladin, Founder of the Order of the Silver Hand. Uther lived and died to defend the Kingdom of Lordaeron.\"",
+        "\"Though he was betrayed by his most beloved student, we believe that his spirit lives on. His light is the light of all humanity, and so long as we honor his example, it shall never fade.\""
+      ]
+    }
+  ],
+  "texts": {
+    "details": "You fight the Scourge beside men who call themselves paladins. I would have you see where the first of them lies.\n\nEast of here, on Sorrow Hill, south of the ruins of Andorhal, there is a tomb. A priest keeps it still, alone, in the middle of all this. Go there, $N. Stand before it, and let him read you the stone.\n\nThen come back, and I will tell you about the town you passed on the way.",
+    "objectives": "Stand before Uther's Tomb on Sorrow Hill and hear High Priest Thel'danis read the stone, then return to Commander Ashlam Valorfist at Chillwind Camp.",
+    "progress": "East along the hills from the camp, south of Andorhal.",
+    "completion": "His most beloved student. That was Prince Arthas.\n\nAndorhal was the granary of the north. Every village's bread came through it. The necromancer Kel'Thuzad and his cult poisoned the grain there, and that is how the plague reached all of Lordaeron at once.\n\nWhen the kingdom fell, Uther and his knights were carrying the ashes of the murdered king in procession. Arthas came upon them with an army of the dead. He killed Uther and took his father's urn from the body. The first paladin died guarding the remains of his king against his own pupil, $N. Remember him when you hear the word."
+  },
+  "reward": {
+    "money": 12500,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 15791,
+        "count": 1
+      },
+      {
+        "item": 15861,
+        "count": 1
+      },
+      {
+        "item": 11918,
+        "count": 1
+      },
+      {
+        "item": 15413,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Uther the Lightbringer, first paladin and founder of the Silver Hand, was killed by Arthas while carrying King Terenas's urn in a funeral procession; the tomb's inscription (quoted from the game); High Priest Thel'danis keeps it; Andorhal was the grain distribution centre of northern Lordaeron, where Kel'Thuzad and the Cult of the Damned infected the grain."
+}

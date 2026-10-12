@@ -1,0 +1,53 @@
+{
+  "id": 9200110,
+  "title": "The Drowned Capital",
+  "level": 48,
+  "min_level": 43,
+  "max_level": 0,
+  "side": "both",
+  "zone": 16,
+  "type": "visit",
+  "giver": 11548,
+  "turn_in": 11548,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": 3486.0,
+        "y": -5147.0,
+        "radius": 150
+      },
+      "text": "Look upon the Ruins of Eldarath"
+    }
+  ],
+  "texts": {
+    "details": "Travellers think this is a pleasant coast. Gold leaves, blue water. They do not know what they are standing on.\n\nBefore the world was broken, this shore was part of Zin-Azshari, the capital of our queen. All of it. The greatest city that has ever been built lies in pieces under that sea, and the cliffs you see are only where the land tore.\n\nNorth and east of here, on the heights above the bay, are the Ruins of Eldarath. Go and look upon them, $N. The naga hold them now. I will tell you why that should not surprise you.",
+    "objectives": "Look upon the Ruins of Eldarath on the cliffs of Azshara, then return to Loh'atu.",
+    "progress": "North and east, where the land falls toward the bay.",
+    "completion": "This land bears her name. Azshara. Our queen, who was driven mad by the demons she welcomed.\n\nThe city fell in the War of the Ancients. When the demons were cast out, the land split, and the sea came in over it. Some among my people say she did not drown: that she was changed, into a thing of the deep. You have seen who walks in her ruins. Judge for yourself.\n\nEvery kaldorei will tell you this coast is cursed. Ghosts in the stones, satyrs in the hills, naga on the sand. And now blood elves come digging for what the Highborne left. No one learns, $N."
+  },
+  "reward": {
+    "money": 11000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 11875,
+        "count": 1
+      },
+      {
+        "item": 18411,
+        "count": 1
+      },
+      {
+        "item": 15813,
+        "count": 1
+      },
+      {
+        "item": 12021,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Azshara is named for the queen driven mad by demonic influence; the coast was part of Zin-Azshari, which fell in the War of the Ancients and was flooded when the land split; some say she was not drowned but transformed; night elves hold the region cursed; ghosts, satyrs, naga, and Magus Rimtori's Thalassian expedition seeking Highborne relics."
+}

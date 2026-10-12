@@ -114,21 +114,21 @@ Made by `Settings/Scripts/Make-Zone-Audit.py` on 2026-10-12. Run it again after 
 | 37-44 | Swamp of Sorrows | Eastern Kingdoms | 22 (23%) | 15 (13%) | 2 | 16 | H +45, A +54 |
 | 39-43 | Badlands | Eastern Kingdoms | 38 (45%) | 52 (54%) | 1 | 5 | H +15, A +9 |
 | 43-60 | Ironforge | Eastern Kingdoms | – | 77 |  | 0 | city |
-| 44-48 | Feralas | Kalimdor | 35 (57%) | 46 (60%) |  | 2 | H +8, A +6 |
-| 45-49 | The Hinterlands | Eastern Kingdoms | 32 (54%) | 22 (35%) |  | 0 | H +10, A +21 |
-| 47-50 | Searing Gorge | Eastern Kingdoms | 22 (42%) | 29 (56%) |  | 9 | H +14, A +7 |
-| 47-60 | Tanaris | Kalimdor | 86 (35%) | 83 (35%) |  | 1 | H +64, A +65 |
-| 50-57 | Blasted Lands | Eastern Kingdoms | 19 (15%) | 20 (19%) |  | 4 | H +54, A +51 |
+| 44-48 | Feralas | Kalimdor | 36 (58%) | 47 (62%) | 1 | 2 | H +7, A +5 |
+| 45-49 | The Hinterlands | Eastern Kingdoms | 33 (56%) | 23 (37%) | 1 | 0 | H +9, A +20 |
+| 46-50 | Searing Gorge | Eastern Kingdoms | 23 (36%) | 30 (47%) | 1 | 9 | H +21, A +14 |
+| 47-60 | Tanaris | Kalimdor | 88 (36%) | 85 (35%) | 2 | 1 | H +63, A +64 |
+| 50-57 | Blasted Lands | Eastern Kingdoms | 20 (16%) | 21 (19%) | 1 | 4 | H +53, A +50 |
 | 50-60 | The Exodar | Kalimdor | – | 6 |  | 0 | city |
-| 52-54 | Un'Goro Crater | Kalimdor | 46 (113%) | 44 (106%) |  | 1 | enough |
-| 52-58 | Azshara | Kalimdor | 30 (25%) | 22 (20%) |  | 51 | H +38, A +43 |
-| 53-54 | Burning Steppes | Eastern Kingdoms | 9 (33%) | 11 (39%) |  | 23 | H +10, A +8 |
-| 54-55 | Felwood | Kalimdor | 32 (125%) | 33 (113%) |  | 0 | enough |
-| 54-57 | Western Plaguelands | Eastern Kingdoms | 57 (73%) | 55 (73%) |  | 27 | enough |
-| 56-59 | Winterspring | Kalimdor | 38 (47%) | 45 (57%) |  | 19 | H +12, A +7 |
-| 56-60 | Eastern Plaguelands | Eastern Kingdoms | 61 (58%) | 54 (54%) |  | 48 | H +9, A +11 |
+| 52-54 | Burning Steppes | Eastern Kingdoms | 10 (25%) | 12 (29%) | 1 | 23 | H +17, A +15 |
+| 52-54 | Un'Goro Crater | Kalimdor | 47 (115%) | 45 (109%) | 1 | 1 | enough |
+| 52-58 | Azshara | Kalimdor | 31 (26%) | 23 (21%) | 1 | 51 | H +38, A +42 |
+| 54-55 | Felwood | Kalimdor | 33 (128%) | 34 (116%) | 1 | 0 | enough |
+| 54-57 | Western Plaguelands | Eastern Kingdoms | 58 (75%) | 56 (75%) | 1 | 27 | enough |
+| 56-59 | Winterspring | Kalimdor | 39 (49%) | 46 (59%) | 1 | 19 | H +11, A +6 |
+| 56-60 | Eastern Plaguelands | Eastern Kingdoms | 63 (61%) | 56 (57%) | 2 | 48 | H +7, A +10 |
 | 57-60 | Moonglade | Kalimdor | 8 | 8 |  | 1 | druid sanctuary |
-| 60-60 | Silithus | Kalimdor | 65 (182%) | 65 (182%) |  | 4 | enough |
+| 59-60 | Silithus | Kalimdor | 67 (119%) | 67 (119%) | 2 | 4 | enough |
 | 60-60 | Silvermoon City | Eastern Kingdoms | 5 | – |  | 0 | city |
 | 61-62 | Hellfire Peninsula | Outland | 101 (161%) | 88 (138%) |  | 21 | enough |
 | 62-64 | Zangarmarsh | Outland | 63 (68%) | 65 (70%) |  | 24 | H +2 |
@@ -138,7 +138,7 @@ Made by `Settings/Scripts/Make-Zone-Audit.py` on 2026-10-12. Run it again after 
 | 66-68 | Blade's Edge Mountains | Outland | 100 (70%) | 97 (67%) |  | 48 | H +1, A +3 |
 | 68-70 | Netherstorm | Outland | 153 (72%) | 153 (72%) |  | 38 | enough |
 | 69-70 | Shadowmoon Valley | Outland | 133 (72%) | 133 (72%) |  | 59 | enough |
-| 70-70 | Deadwind Pass | Eastern Kingdoms | 32 (28%) | 32 (28%) |  | 1 | H +34, A +34 |
+| 70-70 | Deadwind Pass | Eastern Kingdoms | 33 (29%) | 33 (29%) | 1 | 1 | H +33, A +33 |
 | 70-80 | Isle of Quel'Danas | Eastern Kingdoms | 12 | 12 |  | 21 | daily quests at the level cap |
 | 71-71 | Borean Tundra | Northrend | 170 (268%) | 145 (224%) |  | 53 | enough |
 | 71-71 | Howling Fjord | Northrend | 95 (155%) | 123 (177%) |  | 79 | enough |
@@ -166,7 +166,7 @@ For every five levels: the zones a side can level in (at least 3 quests there), 
 | 36-40 | 7: Thousand Needles, Desolace, Dustwallow Marsh, Arathi Highlands, Stranglethorn Vale, Swamp of Sorrows, Badlands | 2 | 8: Thousand Needles, Desolace, Alterac Mountains, Dustwallow Marsh, Arathi Highlands, Stranglethorn Vale, Swamp of Sorrows, Badlands | 2 |
 | 41-45 | 5: Stranglethorn Vale, Swamp of Sorrows, Badlands, Feralas, The Hinterlands | 1 | 5: Stranglethorn Vale, Swamp of Sorrows, Badlands, Feralas, The Hinterlands | 1 |
 | 46-50 | 5: Feralas, The Hinterlands, Searing Gorge, Tanaris, Blasted Lands | 0 | 5: Feralas, The Hinterlands, Searing Gorge, Tanaris, Blasted Lands | 0 |
-| 51-55 | 7: Tanaris, Blasted Lands, Un'Goro Crater, Azshara, Burning Steppes, Felwood, Western Plaguelands | 3 | 7: Tanaris, Blasted Lands, Un'Goro Crater, Azshara, Burning Steppes, Felwood, Western Plaguelands | 3 |
+| 51-55 | 7: Tanaris, Blasted Lands, Burning Steppes, Un'Goro Crater, Azshara, Felwood, Western Plaguelands | 3 | 7: Tanaris, Blasted Lands, Burning Steppes, Un'Goro Crater, Azshara, Felwood, Western Plaguelands | 3 |
 | 56-60 | 7: Tanaris, Blasted Lands, Azshara, Western Plaguelands, Winterspring, Eastern Plaguelands, Silithus | 2 | 7: Tanaris, Blasted Lands, Azshara, Western Plaguelands, Winterspring, Eastern Plaguelands, Silithus | 2 |
 | 61-65 | 3: Hellfire Peninsula, Zangarmarsh, Terokkar Forest | 2 | 3: Hellfire Peninsula, Zangarmarsh, Terokkar Forest | 3 |
 | 66-70 | 5: Nagrand, Blade's Edge Mountains, Netherstorm, Shadowmoon Valley, Deadwind Pass | 4 | 5: Nagrand, Blade's Edge Mountains, Netherstorm, Shadowmoon Valley, Deadwind Pass | 3 |
@@ -860,8 +860,8 @@ Going from level 44 to 49 costs 505,400 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 35 | 1 | 287,160 | 57% | 11 | 42:1 43:6 44:1 45:9 46:2 47:3 48:4 49:1 50:6 51:1 52:1 | 8 quests, about 66,620 experience, 3 with gear |
-| Alliance | 46 | 0 | 303,214 | 60% | 14 | 43:6 44:6 45:4 46:5 47:9 48:7 49:3 50:4 51:2 | 6 quests, about 50,566 experience, 2 with gear |
+| Horde | 36 | 1 | 295,095 | 58% | 12 | 42:1 43:6 44:2 45:9 46:2 47:3 48:4 49:1 50:6 51:1 52:1 | 7 quests, about 58,685 experience, 3 with gear |
+| Alliance | 47 | 0 | 311,149 | 62% | 15 | 43:6 44:7 45:4 46:5 47:9 48:7 49:3 50:4 51:2 | 5 quests, about 42,631 experience, 2 with gear |
 
 **Enemies no quest uses:** Gordok Ogre-Mage (52-53, 13 of them), Gordok Enforcer (53-54, 5 of them).
 
@@ -873,21 +873,21 @@ Going from level 45 to 50 costs 529,500 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 32 | 4 | 286,140 | 54% | 11 | 42:1 43:1 44:1 45:2 47:3 48:11 49:1 50:6 51:4 55:2 | 10 quests, about 84,510 experience, 4 with gear |
-| Alliance | 22 | 0 | 187,290 | 35% | 2 | 43:4 44:1 45:2 46:4 47:3 48:5 50:2 51:1 | 21 quests, about 183,360 experience, 7 with gear |
+| Horde | 33 | 4 | 294,825 | 56% | 12 | 42:1 43:1 44:1 45:2 46:1 47:3 48:11 49:1 50:6 51:4 55:2 | 9 quests, about 75,825 experience, 3 with gear |
+| Alliance | 23 | 0 | 195,225 | 37% | 3 | 43:4 44:2 45:2 46:4 47:3 48:5 50:2 51:1 | 20 quests, about 175,425 experience, 7 with gear |
 
 **Enemies no quest uses:** none of note.
 
 **Places nothing is asked of you:** Seradane (48 enemies).
 
-### Searing Gorge (47-50, Eastern Kingdoms)
+### Searing Gorge (46-50, Eastern Kingdoms)
 
-Going from level 47 to 51 costs 453,100 experience.
+Going from level 46 to 51 costs 554,100 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 22 | 0 | 191,272 | 42% | 11 | 45:1 46:1 47:1 48:5 49:5 50:8 52:1 | 14 quests, about 125,898 experience, 5 with gear |
-| Alliance | 29 | 0 | 251,647 | 56% | 13 | 43:1 45:1 46:5 47:1 48:5 49:5 50:10 52:1 | 7 quests, about 65,523 experience, 3 with gear |
+| Horde | 23 | 0 | 197,722 | 36% | 11 | 45:1 46:2 47:1 48:5 49:5 50:8 52:1 | 21 quests, about 190,148 experience, 7 with gear |
+| Alliance | 30 | 0 | 258,097 | 47% | 13 | 43:1 45:1 46:6 47:1 48:5 49:5 50:10 52:1 | 14 quests, about 129,773 experience, 5 with gear |
 
 **Enemies no quest uses:** Searing Lava Spider (45-47, 26 of them), Muck Splash (47-49, 9 of them), Thorium Brotherhood Lookout (50-52, 6 of them), Enslaved Archaeologist (46-47, 6 of them), Slave Master Blackheart (50, 5 of them), Shadowsilk Poacher (47-50, 5 of them), Rekk'tilac (48, 5 of them), Faulty War Golem (46, 5 of them), Highlord Mastrogonde (51, 4 of them).
 
@@ -897,8 +897,8 @@ Going from level 47 to 61 costs 2,080,100 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 86 | 14 | 733,121 | 35% | 32 | 43:1 44:3 45:11 46:8 47:5 48:7 49:6 50:4 51:1 53:1 54:3 57:1 58:1 60:34 | 64 quests, about 722,949 experience, 22 with gear |
-| Alliance | 83 | 14 | 718,661 | 35% | 30 | 43:1 44:3 45:10 46:4 47:7 48:6 49:7 50:4 51:1 53:1 54:3 57:1 58:1 60:34 | 65 quests, about 737,409 experience, 22 with gear |
+| Horde | 88 | 14 | 747,956 | 36% | 33 | 42:1 43:1 44:3 45:11 46:8 47:5 48:8 49:6 50:4 51:1 53:1 54:3 57:1 58:1 60:34 | 63 quests, about 708,114 experience, 21 with gear |
+| Alliance | 85 | 14 | 733,496 | 35% | 31 | 42:1 43:1 44:3 45:10 46:4 47:7 48:7 49:7 50:4 51:1 53:1 54:3 57:1 58:1 60:34 | 64 quests, about 722,574 experience, 22 with gear |
 
 **Enemies no quest uses:** Spirit Healer (60, 6 of them).
 
@@ -908,8 +908,8 @@ Going from level 50 to 58 costs 1,120,100 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 19 | 2 | 171,855 | 15% | 10 | 50:7 55:2 57:4 58:1 60:5 | 54 quests, about 612,215 experience, 18 with gear |
-| Alliance | 20 | 2 | 208,635 | 19% | 10 | 50:5 54:1 55:2 56:1 57:5 58:1 60:5 | 51 quests, about 575,435 experience, 17 with gear |
+| Horde | 20 | 2 | 181,290 | 16% | 11 | 48:1 50:7 55:2 57:4 58:1 60:5 | 53 quests, about 602,780 experience, 18 with gear |
+| Alliance | 21 | 2 | 218,070 | 19% | 11 | 48:1 50:5 54:1 55:2 56:1 57:5 58:1 60:5 | 50 quests, about 566,000 experience, 17 with gear |
 
 **Enemies no quest uses:** Felguard Elite (61, 42 of them), Manahound (60, 14 of them), Doomguard Commander (61, 13 of them), Felguard Sentry (54-55, 5 of them).
 
@@ -927,14 +927,27 @@ Going from level 50 to 61 costs 1,747,900 experience.
 
 **Enemies no quest uses:** none of note.
 
+### Burning Steppes (52-54, Eastern Kingdoms)
+
+Going from level 52 to 55 costs 411,000 experience.
+
+| Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
+|---|---|---|---|---|---|---|---|
+| Horde | 10 | 1 | 102,630 | 25% | 2 | 50:1 52:2 53:1 54:4 58:1 60:1 | 17 quests, about 185,070 experience, 6 with gear |
+| Alliance | 12 | 1 | 120,030 | 29% | 2 | 50:1 52:3 53:2 54:3 56:1 58:1 60:1 | 15 quests, about 167,670 experience, 5 with gear |
+
+**Enemies no quest uses:** Black Dragonspawn (52-53, 20 of them), Black Wyrmkin (53-54, 18 of them), Scalding Broodling (53-54, 16 of them), Flamescale Wyrmkin (57-58, 15 of them), Flamekin Torcher (54-56, 15 of them), Flamekin Rager (54-56, 15 of them), Black Broodling (51-52, 14 of them), Flamescale Dragonspawn (56-57, 12 of them), Deathlash Scorpid (54-55, 12 of them), Venomtip Scorpid (52-53, 11 of them), and 13 more.
+
+**Places nothing is asked of you:** Flame Crest (13 enemies).
+
 ### Un'Goro Crater (52-54, Kalimdor)
 
 Going from level 52 to 55 costs 411,000 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 46 | 2 | 463,110 | 113% | 11 | 50:1 51:3 52:11 53:16 54:4 55:8 56:2 78:1 | nothing; it carries itself |
-| Alliance | 44 | 2 | 437,355 | 106% | 9 | 50:1 51:3 52:12 53:13 54:4 55:8 56:2 78:1 | nothing; it carries itself |
+| Horde | 47 | 2 | 473,325 | 115% | 12 | 50:2 51:3 52:11 53:16 54:4 55:8 56:2 78:1 | nothing; it carries itself |
+| Alliance | 45 | 2 | 447,570 | 109% | 10 | 50:2 51:3 52:12 53:13 54:4 55:8 56:2 78:1 | nothing; it carries itself |
 
 **Enemies no quest uses:** Spirit Healer (60, 4 of them).
 
@@ -946,25 +959,12 @@ Going from level 52 to 59 costs 1,038,900 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 30 | 5 | 261,840 | 25% | 3 | 47:2 49:1 52:9 53:2 54:1 57:2 58:6 60:7 | 38 quests, about 465,390 experience, 13 with gear |
-| Alliance | 22 | 5 | 204,180 | 20% | 3 | 47:2 49:1 52:1 53:2 54:1 57:2 58:6 60:7 | 43 quests, about 523,050 experience, 15 with gear |
+| Horde | 31 | 5 | 271,275 | 26% | 4 | 47:2 48:1 49:1 52:9 53:2 54:1 57:2 58:6 60:7 | 38 quests, about 455,955 experience, 13 with gear |
+| Alliance | 23 | 5 | 213,615 | 21% | 4 | 47:2 48:1 49:1 52:1 53:2 54:1 57:2 58:6 60:7 | 42 quests, about 513,615 experience, 14 with gear |
 
 **Enemies no quest uses:** Mosshoof Courser (52-53, 121 of them), Thunderhead Skystormer (50-52, 65 of them), Coralshell Lurker (53-54, 45 of them), Thunderhead Consort (52-54, 42 of them), Thunderhead Stagwing (48-50, 41 of them), Spitelash Serpent Guard (48-49, 41 of them), Timbermaw Shaman (50-51, 31 of them), Great Wavethrasher (53-54, 30 of them), Timbermaw Ursa (51-52, 29 of them), Mosshoof Runner (45-47, 29 of them), and 41 more.
 
 **Places nothing is asked of you:** Legash Encampment (119 enemies), Ursolan (106 enemies), Bitter Reaches (88 enemies), Lake Mennar (77 enemies), Temple of Arkkoran (72 enemies), The Ruined Reaches (61 enemies), Bay of Storms (61 enemies), Jagged Reef (52 enemies).
-
-### Burning Steppes (53-54, Eastern Kingdoms)
-
-Going from level 53 to 55 costs 279,500 experience.
-
-| Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
-|---|---|---|---|---|---|---|---|
-| Horde | 9 | 1 | 91,620 | 33% | 1 | 50:1 52:1 53:1 54:4 58:1 60:1 | 10 quests, about 104,030 experience, 4 with gear |
-| Alliance | 11 | 1 | 109,020 | 39% | 1 | 50:1 52:2 53:2 54:3 56:1 58:1 60:1 | 8 quests, about 86,630 experience, 3 with gear |
-
-**Enemies no quest uses:** Black Dragonspawn (52-53, 20 of them), Black Wyrmkin (53-54, 18 of them), Scalding Broodling (53-54, 16 of them), Flamescale Wyrmkin (57-58, 15 of them), Flamekin Torcher (54-56, 15 of them), Flamekin Rager (54-56, 15 of them), Black Broodling (51-52, 14 of them), Flamescale Dragonspawn (56-57, 12 of them), Deathlash Scorpid (54-55, 12 of them), Venomtip Scorpid (52-53, 11 of them), and 13 more.
-
-**Places nothing is asked of you:** Flame Crest (13 enemies).
 
 ### Felwood (54-55, Kalimdor)
 
@@ -972,8 +972,8 @@ Going from level 54 to 56 costs 290,700 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 32 | 0 | 362,489 | 125% | 12 | 48:1 51:2 52:2 54:4 55:15 56:1 57:2 58:3 59:1 60:1 | nothing; it carries itself |
-| Alliance | 33 | 0 | 327,711 | 113% | 15 | 48:1 51:1 52:2 54:7 55:15 56:2 57:2 58:2 60:1 | nothing; it carries itself |
+| Horde | 33 | 0 | 372,704 | 128% | 13 | 48:1 50:1 51:2 52:2 54:4 55:15 56:1 57:2 58:3 59:1 60:1 | nothing; it carries itself |
+| Alliance | 34 | 0 | 337,926 | 116% | 16 | 48:1 50:1 51:1 52:2 54:7 55:15 56:2 57:2 58:2 60:1 | nothing; it carries itself |
 
 **Enemies no quest uses:** none of note.
 
@@ -983,8 +983,8 @@ Going from level 54 to 58 costs 604,600 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 57 | 12 | 440,662 | 73% | 14 | 50:4 52:3 53:4 54:2 55:11 56:7 57:3 58:6 60:17 | nothing; it carries itself |
-| Alliance | 55 | 13 | 442,252 | 73% | 14 | 52:4 53:3 54:2 55:12 56:7 57:3 58:6 60:18 | nothing; it carries itself |
+| Horde | 58 | 12 | 452,497 | 75% | 15 | 50:4 52:3 53:4 54:3 55:11 56:7 57:3 58:6 60:17 | nothing; it carries itself |
+| Alliance | 56 | 13 | 454,087 | 75% | 15 | 52:4 53:3 54:3 55:12 56:7 57:3 58:6 60:18 | nothing; it carries itself |
 
 **Enemies no quest uses:** Scarlet Worker (55-57, 56 of them), Searing Ghoul (55-56, 40 of them), Soulless Ghoul (54-55, 39 of them), Scarlet Paladin (55-56, 37 of them), Plague Lurker (54-55, 32 of them), Carrion Lurker (52-53, 31 of them), Diseased Black Bear (51-52, 27 of them), Scarlet Lumberjack (54-56, 25 of them), Scarlet Sentinel (55-56, 24 of them), Rotting Cadaver (53-54, 24 of them), and 17 more.
 
@@ -996,8 +996,8 @@ Going from level 56 to 60 costs 651,700 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 38 | 5 | 304,505 | 47% | 14 | 52:2 54:3 56:10 57:2 58:4 59:5 60:12 | 12 quests, about 151,685 experience, 4 with gear |
-| Alliance | 45 | 5 | 372,815 | 57% | 15 | 52:2 54:2 56:12 57:3 58:6 59:8 60:12 | 7 quests, about 83,375 experience, 3 with gear |
+| Horde | 39 | 5 | 317,180 | 49% | 15 | 52:2 54:3 56:11 57:2 58:4 59:5 60:12 | 11 quests, about 139,010 experience, 4 with gear |
+| Alliance | 46 | 5 | 385,490 | 59% | 16 | 52:2 54:2 56:13 57:3 58:6 59:8 60:12 | 6 quests, about 70,700 experience, 2 with gear |
 
 **Enemies no quest uses:** Shardtooth Mauler (55-56, 55 of them), Elder Shardtooth (57-58, 45 of them), Winterspring Owl (54-56, 44 of them), Frostsaber Stalker (59-60, 42 of them), Winterspring Screecher (57-59, 37 of them), Shardtooth Bear (53-54, 34 of them), Ragged Owlbeast (53-55, 30 of them), Suffering Highborne (54-55, 26 of them), Frostsaber Huntress (58-59, 25 of them), Raging Owlbeast (54-56, 22 of them), and 9 more.
 
@@ -1009,8 +1009,8 @@ Going from level 56 to 61 costs 941,700 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 61 | 9 | 547,393 | 58% | 17 | 55:8 56:9 57:2 58:7 60:35 | 9 quests, about 111,797 experience, 3 with gear |
-| Alliance | 54 | 6 | 510,389 | 54% | 15 | 55:8 56:10 57:3 58:6 60:27 | 11 quests, about 148,801 experience, 4 with gear |
+| Horde | 63 | 9 | 573,163 | 61% | 19 | 55:8 56:10 57:3 58:7 60:35 | 7 quests, about 86,027 experience, 3 with gear |
+| Alliance | 56 | 6 | 536,159 | 57% | 17 | 55:8 56:11 57:4 58:6 60:27 | 10 quests, about 123,031 experience, 4 with gear |
 
 **Enemies no quest uses:** Scarlet Warder (53-54, 59 of them), Knight of the Ebon Blade (56-58, 45 of them), Scarlet Enchanter (53-55, 44 of them), Scarlet Cleric (54-55, 44 of them), Risen Drudge (50, 44 of them), Stitched Horror (57-58, 40 of them), Cannibal Ghoul (54-55, 31 of them), Scarlet Praetorian (56-57, 30 of them), Putrid Gargoyle (54-56, 30 of them), Hate Shrieker (55-57, 30 of them), and 38 more.
 
@@ -1031,14 +1031,14 @@ Going from level 57 to 61 costs 787,700 experience.
 
 **Places nothing is asked of you:** Nighthaven (42 enemies), Stormrage Barrow Dens (14 enemies).
 
-### Silithus (60-60, Kalimdor)
+### Silithus (59-60, Kalimdor)
 
-Going from level 60 to 61 costs 290,000 experience.
+Going from level 59 to 61 costs 462,000 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 65 | 17 | 526,671 | 182% | 36 | 55:3 57:5 58:2 59:3 60:52 | nothing; it carries itself |
-| Alliance | 65 | 17 | 526,671 | 182% | 36 | 55:3 57:5 58:2 59:3 60:52 | nothing; it carries itself |
+| Horde | 67 | 17 | 549,951 | 119% | 37 | 55:3 57:6 58:3 59:3 60:52 | nothing; it carries itself |
+| Alliance | 67 | 17 | 549,951 | 119% | 37 | 55:3 57:6 58:3 59:3 60:52 | nothing; it carries itself |
 
 **Enemies no quest uses:** Cenarion Outrider (60, 12 of them), Spirit Healer (60, 5 of them), Cyclone Warrior (57, 5 of them), Brood of Nozdormu (62, 5 of them).
 
@@ -1164,8 +1164,8 @@ Going from level 70 to 71 costs 1,523,800 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 32 | 9 | 432,225 | 28% | 18 | 70:32 | 34 quests, about 634,435 experience, 12 with gear |
-| Alliance | 32 | 9 | 432,225 | 28% | 18 | 70:32 | 34 quests, about 634,435 experience, 12 with gear |
+| Horde | 33 | 9 | 444,900 | 29% | 19 | 56:1 70:32 | 33 quests, about 621,760 experience, 11 with gear |
+| Alliance | 33 | 9 | 444,900 | 29% | 19 | 56:1 70:32 | 33 quests, about 621,760 experience, 11 with gear |
 
 **Enemies no quest uses:** Unliving Resident (70, 20 of them).
 
@@ -1409,3 +1409,25 @@ Going from level 80 to 81 costs 0 experience.
 | 9200097 | What the Dreamer Drowned | Swamp of Sorrows | 38 | horde | visit |
 | 9200098 | The Lost | Swamp of Sorrows | 37 | alliance | visit |
 | 9200099 | The Makers' Vault | Badlands | 40 | alliance | visit |
+| 9200100 | The City the Sundering Spared | Feralas | 44 | alliance | visit |
+| 9200101 | Not Built by Ogres | Feralas | 44 | horde | visit |
+| 9200102 | The Hammer That Went North | The Hinterlands | 44 | alliance | visit |
+| 9200103 | The Last Tribe | The Hinterlands | 46 | horde | visit |
+| 9200104 | Profit Above Loyalty | Tanaris | 42 | both | visit |
+| 9200105 | Where Time Is Kept | Tanaris | 48 | both | visit |
+| 9200106 | Across the Gorge from Home | Searing Gorge | 46 | both | visit |
+| 9200107 | The Watch on the Door | Blasted Lands | 48 | alliance | visit |
+| 9200108 | The Door Our Fathers Came Through | Blasted Lands | 48 | horde | visit |
+| 9200109 | God Lands | Un'Goro Crater | 50 | both | visit |
+| 9200110 | The Drowned Capital | Azshara | 48 | both | visit |
+| 9200111 | Where Lothar Fell | Burning Steppes | 52 | both | visit |
+| 9200112 | The Skull | Felwood | 50 | both | visit |
+| 9200113 | The Lightbringer | Western Plaguelands | 54 | alliance | visit |
+| 9200114 | He Died for Lordaeron | Western Plaguelands | 54 | horde | visit |
+| 9200115 | A Thousand Heroes | Eastern Plaguelands | 56 | both | visit |
+| 9200116 | The City That Burned | Eastern Plaguelands | 57 | both | visit |
+| 9200117 | Older Tenants | Winterspring | 56 | both | visit |
+| 9200118 | The Shifting Sands | Silithus | 57 | both | visit |
+| 9200119 | The Wall and the Scepter | Silithus | 58 | both | visit |
+| 9200120 | The Last Guardian's Tower | Deadwind Pass | 56 | alliance | visit |
+| 9200121 | The Riders' Master | Deadwind Pass | 56 | horde | visit |

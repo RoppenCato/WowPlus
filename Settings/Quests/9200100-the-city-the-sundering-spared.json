@@ -1,0 +1,53 @@
+{
+  "id": 9200100,
+  "title": "The City the Sundering Spared",
+  "level": 44,
+  "min_level": 39,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 357,
+  "type": "visit",
+  "giver": 7764,
+  "turn_in": 7764,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": -4537.0,
+        "y": 1431.0,
+        "radius": 150
+      },
+      "text": "Look upon the walls of Dire Maul"
+    }
+  ],
+  "texts": {
+    "details": "You have seen the great ruin in the middle of this forest? The ogres call it Dire Maul and hold their brawls in it. They did not build it. They could not have built one stair of it.\n\nI have spent years on its history, $N, and it is not a history my people enjoy. Go inland and look at the walls for yourself, from the outside. Mark how much of it is still standing after ten thousand years.\n\nThen come back, and I will tell you what it cost to keep it standing.",
+    "objectives": "Look upon the walls of Dire Maul in the middle of Feralas, then return to Troyas Moonbreeze at Feathermoon Stronghold.",
+    "progress": "Take the boat to the mainland and follow the road east. You will not miss it.",
+    "completion": "It was called Eldre'Thalas, and it was one of the great cities of Queen Azshara's Highborne. Its arcanists, the Shen'dralar, served her directly. Their prince was Tortheldrin.\n\nWhen the Well of Eternity was destroyed and the world broke, Tortheldrin's followers raised a shield over the city, and it stood while everything around it fell. But the Well had been the source of all their power, and it was gone. So they caught a demon, Immol'thar, bound it, and fed upon it instead.\n\nIt was never enough. In the end the Prince slaughtered many of his own people so that the rest might have a larger share.\n\nThe ogres came much later, and found a city with almost no one left in it. That is the lesson of Dire Maul, $N. Not that the Highborne fell. That some of them refused to."
+  },
+  "reward": {
+    "money": 9000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 9658,
+        "count": 1
+      },
+      {
+        "item": 9632,
+        "count": 1
+      },
+      {
+        "item": 19125,
+        "count": 1
+      },
+      {
+        "item": 9637,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Eldre'Thalas was a Highborne city of Queen Azshara's arcanists, the Shen'dralar under Prince Tortheldrin; a shield spared it from the Sundering; cut off from the Well, they imprisoned the demon Immol'thar and fed on its power, and Tortheldrin slaughtered many of his people for more; the Gordunni ogres occupy the ruins."
+}

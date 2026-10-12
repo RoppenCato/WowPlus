@@ -1,0 +1,53 @@
+{
+  "id": 9200120,
+  "title": "The Last Guardian's Tower",
+  "level": 56,
+  "min_level": 51,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 41,
+  "type": "visit",
+  "giver": 267,
+  "turn_in": 267,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -11106.0,
+        "y": -2005.0,
+        "radius": 130
+      },
+      "text": "Look upon Karazhan"
+    }
+  ],
+  "texts": {
+    "details": "I keep Darkshire's records, such as they are. There is one entry I have never been able to close.\n\nEast of this forest is Deadwind Pass. Nothing grows in it. At its far end stands a tower: Karazhan. Some years ago certain nobles of this town went into that tower. I have their names. I have no record of any of them coming out.\n\nYou are abler than I, $N. Ride through the Pass and look upon the tower. Do not enter it. I only wish to write down that someone saw it and returned.",
+    "objectives": "Ride through Deadwind Pass and look upon the tower of Karazhan, then return to Clerk Daltry in Darkshire.",
+    "progress": "East, beyond the river. The wind there never stops.",
+    "completion": "You returned. I shall note it. That is more than I can write beside the others.\n\nThat was the tower of Medivh. He was the last of the Guardians of Tirisfal, the one mage chosen in each age to stand against the demons. It was built upon a great knot of the world's power. And the Guardian who lived in it was possessed, by the very lord of the demons he was meant to fight.\n\nSir Anduin Lothar had been his friend from boyhood. It was Lothar, with Medivh's own apprentice Khadgar, who went into that tower and struck off his head. The land around it has been cursed ever since. So much evil, $N, from one good man who was not himself."
+  },
+  "reward": {
+    "money": 11000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 15791,
+        "count": 1
+      },
+      {
+        "item": 15861,
+        "count": 1
+      },
+      {
+        "item": 11918,
+        "count": 1
+      },
+      {
+        "item": 15413,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Karazhan stands on potent ley lines in Deadwind Pass; Medivh, last Guardian of Tirisfal, was possessed by Sargeras; Anduin Lothar and Khadgar stormed the tower and Lothar decapitated him; his death left the land cursed; nobles of Darkshire who entered the tower never came back."
+}

@@ -1,0 +1,53 @@
+{
+  "id": 9200102,
+  "title": "The Hammer That Went North",
+  "level": 44,
+  "min_level": 39,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 47,
+  "type": "visit",
+  "giver": 5635,
+  "turn_in": 5635,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -444.0,
+        "y": -3970.0,
+        "radius": 150
+      },
+      "text": "Look upon Jintha'Alor"
+    }
+  ],
+  "texts": {
+    "details": "Ye've come up from Ironforge, like as not, an' ye think ye know dwarves. Ye know Bronzebeards. We're the other sort.\n\nWhen Ironforge was fought over, long ago, my folk lost. Thane Khardros took us north to Grim Batol an' we made a kingdom in it, till a Dark Iron witch cursed the place past livin' in. So we came here, to the high country, an' built the Aerie. It was here we took up wi' the gryphons. They're no' beasts to us, $N. They're kin.\n\nNow go an' see who else calls this land theirs. South-east, at the edge o' the heights, is a troll city on a hill. Jintha'Alor. Look at it an' come back.",
+    "objectives": "Look upon the troll city of Jintha'Alor in the south-east of the Hinterlands, then return to Falstad Wildhammer at Aerie Peak.",
+    "progress": "South-east, where the high ground drops toward the sea. Ye'll see the terraces.",
+    "completion": "Aye. That's what we live beside.\n\nThe trolls say we're squatters on their fathers' land, an' they never let a chance go by to tell us so wi' an axe. Vilebranch in that city, Witherbark in the west, Revantusk on the coast. The only friends we've ever had up here are the elves o' Quel'Danil.\n\nFor a long while we kept to ourselves. Then in the Second War the orcs burned through these hills, an' we learned that keepin' to yourself is a thing ye can only do if others let ye. We joined the Alliance after. I flew at Grim Batol myself, the day the red queen was freed. Here. Fly well."
+  },
+  "reward": {
+    "money": 9200,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 9658,
+        "count": 1
+      },
+      {
+        "item": 9632,
+        "count": 1
+      },
+      {
+        "item": 19125,
+        "count": 1
+      },
+      {
+        "item": 9637,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Wildhammers under Khardros lost Ironforge, founded Grim Batol, left after Modgud's curse, and built Aerie Peak, where they bonded with the gryphons; the trolls see them as squatters; allied with the high elves of Quel'Danil; joined the Alliance after the orcs attacked the Hinterlands in the Second War; Falstad fought at Grim Batol when Alexstrasza was freed."
+}

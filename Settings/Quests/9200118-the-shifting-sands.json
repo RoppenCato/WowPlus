@@ -1,0 +1,36 @@
+{
+  "id": 9200118,
+  "title": "The Shifting Sands",
+  "level": 57,
+  "min_level": 52,
+  "max_level": 0,
+  "side": "both",
+  "zone": 1377,
+  "type": "visit",
+  "giver": 15181,
+  "turn_in": 15181,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": -7195.0,
+        "y": 329.0,
+        "radius": 150
+      },
+      "text": "Walk the ruins of Southwind Village"
+    }
+  ],
+  "texts": {
+    "details": "You have come to hold a line in the sand. Before you do, know that it has been held before, and by whom, and at what price.\n\nA thousand years ago the Archdruid Fandral Staghelm sent his son Valstann here with a company of druids, to make this desert green again. What they woke instead was the qiraji, in their fortress in the south, and the swarm that serves them.\n\nEast of this hold is a ruin that was a village of ours. Southwind. Go and walk through it, $N. It is where the war turned.",
+    "objectives": "Walk the ruins of Southwind Village, east of Cenarion Hold, then return to Commander Mar'alith.",
+    "progress": "East of the hold, in the sands. The hives have grown up all around it.",
+    "completion": "The swarm poured out over all of Silithus. Fandral gathered our people and met it, and for months the fighting went back and forth. At last we drove them into the heart of the desert.\n\nIt was a feint. They closed around Southwind, and they took Valstann alive. They tore him apart before his father's eyes.\n\nSomething broke in the Archdruid that day. It broke in the army too. We were driven back, and back. And that, $N, is only the first half of it."
+  },
+  "reward": {
+    "money": 11000,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, The Shifting Sands: Fandral Staghelm sent his son Valstann to regrow Silithus; the qiraji and silithid awoke; after months of war the kaldorei drove them back, but in a feint Southwind Village was surrounded and Valstann was captured and torn apart before Fandral's eyes."
+}

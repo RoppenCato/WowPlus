@@ -1,0 +1,63 @@
+{
+  "id": 9200119,
+  "title": "The Wall and the Scepter",
+  "level": 58,
+  "min_level": 53,
+  "max_level": 0,
+  "side": "both",
+  "zone": 1377,
+  "type": "visit",
+  "after": 9200118,
+  "giver": 15181,
+  "turn_in": 15181,
+  "objectives": [
+    {
+      "talk": 15183,
+      "text": "Ask Geologist Larksbane about the bronze dragons",
+      "says": [
+        "Fandral went to the bronze dragons for help, an' they turned him away. The squabbles o' lesser creatures, they called it. They'd time itself to mind.",
+        "Then the swarm reached Tanaris an' fell on the Caverns o' Time, the bronze flight's own sanctum. That changed their tune. Anachronos led them to war, an' he brought the red, the green an' the blue wi' him.",
+        "Four dragonflights in the sky over this desert. I'd give my beard to have seen it. One o' the bronzes fell in it, Grakkarond. His bones are out there yet."
+      ]
+    },
+    {
+      "place": {
+        "map": 1,
+        "x": -8113.0,
+        "y": 1535.0,
+        "radius": 100
+      },
+      "text": "Stand before the Scarab Wall"
+    }
+  ],
+  "texts": {
+    "details": "We did not win that war alone. We could not have.\n\nThe dwarf, Larksbane, has made a study of how it ended; she will tell you who came, and why they came late. Hear her.\n\nThen go south, to the end of the road. There is a wall there, of stone and living root, taller than anything in this desert. Stand before it. Everything we fought is still behind it.",
+    "objectives": "Ask Geologist Larksbane at Cenarion Hold about the bronze dragons and stand before the Scarab Wall in the south of Silithus, then return to Commander Mar'alith.",
+    "progress": "South, as far as the road goes. You cannot mistake it.",
+    "completion": "With the dragons above them the qiraji were driven back into their city. And there Fandral and the druids, with Anachronos, raised the Scarab Wall, and sealed them in.\n\nAnachronos made a gong, and a scepter to strike it, so that the wall might be opened again at need. He gave the scepter to Fandral. And Fandral, with his son's death still on him, shattered it on the ground and walked away. Its pieces were lost for a thousand years.\n\nSo that is our Archdruid, $N, and that is the wall, and they are still in there. They have had a long time to grow. That is why Cenarion Hold exists. Take this."
+  },
+  "reward": {
+    "money": 11500,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 15791,
+        "count": 1
+      },
+      {
+        "item": 15861,
+        "count": 1
+      },
+      {
+        "item": 11918,
+        "count": 1
+      },
+      {
+        "item": 15413,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 2: the bronze dragonflight refused Fandral, calling it the affairs of lesser creatures, until the silithid attacked the Caverns of Time; Anachronos enlisted the red, green and blue flights; Grakkarond fell; Fandral, the druids and Anachronos raised the Scarab Wall; Anachronos made the Scarab Gong and the Scepter of the Shifting Sands, which Fandral shattered in grief."
+}

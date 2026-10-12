@@ -1,0 +1,53 @@
+{
+  "id": 9200101,
+  "title": "Not Built by Ogres",
+  "level": 44,
+  "min_level": 39,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 357,
+  "type": "visit",
+  "giver": 14373,
+  "turn_in": 14373,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": -4537.0,
+        "y": 1431.0,
+        "radius": 150
+      },
+      "text": "Look upon the walls of Dire Maul"
+    }
+  ],
+  "texts": {
+    "details": "The young braves here speak of Dire Maul as an ogre fort. It is a fort full of ogres. That is a different thing.\n\nGo north-west from the camp and look at it, $N. From outside the walls only. Look at the height of the towers and the fineness of the stone, and ask yourself whether the Gordunni cut it.\n\nWhen you have looked, I will tell you who did, and what they did inside it. It is a tale worth knowing before you ever set foot there.",
+    "objectives": "Look upon the walls of Dire Maul in the middle of Feralas, then return to Sage Korolusk at Camp Mojache.",
+    "progress": "North-west of the camp, in the heart of the forest.",
+    "completion": "It was called Eldre'Thalas, and it was one of the great cities of Queen Azshara's Highborne. Its arcanists, the Shen'dralar, served her directly. Their prince was Tortheldrin.\n\nWhen the Well of Eternity was destroyed and the world broke, Tortheldrin's followers raised a shield over the city, and it stood while everything around it fell. But the Well had been the source of all their power, and it was gone. So they caught a demon, Immol'thar, bound it, and fed upon it instead.\n\nIt was never enough. In the end the Prince slaughtered many of his own people so that the rest might have a larger share.\n\nThe Gordunni came long after, when their king was driven to madness and slaughter by whispers out of a dark dream. The Horde slew that king. His clan sits in the ruin still.\n\nSo it has had two peoples in it, $N, and both were undone from within. The stones seem to wish it."
+  },
+  "reward": {
+    "money": 9000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 9658,
+        "count": 1
+      },
+      {
+        "item": 9632,
+        "count": 1
+      },
+      {
+        "item": 19125,
+        "count": 1
+      },
+      {
+        "item": 9637,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The same history for the Horde, with King Gordok driven to madness and slaughter by whispers of the Emerald Nightmare and killed by the Horde, his Gordunni clan occupying the ruins."
+}

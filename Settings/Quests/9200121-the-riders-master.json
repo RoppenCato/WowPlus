@@ -1,0 +1,53 @@
+{
+  "id": 9200121,
+  "title": "The Riders' Master",
+  "level": 56,
+  "min_level": 51,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 41,
+  "type": "visit",
+  "giver": 1443,
+  "turn_in": 1443,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -11106.0,
+        "y": -2005.0,
+        "radius": 130
+      },
+      "text": "Look upon Karazhan"
+    }
+  ],
+  "texts": {
+    "details": "West of this swamp the road climbs into a dead country. Deadwind Pass. No bird, no leaf. A wind that does not stop. At the end of it is a tower the humans call Karazhan.\n\nOur scouts speak of riders in black who come out of that pass by night, hunting. I want to know what sends them. Go and look upon the tower, $N. Only look. Humans who went inside did not come out again, and I do not think it would spare an orc.\n\nCome back and tell me it is still shut.",
+    "objectives": "Travel through Deadwind Pass and look upon the tower of Karazhan, then return to Fel'zerul in Stonard.",
+    "progress": "West, up out of the swamp. You will hear the wind before you feel it.",
+    "completion": "Still shut. Good.\n\nI have learned what I can of it. A human sorcerer lived there, the greatest they had, the guardian of their whole world. And a demon lord wore him like a cloak. Humans killed him in that tower, in the first of our wars with them. The land has been cursed since the hour he died.\n\nAs for the riders: there were merchants once who tried to sell that sorcerer false relics. He cursed them to ride for ever, hunting true ones, and to bring them back to him. He is dead, and they ride still. That is what is in your hills, $N. Thieves who cannot stop."
+  },
+  "reward": {
+    "money": 11000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 15791,
+        "count": 1
+      },
+      {
+        "item": 15861,
+        "count": 1
+      },
+      {
+        "item": 11918,
+        "count": 1
+      },
+      {
+        "item": 15413,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Karazhan and Medivh as above, from Stonard; the Dark Riders were Ariden's charlatan merchants, cursed by Medivh to hunt real magical artifacts for ever and bring them to Karazhan."
+}

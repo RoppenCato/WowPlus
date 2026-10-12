@@ -1,0 +1,45 @@
+{
+  "id": 9200106,
+  "title": "Across the Gorge from Home",
+  "level": 46,
+  "min_level": 41,
+  "max_level": 0,
+  "side": "both",
+  "zone": 51,
+  "type": "visit",
+  "giver": 14625,
+  "turn_in": 14625,
+  "objectives": [
+    {
+      "talk": 14627,
+      "text": "Ask Hansel Heavyhands why the Brotherhood left",
+      "says": [
+        "Why'd we leave? Look at my hands, friend. There's no finer smiths in the world than Dark Irons. That's no' a boast.",
+        "An' what were we set to makin', down under the mountain? Arms for a fire lord's armies. Our kin dug too deep, long ago, an' they've served Ragnaros ever since.",
+        "We reckoned our craft was worth more than that. So we walked out o' Blackrock Depths an' set up here. Close enough to see the old home. Far enough to no' go back."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -6850.0,
+        "y": -1383.0,
+        "radius": 150
+      },
+      "text": "Look down into the Cauldron"
+    }
+  ],
+  "texts": {
+    "details": "Ye see a camp o' Dark Irons an' ye've no' drawn steel. Either ye're wise or ye're curious. I'll take either.\n\nWe're the Thorium Brotherhood. Dark Iron born, every one of us, an' Dark Iron no longer. Hansel there will tell ye why; he tells it better than me, an' louder.\n\nThen go to the edge o' the cliff an' look down into the Cauldron. That's what we watch, from up here. Ye should know what we walked away from.",
+    "objectives": "Ask Hansel Heavyhands at Thorium Point why the Brotherhood left and look down into the Cauldron, then return to Overseer Oilfist.",
+    "progress": "The Cauldron's below us, south. Ye can see it from the cliff.",
+    "completion": "That's our own clan down there. Still diggin', still forgin', still doin' as the Firelord bids.\n\nWe know how to make things for Ragnaros that'd turn your hair white. Knowin' was never the trouble. We'll no' do it for him.\n\nSo we sit across the Gorge from home an' we watch. If ye mean to make war on what's under that mountain, $N, come an' talk to us first. Nobody knows it better."
+  },
+  "reward": {
+    "money": 9500,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Thorium Brotherhood are Dark Iron dwarves who left Blackrock Depths; their kin \"dug too deep\" and serve Ragnaros; master craftsmen who know how to make gear for the Firelord; from Thorium Point they watch the Dark Irons in the Cauldron."
+}

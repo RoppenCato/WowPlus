@@ -1,0 +1,53 @@
+{
+  "id": 9200117,
+  "title": "Older Tenants",
+  "level": 56,
+  "min_level": 51,
+  "max_level": 0,
+  "side": "both",
+  "zone": 618,
+  "type": "visit",
+  "giver": 10303,
+  "turn_in": 10303,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": 6103.0,
+        "y": -4452.0,
+        "radius": 150
+      },
+      "text": "Go to the mouth of Mazthoril"
+    }
+  ],
+  "texts": {
+    "details": "The goblins will tell you Everlook is the only thing in this valley worth a visit. The goblins have been here a few seasons.\n\nSouth of the town the mountain is hollow. The caves are called Mazthoril, and they belong to dragons: the blue flight. This valley has been their home for longer than anyone can reckon. Go to the mouth of the caves, $N. Not in. There is a matron of their kind who speaks with travellers, but her brood does not share her patience.\n\nLook, and come back. I will tell you what else has claims on this snow.",
+    "objectives": "Go to the mouth of the caves of Mazthoril, south of Everlook, then return to Storm Shadowhoof in Everlook.",
+    "progress": "South of town, in the mountainside. Blue scales are hard to miss on white.",
+    "completion": "So you have seen the oldest tenants. The blue dragons, and the great white cats they have quarrelled with here since before memory.\n\nThere is one more claim, and it is the darkest. Far to the south-west lies Darkwhisper Gorge. It is thick with demons, left from the last war. They stand guard on a pass into Mount Hyjal, where the Legion was broken. The pass is shut. They guard it anyway.\n\nThink on that when the goblins tell you this is a quiet place for trade. A dragonflight's home, a door to the World Tree, and a legion that does not know it lost, $N. Under all this snow."
+  },
+  "reward": {
+    "money": 11000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 15791,
+        "count": 1
+      },
+      {
+        "item": 15861,
+        "count": 1
+      },
+      {
+        "item": 11918,
+        "count": 1
+      },
+      {
+        "item": 15413,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Winterspring is the traditional homeland of the blue dragonflight, at Mazthoril, long in struggle with the frostsabers; Haleh the matron protector; the demons of Darkwhisper Gorge guard a non-functional entrance to Hyjal; the Steamwheedle Cartel's town of Everlook."
+}

@@ -1,0 +1,53 @@
+{
+  "id": 9200108,
+  "title": "The Door Our Fathers Came Through",
+  "level": 48,
+  "min_level": 43,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 4,
+  "type": "visit",
+  "giver": 7572,
+  "turn_in": 7572,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -11806.0,
+        "y": -3214.0,
+        "radius": 130
+      },
+      "text": "Go to the Dark Portal"
+    }
+  ],
+  "texts": {
+    "details": "You look at me and you see a ghost. I am one. I died serving the Horde, and I serve it still, here at the edge of the red waste.\n\nSouth of this place is the door. Every orc who ever drew breath on this world came through it, or was born to one who did. This land was a green marsh when they stepped out. The magic of the door killed it. When the humans broke the door, the breaking burned what was left.\n\nGo and stand before it, $N. You should know where we came from. And you should know what our coming did.",
+    "objectives": "Go to the Dark Portal in the south of the Blasted Lands, then return to the Fallen Hero of the Horde at the border of the Swamp of Sorrows.",
+    "progress": "South. Follow the red ground until the sky begins to tear.",
+    "completion": "You have seen it. Now it opens again on what remains of Draenor.\n\nHear me. The old Horde came through that door as a weapon in a demon's hand, and poisoned the first ground it touched. Look around you. That is our mark on this world.\n\nThe demons are here still. Their lord Kazzak hides in the Tainted Scar, and I stand watch against what seeps out of it. I cannot leave. But you can carry it with you, $N: we did this. The Warchief's Horde exists so that we never do it again."
+  },
+  "reward": {
+    "money": 11000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 11875,
+        "count": 1
+      },
+      {
+        "item": 18411,
+        "count": 1
+      },
+      {
+        "item": 15813,
+        "count": 1
+      },
+      {
+        "item": 12021,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Horde entered Azeroth through the Dark Portal in the Black Morass; its magic warped the land and its destruction burned it; it now leads to Outland; the Fallen Hero of the Horde tries to cleanse the corruption that stems from the demon to the south."
+}

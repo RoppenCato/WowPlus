@@ -1,0 +1,53 @@
+{
+  "id": 9200112,
+  "title": "The Skull",
+  "level": 50,
+  "min_level": 45,
+  "max_level": 0,
+  "side": "both",
+  "zone": 361,
+  "type": "visit",
+  "giver": 10922,
+  "turn_in": 10922,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": 4887.0,
+        "y": -504.0,
+        "radius": 150
+      },
+      "text": "Look upon Jaedenar"
+    }
+  ],
+  "texts": {
+    "details": "You walk in a dying forest and you ask me what I am doing. I am fighting for it. One satyr at a time, if I must.\n\nThis was a green and gentle land. The kaldorei tended it, and Cenarius himself watched over it. I want you to see what holds its heart now. North of here, off the west side of the road, is a place called Jaedenar. Satyrs. And behind the satyrs, those they scout and murder for.\n\nLook upon it, $N, from the road if you are wise. Then return, and I will tell you how a forest is made to sicken.",
+    "objectives": "Look upon Jaedenar in the middle of Felwood, then return to Greta Mosshoof at the Emerald Sanctuary.",
+    "progress": "North along the road, then west. The trees themselves will warn you.",
+    "completion": "In the last war the Burning Legion came to this forest carrying a thing of great evil: the Skull of Gul'dan. With it they befouled the land. What they did not burn, they cursed. Every tree and beast you have passed is what survived that.\n\nThen one came who took the Skull and consumed its power into himself. The Legion's hold here broke. But the blight remained, and some say it grew worse for the manner of its ending.\n\nIn Jaedenar, under the ground, sits the lord of the Shadow Council. The druids and the elves have tried again and again to heal this land, and failed. Still we try, $N. Take this, and my thanks for looking."
+  },
+  "reward": {
+    "money": 12000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 11875,
+        "count": 1
+      },
+      {
+        "item": 18411,
+        "count": 1
+      },
+      {
+        "item": 15813,
+        "count": 1
+      },
+      {
+        "item": 12021,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Felwood was a lush land tended by the kaldorei and protected by Cenarius; the Burning Legion befouled it with the Skull of Gul'dan in the Third War; Illidan consumed the Skull; the satyrs of Jaedenar serve the Shadow Council, whose lord waits in Shadow Hold; attempts to heal the land have failed; Greta Mosshoof fights the satyrs."
+}
