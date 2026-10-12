@@ -29,6 +29,7 @@ Boss tactics exist for every Northrend dungeon, a few Outland ones and most raid
 | **All Horde, really** | The module fills the world from a fixed set of accounts and falls back on Alliance characters when it runs out of Horde ones (8 of 100 did). There are now enough accounts for 150 Horde bots. | `Playerbots.RandomBotAccountCount`; `Settings/Deploy-Settings.ps1` hands the extra accounts over at start |
 | **Awake where it matters** | A bot is fully awake in your zone, within 150 yards of you, in your guild or party, in combat, in a dungeon or battleground, and in a queue. Elsewhere it thinks one tenth of the time (the module's default). Making all bots always awake was tried: far-away bots handed in eight times the quests, which you never see, since the bot manager sets their levels anyway. | `Playerbots.BotActiveAlone` |
 | **People you know stay** | A bot you have talked with more than once is put on your friends list. The module leaves bots on a friends list (and in your guild) at their level, so someone you met at level 12 is not level 60 next week. Remove them from the list to let them go. | `WowPlus.BotChat.KnownBecomeFriends` |
+| **The loot is yours** | When a bot joins your group the loot rule becomes "free for all", and under that rule bots do not loot. Every kill is yours, in dungeons too. | `WowPlus.Bots.PlayerLoots` |
 | **Small things** | Bots walk indoors, greet, and use emotes. | `Settings/playerbots.conf` |
 
 Two things to know:

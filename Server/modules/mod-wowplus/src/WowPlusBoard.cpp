@@ -19,6 +19,9 @@
  * (Playerbots.SummonWhenGroup) and done by this file instead, at once for bots invited the ordinary
  * way and for companions, later for people from the board.
  *
+ * Also here, because it is about joining a group: when a bot joins a real player's group, the loot
+ * rule becomes "free for all", under which bots do not loot (WowPlus.Bots.PlayerLoots).
+ *
  * The addon talks to this file by whispering its own character with the prefix "WPG".
  * Settings: WowPlus.Board.*
  */
@@ -83,6 +86,7 @@ namespace
     uint32 postMinutes = 5;
     uint32 applicantMinSeconds = 12;
     uint32 applicantMaxSeconds = 40;
+    bool playerLoots = true;
 
     enum Role : uint8 { ROLE_TANK_BOT, ROLE_HEALER_BOT, ROLE_DAMAGE_BOT, ROLES };
     char const* const ROLE_NAMES[ROLES] = {"tank", "healer", "damage"};
@@ -783,6 +787,7 @@ public:
         postMinutes = sConfigMgr->GetOption<uint32>("WowPlus.Board.Post.Minutes", 5);
         applicantMinSeconds = sConfigMgr->GetOption<uint32>("WowPlus.Board.Post.MinSeconds", 12);
         applicantMaxSeconds = sConfigMgr->GetOption<uint32>("WowPlus.Board.Post.MaxSeconds", 40);
+        playerLoots = sConfigMgr->GetOption<bool>("WowPlus.Bots.PlayerLoots", true);
     }
 
     void OnStartup() override
@@ -870,7 +875,18 @@ public:
     {
         Player* bot = ObjectAccessor::FindConnectedPlayer(guid);
         Player* leader = ObjectAccessor::FindConnectedPlayer(group->GetLeaderGUID());
-        if (!enabled || !bot || !leader || !IsBot(bot) || IsBot(leader) || group->isLFGGroup() || group->isBGGroup())
+        if (!bot || !leader || !IsBot(bot) || IsBot(leader) || group->isBGGroup())
+            return;
+
+        // The loot is the player's: with "free for all" the bot module's bots leave every corpse alone
+        // (Playerbots.FreeMethodLoot = 0), where with group loot every other kill would be theirs to loot.
+        if (playerLoots && group->GetLootMethod() != FREE_FOR_ALL)
+        {
+            group->SetLootMethod(FREE_FOR_ALL);
+            group->SendUpdate();
+        }
+
+        if (!enabled || group->isLFGGroup())
             return;
 
         Board& board = boards[leader->GetGUID()];

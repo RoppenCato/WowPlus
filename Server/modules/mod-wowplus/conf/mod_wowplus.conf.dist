@@ -790,6 +790,17 @@ WowPlus.BotChat.KnownBecomeFriends = 1
 #        Default: 12, 40
 
 WowPlus.Board.Enable             = 1
+
+#
+#    WowPlus.Bots.PlayerLoots
+#        1: when a bot joins your group, the loot rule is set to "free for all". Under that
+#        rule the bots do not loot at all, so every kill is yours to loot, also in dungeons.
+#        With the game's usual group loot, every other kill belongs to a bot. You can still
+#        change the rule by hand afterwards; it is set again when the next bot joins.
+#        0: the game's usual group loot, and bots loot their share.
+#        Default: 1
+
+WowPlus.Bots.PlayerLoots         = 1
 WowPlus.Board.People             = 14
 WowPlus.Board.LevelRange         = 3
 WowPlus.Board.Stay.MinMinutes    = 4
