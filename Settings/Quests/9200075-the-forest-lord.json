@@ -1,0 +1,36 @@
+{
+  "id": 9200075,
+  "title": "The Forest Lord",
+  "level": 24,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 331,
+  "type": "visit",
+  "giver": 4079,
+  "turn_in": 4079,
+  "objectives": [
+    {
+      "talk": 3894,
+      "text": "Ask Pelturas Whitemoon who Cenarius was",
+      "says": [
+        "Cenarius was the Lord of the Forest. He was the son of Elune herself and of the white stag, Malorne, and it was Ysera the Dreamer who raised him.",
+        "Every druid who has ever lived learned from him, or from one he taught. Malfurion Stormrage was the first. In the War of the Ancients it was Cenarius who led the wild things against the Legion.",
+        "He walked these woods for more than ten thousand years. I do not think we have understood yet that he is gone."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "You are newly come to Ashenvale, and you have seen the stumps in the east. You think that is why we draw steel at the sight of an orc.\n\nIt is not, and I will not have an ally of the kaldorei believe it is. We have lost forests before. Forests grow back.\n\nPelturas Whitemoon is here in Astranaar. Ask him who Cenarius was. Then come back to me, and I will tell you what was done to him, in this forest, in the year the orcs came.",
+    "objectives": "Ask Pelturas Whitemoon in Astranaar who Cenarius was, then return to Sentinel Thenysil.",
+    "progress": "He is here in the village. He will be glad that someone asked.",
+    "completion": "Now hear the rest.\n\nWhen the orcs first came, their Warsong clan began to fell the forest, and killed those of us who stood in the way. Cenarius felt the demon taint in them and came to drive them out. He would have done it. But they found a pool of a pit lord's blood, and drank it, and with that strength they slew him.\n\nA son of Elune, $N, cut down by axes, for timber. That is why. The orcs say it was not truly them, that the blood drove them. Perhaps. They are still cutting."
+  },
+  "reward": {
+    "money": 1800,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, The Forest Lord: Cenarius, son of Elune and Malorne, raised by Ysera, teacher of the druids, commander in the War of the Ancients, was killed by the Warsong after they drank Mannoroth's blood."
+}

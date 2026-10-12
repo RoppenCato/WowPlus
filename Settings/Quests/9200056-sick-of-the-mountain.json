@@ -1,0 +1,32 @@
+{
+  "id": 9200056,
+  "title": "Sick of the Mountain",
+  "level": 25,
+  "min_level": 21,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 11,
+  "type": "kill",
+  "after": 9200055,
+  "giver": 1217,
+  "turn_in": 1217,
+  "objectives": [
+    {
+      "creature": 1043,
+      "count": 8
+    }
+  ],
+  "texts": {
+    "details": "Nobody lives in Grim Batol now. When the Queen was freed the dwarves thought o' takin' it back, an' then they felt what was still in the stone, an' thought again. The red dragons set their own kin to guard the mountain so that no one would go in.\n\nBut somethin' in there is foul, $N, an' it's gettin' out. The guards sicken. Their young wander down into the marsh witless an' vicious. Lost Whelps, we call them, an' they'll burn a wagon as soon as look at it.\n\nIt's no kindness to leave them so. Put eight o' them down, east o' the Green Belt, an' say a word for their mother when ye do.",
+    "objectives": "Kill 8 Lost Whelps in the eastern Wetlands, then return to Glorin Steelbrow in Menethil Harbor.",
+    "progress": "East, toward the mountains, past the Greenwarden's grove.",
+    "completion": "Aye. Poor beasts.\n\nI'll tell ye what troubles me. The reds are not our enemies. They stood guard on that mountain so the rest of us wouldn't have to. If the guards are goin' mad, then whatever they were set to keep in is not kept in.\n\nThat's a worry for wiser heads than mine. Mine's simpler: there's still Dragonmaw between this harbor an' the road."
+  },
+  "reward": {
+    "money": 1800,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 2 of 3: after Alexstrasza was freed the dwarves left Grim Batol, sensing a darkness in it, and the red dragonflight set guards; corruption from the fortress sickened them and spread into the Wetlands. Uses an enemy no quest used."
+}

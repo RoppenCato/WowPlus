@@ -1,0 +1,36 @@
+{
+  "id": 9200054,
+  "title": "The Grove No One Enters",
+  "level": 28,
+  "min_level": 24,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 10,
+  "type": "visit",
+  "giver": 276,
+  "turn_in": 276,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -10440.0,
+        "y": -442.0,
+        "radius": 135
+      },
+      "text": "Go to the edge of the Twilight Grove"
+    }
+  ],
+  "texts": {
+    "details": "I watch the sky because the sky is the only thing left in Duskwood that can be watched without dread. But there is one place in this forest that I have never dared to study, and it is not the cemetery.\n\nIn the middle of the wood stands a ring of hills, and inside it a tree so great that it tops them. The woodsmen call it the Twilight Grove. They do not go in. Things have been seen there that were too large to be anything but dragons.\n\nGo to its edge, $N. No further. The elves built something there once, and I want to know from a living witness that it still stands.",
+    "objectives": "Go to the edge of the Twilight Grove in the middle of Duskwood, then return to Viktori Prism'Antras in Darkshire.",
+    "progress": "It lies in the very heart of the forest, north of the road. Stay at the rim.",
+    "completion": "A moonwell. Elven stone. Then the old account is true.\n\nI have it from a night elf who passed through years ago. There are four such great trees in the world: one here, one in Feralas, one in the Hinterlands, one in Ashenvale. Each holds a door into a place her people call the Emerald Dream. And each was guarded by dragons of the green flight, the brood of Ysera, the Dreamer.\n\nShe would not say what had become of the guardians. Only that I should not go near. In a forest full of walking dead, $N, the thing at its heart is older than all of them, and greener."
+  },
+  "reward": {
+    "money": 2000,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Twilight Grove holds a great tree, one of four portals to the Emerald Dream (with Feralas, the Hinterlands and Ashenvale), guarded by Ysera's green dragonflight. Invented: the passing night elf who told Viktori."
+}

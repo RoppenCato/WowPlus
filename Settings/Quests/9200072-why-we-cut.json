@@ -1,0 +1,45 @@
+{
+  "id": 9200072,
+  "title": "Why We Cut",
+  "level": 24,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 331,
+  "type": "visit",
+  "giver": 12737,
+  "turn_in": 12737,
+  "objectives": [
+    {
+      "talk": 17304,
+      "text": "Ask Overseer Gorthak how the cutting began",
+      "says": [
+        "How did it begin? With an order. The Warchief sent the Warsong ahead to raise an outpost and cut the wood for it. Hellscream led us. I was there.",
+        "The elves came out of the trees and killed our cutters. So Hellscream cut deeper, and killed elves. That is how he was.",
+        "Then their forest god came for us himself. Cenarius. He looked at us and saw demons. He was not far wrong, in those days."
+      ]
+    },
+    {
+      "talk": 12867,
+      "text": "Ask Kuray'bin about the fountain",
+      "says": [
+        "Ya want ta hear about de fountain? It was one of mine found it, mon. A witch doctor. He smelled de power in it before he saw it.",
+        "A pool of blood, in de middle of de forest. Demon blood. De pit lord Mannoroth had filled it an' left it for de orcs ta find.",
+        "Hellscream knew what it was. He drank anyway, an' made his clan drink. Dey could not beat de forest god as dey were. So dey became someting else."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "Every grunt who comes up from the Barrens asks why the elves hate us so. They think it is the trees.\n\nIt is not the trees. It is what happened among them, the first season we were here. Two at this post can tell it better than I. Gorthak, who oversees the lumber camp, swung an axe in it. And Kuray'bin, the troll, knows the part that the orcs do not like to tell.\n\nHear them both, $N. Then come back, and I will tell you how it ended.",
+    "objectives": "Ask Overseer Gorthak at the Warsong Lumber Camp how the cutting began and ask Kuray'bin near Splintertree Post about the fountain, then return to Mastok Wrilehiss at Splintertree Post.",
+    "progress": "Gorthak is at the lumber camp, east of here. The troll is south of the post.",
+    "completion": "They killed him. The Warsong, drunk on demon blood, cut down Cenarius, a god of that forest and the teacher of all the elves' druids.\n\nAnd the moment it was done, Mannoroth had them. The blood was a leash. The whole clan was his again, as our people had been his before.\n\nThat is why the elves hate us, $N. Not for lumber. For a god. It is the worst thing the Horde has done on this side of the sea, and it is the reason this post is called a Warsong post and not a shameful one. I will show you why."
+  },
+  "reward": {
+    "money": 1800,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 3, Hellscream: Thrall sent the Warsong to cut wood for an outpost; night elves resisted; Cenarius took the orcs for demons; a troll witch doctor found Mannoroth's fountain of blood; Grom drank and made his clan drink, and they killed Cenarius and were enslaved."
+}

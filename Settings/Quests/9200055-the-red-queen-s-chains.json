@@ -1,0 +1,36 @@
+{
+  "id": 9200055,
+  "title": "The Red Queen's Chains",
+  "level": 22,
+  "min_level": 18,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 11,
+  "type": "visit",
+  "giver": 1217,
+  "turn_in": 1217,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -3464.0,
+        "y": -2324.0,
+        "radius": 130
+      },
+      "text": "Look over Angerfang Encampment"
+    }
+  ],
+  "texts": {
+    "details": "Everyone who gets off the boat asks me the same thing: what are orcs doin' in a swamp?\n\nGo an' look at them first. East o' here, up where the ground rises, is Angerfang Encampment. Dragonmaw clan. Don't go in among them. Look at their banners, an' at how many o' them there are.\n\nThen come back an' I'll tell ye about a mountain east o' here. It's the reason they came, an' the reason they can't go home, an' the reason there's dragon whelps in a marsh.",
+    "objectives": "Look over Angerfang Encampment in the middle of the Wetlands, then return to Glorin Steelbrow in Menethil Harbor.",
+    "progress": "Follow the road east from the harbor. Ye'll smell their fires.",
+    "completion": "East is Grim Batol. A Wildhammer hall, once, till a Dark Iron witch cursed it an' the Wildhammers left it empty.\n\nIn the Second War the Horde put the Dragonmaw in there. One o' theirs, Nekros, had a thing called the Demon Soul, an' with it he chained Alexstrasza herself, Queen o' the red dragons. For years she was made to breed, an' her children were ridden into battle by orcs.\n\nThen she was freed. She burned every Dragonmaw she could find, an' Nekros with them. What ye saw at Angerfang is what crawled away."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 3, The Red Queen's Chains: the Dragonmaw held Grim Batol in the Second War; Nekros used the Demon Soul to enslave Alexstrasza and her brood as mounts; freed, she destroyed the clan."
+}

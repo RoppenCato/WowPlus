@@ -1,0 +1,25 @@
+{
+  "id": 9200077,
+  "title": "The Talondeep Path",
+  "level": 24,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 331,
+  "type": "deliver",
+  "giver": 3845,
+  "turn_in": 4080,
+  "objectives": [],
+  "texts": {
+    "details": "South of the road, beyond the lake, there is a tunnel through the mountains: the Talondeep Path. It comes out in the Stonetalon range, in a place called Windshear Crag.\n\nYou will not like what you see there. Goblins of the Venture Company have stripped that valley to the rock. The druids on Stonetalon Peak have asked Astranaar for help, and I have none to send but you.\n\nOne of ours, Kaela Shadowspear, keeps watch near the mouth of the tunnel with a gnome she has taken up with. Find her. Tell her Astranaar sends what it can.",
+    "objectives": "Take the Talondeep Path south into the Stonetalon Mountains and find Kaela Shadowspear in Windshear Crag.",
+    "completion": "Astranaar sends one. Well. One who came is worth ten who were promised.\n\nLook around you, $N. This was forest. I hunted here. Now listen: you can hear them from where we stand, the saws and the engines. They do not even stop at night.\n\nThe gnome is Gaxim. He hates the Company more than I do, which I had not thought possible. Between us we mean to break it. You are just in time."
+  },
+  "reward": {
+    "money": 1800,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Ashenvale to Stonetalon (Alliance): the Talondeep Path, Windshear Crag stripped by the Venture Company, Kaela Shadowspear and Gaxim Rustfizzle."
+}

@@ -1,0 +1,36 @@
+{
+  "id": 9200080,
+  "title": "The Wyverns' Lake",
+  "level": 24,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 406,
+  "type": "visit",
+  "giver": 11860,
+  "turn_in": 11860,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": 1582.0,
+        "y": 855.0,
+        "radius": 150
+      },
+      "text": "Go to the shore of Mirkfallon Lake"
+    }
+  ],
+  "texts": {
+    "details": "The young come to Sun Rock and see a camp on a ledge. They do not know they are walking where the Horde was made whole.\n\nWhen the orcs first came to this land, their Warchief was seeking an Oracle said to dwell on Stonetalon Peak. Our chieftain Cairne went with him. Centaur barred the way, and harpies. The harpies had done a wicked thing: they had caged the wyverns of these mountains.\n\nNorth of us is Mirkfallon Lake. The wyverns nested there, time out of mind. Go and stand on its shore, $N, and then I will finish the tale.",
+    "objectives": "Go to the shore of Mirkfallon Lake, north of Sun Rock Retreat, then return to Maggran Earthbinder.",
+    "progress": "North, below the retreat. The water is wide; you cannot miss it.",
+    "completion": "The orcs and the tauren broke the harpies together, and opened the cages. And the wyverns, who are proud, did not forget it. They bore the Warchief's warriors up to the Peak on their own backs. They bear us still.\n\nAnd at the Peak, in the caverns, the Horde came face to face with the humans. There, for the first time, the two stood together against the Burning Legion.\n\nThe elves hold the Peak now and call it theirs alone. But it is sacred to us also, $N. My people carried fire to its summit before any of this."
+  },
+  "reward": {
+    "money": 1800,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "In the Third War Thrall and Cairne sought the Oracle at Stonetalon Peak, defeated the harpies and freed the wyverns, who helped them reach it; in the Peak's caverns Horde and Alliance first united against the Legion; Mirkfallon Lake was a wyvern nesting site; the tauren legend of fires carried to the peaks."
+}

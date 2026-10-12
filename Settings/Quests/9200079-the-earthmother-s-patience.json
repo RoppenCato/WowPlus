@@ -1,0 +1,53 @@
+{
+  "id": 9200079,
+  "title": "The Earthmother's Patience",
+  "level": 23,
+  "min_level": 19,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 406,
+  "type": "kill",
+  "after": 9200078,
+  "giver": 11864,
+  "turn_in": 11864,
+  "objectives": [
+    {
+      "creature": 3989,
+      "count": 8
+    },
+    {
+      "creature": 3991,
+      "count": 6
+    }
+  ],
+  "texts": {
+    "details": "I have prayed on it, and the answer I am given is not a gentle one.\n\nThe Company does not stop for talk. It did not stop in Mulgore when the chieftains said no. Our outrunners there burned one of its supply trains to the ground, and even that only slowed it.\n\nSo we will speak the one tongue it knows, which is loss. The loggers and the deforesters do the cutting. Go back into the Crag, $N. Eight of the one, six of the other. Let Razdunk count that in his ledger.",
+    "objectives": "Kill 8 Venture Co. Loggers and 6 Venture Co. Deforesters in Windshear Crag, then return to Tammra Windfield at Sun Rock Retreat.",
+    "progress": "They are at the stumps, wherever the stumps are newest.",
+    "completion": "Fourteen. It will be a line in a ledger somewhere, written in red.\n\nI do not take joy in it. But the night elves blame the Horde for every tree that falls in these mountains, and I will not have the Company's axe laid at my people's door.\n\nYou have a good arm and you listened first. That is rarer. Take this."
+  },
+  "reward": {
+    "money": 1700,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 15461,
+        "count": 1
+      },
+      {
+        "item": 5317,
+        "count": 1
+      },
+      {
+        "item": 6665,
+        "count": 1
+      },
+      {
+        "item": 3493,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 2: the tauren of Mulgore refused the Company mining rights and their outrunners destroyed a supply caravan; the Company's loggers in Windshear Crag."
+}

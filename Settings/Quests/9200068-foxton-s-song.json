@@ -1,0 +1,43 @@
+{
+  "id": 9200068,
+  "title": "Foxton's Song",
+  "level": 26,
+  "min_level": 22,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 267,
+  "type": "deliver",
+  "after": 9200067,
+  "giver": 2229,
+  "turn_in": 4949,
+  "objectives": [],
+  "texts": {
+    "details": "Her name was Taretha Foxton. Her father kept Blackmoore's accounts. Her mother nursed the Warchief when he was an infant, so the two of them grew up side by side. She hid letters to him inside books. When the time came, she made the diversion that drew the guards away, and met him outside the walls with food.\n\nShe would not run with him. She had a family to protect. Blackmoore found out, and had her killed.\n\nShe is the only human who has ever had a lok'vadnod made for her, a song for the honored dead. Go to Orgrimmar, $N. Tell the Warchief you have stood in Durnholde, and that Krusk of the Mill still sings it.",
+    "objectives": "Go to Grommash Hold in Orgrimmar and tell Thrall that you have stood in Durnholde.",
+    "completion": "Krusk still sings it. Then it will outlast us both.\n\nYou have been to Durnholde, so you know what I was. Remember also what she was. When every human I had ever met owned me, struck me or wagered on me, one of them risked everything to set me free, and paid for it with her life.\n\nThat is why I will not have it said in my hall that there is no honor in humans. I know better. I have known better since I was a slave. Take this, $N, and remember her name."
+  },
+  "reward": {
+    "money": 2100,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 6482,
+        "count": 1
+      },
+      {
+        "item": 16977,
+        "count": 1
+      },
+      {
+        "item": 7133,
+        "count": 1
+      },
+      {
+        "item": 6093,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 3 of 3, and a road to Orgrimmar: Taretha Foxton, raised beside Thrall, helped him escape and was murdered by Blackmoore; the only human with a lok'vadnod composed in her honor."
+}

@@ -1,0 +1,36 @@
+{
+  "id": 9200066,
+  "title": "Where the Warchief Wore Chains",
+  "level": 24,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 267,
+  "type": "visit",
+  "giver": 2229,
+  "turn_in": 2229,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -445.0,
+        "y": -1486.0,
+        "radius": 60
+      },
+      "text": "Stand in the ruins of Durnholde Keep"
+    }
+  ],
+  "texts": {
+    "details": "You fight for the Horde. Do you know where the Horde was born?\n\nNot in Orgrimmar. Not on Draenor. Here. South of this town, across the river, there is a ruin on a hill. The humans called it Durnholde. When they had beaten us they built camps to hold us, and that keep ruled all the camps.\n\nThe Warchief grew up inside its walls. A human lord found him as an infant and raised him to fight in a pit for sport. He named him Thrall. Slave. Go and stand in the middle of that place, $N. Human bandits squat in it now; do not mind them. Stand where the arena was.",
+    "objectives": "Stand in the middle of the ruins of Durnholde Keep, then return to Krusk in Tarren Mill.",
+    "progress": "South and west of here, on the hill over the river.",
+    "completion": "You stood there. Good. Every orc should, once.\n\nThe lord's name was Blackmoore. He beat the Warchief, and starved him, and made him kill for wagers. And the Warchief learned. He learned to read their books of war. He learned how they think.\n\nThen he ran. And when he came back to that hill he had an army of free orcs behind him, and he killed Blackmoore with his own hands and asked the earth itself to throw the walls down. It did. That is why it is a ruin."
+  },
+  "reward": {
+    "money": 1800,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 3, Where the Warchief Wore Chains: Durnholde ruled the internment camps; Blackmoore raised Thrall there as a gladiator; Thrall escaped, returned with freed orcs, killed Blackmoore and levelled the keep with the Spirit of the Earth."
+}

@@ -1,0 +1,45 @@
+{
+  "id": 9200078,
+  "title": "If You Can Chop It Down",
+  "level": 22,
+  "min_level": 18,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 406,
+  "type": "visit",
+  "giver": 11864,
+  "turn_in": 11864,
+  "objectives": [
+    {
+      "talk": 4201,
+      "text": "Ask Ziz Fizziks what the Venture Company is",
+      "says": [
+        "The Venture Company? Kid, that's the outfit that gives goblins a bad name, and we weren't exactly starting with a good one.",
+        "They've got a saying. If you can dig it up, chop it down, or blow it out of a mountain, they will. Mogul Razdunk runs the show. Wanted to be a trade prince his whole life and never made it. Makes him mean.",
+        "Up here the boss is a gnome, if you can believe it. Gerenzo Wrenchwhistle. Gone leper. He built a walking saw called the Super Reaper 6000, and I may have borrowed the plans."
+      ]
+    },
+    {
+      "place": {
+        "map": 1,
+        "x": 1195.0,
+        "y": -76.0,
+        "radius": 150
+      },
+      "text": "See what has been done to Windshear Crag"
+    }
+  ],
+  "texts": {
+    "details": "You came up through the Crag, so you have seen the stumps. Did you ask who cut them?\n\nMy people do not understand it. We take a tree and we thank it. These goblins take a forest and send a bill. In Mulgore they asked the chieftains for leave to mine; they were refused, and they dug anyway.\n\nThere is a goblin at the edge of the Crag, Ziz Fizziks, who has fallen out with them. He will tell you what they are, if you can follow his talk. Then go into the Crag itself and look properly, $N. I want you to carry the sight of it.",
+    "objectives": "Ask Ziz Fizziks in Windshear Crag what the Venture Company is and see what has been done to the Crag, then return to Tammra Windfield at Sun Rock Retreat.",
+    "progress": "The goblin is on the west side of the Crag. The cutting is everywhere east of him.",
+    "completion": "Dig it up, chop it down, blow it out of the mountain. Yes. That is them, in their own words.\n\nAnd it is not only timber. They have a mine in the Crag, and they are bringing something gold-green out of it that no one here can name.\n\nThe Earthmother is patient, $N. I am finding that I am not."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 2, If You Can Chop It Down: the Venture Company, a goblin cartel under Mogul Razdunk who never became a trade prince; its motto; Gerenzo Wrenchwhistle, a leper gnome, and his Super Reaper 6000; the mine's unidentified gold-green ore; the mine dug in Mulgore after rights were refused."
+}

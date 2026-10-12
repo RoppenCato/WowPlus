@@ -1,0 +1,36 @@
+{
+  "id": 9200064,
+  "title": "Where the City Was",
+  "level": 30,
+  "min_level": 26,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 267,
+  "type": "visit",
+  "giver": 2277,
+  "turn_in": 2277,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": 40.0,
+        "y": 250.0,
+        "radius": 70
+      },
+      "text": "Go to the edge of the Dalaran crater"
+    }
+  ],
+  "texts": {
+    "details": "I had a place at Dalaran, once. A small one. I should like to know what is left.\n\nNorth-west of here, on the shore of Lordamere Lake, stood the city of the Kirin Tor. It was destroyed in the Third War. The mages who survived came back, raised a dome of violet light over the ruins that no one could pass, and began to rebuild inside it.\n\nThen, not long ago, they did something I still cannot credit. Go and look, $N. Go to where the city was. Tell me whether the stories are true, because I have not had the heart to go myself.",
+    "objectives": "Go to the edge of the Dalaran crater, on the shore of Lordamere Lake north-west of Hillsbrad, then return to Loremaster Dibbs in Southshore.",
+    "progress": "Follow the road west, then north to the lake. You cannot miss it. You can only fail to believe it.",
+    "completion": "A hole in the ground. So it is true.\n\nThey lifted it. The whole city, streets and towers and all, torn up out of the earth and flown north to hang in the sky over Northrend, to stand against the Lich King. Only the dome is left, thin as breath, and a camp of those who stayed behind.\n\nI spent my youth dusting shelves in a city that is now a thousand leagues away and a mile in the air. Thank you, $N. I think I can go and look at it now."
+  },
+  "reward": {
+    "money": 2700,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Dalaran crater: the city was destroyed in the Third War, rebuilt under a violet dome, and lifted into the sky over Northrend against the Lich King; the dome and a camp remain. Invented: that Dibbs once worked there."
+}

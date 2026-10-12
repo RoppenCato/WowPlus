@@ -1,0 +1,25 @@
+{
+  "id": 9200065,
+  "title": "The Cradle of Kings",
+  "level": 30,
+  "min_level": 26,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 267,
+  "type": "deliver",
+  "giver": 2263,
+  "turn_in": 2700,
+  "objectives": [],
+  "texts": {
+    "details": "You have done good service here, and I would keep you if I could. But there are men to the east with more need than I.\n\nPast the old wall, Thoradin's Wall, which stands broken open now, lie the Arathi Highlands. That is where the first kingdom of men was raised: Arathor. It is where our people first met the elves, in the Troll Wars. Stromgarde was its heir.\n\nStromgarde is in ruins. Its soldiers hold out in a canyon they call Refuge Pointe. Take the east road, find Captain Nials, and tell him Southshore remembers who stood between us and the Horde.",
+    "objectives": "Take the east road through Thoradin's Wall into the Arathi Highlands and report to Captain Nials at Refuge Pointe.",
+    "completion": "Southshore remembers. That is kind. It has been a long while since anyone said so.\n\nWe are what is left of Stromgarde's army, $N. The Syndicate and the ogres hold our city between them. The Horde sits at Hammerfall in the east; it was one of our prison camps for their kind, and they have named it for the Warchief who fell there.\n\nThe first kingdom of men, and we are camped in a ditch at the edge of it. Help us climb out."
+  },
+  "reward": {
+    "money": 2700,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Hillsbrad to Arathi (Alliance): Thoradin's Wall, Arathor as the cradle of human kingdoms and first meeting of men and elves in the Troll Wars, Stromgarde's ruin, Refuge Pointe, Hammerfall."
+}

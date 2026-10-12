@@ -1,0 +1,32 @@
+{
+  "id": 9200067,
+  "title": "Squatters",
+  "level": 25,
+  "min_level": 21,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 267,
+  "type": "kill",
+  "after": 9200066,
+  "giver": 2229,
+  "turn_in": 2229,
+  "objectives": [
+    {
+      "creature": 2261,
+      "count": 10
+    }
+  ],
+  "texts": {
+    "details": "The humans in Durnholde now are called the Syndicate. Do you know what their prince wanted?\n\nThe camps. He learned his soldiering in that keep, under Blackmoore, and he believed in it. He wanted every orc back behind a fence with a human holding the key. The Warchief had him killed for it, and I say he waited too long.\n\nHis men still sit in the place where our Warchief was a slave, and light their cook-fires in it. I cannot bear the thought. Ten of their watchmen, $N. Leave them where they fall.",
+    "objectives": "Kill 10 Syndicate Watchmen at Durnholde Keep, then return to Krusk in Tarren Mill.",
+    "progress": "They are all over the ruin. You will not need to look.",
+    "completion": "Ten. The ground there has drunk worse blood than theirs.\n\nThere is one thing more about that keep, and it is the part the young ones never hear. The Warchief did not get out alone. I will tell you, and then you will carry something to Orgrimmar for me.\n\nIt concerns a human. Do not make that face. Listen first."
+  },
+  "reward": {
+    "money": 1900,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 2 of 3: the Syndicate holds Durnholde; its founder Aliden Perenolde rose in the Durnholde military, believed in slavery and wanted the camps restored, and was assassinated at Thrall's request."
+}

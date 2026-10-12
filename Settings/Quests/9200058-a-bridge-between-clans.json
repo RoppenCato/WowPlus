@@ -1,0 +1,45 @@
+{
+  "id": 9200058,
+  "title": "A Bridge Between Clans",
+  "level": 26,
+  "min_level": 22,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 11,
+  "type": "visit",
+  "giver": 1075,
+  "turn_in": 1075,
+  "objectives": [
+    {
+      "talk": 1071,
+      "text": "Ask Longbraid the Grim about the Span",
+      "says": [
+        "The Thandol Span. Ironforge built it after the War o' the Three Hammers, so we'd no' lose our Wildhammer cousins up at Aerie Peak. Two arches, side by side, across the whole gulf.",
+        "The Dark Irons came on it by surprise. It was planned by two o' theirs, Kam Deepfury an' Balgaras the Foul. They brought one arch down near entire, an' took Dun Modr behind us.",
+        "My brother was on that bridge. I'll say no more about it."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -2302.0,
+        "y": -2463.0,
+        "radius": 70
+      },
+      "text": "Walk out onto the Thandol Span"
+    }
+  ],
+  "texts": {
+    "details": "Ye see that town across the water, with the smoke over it? That's Dun Modr. It was ours a short while ago.\n\nI'm set to take it back, an' I will. But a body ought to know what was lost here besides a few houses. Ask Longbraid. He doesn't say much, an' what he says is worth hearin'.\n\nThen walk out on the Span yourself, the arch that's still standin'. Look at the one beside it. Ye'll understand why there's no' a dwarf in this camp who can speak o' Dark Irons in a level voice.",
+    "objectives": "Ask Longbraid the Grim about the Thandol Span and walk out onto it, then return to Rhag Garmason at the camp south of Dun Modr.",
+    "progress": "The Span's just north o' Dun Modr. Mind the edge. There's more of it than there should be.",
+    "completion": "Ye saw. A bridge built so that two clans would stay kin, broken by the third.\n\nThat's the Three Hammers for ye, still bein' fought. Ironforge an' the Wildhammers made their peace long ago an' put up stone to prove it. The Dark Irons have been knockin' down our stone ever since.\n\nThey tell me Deepfury was taken, an' sits in the Stormwind Stockade. I'd give a year's pay to have him here instead."
+  },
+  "reward": {
+    "money": 1900,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Thandol Span was built by Ironforge after the War of the Three Hammers to keep ties with the Wildhammers of Aerie Peak; a Dark Iron attack planned by Kam Deepfury and Balgaras the Foul destroyed one arch and took Dun Modr; Longbraid's brother died there."
+}

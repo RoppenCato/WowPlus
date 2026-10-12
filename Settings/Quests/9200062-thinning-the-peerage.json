@@ -1,0 +1,53 @@
+{
+  "id": 9200062,
+  "title": "Thinning the Peerage",
+  "level": 24,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 267,
+  "type": "kill",
+  "after": 9200061,
+  "giver": 2276,
+  "turn_in": 2276,
+  "objectives": [
+    {
+      "creature": 2244,
+      "count": 6
+    },
+    {
+      "creature": 2260,
+      "count": 5
+    }
+  ],
+  "texts": {
+    "details": "It is the quiet ones I fear. The watchmen at Durnholde are hired clubs. The men who slip into Southshore at night are their rogues, and the ones who decide where the rogues go are their shadow mages.\n\nThere is something else, and I say it only to you. Their mages do not behave like bandits' conjurers. They behave like men with a master. I have heard a name whispered for those who steer the Syndicate from behind: the Argus Wake. I do not know what it means, and I do not think I want to.\n\nSix of the mages, $N, and five of the rogues. At Durnholde.",
+    "objectives": "Kill 6 Syndicate Shadow Mages and 5 Syndicate Rogues at Durnholde Keep, then return to Magistrate Henry Maleb in Southshore.",
+    "progress": "They keep to the ruin and the camps around it.",
+    "completion": "Eleven. I shall sleep a night or two on that.\n\nYou know what the Syndicate's prince believed in, above all? Slavery. He wanted the orcs back in their camps, and himself as their keeper. He learned the trade at Durnholde, when it was still a prison.\n\nThat ruin has more history in it than the bandits who squat there. Ask Dibbs, if you have the stomach."
+  },
+  "reward": {
+    "money": 1900,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 7004,
+        "count": 1
+      },
+      {
+        "item": 6740,
+        "count": 1
+      },
+      {
+        "item": 6722,
+        "count": 1
+      },
+      {
+        "item": 16889,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 3: the Syndicate's rogues and shadow mages; the Argus Wake that manipulates it; Aliden Perenolde rose in the Durnholde military and believed in slavery."
+}

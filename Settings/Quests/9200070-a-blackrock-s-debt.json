@@ -1,0 +1,31 @@
+{
+  "id": 9200070,
+  "title": "A Blackrock's Debt",
+  "level": 26,
+  "min_level": 22,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 717,
+  "type": "slay",
+  "giver": 3144,
+  "turn_in": 3144,
+  "objectives": [
+    {
+      "creature": 1696,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "I was Blackrock, once. I was one of Blackhand's own lieutenants. I left when I saw what my clan's chiefs were: petty lords who sent our sons to die for their rivalries. I do not say this to boast of it.\n\nWhat is left of the Blackrock follows Rend, Blackhand's son, who calls himself Warchief and serves a dragon. They are the Horde as it was, $N. They shame us.\n\nOne of them is held in the humans' prison in Stormwind: Targorr the Dread, executioner to their chieftain in the Redridge Mountains. The humans have sentenced him and will not carry it out. Some lord of theirs finds him useful. I do not. Go into that prison and finish it.",
+    "objectives": "Kill Targorr the Dread in the Stockade, beneath Stormwind, then return to Eitrigg in Grommash Hold in Orgrimmar.",
+    "progress": "The prison is in the heart of the human city. The prisoners have risen and hold it. You will not go unnoticed, and you should not go alone.",
+    "completion": "Then one more of the old Horde's butchers is gone, and no human lord will make a counter of him.\n\nI killed for Blackhand. I know what Targorr was, because I stood beside a hundred like him. It took me half my life to walk away.\n\nThe Warchief gives every orc that chance. Targorr never wanted it. Remember the difference, $N."
+  },
+  "reward": {
+    "money": 2000,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Stockade, 1 of 2 for the Horde: Eitrigg was a Blackrock lieutenant of Blackhand who left the Horde over his clan's leaders; Targorr the Dread, executioner under Gath'Ilzogg, is held under a death sentence a noble delays. Invented: that Eitrigg wants him dead."
+}

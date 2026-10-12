@@ -1,0 +1,48 @@
+{
+  "id": 9200071,
+  "title": "The Mason's Lieutenant",
+  "level": 27,
+  "min_level": 23,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 717,
+  "type": "slay",
+  "giver": 3978,
+  "turn_in": 3978,
+  "objectives": [
+    {
+      "creature": 1716,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "The tale of the masons is not quite ended, $N.\n\nWhen the humans' stonemasons rioted and were driven from their city, one of them did not escape. Bazil Thredd, lieutenant to VanCleef himself, was taken and thrown into the prison beneath Stormwind. He has been there ever since.\n\nNow word comes over the sea that the prisoners have risen and hold the place, and that it is Thredd who planned it. The humans are keeping it very quiet. Go down into that prison. I want to know how the last of the masons ends.",
+    "objectives": "Kill Bazil Thredd in the Stockade, beneath Stormwind, then return to Sage Truthseeker on the Elder Rise in Thunder Bluff.",
+    "progress": "Their warden still lives, they say, and cannot get back in. The door will not be the hard part.",
+    "completion": "So. The guildmaster on his ship, and his lieutenant in his cell. Both dead with a weapon in hand.\n\nI have turned it over many times. These men built a city, and the city cheated them. Their anger was just. And it carried them from the scaffold to the riot to the knife, until there was nothing left of the builders but the anger.\n\nThe Earthmother asks us to walk in balance, $N. I think this is what she means us to learn from. Take this."
+  },
+  "reward": {
+    "money": 2400,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": [
+      {
+        "item": 3556,
+        "count": 1
+      },
+      {
+        "item": 17005,
+        "count": 1
+      },
+      {
+        "item": 7129,
+        "count": 1
+      },
+      {
+        "item": 6194,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Stockade, 2 of 2 for the Horde: Bazil Thredd, VanCleef's lieutenant, captured after the riot, is the mastermind of the prisoners' revolt, which Stormwind keeps secret. Invented: the Sage's continuing interest."
+}

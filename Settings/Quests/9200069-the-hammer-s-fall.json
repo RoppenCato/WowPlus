@@ -1,0 +1,25 @@
+{
+  "id": 9200069,
+  "title": "The Hammer's Fall",
+  "level": 30,
+  "min_level": 26,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 267,
+  "type": "deliver",
+  "giver": 2229,
+  "turn_in": 2771,
+  "objectives": [],
+  "texts": {
+    "details": "You go east, to Arathi? Then you will pass through a wall the humans built in the morning of their race, and broke themselves. Beyond it is the land where their first kingdom stood. It is ruins and ogres now. Let it comfort you.\n\nWe have a stronghold there, in the far east of the highlands. It was a prison camp. In that place Orgrim Doomhammer fell, the Warchief before Thrall, fighting to free those penned inside. So we named it Hammerfall, and we hold it.\n\nFind Drum Fel there. Tell him Krusk sent you, and that Tarren Mill stands.",
+    "objectives": "Travel east through Thoradin's Wall into the Arathi Highlands and report to Drum Fel at Hammerfall.",
+    "completion": "Tarren Mill stands. Good. Then the dead have not let us down yet.\n\nYou are in Hammerfall, $N. Look at the walls. Humans built them to keep us in. Now they keep humans out. I never tire of that.\n\nThe remnant of Stromgarde skulks in a canyon to the west. The ogres hold the hills and the trolls the south. There is fighting enough here for anyone. Welcome."
+  },
+  "reward": {
+    "money": 2700,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Hillsbrad to Arathi (Horde): Thoradin's Wall, the first human kingdom in ruins, and Hammerfall, a former internment camp named for Orgrim Doomhammer who fell there."
+}

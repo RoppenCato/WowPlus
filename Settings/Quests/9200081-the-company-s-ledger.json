@@ -1,0 +1,52 @@
+{
+  "id": 9200081,
+  "title": "The Company's Ledger",
+  "level": 22,
+  "min_level": 18,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 406,
+  "type": "kill",
+  "giver": 4080,
+  "turn_in": 4080,
+  "objectives": [
+    {
+      "creature": 3988,
+      "count": 8
+    },
+    {
+      "creature": 3989,
+      "count": 6
+    }
+  ],
+  "texts": {
+    "details": "You want to know who they are, before you kill them? Fair. Gaxim told me, at length.\n\nThe Venture Company is a goblin cartel. It deals in whatever can be dug up, cut down or blasted loose, and it does not care whose it was. Its master is a goblin called Razdunk. Its man here is not a goblin at all but a gnome, Gerenzo Wrenchwhistle, gone leprous and mad, who builds machines to do the cutting faster.\n\nThey answer to no nation. The orcs do not own them, whatever Astranaar thinks. So no one will avenge them, $N. Eight of the machine operators, and six of the loggers.",
+    "objectives": "Kill 8 Venture Co. Operators and 6 Venture Co. Loggers in Windshear Crag, then return to Kaela Shadowspear.",
+    "progress": "East of here. Follow the noise.",
+    "completion": "Good. Gaxim will be insufferable about it, and I will let him.\n\nWhen you are done here, go up to the Peak, far to the north-west. Keeper Albagorm and the druids of the Talon Den hold it. It is sacred ground, to my people and to the tauren both. They say that in the last war, orcs and humans stood together in the caverns there against the Legion.\n\nI look at this valley, and I find that hard to picture. But I would like to."
+  },
+  "reward": {
+    "money": 1700,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 6998,
+        "count": 1
+      },
+      {
+        "item": 15469,
+        "count": 1
+      },
+      {
+        "item": 15463,
+        "count": 1
+      },
+      {
+        "item": 5357,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Venture Company from the Alliance side: a goblin cartel under Razdunk, with the leper gnome Gerenzo Wrenchwhistle in Stonetalon; the druids of the Talon Den and Keeper Albagorm on Stonetalon Peak; the Third War alliance in its caverns."
+}

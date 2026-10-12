@@ -1,0 +1,25 @@
+{
+  "id": 9200059,
+  "title": "Over the Span",
+  "level": 30,
+  "min_level": 26,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 11,
+  "type": "deliver",
+  "giver": 1075,
+  "turn_in": 2700,
+  "objectives": [],
+  "texts": {
+    "details": "Ye're crossin' the Span, into the Arathi Highlands? Then ye're walkin' into the oldest human country there is, an' the saddest.\n\nThat's where men first made a kingdom. Arathor, they called it, with its seat at Strom. Stromgarde stood on the same spot till lately. Now the Syndicate has half the city an' ogres the other half, an' what's left o' Stromgarde's army is holed up in a canyon to the north. Refuge Pointe, they call it, an' they mean it.\n\nFind Captain Nials there. Tell him the dwarves at Dun Modr still hold the south end o' the bridge, so he's a road behind him if he needs one.",
+    "objectives": "Cross the Thandol Span into the Arathi Highlands and bring Rhag Garmason's word to Captain Nials at Refuge Pointe.",
+    "completion": "The south end holds? Then we are not quite cut off. Thank the dwarves for me.\n\nYou see what Stromgarde has come to, $N. A canyon and a few tents. Prince Galen still fights for the city, street by street. The Boulderfist ogres trouble everyone alike. And the Horde has made a fortress of an old prison camp in the east.\n\nThis is where humanity began. I would rather it were not where Stromgarde ended. There is work here."
+  },
+  "reward": {
+    "money": 2700,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from the Wetlands to Arathi: Arathor and Strom, the cradle of human kingdoms; Stromgarde overrun by the Syndicate and ogres, Prince Galen Trollbane, Refuge Pointe, the Boulderfist, Hammerfall."
+}

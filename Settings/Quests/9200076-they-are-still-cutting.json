@@ -1,0 +1,49 @@
+{
+  "id": 9200076,
+  "title": "They Are Still Cutting",
+  "level": 27,
+  "min_level": 23,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 331,
+  "type": "kill",
+  "after": 9200075,
+  "giver": 4079,
+  "turn_in": 3880,
+  "objectives": [
+    {
+      "creature": 11684,
+      "count": 4
+    }
+  ],
+  "texts": {
+    "details": "The clan that killed him never left. Its lumber camp lies in the far east of Ashenvale, and it grows every season.\n\nThey no longer trust the work to axes. The goblins have sold them machines, great walking saws that can strip a grove in a day. We call them shredders. There is nothing in our woods that can stand in front of one.\n\nThe Silverwing Sentinels keep an outpost on the hill above that camp. Go east, $N. Break four of the machines, and then report to Sentinel Melyria Frostshadow at the outpost. Tell her Astranaar has not forgotten her.",
+    "objectives": "Destroy 4 Warsong Shredders at the Warsong Lumber Camp, then report to Sentinel Melyria Frostshadow at Silverwing Outpost.",
+    "progress": "The machines work the edges of the camp, where the trees still stand.",
+    "completion": "Four? Then tomorrow there will be four fewer, and by next moon the goblins will have sold them six more.\n\nI do not say that to dishearten you. We hold this hill because someone must stand where the forest ends and say: no further. It was here that he died, somewhere in these woods. No one can show you the place. The orcs have a monument to their own dead chieftain in the canyon to the west. We have the trees.\n\nElune light your way, $N. Take this from the Silverwing."
+  },
+  "reward": {
+    "money": 2400,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 16658,
+        "count": 1
+      },
+      {
+        "item": 9698,
+        "count": 1
+      },
+      {
+        "item": 6973,
+        "count": 1
+      },
+      {
+        "item": 5817,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 2 of 2: the Warsong Lumber Camp and its shredders; the Silverwing Sentinels' outpost above it. Uses an enemy no quest used."
+}

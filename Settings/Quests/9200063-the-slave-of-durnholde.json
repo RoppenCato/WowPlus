@@ -1,0 +1,54 @@
+{
+  "id": 9200063,
+  "title": "The Slave of Durnholde",
+  "level": 26,
+  "min_level": 22,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 267,
+  "type": "visit",
+  "after": 9200062,
+  "giver": 2277,
+  "turn_in": 2277,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -445.0,
+        "y": -1486.0,
+        "radius": 60
+      },
+      "text": "Stand in the ruins of Durnholde Keep"
+    }
+  ],
+  "texts": {
+    "details": "You have fought in Durnholde. Now I want you to stand in it, and think.\n\nAfter the Second War that keep was the heart of the internment camps, where the beaten orcs were penned. Its master was Aedelas Blackmoore: a lieutenant general, a drunkard, and a man with plans. He had found an orc infant beside its murdered parents, and he raised it there. He named it Thrall. It means slave. He meant it to.\n\nHe made the boy fight in the arena, for sport and for his own advancement. Go into the ruin, $N, to the very middle. Then come back and I will tell you how it came to be a ruin.",
+    "objectives": "Stand in the middle of the ruins of Durnholde Keep, then return to Loremaster Dibbs in Southshore.",
+    "progress": "Right into the heart of it. That is where the arena stood.",
+    "completion": "There was a girl, Taretha Foxton, the daughter of Blackmoore's secretary. She grew up beside the orc. She slipped him letters hidden in books, and when he was ready she made the diversion that let him run.\n\nBlackmoore had her killed for it. When Thrall came back, it was at the head of every orc he had freed. He slew Blackmoore in single combat, and called on the spirits of the earth, and the keep fell down.\n\nThe Warchief of the Horde was made in our prison, $N, by one of our generals, and saved by one of our daughters. I find very few people in Southshore want to hear that."
+  },
+  "reward": {
+    "money": 2200,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 3759,
+        "count": 1
+      },
+      {
+        "item": 10653,
+        "count": 1
+      },
+      {
+        "item": 3751,
+        "count": 1
+      },
+      {
+        "item": 4535,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 3 of 3: Durnholde as the centre of the internment camps under Aedelas Blackmoore; Thrall raised there as a gladiator; Taretha Foxton helped him escape and was murdered; Thrall killed Blackmoore and levelled the keep."
+}

@@ -1,0 +1,32 @@
+{
+  "id": 9200073,
+  "title": "What the Blood Left",
+  "level": 28,
+  "min_level": 24,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 331,
+  "type": "kill",
+  "after": 9200072,
+  "giver": 12737,
+  "turn_in": 12737,
+  "objectives": [
+    {
+      "creature": 6073,
+      "count": 6
+    }
+  ],
+  "texts": {
+    "details": "Look south-east from the wall and you will see a hill that burns without ever burning down. Felfire Hill. Past it is a canyon.\n\nThat is where the Legion stood in this forest, and it has not left. There are infernals on that hill still, walking fires that fell out of the sky in the war and were never put out.\n\nWhen Hellscream understood what he had done, he and the Warchief went into that country after the one who had done it to him. I will send you after them. But first clear the way. Six of the infernals, $N.",
+    "objectives": "Kill 6 Searing Infernals on Felfire Hill, then return to Mastok Wrilehiss at Splintertree Post.",
+    "progress": "South and a little east. You will see the glow.",
+    "completion": "Good. The Legion's leavings burn a little lower tonight.\n\nNow hear the rest. The Warchief took Hellscream alive, with the help of the tauren. And the one who broke the demon's hold on him was a human: Jaina Proudmoore, by her own magic. Hellscream woke with the blood haze gone from his eyes, and knew everything he had done.\n\nHe asked for one thing. He asked to be the one to kill Mannoroth."
+  },
+  "reward": {
+    "money": 2400,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 2 of 3: the demons still on Felfire Hill; Thrall and Cairne captured Grom, and Jaina Proudmoore's ritual freed him from the blood curse."
+}

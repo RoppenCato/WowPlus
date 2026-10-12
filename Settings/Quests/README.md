@@ -179,5 +179,36 @@ The picker looks further out from where the enemy lives when the nearby ground i
 | `9200048-the-ship-under-the-hill.json` | The Deadmines, level 19, Horde. Kill Captain Greenskin and Edwin VanCleef. Choice of four rewards. |
 | `9200049-the-baron-s-household.json` | Shadowfang Keep, level 22, Alliance. Archmage Malin in Stormwind: lay Baron Silverlaine and Commander Springvale to rest. First of two. |
 | `9200050-dalaran-s-mistake.json` | Shadowfang Keep, level 23, Alliance. Kill Archmage Arugal. Choice of four rewards. |
+| `9200051-whose-keep-is-it.json` | Redridge Mountains, level 20, Alliance. Ask Magistrate Solomon in Lakeshire how Stonewatch fell and look upon Stonewatch Keep, then return to Marshal Marris in Lakeshire. |
+| `9200052-the-other-horde.json` | Redridge Mountains, level 23, Alliance. Kill 6 Blackrock Trackers and 4 Blackrock Summoners in the hills north of Lakeshire, then return to Marshal Marris. Follows 9200051. |
+| `9200053-the-conjurer-s-tower.json` | Redridge Mountains, level 25, Alliance. Reach the Tower of Ilgalar in the east of Redridge and kill 6 Servants of Ilgalar, then return to Marshal Marris in Lakeshire. Follows 9200052. Choice of four rewards. |
+| `9200054-the-grove-no-one-enters.json` | Duskwood, level 28, Alliance. Go to the edge of the Twilight Grove in the middle of Duskwood, then return to Viktori Prism'Antras in Darkshire. |
+| `9200055-the-red-queen-s-chains.json` | Wetlands, level 22, Alliance. Look over Angerfang Encampment in the middle of the Wetlands, then return to Glorin Steelbrow in Menethil Harbor. |
+| `9200056-sick-of-the-mountain.json` | Wetlands, level 25, Alliance. Kill 8 Lost Whelps in the eastern Wetlands, then return to Glorin Steelbrow in Menethil Harbor. Follows 9200055. |
+| `9200057-what-crawled-away.json` | Wetlands, level 26, Alliance. Kill 4 Dragonmaw Centurions and 6 Dragonmaw Bonewarders at Angerfang Encampment, then return to Glorin Steelbrow in Menethil Harbor. Follows 9200056. Choice of four rewards. |
+| `9200058-a-bridge-between-clans.json` | Wetlands, level 26, Alliance. Ask Longbraid the Grim about the Thandol Span and walk out onto it, then return to Rhag Garmason at the camp south of Dun Modr. |
+| `9200059-over-the-span.json` | Wetlands, level 30, Alliance. Cross the Thandol Span into the Arathi Highlands and bring Rhag Garmason's word to Captain Nials at Refuge Pointe. |
+| `9200060-a-fishing-village.json` | Hillsbrad Foothills, level 22, Alliance. Ask Marshal Redpath about Southshore's wars, then return to Innkeeper Anderson in Southshore. |
+| `9200061-the-lords-of-nothing.json` | Hillsbrad Foothills, level 24, Alliance. Ask Loremaster Dibbs in Southshore what the Syndicate is and look upon the ruins of Durnholde Keep, then return to Magistrate Henry Maleb. |
+| `9200062-thinning-the-peerage.json` | Hillsbrad Foothills, level 24, Alliance. Kill 6 Syndicate Shadow Mages and 5 Syndicate Rogues at Durnholde Keep, then return to Magistrate Henry Maleb in Southshore. Follows 9200061. Choice of four rewards. |
+| `9200063-the-slave-of-durnholde.json` | Hillsbrad Foothills, level 26, Alliance. Stand in the middle of the ruins of Durnholde Keep, then return to Loremaster Dibbs in Southshore. Follows 9200062. Choice of four rewards. |
+| `9200064-where-the-city-was.json` | Hillsbrad Foothills, level 30, Alliance. Go to the edge of the Dalaran crater, on the shore of Lordamere Lake north-west of Hillsbrad, then return to Loremaster Dibbs in Southshore. |
+| `9200065-the-cradle-of-kings.json` | Hillsbrad Foothills, level 30, Alliance. Take the east road through Thoradin's Wall into the Arathi Highlands and report to Captain Nials at Refuge Pointe. |
+| `9200066-where-the-warchief-wore-chains.json` | Hillsbrad Foothills, level 24, Horde. Stand in the middle of the ruins of Durnholde Keep, then return to Krusk in Tarren Mill. |
+| `9200067-squatters.json` | Hillsbrad Foothills, level 25, Horde. Kill 10 Syndicate Watchmen at Durnholde Keep, then return to Krusk in Tarren Mill. Follows 9200066. |
+| `9200068-foxton-s-song.json` | Hillsbrad Foothills, level 26, Horde. Go to Grommash Hold in Orgrimmar and tell Thrall that you have stood in Durnholde. Follows 9200067. Choice of four rewards. |
+| `9200069-the-hammer-s-fall.json` | Hillsbrad Foothills, level 30, Horde. Travel east through Thoradin's Wall into the Arathi Highlands and report to Drum Fel at Hammerfall. |
+| `9200070-a-blackrock-s-debt.json` | The Stockade, level 26, Horde. Kill Targorr the Dread in the Stockade, beneath Stormwind, then return to Eitrigg in Grommash Hold in Orgrimmar. |
+| `9200071-the-mason-s-lieutenant.json` | The Stockade, level 27, Horde. Kill Bazil Thredd in the Stockade, beneath Stormwind, then return to Sage Truthseeker on the Elder Rise in Thunder Bluff. Choice of four rewards. |
+| `9200072-why-we-cut.json` | Ashenvale, level 24, Horde. Ask Overseer Gorthak at the Warsong Lumber Camp how the cutting began and ask Kuray'bin near Splintertree Post about the fountain, then return to Mastok Wrilehiss at Splintertree Post. |
+| `9200073-what-the-blood-left.json` | Ashenvale, level 28, Horde. Kill 6 Searing Infernals on Felfire Hill, then return to Mastok Wrilehiss at Splintertree Post. Follows 9200072. |
+| `9200074-may-the-warsong-never-fade.json` | Ashenvale, level 30, Horde. Go to Grom Hellscream's monument in Demon Fall Canyon, then return to Mastok Wrilehiss at Splintertree Post. Follows 9200073. Choice of four rewards. |
+| `9200075-the-forest-lord.json` | Ashenvale, level 24, Alliance. Ask Pelturas Whitemoon in Astranaar who Cenarius was, then return to Sentinel Thenysil. |
+| `9200076-they-are-still-cutting.json` | Ashenvale, level 27, Alliance. Destroy 4 Warsong Shredders at the Warsong Lumber Camp, then report to Sentinel Melyria Frostshadow at Silverwing Outpost. Follows 9200075. Choice of four rewards. |
+| `9200077-the-talondeep-path.json` | Ashenvale, level 24, Alliance. Take the Talondeep Path south into the Stonetalon Mountains and find Kaela Shadowspear in Windshear Crag. |
+| `9200078-if-you-can-chop-it-down.json` | Stonetalon Mountains, level 22, Horde. Ask Ziz Fizziks in Windshear Crag what the Venture Company is and see what has been done to the Crag, then return to Tammra Windfield at Sun Rock Retreat. |
+| `9200079-the-earthmother-s-patience.json` | Stonetalon Mountains, level 23, Horde. Kill 8 Venture Co. Loggers and 6 Venture Co. Deforesters in Windshear Crag, then return to Tammra Windfield at Sun Rock Retreat. Follows 9200078. Choice of four rewards. |
+| `9200080-the-wyverns-lake.json` | Stonetalon Mountains, level 24, Horde. Go to the shore of Mirkfallon Lake, north of Sun Rock Retreat, then return to Maggran Earthbinder. |
+| `9200081-the-company-s-ledger.json` | Stonetalon Mountains, level 22, Alliance. Kill 8 Venture Co. Operators and 6 Venture Co. Loggers in Windshear Crag, then return to Kaela Shadowspear. Choice of four rewards. |
 
 Written with the quest-writing skill (`.claude/skills/write-quests`). Not played yet. The stories used so far are in `Stories.md`. The tool's first test quest, "Bold Wolves of the Plains", was removed: the zone's own "Poison Water" already sends players after the same wolves.

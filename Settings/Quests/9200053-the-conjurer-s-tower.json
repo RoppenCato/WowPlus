@@ -1,0 +1,58 @@
+{
+  "id": 9200053,
+  "title": "The Conjurer's Tower",
+  "level": 25,
+  "min_level": 21,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 44,
+  "type": "kill",
+  "after": 9200052,
+  "giver": 382,
+  "turn_in": 382,
+  "objectives": [
+    {
+      "creature": 819,
+      "count": 6
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -9283.0,
+        "y": -3317.0,
+        "radius": 60
+      },
+      "text": "Reach the Tower of Ilgalar"
+    }
+  ],
+  "texts": {
+    "details": "Morganth did not stay with the orcs. Once the keep was theirs he turned on them, as he had turned on Stormwind, and took a tower for himself in the east: the Tower of Ilgalar.\n\nHe studied in the mage tower of Stormwind until he took up the dark arts and was cast out. When he went he carried off a book the mages had sealed, a treatise on shadow magic. They say he has not been able to open it. He has made himself an army in the meantime: Shadowhide gnolls, whom he commands through enchanted pendants.\n\nHis servants guard the tower. Go there, $N. Kill six of them, and let him see from his window that Lakeshire has not forgotten.",
+    "objectives": "Reach the Tower of Ilgalar in the east of Redridge and kill 6 Servants of Ilgalar, then return to Marshal Marris in Lakeshire.",
+    "progress": "The tower stands in the eastern hills, past the gnoll camps.",
+    "completion": "Then he knows we are coming. Good. Let him sweat over his sealed book.\n\nThink on it, $N. One man of Stormwind, with a grudge and a stolen tome, gave the orcs our keep and raised the gnolls against us. And Stormwind, whose mages cast him out and whose seals he carried off, sends us its regrets.\n\nYou have done more for this town than the crown has. Take your pick of these."
+  },
+  "reward": {
+    "money": 1900,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 6664,
+        "count": 1
+      },
+      {
+        "item": 6668,
+        "count": 1
+      },
+      {
+        "item": 9535,
+        "count": 1
+      },
+      {
+        "item": 3209,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 3 of 3: Morganth studied in Stormwind's mage tower, was banished, stole a sealed treatise on shadow magic, betrayed the orcs, took the Tower of Ilgalar and commands the Shadowhide gnolls through pendants. Uses an enemy no quest used."
+}

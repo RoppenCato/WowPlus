@@ -1,0 +1,45 @@
+{
+  "id": 9200061,
+  "title": "The Lords of Nothing",
+  "level": 24,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 267,
+  "type": "visit",
+  "giver": 2276,
+  "turn_in": 2276,
+  "objectives": [
+    {
+      "talk": 2277,
+      "text": "Ask Loremaster Dibbs what the Syndicate is",
+      "says": [
+        "The Syndicate? Nobles. That is the joke of it. The lords of Alterac, or their sons.",
+        "In the Second War their king, Aiden Perenolde, sold us to the Horde. He let the orcs march through his mountains unhindered. When it came out, King Terenas besieged Alterac and put it under martial law.",
+        "The kingdom was never given back. So the prince, Aliden, made himself a company of cutthroats instead, and calls it a cause. They want their lands again. They will take anyone's in the meantime."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -445.0,
+        "y": -1486.0,
+        "radius": 140
+      },
+      "text": "Look upon the ruins of Durnholde Keep"
+    }
+  ],
+  "texts": {
+    "details": "My predecessor was assassinated, $N. I have had a knife meant for me turned aside already. The men who send the knives call themselves the Syndicate, and they want this town gone.\n\nYou should know your enemy before you go hunting him. Dibbs, our loremaster, has the history. Hear it.\n\nThen go and look at where they nest. East of here, on the hill by the river, is the ruin of Durnholde Keep. They have made it their den. Come back and tell me how many fires you count.",
+    "objectives": "Ask Loremaster Dibbs in Southshore what the Syndicate is and look upon the ruins of Durnholde Keep, then return to Magistrate Henry Maleb.",
+    "progress": "Durnholde is east and north, across the river from Tarren Mill's road.",
+    "completion": "Too many fires. I thought as much.\n\nLords of nothing, Dibbs calls them. A traitor's heirs, living as bandits in another man's ruin and dreaming of thrones. It would be laughable if they were not so good with a knife.\n\nI cannot march on Durnholde; I have not the men. But I can pay those who will go."
+  },
+  "reward": {
+    "money": 1800,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 3, Lords of Nothing: King Aiden Perenolde of Alterac let the Horde pass in the Second War; Terenas besieged Alterac and put it under martial law; Prince Aliden founded the Syndicate, which wants its lands back and has murdered Southshore's former magistrate."
+}

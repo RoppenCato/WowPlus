@@ -1,0 +1,53 @@
+{
+  "id": 9200057,
+  "title": "What Crawled Away",
+  "level": 26,
+  "min_level": 22,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 11,
+  "type": "kill",
+  "after": 9200056,
+  "giver": 1217,
+  "turn_in": 1217,
+  "objectives": [
+    {
+      "creature": 1036,
+      "count": 4
+    },
+    {
+      "creature": 1057,
+      "count": 6
+    }
+  ],
+  "texts": {
+    "details": "The Dragonmaw had dragons once. Now they've mud, an' a grudge, an' the habit o' takin' orders from someone crueler than themselves.\n\nThey've not learned a thing from it. Their bonewarders still work the dark arts, an' their centurions still drill as though the Horde were comin' back for them. It isn't. The Horde that sent them here is dead an' gone, an' the new one over the sea has never so much as asked after them.\n\nGo back to Angerfang, $N. Four centurions an' six bonewarders. If the Dragonmaw must sit in my marsh, they'll sit quiet.",
+    "objectives": "Kill 4 Dragonmaw Centurions and 6 Dragonmaw Bonewarders at Angerfang Encampment, then return to Glorin Steelbrow in Menethil Harbor.",
+    "progress": "Angerfang, east along the road. Ye've seen the place.",
+    "completion": "That'll hold them a season.\n\nYe know, there's dwarves who say we should pity them. Chained a queen, got burned for it, an' left in a bog by their own kind. I say a clan that puts chains on a mother an' rides her bairns to war has used up its pity.\n\nStill. Ye'll notice I sent ye to kill the whelps first, an' called that the sad part. Here. Ye've earned it twice."
+  },
+  "reward": {
+    "money": 2000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 6095,
+        "count": 1
+      },
+      {
+        "item": 6719,
+        "count": 1
+      },
+      {
+        "item": 7132,
+        "count": 1
+      },
+      {
+        "item": 15464,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 3 of 3: the Dragonmaw remnant in the Wetlands, cut off from any Horde."
+}

@@ -95,13 +95,13 @@ Made by `Settings/Scripts/Make-Zone-Audit.py` on 2026-10-12. Run it again after 
 | 14-20 | Darkshore | Kalimdor | 11 (18%) passing through | 76 (107%) | 3 | 16 | enough |
 | 14-21 | The Barrens | Kalimdor | 99 (126%) | 22 (22%) passing through | 5 | 21 | enough |
 | 14-55 | Darnassus | Kalimdor | – | 21 |  | 0 | city |
-| 15-22 | Redridge Mountains | Eastern Kingdoms | – | 37 (43%) |  | 3 | A +21 |
-| 21-26 | Stonetalon Mountains | Kalimdor | 31 (46%) | 25 (40%) |  | 14 | H +14, A +18 |
+| 16-23 | Redridge Mountains | Eastern Kingdoms | – | 40 (45%) | 3 | 3 | A +19 |
+| 21-26 | Stonetalon Mountains | Kalimdor | 34 (50%) | 26 (42%) | 3 | 14 | H +12, A +17 |
 | 23-50 | Thunder Bluff | Kalimdor | 32 | – |  | 0 | city |
-| 24-30 | Ashenvale | Kalimdor | 29 (34%) | 59 (64%) |  | 27 | H +25, A +5 |
-| 24-30 | Wetlands | Eastern Kingdoms | – | 40 (43%) |  | 20 | A +19 |
-| 25-30 | Duskwood | Eastern Kingdoms | 4 (8%) passing through | 73 (67%) |  | 3 | A +2 |
-| 27-34 | Hillsbrad Foothills | Eastern Kingdoms | 43 (55%) | 18 (21%) |  | 2 | H +14, A +44 |
+| 24-30 | Ashenvale | Kalimdor | 32 (38%) | 62 (68%) | 3 | 27 | H +22, A +2 |
+| 24-30 | Wetlands | Eastern Kingdoms | – | 45 (50%) | 5 | 19 | A +15 |
+| 25-30 | Duskwood | Eastern Kingdoms | 4 (8%) passing through | 74 (68%) | 1 | 3 | A +2 |
+| 26-34 | Hillsbrad Foothills | Eastern Kingdoms | 47 (54%) | 24 (24%) | 6 | 2 | H +16, A +45 |
 | 28-41 | Stormwind City | Eastern Kingdoms | – | 72 |  | 0 | city |
 | 29-37 | Thousand Needles | Kalimdor | 53 (39%) | 34 (23%) |  | 28 | H +32, A +48 |
 | 33-38 | Desolace | Kalimdor | 37 (49%) | 40 (57%) |  | 24 | H +15, A +10 |
@@ -158,7 +158,7 @@ For every five levels: the zones a side can level in (at least 3 quests there), 
 |---|---|---|---|---|
 | 1-5 | 4: Eversong Woods, Mulgore, Tirisfal Glades, Durotar | 4 | 4: Azuremyst Isle, Dun Morogh, Elwynn Forest, Teldrassil | 4 |
 | 6-10 | 4: Eversong Woods, Mulgore, Tirisfal Glades, Durotar | 4 | 4: Azuremyst Isle, Dun Morogh, Elwynn Forest, Teldrassil | 4 |
-| 11-15 | 4: Durotar, Silverpine Forest, Ghostlands, The Barrens | 4 | 5: Westfall, Bloodmyst Isle, Loch Modan, Darkshore, Redridge Mountains | 4 |
+| 11-15 | 4: Durotar, Silverpine Forest, Ghostlands, The Barrens | 4 | 4: Westfall, Bloodmyst Isle, Loch Modan, Darkshore | 4 |
 | 16-20 | 3: Silverpine Forest, Ghostlands, The Barrens | 3 | 5: Westfall, Bloodmyst Isle, Loch Modan, Darkshore, Redridge Mountains | 4 |
 | 21-25 | 3: The Barrens, Stonetalon Mountains, Ashenvale | 1 | 5: Redridge Mountains, Stonetalon Mountains, Ashenvale, Wetlands, Duskwood | 0 |
 | 26-30 | 4: Stonetalon Mountains, Ashenvale, Hillsbrad Foothills, Thousand Needles | 0 | 6: Stonetalon Mountains, Ashenvale, Wetlands, Duskwood, Hillsbrad Foothills, Thousand Needles | 0 |
@@ -184,7 +184,7 @@ Quests that belong to a dungeon or raid, by the level of the place. They are not
 | 18-20 | Deadmines | dungeon | 2 | 5 | 6,375 | 14,625 | 6 | few for Horde |
 | 22-27 | Blackfathom Deeps | dungeon | 6 | 5 | 19,852 | 22,350 | 6 |  |
 | 23-26 | Shadowfang Keep | dungeon | 3 | 2 | 14,250 | 8,025 | 4 | few for Alliance |
-| 26-27 | Stormwind Stockade | dungeon | 0 | 6 | 0 | 29,025 | 3 | few for Horde |
+| 26-27 | Stormwind Stockade | dungeon | 2 | 6 | 9,675 | 29,025 | 4 | few for Horde |
 | 26-30 | Razorfen Kraul | dungeon | 4 | 4 | 19,875 | 20,625 | 5 |  |
 | 30-30 | Ashenvale (which dungeon or wing is not told) | dungeon | 1 | 0 | 5,475 | 0 | 1 | few for Horde and Alliance |
 | 30-34 | Gnomeregan | dungeon | 12 | 20 | 36,045 | 67,732 | 9 |  |
@@ -275,7 +275,7 @@ Quests that belong to a dungeon or raid, by the level of the place. They are not
 
 **Shadowfang Keep** (dungeon, 23-26): The Baron's Household (22, Alliance); Dalaran's Mistake (23, Alliance); Deathstalkers in Shadowfang (25, Horde); The Book of Ur (26, Horde); Arugal Must Die (27, Horde).
 
-**Stormwind Stockade** (dungeon, 26-27): What Comes Around... (25, Alliance); Crime and Punishment (26, Alliance); Quell The Uprising (26, Alliance); The Color of Blood (26, Alliance); The Fury Runs Deep (27, Alliance); The Stockade Riots (29, Alliance).
+**Stormwind Stockade** (dungeon, 26-27): What Comes Around... (25, Alliance); A Blackrock's Debt (26, Horde); Crime and Punishment (26, Alliance); Quell The Uprising (26, Alliance); The Color of Blood (26, Alliance); The Fury Runs Deep (27, Alliance); The Mason's Lieutenant (27, Horde); The Stockade Riots (29, Alliance).
 
 **Razorfen Kraul** (dungeon, 26-30): Blueleaf Tubers (26); Going, Going, Guano! (26, Horde); A Vengeful Fate (27, Horde); The Crone of the Kraul (27, Alliance); Mortality Wanes (30, Alliance); Willix the Importer (30).
 
@@ -621,15 +621,15 @@ Going from level 14 to 56 costs 2,663,000 experience.
 
 **Enemies no quest uses:** none of note.
 
-### Redridge Mountains (15-22, Eastern Kingdoms)
+### Redridge Mountains (16-23, Eastern Kingdoms)
 
-Going from level 15 to 23 costs 149,300 experience.
+Going from level 16 to 24 costs 161,200 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Alliance | 37 | 2 | 63,494 | 43% | 14 | 14:4 15:5 16:2 17:1 18:7 20:3 21:4 22:1 23:3 24:1 25:3 26:3 | 21 quests, about 41,016 experience, 7 with gear |
+| Alliance | 40 | 2 | 72,494 | 45% | 15 | 14:4 15:5 16:2 17:1 18:7 20:4 21:4 22:1 23:4 24:1 25:4 26:3 | 19 quests, about 40,346 experience, 7 with gear |
 
-**Enemies no quest uses:** Redridge Thrasher (14-15, 12 of them), Servant of Ilgalar (24-25, 11 of them), Redridge Alpha (19-20, 7 of them).
+**Enemies no quest uses:** Redridge Thrasher (14-15, 12 of them), Redridge Alpha (19-20, 7 of them), Kazon (27, 4 of them).
 
 ### Stonetalon Mountains (21-26, Kalimdor)
 
@@ -637,8 +637,8 @@ Going from level 21 to 27 costs 158,500 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 31 | 0 | 72,404 | 46% | 8 | 17:2 18:6 19:3 20:1 21:3 22:2 23:2 25:3 26:3 27:2 28:2 29:2 | 14 quests, about 38,546 experience, 5 with gear |
-| Alliance | 25 | 0 | 62,617 | 40% | 5 | 17:1 21:9 22:6 26:2 27:4 28:3 | 18 quests, about 48,333 experience, 6 with gear |
+| Horde | 34 | 0 | 79,979 | 50% | 9 | 17:2 18:6 19:3 20:1 21:3 22:3 23:3 24:1 25:3 26:3 27:2 28:2 29:2 | 12 quests, about 30,971 experience, 4 with gear |
+| Alliance | 26 | 0 | 65,917 | 42% | 6 | 17:1 21:9 22:7 26:2 27:4 28:3 | 17 quests, about 45,033 experience, 6 with gear |
 
 **Enemies no quest uses:** Windshear Digger (21-22, 46 of them), Deepmoss Webspinner (19-20, 45 of them), Raging Cliff Stormer (18-19, 29 of them), Bloodfury Windcaller (24-25, 25 of them), Cliff Stormer (15-17, 17 of them), Grimtotem Sorcerer (15-16, 16 of them), Bloodfury Storm Witch (26-27, 15 of them), Pridewing Wyvern (21-22, 14 of them), Pridewing Consort (22-23, 14 of them), Pridewing Skyhunter (23-24, 10 of them), and 4 more.
 
@@ -662,8 +662,8 @@ Going from level 24 to 31 costs 227,800 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 29 | 2 | 77,047 | 34% | 12 | 19:2 20:2 21:1 23:1 24:6 25:1 26:2 27:4 30:6 32:1 34:1 44:1 70:1 | 25 quests, about 82,413 experience, 9 with gear |
-| Alliance | 59 | 1 | 145,678 | 64% | 15 | 18:1 19:3 20:5 21:6 22:1 23:1 24:3 25:5 27:2 28:7 29:2 30:15 32:5 34:1 44:1 70:1 | 5 quests, about 13,782 experience, 2 with gear |
+| Horde | 32 | 2 | 87,172 | 38% | 13 | 19:2 20:2 21:1 23:1 24:7 25:1 26:2 27:4 28:1 30:7 32:1 34:1 44:1 70:1 | 22 quests, about 72,288 experience, 8 with gear |
+| Alliance | 62 | 1 | 154,153 | 68% | 16 | 18:1 19:3 20:5 21:6 22:1 23:1 24:5 25:5 27:3 28:7 29:2 30:15 32:5 34:1 44:1 70:1 | 2 quests, about 5,307 experience, 1 with gear |
 
 **Enemies no quest uses:** Wildthorn Stalker (20-21, 109 of them), Ashenvale Bear (21-22, 91 of them), Wild Buck (18-19, 81 of them), Elder Shadowhorn Stag (26-27, 78 of them), Shadowhorn Stag (22-23, 70 of them), Ghostpaw Runner (19-20, 68 of them), Elder Ashenvale Bear (25-26, 42 of them), Spined Crawler (20-21, 36 of them), Ghostpaw Howler (23-24, 34 of them), Clattering Crawler (19-20, 32 of them), and 17 more.
 
@@ -675,9 +675,9 @@ Going from level 24 to 31 costs 227,800 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Alliance | 40 | 0 | 98,114 | 43% | 13 | 21:5 22:2 23:1 24:4 25:5 26:7 27:2 28:1 29:2 30:5 31:5 35:1 | 19 quests, about 61,346 experience, 7 with gear |
+| Alliance | 45 | 0 | 113,039 | 50% | 14 | 21:5 22:3 23:1 24:4 25:6 26:9 27:2 28:1 29:2 30:6 31:5 35:1 | 15 quests, about 46,421 experience, 5 with gear |
 
-**Enemies no quest uses:** Wetlands Crocolisk (23-24, 52 of them), Bluegill Raider (28-29, 42 of them), Highland Razormaw (27-28, 37 of them), Leech Stalker (21-22, 35 of them), Crimson Whelp (25-26, 26 of them), Bluegill Muckdweller (23-24, 23 of them), Mirelow (25, 22 of them), Highland Raptor (23-24, 22 of them), Elder Razormaw (29, 22 of them), Lost Whelp (24-25, 21 of them), and 10 more.
+**Enemies no quest uses:** Wetlands Crocolisk (23-24, 52 of them), Bluegill Raider (28-29, 42 of them), Highland Razormaw (27-28, 37 of them), Leech Stalker (21-22, 35 of them), Crimson Whelp (25-26, 26 of them), Bluegill Muckdweller (23-24, 23 of them), Mirelow (25, 22 of them), Highland Raptor (23-24, 22 of them), Elder Razormaw (29, 22 of them), Highland Scytheclaw (25-26, 20 of them), and 9 more.
 
 **Places nothing is asked of you:** Thelgen Rock (53 enemies), Dragonmaw Gates (49 enemies), Raptor Ridge (47 enemies).
 
@@ -688,20 +688,20 @@ Going from level 25 to 31 costs 200,600 experience.
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
 | Horde | 4 | 0 | 15,840 | 8% | 1 | 42:4 | only passing through |
-| Alliance | 73 | 1 | 134,561 | 67% | 16 | 20:5 21:2 23:1 24:8 25:14 26:2 27:1 28:14 29:8 30:13 31:2 32:2 45:1 | 2 quests, about 5,859 experience, 1 with gear |
+| Alliance | 74 | 1 | 137,111 | 68% | 16 | 20:5 21:2 23:1 24:8 25:14 26:2 27:1 28:15 29:8 30:13 31:2 32:2 45:1 | 2 quests, about 3,309 experience, 1 with gear |
 
 **Enemies no quest uses:** Commander Felstrom (32, 10 of them), Fenros (32, 8 of them), Lord Malathrom (31, 7 of them).
 
 **Places nothing is asked of you:** Raven Hill (13 enemies).
 
-### Hillsbrad Foothills (27-34, Eastern Kingdoms)
+### Hillsbrad Foothills (26-34, Eastern Kingdoms)
 
-Going from level 27 to 35 costs 326,800 experience.
+Going from level 26 to 35 costs 357,300 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 43 | 0 | 180,427 | 55% | 11 | 20:2 22:4 24:3 25:2 26:2 27:2 28:4 30:5 32:3 33:2 34:3 35:1 36:2 37:1 39:1 40:2 41:1 42:1 43:2 | 14 quests, about 48,333 experience, 5 with gear |
-| Alliance | 18 | 0 | 68,625 | 21% | 6 | 27:2 29:1 30:1 31:1 32:5 33:1 34:2 36:2 37:2 40:1 | 44 quests, about 160,135 experience, 15 with gear |
+| Horde | 47 | 0 | 192,352 | 54% | 12 | 20:2 22:4 24:4 25:3 26:3 27:2 28:4 30:6 32:3 33:2 34:3 35:1 36:2 37:1 39:1 40:2 41:1 42:1 43:2 | 16 quests, about 57,758 experience, 6 with gear |
+| Alliance | 24 | 0 | 85,050 | 24% | 8 | 22:1 24:2 26:1 27:2 29:1 30:3 31:1 32:5 33:1 34:2 36:2 37:2 40:1 | 45 quests, about 165,060 experience, 15 with gear |
 
 **Enemies no quest uses:** Mudsnout Gnoll (26-27, 12 of them), Mudsnout Shaman (27-28, 8 of them).
 
@@ -1360,3 +1360,34 @@ Going from level 80 to 81 costs 0 experience.
 | 9200048 | The Ship Under the Hill | The Deadmines | 19 | horde | kill |
 | 9200049 | The Baron's Household | Shadowfang Keep | 22 | alliance | kill |
 | 9200050 | Dalaran's Mistake | Shadowfang Keep | 23 | alliance | slay |
+| 9200051 | Whose Keep Is It | Redridge Mountains | 20 | alliance | visit |
+| 9200052 | The Other Horde | Redridge Mountains | 23 | alliance | kill |
+| 9200053 | The Conjurer's Tower | Redridge Mountains | 25 | alliance | kill |
+| 9200054 | The Grove No One Enters | Duskwood | 28 | alliance | visit |
+| 9200055 | The Red Queen's Chains | Wetlands | 22 | alliance | visit |
+| 9200056 | Sick of the Mountain | Wetlands | 25 | alliance | kill |
+| 9200057 | What Crawled Away | Wetlands | 26 | alliance | kill |
+| 9200058 | A Bridge Between Clans | Wetlands | 26 | alliance | visit |
+| 9200059 | Over the Span | Wetlands | 30 | alliance | deliver |
+| 9200060 | A Fishing Village | Hillsbrad Foothills | 22 | alliance | visit |
+| 9200061 | The Lords of Nothing | Hillsbrad Foothills | 24 | alliance | visit |
+| 9200062 | Thinning the Peerage | Hillsbrad Foothills | 24 | alliance | kill |
+| 9200063 | The Slave of Durnholde | Hillsbrad Foothills | 26 | alliance | visit |
+| 9200064 | Where the City Was | Hillsbrad Foothills | 30 | alliance | visit |
+| 9200065 | The Cradle of Kings | Hillsbrad Foothills | 30 | alliance | deliver |
+| 9200066 | Where the Warchief Wore Chains | Hillsbrad Foothills | 24 | horde | visit |
+| 9200067 | Squatters | Hillsbrad Foothills | 25 | horde | kill |
+| 9200068 | Foxton's Song | Hillsbrad Foothills | 26 | horde | deliver |
+| 9200069 | The Hammer's Fall | Hillsbrad Foothills | 30 | horde | deliver |
+| 9200070 | A Blackrock's Debt | The Stockade | 26 | horde | slay |
+| 9200071 | The Mason's Lieutenant | The Stockade | 27 | horde | slay |
+| 9200072 | Why We Cut | Ashenvale | 24 | horde | visit |
+| 9200073 | What the Blood Left | Ashenvale | 28 | horde | kill |
+| 9200074 | May the Warsong Never Fade | Ashenvale | 30 | horde | visit |
+| 9200075 | The Forest Lord | Ashenvale | 24 | alliance | visit |
+| 9200076 | They Are Still Cutting | Ashenvale | 27 | alliance | kill |
+| 9200077 | The Talondeep Path | Ashenvale | 24 | alliance | deliver |
+| 9200078 | If You Can Chop It Down | Stonetalon Mountains | 22 | horde | visit |
+| 9200079 | The Earthmother's Patience | Stonetalon Mountains | 23 | horde | kill |
+| 9200080 | The Wyverns' Lake | Stonetalon Mountains | 24 | horde | visit |
+| 9200081 | The Company's Ledger | Stonetalon Mountains | 22 | alliance | kill |

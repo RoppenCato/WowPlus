@@ -1,0 +1,54 @@
+{
+  "id": 9200074,
+  "title": "May the Warsong Never Fade",
+  "level": 30,
+  "min_level": 26,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 331,
+  "type": "visit",
+  "after": 9200073,
+  "giver": 12737,
+  "turn_in": 12737,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": 1682.0,
+        "y": -3285.0,
+        "radius": 90
+      },
+      "text": "Go to Hellscream's monument in Demon Fall Canyon"
+    }
+  ],
+  "texts": {
+    "details": "In the canyon beyond the burning hill, the Warchief and Hellscream found the pit lord.\n\nMannoroth struck the Warchief down. He turned to Hellscream and mocked him. And Hellscream charged him, alone, and buried his axe in the demon's chest, all the way to the heart. Mannoroth died in fire. Hellscream stood too close.\n\nThe Warchief reached him before the end. \"The blood haze has lifted,\" Hellscream said. And the Warchief answered: \"No, old friend. You've freed us all.\"\n\nThere is a monument in that canyon. Go to it, $N. Every orc should.",
+    "objectives": "Go to Grom Hellscream's monument in Demon Fall Canyon, then return to Mastok Wrilehiss at Splintertree Post.",
+    "progress": "Through Felfire Hill and down into the canyon. The demons are thick there. Go carefully, or go in company.",
+    "completion": "You have stood where he fell. The Warchief wrote the words on that stone himself. They end: \"May the Warsong never fade.\"\n\nSo now you know both halves. Hellscream damned us, in this forest, by his own choice. And in this forest he freed us, every orc living and every orc yet to be born, and it cost him his life.\n\nThe elves remember the first half. I do not blame them. We must remember both. Take this, $N. The Warchief's hall in Orgrimmar bears his name; now you know why."
+  },
+  "reward": {
+    "money": 2700,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 6745,
+        "count": 1
+      },
+      {
+        "item": 16987,
+        "count": 1
+      },
+      {
+        "item": 7129,
+        "count": 1
+      },
+      {
+        "item": 4126,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 3 of 3: at Demon Fall Canyon Mannoroth struck down Thrall, and Grom drove his axe into the demon's heart and died in the blast, freeing the orcs of the blood curse; the monument bears Thrall's inscription; Grommash Hold is named for him."
+}

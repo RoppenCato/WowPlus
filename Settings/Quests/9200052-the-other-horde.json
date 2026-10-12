@@ -1,0 +1,36 @@
+{
+  "id": 9200052,
+  "title": "The Other Horde",
+  "level": 23,
+  "min_level": 19,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 44,
+  "type": "kill",
+  "after": 9200051,
+  "giver": 382,
+  "turn_in": 382,
+  "objectives": [
+    {
+      "creature": 615,
+      "count": 6
+    },
+    {
+      "creature": 4463,
+      "count": 4
+    }
+  ],
+  "texts": {
+    "details": "I have been asking what I can of every traveller who has seen the Burning Steppes and lived, and here is what I have.\n\nWhen the Horde was beaten, the Blackrock who were left crept back to their mountain. A son of old Blackhand, Rend, declared himself Warchief there. He hates the one in Orgrimmar. And he does not even rule his own mountain: they say a black dragon has made the whole clan its servants, and spends them like coin.\n\nSo these are not an army, $N. They are a dragon's cast-offs, and that makes them reckless. Their trackers and summoners work the ridges north of town. Thin them out before they find the gap in my line.",
+    "objectives": "Kill 6 Blackrock Trackers and 4 Blackrock Summoners in the hills north of Lakeshire, then return to Marshal Marris.",
+    "progress": "North of town, on the ridges and in the canyon beyond.",
+    "completion": "Good. That is ten fewer pairs of eyes on Lakeshire.\n\nOne of them we already hold, did you know? Gath'Ilzogg's own executioner, a brute named Targorr. He sits in the Stormwind Stockade under sentence of death, and the sentence is not carried out, because some noble finds him useful to bargain with.\n\nThat is how Stormwind helps Redridge. Now. There is the matter of the man who opened the gate."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 2 of 3: after the Second War Rend Blackhand declared himself Warchief at Blackrock Spire, and the black dragon Nefarian made the clan his servants; Targorr the Dread in the Stockade."
+}

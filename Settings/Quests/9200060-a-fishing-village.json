@@ -1,0 +1,36 @@
+{
+  "id": 9200060,
+  "title": "A Fishing Village",
+  "level": 22,
+  "min_level": 18,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 267,
+  "type": "visit",
+  "giver": 2352,
+  "turn_in": 2352,
+  "objectives": [
+    {
+      "talk": 2263,
+      "text": "Ask Marshal Redpath about Southshore's wars",
+      "says": [
+        "Southshore was a fishing village and nothing more. Then Stormwind fell, and its refugees washed up here. They settled, and swore to the Alliance.",
+        "In the Second War we were a seaport. There is oil under these waters and the Horde wanted it. They took the town. The warlock Gul'dan sailed from this very harbor to raise the Tomb of Sargeras.",
+        "We rebuilt. Then, in the last war, a young orc raided us for ships and sailed his people west over the sea. You will have heard his name. It was Thrall."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "New to Southshore? Then let me save you some trouble. Do not tell anyone here that it is a quiet little town. We have heard it, and it is not as funny as travellers think.\n\nThis harbor has been in every war there has been. The Marshal can give you the count, and he likes a listener.\n\nGo and hear him, $N. You will understand the mood of the place better, and why nobody here sleeps facing the door.",
+    "objectives": "Ask Marshal Redpath about Southshore's wars, then return to Innkeeper Anderson in Southshore.",
+    "progress": "The Marshal is here in town. He will talk if you let him.",
+    "completion": "He told you about the orc and the ships. He always ends on that one.\n\nAnd now the dead hold Tarren Mill, an hour's ride north, and we fight them over every field in between. Refugees, orcs, a warlock, the Warchief himself, and now the Forsaken. All of it through one fishing village.\n\nHave a drink, $N. On the house. You will want it before you see the rest."
+  },
+  "reward": {
+    "money": 1200,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Southshore: a fishing village settled by Stormwind's refugees after the First War; a seaport with oil in the Second War, taken by the Horde, from which Gul'dan's clan sailed to the Tomb of Sargeras; raided by Thrall for ships in the Third War; at war with Tarren Mill."
+}

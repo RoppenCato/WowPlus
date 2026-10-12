@@ -1,0 +1,45 @@
+{
+  "id": 9200051,
+  "title": "Whose Keep Is It",
+  "level": 20,
+  "min_level": 16,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 44,
+  "type": "visit",
+  "giver": 382,
+  "turn_in": 382,
+  "objectives": [
+    {
+      "talk": 344,
+      "text": "Ask Magistrate Solomon how Stonewatch fell",
+      "says": [
+        "Stonewatch was ours, and it kept the north for us. Then the Blackrock came down out of the Burning Steppes under a chieftain named Gath'Ilzogg.",
+        "They did not take it alone. A conjurer of Stormwind helped them: Morganth, a man the mages there had banished for turning to the dark arts. He opened our own keep to the orcs.",
+        "I have written to Stormwind until my hand ached. The answers are polite. No soldiers come with them."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -9307.0,
+        "y": -3036.0,
+        "radius": 110
+      },
+      "text": "Look upon Stonewatch Keep"
+    }
+  ],
+  "texts": {
+    "details": "You've a steady look, $N, so I'll give you a straight answer when you ask why Lakeshire is afraid.\n\nThere is a keep in the hills north-east of the lake. Stonewatch. It was Redridge's shield. There are orcs in it now, and they are looking at this town the way a wolf looks at a fold.\n\nAsk the Magistrate how it was lost. He was here, and he does not tell it gladly. Then ride out and look at the keep yourself. Do not go in. I only want you to know what it is we are standing in front of.",
+    "objectives": "Ask Magistrate Solomon in Lakeshire how Stonewatch fell and look upon Stonewatch Keep, then return to Marshal Marris in Lakeshire.",
+    "progress": "The keep is north-east of the lake, up the Lakeridge road.",
+    "completion": "So you have seen it, and you know a man of Stormwind handed it over.\n\nThese are Blackrock orcs. In the old wars that clan was the heart of the Horde. Their chieftain Blackhand was the first Warchief, until Orgrim Doomhammer broke his skull in a duel and took his place.\n\nThey lost the war, but they never laid down their arms. The ones in my keep do not answer to the Warchief in Orgrimmar at all. That should comfort me. It does not."
+  },
+  "reward": {
+    "money": 1300,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 3, Stonewatch: the Blackrock orcs under Gath'Ilzogg took Stonewatch Keep with the help of Morganth, a banished conjurer of Stormwind; Blackhand and Doomhammer."
+}
