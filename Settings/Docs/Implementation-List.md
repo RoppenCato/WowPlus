@@ -230,6 +230,7 @@ The whole picture is in [Bots.md](Bots.md) and [Bot-Chat.md](Bot-Chat.md).
 - [~] `.bots away` and `.bots alone on/off` to have the area to yourself
 - [x] Bot health check (`Settings/Scripts/Test-Bots.py`): factions, healers, levels, log size, update time, our changes in the bot module; `--watch` and `--deaths` for bots that stand still or keep dying
 - [x] Bots: all Horde for real (enough accounts), talked-with bots go on the friends list and keep their level
+- [~] In a group (`WowPlusGroupCare.cpp`): honest ready checks, a healer that asks for a drink, skull and moon buttons, bots back on their feet after a wipe; the loot rule becomes free for all so bots do not loot. Built, not tried in the game
 - [~] Group board (`Settings/Docs/Group-Board.md`): people looking for a group to invite, posting your own group, arriving at the entrance, raid cap 10, leaving after the run. Built, not tried in the game. Battlegrounds not built (need Alliance bots on demand)
 - [~] Bot chat through Claude: whisper, /say, party and guild chat; a person per bot with a full background, own voice and typing habits (Settings/Bots/Character-Sheet.md); memory notes per bot
 - [~] Companions: two guild mates you choose, `.bots call` and `.bots dismiss`, a fire and small things when you rest, gestures and remarks on the road

@@ -20,6 +20,7 @@ void AddSC_WowPlusWorld();
 void AddSC_WowPlusHome();
 void AddSC_WowPlusCoach();
 void AddSC_WowPlusBoard();
+void AddSC_WowPlusGroupCare();
 
 void Addmod_wowplusScripts()
 {
@@ -41,4 +42,5 @@ void Addmod_wowplusScripts()
     AddSC_WowPlusHome();
     AddSC_WowPlusCoach();
     AddSC_WowPlusBoard();
+    AddSC_WowPlusGroupCare();
 }

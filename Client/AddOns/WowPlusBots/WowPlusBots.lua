@@ -66,6 +66,52 @@ local function Send(text, where)
     end
 end
 
+-- Marks, in the title row. The bots' damage dealers and tanks go for the skull first; mages, hunters and
+-- druids keep the moon out of the fight (sheep, trap, sleep). Click again on the same target to take it off.
+local function MakeMark(icon, offset, tooltip)
+    local button = CreateFrame("Button", nil, bar)
+    button:SetWidth(16)
+    button:SetHeight(16)
+    button:SetPoint("TOPRIGHT", offset, -3)
+    button:SetNormalTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_" .. icon)
+    button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
+    button:SetScript("OnClick", function()
+        if not UnitExists("target") then
+            DEFAULT_CHAT_FRAME:AddMessage("Bots: target an enemy first.")
+        else
+            SetRaidTarget("target", GetRaidTargetIndex("target") == icon and 0 or icon)
+        end
+    end)
+    button:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_TOP")
+        GameTooltip:SetText(tooltip, 1, 1, 1, 1, true)
+        GameTooltip:Show()
+    end)
+    button:SetScript("OnLeave", function() GameTooltip:Hide() end)
+end
+MakeMark(8, -8, "Skull on your target: the bots kill this one first.")
+MakeMark(5, -28, "Moon on your target: a mage, hunter or druid in the group keeps it out of the fight, and the others leave it alone.")
+
+local ready = CreateFrame("Button", nil, bar, "UIPanelButtonTemplate")
+ready:SetWidth(50)
+ready:SetHeight(16)
+ready:SetPoint("TOPRIGHT", -50, -3)
+ready:SetText("Ready?")
+ready:GetFontString():SetFont(GameFontNormalSmall:GetFont())
+ready:SetScript("OnClick", function()
+    if GetNumPartyMembers() == 0 and GetNumRaidMembers() == 0 then
+        DEFAULT_CHAT_FRAME:AddMessage("Bots: you are not in a group.")
+    else
+        DoReadyCheck()
+    end
+end)
+ready:SetScript("OnEnter", function(self)
+    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+    GameTooltip:SetText("A ready check. A bot that is low on health or mana, dead or not here says no, and sits down to eat or drink.", 1, 1, 1, 1, true)
+    GameTooltip:Show()
+end)
+ready:SetScript("OnLeave", function() GameTooltip:Hide() end)
+
 local function MakeButton(index, label, tooltip, onClick)
     local button = CreateFrame("Button", "WowPlusBotsButton" .. index, bar, "UIPanelButtonTemplate")
     button:SetWidth(index > #BUTTONS and 54 or WIDTH)

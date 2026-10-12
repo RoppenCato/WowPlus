@@ -801,6 +801,45 @@ WowPlus.Board.Enable             = 1
 #        Default: 1
 
 WowPlus.Bots.PlayerLoots         = 1
+
+########################################
+# A group that behaves like one
+########################################
+#
+#    WowPlus.Group.ReadyCheck
+#        1: your ready check (/readycheck) is answered honestly when the rest of your group
+#        is bots. A bot that is dead, not with the group, or low on health or mana answers
+#        "not ready", sits down to eat or drink, and one of them says why. 0: the bot
+#        module's own answer, which is always "ready".
+#        Default: 1
+#
+#    WowPlus.Group.ReadyCheck.Health, .Mana, .HealerMana
+#        Below these percentages a bot is not ready. Healers are asked for more mana.
+#        Default: 70, 40, 60
+#
+#    WowPlus.Group.HealerAsksBelowMana
+#        Out of combat, a healer below this percentage of mana says so in party chat (at
+#        most once in three minutes) and sits down to drink. 0: never.
+#        Default: 30
+#
+#    WowPlus.Group.RunBackSeconds
+#        A bot in your group that has been dead this long is back on its feet next to you
+#        once you are alive and out of combat, as if it had run back. This is what gets a
+#        group going again after a wipe. 0: bots stay dead until someone resurrects them.
+#        Default: 20
+#
+#    WowPlus.Group.RunBackWithHealerSeconds
+#        The same, when someone alive in the group can resurrect: they get this long to do
+#        it first.
+#        Default: 60
+
+WowPlus.Group.ReadyCheck                 = 1
+WowPlus.Group.ReadyCheck.Health          = 70
+WowPlus.Group.ReadyCheck.Mana            = 40
+WowPlus.Group.ReadyCheck.HealerMana      = 60
+WowPlus.Group.HealerAsksBelowMana        = 30
+WowPlus.Group.RunBackSeconds             = 20
+WowPlus.Group.RunBackWithHealerSeconds   = 60
 WowPlus.Board.People             = 14
 WowPlus.Board.LevelRange         = 3
 WowPlus.Board.Stay.MinMinutes    = 4

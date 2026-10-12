@@ -80,6 +80,19 @@ Bots of your level range gather in the zone you are in (`Playerbots.RandomBotCon
 
 The **Group** button on the bot bar (or `/board`) opens a board of people looking for a group: pick who comes along to a dungeon or raid, or post your own group and see who answers. See [Group-Board.md](Group-Board.md).
 
+## In a group: ready checks, marks, and getting back up
+
+Built on 2026-10-12, not yet tried in the game. Code: `Server/modules/mod-wowplus/src/WowPlusGroupCare.cpp`; settings `WowPlus.Group.*`.
+
+| What | How it works |
+|---|---|
+| **Ready check** | **Ready?** on the bot bar, or `/readycheck`. A bot answers "not ready" when it is dead, not with the group, below 70 percent health, or below 40 percent mana (a healer: 60). It sits down to eat or drink, one of them says why in party chat, and a line in your chat names who is not ready. The game's own ready check window shows the ticks and crosses. Before, the bot module answered "ready" every time. |
+| **A healer that speaks up** | Out of combat, a healer below 30 percent mana says so (at most once in three minutes) and drinks, so you know to wait. |
+| **Marks** | The skull and moon in the bot bar's title row put that mark on your target; click again to take it off. Damage dealers and tanks go for the **skull** first. A mage, hunter or balance druid in the group keeps the **moon** out of the fight (sheep, trap, sleep) and the others leave it alone. This is the bot module's own behaviour; the buttons are ours. |
+| **Getting back up** | The bot module leaves a dead bot lying in a dungeon until someone resurrects it; after a wipe nobody does. Now a bot that has been dead 20 seconds stands next to you again, at half health, once you are alive and out of combat. They get up one after another and one of them says something. When someone alive in the group can resurrect, they get 60 seconds to do it first. |
+
+To try: pull something, let the healer go low and press Ready?; mark a pack with skull and moon and watch who hits what; die on purpose in a dungeon, run back, and see whether the group is on its feet when you arrive.
+
 ## Health check
 
 `python Settings/Scripts/Test-Bots.py` looks at the database, the logs and the bot module's source and prints pass or fail. It changes nothing. Run it after a restart, a settings change, or an update of the bot module.
