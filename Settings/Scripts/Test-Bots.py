@@ -34,6 +34,8 @@ PATCHES = [
     ("Bot/PlayerbotAI.cpp", "wowPlusLastAsked", "no whispers from a bot that was not spoken to"),
     ("Bot/PlayerbotAI.h", "wowPlusLastAsked", "no whispers from a bot that was not spoken to (declaration)"),
     ("Mgr/Security/PlayerbotSecurity.cpp", "WowPlus", "no canned refusal lines ('Invite me to your group first')"),
+    ("Bot/RandomPlayerbotMgr.cpp", "WowPlusFollowFaction", "the bots follow the faction you play"),
+    ("Bot/RandomPlayerbotMgr.h", "WowPlusFollowFaction", "the bots follow the faction you play (declaration)"),
 ]
 
 # The bot module's own talent tabs that heal, per class: priest discipline and holy, paladin holy, shaman and druid restoration.
@@ -108,12 +110,22 @@ def quick():
     online = int(sql(f"SELECT COUNT(*) {BOTS}")[0][0])
     report(wanted_low * 0.9 <= online <= wanted_high, "Bots in the world", f"{online} (settings ask for {wanted_low} to {wanted_high})")
 
-    # Factions
-    ratio = {"Alliance": int(setting("Playerbots.RandomBotAllianceRatio", 50)), "Horde": int(setting("Playerbots.RandomBotHordeRatio", 50))}
+    # Factions. The bots follow the side that is being played, or was played last (WowPlus.Bots.FollowFaction);
+    # with that switched off, the two ratios in playerbots.conf decide.
     alliance = int(sql(f"SELECT COUNT(*) {BOTS} AND c.race IN ({','.join(map(str, ALLIANCE))})")[0][0])
     count = {"Alliance": alliance, "Horde": online - alliance}
-    wrong = [f"{count[f]} {f} bots although {f} is switched off" for f in ratio if ratio[f] == 0 and count[f]]
-    report(not wrong, "Factions", "; ".join(wrong) or f"{count['Alliance']} Alliance, {count['Horde']} Horde (ratio {ratio['Alliance']}:{ratio['Horde']})")
+    real = ("FROM acore_characters.characters c JOIN acore_auth.account a ON a.id = c.account "
+            "WHERE a.username NOT LIKE 'RNDBOT%' AND a.username NOT LIKE 'AHBOT%'")
+    playing = sql(f"SELECT c.name, c.race {real} AND c.online = 1 ORDER BY c.guid LIMIT 1")
+    last = playing or sql(f"SELECT c.name, c.race {real} AND c.logout_time > 0 ORDER BY c.logout_time DESC LIMIT 1")
+    if last:
+        side = "Alliance" if int(last[0][1]) in ALLIANCE else "Horde"
+        other = "Horde" if side == "Alliance" else "Alliance"
+        why = f"{last[0][0]} {'is playing' if playing else 'played last'}"
+        report(count[other] == 0, "Factions", f"{count['Alliance']} Alliance, {count['Horde']} Horde; {why}, so {side} is expected"
+               + (". The switch takes a few minutes after logging in." if count[other] else ""))
+    else:
+        report(None, "Factions", f"{count['Alliance']} Alliance, {count['Horde']} Horde (nobody has played yet)")
 
     # Roles. The module's own log counts a healer only while it is healing in a group, so count by talent spec instead.
     specs = sql(f"SELECT c.class, r.value, COUNT(*) FROM acore_playerbots.playerbots_random_bots r JOIN acore_characters.characters c ON c.guid = r.bot "

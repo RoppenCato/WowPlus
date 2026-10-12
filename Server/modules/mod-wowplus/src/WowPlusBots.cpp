@@ -27,6 +27,7 @@
 #include "Chat.h"
 #include "CommandScript.h"
 #include "Config.h"
+#include "DatabaseEnv.h"
 #include "DBCStores.h"
 #include "Group.h"
 #include "Guild.h"
@@ -85,6 +86,7 @@ namespace
     float awayRadius = 200.0f;
     bool guildRecruits = true;
     bool guildKeepsUp = true;
+    bool followFaction = true;
     uint32 guildLevelGap = 2;
     bool companionsEnabled = true;
     uint32 companionIdleSeconds = 60;
@@ -464,6 +466,24 @@ namespace
 
     std::unordered_map<ObjectGuid, Meeting> meetings;
 
+    // The people a character knows: its guild mates and those on its friends list. They are always in the world.
+    std::vector<uint32> KnownTo(ObjectGuid::LowType character)
+    {
+        std::vector<uint32> known;
+        if (QueryResult members = CharacterDatabase.Query(
+                "SELECT m.guid FROM guild_member m JOIN guild_member mine ON mine.guildid = m.guildid WHERE mine.guid = {} AND m.guid <> {}", character, character))
+            do
+                known.push_back(members->Fetch()[0].Get<uint32>());
+            while (members->NextRow());
+
+        if (QueryResult friends = CharacterDatabase.Query("SELECT friend FROM character_social WHERE guid = {} AND (flags & 1)", character))
+            do
+                known.push_back(friends->Fetch()[0].Get<uint32>());
+            while (friends->NextRow());
+
+        return known;
+    }
+
     bool FitsRole(Player* bot, std::string const& role)
     {
         if (role.empty())
@@ -588,11 +608,36 @@ public:
         guildRecruits = sConfigMgr->GetOption<bool>("WowPlus.Bots.Guild.Recruit", true);
         guildKeepsUp = sConfigMgr->GetOption<bool>("WowPlus.Bots.Guild.KeepUp", true);
         guildLevelGap = sConfigMgr->GetOption<uint32>("WowPlus.Bots.Guild.KeepUp.LevelGap", 2);
+        followFaction = sConfigMgr->GetOption<bool>("WowPlus.Bots.FollowFaction", true);
         companionsEnabled = sConfigMgr->GetOption<bool>("WowPlus.Bots.Companions.Enable", true);
         companionIdleSeconds = sConfigMgr->GetOption<uint32>("WowPlus.Bots.Companions.IdleSeconds", 60);
         companionCampfire = sConfigMgr->GetOption<bool>("WowPlus.Bots.Companions.Campfire", true);
         companionRoadMinMinutes = std::max<uint32>(1, sConfigMgr->GetOption<uint32>("WowPlus.Bots.Companions.Road.MinMinutes", 3));
         companionRoadMaxMinutes = std::max(companionRoadMinMinutes, sConfigMgr->GetOption<uint32>("WowPlus.Bots.Companions.Road.MaxMinutes", 7));
+    }
+
+    // Before the first bot logs in: the faction of the character that was played last, so that the
+    // world is already the right one when the player comes back to it
+    void OnStartup() override
+    {
+        if (!followFaction)
+            return;
+
+        QueryResult result = CharacterDatabase.Query("SELECT race, account, guid FROM characters WHERE logout_time > 0 ORDER BY logout_time DESC LIMIT 500");
+        if (!result)
+            return;
+
+        do
+        {
+            Field* fields = result->Fetch();
+            if (sPlayerbotAIConfig.IsInRandomAccountList(fields[1].Get<uint32>()))
+                continue;
+
+            TeamId const team = Player::TeamIdForRace(fields[0].Get<uint8>());
+            sRandomPlayerbotMgr.WowPlusFollowFaction(team, KnownTo(fields[2].Get<uint32>()));
+            LOG_INFO("server.loading", ">> WowPlus bots: the world fills with {} bots, the side played last", team == TEAM_ALLIANCE ? "Alliance" : "Horde");
+            return;
+        } while (result->NextRow());
     }
 
     // The world thread, after the maps have been updated: safe to look at and move players
@@ -654,6 +699,16 @@ class WowPlusBotsPlayer : public PlayerScript
 {
 public:
     WowPlusBotsPlayer() : PlayerScript("WowPlusBotsPlayer") { }
+
+    // A real player comes online: the bots in the world become the side of that character, and the
+    // character's guild mates and friends are among them
+    void OnPlayerLogin(Player* player) override
+    {
+        if (!followFaction || IsBot(player))
+            return;
+
+        sRandomPlayerbotMgr.WowPlusFollowFaction(player->GetTeamId(), KnownTo(player->GetGUID().GetCounter()));
+    }
 
     void OnPlayerLogout(Player* player) override
     {

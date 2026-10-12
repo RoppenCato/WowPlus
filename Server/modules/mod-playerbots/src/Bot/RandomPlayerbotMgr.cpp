@@ -3271,3 +3271,72 @@ ObjectGuid RandomPlayerbotMgr::GetBattleMasterGUID(Player* bot, BattlegroundType
 
     return battleMasterGUID;
 }
+
+// WowPlus: see RandomPlayerbotMgr.h. The faction ratio only decides which bots are picked when
+// places are free, and bots stay in the world for a year, so switching faction means taking the
+// others out here.
+void RandomPlayerbotMgr::WowPlusFollowFaction(TeamId team, std::vector<uint32> const& keep)
+{
+    sPlayerbotAIConfig.RandomBotAllianceRatio = team == TEAM_ALLIANCE ? 100 : 0;
+    sPlayerbotAIConfig.RandomBotHordeRatio = team == TEAM_ALLIANCE ? 0 : 100;
+
+    auto teamOf = [](uint32 bot) -> int32
+    {
+        CharacterCacheEntry const* entry = sCharacterCache->GetCharacterCacheByGuid(ObjectGuid::Create<HighGuid::Player>(bot));
+        return entry ? int32(IsAlliance(entry->Race) ? TEAM_ALLIANCE : TEAM_HORDE) : -1;
+    };
+
+    auto remove = [this](uint32 bot)
+    {
+        ObjectGuid const guid = ObjectGuid::Create<HighGuid::Player>(bot);
+        SetEventValue(bot, "add", 0, 0);
+        currentBots.erase(bot);
+        if (GetPlayerBot(guid))
+            LogoutPlayerBot(guid);
+    };
+
+    GetBots();
+
+    // Out with the other faction
+    uint32 removed = 0;
+    for (uint32 bot : std::vector<uint32>(currentBots.begin(), currentBots.end()))
+        if (teamOf(bot) != int32(team))
+        {
+            remove(bot);
+            ++removed;
+        }
+
+    // In with the people the player knows
+    uint32 kept = 0;
+    for (uint32 bot : keep)
+    {
+        ObjectGuid const guid = ObjectGuid::Create<HighGuid::Player>(bot);
+        uint32 const account = sCharacterCache->GetCharacterAccountIdByGuid(guid);
+        if (teamOf(bot) != int32(team) || currentBots.contains(bot) ||
+            std::find(rndBotTypeAccounts.begin(), rndBotTypeAccounts.end(), account) == rndBotTypeAccounts.end())
+            continue;
+
+        SetEventValue(bot, "add", 1, sPlayerbotAIConfig.PermanentlyInWorldTime);
+        SetEventValue(bot, "logout", 0, 0);
+        currentBots.insert(bot);
+        ++kept;
+    }
+
+    // They take the place of strangers, so that the world holds as many as it should
+    uint32 const most = GetEventValue(0, "bot_count");
+    for (uint32 bot : std::vector<uint32>(currentBots.begin(), currentBots.end()))
+    {
+        if (!most || currentBots.size() <= most)
+            break;
+        if (std::find(keep.begin(), keep.end(), bot) != keep.end())
+            continue;
+        Player* player = GetPlayerBot(ObjectGuid::Create<HighGuid::Player>(bot));
+        if (player && player->GetGroup())
+            continue;
+        remove(bot);
+    }
+
+    if (removed || kept)
+        LOG_INFO("playerbots", "WowPlus: the bots follow the {}: {} of the other side logged out, {} guild mates and friends brought in.",
+                 team == TEAM_ALLIANCE ? "Alliance" : "Horde", removed, kept);
+}

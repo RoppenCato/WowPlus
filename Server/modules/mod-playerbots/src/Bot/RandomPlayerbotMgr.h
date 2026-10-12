@@ -131,6 +131,12 @@ public:
     uint32 GetTradeDiscount(Player* bot, Player* master);
     void Refresh(Player* bot);
     void RandomTeleportForLevel(Player* bot);
+
+    // WowPlus: the bots in the world are of one faction, the one the real player is playing. Bots of
+    // the other faction are logged out and their places filled; `keep` are bots that must be in the
+    // world whatever else (the player's guild mates and friends). Called by mod-wowplus when a real
+    // player logs in, and at start-up for the faction played last. World thread only.
+    void WowPlusFollowFaction(TeamId team, std::vector<uint32> const& keep);
     void RandomTeleportGrindForLevel(Player* bot);
     void RandomTeleportForRpg(Player* bot);
     uint32 GetMaxAllowedBotCount();

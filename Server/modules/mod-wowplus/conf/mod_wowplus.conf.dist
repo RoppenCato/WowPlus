@@ -667,6 +667,16 @@ WowPlus.BotChat.Guild.SpeakFirst.AnswerChance  = 50
 #        a fight or a dungeon.
 #        Default: 1, and 2 levels
 #
+#    WowPlus.Bots.FollowFaction
+#        1: the bots in the world are of the side you play. Log in on an Alliance character and
+#        the Horde bots log out and Alliance bots take their places (a few minutes until all
+#        are there); the same the other way. The guild mates and friends of the character you
+#        log in on are always among them. When the server starts, the world fills with the
+#        side that was played last. Playerbots.RandomBotAllianceRatio and RandomBotHordeRatio
+#        in playerbots.conf then only matter until someone has played.
+#        0: the two ratios in playerbots.conf decide, whatever you play.
+#        Default: 1
+#
 #    WowPlus.Bots.Companions.Enable
 #        A companion is any guild mate who is in your party; nothing is chosen beforehand.
 #          .bots call           the guild mates you travelled with last join your party
@@ -686,6 +696,7 @@ WowPlus.BotChat.Guild.SpeakFirst.AnswerChance  = 50
 #        On the road, a companion makes a gesture or a remark this often.
 #        Default: 3 and 7
 
+WowPlus.Bots.FollowFaction                   = 1
 WowPlus.Bots.Guild.KeepUp                    = 1
 WowPlus.Bots.Guild.KeepUp.LevelGap           = 2
 WowPlus.Bots.Companions.Enable               = 1

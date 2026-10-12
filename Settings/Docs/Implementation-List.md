@@ -230,6 +230,7 @@ The whole picture is in [Bots.md](Bots.md) and [Bot-Chat.md](Bot-Chat.md).
 - [~] `.bots away` and `.bots alone on/off` to have the area to yourself
 - [x] Bot health check (`Settings/Scripts/Test-Bots.py`): factions, healers, levels, log size, update time, our changes in the bot module; `--watch` and `--deaths` for bots that stand still or keep dying
 - [x] Bots: all Horde for real (enough accounts), talked-with bots go on the friends list and keep their level
+- [x] Bots follow the faction you play (`WowPlus.Bots.FollowFaction`): the other side logs out, guild mates and friends are always in. Tested by marking a test character as Alliance: 100 Alliance bots, then back to 100 Horde; three bots put on a friends list came online. Logging in on a character while the server runs is the one path not tried
 - [~] Building the guild (`.bots meet`, `keep`, `pass`; menu "Build my guild"): a bot walks up and introduces itself, and can be invited to the guild. Companions are now simply the guild mates in the party (`.bots call [name]`, menu "Guild mates"). Built, not tried in the game
 - [~] Menu addon (`Client/AddOns/WowPlusMenu`): one button with a menu of group orders, marks, companions and windows. Built, not tried in the game
 - [~] In a group (`WowPlusGroupCare.cpp`): honest ready checks, a healer that asks for a drink, skull and moon buttons, bots back on their feet after a wipe; the loot rule becomes free for all so bots do not loot. Built, not tried in the game
