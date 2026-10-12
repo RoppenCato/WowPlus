@@ -109,6 +109,10 @@ Enemies added by other quest files count as neighbours too. A quest whose added 
 
 The picker looks further out from where the enemy lives when the nearby ground is full, so a crowded camp grows at its edges instead of in its middle.
 
+## Where quests are needed
+
+`Zone-Audit.md` in this folder surveys every zone: quests per side, how much of the levelling they carry, and which enemies and places no quest uses. Its first part says where to write next. `python Settings/Scripts/Make-Zone-Audit.py` makes the lists again after quests have been added.
+
 ## How it gets into the game
 
 `Settings/Scripts/Make-Quests.py` turns the files into rows in the game's database: the quest itself, who starts and ends it, the things said, loot that drops only while on the quest, added enemies, and **where it shows on the map**: an area around each group of the enemies to kill or to take things from, and a mark on the person it is handed in to. The map marks and added enemies are read by the server when it starts, so those need a restart. It first removes everything it wrote before (quests 9200000 to 9299999, and loot rows marked "WowPlus quest"), so what is in the game is always exactly what is in this folder. A file with a mistake is left out and named; the others still go in.

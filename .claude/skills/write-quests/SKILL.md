@@ -13,7 +13,7 @@ Everything is done from the WowPlus folder (`C:\dev\WowPlus`). A quest is one JS
 
 Settle these from the request, and ask only if they cannot be guessed:
 
-- **Zone.** If only a level was given: `python Settings/Scripts/Quest-Tool.py --zones <level>`.
+- **Zone.** If only a level was given: `python Settings/Scripts/Quest-Tool.py --zones <level>`. If no zone was given at all, read the findings at the top of `Settings/Quests/Zone-Audit.md` and propose the zone that needs quests most for the side being played; its zone entry also lists enemies and places no quest uses, which are the first things to build a story on.
 - **Side.** Horde, Alliance or both. Default: the side of the character Robin plays (the health check `Test-Bots.py` prints who played last), and "both" only for neutral towns.
 - **Shape.** A chain of 2 to 3 quests, or 2 to 3 separate ones. Default: a chain when the story has a beginning and an end; separate quests when it is a place with several small truths.
 
@@ -97,6 +97,7 @@ Fix whatever the check names. Then:
 - Add a line per story to `Settings/Quests/Stories.md` (zone, what it tells, the quest numbers).
 - Add the quests to the table at the end of `Settings/Quests/README.md`.
 - Add them to the "New quests" area of `docs/changes.js` and bump `updated`.
+- Run `python Settings/Scripts/Make-Zone-Audit.py` so that the survey counts the new quests.
 - Commit and push.
 
 ### 9. Report
