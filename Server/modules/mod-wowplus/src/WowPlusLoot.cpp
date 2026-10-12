@@ -448,8 +448,8 @@ namespace
 
     std::unordered_map<uint32, BossDrops> bossDrops;        // creature template -> drops
     bool bossLootEnabled = true;
-    float bossExtraChance = 100.0f;
-    float bossNewChance = 40.0f;
+    float bossExtraChance = 0.0f;
+    float bossNewChance = 100.0f;
 
     void LoadBossDrops()
     {
@@ -538,8 +538,8 @@ public:
     {
         LoadConfig();
         bossLootEnabled = sConfigMgr->GetOption<bool>("WowPlus.BossLoot.Enable", true);
-        bossExtraChance = sConfigMgr->GetOption<float>("WowPlus.BossLoot.ExtraChance", 100.0f);
-        bossNewChance = sConfigMgr->GetOption<float>("WowPlus.BossLoot.NewChance", 40.0f);
+        bossExtraChance = sConfigMgr->GetOption<float>("WowPlus.BossLoot.ExtraChance", 0.0f);
+        bossNewChance = sConfigMgr->GetOption<float>("WowPlus.BossLoot.NewChance", 100.0f);
     }
 
     void OnStartup() override
@@ -645,7 +645,7 @@ public:
             return;
         }
 
-        // A boss of a dungeon or raid: one more of what it drops anyway, and sometimes one of its new drops.
+        // A boss of a dungeon or raid: its own loot and one of its new drops (and, if set, one more of its own).
         // Neither looks at who is playing; what you cannot use is for an alt, a friend or the auction house.
         // This stands in for the surprise roll that every other enemy gets.
         bool rolled = false;

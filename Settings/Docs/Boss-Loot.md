@@ -9,10 +9,9 @@ Every dungeon and raid boss the game counts as an encounter (409 of them, in 72 
 | | What | How often |
 |---|---|---|
 | 1 | **The game's own loot**, untouched. | as always |
-| 2 | **One more piece of its own gear**, picked the way the game picks: likelier items are likelier. | every kill (`WowPlus.BossLoot.ExtraChance`, 100) |
-| 3 | **One of its new drops.** | 4 kills in 10 (`WowPlus.BossLoot.NewChance`, 40) |
+| 2 | **One of its new drops.** | every kill (`WowPlus.BossLoot.NewChance`, 100) |
 
-Number 2 and 3 take the place of the surprise roll that other enemies get, which was aimed at your level and mostly at your class. **Boss loot does not look at who you are.** What you cannot use is for another character, a guild mate or the auction house.
+A setting can add one more piece of the boss's own gear as well (`WowPlus.BossLoot.ExtraChance`, 0 as delivered). The new drop takes the place of the surprise roll that other enemies get, which was aimed at your level and mostly at your class. **Boss loot does not look at who you are.** What you cannot use is for another character, a guild mate or the auction house.
 
 Bosses far below your level (grey to you) give only the game's own loot, like every enemy.
 
@@ -60,8 +59,8 @@ The chances are worked out from the game's loot tables and are close, not exact:
 | Setting | Default | What it is |
 |---|---|---|
 | `WowPlus.BossLoot.Enable` | 1 | 0: bosses get the ordinary surprise roll instead, as before. |
-| `WowPlus.BossLoot.ExtraChance` | 100 | Percent chance of one more piece of the boss's own gear. |
-| `WowPlus.BossLoot.NewChance` | 40 | Percent chance of one of the boss's new drops. |
+| `WowPlus.BossLoot.NewChance` | 100 | Percent chance of one of the boss's new drops. |
+| `WowPlus.BossLoot.ExtraChance` | 0 | Percent chance of one more piece of the boss's own gear on top. |
 
 ## Not covered
 
@@ -71,4 +70,4 @@ The chances are worked out from the game's loot tables and are close, not exact:
 ## To try
 
 1. `/lootbook`: does the window open at a dungeon for your level, and do item names and icons show?
-2. Kill a dungeon boss a few times: is there one more piece each time, and a new one now and then that matches the book?
+2. Kill a dungeon boss a few times: is there one new drop each time, and is it one of those the book lists for that boss?

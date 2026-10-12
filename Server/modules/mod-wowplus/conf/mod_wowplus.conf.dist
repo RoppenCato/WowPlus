@@ -751,7 +751,7 @@ WowPlus.BotChat.KnownBecomeFriends = 1
 # Boss loot
 ########################################
 #
-#    Every dungeon and raid boss keeps the game's own loot and gets more on top. Which items
+#    Every dungeon and raid boss keeps the game's own loot and drops one new item on top. Which items
 #    are "new" for each boss is decided by WowPlus.World.Seed; the lists are made at every
 #    start by Settings/Scripts/Make-Boss-Loot.py, and the addon WowPlus Loot Book (/lootbook)
 #    shows them. Explained in Settings/Docs/Boss-Loot.md.
@@ -761,19 +761,19 @@ WowPlus.BotChat.KnownBecomeFriends = 1
 #        (an item for your level, mostly for your class), as before.
 #        Default: 1
 #
-#    WowPlus.BossLoot.ExtraChance
-#        The chance in percent that a boss drops one more piece of its own gear.
-#        Default: 100
-#
 #    WowPlus.BossLoot.NewChance
 #        The chance in percent that a boss drops one of its new drops: items it does not have
 #        in the real game, about one picked for each class. Which one is random, whoever you
 #        are.
-#        Default: 40
+#        Default: 100 (every kill: the game's own loot and one new drop)
+#
+#    WowPlus.BossLoot.ExtraChance
+#        The chance in percent that a boss also drops one more piece of its own gear.
+#        Default: 0
 
 WowPlus.BossLoot.Enable          = 1
-WowPlus.BossLoot.ExtraChance     = 100
-WowPlus.BossLoot.NewChance       = 40
+WowPlus.BossLoot.NewChance       = 100
+WowPlus.BossLoot.ExtraChance     = 0
 
 ########################################
 # The group board
