@@ -132,6 +132,11 @@ if (Get-Command python -ErrorAction SilentlyContinue) {
     & python (Join-Path $PSScriptRoot 'Scripts\Make-Boss-Loot.py') 2>&1 | ForEach-Object { Write-Host $_ }
 }
 
+# Our own quests: one file each in Settings\Quests, put into the game here (Settings\Quests\README.md).
+if (Get-Command python -ErrorAction SilentlyContinue) {
+    & python (Join-Path $PSScriptRoot 'Scripts\Make-Quests.py') 2>&1 | ForEach-Object { Write-Host $_ }
+}
+
 # Our own addons (Client\AddOns) are copied into every game copy, so the game always has the
 # version that matches the server. A running game picks them up after /reload or a restart.
 foreach ($client in Get-ChildItem (Join-Path $root 'Client') -Directory -ErrorAction SilentlyContinue | Where-Object { Test-Path (Join-Path $_.FullName 'Wow.exe') }) {

@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quest tool</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --bg:#17130f; --panel:#221c16; --line:#3a3026; --ink:#e9dfcf; --dim:#a2937d; --gold:#f0c060; --good:#7fd07f; --bad:#e07a6a; --blue:#6fa8ff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 "Segoe UI", system-ui, sans-serif; }
+  header { padding:10px 16px; border-bottom:1px solid var(--line); display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  header h1 { font-size:18px; margin:0; color:var(--gold); font-weight:600; }
+  header .grow { flex:1; }
+  main { display:grid; grid-template-columns:minmax(360px, 460px) 1fr; gap:12px; padding:12px; align-items:start; }
+  @media (max-width:980px) { main { grid-template-columns:1fr; } }
+  section { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:12px; margin-bottom:12px; }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--gold); margin:0 0 8px; }
+  label { display:block; color:var(--dim); font-size:12px; margin:8px 0 2px; }
+  input, select, textarea, button { font:inherit; color:var(--ink); background:#15110d; border:1px solid var(--line); border-radius:5px; padding:5px 7px; }
+  input[type=number] { width:76px; }
+  input[type=text], textarea, select { width:100%; }
+  textarea { min-height:70px; resize:vertical; }
+  button { cursor:pointer; background:#2c241b; }
+  button:hover { border-color:var(--gold); }
+  button.main { background:#5a4320; border-color:var(--gold); color:#fff; font-weight:600; }
+  .row { display:flex; gap:8px; align-items:end; flex-wrap:wrap; }
+  .row > div { flex:1; min-width:90px; }
+  .pick { border:1px solid var(--line); border-radius:5px; max-height:210px; overflow:auto; background:#15110d; }
+  .pick div { padding:3px 8px; cursor:pointer; display:flex; gap:8px; justify-content:space-between; }
+  .pick div:hover { background:#2c241b; }
+  .pick div.on { background:#4a3a1f; color:#fff; }
+  .pick small { color:var(--dim); white-space:nowrap; }
+  .chip { display:inline-flex; gap:6px; align-items:center; background:#2c241b; border:1px solid var(--line); border-radius:12px; padding:2px 8px; margin:2px 4px 2px 0; }
+  .chip b { cursor:pointer; color:var(--bad); }
+  .hint { color:var(--dim); font-size:12px; }
+  .ok { color:var(--good); } .bad { color:var(--bad); }
+  .q2 { color:#1eff00; } .q3 { color:#3d9bff; } .q4 { color:#c070ff; } .q1 { color:#fff; } .q0 { color:#9d9d9d; }
+  #map { width:100%; border:1px solid var(--line); border-radius:6px; background:#0c0a08; display:block; cursor:crosshair; }
+  #legend span { margin-right:14px; white-space:nowrap; }
+  .dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:4px; }
+  .checks label { display:flex; gap:6px; align-items:center; color:var(--ink); font-size:13px; margin:2px 0; }
+  .checks { columns:2; }
+  #saved div { padding:3px 0; border-bottom:1px solid var(--line); cursor:pointer; }
+  #saved div:hover { color:var(--gold); }
+  #tip { position:fixed; pointer-events:none; background:#000c; border:1px solid var(--line); padding:3px 8px; border-radius:4px; display:none; font-size:12px; z-index:5; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Quest tool</h1>
+  <span class="hint">Pick, write, save. Each quest becomes a file in Settings/Quests.</span>
+  <span class="grow"></span>
+  <button id="new">New quest</button>
+  <button id="save" class="main">Save quest</button>
+  <button id="apply">Put all quests into the game</button>
+</header>
+<div id="status" style="padding:6px 16px" class="hint"></div>
+
+<main>
+<div>
+  <section>
+    <h2>1. Level and side</h2>
+    <div class="row">
+      <div><label>Quest level</label><input type="number" id="level" min="1" max="80" value="8"></div>
+      <div><label>Lowest level</label><input type="number" id="min_level" min="1" max="80"></div>
+      <div><label>Highest level (0: none)</label><input type="number" id="max_level" min="0" max="80"></div>
+      <div><label>For</label><select id="side"><option value="horde">Horde</option><option value="alliance">Alliance</option><option value="both">Both</option></select></div>
+    </div>
+    <div class="hint">Lowest and highest follow the quest level until you change them yourself.</div>
+  </section>
+
+  <section>
+    <h2>2. Zone</h2>
+    <select id="zone"></select>
+    <div class="hint" id="zonehint"></div>
+  </section>
+
+  <section>
+    <h2>3. Who gives it, and who takes it back</h2>
+    <div class="hint">Click a name here or a gold dot on the map. First click sets the giver, the button below sets the other end.</div>
+    <label>People in this zone <input type="text" id="peoplefilter" placeholder="filter by name" style="width:55%;display:inline-block;margin-left:8px"></label>
+    <div class="pick" id="people"></div>
+    <div style="margin-top:6px">Giver: <b id="giver">none</b> &nbsp; Hand in to: <b id="turn_in">the same</b></div>
+    <div class="row" style="margin-top:4px"><button id="pickgiver">Next click picks the giver</button><button id="pickender">Next click picks who it is handed in to</button></div>
+  </section>
+
+  <section>
+    <h2>4. The task</h2>
+    <select id="type"></select>
+    <div class="hint" id="typehint"></div>
+    <div id="taskkill">
+      <label>Enemies in this zone, by level <input type="text" id="enemyfilter" placeholder="filter by name" style="width:55%;display:inline-block;margin-left:8px"></label>
+      <div class="pick" id="enemies"></div>
+    </div>
+    <div id="taskitem" style="display:none">
+      <label>What the chosen enemy drops (click to ask for it), or search for any item</label>
+      <div class="pick" id="loot"></div>
+      <div class="row" style="margin-top:6px"><div><input type="text" id="itemsearch" placeholder="search all items, three letters or more"></div></div>
+      <div class="pick" id="itemfound" style="max-height:140px"></div>
+      <label><input type="checkbox" id="makedrop" checked style="width:auto"> Make the chosen enemy drop it while on the quest, chance in percent <input type="number" id="dropchance" value="40" min="1" max="100"></label>
+    </div>
+    <label>How many</label><input type="number" id="count" value="8" min="1" max="200">
+    <div id="objectives" style="margin-top:8px"></div>
+  </section>
+
+  <section>
+    <h2>5. The words</h2>
+    <label>Your idea in a sentence (for the writer, not shown in the game)</label>
+    <input type="text" id="idea" placeholder="e.g. the wolves have been taking the kodo calves">
+    <div class="row" style="margin-top:6px"><button id="write">Write the texts for me</button><span class="hint" id="writing"></span></div>
+    <label>Title</label><input type="text" id="title" maxlength="60">
+    <label>What the giver says ($N is the player's name; an empty line starts a new paragraph)</label><textarea id="details"></textarea>
+    <label>The task in one sentence, as it stands in the quest log</label><textarea id="objectivestext" style="min-height:44px"></textarea>
+    <label>Said while it is not done yet</label><textarea id="progress" style="min-height:44px"></textarea>
+    <label>Said when it is done</label><textarea id="completion"></textarea>
+  </section>
+
+  <section>
+    <h2>6. The reward</h2>
+    <div class="row">
+      <div><label>Money (copper)</label><input type="number" id="money" min="0" style="width:110px"></div>
+      <div><label>Experience</label><select id="xp"></select></div>
+      <div><button id="reroll">Other gear ideas</button></div>
+    </div>
+    <label>Tick gear to offer. "Choose one" lets the player pick; the others are always given.</label>
+    <div class="checks" id="gear"></div>
+    <label>Also give</label>
+    <div class="checks" id="other"></div>
+    <div id="rewardchips" style="margin-top:6px"></div>
+  </section>
+
+  <section>
+    <h2>Saved quests</h2>
+    <div id="saved" class="hint">none yet</div>
+  </section>
+</div>
+
+<div>
+  <section>
+    <h2>The zone</h2>
+    <canvas id="map" width="900" height="600"></canvas>
+    <div id="legend" class="hint" style="margin-top:6px">
+      <span><i class="dot" style="background:#f0c060"></i>people</span>
+      <span><i class="dot" style="background:#fff;border:2px solid #f0c060"></i>giver</span>
+      <span><i class="dot" style="background:#6fa8ff"></i>hand in to</span>
+      <span><i class="dot" style="background:#e0503a"></i>the chosen enemies</span>
+      <span><i class="dot" style="background:#6b5d4d"></i>everything else that lives here</span>
+    </div>
+  </section>
+  <section>
+    <h2>The quest as a file</h2>
+    <pre id="preview" style="white-space:pre-wrap;margin:0;color:var(--dim);font-size:12px"></pre>
+  </section>
+</div>
+</main>
+<div id="tip"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const api = (path, body) => fetch(path, body ? { method: "POST", body: JSON.stringify(body) } : undefined).then(r => r.json());
+const state = { id: 0, zones: [], zone: null, data: { people: [], enemies: [] }, terrain: null, giver: null, turn_in: null,
+                picking: "giver", enemy: null, objectives: [], rewards: [], suggestions: null, seed: 0, touched: {} };
+
+function say(text, kind) { $("status").innerHTML = text; $("status").className = kind || "hint"; }
+function person(entry) { return state.data.people.find(p => p.entry === entry) || state.data.enemies.find(p => p.entry === entry); }
+function nameOf(entry) { const p = person(entry); return p ? p.name : entry ? "#" + entry : "none"; }
+
+// ---- 1. level -----------------------------------------------------------------------------
+function levelChanged() {
+  const level = +$("level").value || 1;
+  if (!state.touched.min) $("min_level").value = Math.max(1, level - 3);
+  if (!state.touched.max) $("max_level").value = 0;
+  fillZones();
+  loadRewards();
+  show();
+}
+$("level").oninput = levelChanged;
+$("min_level").oninput = () => { state.touched.min = true; show(); };
+$("max_level").oninput = () => { state.touched.max = true; show(); };
+$("side").onchange = () => loadZone();
+
+// ---- 2. zone ------------------------------------------------------------------------------
+function fillZones() {
+  const level = +$("level").value || 1, select = $("zone"), was = +select.value;
+  const fits = z => level >= z.low - 2 && level <= z.high + 2;
+  select.innerHTML = "";
+  const groups = [["Zones for this level", state.zones.filter(fits)], ["All other zones", state.zones.filter(z => !fits(z))]];
+  for (const [title, list] of groups) {
+    const group = document.createElement("optgroup"); group.label = title;
+    for (const z of list) { const o = document.createElement("option"); o.value = z.id; o.textContent = `${z.name}  (${z.low}-${z.high})`; group.appendChild(o); }
+    select.appendChild(group);
+  }
+  if (was && state.zones.some(z => z.id === was)) select.value = was;
+  if (+select.value !== (state.zone && state.zone.id)) loadZone();
+}
+async function loadZone() {
+  const id = +$("zone").value; if (!id) return;
+  state.zone = state.zones.find(z => z.id === id);
+  $("zonehint").textContent = `Its own quests are mostly level ${state.zone.low} to ${state.zone.high}.`;
+  say("Reading the zone...");
+  const [data, terrain] = await Promise.all([api(`/api/zone?id=${id}&side=${$("side").value}`), api(`/api/terrain?id=${id}`)]);
+  state.data = data.people ? data : { people: [], enemies: [] };
+  state.terrain = terrain.heights ? terrain : null;
+  say(`${state.zone.name}: ${state.data.people.length} people, ${state.data.enemies.length} kinds of enemy.`);
+  fillPeople(); fillEnemies(); draw(); show();
+}
+$("zone").onchange = loadZone;
+
+// ---- 3. people ----------------------------------------------------------------------------
+function fillPeople() {
+  const filter = $("peoplefilter").value.toLowerCase(), box = $("people"); box.innerHTML = "";
+  for (const p of state.data.people) {
+    if (filter && !(p.name + p.title).toLowerCase().includes(filter)) continue;
+    const row = document.createElement("div");
+    row.className = (p.entry === state.giver || p.entry === state.turn_in) ? "on" : "";
+    row.innerHTML = `<span>${p.name}${p.title ? ` <small>&lt;${p.title}&gt;</small>` : ""}</span><small>${p.kind || ""}${p.gives ? " · gives quests" : ""}</small>`;
+    row.onclick = () => pickPerson(p.entry);
+    box.appendChild(row);
+  }
+}
+function pickPerson(entry) {
+  if (state.picking === "turn_in") { state.turn_in = entry; } else { state.giver = entry; if (!state.turn_in || $("type").value !== "deliver") state.turn_in = state.turn_in || null; }
+  state.picking = "giver";
+  fillPeople(); draw(); show();
+}
+$("peoplefilter").oninput = fillPeople;
+$("pickgiver").onclick = () => { state.picking = "giver"; say("Click the person who gives the quest."); };
+$("pickender").onclick = () => { state.picking = "turn_in"; say("Click the person the quest is handed in to."); };
+
+// ---- 4. task ------------------------------------------------------------------------------
+function fillEnemies() {
+  const filter = $("enemyfilter").value.toLowerCase(), level = +$("level").value, box = $("enemies"); box.innerHTML = "";
+  for (const e of state.data.enemies) {
+    if (filter && !e.name.toLowerCase().includes(filter)) continue;
+    const row = document.createElement("div");
+    row.className = state.enemy === e.entry ? "on" : "";
+    const near = Math.abs(e.level - level) <= 3;
+    row.innerHTML = `<span style="${near ? "" : "color:var(--dim)"}">${e.name}${e.rank ? " <small>(elite or rare)</small>" : ""}</span><small>level ${e.low === e.level ? e.level : e.low + "-" + e.level} · ${e.count} here</small>`;
+    row.onclick = () => pickEnemy(e.entry);
+    box.appendChild(row);
+  }
+}
+async function pickEnemy(entry) {
+  state.enemy = entry; fillEnemies(); draw();
+  const type = $("type").value;
+  if (type === "kill" || type === "slay") {
+    if (type === "slay") state.objectives = [];
+    if (!state.objectives.some(o => o.creature === entry) && state.objectives.filter(o => o.creature).length < 4)
+      state.objectives.push({ creature: entry, count: type === "slay" ? 1 : +$("count").value || 1 });
+    show();
+  } else if (type === "collect") {
+    const loot = await api(`/api/loot?creature=${entry}`), box = $("loot"); box.innerHTML = "";
+    for (const item of loot) {
+      const row = document.createElement("div");
+      row.innerHTML = `<span class="q${item.quality}">${item.name}</span><small>${item.chance}% already</small>`;
+      row.onclick = () => addItem(item.item, item.name, false);
+      box.appendChild(row);
+    }
+    if (!loot.length) box.innerHTML = "<div><small>It drops nothing plain. Search for an item below and let it drop while on the quest.</small></div>";
+  }
+}
+function addItem(item, name, searched) {
+  if (state.objectives.filter(o => o.item).length >= 6 || state.objectives.some(o => o.item === item)) return;
+  const objective = { item, count: +$("count").value || 1, name };
+  if ($("type").value === "collect" && state.enemy && (searched || $("makedrop").checked) && $("makedrop").checked)
+    objective.drops_from = [{ creature: state.enemy, chance: +$("dropchance").value || 40 }];
+  state.objectives.push(objective); show();
+}
+let searchTimer;
+$("itemsearch").oninput = () => { clearTimeout(searchTimer); searchTimer = setTimeout(async () => {
+  const found = await api(`/api/search?kind=item&q=${encodeURIComponent($("itemsearch").value)}`), box = $("itemfound"); box.innerHTML = "";
+  for (const item of found) {
+    const row = document.createElement("div");
+    row.innerHTML = `<span class="q${item.quality}">${item.name}</span><small>#${item.item}</small>`;
+    row.onclick = () => addItem(item.item, item.name, true);
+    box.appendChild(row);
+  } }, 300); };
+$("enemyfilter").oninput = fillEnemies;
+$("type").onchange = () => {
+  const type = $("type").value;
+  $("typehint").textContent = state.types[type];
+  $("taskitem").style.display = (type === "collect" || type === "fetch") ? "" : "none";
+  $("taskkill").style.display = type === "fetch" || type === "deliver" ? "none" : "";
+  $("loot").parentElement.querySelector("label").style.display = type === "collect" ? "" : "none";
+  state.objectives = []; show();
+};
+function showObjectives() {
+  const box = $("objectives"); box.innerHTML = "";
+  state.objectives.forEach((o, index) => {
+    const chip = document.createElement("span"); chip.className = "chip";
+    const what = o.creature ? `Kill ${o.count} × ${nameOf(o.creature)}` : `Bring ${o.count} × ${o.name || "#" + o.item}` + (o.drops_from ? ` (from ${nameOf(o.drops_from[0].creature)}, ${o.drops_from[0].chance}%)` : "");
+    chip.innerHTML = `${what} <b title="remove">×</b>`;
+    chip.querySelector("b").onclick = () => { state.objectives.splice(index, 1); show(); };
+    box.appendChild(chip);
+  });
+}
+
+// ---- 6. rewards ---------------------------------------------------------------------------
+async function loadRewards() {
+  const s = await api(`/api/rewards?level=${+$("level").value || 1}&seed=${state.seed}`);
+  if (!s.gear) return;
+  state.suggestions = s;
+  if (!state.touched.money) $("money").value = s.money;
+  const xp = $("xp"), was = xp.value || "5"; xp.innerHTML = "";
+  const names = ["none", "a token", "very little", "little", "less than usual", "usual", "more than usual", "a lot", "the most"];
+  for (let d = 0; d <= 8; d++) { const o = document.createElement("option"); o.value = d; o.textContent = `${names[d]}${d ? " (" + s.xp[d] + ")" : ""}`; xp.appendChild(o); }
+  xp.value = was;
+  const gear = $("gear"); gear.innerHTML = "";
+  for (const g of s.gear) gear.appendChild(rewardBox(g.item, `<span class="q${g.quality}">${g.name}</span> <small class="hint">${g.kind}</small>`, g.name, true));
+  const other = $("other"); other.innerHTML = "";
+  for (const g of s.other) other.appendChild(rewardBox(g.item, g.name, g.name, false));
+}
+function rewardBox(item, html, name, choice) {
+  const label = document.createElement("label"), box = document.createElement("input");
+  box.type = "checkbox"; box.style.width = "auto"; box.checked = state.rewards.some(r => r.item === item);
+  box.onchange = () => {
+    state.rewards = state.rewards.filter(r => r.item !== item);
+    if (box.checked) state.rewards.push({ item, name, count: choice ? 1 : 3, choice });
+    show();
+  };
+  label.appendChild(box); label.insertAdjacentHTML("beforeend", " " + html);
+  return label;
+}
+function showRewards() {
+  const box = $("rewardchips"); box.innerHTML = "";
+  state.rewards.forEach((r, index) => {
+    const chip = document.createElement("span"); chip.className = "chip";
+    chip.innerHTML = `${r.count} × ${r.name} <button style="padding:0 6px">${r.choice ? "choose one" : "always given"}</button> <b>×</b>`;
+    chip.querySelector("button").onclick = () => { r.choice = !r.choice; show(); };
+    chip.querySelector("b").onclick = () => { state.rewards.splice(index, 1); loadRewards(); show(); };
+    box.appendChild(chip);
+  });
+}
+$("reroll").onclick = () => { state.seed++; loadRewards(); };
+$("money").oninput = () => { state.touched.money = true; show(); };
+$("xp").onchange = show;
+$("count").oninput = () => { const last = state.objectives[state.objectives.length - 1]; if (last && $("type").value !== "slay") last.count = +$("count").value || 1; show(); };
+
+// ---- the quest as data --------------------------------------------------------------------
+function quest() {
+  return {
+    id: state.id, title: $("title").value.trim(), level: +$("level").value, min_level: +$("min_level").value, max_level: +$("max_level").value || 0,
+    side: $("side").value, zone: state.zone ? state.zone.id : 0, type: $("type").value,
+    giver: state.giver, turn_in: state.turn_in || state.giver,
+    objectives: state.objectives.map(o => { const c = Object.assign({}, o); delete c.name; return c; }),
+    texts: { details: $("details").value.trim(), objectives: $("objectivestext").value.trim(), progress: $("progress").value.trim(), completion: $("completion").value.trim() },
+    reward: { money: +$("money").value || 0, xp_difficulty: +$("xp").value,
+              items: state.rewards.filter(r => !r.choice).map(r => ({ item: r.item, count: r.count })),
+              choices: state.rewards.filter(r => r.choice).map(r => ({ item: r.item, count: r.count })) },
+    idea: $("idea").value.trim(),
+  };
+}
+function show() {
+  $("giver").textContent = nameOf(state.giver);
+  $("turn_in").textContent = state.turn_in && state.turn_in !== state.giver ? nameOf(state.turn_in) : "the same";
+  showObjectives(); showRewards();
+  $("preview").textContent = JSON.stringify(quest(), null, 2);
+}
+["title", "details", "objectivestext", "progress", "completion", "idea"].forEach(id => $(id).oninput = show);
+
+// ---- the map ------------------------------------------------------------------------------
+function draw() {
+  const canvas = $("map"), ctx = canvas.getContext("2d"), t = state.terrain;
+  const W = canvas.width, H = t ? Math.round(W * t.tall / t.wide) : 600; canvas.height = H;
+  ctx.fillStyle = "#0c0a08"; ctx.fillRect(0, 0, W, H);
+  if (t) {
+    const img = ctx.createImageData(t.wide, t.tall);
+    let low = 1e9, high = -1e9;
+    for (const h of t.heights) if (h > -9000) { low = Math.min(low, h); high = Math.max(high, h); }
+    for (let j = 0; j < t.tall; j++) for (let i = 0; i < t.wide; i++) {
+      const k = j * t.wide + i, h = t.heights[k]; let r = 12, g = 10, b = 8;
+      if (h > -9000) {
+        const n = (h - low) / Math.max(1, high - low);
+        const west = t.heights[k - 1] > -9000 ? t.heights[k - 1] : h, north = t.heights[k - t.wide] > -9000 ? t.heights[k - t.wide] : h;
+        const shade = Math.max(-0.35, Math.min(0.35, ((h - west) + (h - north)) / 40));
+        if (t.water[k]) { r = 34; g = 62; b = 96; }
+        else { r = 70 + 90 * n; g = 86 + 50 * n; b = 52 + 40 * n; r *= 1 + shade; g *= 1 + shade; b *= 1 + shade; }
+      }
+      img.data[k * 4] = r; img.data[k * 4 + 1] = g; img.data[k * 4 + 2] = b; img.data[k * 4 + 3] = 255;
+    }
+    const small = document.createElement("canvas"); small.width = t.wide; small.height = t.tall; small.getContext("2d").putImageData(img, 0, 0);
+    ctx.imageSmoothingEnabled = true; ctx.drawImage(small, 0, 0, W, H);
+  }
+  state.hits = [];
+  const dot = (p, at, r, fill, stroke) => {
+    const x = at[0] * W, y = at[1] * H;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fillStyle = fill; ctx.fill();
+    if (stroke) { ctx.lineWidth = 2; ctx.strokeStyle = stroke; ctx.stroke(); }
+    if (p) state.hits.push({ x, y, r: r + 3, p });
+  };
+  for (const e of state.data.enemies) if (e.entry !== state.enemy) for (const at of e.at) dot(null, at, 1.6, "#6b5d4d");
+  for (const e of state.data.enemies) if (e.entry === state.enemy || state.objectives.some(o => o.creature === e.entry)) for (const at of e.at) dot(e, at, 3.2, "#e0503a");
+  for (const p of state.data.people) for (const at of p.at) {
+    if (p.entry === state.giver) dot(p, at, 6, "#fff", "#f0c060");
+    else if (p.entry === state.turn_in) dot(p, at, 6, "#6fa8ff", "#fff");
+    else dot(p, at, 3.6, "#f0c060", "#000");
+  }
+}
+function hit(event) {
+  const canvas = $("map"), box = canvas.getBoundingClientRect();
+  const x = (event.clientX - box.left) * canvas.width / box.width, y = (event.clientY - box.top) * canvas.height / box.height;
+  let best = null;
+  for (const h of state.hits || []) { const d = Math.hypot(h.x - x, h.y - y); if (d <= h.r && (!best || d < best.d)) best = { d, p: h.p }; }
+  return best && best.p;
+}
+$("map").onmousemove = e => { const p = hit(e), tip = $("tip");
+  if (!p) { tip.style.display = "none"; return; }
+  tip.textContent = p.name + (p.title ? ` <${p.title}>` : "") + (p.level ? `, level ${p.level}` : "");
+  tip.style.left = e.clientX + 14 + "px"; tip.style.top = e.clientY + 10 + "px"; tip.style.display = "block"; };
+$("map").onmouseleave = () => $("tip").style.display = "none";
+$("map").onclick = e => { const p = hit(e); if (!p) return; if (state.data.people.includes(p)) pickPerson(p.entry); else pickEnemy(p.entry); };
+
+// ---- writing, saving, loading -------------------------------------------------------------
+$("write").onclick = async () => {
+  if (!state.giver) return say("Pick who gives the quest first.", "bad");
+  $("writing").textContent = "Writing, about twenty seconds...";
+  const texts = await api("/api/write", quest());
+  $("writing").textContent = texts.error ? "Could not write: " + texts.error : "";
+  if (texts.error) return;
+  $("title").value = texts.title || $("title").value; $("details").value = texts.details || ""; $("objectivestext").value = texts.objectives || "";
+  $("progress").value = texts.progress || ""; $("completion").value = texts.completion || ""; show();
+};
+$("save").onclick = async () => {
+  const result = await api("/api/save", quest());
+  if (result.error) return say(result.error, "bad");
+  if (!result.saved) return say("Not saved yet:<br>• " + result.problems.join("<br>• "), "bad");
+  state.id = result.id; say(`Saved as Settings/Quests/${result.file}. "Put all quests into the game" makes it playable.`, "ok");
+  show(); listSaved();
+};
+$("apply").onclick = async () => {
+  say("Putting the quests into the game...");
+  const result = await api("/api/apply", {});
+  if (result.error) return say(result.error, "bad");
+  say(`${result.count} quests are in the game now. A running server has been told to read them again; if a quest does not show, restart the server.`
+      + (result.problems.length ? "<br>Left out:<br>• " + result.problems.join("<br>• ") : ""), result.problems.length ? "bad" : "ok");
+};
+$("new").onclick = () => { Object.assign(state, { id: 0, giver: null, turn_in: null, enemy: null, objectives: [], rewards: [], touched: {} });
+  ["title", "details", "objectivestext", "progress", "completion", "idea"].forEach(id => $(id).value = ""); levelChanged(); fillPeople(); draw(); say("A new quest."); };
+async function listSaved() {
+  const found = await api("/api/quests"), box = $("saved"); box.innerHTML = found.quests.length ? "" : "none yet";
+  for (const entry of found.quests) {
+    const row = document.createElement("div");
+    row.textContent = entry.quest ? `${entry.quest.title}  (level ${entry.quest.level}, ${entry.quest.type})` : `${entry.file}: ${entry.error}`;
+    if (entry.quest) row.onclick = () => openQuest(entry.quest);
+    box.appendChild(row);
+  }
+}
+async function openQuest(q) {
+  state.id = q.id; state.touched = { min: true, max: true, money: true };
+  $("level").value = q.level; $("min_level").value = q.min_level; $("max_level").value = q.max_level || 0; $("side").value = q.side;
+  fillZones(); $("zone").value = q.zone; await loadZone();
+  $("type").value = q.type; $("type").onchange();
+  state.giver = q.giver; state.turn_in = q.turn_in === q.giver ? null : q.turn_in;
+  state.objectives = (q.objectives || []).map(o => Object.assign({}, o));
+  const names = {}; for (const o of state.objectives) if (o.item) names[o.item] = "item #" + o.item;
+  state.objectives.forEach(o => { if (o.item) o.name = names[o.item]; });
+  state.rewards = [].concat((q.reward.items || []).map(r => ({ item: r.item, count: r.count || 1, name: "item #" + r.item, choice: false })),
+                            (q.reward.choices || []).map(r => ({ item: r.item, count: r.count || 1, name: "item #" + r.item, choice: true })));
+  $("title").value = q.title; $("details").value = q.texts.details || ""; $("objectivestext").value = q.texts.objectives || "";
+  $("progress").value = q.texts.progress || ""; $("completion").value = q.texts.completion || ""; $("idea").value = q.idea || "";
+  $("money").value = q.reward.money || 0; await loadRewards(); $("xp").value = q.reward.xp_difficulty == null ? 5 : q.reward.xp_difficulty;
+  fillPeople(); fillEnemies(); draw(); show(); say(`Opened "${q.title}". Saving writes over it.`);
+}
+
+(async function start() {
+  const first = await api("/api/zones");
+  state.zones = first.zones; state.types = first.types;
+  for (const type in first.types) { const o = document.createElement("option"); o.value = type; o.textContent = { kill: "Kill enemies", collect: "Collect from enemies", fetch: "Bring items", deliver: "Go and talk to someone", slay: "Kill one named enemy" }[type] || type; $("type").appendChild(o); }
+  $("typehint").textContent = first.types.kill;
+  levelChanged(); listSaved();
+})();
+</script>
+</body>
+</html>

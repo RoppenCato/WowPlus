@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "quest-tool",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["Settings/Scripts/Quest-Tool.py", "--no-browser"],
+      "port": 8590
+    }
+  ]
+}

@@ -236,6 +236,14 @@ window.CHANGELOG = {
       ]
     },
     {
+      name: "New quests",
+      summary: "Quests written for this world, offered by the people who already live in it.",
+      items: [
+        { title: "Bold Wolves of the Plains", kind: "feature", status: "built", date: "2026-10-12",
+          text: "Mulgore, level 6: Mull Thunderhorn in Bloodhoof Village wants the prairie wolves thinned before they take more kodo calves." }
+      ]
+    },
+    {
       name: "Dungeons, raids and PvP gear",
       summary: "Content made for groups, opened to one player and their bots.",
       items: [

@@ -20,3 +20,6 @@
 
 # Files made for sending to someone (Settings/Scripts/Make-Features-Share.py); rebuilt from docs/ at any time
 /Share/
+
+# Python leaves these behind
+__pycache__/
