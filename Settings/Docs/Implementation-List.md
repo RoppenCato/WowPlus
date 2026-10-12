@@ -229,7 +229,7 @@ The whole picture is in [Bots.md](Bots.md) and [Bot-Chat.md](Bot-Chat.md).
 - [~] Passing bots buff you now and then
 - [~] `.bots away` and `.bots alone on/off` to have the area to yourself
 - [x] Bot health check (`Settings/Scripts/Test-Bots.py`): factions, healers, levels, log size, update time, our changes in the bot module; `--watch` and `--deaths` for bots that stand still or keep dying
-- [x] Bots: all Horde for real (enough accounts), every bot active all the time, talked-with bots go on the friends list and keep their level
+- [x] Bots: all Horde for real (enough accounts), talked-with bots go on the friends list and keep their level
 - [~] Bot chat through Claude: whisper, /say, party and guild chat; a person per bot with a full background, own voice and typing habits (Settings/Bots/Character-Sheet.md); memory notes per bot
 - [~] Companions: two guild mates you choose, `.bots call` and `.bots dismiss`, a fire and small things when you rest, gestures and remarks on the road
 - [~] Easy control: our own small button bar (addon `WowPlusBots`)

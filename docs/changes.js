@@ -116,8 +116,6 @@ window.CHANGELOG = {
       items: [
         { title: "Bots of your faction, around your level", kind: "tweak", status: "built", date: "2026-10-11",
           text: "All bots play your side; about half gather in your level range and zone, the rest stay spread out." },
-        { title: "A world that keeps going", kind: "tweak", status: "built", date: "2026-10-12",
-          text: "Every bot plays all the time, also far from you: they quest, level and travel while you are elsewhere." },
         { title: "People you know stay", kind: "feature", status: "built", date: "2026-10-12",
           text: "A bot you have talked with more than once lands on your friends list, and keeps its level like a guild mate does." },
         { title: "Bots dress differently", kind: "tweak", status: "built", date: "2026-10-11",
