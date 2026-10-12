@@ -1,0 +1,67 @@
+{
+  "id": 9200010,
+  "title": "Under the Whip",
+  "level": 9,
+  "min_level": 6,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 12,
+  "type": "slay",
+  "after": 9200009,
+  "giver": 9210001,
+  "turn_in": 9210001,
+  "creatures": [
+    {
+      "id": 9210002,
+      "kind": "enemy",
+      "like": 478,
+      "name": "Yarrik Whipjaw",
+      "title": "Riverpaw Taskmaster",
+      "level": 9,
+      "health": 1.6,
+      "size": 1.15,
+      "map": 0,
+      "x": -9694.8,
+      "y": 153.0,
+      "z": 50.8,
+      "o": 2.0,
+      "respawn": 180
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210002,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "I went up to the ridge above the Fargodeep at dusk and watched, and I have my answer.\n\nThere is a gnoll up there. Riverpaw, a big one, with a whip. When the kobolds come up with their sacks he takes the gold dust and sends them back down. The Riverpaw have made slaves of the whole clan, and everyone knows who the Riverpaw sell to these days: the Defias.\n\nI cannot free a mine full of kobolds, and I am not sure I would. But I can ask you to see to the one holding the whip.",
+    "objectives": "Kill Yarrik Whipjaw, the Riverpaw taskmaster on the ridge above the Fargodeep Mine, then return to Edrin Halloway in Goldshire.",
+    "progress": "He will still be up on the ridge. His kind do not go into the dark themselves.",
+    "completion": "Then the Fargodeep has one master fewer tonight, and tomorrow the Riverpaw will send another.\n\nStill. When you next hear one of them shriek about its candle, $N, remember what you have seen. They did not walk out of Redridge to rob Stormwind. They were driven here, and they are more afraid than we are.\n\nTake this. It is more than the mine ever paid me."
+  },
+  "reward": {
+    "money": 380,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 5337,
+        "count": 1
+      },
+      {
+        "item": 15399,
+        "count": 1
+      },
+      {
+        "item": 28143,
+        "count": 1
+      },
+      {
+        "item": 5459,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 3 of 3: the Riverpaw gnolls have enslaved the Elwynn kobolds, and the gold goes through them to the Defias."
+}

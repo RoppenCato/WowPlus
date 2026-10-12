@@ -1,0 +1,59 @@
+{
+  "id": 9200008,
+  "title": "What Lives in the Fargodeep",
+  "level": 6,
+  "min_level": 3,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 12,
+  "type": "visit",
+  "giver": 9210001,
+  "turn_in": 9210001,
+  "creatures": [
+    {
+      "id": 9210001,
+      "kind": "person",
+      "like": 1975,
+      "name": "Edrin Halloway",
+      "title": "Fargodeep Miner",
+      "map": 0,
+      "x": -9471.5,
+      "y": 80.5,
+      "z": 58.0,
+      "o": 5.2
+    }
+  ],
+  "objectives": [
+    {
+      "talk": 151,
+      "text": "Ask Brog Hamfist about kobolds",
+      "says": [
+        "Kobolds? Aye, we've a name for 'em in Khaz Modan, an' it's no' fit for an inn.",
+        "Brann Bronzebeard himself reckons they came o' the troggs, long ago. Stand one beside a trogg an' tell me he's wrong.",
+        "They're no' brave, mind. A kobold fears the dark worse than he fears you. That candle on his head is all that stands between him an' it."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -9740.0,
+        "y": 110.0,
+        "radius": 40
+      },
+      "text": "Look into the Fargodeep Mine"
+    }
+  ],
+  "texts": {
+    "details": "Eleven years I cut copper out of the Fargodeep, $N. Then one spring there were candles moving in the lower drifts, and by summer we were the ones locked out.\n\nThe Marshal sends folk in to count them and kill them. Nobody asks what they are, or why a whole clan of them walked here out of Redridge.\n\nAsk Brog Hamfist at the Lion's Pride; a dwarf knows what lives under stone. Then go and look into the Fargodeep yourself, the upper mouth south of here, and tell me what you see.",
+    "objectives": "Ask Brog Hamfist in the Lion's Pride Inn about kobolds and look into the upper Fargodeep Mine, then return to Edrin Halloway in Goldshire.",
+    "progress": "Have you been up to the mine? And what did the dwarf have to say?",
+    "completion": "Troggs, he says? Hm. I would believe it.\n\nAnd you saw it for yourself: they are not raiding, they are working. Working my seams harder than I ever did. A thing that fears the dark does not go that deep because it wants to. Something sends it."
+  },
+  "reward": {
+    "money": 90,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 3, The Candle and the Dark: what kobolds are (Brann's claim that they came of troggs), that they fear the dark, and that the Elwynn clan came from Redridge."
+}

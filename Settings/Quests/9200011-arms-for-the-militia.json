@@ -1,0 +1,25 @@
+{
+  "id": 9200011,
+  "title": "Arms for the Militia",
+  "level": 9,
+  "min_level": 6,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 12,
+  "type": "deliver",
+  "giver": 1249,
+  "turn_in": 491,
+  "objectives": [],
+  "texts": {
+    "details": "You are bound west? Then you can do Westfall a kindness on your way.\n\nStormwind has pulled its soldiers out of Westfall, every one. What stands between the farms and the Defias now is the People's Militia: farmers and smiths under a man named Gryan Stoutmantle, with whatever arms they could find in their barns.\n\nI have a count of what this garrison can quietly spare. Take it over the bridge and down the road to Sentinel Hill, to their quartermaster, Lewis. Tell him it is not much, and that it is not from the crown.",
+    "objectives": "Bring Quartermaster Hudson's count of spare arms to Quartermaster Lewis at Sentinel Hill in Westfall.",
+    "completion": "From Westbrook? Then somebody east of the river still remembers we are here.\n\nYou will have seen the fields on your way in. No one has brought a harvest off them in two years. The crown says Westfall is not worth a regiment. We say it is worth our necks. Thank you, $N, and thank Hudson."
+  },
+  "reward": {
+    "money": 250,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Elwynn to Westfall: Stormwind has abandoned Westfall, and the People's Militia are volunteers."
+}

@@ -30,6 +30,7 @@ QUESTS_DIR = os.path.join(ROOT, "Settings", "Quests")
 FIRST_ID, LAST_ID = 9200000, 9299999
 RACES = {"horde": 690, "alliance": 1101, "both": 0}
 TYPES = {
+    "visit": "Go to a place, or hear someone out (may be mixed with the other tasks).",
     "kill": "Kill a number of one or more kinds of enemy.",
     "collect": "Bring a number of items that enemies drop (the tool can make them drop while you are on the quest).",
     "fetch": "Bring items you buy, make, gather or already find in the world.",
@@ -37,6 +38,9 @@ TYPES = {
     "slay": "Kill one named enemy.",
 }
 LOOT_MARK = "WowPlus quest"
+FIRST_CREATURE, LAST_CREATURE = 9210000, 9219999   # people and enemies our quests add to the game, with names of their own
+FIRST_CREDIT, LAST_CREDIT = 9220000, 9239999       # what the game counts when a place is reached or someone is heard out
+PLACE, TALK = 0, 1
 
 # Adding enemies must not crowd a place. Around every added enemy:
 ROOM = 18.0                 # yards to the nearest other creature: far enough that pulling one does not pull the other
@@ -101,9 +105,31 @@ def known(quests):
             creatures.update(int(d["creature"]) for d in objective.get("drops_from") or [] if "creature" in d)
         reward = quest.get("reward") or {}
         items.update(int(r["item"]) for r in (reward.get("items") or []) + (reward.get("choices") or []) if "item" in r)
-    creature_rows = sql(f"SELECT entry, name, lootid FROM creature_template WHERE entry IN ({numbers(creatures)})")
+        for objective in quest.get("objectives") or []:
+            if "talk" in objective:
+                creatures.add(int(objective["talk"]))
+        creatures.update(int(c["like"]) for c in quest.get("creatures") or [] if str(c.get("like", "")).isdigit())
+    creature_rows = sql(f"SELECT entry, name, lootid FROM creature_template WHERE entry IN ({numbers(creatures)}) AND entry < {FIRST_CREATURE}")
     item_rows = sql(f"SELECT entry, name FROM item_template WHERE entry IN ({numbers(items)})")
-    return ({int(r[0]): {"name": r[1], "loot": int(r[2])} for r in creature_rows}, {int(r[0]): r[1] for r in item_rows})
+    found = {int(r[0]): {"name": r[1], "loot": int(r[2])} for r in creature_rows}
+    for quest in quests:                                # the people and enemies the files themselves make
+        for new in quest.get("creatures") or []:
+            if isinstance(new.get("id"), int) and new.get("like") in found:
+                found[new["id"]] = {"name": new.get("name", ""), "loot": found[new["like"]]["loot"], "new": True}
+    return (found, {int(r[0]): r[1] for r in item_rows})
+
+
+def counted(quest):
+    """The tasks the game counts in its four "kill" places, in order: enemies to kill, places to reach, people to hear.
+    Each as (what the game counts, how many, the objective)."""
+    slots = []
+    for objective in quest.get("objectives") or []:
+        if "creature" in objective:
+            slots.append((objective["creature"], objective.get("count", 1), objective))
+    for objective in quest.get("objectives") or []:
+        if "place" in objective or "talk" in objective:
+            slots.append((FIRST_CREDIT + (quest["id"] - FIRST_ID) * 4 + len(slots), 1, objective))
+    return slots
 
 
 def validate(quest, creatures, items, ids_seen=None):
@@ -129,9 +155,29 @@ def validate(quest, creatures, items, ids_seen=None):
     objectives = quest.get("objectives") or []
     kills = [o for o in objectives if "creature" in o]
     brings = [o for o in objectives if "item" in o]
-    need(len(kills) <= 4, "at most four kinds of enemy to kill")
+    visits = [o for o in objectives if "place" in o or "talk" in o]
+    need(len(kills) + len(visits) <= 4, "at most four of: kinds of enemy to kill, places to reach, people to hear")
     need(len(brings) <= 6, "at most six kinds of item to bring")
+    for objective in visits:
+        need(isinstance(objective.get("text"), str) and 3 <= len(objective["text"]) <= 60, "a place or a talk needs \"text\": the line in the quest log, 3 to 60 letters")
+        if "place" in objective:
+            place = objective["place"]
+            need(isinstance(place, dict) and all(isinstance(place.get(k), (int, float)) for k in ("map", "x", "y")), "place: needs map, x and y")
+            need(isinstance(place, dict) and 5 <= place.get("radius", 25) <= 150, "place: radius from 5 to 150 yards")
+        else:
+            need(objective["talk"] in creatures, f"talk: creature {objective['talk']} does not exist")
+            says = objective.get("says") or []
+            need(isinstance(says, list) and 1 <= len(says) <= 6 and all(isinstance(line, str) and 1 <= len(line) <= 250 for line in says),
+                 "talk: \"says\" is one to six lines of at most 250 letters, which the person says to the player")
+    for new in quest.get("creatures") or []:
+        need(isinstance(new.get("id"), int) and FIRST_CREATURE < new["id"] <= LAST_CREATURE, f"creatures: id from {FIRST_CREATURE + 1} to {LAST_CREATURE}")
+        need(new.get("like") in creatures and not creatures.get(new.get("like"), {}).get("new"), f"creatures: \"like\" must be an existing creature of the game ({new.get('like')})")
+        need(isinstance(new.get("name"), str) and 2 <= len(new["name"]) <= 60, "creatures: a name of 2 to 60 letters")
+        need(all(isinstance(new.get(k), (int, float)) for k in ("map", "x", "y", "z")), "creatures: each needs map, x, y and z")
+        need(new.get("kind") in ("person", "enemy"), "creatures: kind is person or enemy")
     for objective in objectives:
+        if "place" in objective or "talk" in objective:
+            continue
         need(isinstance(objective.get("count"), int) and 1 <= objective["count"] <= 200, "every objective needs a count from 1 to 200")
         if "creature" in objective:
             need(objective["creature"] in creatures, f"enemy {objective['creature']} does not exist")
@@ -143,9 +189,11 @@ def validate(quest, creatures, items, ids_seen=None):
             need(creature is None or creature["loot"] > 0, f"drops_from: {creature['name'] if creature else '?'} has no loot of its own, so nothing can be added to it")
             need(isinstance(drop.get("chance"), (int, float)) and 0 < drop["chance"] <= 100, "drops_from: chance from 1 to 100")
     kind = quest.get("type")
+    if kind == "visit":
+        need(bool(visits), "a visit quest needs a place to reach or someone to hear")
     if kind in ("kill", "slay"):
         need(bool(kills), "a kill quest needs at least one enemy")
-        need(kind != "slay" or (len(kills) == 1 and kills[0].get("count") == 1 and not brings), "slay: exactly one enemy, once")
+        need(kind != "slay" or (len(kills) == 1 and kills[0].get("count") == 1 and not brings and not visits), "slay: exactly one enemy, once")
     if kind in ("collect", "fetch"):
         need(bool(brings), "this kind of quest needs at least one item to bring")
     if kind == "deliver":
@@ -251,11 +299,20 @@ def build_map_marks(quests):
                 wanted.add(objective["creature"])
             wanted.update(d["creature"] for d in objective.get("drops_from") or [])
     places = {}                                         # creature -> [(map, x, y)]
-    for entry, map_id, x, y in sql(f"SELECT id, map, position_x, position_y FROM creature WHERE id IN ({numbers(wanted)}) AND guid < {FIRST_SPAWN}"):
+    lives = {}                                          # creature -> the zone it stands in, for a hand-in outside the quest's own zone
+    for entry, map_id, x, y, zone_id in sql(f"SELECT id, map, position_x, position_y, zoneId FROM creature WHERE id IN ({numbers(wanted)}) AND guid < {FIRST_SPAWN}"):
         places.setdefault(int(entry), []).append((int(map_id), float(x), float(y)))
+        lives.setdefault(int(entry), int(zone_id))
     for quest in quests:
         for spawn in quest.get("spawns") or []:
             places.setdefault(int(spawn["creature"]), []).append((int(spawn["map"]), float(spawn["x"]), float(spawn["y"])))
+        for new in quest.get("creatures") or []:
+            places.setdefault(int(new["id"]), []).append((int(new["map"]), float(new["x"]), float(new["y"])))
+    talked = {o["talk"] for quest in quests for o in quest.get("objectives") or [] if "talk" in o}
+    missing = [c for c in talked if c not in places]
+    if missing:
+        for entry, map_id, x, y in sql(f"SELECT id, map, position_x, position_y FROM creature WHERE id IN ({numbers(missing)}) AND guid < {FIRST_SPAWN}"):
+            places.setdefault(int(entry), []).append((int(map_id), float(x), float(y)))
 
     zones = map_areas()
     out = [f"DELETE FROM quest_poi WHERE QuestID BETWEEN {FIRST_ID} AND {LAST_ID};",
@@ -264,19 +321,29 @@ def build_map_marks(quests):
         number, zone = quest["id"], zones.get(quest["zone"], 0)
         blob = 0
 
-        def mark(objective_index, points, map_id):
+        def mark(objective_index, points, map_id, on_map=None):
             nonlocal blob
             out.append(f"INSERT INTO quest_poi (QuestID, id, ObjectiveIndex, MapID, WorldMapAreaId, Floor, Priority, Flags, VerifiedBuild) "
-                       f"VALUES ({number}, {blob}, {objective_index}, {map_id}, {zone}, 0, 0, 1, 0);")
+                       f"VALUES ({number}, {blob}, {objective_index}, {map_id}, {on_map or zone}, 0, 0, 1, 0);")
             for index, (x, y) in enumerate(points):
                 out.append(f"INSERT INTO quest_poi_points (QuestID, Idx1, Idx2, X, Y, VerifiedBuild) VALUES ({number}, {blob}, {index}, {int(round(x))}, {int(round(y))}, 0);")
             blob += 1
 
-        kill_index, item_index = 0, 4                   # the game counts enemies from 0 and items from 4
+        item_index = 4                                  # the game counts enemies, places and talks from 0 and items from 4
+        slot_of = {id(objective): index for index, (_, _, objective) in enumerate(counted(quest))}
         for objective in quest.get("objectives") or []:
+            if "place" in objective:
+                place = objective["place"]
+                ring = [(place["x"] + place.get("radius", 25) * math.cos(step * math.pi / 4), place["y"] + place.get("radius", 25) * math.sin(step * math.pi / 4)) for step in range(8)]
+                mark(slot_of[id(objective)], ring, int(place["map"]))
+                continue
+            if "talk" in objective:
+                at = places.get(objective["talk"])
+                if at:
+                    mark(slot_of[id(objective)], [(at[0][1], at[0][2])], at[0][0])
+                continue
             if "creature" in objective:
-                sources, index = [objective["creature"]], kill_index
-                kill_index += 1
+                sources, index = [objective["creature"]], slot_of[id(objective)]
             else:
                 sources, index = [d["creature"] for d in objective.get("drops_from") or []], item_index
                 item_index += 1
@@ -288,7 +355,7 @@ def build_map_marks(quests):
                 mark(index, outline, map_id)
         ender = places.get(quest["turn_in"])
         if ender:
-            mark(-1, [(ender[0][1], ender[0][2])], ender[0][0])
+            mark(-1, [(ender[0][1], ender[0][2])], ender[0][0], zones.get(lives.get(quest["turn_in"], 0)))
     return "\n".join(out) + "\n"
 
 
@@ -353,12 +420,41 @@ def build_sql(quests, creatures, items):
            f"DELETE FROM quest_template WHERE ID BETWEEN {FIRST_ID} AND {LAST_ID};",
            f"DELETE FROM creature_loot_template WHERE Comment LIKE '{LOOT_MARK} %';",
            f"DELETE FROM creature WHERE guid BETWEEN {FIRST_SPAWN} AND {LAST_SPAWN};"]
-    people = set()
+    for table, column in (("creature_template", "entry"), ("creature_template_model", "CreatureID"), ("creature_equip_template", "CreatureID"),
+                          ("creature_template_addon", "entry")):
+        out.append(f"DELETE FROM {table} WHERE {column} BETWEEN {FIRST_CREATURE} AND {LAST_CREDIT};")
+    out += ["DROP TABLE IF EXISTS wowplus_quest_goals;",
+            "CREATE TABLE wowplus_quest_goals (quest INT UNSIGNED NOT NULL, credit INT UNSIGNED NOT NULL, kind TINYINT UNSIGNED NOT NULL, map INT UNSIGNED NOT NULL, "
+            "x FLOAT NOT NULL, y FLOAT NOT NULL, radius FLOAT NOT NULL, creature INT UNSIGNED NOT NULL, says TEXT, PRIMARY KEY (quest, credit)) "
+            "COMMENT='WowPlus: places to reach and people to hear for our quests. Made by Settings/Scripts/Make-Quests.py';"]
+    people, listeners = set(), set()
     spawn_number = FIRST_SPAWN
+    # People and enemies with names of their own: each a copy of a creature the game has, standing at one place
+    for quest in quests:
+        for new in quest.get("creatures") or []:
+            number, like, person = new["id"], new["like"], new["kind"] == "person"
+            out += ["DROP TEMPORARY TABLE IF EXISTS wp_new;",
+                    f"CREATE TEMPORARY TABLE wp_new AS SELECT * FROM creature_template WHERE entry = {like};",
+                    f"UPDATE wp_new SET entry = {number}, name = {text(new['name'])}, subname = {text(new.get('title', ''))}, AIName = '', ScriptName = '', "
+                    f"gossip_menu_id = 0, KillCredit1 = 0, KillCredit2 = 0, npcflag = {3 if person else 0}, "
+                    f"`rank` = {int(new.get('rank', 0)) if not person else '`rank`'}, HealthModifier = HealthModifier * {float(new.get('health', 1))}"
+                    + (f", minlevel = {int(new['level'])}, maxlevel = {int(new['level'])}" if isinstance(new.get("level"), int) else "") + ";",
+                    "INSERT INTO creature_template SELECT * FROM wp_new;", "DROP TEMPORARY TABLE wp_new;",
+                    f"INSERT INTO creature_template_model (CreatureID, Idx, CreatureDisplayID, DisplayScale, Probability, VerifiedBuild) "
+                    f"SELECT {number}, Idx, CreatureDisplayID, DisplayScale * {float(new.get('size', 1))}, Probability, VerifiedBuild FROM creature_template_model WHERE CreatureID = {like};",
+                    f"INSERT INTO creature_equip_template (CreatureID, ID, ItemID1, ItemID2, ItemID3, VerifiedBuild) "
+                    f"SELECT {number}, ID, ItemID1, ItemID2, ItemID3, VerifiedBuild FROM creature_equip_template WHERE CreatureID = {like};"]
+            spawn_number += 1
+            out.append("INSERT INTO creature (guid, id, map, zoneId, areaId, spawnMask, phaseMask, equipment_id, position_x, position_y, position_z, orientation, "
+                       "spawntimesecs, wander_distance, currentwaypoint, curhealth, curmana, MovementType, npcflag, unit_flags, dynamicflags, ScriptName, VerifiedBuild, CreateObject, Comment) "
+                       f"SELECT {spawn_number}, {number}, {int(new['map'])}, {int(quest['zone'])}, 0, 1, 1, (SELECT IF(COUNT(*) > 0, 1, 0) FROM creature_equip_template WHERE CreatureID = {like}), "
+                       f"{float(new['x'])}, {float(new['y'])}, {float(new['z'])}, {float(new.get('o', 0))}, {int(new.get('respawn', 300))}, {0 if person else 4}, 0, 1, 0, {0 if person else 1}, "
+                       f"0, 0, 0, '', 0, 0, '{LOOT_MARK} {quest['id']}';")
     for quest in quests:
         number = quest["id"]
         objectives = quest.get("objectives") or []
-        kills = padded([(o["creature"], o["count"]) for o in objectives if "creature" in o], 4)
+        slots = counted(quest)
+        kills = padded([(credit, count) for credit, count, _ in slots], 4)
         brings = padded([(o["item"], o["count"]) for o in objectives if "item" in o], 6)
         reward = quest.get("reward") or {}
         given = padded([(r["item"], r.get("count", 1)) for r in reward.get("items") or []], 4)
@@ -381,6 +477,22 @@ def build_sql(quests, creatures, items):
             values += [item, count]
         columns += ["LogTitle", "LogDescription", "QuestDescription", "QuestCompletionLog"]
         values += [text(quest["title"]), text(texts["objectives"]), text(texts["details"]), text(texts.get("return") or f"Return to {ender}.")]
+        for index, (credit, _, objective) in enumerate(slots, 1):
+            if "place" not in objective and "talk" not in objective:
+                continue
+            columns.append(f"ObjectiveText{index}")
+            values.append(text(objective["text"]))
+            place = objective.get("place") or {}
+            talk = "talk" in objective
+            says = "\n".join(objective.get("says") or [])
+            out.append(f"INSERT INTO wowplus_quest_goals VALUES ({number}, {credit}, {TALK if talk else PLACE}, {int(place.get('map', 0))}, {float(place.get('x', 0))}, "
+                       f"{float(place.get('y', 0))}, {float(place.get('radius', 25))}, {int(objective.get('talk', 0))}, {text(says).replace('$B', chr(92) + 'n')});")
+            # What the game counts must exist as a creature, though it is never seen
+            out.append(f"INSERT IGNORE INTO creature_template (entry, name, minlevel, maxlevel, faction, unit_class, type, flags_extra) "
+                       f"VALUES ({credit}, {text(objective['text'])}, 1, 1, 35, 1, 10, 130);")
+            out.append(f"INSERT IGNORE INTO creature_template_model (CreatureID, Idx, CreatureDisplayID, DisplayScale, Probability, VerifiedBuild) VALUES ({credit}, 0, 11686, 1, 1, 0);")
+            if talk:
+                listeners.add(objective["talk"])
         out.append(f"INSERT INTO quest_template ({', '.join(columns)}) VALUES ({', '.join(str(v) for v in values)});")
         out.append(f"INSERT INTO quest_template_addon (ID, MaxLevel, PrevQuestID) VALUES ({number}, {quest.get('max_level', 0)}, {quest.get('after', 0)});")
         out.append(f"INSERT INTO quest_offer_reward (ID, RewardText, VerifiedBuild) VALUES ({number}, {text(texts['completion'])}, 0);")
@@ -405,6 +517,8 @@ def build_sql(quests, creatures, items):
                            f"VALUES ({loot}, {objective['item']}, 0, {float(drop['chance'])}, 1, 1, 0, 1, 1, '{LOOT_MARK} {number}');")
     if people:
         out.append(f"UPDATE creature_template SET npcflag = npcflag | 2 WHERE entry IN ({numbers(people)});     -- they must be able to give quests")
+    if listeners:
+        out.append(f"UPDATE creature_template SET npcflag = npcflag | 1 WHERE entry IN ({numbers(listeners)});  -- and these to be spoken to")
     return "\n".join(out) + "\n" + build_map_marks(quests)
 
 
@@ -435,7 +549,7 @@ def check_all():
 def reload_server():
     """Tells the running world server to read quests again. Nothing happens if it is not running."""
     sender = os.path.join(HERE, "Send-Server-Command.ps1")
-    for command in ("reload quest_template", "reload creature_queststarter", "reload creature_questender", "reload creature_loot_template"):
+    for command in ("reload quest_template", "reload creature_queststarter", "reload creature_questender", "reload creature_loot_template", "wowplus quests"):
         subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", sender, command],
                        capture_output=True, creationflags=getattr(subprocess, "CREATE_NEW_CONSOLE", 0))
 

@@ -21,6 +21,8 @@ Double-click `Quest-Tool.bat` in the main folder. The database must be running (
 
 "Saved quests" at the bottom opens one again; saving writes over it.
 
+The page makes the five kinds below. Two more kinds, new named people and new named enemies exist only in the file format for now (see "Writing the file by hand").
+
 ### The kinds of task
 
 | Kind | What the player does |
@@ -31,7 +33,9 @@ Double-click `Quest-Tool.bat` in the main folder. The database must be running (
 | Go and talk to someone | Travel from the giver to another person. |
 | Kill one named enemy | One particular creature, once. |
 
-Not possible yet: reaching a place, using an item somewhere, escorting someone, and quests that begin from an item or an object. Those need more than rows in the database.
+In a file, two more: **go to a place** and **hear someone out** (the person says a few lines to you when you speak to them).
+
+Not possible yet: using an item somewhere, picking something up off the ground, escorting someone, and quests that begin from an item or an object.
 
 ## 2. Writing the file by hand (how Claude does it)
 
@@ -90,6 +94,9 @@ A file is named `<number>-<a-few-words>.json`. The number is the quest's `id`: t
 | `reward.money` | In copper (100 copper is a silver). |
 | `reward.xp_difficulty` | 0 none, 5 the usual amount for the level, 8 the most. |
 | `reward.items`, `reward.choices` | Always given (at most four) and choose-one (at most six). |
+| `"place"` objective | `{ "place": { "map": 0, "x": ..., "y": ..., "radius": 40 }, "text": "Look into the Fargodeep Mine" }`: done when the player comes within that many yards of the point. `text` is the line in the quest log. |
+| `"talk"` objective | `{ "talk": creature number, "text": "Ask Brog Hamfist about kobolds", "says": ["...", "..."] }`: done when the player speaks to that person, who then says the lines (one to six, each at most 250 letters) to the player alone. This is how a quest lets someone tell a piece of lore. Kinds of enemy, places and talks share four slots per quest. A quest of type `visit` has only places and talks; any other type may add them. |
+| `creatures` | People and enemies with names of their own: `[ { "id": 9210001, "kind": "person", "like": 1975, "name": "Edrin Halloway", "title": "Fargodeep Miner", "map": 0, "x": ..., "y": ..., "z": ..., "o": ... } ]`. Each is a copy of the creature `like` (its looks, faction and, for an enemy, its abilities and loot) under a new name at one place. `kind` is `person` (can give quests and be spoken to) or `enemy` (optional `level`, `health` as a multiplier, `size`, `rank`, `respawn` in seconds). Ids run from 9210001 and must be unique across all files. Once made, any quest can use the id as giver, hand-in, enemy or talk. They appear after a server restart. |
 | `spawns` | More of an enemy than the game has: `[ { "creature": number, "map": 1, "x": ..., "y": ..., "z": ..., "o": ... } ]`, at most forty. Each is a copy of one that is there already. `python Settings/Scripts/Quest-Tool.py --spots <creature> <count>` prints places near where the enemy lives, on the ground, ready to paste. They appear after a server restart. |
 | `after` | The number of a quest that must be done first; 0 or left out for none. |
 | `idea` | A note for the writer. Not used by the game. |
@@ -115,7 +122,7 @@ The picker looks further out from where the enemy lives when the nearby ground i
 
 ## How it gets into the game
 
-`Settings/Scripts/Make-Quests.py` turns the files into rows in the game's database: the quest itself, who starts and ends it, the things said, loot that drops only while on the quest, added enemies, and **where it shows on the map**: an area around each group of the enemies to kill or to take things from, and a mark on the person it is handed in to. The map marks and added enemies are read by the server when it starts, so those need a restart. It first removes everything it wrote before (quests 9200000 to 9299999, and loot rows marked "WowPlus quest"), so what is in the game is always exactly what is in this folder. A file with a mistake is left out and named; the others still go in.
+`Settings/Scripts/Make-Quests.py` turns the files into rows in the game's database: the quest itself, who starts and ends it, the things said, loot that drops only while on the quest, added enemies, people and enemies with names of their own, places to reach and people to hear (the table `wowplus_quest_goals`, acted on by `Server/modules/mod-wowplus/src/WowPlusQuests.cpp`), and **where it shows on the map**: an area around each group of the enemies to kill or to take things from, and a mark on the person it is handed in to. The map marks and added enemies are read by the server when it starts, so those need a restart. It first removes everything it wrote before (quests 9200000 to 9299999, and loot rows marked "WowPlus quest"), so what is in the game is always exactly what is in this folder. A file with a mistake is left out and named; the others still go in.
 
 `Settings/Deploy-Settings.ps1` runs it at every server start.
 
@@ -129,5 +136,10 @@ The picker looks further out from where the enemy lives when the nearby ground i
 | `9200005-the-swiftest-prey.json` | Mulgore, level 7, Horde. Vorn Skyseer in Bloodhoof Village: kill 8 Adult Plainstriders north-west of the village, and hear of Apa'ro, the white stag. First of three. |
 | `9200006-antlers-among-the-stars.json` | Level 8. Bring 6 Long Elegant Feathers from the swoops to the north; how the stag was caught in the stars and the moon found him. |
 | `9200007-the-moon-s-mercy.json` | Level 10. Give a Kodo Bull to the north a clean end, then speak with Gennia Runetotem, who tells whose child came of the stag and the moon. Choice of four rewards. Adds four kodo bulls. |
+| `9200008-what-lives-in-the-fargodeep.json` | Elwynn Forest, level 6, Alliance. Edrin Halloway, a miner in Goldshire (a new person): ask Brog Hamfist about kobolds and look into the Fargodeep Mine. First of three. |
+| `9200009-the-darkness-took-them.json` | Level 7. Bring 6 Melted Candles from the kobolds of the Fargodeep and the Jasperlode. |
+| `9200010-under-the-whip.json` | Level 9. Kill Yarrik Whipjaw, a Riverpaw taskmaster on the ridge above the Fargodeep (a new enemy). Choice of four rewards. |
+| `9200011-arms-for-the-militia.json` | Elwynn to Westfall, level 9. Quartermaster Hudson at Westbrook Garrison sends you to Quartermaster Lewis at Sentinel Hill. |
+| `9200012-word-for-three-corners.json` | Elwynn to Redridge, level 10. Drake Lindgren at Eastvale Logging Camp sends you to Guard Parker at the Three Corners. |
 
 Written with the quest-writing skill (`.claude/skills/write-quests`). Not played yet. The stories used so far are in `Stories.md`. The tool's first test quest, "Bold Wolves of the Plains", was removed: the zone's own "Poison Water" already sends players after the same wolves.

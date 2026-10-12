@@ -1,0 +1,47 @@
+{
+  "id": 9200009,
+  "title": "The Darkness Took Them",
+  "level": 7,
+  "min_level": 4,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 12,
+  "type": "collect",
+  "after": 9200008,
+  "giver": 9210001,
+  "turn_in": 9210001,
+  "objectives": [
+    {
+      "item": 755,
+      "count": 6,
+      "drops_from": [
+        {
+          "creature": 475,
+          "chance": 45
+        },
+        {
+          "creature": 40,
+          "chance": 45
+        }
+      ]
+    }
+  ],
+  "texts": {
+    "details": "We used to hear them through the rock. When one of them did not come back up, the others had a way of saying it: \"the darkness took him.\" That is all dying is to a kobold. Your candle goes out, and the dark has you.\n\nSo a kobold will go hungry before he lets his candle burn low. I want to see their candles, $N. The tunnelers at the Fargodeep and the miners in the Jasperlode carry them. Bring me the stubs off six, and I will tell you something about the ones who wore them.",
+    "objectives": "Bring 6 Melted Candles from the Kobold Tunnelers of the Fargodeep Mine and the Kobold Miners of the Jasperlode Mine to Edrin Halloway in Goldshire.",
+    "progress": "A kobold does not part with his candle while he is breathing. I know what I am asking.",
+    "completion": "Look at these. Burned down to the cap, every one, and relit, and burned again.\n\nNo kobold lets it come to that. Not unless he is kept at the face shift after shift with no leave to go and make new ones. These are not thieves in my mine, $N. They are a work gang. I want to know whose."
+  },
+  "reward": {
+    "money": 180,
+    "xp_difficulty": 5,
+    "items": [
+      {
+        "item": 118,
+        "count": 2
+      }
+    ],
+    "choices": []
+  },
+  "idea": "Chain 2 of 3: to a kobold the dark is death, and 'the darkness took them' is how they say someone died."
+}

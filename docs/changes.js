@@ -244,7 +244,12 @@ window.CHANGELOG = {
           details: ["Starts with Hulfnar Stonetotem in Bloodhoof Village."] },
         { title: "The White Stag and the Moon", kind: "feature", status: "built", date: "2026-10-12",
           text: "Mulgore, levels 7 to 10, three quests: Vorn Skyseer tells the tauren tale of Apa'ro the white stag, the moon who freed him, and what a hunter owes the hunted.",
-          details: ["Starts with Vorn Skyseer in Bloodhoof Village."] }
+          details: ["Starts with Vorn Skyseer in Bloodhoof Village."] },
+        { title: "The Candle and the Dark", kind: "feature", status: "built", date: "2026-10-12",
+          text: "Elwynn Forest, levels 6 to 9, Alliance, three quests: a miner locked out of the Fargodeep wants to know what kobolds are, why the dark is death to them, and who is driving them.",
+          details: ["Starts with Edrin Halloway in Goldshire, a person new to the world.", "Uses two new kinds of task: going to a place, and hearing someone out."] },
+        { title: "Something on the road", kind: "feature", status: "built", date: "2026-10-12",
+          text: "Quests that start in one zone and end in the next, so the journey has a thread: from Westbrook Garrison to Sentinel Hill, and from Eastvale to the Three Corners in Redridge." }
       ]
     },
     {

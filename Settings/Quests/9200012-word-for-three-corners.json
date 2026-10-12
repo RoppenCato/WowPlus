@@ -1,0 +1,25 @@
+{
+  "id": 9200012,
+  "title": "Word for Three Corners",
+  "level": 10,
+  "min_level": 7,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 12,
+  "type": "deliver",
+  "giver": 1250,
+  "turn_in": 464,
+  "objectives": [],
+  "texts": {
+    "details": "If you are taking the east road into Redridge, carry a word for me.\n\nMy wagons to Lakeshire have stopped coming back with full purses. First it was gnolls on the hill road. Now the drivers say the Blackrock orcs have come down out of the Burning Steppes and are sitting in Stonewatch Keep, looking at the town. Lakeshire has asked Stormwind for soldiers, and Stormwind has sent its regrets.\n\nFind Guard Parker at the Three Corners, where the road forks. Ask him if the road to Lakeshire is safe for a wagon, and tell him the camp will keep sending while it is.",
+    "objectives": "Carry Drake Lindgren's question to Guard Parker at the Three Corners in the Redridge Mountains.",
+    "completion": "Safe? Safe as far as the bridge, and I would not swear to the bridge.\n\nTell Lindgren to keep the wagons coming while he can. Lakeshire eats what Eastvale sends. The orcs hold the keep to the north, the gnolls hold the hills, and the magistrate has a town watch where he needs an army. If you have a sword, $N, the town will have work for it."
+  },
+  "reward": {
+    "money": 280,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Elwynn to Redridge: Lakeshire is pressed by Blackrock orcs and gnolls, and Stormwind sends no help."
+}

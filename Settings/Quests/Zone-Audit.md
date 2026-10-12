@@ -82,7 +82,7 @@ Made by `Settings/Scripts/Make-Zone-Audit.py` on 2026-10-12. Run it again after 
 | 5-9 | Eversong Woods | Eastern Kingdoms | 73 (215%) | – |  | 10 | enough |
 | 5-10 | Azuremyst Isle | Kalimdor | – | 65 (132%) |  | 17 | enough |
 | 5-10 | Dun Morogh | Eastern Kingdoms | 15 (2%) passing through | 63 (149%) |  | 14 | enough |
-| 5-10 | Elwynn Forest | Eastern Kingdoms | – | 48 (97%) |  | 8 | enough |
+| 5-10 | Elwynn Forest | Eastern Kingdoms | – | 53 (113%) | 5 | 8 | enough |
 | 5-10 | Mulgore | Kalimdor | 46 (130%) | 3 (8%) passing through | 6 | 9 | enough |
 | 5-10 | Teldrassil | Kalimdor | 3 (14%) passing through | 53 (233%) |  | 13 | enough |
 | 5-10 | Tirisfal Glades | Eastern Kingdoms | 47 (132%) | – |  | 7 | enough |
@@ -474,7 +474,7 @@ Going from level 5 to 11 costs 30,400 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Alliance | 48 | 1 | 29,369 | 97% | 21 | 1:2 2:3 3:1 4:4 5:4 6:6 7:6 8:1 9:3 10:16 11:1 20:1 | nothing; it carries itself |
+| Alliance | 53 | 1 | 34,221 | 113% | 23 | 1:2 2:3 3:1 4:4 5:4 6:7 7:7 8:1 9:5 10:17 11:1 20:1 | nothing; it carries itself |
 
 **Enemies no quest uses:** Mangy Wolf (5-6, 85 of them), Gray Forest Wolf (7-8, 55 of them), Defias Cutpurse (5-6, 32 of them), Forest Spider (5-6, 15 of them), Thuros Lightfingers (11, 8 of them), Mine Spider (8-9, 8 of them), Gruff Swiftbite (12, 5 of them), Fedfennel (12, 4 of them).
 
@@ -1319,3 +1319,8 @@ Going from level 80 to 81 costs 0 experience.
 | 9200005 | The Swiftest Prey | Mulgore | 7 | horde | kill |
 | 9200006 | Antlers Among the Stars | Mulgore | 8 | horde | collect |
 | 9200007 | The Moon's Mercy | Mulgore | 10 | horde | slay |
+| 9200008 | What Lives in the Fargodeep | Elwynn Forest | 6 | alliance | visit |
+| 9200009 | The Darkness Took Them | Elwynn Forest | 7 | alliance | collect |
+| 9200010 | Under the Whip | Elwynn Forest | 9 | alliance | slay |
+| 9200011 | Arms for the Militia | Elwynn Forest | 9 | alliance | deliver |
+| 9200012 | Word for Three Corners | Elwynn Forest | 10 | alliance | deliver |

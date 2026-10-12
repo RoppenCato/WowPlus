@@ -79,7 +79,9 @@ From the list in step 1, pick who starts and who ends each quest.
 
 Two or three files. For a chain, each later quest has `"after": <id of the one before>`.
 
-**Tasks.** Only what the tool can make: kill, collect, fetch, deliver, slay (see the README). Shape the chain so the tasks differ: for example a delivery that sets the scene, a collection that shows the problem, a named enemy that ends it. Use `drops_from` to make an existing item a quest drop when the story needs an object.
+**Tasks.** Only what the tool can make: kill, collect, fetch, deliver, slay, and in a file also **going to a place** and **hearing someone out** (see the README). Use the last two freely: a talk is the best way to let someone tell lore in their own voice, and a place sends the player to look at something. A zone's set should not be mostly killing.
+
+**New people and enemies.** A quest file can add a person or an enemy with a name of its own (`creatures` in the README): a miner in the square, a taskmaster on a ridge. Use this when no existing person fits the story, or when the story needs one particular enemy that is always there (unlike a rare). Copy a creature of the right race and look; give a person a title that says what they are. Put a person where players pass and nothing hostile stands; find ground for an enemy with the crowding rules. One or two per zone: the world should gain a few faces, not a crowd. Shape the chain so the tasks differ: for example a delivery that sets the scene, a collection that shows the problem, a named enemy that ends it. Use `drops_from` to make an existing item a quest drop when the story needs an object.
 
 **Numbers.**
 - Level: within the zone's range and near the level of the enemies used. Later quests in a chain may be one level higher.
@@ -113,6 +115,25 @@ Fix whatever the check names. Then:
 ### 9. Report
 
 Tell Robin, briefly: the story and what it teaches, each quest in a line (giver, task, where), where to pick it up on the map, and that it has not been played. Mention anything in it that is your own invention rather than established lore.
+
+## A zone's set
+
+When working through zones in order, each zone gets:
+
+1. **One chain about a people or place the game says little about**, as above.
+2. **A road quest toward each neighbouring zone the player is likely to go to next**: given at the edge of this zone (a garrison, a camp, a bridge), handed in to someone in the first settlement of the next, and telling what the traveller will find there. Level: the top of this zone's range.
+3. **One quest in a place nothing is asked of you**, when the survey lists one and a story fits.
+
+Zones that already carry themselves (the survey says so) get 1 and 2 only. Thin zones get more chains, until the survey's "would be good to add" is roughly met.
+
+## Dungeons
+
+Every dungeon should have about three quests per side. Where they are picked up decides whether they are found:
+
+- **One call in the capital or main town** of each side that would go there: a short quest that says the dungeon exists, why it matters, and sends the player to its door. Given by someone who fits (a guard captain, a scholar), handed in at the door.
+- **The rest at the door**: one person standing at the entrance or its meeting stone gives all of our quests for that dungeon, so that nothing is missed by a group that arrives ready. Usually a new named person, since the game rarely has anyone there.
+- Inside: kill, collect and slay work as anywhere. Keep counts low; a dungeon is run once.
+- One of the three should tell what the place is and who built or holds it.
 
 ## Rules that hold throughout
 
