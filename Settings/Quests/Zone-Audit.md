@@ -48,6 +48,18 @@ That is the real game's shape: from 20 on you were meant to hop between zones an
 
 A reasonable size for one sitting of the quest skill is two or three chains (six to nine quests) in one zone. Rewards: about one quest in three should offer gear to choose.
 
+**Dungeons and raids** have their own section below, sorted by the level of the place, with every quest named. What stands out:
+
+| What | Where |
+|---|---|
+| Dungeons one side has no quests for at all | Deadmines and the Stormwind Stockade for the Horde; Ragefire Chasm and Shadowfang Keep for the Alliance. With bots, either side can run any of them, so these are four dungeons with loot and no story for half the players. |
+| Old dungeons with few quests for a side | Scarlet Monastery (Alliance 2), Razorfen Kraul (4 each, two of them filed outside). |
+| Northrend dungeons with one or two quests | Halls of Stone (1), Azjol-Nerub, the Old Kingdom, Violet Hold, Halls of Lightning, Utgarde Pinnacle, the Culling of Stratholme, the Forge of Souls (2 each). They were built for the dungeon finder, not for stories. |
+| Outland dungeons with one or two | The Botanica and the Escape from Durnholde (1), Auchenai Crypts, Sethekk Halls, the Slave Pens (2). |
+| Well supplied | Blackrock Depths (26), Blackrock Spire (40), Stratholme (31), Scholomance (21), Dire Maul (22), Gnomeregan, Uldaman, Zul'Farrak, Maraudon, Sunken Temple. |
+
+A fair aim is **three quests per side for every dungeon**, at least one of them given outside so that there is a reason to set out. For the Horde character being played that means Deadmines and the Stockade first, then the thin Northrend dungeons when the levels come. Our quest files cannot yet point at creatures inside a dungeon on the map picker, but kill, collect and slay quests work there like anywhere.
+
 **How far to trust the lists.** "Enemies no quest uses" is found by looking at what quests ask to be killed and at whose loot holds the items they ask for. It misses enemies used through a made item or a scripted event, and it lists a few that are there for atmosphere. "Places nothing is asked of you" are named parts of a zone with ten or more enemies and none of them touched by a quest. Both are leads to check with `Quest-Tool.py --zone` and `--quests`, not facts.
 
 **Our own quests so far:** six, all in Mulgore, which was already full (130%). They were made to try the tool and the skill. The next ones should go where the survey points.
@@ -160,6 +172,264 @@ For every five levels: the zones a side can level in (at least 3 quests there), 
 | 66-70 | 5: Nagrand, Blade's Edge Mountains, Netherstorm, Shadowmoon Valley, Deadwind Pass | 4 | 5: Nagrand, Blade's Edge Mountains, Netherstorm, Shadowmoon Valley, Deadwind Pass | 3 |
 | 71-75 | 5: Borean Tundra, Howling Fjord, Dragonblight, Grizzly Hills, Zul'Drak | 3 | 5: Borean Tundra, Howling Fjord, Dragonblight, Grizzly Hills, Zul'Drak | 3 |
 | 76-80 | 3: Zul'Drak, Sholazar Basin, The Storm Peaks | 1 | 3: Zul'Drak, Sholazar Basin, The Storm Peaks | 1 |
+
+## Dungeons and raids
+
+Quests that belong to a dungeon or raid, by the level of the place. They are not counted in the zones' shares above. A place with fewer than 3 quests for a side gives that side little reason to go beyond the loot.
+
+| Levels | Place | Kind | Horde quests | Alliance quests | Experience, Horde | Experience, Alliance | Give gear | Note |
+|---|---|---|---|---|---|---|---|---|
+| 16-16 | Ragefire Chasm | dungeon | 6 | 0 | 14,445 | 0 | 3 | few for Alliance |
+| 17-21 | Wailing Caverns | dungeon | 9 | 5 | 22,957 | 16,425 | 4 |  |
+| 18-20 | Deadmines | dungeon | 0 | 5 | 0 | 14,625 | 5 | few for Horde |
+| 22-27 | Blackfathom Deeps | dungeon | 6 | 5 | 19,852 | 22,350 | 6 |  |
+| 25-27 | Shadowfang Keep | dungeon | 3 | 0 | 14,250 | 0 | 3 | few for Alliance |
+| 26-27 | Stormwind Stockade | dungeon | 0 | 6 | 0 | 29,025 | 3 | few for Horde |
+| 26-30 | Razorfen Kraul | dungeon | 4 | 4 | 19,875 | 20,625 | 5 |  |
+| 30-30 | Ashenvale (which dungeon or wing is not told) | dungeon | 1 | 0 | 5,475 | 0 | 1 | few for Horde and Alliance |
+| 30-34 | Gnomeregan | dungeon | 12 | 20 | 36,045 | 67,732 | 9 |  |
+| 33-42 | Scarlet Monastery | dungeon | 5 | 2 | 43,425 | 18,600 | 6 | few for Alliance |
+| 36-37 | Razorfen Downs | dungeon | 8 | 4 | 54,855 | 23,355 | 5 |  |
+| 41-44 | Uldaman | dungeon | 9 | 13 | 75,825 | 113,047 | 4 |  |
+| 45-47 | Zul'Farrak | dungeon | 9 | 9 | 94,462 | 95,587 | 3 |  |
+| 46-46 | Thousand Needles (which dungeon or wing is not told) | dungeon | 0 | 1 | 0 | 862 | 0 | few for Horde and Alliance |
+| 47-51 | Maraudon | dungeon | 8 | 8 | 110,775 | 110,775 | 9 |  |
+| 51-53 | Sunken Temple | dungeon | 9 | 8 | 120,660 | 118,200 | 6 |  |
+| 52-52 | Blackrock Mountain (which dungeon or wing is not told) | dungeon | 1 | 1 | 11,010 | 11,010 | 0 | few for Horde and Alliance |
+| 53-53 | Un'Goro Crater (which dungeon or wing is not told) | dungeon | 1 | 0 | 8,550 | 0 | 1 | few for Horde and Alliance |
+| 54-59 | Blackrock Depths | dungeon | 26 | 19 | 385,829 | 269,692 | 14 |  |
+| 58-60 | Tanaris (which dungeon or wing is not told) | raid | 3 | 3 | 48,900 | 48,900 | 1 |  |
+| 60-60 | Ahn'Qiraj Temple | raid | 71 | 71 | 386,700 | 386,700 | 70 |  |
+| 60-60 | Azshara (which dungeon or wing is not told) | raid | 1 | 1 | 21,450 | 21,450 | 1 | few for Horde and Alliance |
+| 60-60 | Blackrock Spire | dungeon | 40 | 39 | 738,494 | 710,444 | 37 |  |
+| 60-60 | Blackwing Lair | raid | 2 | 2 | 35,775 | 35,775 | 1 | few for Horde and Alliance |
+| 60-60 | Burning Steppes (which dungeon or wing is not told) | dungeon | 1 | 1 | 10,725 | 10,725 | 0 | few for Horde and Alliance |
+| 60-60 | Dire Maul | dungeon | 22 | 22 | 387,802 | 387,802 | 19 |  |
+| 60-60 | Dustwallow Marsh (which dungeon or wing is not told) | raid | 4 | 0 | 57,300 | 0 | 0 | few for Alliance |
+| 60-60 | Eastern Plaguelands (which dungeon or wing is not told) | dungeon | 1 | 1 | 14,325 | 14,325 | 0 | few for Horde and Alliance |
+| 60-60 | Eastern Plaguelands (which dungeon or wing is not told) | raid | 1 | 2 | 17,850 | 39,300 | 2 | few for Horde and Alliance |
+| 60-60 | Molten Core | raid | 4 | 4 | 75,075 | 75,075 | 1 |  |
+| 60-60 | Moonglade (which dungeon or wing is not told) | dungeon | 1 | 1 | 21,450 | 21,450 | 1 | few for Horde and Alliance |
+| 60-60 | Moonglade (which dungeon or wing is not told) | raid | 2 | 2 | 35,775 | 35,775 | 1 | few for Horde and Alliance |
+| 60-60 | Naxxramas | raid | 17 | 17 | 35,775 | 35,775 | 15 |  |
+| 60-60 | Ruins of Ahn'Qiraj | raid | 1 | 1 | 21,450 | 21,450 | 1 | few for Horde and Alliance |
+| 60-60 | Scholomance | dungeon | 21 | 21 | 263,250 | 263,250 | 25 |  |
+| 60-60 | Silithus (which dungeon or wing is not told) | raid | 10 | 10 | 137,482 | 137,482 | 9 |  |
+| 60-60 | Stratholme | dungeon | 31 | 30 | 597,075 | 575,625 | 37 |  |
+| 60-60 | Zul'Gurub | raid | 67 | 67 | 953,212 | 953,212 | 66 |  |
+| 62-62 | Hellfire Peninsula (which dungeon or wing is not told) | dungeon | 1 | 1 | 30,150 | 30,150 | 0 | few for Horde and Alliance |
+| 63-70 | Hellfire Citadel: The Shattered Halls | dungeon | 7 | 8 | 234,900 | 272,850 | 9 |  |
+| 65-65 | Coilfang: The Underbog | dungeon | 4 | 4 | 132,000 | 132,000 | 3 |  |
+| 66-70 | Auchindoun: Mana-Tombs | dungeon | 4 | 4 | 130,200 | 130,200 | 3 |  |
+| 67-68 | Auchindoun: Auchenai Crypts | dungeon | 2 | 1 | 70,950 | 34,950 | 1 | few for Horde and Alliance |
+| 68-68 | The Escape From Durnholde | dungeon | 1 | 1 | 18,000 | 18,000 | 1 | few for Horde and Alliance |
+| 68-70 | Caverns of Time (which dungeon or wing is not told) | dungeon | 6 | 6 | 151,575 | 151,575 | 0 |  |
+| 69-69 | Auchindoun: Sethekk Halls | dungeon | 2 | 2 | 73,800 | 73,800 | 2 | few for Horde and Alliance |
+| 69-69 | Shadowmoon Valley (which dungeon or wing is not told) | dungeon | 1 | 1 | 36,900 | 36,900 | 0 | few for Horde and Alliance |
+| 70-70 | Auchindoun (which dungeon or wing is not told) | dungeon | 4 | 4 | 128,100 | 128,100 | 1 |  |
+| 70-70 | Auchindoun: Shadow Labyrinth | dungeon | 4 | 4 | 150,750 | 150,750 | 1 |  |
+| 70-70 | Black Temple | raid | 2 | 2 | 57,000 | 57,000 | 1 | few for Horde and Alliance |
+| 70-70 | Coilfang: Serpentshrine Cavern | raid | 1 | 1 | 28,500 | 28,500 | 0 | few for Horde and Alliance |
+| 70-70 | Coilfang: The Slave Pens | dungeon | 2 | 2 | 28,500 | 28,500 | 0 | few for Horde and Alliance |
+| 70-70 | Coilfang: The Steamvault | dungeon | 4 | 4 | 132,825 | 132,825 | 1 |  |
+| 70-70 | Karazhan | raid | 9 | 9 | 132,825 | 132,825 | 2 |  |
+| 70-70 | Magister's Terrace | dungeon | 3 | 3 | 94,875 | 94,875 | 1 |  |
+| 70-70 | Magtheridon's Lair | raid | 1 | 1 | 28,500 | 28,500 | 1 | few for Horde and Alliance |
+| 70-70 | Shattrath City (which dungeon or wing is not told) | dungeon | 4 | 4 | 123,450 | 123,450 | 0 |  |
+| 70-70 | Tempest Keep | raid | 6 | 6 | 189,825 | 189,825 | 3 |  |
+| 70-70 | Tempest Keep: The Botanica | dungeon | 1 | 1 | 37,950 | 37,950 | 0 | few for Horde and Alliance |
+| 70-70 | The Battle for Mount Hyjal | raid | 1 | 1 | 28,500 | 28,500 | 0 | few for Horde and Alliance |
+| 70-70 | The Black Temple (which dungeon or wing is not told) | raid | 1 | 1 | 23,700 | 23,700 | 0 | few for Horde and Alliance |
+| 70-70 | Zul'Aman | raid | 8 | 8 | 101,475 | 101,475 | 3 |  |
+| 71-71 | The Nexus | dungeon | 4 | 4 | 241,200 | 241,200 | 5 |  |
+| 71-71 | Utgarde Keep | dungeon | 3 | 2 | 165,825 | 120,600 | 5 | few for Alliance |
+| 74-74 | Azjol-Nerub | dungeon | 2 | 2 | 124,500 | 124,500 | 2 | few for Horde and Alliance |
+| 74-75 | Drak'Tharon Keep | dungeon | 3 | 3 | 171,675 | 171,675 | 3 |  |
+| 76-76 | Ahn'kahet: The Old Kingdom | dungeon | 2 | 2 | 126,900 | 126,900 | 1 | few for Horde and Alliance |
+| 77-77 | Violet Hold | dungeon | 2 | 2 | 67,425 | 67,425 | 1 | few for Horde and Alliance |
+| 78-78 | Gundrak | dungeon | 3 | 3 | 194,400 | 194,400 | 3 |  |
+| 78-78 | Halls of Stone | dungeon | 1 | 1 | 64,800 | 64,800 | 1 | few for Horde and Alliance |
+| 80-80 | Halls of Lightning | dungeon | 2 | 2 | 132,300 | 132,300 | 2 | few for Horde and Alliance |
+| 80-80 | Halls of Reflection | dungeon | 3 | 3 | 107,475 | 107,475 | 2 |  |
+| 80-80 | Icecrown (which dungeon or wing is not told) | dungeon | 1 | 1 | 33,075 | 33,075 | 0 | few for Horde and Alliance |
+| 80-80 | Icecrown Citadel | raid | 32 | 32 | 1,116,150 | 1,116,150 | 24 |  |
+| 80-80 | Pit of Saron | dungeon | 4 | 4 | 173,625 | 173,625 | 2 |  |
+| 80-80 | The Culling of Stratholme | dungeon | 2 | 2 | 132,300 | 132,300 | 1 | few for Horde and Alliance |
+| 80-80 | The Eye of Eternity | raid | 2 | 2 | 115,800 | 115,800 | 2 | few for Horde and Alliance |
+| 80-80 | The Forge of Souls | dungeon | 2 | 2 | 74,400 | 74,400 | 2 | few for Horde and Alliance |
+| 80-80 | The Oculus | dungeon | 4 | 4 | 264,600 | 264,600 | 2 |  |
+| 80-80 | The Sunwell | raid | 4 | 2 | 0 | 0 | 0 | few for Alliance |
+| 80-80 | Ulduar | raid | 18 | 18 | 1,025,400 | 1,025,400 | 5 |  |
+| 80-80 | Utgarde Pinnacle | dungeon | 2 | 2 | 132,300 | 132,300 | 2 | few for Horde and Alliance |
+| 82-82 | The Ruby Sanctum | raid | 3 | 3 | 87,750 | 87,750 | 1 |  |
+
+### The quests of each dungeon and raid
+
+**Ragefire Chasm** (dungeon, 16-16): Hidden Enemies (16, Horde); Returning the Lost Satchel (16, Horde); Searching for the Lost Satchel (16, Horde); Slaying the Beast (16, Horde); The Power to Destroy... (16, Horde); The Power to Destroy... (16, Horde).
+
+**Wailing Caverns** (dungeon, 17-21): Hamuul Runetotem (16, Horde); Nara Wildmane (16, Horde); Deviate Hides (17); Serpentbloom (18, Horde); Smart Drinks (18); Trouble at the Docks (18); Deviate Eradication (21); Leaders of the Fang (22, Horde); The Glowing Shard (26).
+
+**Deadmines** (dungeon, 18-20): Red Silk Bandanas (17, Alliance); Collecting Memories (18, Alliance); Oh Brother. . . (20, Alliance); Underground Assault (20, Alliance); The Defias Brotherhood (22, Alliance).
+
+**Blackfathom Deeps** (dungeon, 22-27): Allegiance to the Old Gods (22, Horde); The Essence of Aku'Mai (22, Horde); Trouble in the Deeps (22, Horde); Knowledge in the Deeps (23, Alliance); In Search of Thaelrid (24, Alliance); Researching the Corruption (24, Alliance); Twilight Falls (25, Alliance); Allegiance to the Old Gods (26, Horde); Amongst the Ruins (27, Horde); Blackfathom Villainy (27, Alliance); Blackfathom Villainy (27, Horde).
+
+**Shadowfang Keep** (dungeon, 25-27): Deathstalkers in Shadowfang (25, Horde); The Book of Ur (26, Horde); Arugal Must Die (27, Horde).
+
+**Stormwind Stockade** (dungeon, 26-27): What Comes Around... (25, Alliance); Crime and Punishment (26, Alliance); Quell The Uprising (26, Alliance); The Color of Blood (26, Alliance); The Fury Runs Deep (27, Alliance); The Stockade Riots (29, Alliance).
+
+**Razorfen Kraul** (dungeon, 26-30): Blueleaf Tubers (26); Going, Going, Guano! (26, Horde); A Vengeful Fate (27, Horde); The Crone of the Kraul (27, Alliance); Mortality Wanes (30, Alliance); Willix the Importer (30).
+
+**Ashenvale (which dungeon or wing is not told)** (dungeon, 30-30): Baron Aquanis (30, Horde).
+
+**Gnomeregan** (dungeon, 30-34): Save Techbot's Brain! (26, Alliance); Tinkmaster Overspark (26, Alliance); Gnogaine (27, Alliance); The Day After (27, Alliance); Castpipe's Task (28, Alliance); A Fine Mess (30); Data Rescue (30, Alliance); Essential Artificials (30, Alliance); Gyrodrillmatic Excavationators (30, Alliance); Klockmort's Essentials (30, Alliance); The Only Cure is More Green Glow (30, Alliance); The Sparklematic 5200! (30); The Sparklematic 5200! (30); The Sparklematic 5200! (30); The Sparklematic 5200! (30); The Sparklematic 5200! (30); The Sparklematic 5200! (30); Grime-Encrusted Ring (34); Return of the Ring (34, Alliance); Return of the Ring (34, Horde); Chief Engineer Scooty (35, Horde); Gnomer-gooooone! (35, Horde); Rig Wars (35, Horde); The Grand Betrayal (35, Alliance).
+
+**Scarlet Monastery** (dungeon, 33-42): Hearts of Zeal (33, Horde); Vorrel's Revenge (33, Horde); Compendium of the Fallen (38, Horde); Mythology of the Titans (38, Alliance); In the Name of the Light (40, Alliance); Into The Scarlet Monastery (42, Horde); Into The Scarlet Monastery (42, Horde).
+
+**Razorfen Downs** (dungeon, 36-37): A Host of Evil (35); An Unholy Alliance (36, Horde); An Unholy Alliance (36, Horde); An Unholy Alliance (36, Horde); An Unholy Alliance (36, Horde); Bring the End (37, Horde); Bring the Light (37, Alliance); Extinguishing the Idol (37); Scourge of the Downs (37).
+
+**Uldaman** (dungeon, 41-44): A Sign of Hope (35, Alliance); Amulet of Secrets (40, Alliance); The Hidden Chamber (40, Alliance); The Lost Dwarves (40, Alliance); Lore for a Price (41, Alliance); Necklace Recovery (41, Horde); Necklace Recovery, Take 2 (41, Horde); The Shattered Necklace (41, Alliance); Back to Uldaman (42, Alliance); Translating the Journal (42); Translating the Journal (42, Horde); Find the Gems (43, Alliance); Deliver the Gems (44, Horde); Find the Gems and Power Source (44, Horde); Necklace Recovery, Take 3 (44, Horde); Restoring the Necklace (44, Alliance); Restoring the Necklace (44, Alliance); The Lost Tablets of Will (45, Alliance); The Platinum Discs (47); The Platinum Discs (47, Horde).
+
+**Zul'Farrak** (dungeon, 45-47): Scarab Shells (45); The Spider God (45, Horde); Tran'rek (45); Troll Temper (45); Tabetha's Task (46); Tiara of the Deep (46); Divino-matic Rod (47); Nekrum's Medallion (47, Alliance); The Prophecy of Mosh'aru (47); Gahz'rilla (50).
+
+**Thousand Needles (which dungeon or wing is not told)** (dungeon, 46-46): The Brassbolts Brothers (46, Alliance).
+
+**Maraudon** (dungeon, 47-51): Shadowshard Fragments (42, Horde); Shadowshard Fragments (42, Alliance); Twisted Evils (47); Vyletongue Corruption (47, Horde); Vyletongue Corruption (47, Alliance); The Pariah's Instructions (48); Legends of Maraudon (49); The Scepter of Celebras (49); Corruption of Earth and Seed (51, Horde); Corruption of Earth and Seed (51, Alliance); Seed of Life (51).
+
+**Sunken Temple** (dungeon, 51-53): Into The Temple of Atal'Hakkar (50, Alliance); The Temple of Atal'Hakkar (50, Horde); Into the Depths (51); Secret of the Circle (51); The Sunken Temple (51, Horde); Haze of Evil (52, Alliance); Zapper Fuel (52, Horde); Jammal'an the Prophet (53); The God Hakkar (53); The Essence of Eranikus (55); Eranikus, Tyrant of the Dream (60).
+
+**Blackrock Mountain (which dungeon or wing is not told)** (dungeon, 52-52): Disharmony of Flame (52, Horde); Overmaster Pyron (52, Alliance).
+
+**Un'Goro Crater (which dungeon or wing is not told)** (dungeon, 53-53): Bloodpetal Zapper (53, Horde).
+
+**Blackrock Depths** (dungeon, 54-59): Commander Gor'shak (52, Horde); Dark Iron Legacy (52); Dark Iron Legacy (52); KILL ON SIGHT: Dark Iron Dwarves (52, Horde); Ribbly Screwspigot (53); Yuka Screwspigot (53); KILL ON SIGHT: High Ranking Dark Iron Officials (54, Horde); The Eastern Kingdoms (54, Horde); The Last Element (54, Horde); The Love Potion (54); What Is Going On? (54, Horde); What Is Going On? (54, Horde); Hurley Blackbreath (55, Alliance); Lost Thunderbrew Recipe (55, Horde); Ragnar Thunderbrew (55, Alliance); The Heart of the Mountain (55); The Spectral Chalice (55); Vivian Lagrave (55, Horde); Disharmony of Fire (56, Horde); Incendius! (56, Alliance); The Good Stuff (56, Alliance); A Taste of Flame (58); Grark Lorkrub (58, Horde); Operation: Death to Angerforge (58, Horde); Precarious Predicament (58, Horde); The Rise of the Machines (58, Horde); Kharan Mighthammer (59, Alliance); Kharan's Tale (59, Alliance); The Bearer of Bad News (59, Alliance); The Fate of the Kingdom (59, Alliance); The Princess's Surprise (59, Alliance); The Royal Rescue (59, Horde); The Challenge (60); The Princess Saved? (60, Horde); Three Kings of Flame (60).
+
+**Tanaris (which dungeon or wing is not told)** (raid, 58-60): The Hand of Rastakhan (58); The Isle of Dread! (60); The Only Prescription (60).
+
+**Ahn'Qiraj Temple** (raid, 60-60): Avenger's Breastplate (60); Avenger's Crown (60); Avenger's Greaves (60); Avenger's Legguards (60); Avenger's Pauldrons (60); Band of Unending Life (60); Band of Vaulted Secrets (60); Band of Veiled Shadows (60); Blade of Eternal Justice (60); Blade of Vaulted Secrets (60); C'Thun's Legacy (60); Cape of Eternal Justice (60); Cloak of Unending Life (60); Cloak of Veiled Shadows (60); Cloak of the Gathering Storm (60); Cloak of the Unseen Path (60); Conqueror's Breastplate (60); Conqueror's Crown (60); Conqueror's Greaves (60); Conqueror's Legguards (60); Conqueror's Spaulders (60); Dagger of Veiled Shadows (60); Deathdealer's Boots (60); Deathdealer's Helm (60); Deathdealer's Leggings (60); Deathdealer's Spaulders (60); Deathdealer's Vest (60); Doomcaller's Circlet (60); Doomcaller's Footwraps (60); Doomcaller's Mantle (60); Doomcaller's Robes (60); Doomcaller's Trousers (60); Drape of Vaulted Secrets (60); Enigma Boots (60); Enigma Circlet (60); Enigma Leggings (60); Enigma Robes (60); Enigma Shoulderpads (60); Footwraps of the Oracle (60); Gavel of Infinite Wisdom (60); Genesis Boots (60); Genesis Helm (60); Genesis Shoulderpads (60); Genesis Trousers (60); Genesis Vest (60); Hammer of the Gathering Storm (60); Kris of Unspoken Names (60); Mace of Unending Life (60); Mantle of the Oracle (60); Ring of Eternal Justice (60); Ring of Infinite Wisdom (60); Ring of Unspoken Names (60); Ring of the Gathering Storm (60); Scythe of the Unseen Path (60); Shroud of Infinite Wisdom (60); Shroud of Unspoken Names (60); Signet of the Unseen Path (60); Stormcaller's Diadem (60); Stormcaller's Footguards (60); Stormcaller's Hauberk (60); Stormcaller's Leggings (60); Stormcaller's Pauldrons (60); Striker's Diadem (60); Striker's Footguards (60); Striker's Hauberk (60); Striker's Leggings (60); Striker's Pauldrons (60); The Savior of Kalimdor (60); Tiara of the Oracle (60); Trousers of the Oracle (60); Vestments of the Oracle (60).
+
+**Azshara (which dungeon or wing is not told)** (raid, 60-60): The Wrath of Neptulon (60).
+
+**Blackrock Spire** (dungeon, 60-60): The Final Tablets (58); Bijou's Belongings (59, Horde); Bijou's Belongings (59, Alliance); Bijou's Reconnaissance Report (59); En-Ay-Es-Tee-Why (59); Kibler's Exotic Pets (59); Message to Maxwell (59); Operative Bijou (59, Horde); Put Her Down (59, Alliance); The Pack Mistress (59, Horde); An Earnest Proposition (60, Horde); An Earnest Proposition (60, Horde); An Earnest Proposition (60, Horde); An Earnest Proposition (60, Horde); An Earnest Proposition (60, Alliance); An Earnest Proposition (60, Alliance); An Earnest Proposition (60, Alliance); An Earnest Proposition (60, Alliance); Anthion's Parting Words (60, Horde); Anthion's Parting Words (60, Horde); Anthion's Parting Words (60, Alliance); Anthion's Parting Words (60, Alliance); Blackhand's Command (60); Blood of the Black Dragon Champion (60, Horde); Delivery to Ridgewell (60, Alliance); Doomrigger's Clasp (60, Alliance); Egg Collection (60); Egg Freezing (60); Eye of the Emberseer (60); Final Preparations (60); Finkle Einhorn, At Your Service! (60); For The Horde! (60, Horde); General Drakkisath's Command (60, Alliance); General Drakkisath's Demise (60, Alliance); Just Compensation (60, Horde); Just Compensation (60, Horde); Just Compensation (60, Horde); Just Compensation (60, Horde); Just Compensation (60, Alliance); Just Compensation (60, Alliance); Just Compensation (60, Alliance); Just Compensation (60, Alliance); Maxwell's Mission (60, Alliance); Mayara Brightwing (60, Alliance); Mea Culpa, Lord Valthalak (60); Mother's Milk (60); Oculus Illusions (60, Horde); Seal of Ascension (60); Seal of Ascension (60); The Darkstone Tablet (60, Horde); The Demon Forge (60); The Left Piece of Lord Valthalak's Amulet (60); The Matron Protectorate (60); The Right Piece of Lord Valthalak's Amulet (60); Tinkee Steamboil (60); Urok Doomhowl (60); Vivian Lagrave and the Darkstone Tablet (60, Horde); Warlord's Command (60, Horde).
+
+**Blackwing Lair** (raid, 60-60): Nefarius's Corruption (60); Only One May Rise (60).
+
+**Burning Steppes (which dungeon or wing is not told)** (dungeon, 60-60): Leonid Barthalomew (60).
+
+**Dire Maul** (dungeon, 60-60): Camp Mojache (57, Horde); Feathermoon Stronghold (57, Alliance); Lethtendris's Web (57, Alliance); Lethtendris's Web (57, Horde); Pusillin and the Elder Azj'Tordin (58); Anthion's Old Friend (60); Codex of Defense (60); Elven Legends (60, Horde); Elven Legends (60, Alliance); Falrin's Vendetta (60); Free Knot! (60); Frost Shock and You (60); Garona: A Study on Stealth and Treachery (60); Harnessing Shadows (60); Holy Bologna: What the Light Won't Tell You (60); The Arcanist's Cookbook (60); The Emerald Dream... (60); The Gordok Ogre Suit (60); The Gordok Taste Test (60, Alliance); The Greatest Race of Hunters (60); The Instigator's Enchantment (60); The Left Piece of Lord Valthalak's Amulet (60); The Light and How To Swing It (60); The Madness Within (60); The Right Piece of Lord Valthalak's Amulet (60); The Treasure of the Shen'dralar (60, Alliance); The Treasure of the Shen'dralar (60, Horde); Unfinished Gordok Business (60, Alliance); Unfinished Gordok Business (60, Alliance).
+
+**Dustwallow Marsh (which dungeon or wing is not told)** (raid, 60-60): The Test of Skulls, Axtroz (60, Horde); The Test of Skulls, Chronalis (60, Horde); The Test of Skulls, Scryer (60, Horde); The Test of Skulls, Somnus (60, Horde).
+
+**Eastern Plaguelands (which dungeon or wing is not told)** (dungeon, 60-60): The Restless Souls (60).
+
+**Eastern Plaguelands (which dungeon or wing is not told)** (raid, 60-60): Order Must Be Restored (60, Alliance); The Battle of Darrowshire (60).
+
+**Molten Core** (raid, 60-60): Attunement to the Core (60, Horde); Attunement to the Core (60, Alliance); Hands of the Enemy (60); Scrying Goggles? No Problem! (60); The Molten Core (60).
+
+**Moonglade (which dungeon or wing is not told)** (dungeon, 60-60): Shards of the Felvine (60).
+
+**Moonglade (which dungeon or wing is not told)** (raid, 60-60): The Nightmare Manifests (60); The Nightmare's Corruption (60).
+
+**Naxxramas** (raid, 60-60): Echoes of War (60); Glacial Cloak (60); Glacial Gloves (60); Glacial Vest (60); Glacial Wrists (60); Icebane Bracers (60); Icebane Breastplate (60); Icebane Gauntlets (60); Icy Scale Bracers (60); Icy Scale Breastplate (60); Icy Scale Gauntlets (60); Omarion's Handbook (60); Polar Bracers (60); Polar Gloves (60); Polar Tunic (60); Redemption Headpiece (60); The Fall of Kel'Thuzad (60).
+
+**Ruins of Ahn'Qiraj** (raid, 60-60): The Fall of Ossirian (60).
+
+**Scholomance** (dungeon, 60-60): Plagued Hatchlings (58); Anthion's Parting Words (60, Horde); Anthion's Parting Words (60, Alliance); Barov Family Fortune (60, Horde); Barov Family Fortune (60, Alliance); Betina Bigglezink (60); Dawn's Gambit (60); Doctor Theolen Krastinov, the Butcher (60); Just Compensation (60, Horde); Just Compensation (60, Alliance); Kirtonos the Herald (60); Krastinov's Bag of Horrors (60); Saving the Best for Last (60, Horde); Saving the Best for Last (60, Horde); Saving the Best for Last (60, Horde); Saving the Best for Last (60, Horde); Saving the Best for Last (60, Horde); Saving the Best for Last (60, Horde); Saving the Best for Last (60, Horde); Saving the Best for Last (60, Horde); Saving the Best for Last (60, Horde); Saving the Best for Last (60, Alliance); Saving the Best for Last (60, Alliance); Saving the Best for Last (60, Alliance); Saving the Best for Last (60, Alliance); Saving the Best for Last (60, Alliance); Saving the Best for Last (60, Alliance); Saving the Best for Last (60, Alliance); Saving the Best for Last (60, Alliance); Saving the Best for Last (60, Alliance); The Left Piece of Lord Valthalak's Amulet (60); The Lich, Ras Frostwhisper (60); The Right Piece of Lord Valthalak's Amulet (60).
+
+**Silithus (which dungeon or wing is not told)** (raid, 60-60): Armaments of War (60); Armaments of War (60); Armaments of War (60); Armaments of War (60); Armaments of War (60); Armaments of War (60); Armaments of War (60); Armaments of War (60); Bor Wishes to Speak (60); Scepter of the Council (60).
+
+**Stratholme** (dungeon, 60-60): Above and Beyond (60); An Earnest Proposition (60, Horde); An Earnest Proposition (60, Horde); An Earnest Proposition (60, Horde); An Earnest Proposition (60, Horde); An Earnest Proposition (60, Horde); An Earnest Proposition (60, Alliance); An Earnest Proposition (60, Alliance); An Earnest Proposition (60, Alliance); An Earnest Proposition (60, Alliance); An Earnest Proposition (60, Alliance); Anthion's Parting Words (60, Horde); Anthion's Parting Words (60, Horde); Anthion's Parting Words (60, Horde); Anthion's Parting Words (60, Horde); Anthion's Parting Words (60, Horde); Anthion's Parting Words (60, Horde); Anthion's Parting Words (60, Alliance); Anthion's Parting Words (60, Alliance); Anthion's Parting Words (60, Alliance); Anthion's Parting Words (60, Alliance); Anthion's Parting Words (60, Alliance); Anthion's Parting Words (60, Alliance); Aurius' Reckoning (60); Dead Man's Plea (60); Houses of the Holy (60); Just Compensation (60, Horde); Just Compensation (60, Horde); Just Compensation (60, Horde); Just Compensation (60, Horde); Just Compensation (60, Alliance); Just Compensation (60, Alliance); Just Compensation (60, Alliance); Just Compensation (60, Alliance); Menethil's Gift (60); Of Love and Family (60); Ramstein (60, Horde); The Active Agent (60); The Archivist (60); The Flesh Does Not Lie (60); The Great Fras Siabi (60); The Left Piece of Lord Valthalak's Amulet (60); The Medallion of Faith (60); The Restless Souls (60); The Right Piece of Lord Valthalak's Amulet (60); The Truth Comes Crashing Down (60).
+
+**Zul'Gurub** (raid, 60-60): Confront Yeh'kinya (58); A Collection of Heads (60); Enchanted South Seas Kelp (60); Enchanted South Seas Kelp (60); Enchanted South Seas Kelp (60); Kezan's Taint (60); Kezan's Taint (60); Kezan's Taint (60); Kezan's Unstoppable Taint (60); Maelstrom's Wrath (60); Nat's Measuring Tape (60); Paragons of Power: The Augur's Belt (60); Paragons of Power: The Augur's Bracers (60); Paragons of Power: The Augur's Hauberk (60); Paragons of Power: The Confessor's Bindings (60); Paragons of Power: The Confessor's Mantle (60); Paragons of Power: The Confessor's Wraps (60); Paragons of Power: The Demoniac's Mantle (60); Paragons of Power: The Demoniac's Robes (60); Paragons of Power: The Demoniac's Wraps (60); Paragons of Power: The Freethinker's Armguards (60); Paragons of Power: The Freethinker's Belt (60); Paragons of Power: The Freethinker's Breastplate (60); Paragons of Power: The Haruspex's Belt (60); Paragons of Power: The Haruspex's Bracers (60); Paragons of Power: The Haruspex's Tunic (60); Paragons of Power: The Illusionist's Mantle (60); Paragons of Power: The Illusionist's Robes (60); Paragons of Power: The Illusionist's Wraps (60); Paragons of Power: The Madcap's Bracers (60); Paragons of Power: The Madcap's Mantle (60); Paragons of Power: The Madcap's Tunic (60); Paragons of Power: The Predator's Belt (60); Paragons of Power: The Predator's Bracers (60); Paragons of Power: The Predator's Mantle (60); Paragons of Power: The Vindicator's Armguards (60); Paragons of Power: The Vindicator's Belt (60); Paragons of Power: The Vindicator's Breastplate (60); Pristine Enchanted South Seas Kelp (60); Strength of Mount Mugamba (60); Strength of Mount Mugamba (60); Strength of Mount Mugamba (60); The All-Seeing Eye of Zuldazar (60); The Eye of Zuldazar (60); The Eye of Zuldazar (60); The Eye of Zuldazar (60); The Heathen's Brand (60); The Heathen's Brand (60); The Heathen's Brand (60); The Hero's Brand (60); The Jewel of Kajaro (60); The Maelstrom's Tendril (60); The Maelstrom's Tendril (60); The Maelstrom's Tendril (60); The Pebble of Kajaro (60); The Pebble of Kajaro (60); The Pebble of Kajaro (60); The Perfect Poison (60); The Rage of Mugamba (60); The Unmarred Vision of Voodress (60); Vision of Voodress (60); Vision of Voodress (60); Vision of Voodress (60); Zandalarian Shadow Mastery Talisman (60); Zandalarian Shadow Talisman (60); Zandalarian Shadow Talisman (60); Zandalarian Shadow Talisman (60).
+
+**Hellfire Peninsula (which dungeon or wing is not told)** (dungeon, 62-62): Dark Tidings (62, Alliance); Dark Tidings (62, Horde).
+
+**Hellfire Citadel: The Shattered Halls** (dungeon, 63-70): Weaken the Ramparts (62, Horde); Weaken the Ramparts (62, Alliance); Heart of Rage (63, Alliance); Heart of Rage (63, Horde); The Blood is Life (63, Alliance); The Blood is Life (63, Horde); Fel Embers (70, Alliance); Imprisoned in the Citadel (70, Alliance); Imprisoned in the Citadel (70, Horde); Pride of the Fel Horde (70, Alliance); Pride of the Fel Horde (70, Horde); Tear of the Earthmother (70); The Will of the Warchief (70, Horde); Turning the Tide (70, Alliance).
+
+**Coilfang: The Underbog** (dungeon, 65-65): Bring Me A Shrubbery! (65); Lost in Action (65); Oh, It's On! (65); Stalk the Stalker (65).
+
+**Auchindoun: Mana-Tombs** (dungeon, 66-70): Safety Is Job One (66); Someone Else's Hard Work Pays Off (66); Undercutting the Competition (66); Stasis Chambers of the Mana-Tombs (70).
+
+**Auchindoun: Auchenai Crypts** (dungeon, 67-68): Everything Will Be Alright (67); Auchindoun... (68, Horde).
+
+**The Escape From Durnholde** (dungeon, 68-68): Nice Hat... (68).
+
+**Caverns of Time (which dungeon or wing is not told)** (dungeon, 68-70): Escape from Durnholde (68); Old Hillsbrad (68); Taretha's Diversion (68); The Black Morass (70); The Master's Touch (70); The Opening of the Dark Portal (70).
+
+**Auchindoun: Sethekk Halls** (dungeon, 69-69): Brother Against Brother (69); Terokk's Legacy (69).
+
+**Shadowmoon Valley (which dungeon or wing is not told)** (dungeon, 69-69): Fresh from the Mechanar (69).
+
+**Auchindoun (which dungeon or wing is not told)** (dungeon, 70-70): Find Spy To'gun (70); The Codex of Blood (70); The Soul Devices (70); Trouble at Auchindoun (70).
+
+**Auchindoun: Shadow Labyrinth** (dungeon, 70-70): The Lexicon Demonica (69); Entry Into Karazhan (70); Into the Heart of the Labyrinth (70); The Book of Fel Names (70).
+
+**Black Temple** (raid, 70-70): Redemption of the Ashtongue (70); The Fall of the Betrayer (70).
+
+**Coilfang: Serpentshrine Cavern** (raid, 70-70): The Vials of Eternity (70).
+
+**Coilfang: The Slave Pens** (dungeon, 70-70): The Cudgel of Kar'desh (70); The Mark of Vashj (70).
+
+**Coilfang: The Steamvault** (dungeon, 70-70): Orders from Lady Vashj (70); Preparing for War (70); The Warlord's Hideout (70); Underworld Loam (70).
+
+**Karazhan** (raid, 70-70): A Demonic Presence (70); Assessing the Situation (70); Chamber of Secrets (70); Kalynna's Request (70); Keanna's Log (70); Medivh's Journal (70); Nightbane (70); The Master's Terrace (70); The Shade of Aran (70).
+
+**Magister's Terrace** (dungeon, 70-70): Hard to Kill (70); Magisters' Terrace (70); The Scryer's Scryer (70).
+
+**Magtheridon's Lair** (raid, 70-70): Trial of the Naaru: Magtheridon (70).
+
+**Shattrath City (which dungeon or wing is not told)** (dungeon, 70-70): The Second and Third Fragments (70); Trial of the Naaru: Mercy (70); Trial of the Naaru: Strength (70); Trial of the Naaru: Tenacity (70).
+
+**Tempest Keep** (raid, 70-70): Harbinger of Doom (70); How to Break Into the Arcatraz (70); Kael'thas and the Verdant Sphere (70); Revered Among the Sha'tar (70); Ruse of the Ashtongue (70); Seer Udalo (70).
+
+**Tempest Keep: The Botanica** (dungeon, 70-70): Capturing the Keystone (70).
+
+**The Battle for Mount Hyjal** (raid, 70-70): An Artifact From the Past (70).
+
+**The Black Temple (which dungeon or wing is not told)** (raid, 70-70): Seek Out the Ashtongue (70).
+
+**Zul'Aman** (raid, 70-70): A Troll Among Trolls (70); Blood of the Warlord (70); Hex Lord? Hah! (70); Oooh, Shinies! (70); Playin' With Dolls (70); Promises, Promises... (70); Tuskin' Raiders (70); X Marks... Your Doom! (70).
+
+**The Nexus** (dungeon, 71-71): Have They No Shame? (71, Alliance); Have They No Shame? (71, Horde); Postponing the Inevitable (71); Prisoner of War (71); Quickening (71).
+
+**Utgarde Keep** (dungeon, 71-71): A Score to Settle (71, Horde); Disarmament (71, Alliance); Disarmament (71, Horde); Ingvar Must Die! (71, Horde); Into Utgarde! (71, Alliance).
+
+**Azjol-Nerub** (dungeon, 74-74): Death to the Traitor King (74); Don't Forget the Eggs! (74).
+
+**Drak'Tharon Keep** (dungeon, 74-75): Head Games (74); Search and Rescue (74); Cleansing Drak'Tharon (75).
+
+**Ahn'kahet: The Old Kingdom** (dungeon, 76-76): Funky Fungi (76); The Faceless Ones (76).
+
+**Violet Hold** (dungeon, 77-77): Containment (77); Discretion is Key (77).
+
+**Gundrak** (dungeon, 78-78): For Posterity (78); Gal'darah Must Pay (78); One of a Kind (78).
+
+**Halls of Stone** (dungeon, 78-78): Halls of Stone (78).
+
+**Halls of Lightning** (dungeon, 80-80): Diametrically Opposed (80); Whatever it Takes! (80).
+
+**Halls of Reflection** (dungeon, 80-80): Frostmourne (80, Alliance); Frostmourne (80, Horde); The Halls Of Reflection (80, Alliance); The Halls Of Reflection (80, Horde); Wrath of the Lich King (80, Alliance); Wrath of the Lich King (80, Horde).
+
+**Icecrown (which dungeon or wing is not told)** (dungeon, 80-80): Tempering The Blade (80, Alliance); Tempering The Blade (80, Horde).
+
+**Icecrown Citadel** (raid, 80-80): A Feast of Souls (80); Blood Infusion (80); Choose Your Path (80); Empowerment (80); Frost Infusion (80); Jaina's Locket (80); Mograine's Reunion (80); Muradin's Lament (80); Path of Courage (80); Path of Courage (80); Path of Courage (80); Path of Destruction (80); Path of Destruction (80); Path of Destruction (80); Path of Might (80); Path of Might (80); Path of Might (80); Path of Vengeance (80); Path of Vengeance (80); Path of Vengeance (80); Path of Wisdom (80); Path of Wisdom (80); Path of Wisdom (80); Personal Property (80); Shadow's Edge (80); Shadowmourne... (80); Sylvanas' Vengeance (80); The Lich King's Last Stand (80); The Lightbringer's Redemption (80); The Sacred and the Corrupt (80); The Splintered Throne (80); Unholy Infusion (80).
+
+**Pit of Saron** (dungeon, 80-80): Deliverance from the Pit (80, Alliance); Deliverance from the Pit (80, Horde); Reforging The Sword (80, Alliance); Reforging The Sword (80, Horde); The Path to the Citadel (80, Alliance); The Path to the Citadel (80, Horde); The Pit of Saron (80, Horde); The Pit of Saron (80, Alliance).
+
+**The Culling of Stratholme** (dungeon, 80-80): A Royal Escort (80); Dispelling Illusions (80).
+
+**The Eye of Eternity** (raid, 80-80): Heroic Judgment at the Eye of Eternity (80); Judgment at the Eye of Eternity (80).
+
+**The Forge of Souls** (dungeon, 80-80): Echoes of Tortured Souls (80, Alliance); Echoes of Tortured Souls (80, Horde); Inside the Frozen Citadel (80, Horde); Inside the Frozen Citadel (80, Alliance).
+
+**The Oculus** (dungeon, 80-80): A Unified Front (80); A Wing and a Prayer (80); Mage-Lord Urom (80); The Struggle Persists (80).
+
+**The Sunwell** (raid, 80-80): The Purification of Quel'Delar (80, Alliance); The Purification of Quel'Delar (80, Horde); The Purification of Quel'Delar (80, Horde); The Purification of Quel'Delar (80, Alliance); The Purification of Quel'Delar (80, Horde); The Purification of Quel'Delar (80, Horde).
+
+**Ulduar** (raid, 80-80): Algalon (80); All Is Well That Ends Well (80); Ancient History (80); Archivum Data Disc (80); Freya's Sigil (80); Heroic: Algalon (80); Heroic: All Is Well That Ends Well (80); Heroic: Archivum Data Disc (80); Heroic: Freya's Sigil (80); Heroic: Hodir's Sigil (80); Heroic: Mimiron's Sigil (80); Heroic: The Celestial Planetarium (80); Heroic: Thorim's Sigil (80); Hodir's Sigil (80); Mimiron's Sigil (80); The Celestial Planetarium (80); Thorim's Sigil (80); Val'anyr, Hammer of Ancient Kings (80).
+
+**Utgarde Pinnacle** (dungeon, 80-80): Junk in My Trunk (80); Vengeance Be Mine! (80).
+
+**The Ruby Sanctum** (raid, 82-82): Assault on the Sanctum (82); The Twilight Destroyer (82); Trouble at Wyrmrest (82).
 
 ## Zone by zone
 

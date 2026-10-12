@@ -39,6 +39,8 @@ TARGET_SHARE = 70           # a zone should offer this share, in percent, of the
 QUESTS_PER_ITEM = 3         # roughly one quest in three gives gear to choose
 FEW_SPAWNS = 4              # enemies with fewer than this in a zone are not worth a remark
 BIG_PLACE = 10              # a place with this many enemies and no quest touching it is "unused"
+DUNGEON_KINDS = {81: "dungeon", 85: "dungeon", 62: "raid", 88: "raid", 89: "raid"}      # quest_template.QuestInfoID
+FEW_DUNGEON_QUESTS = 3      # a dungeon with fewer quests than this for a side gives little reason to go
 
 
 def setting(name, default):
@@ -83,6 +85,7 @@ def main():
     for r in sql(f"SELECT {columns} FROM quest_template WHERE QuestSortID > 0"):
         number, zone, level, low, races, difficulty, flags, info = (int(v) for v in r[:8])
         title = r[8]
+        filed = zone
         zone = world.areas.get(zone, {}).get("parent") or zone       # a quest filed under a part of a zone (Red Cloud Mesa) belongs to the zone (Mulgore)
         if number not in started_by or number in seasonal or flags & 0x1000 or flags & 0x8000 or int(r[21]) & 1:
             continue                                    # nobody gives it, a holiday, daily, weekly or repeatable
@@ -90,6 +93,7 @@ def main():
             continue
         quests.setdefault(zone, []).append({
             "id": number, "level": level, "min": low, "difficulty": difficulty, "group": info in (1, 41, 62, 81, 85, 88, 89), "title": title,
+            "filed": filed, "info": info,
             "horde": open_to(number, races, "horde"), "alliance": open_to(number, races, "alliance"),
             "kills": [int(v) for v in r[9:13] if int(v) > 0], "items": [int(v) for v in r[13:19] if int(v) > 0],
             "gear": int(r[19]) > 0 or int(r[20]) > 0, "ours": number >= 9200000})
@@ -174,6 +178,39 @@ def main():
 
     zones.sort(key=lambda z: (z["low"], z["high"], z["name"]))
 
+    # ---- Dungeons and raids: their quests are filed under the dungeon itself, or under a zone with a mark ----
+    map_rows, map_fields, map_text = tool.dbc("Map.dbc")
+    instances = {}                                      # map -> (name, "dungeon" or "raid")
+    for row in map_rows:
+        v = tool.struct.unpack_from("<%dI" % map_fields, row)
+        if v[2] in (1, 2):
+            instances[v[0]] = (map_text(v[5]), "dungeon" if v[2] == 1 else "raid")
+    by_name = {name.lower(): number for number, (name, kind) in instances.items()}
+    lives_in = {}                                       # creature -> the instance it stands in
+    for entry, map_id in sql("SELECT DISTINCT id, map FROM creature WHERE map NOT IN (0, 1, 530, 571)"):
+        if int(map_id) in instances:
+            lives_in.setdefault(int(entry), int(map_id))
+
+    dungeons = {}
+    for found in quests.values():
+        for q in found:
+            area = world.areas.get(q["filed"], {})
+            where = area.get("map") if area.get("map") in instances else None
+            if where is None and q["info"] in DUNGEON_KINDS:
+                targets = list(q["kills"]) + [loot for item in q["items"] for loot in drops.get(item, ())]
+                where = next((lives_in[t] for t in targets if t in lives_in), None)
+            if where is None and q["info"] not in DUNGEON_KINDS:
+                continue
+            if where is None:                           # filed under the place outside a dungeon that has the same name
+                where = by_name.get(area.get("name", "").lower())
+            name, kind = instances.get(where, (f"{area.get('name', q['filed'])} (which dungeon or wing is not told)", DUNGEON_KINDS.get(q["info"], "dungeon")))
+            dungeons.setdefault((name, kind), []).append(q)
+    dungeon_list = []
+    for (name, kind), found in dungeons.items():
+        levels = sorted(q["level"] for q in found)
+        dungeon_list.append({"name": name, "kind": kind, "low": levels[len(levels) // 4], "high": levels[len(levels) * 3 // 4], "quests": sorted(found, key=lambda q: (q["level"], q["title"]))})
+    dungeon_list.sort(key=lambda d: (d["low"], d["high"], d["name"]))
+
     # ---- Writing it down -----------------------------------------------------------------------
     def side_cell(z, side):
         s = z["sides"][side]
@@ -217,7 +254,23 @@ def main():
             cells += [f"{len(here)}: " + ", ".join(z["name"] for z in here), str(len(full))]
         out.append(f"| {start}-{end} | {cells[0]} | {cells[1]} | {cells[2]} | {cells[3]} |")
 
-    out += ["", "## Zone by zone", ""]
+    out += ["", "## Dungeons and raids", "",
+            "Quests that belong to a dungeon or raid, by the level of the place. They are not counted in the zones' shares above. "
+            f"A place with fewer than {FEW_DUNGEON_QUESTS} quests for a side gives that side little reason to go beyond the loot.", "",
+            "| Levels | Place | Kind | Horde quests | Alliance quests | Experience, Horde | Experience, Alliance | Give gear | Note |",
+            "|---|---|---|---|---|---|---|---|---|"]
+    for d in dungeon_list:
+        horde, alliance = [q for q in d["quests"] if q["horde"]], [q for q in d["quests"] if q["alliance"]]
+        few = [side for side, mine in (("Horde", horde), ("Alliance", alliance)) if len(mine) < FEW_DUNGEON_QUESTS]
+        out.append(f"| {d['low']}-{d['high']} | {d['name']} | {d['kind']} | {len(horde)} | {len(alliance)} | {sum(xp_of(q) for q in horde):,} | {sum(xp_of(q) for q in alliance):,} | "
+                   f"{sum(q['gear'] for q in d['quests'])} | {('few for ' + ' and '.join(few)) if few else ''} |")
+    out += ["", "### The quests of each dungeon and raid", ""]
+    for d in dungeon_list:
+        out.append(f"**{d['name']}** ({d['kind']}, {d['low']}-{d['high']}): " + "; ".join(
+            f"{q['title']} ({q['level']}{'' if q['horde'] and q['alliance'] else ', Horde' if q['horde'] else ', Alliance'})" for q in d["quests"]) + ".")
+        out.append("")
+
+    out += ["## Zone by zone", ""]
     for z in zones:
         out += [f"### {z['name']} ({z['low']}-{z['high']}, {z['continent']})", ""]
         out.append(f"Going from level {z['low']} to {z['high'] + 1} costs {z['cost']:,} experience.")
