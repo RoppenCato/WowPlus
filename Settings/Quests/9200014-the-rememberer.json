@@ -39,10 +39,10 @@
     }
   ],
   "texts": {
-    "details": "I've been listenin' to the mountaineers since ye went. There's an old troll below Frostmane Hold, out west, who doesn't raid. He sits by a fire an' talks, an' the young trolls come an' hear him. Jin'zakk. A rememberer, his own kind call him.\n\nHe keeps the tale o' every valley we took from them, an' he tells it till they're ready to die gettin' one back. The raids on the south road start at his fire, an' the snowstriders carry his word from camp to camp.\n\nSenir wants him dead, an' five o' the striders with him. I'll no' pretend it's a clean thing I'm askin', $N. All he's doin' is tellin' the truth.",
+    "details": "I've been listenin' to the mountaineers since ye went. The Frostmane patriarch, Great Father Arctikus, keeps to the cave at Frostmane Hold, out west past Iceflow Lake. But it's an elder at the foot o' the Hold, Jin'zakk, who does the talkin'. The mountaineers call him the Rememberer.\n\nHe tells the young trolls what Senir told you: that all this was theirs. Then the snowstriders carry his word from camp to camp, an' the raids begin.\n\nSenir wants him dead, an' five o' the striders with him. I'll no' pretend it's a clean thing I'm askin', $N. The troll's sayin' nothin' that isn't so.",
     "objectives": "Kill Jin'zakk the Rememberer below Frostmane Hold and 5 Frostmane Snowstriders, then return to Yori Crackhelm in Kharanos.",
-    "progress": "He'll be at his fire below the Hold. The striders run the snow between there an' the lake.",
-    "completion": "Then it's done, an' the south road will be quieter for a season.\n\nIt won't last. A tale doesn't die with the one who tells it. Some young troll heard every word, an' he'll be sittin' at that fire by spring.\n\nBut I'll tell ye what I'm goin' to do, $N. When I've bairns o' my own an' they ask why the trolls hate us, I'm goin' to tell them. Here. Ye earned it."
+    "progress": "He'll be at the foot o' the Hold, south-west o' Brewnall Village. The striders run the snow around Iceflow Lake.",
+    "completion": "Then it's done, an' the roads will be quieter for a season.\n\nIt won't last. A tale doesn't die with the one who tells it. Some young troll heard every word, an' he'll be sayin' it himself by spring.\n\nBut I'll tell ye what I'm goin' to do, $N. When I've bairns o' my own an' they ask why the trolls hate us, I'm goin' to tell them. Here. Ye earned it."
   },
   "reward": {
     "money": 400,
@@ -67,5 +67,5 @@
       }
     ]
   },
-  "idea": "Chain 2 of 2: the Frostmane keep the memory of the land they lost, and the war is two and a half thousand years old."
+  "idea": "Chain 2 of 2: the Frostmane are trying to take Dun Morogh back while Ironforge is busy elsewhere; Great Father Arctikus is their patriarch."
 }

@@ -14,9 +14,9 @@
       "talk": 3188,
       "text": "Ask Master Gadrin about the Admiral's ships",
       "says": [
-        "Ya ask about de Admiral's ships? Dey came on us first, mon. De Darkspear had only just made a home on de Echo Isles.",
-        "Kul Tiras, dey call demselves. Sea humans. Dey burned de villages from de water before we saw a single face.",
-        "We left our dead an' crossed to de mainland wit' what we could carry. Den Zalazane took what de humans left. Twice de Darkspear lost dose isles, an' de first time was to dat fleet."
+        "De Admiral's ships? Dey came on us first, mon. De Darkspear had only just settled de Echo Isles when dose sails showed.",
+        "Kul Tiras, dey call demselves. Sea humans. We could not hold. Rexxar an' our batriders burned deir battleships, an' dat bought us de time ta get our people across ta dis shore.",
+        "When de Admiral was dead we went home. We had hardly set down our packs before Zalazane, one of our own, turned on us. So Vol'jin built Sen'jin Village here, an' here we still be."
       ]
     },
     {
@@ -30,10 +30,10 @@
     }
   ],
   "texts": {
-    "details": "You have seen the humans in the keep on the coast? Tiragarde. The young ones ask me why there are humans in Durotar at all, and Gar'Thok only says \"kill them.\" That is an order. It is not an answer.\n\nI was at Razor Hill when their ships came, $N. I will tell you my part after. First hear the trolls' part, because they paid before we did. Speak with Master Gadrin in Sen'jin Village, to the south.\n\nThen go to the coast and look at Tiragarde Keep. Look at how it is built, and which way its walls face.",
+    "details": "You have seen the humans in the keep on the coast? Tiragarde. The young ones ask me why there are humans in Durotar at all, and Gar'Thok only says \"kill them.\" That is an order. It is not an answer.\n\nI was here when their ships came, $N. I will tell you my part after. First hear the trolls' part, because they paid before we did. Speak with Master Gadrin in Sen'jin Village, to the south.\n\nThen go to the coast and look at Tiragarde Keep. Look at how it is built.",
     "objectives": "Ask Master Gadrin in Sen'jin Village about the Admiral's ships and look over Tiragarde Keep, then return to Magga in Razor Hill.",
     "progress": "The keep is on the coast, east and south of here. You need not go inside to see it.",
-    "completion": "The walls face inland. You saw. It was not built against the sea. It was built against us.\n\nTheir admiral was Daelin Proudmoore of Kul Tiras. In the old war he led the humans' fleets, and orcs on dragons burned his son's ships with the son aboard. He never forgave it.\n\nWhen he found us here, on the far side of the world, living quietly, he did not ask what we had become. He landed."
+    "completion": "Timber and rough stone, thrown up in a hurry. You saw. It was never meant to be lived in. It was meant to start a war from.\n\nThe one who built it was Daelin Proudmoore, Lord Admiral of Kul Tiras. In the Second War he commanded all the humans' fleets. At Crestfall, orcs on dragons burned his Third Fleet, and his eldest son Derek with it. He never forgave it.\n\nAfter the war against the Legion he sailed to Kalimdor looking for his daughter. He found us instead, on the far side of the world, living quietly. He did not ask what we had become."
   },
   "reward": {
     "money": 100,

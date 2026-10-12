@@ -11,9 +11,9 @@
   "turn_in": 3338,
   "objectives": [],
   "texts": {
-    "details": "Ya done wit' scorpids an' tigers, mon? Den ya ready for de Barrens. West over de river, past Far Watch, an' de land opens so wide ya can't see de end of it.\n\nDere be lions dat hunt in prides, an' raptors smart enough ta steal from ya. De quilboar hold de thorn hills an' de centaur ride where dey please. De Horde got one town in de middle of it all, de Crossroads, an' not enough spears.\n\nFind Sergra Darkthorn dere. She be de best hunter de orcs got. Tell her Vel'rin sends someone who can skin what dey kill.",
+    "details": "Ya done wit' scorpids an' tigers, mon? Den ya ready for de Barrens. West over de river, past Far Watch, an' de land opens so wide ya can't see de end of it.\n\nDey say it was all forest once, tended by de night elves, till de world broke an' de sun burned it flat. De tauren hunted it after dat, wit' de centaur always at deir backs. Now de Kolkar ride de north of it an' de Razormane quilboar hold de thorns. De Horde got outposts, an' de biggest be de Crossroads.\n\nSergra Darkthorn runs de Crossroads. Tell her Vel'rin sends someone who can hunt.",
     "objectives": "Cross into the Barrens and present yourself to Sergra Darkthorn at the Crossroads.",
-    "completion": "Vel'rin says so? He does not say it often.\n\nThen listen. Every hide and haunch on the caravans to Orgrimmar comes off this plain. The Barrens feeds the Horde, and it will kill you if you walk it carelessly. The quilboar and the centaur were fighting over it long before we came, and neither has agreed that we may stay.\n\nRest, $N. Then we will see what you can hunt."
+    "completion": "Vel'rin says so? He does not say it often.\n\nThe land, the water, and the sky are all as one, $N, and here you can see all three at once. Do not let that fool you into thinking the Barrens is empty. The centaur and the quilboar were here before us, and neither has agreed that we may stay.\n\nRest. Then we will see what you can hunt."
   },
   "reward": {
     "money": 350,
@@ -21,5 +21,5 @@
     "items": [],
     "choices": []
   },
-  "idea": "On the road from Durotar to the Barrens: what the plain is, who holds it, and that the Horde holds it thinly."
+  "idea": "On the road from Durotar to the Barrens: once a forest tended by the night elves, scorched after the Sundering; tauren and centaur; Kolkar and Razormane; the Crossroads as the largest Horde outpost."
 }

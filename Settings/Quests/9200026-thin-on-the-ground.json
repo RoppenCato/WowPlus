@@ -11,9 +11,9 @@
   "turn_in": 1952,
   "objectives": [],
   "texts": {
-    "details": "You are taking the south road into Silverpine? Then report to the Sepulcher for me. I cannot leave this post.\n\nKnow what you are walking into. Silverpine is ours on the map and nobody's on the ground. The mages of Dalaran still hold Ambermill. A wizard named Arugal sits in Shadowfang Keep, and the wolf-things he called up, the worgen, have the run of the woods. Pyrewood Village will smile at you by day. Do not be there at night.\n\nTell High Executor Hadrec that the rear guard holds, and that I have no one to spare him. He will have guessed.",
+    "details": "You are taking the south road into Silverpine? Then report to the Sepulcher for me. I cannot leave this post.\n\nKnow what you are walking into. The mages of Dalaran still hold Ambermill. An archmage named Arugal called up wolf-things, the worgen, to fight the Scourge; they turned on the living, and now he sits in Shadowfang Keep and calls them his children. He has cursed Pyrewood Village below it. The folk there are men by day and worgen by night.\n\nTell High Executor Hadrec that the rear guard holds, and that I have no one to spare him. He will have guessed.",
     "objectives": "Report to High Executor Hadrec at the Sepulcher in Silverpine Forest.",
-    "completion": "No one to spare. Of course not.\n\nThen you are what Tirisfal sends, and you will do. The Dark Lady wants this forest. At present the worgen have the north of it, Dalaran has the south, and what the Scourge left behind sits on Fenris Isle looking at both.\n\nSpeak to my people here, $N. There is more work than there are hands, and the hands we have keep falling off."
+    "completion": "No one to spare. Of course not.\n\nThen you are what Tirisfal sends, and you will do. Arugal's worgen have the farms to the north. Dalaran has Ambermill. And on Fenris Isle sits Thule Ravenclaw with his dead and his Rot Hide gnolls.\n\nSpeak to my people here, $N. There is more work than there are hands, and the hands we have keep falling off."
   },
   "reward": {
     "money": 300,
@@ -21,5 +21,5 @@
     "items": [],
     "choices": []
   },
-  "idea": "On the road from Tirisfal to Silverpine: Arugal and the worgen, Dalaran at Ambermill, Pyrewood, and how thinly the Forsaken hold it."
+  "idea": "On the road from Tirisfal to Silverpine: Arugal summoned the worgen against the Scourge and went mad in Shadowfang Keep; Pyrewood's curse; Dalaran at Ambermill; Thule Ravenclaw and the Rot Hides on Fenris Isle."
 }

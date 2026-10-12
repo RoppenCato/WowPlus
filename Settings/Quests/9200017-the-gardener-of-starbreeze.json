@@ -35,10 +35,10 @@
     }
   ],
   "texts": {
-    "details": "Starbreeze Village fell to the Gnarlpine. We say the furbolgs went mad, and we leave it there.\n\nBut the furbolgs were our friends for ten thousand years, $N. Madness is not a thing that simply happens to a people. Someone tends it.\n\nHunters have seen a satyr on the slope above Starbreeze, east of here. He does not fight beside the Gnarlpine. He sits and watches them, as a gardener watches what he has planted. His kind call him Xalthas the Gentle.\n\nYou have heard how they speak. Do not let this one begin.",
+    "details": "Starbreeze Village fell to the Gnarlpine. They drove out or killed everyone who lived there.\n\nThe furbolgs were our friends once, $N. It was the fel moss that turned them: they ate of it and went berserk. Why fel moss grows on this tree at all is a harder question.\n\nBut I know this. Where a land sickens, satyrs gather. They feed on corruption and they spread it, and on the mainland they have been found doing so among furbolgs. Hunters have seen one on the slope above Starbreeze, east of here, watching the Gnarlpine. His kind call him Xalthas the Gentle.\n\nYou have heard how they speak. Do not let this one begin.",
     "objectives": "Kill Xalthas the Gentle on the slope above Starbreeze Village, then return to Orenthil Whisperwind in Dolanaar.",
     "progress": "He will be above the village, where he can see all of it.",
-    "completion": "One voice fewer in the dark. The Gnarlpine will not wake from it tomorrow, but no one is whispering to them tonight.\n\nYou will meet more of his kind on the mainland. Ashenvale is thick with them. When you do, remember both halves of what you learned here: they were of our blood, and they chose.\n\nTake this, with my thanks."
+    "completion": "One voice fewer in the dark. It will not cure the Gnarlpine; the moss is still in them. But nothing is feeding on their ruin tonight.\n\nYou will meet more of his kind on the mainland. Ashenvale is thick with them. When you do, remember both halves of what you learned here: they were of our blood, and they chose.\n\nTake this, with my thanks."
   },
   "reward": {
     "money": 330,
@@ -63,5 +63,5 @@
       }
     ]
   },
-  "idea": "Chain 2 of 2: a satyr tends the corruption of the Gnarlpine at Starbreeze Village, a place the game asks nothing of."
+  "idea": "Chain 2 of 2: fel moss turned the Gnarlpine, who took Starbreeze Village; satyrs feed on and spread corruption. Uses a place the game asks nothing of."
 }

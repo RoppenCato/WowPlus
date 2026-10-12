@@ -21,7 +21,7 @@
     }
   ],
   "texts": {
-    "details": "There is a grave north-east of here that the Deathguards walk past without turning their heads. I would have you turn yours.\n\nAlonsus Faol was Archbishop of the Church of the Light when Lordaeron was whole. When the orcs came, in the Second War, he saw that faith alone would not stop an axe, and that a sword alone had nothing to stand for. So he took knights and taught them to pray, and took priests and taught them to fight. Uther was the first of them. Those were the Knights of the Silver Hand: the first paladins.\n\nHe lies at Faol's Rest. Go and read the stone.",
+    "details": "There is a grave north-east of here that the Deathguards walk past without turning their heads. I would have you turn yours.\n\nAlonsus Faol was Archbishop of the Church of the Holy Light. In the first war with the orcs the clerics of Northshire were slaughtered, for they had never been taught to fight. So when the Second War began, Faol went to Lord Lothar with a plan: knights who could pray, and priests who could stand in a battle line. He trained them himself, with his apprentice Uther, and Uther was the first of them. Those were the Knights of the Silver Hand: the first paladins.\n\nHe died before the plague came, and was spared seeing it.\n\nHe lies at Faol's Rest. Go and read the stone.",
     "objectives": "Visit the grave of Archbishop Alonsus Faol at Faol's Rest, then return to Dark Cleric Beryl in Brill.",
     "progress": "North-east of Brill, off the road that climbs toward the monastery. Go no further than the grave; the Crusade holds the ground beyond it.",
     "completion": "You read it. Good.\n\nMost of us prayed to his Light while we lived, $N. It did not answer when the plague came, and it burns us now. So we follow the Shadow instead, and we do not apologize for it.\n\nBut I do not forget whose grave lies on our land. The Scarlet ones up the road call him theirs. He would not have known them."
@@ -32,5 +32,5 @@
     "items": [],
     "choices": []
   },
-  "idea": "A place nothing is asked of you: who Alonsus Faol was, and where paladins came from, told by a Forsaken priest."
+  "idea": "A place nothing is asked of you: Alonsus Faol founded the Knights of the Silver Hand with Lothar's leave at the start of the Second War, after the Northshire clerics were massacred; Uther, his apprentice, was the first paladin; he died before the Third War."
 }

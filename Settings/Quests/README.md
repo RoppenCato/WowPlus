@@ -142,16 +142,16 @@ The picker looks further out from where the enemy lives when the nearby ground i
 | `9200011-arms-for-the-militia.json` | Elwynn to Westfall, level 9. Quartermaster Hudson at Westbrook Garrison sends you to Quartermaster Lewis at Sentinel Hill. |
 | `9200012-word-for-three-corners.json` | Elwynn to Redridge, level 10. Drake Lindgren at Eastvale Logging Camp sends you to Guard Parker at the Three Corners. |
 | `9200013-older-than-the-forge.json` | Dun Morogh, level 7, Alliance. Yori Crackhelm in Kharanos: ask Senir Whitebeard about the Frostmane and look over Shimmer Ridge. First of two. |
-| `9200014-the-rememberer.json` | Level 9. Kill Jin'zakk the Rememberer below Frostmane Hold (a new enemy) and 5 Frostmane Snowstriders. Choice of four rewards. |
+| `9200014-the-rememberer.json` | Level 9. Kill Jin'zakk the Rememberer at the foot of Frostmane Hold (a new enemy) and 5 Frostmane Snowstriders. Choice of four rewards. |
 | `9200015-troggs-in-the-diggings.json` | Dun Morogh to Loch Modan, level 10. Prospector Gehn at Gol'Bolar Quarry sends you to Mountaineer Cobbleflint at the Valley of Kings. |
 | `9200016-once-of-our-blood.json` | Teldrassil, level 6, Alliance. Orenthil Whisperwind in Dolanaar: ask Moon Priestess Amara what a satyr is, and hear out Zenn Foulhoof. First of two. |
 | `9200017-the-gardener-of-starbreeze.json` | Level 8. Kill Xalthas the Gentle, a satyr on the slope above Starbreeze Village (a new enemy). Choice of four rewards. |
-| `9200018-no-answer-from-darnassus.json` | Teldrassil to Darkshore, level 10. Daryn Lightwind in Rut'theran Village sends you to Thundris Windweaver in Auberdine. |
+| `9200018-hands-for-auberdine.json` | Teldrassil to Darkshore, level 10. Daryn Lightwind in Rut'theran Village sends you to Thundris Windweaver, the elder of Auberdine. |
 | `9200019-sails-from-the-east.json` | Durotar, level 7, Horde. Magga in Razor Hill: ask Master Gadrin about the Admiral's ships and look over Tiragarde Keep. First of three. |
 | `9200020-the-admiral-s-last-order.json` | Level 8. Take the Musty Letter from Quartermaster Tidewell on the shore below Tiragarde Keep (a new enemy). |
 | `9200021-for-the-darkspear.json` | Durotar to Orgrimmar, level 9. Bring the letter to Vol'jin in Grommash Hold. Choice of four rewards. |
 | `9200022-bigger-game.json` | Durotar to the Barrens, level 11. Vel'rin Fang in Sen'jin Village sends you to Sergra Darkthorn at the Crossroads. |
-| `9200023-the-first-landing.json` | Tirisfal Glades, level 8, Horde. Claire Willower in Brill: ask Cain Firesong what Tirisfal means and stand at Stillwater Pond. First of two. |
+| `9200023-the-first-landing.json` | Tirisfal Glades, level 9, Horde. Claire Willower in Brill: ask Cain Firesong what Tirisfal means and look into Venomweb Vale. First of two. |
 | `9200024-what-the-tide-kept.json` | Level 9. Bring 4 Elven Cup Relics from the Vile Fin murlocs of the north coast. Choice of four rewards. |
 | `9200025-the-archbishop-s-grave.json` | Tirisfal Glades, level 8, Horde. Dark Cleric Beryl in Brill sends you to the grave at Faol's Rest. |
 | `9200026-thin-on-the-ground.json` | Tirisfal to Silverpine, level 10. Deathguard Linnea sends you to High Executor Hadrec at the Sepulcher. |

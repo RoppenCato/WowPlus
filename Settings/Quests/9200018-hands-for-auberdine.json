@@ -1,0 +1,25 @@
+{
+  "id": 9200018,
+  "title": "Hands for Auberdine",
+  "level": 10,
+  "min_level": 7,
+  "max_level": 0,
+  "side": "alliance",
+  "zone": 141,
+  "type": "deliver",
+  "giver": 7907,
+  "turn_in": 3649,
+  "objectives": [],
+  "texts": {
+    "details": "You are sailing for the mainland? Then you are leaving the bough for the root of things, and you should know what waits there.\n\nDarkshore is an old coast. Ten thousand years ago the Highborne had twin cities on it, Ameth'Aran and Bashal'Aran. The War of the Ancients ruined both, and their dead have not left. The Blackwood furbolgs have turned as our Gnarlpine did. And the sea has begun throwing great creatures up the beach, which the Temple of the Moon is trying to understand.\n\nThundris Windweaver is the elder of Auberdine and sees to all of it. Tell him the Lore Keeper sends him a pair of hands, since he has too few.",
+    "objectives": "Take the boat from Rut'theran Village and present yourself to Thundris Windweaver, the elder of Auberdine in Darkshore.",
+    "completion": "Daryn sends you? Then you are welcome, and needed.\n\nDark forces encroach upon our borders, ancient taints resurface, and new evils emerge. The ruins stir. The Blackwood grow worse by the season, and I do not yet know what is poisoning them. And every tide leaves something dead on our sand.\n\nAuberdine is the only stronghold on this coast, $N. Speak with the others here. There is work for you in every direction."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 4,
+    "items": [],
+    "choices": []
+  },
+  "idea": "On the road from Teldrassil to Darkshore: the twin Highborne cities ruined in the War of the Ancients, the corrupted Blackwood, the creatures washing ashore, and Thundris as elder of Auberdine."
+}

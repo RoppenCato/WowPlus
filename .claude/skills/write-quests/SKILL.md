@@ -25,6 +25,10 @@ Settle these from the request, and ask only if they cannot be guessed:
 - **Variation.** Not only "kill ten of these". Mix the kinds of task within a chain and across a zone.
 - Old world only for now (no Outland, no Northrend), from the lowest levels upward.
 
+## The one rule that is never skipped (Robin, 2026-10-12)
+
+**Look the lore up before writing, every time, for every quest**, road quests and the zone they lead to included. Do not write from memory and do not save time here: a batch of fourteen quests written from memory had to be redone the same day. History, causes, who did what, names, dates and relationships come from the wiki. The only things made up are small ones a quest needs to work: a giver's reason for asking, a minor named enemy, an item to carry. Prefer a real place and a real cause over an invented one (Venomweb Vale, where the Council of Tirisfal really met, instead of a pond with a made-up mood). In `Stories.md`, write which wiki pages the facts came from and exactly what was invented.
+
 ## The steps
 
 ### 1. Look up the zone in the game

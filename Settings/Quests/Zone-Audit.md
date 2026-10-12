@@ -508,7 +508,7 @@ Going from level 5 to 11 costs 30,400 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 51 | 0 | 44,251 | 146% | 21 | 1:2 2:2 3:2 4:2 5:6 6:3 7:4 8:8 9:6 10:6 11:4 12:3 13:1 20:1 55:1 | nothing; it carries itself |
+| Horde | 51 | 0 | 44,341 | 146% | 21 | 1:2 2:2 3:2 4:2 5:6 6:3 7:4 8:7 9:7 10:6 11:4 12:3 13:1 20:1 55:1 | nothing; it carries itself |
 
 **Enemies no quest uses:** Hungering Dead (7-8, 10 of them), Tirisfal Farmer (6-7, 9 of them), Scarlet Vanguard (10-11, 9 of them), Tirisfal Farmhand (5-6, 8 of them), Scarlet Neophyte (10-11, 5 of them), Shambling Horror (8-9, 4 of them), Lost Soul (6-7, 4 of them).
 
@@ -1329,12 +1329,12 @@ Going from level 80 to 81 costs 0 experience.
 | 9200015 | Troggs in the Diggings | Dun Morogh | 10 | alliance | deliver |
 | 9200016 | Once of Our Blood | Teldrassil | 6 | alliance | visit |
 | 9200017 | The Gardener of Starbreeze | Teldrassil | 8 | alliance | slay |
-| 9200018 | No Answer from Darnassus | Teldrassil | 10 | alliance | deliver |
+| 9200018 | Hands for Auberdine | Teldrassil | 10 | alliance | deliver |
 | 9200019 | Sails from the East | Durotar | 7 | horde | visit |
 | 9200020 | The Admiral's Last Order | Durotar | 8 | horde | collect |
 | 9200021 | For the Darkspear | Durotar | 9 | horde | deliver |
 | 9200022 | Bigger Game | Durotar | 11 | horde | deliver |
-| 9200023 | The First Landing | Tirisfal Glades | 8 | horde | visit |
+| 9200023 | The First Landing | Tirisfal Glades | 9 | horde | visit |
 | 9200024 | What the Tide Kept | Tirisfal Glades | 9 | horde | collect |
 | 9200025 | The Archbishop's Grave | Tirisfal Glades | 8 | horde | visit |
 | 9200026 | Thin on the Ground | Tirisfal Glades | 10 | horde | deliver |

@@ -41,10 +41,10 @@
     }
   ],
   "texts": {
-    "details": "Here is my part. Proudmoore's marines came up from the coast and we held them at Razor Hill. Then the Warchief and the Mok'Nathal, Rexxar, took the fight across the sea to Theramore, and the Admiral died there. His own daughter Jaina stood aside and let us pass. She had tried to stop him.\n\nThe fleet went home. The men in Tiragarde did not. All this time, and they hold that keep as if he were coming back.\n\nI want to know what they were told, $N. One of their officers, Tidewell, keeps the stores on the shore below the keep. Officers keep letters. Bring me his.",
+    "details": "Here is my part. We took that keep from him once. The Warchief and Rexxar of the Mok'nathal broke his camp on this coast, and he fell back over the water to Theramore, his daughter's city.\n\nJaina Proudmoore had begged him to stop. When he would not, she showed the Warchief where ships could be had, and asked only that her own people be spared. Rexxar killed the Admiral in his citadel. Thrall kept his word and left Theramore in peace.\n\nSo who holds the keep now? Not his army. These came after: his reserve, under his second, Lieutenant Benedict. Their quartermaster, Tidewell, counts stores on the shore below the walls. A quartermaster writes everything down. Bring me what he carries.",
     "objectives": "Kill Quartermaster Tidewell on the shore below Tiragarde Keep and bring the Musty Letter he carries to Magga in Razor Hill.",
-    "progress": "He will have it on him. A man who holds a beach for years holds on to the order that put him there.",
-    "completion": "Give it here. My eyes are slow with their letters.\n\n\"Hold the landing until relieved. No terms with the greenskins. D.P.\"\n\nThat is all of it. He never wrote again. He was dead before the season turned, and nobody came to tell them.\n\nThey are holding a beach for a dead man, $N. I thought I would be glad to know it."
+    "progress": "He will have it on him. Men like that trust paper more than they trust the sea.",
+    "completion": "Give it here. My eyes are slow with their letters.\n\n\"Stores for forty days. The Lieutenant says we hold to the Admiral's orders, written before he sailed: finish what was begun. Lieutenant Alverold's ships are expected. No sail yet.\"\n\nWritten before he ever left Kul Tiras, $N. The Admiral is dead, his daughter has made peace, and these men are still obeying him. They are waiting for a fleet.\n\nI thought I would be glad to know it."
   },
   "reward": {
     "money": 200,
@@ -57,5 +57,5 @@
     ],
     "choices": []
   },
-  "idea": "Chain 2 of 3: Proudmoore's siege, Rexxar and Theramore, Jaina standing aside, and the garrison nobody relieved."
+  "idea": "Chain 2 of 3: how the Admiral was beaten and killed at Theramore, what Jaina did, and that the men in the keep now are his reserve under Lieutenant Benedict, following orders written before he sailed and waiting for Alverold's fleet."
 }
