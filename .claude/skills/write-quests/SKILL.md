@@ -17,6 +17,14 @@ Settle these from the request, and ask only if they cannot be guessed:
 - **Side.** Horde, Alliance or both. Default: the side of the character Robin plays (the health check `Test-Bots.py` prints who played last), and "both" only for neutral towns.
 - **Shape.** A chain of 2 to 3 quests, or 2 to 3 separate ones. Default: a chain when the story has a beginning and an end; separate quests when it is a place with several small truths.
 
+## What the quests are for (Robin, 2026-10-12)
+
+- **Something on the way.** Quests along the roads between zones, so that travelling has something in it.
+- **The peoples and places the game says little about.** The kobolds of Elwynn, the quilboar of the Barrens: the wikis know far more about them than the game's own quests tell.
+- **Fresh things to do and see.** A quest the player has not done before is the point.
+- **Variation.** Not only "kill ten of these". Mix the kinds of task within a chain and across a zone.
+- Old world only for now (no Outland, no Northrend), from the lowest levels upward.
+
 ## The steps
 
 ### 1. Look up the zone in the game
@@ -44,6 +52,8 @@ Write down five to eight candidate stories, one or two lines each, each with: wh
 Go through the existing quests (step 1) and strike every candidate whose story the zone already tells, or whose task is the same enemies for the same reason. Also read `Settings/Quests/Stories.md`, the record of stories our own quests have used, and strike those.
 
 A different angle on a known subject is fine (the quilboar from the quilboar's side); the same angle is not.
+
+**Overlap is welcome when it adds lore** (Robin, 2026-10-12). A quest may send the player to the same enemies or the same place as an existing quest if it tells something the existing one does not: the two can then be done together, which is pleasant. What is struck is retelling, not sharing ground. Even so, places and enemies that no quest uses (the zone's entry in `Settings/Quests/Zone-Audit.md` lists them) come first when the story allows.
 
 ### 5. Choose one
 
