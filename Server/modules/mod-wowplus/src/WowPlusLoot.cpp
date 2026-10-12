@@ -31,6 +31,7 @@
 #include "WowPlusItems.h"
 
 #include <array>
+#include <unordered_map>
 #include <vector>
 
 namespace
@@ -432,6 +433,80 @@ namespace
         return 0;
     }
 
+    // ---------------------------------------------------------------------------------------
+    // Dungeon and raid bosses: more of their own loot, and drops that are new on this server
+    // ---------------------------------------------------------------------------------------
+
+    // What a boss can drop besides the game's own roll. Read from the table wowplus_boss_loot, which
+    // Settings/Scripts/Make-Boss-Loot.py makes at every start (it also writes the loot book addon's
+    // data from the same lists, so the book and the game agree).
+    struct BossDrops
+    {
+        std::vector<std::pair<ItemTemplate const*, float>> own;    // its own gear, with the game's chance as weight
+        ItemList fresh;                                             // new here: about one item aimed at each class
+    };
+
+    std::unordered_map<uint32, BossDrops> bossDrops;        // creature template -> drops
+    bool bossLootEnabled = true;
+    float bossExtraChance = 100.0f;
+    float bossNewChance = 40.0f;
+
+    void LoadBossDrops()
+    {
+        bossDrops.clear();
+        if (!WorldDatabase.Query("SHOW TABLES LIKE 'wowplus_boss_loot'"))
+        {
+            LOG_INFO("server.loading", ">> WowPlus boss loot: no list yet (Settings/Scripts/Make-Boss-Loot.py makes it at start; it needs Python)");
+            return;
+        }
+
+        uint32 fresh = 0;
+        if (QueryResult result = WorldDatabase.Query("SELECT creature, item, fresh, weight FROM wowplus_boss_loot"))
+            do
+            {
+                Field* fields = result->Fetch();
+                ItemTemplate const* proto = sObjectMgr->GetItemTemplate(fields[1].Get<uint32>());
+                if (!proto)
+                    continue;
+
+                BossDrops& drops = bossDrops[fields[0].Get<uint32>()];
+                if (fields[2].Get<uint8>())
+                {
+                    drops.fresh.push_back(proto);
+                    ++fresh;
+                }
+                else
+                    drops.own.emplace_back(proto, std::max(0.01f, fields[3].Get<float>()));
+            } while (result->NextRow());
+
+        LOG_INFO("server.loading", ">> WowPlus boss loot: {} bosses, {} new drops among them", bossDrops.size(), fresh);
+    }
+
+    // The drops of this creature, if it is a boss on the list. A heroic or 25-player boss has its own list.
+    BossDrops const* DropsOf(Creature const* creature)
+    {
+        auto found = bossDrops.find(creature->GetCreatureTemplate()->Entry);
+        if (found == bossDrops.end())
+            found = bossDrops.find(creature->GetEntry());
+        return found == bossDrops.end() ? nullptr : &found->second;
+    }
+
+    ItemTemplate const* PickOwn(BossDrops const& drops)
+    {
+        float total = 0.0f;
+        for (auto const& [proto, weight] : drops.own)
+            total += weight;
+
+        float roll = frand(0.0f, total);
+        for (auto const& [proto, weight] : drops.own)
+        {
+            if (roll <= weight)
+                return proto;
+            roll -= weight;
+        }
+        return drops.own.empty() ? nullptr : drops.own.back().first;
+    }
+
     bool IsGrey(uint32 playerLevel, uint32 sourceLevel)
     {
         return sourceLevel <= Acore::XP::GetGrayLevel(uint8(playerLevel));
@@ -462,11 +537,15 @@ public:
     void OnAfterConfigLoad(bool /*reload*/) override
     {
         LoadConfig();
+        bossLootEnabled = sConfigMgr->GetOption<bool>("WowPlus.BossLoot.Enable", true);
+        bossExtraChance = sConfigMgr->GetOption<float>("WowPlus.BossLoot.ExtraChance", 100.0f);
+        bossNewChance = sConfigMgr->GetOption<float>("WowPlus.BossLoot.NewChance", 40.0f);
     }
 
     void OnStartup() override
     {
         BuildItemPools();
+        LoadBossDrops();
     }
 };
 
@@ -509,6 +588,7 @@ public:
         }
 
         EnemyRank rank = RANK_NORMAL;
+        BossDrops const* boss = nullptr;
         WorldObject const* source = nullptr;
         uint32 sourceLevel = 0;                             // 0: no level to compare with
 
@@ -521,7 +601,10 @@ public:
             source = creature;
             sourceLevel = creature->GetLevel();
 
-            if (creature->IsDungeonBoss() || creature->isWorldBoss())
+            if (bossLootEnabled)
+                boss = DropsOf(creature);
+
+            if (boss || creature->IsDungeonBoss() || creature->isWorldBoss())
                 rank = RANK_BOSS;
             else if (creature->GetCreatureTemplate()->rank == CREATURE_ELITE_RARE ||
                 creature->GetCreatureTemplate()->rank == CREATURE_ELITE_RAREELITE)
@@ -562,10 +645,31 @@ public:
             return;
         }
 
-        bool const rolled = roll_chance_f(config.chance[rank]);
-        ItemTemplate const* equipment = rolled ? PickEquipment(player, rank) : nullptr;
-        if (equipment)
-            GiveItem(player, loot, equipment);
+        // A boss of a dungeon or raid: one more of what it drops anyway, and sometimes one of its new drops.
+        // Neither looks at who is playing; what you cannot use is for an alt, a friend or the auction house.
+        // This stands in for the surprise roll that every other enemy gets.
+        bool rolled = false;
+        ItemTemplate const* equipment = nullptr;
+        if (boss)
+        {
+            rolled = true;
+            if (roll_chance_f(bossExtraChance))
+                if ((equipment = PickOwn(*boss)))
+                    GiveItem(player, loot, equipment);
+
+            if (!boss->fresh.empty() && roll_chance_f(bossNewChance))
+            {
+                equipment = boss->fresh[urand(0, boss->fresh.size() - 1)];
+                GiveItem(player, loot, equipment);
+            }
+        }
+        else
+        {
+            rolled = roll_chance_f(config.chance[rank]);
+            equipment = rolled ? PickEquipment(player, rank) : nullptr;
+            if (equipment)
+                GiveItem(player, loot, equipment);
+        }
 
         if (config.debug)
             LOG_INFO("module", "WowPlus loot: {} (level {}, rank {}, chance {}%) for {} (level {}, {}): {}", source->GetName(), sourceLevel, uint32(rank),

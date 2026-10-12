@@ -125,6 +125,13 @@ if ($short) {
     & $mysql $myini -e "UPDATE acore_playerbots.playerbots_account_type SET account_type = 1 WHERE account_type = 0" 2>&1 | Out-Null
 }
 
+# What bosses drop: the list for the game and the same list for the loot book addon, made from the
+# game's loot tables and the world seed (Settings\Docs\Boss-Loot.md). Needs Python; without it the
+# lists from last time stay.
+if (Get-Command python -ErrorAction SilentlyContinue) {
+    & python (Join-Path $PSScriptRoot 'Scripts\Make-Boss-Loot.py') 2>&1 | ForEach-Object { Write-Host $_ }
+}
+
 # Our own addons (Client\AddOns) are copied into every game copy, so the game always has the
 # version that matches the server. A running game picks them up after /reload or a restart.
 foreach ($client in Get-ChildItem (Join-Path $root 'Client') -Directory -ErrorAction SilentlyContinue | Where-Object { Test-Path (Join-Path $_.FullName 'Wow.exe') }) {
