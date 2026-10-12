@@ -668,11 +668,13 @@ WowPlus.BotChat.Guild.SpeakFirst.AnswerChance  = 50
 #        Default: 1, and 2 levels
 #
 #    WowPlus.Bots.Companions.Enable
-#        Companions are up to two guild mates you choose:
-#          .bots companion add <name>     .bots companion remove <name>     .bots companion list
-#          .bots call      they join your party and come to you
-#          .bots dismiss   they leave the party
+#        A companion is any guild mate who is in your party; nothing is chosen beforehand.
+#          .bots call           the guild mates you travelled with last join your party
+#          .bots call <name>    that guild mate joins your party
+#          .bots dismiss        the guild mates in your party leave it
 #        While they travel with you they do small things by themselves.
+#        To build the guild: .bots meet (someone introduces themselves), .bots keep (they
+#        join your guild), .bots pass.
 #        Default: 1
 #
 #    WowPlus.Bots.Companions.IdleSeconds, Campfire

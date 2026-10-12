@@ -11,8 +11,11 @@
  * - Guild mates keep up: a random bot in the player's guild is brought to the player's level,
  *   with gear to match, whenever it has fallen behind or is far ahead. Someone invited today
  *   has "caught up" by the next login.
- * - Companions: up to two guild mates the player has chosen. ".bots call" brings them into
- *   the party, ".bots dismiss" lets them go. While in the party they do small things by
+ * - Building a guild: ".bots meet" has someone walk up and introduce themselves; ".bots keep"
+ *   invites them to the player's guild, ".bots meet" again brings someone else.
+ * - Companions: any guild mate who is in the player's party. Nothing is chosen beforehand.
+ *   ".bots call" brings back the guild mates the player travelled with last, ".bots call <name>"
+ *   one of them, ".bots dismiss" lets them go. While in the party they do small things by
  *   themselves: light a fire and sit down when the player rests, a gesture or a remark on
  *   the road.
  *
@@ -68,12 +71,12 @@ namespace
     constexpr uint32 CHECK_INTERVAL = 5000;                 // ms between looks at the real players
     constexpr uint32 GUILD_CHECK_INTERVAL = 30000;          // ms between looks at the guild mates' levels
     constexpr uint8 DEATH_KNIGHT_FIRST_LEVEL = 55;
-    constexpr uint32 MAX_COMPANIONS = 2;
+    constexpr uint32 MAX_COMPANIONS = 4;                    // the rest of a party
     constexpr float COMPANION_RANGE = 40.0f;
 
     std::string const SETTING_SOURCE = "mod-wowplus-bots";
     constexpr uint32 SETTING_ALONE = 0;
-    constexpr uint32 SETTING_COMPANION_FIRST = 1;           // and the one after it: the companions' GUIDs
+    constexpr uint32 SETTING_COMPANION_FIRST = 1;           // and the three after it: the guild mates last travelled with
 
     bool buffsEnabled = true;
     uint32 buffMinSeconds = 90;
@@ -288,16 +291,52 @@ namespace
             player->UpdatePlayerSetting(SETTING_SOURCE, SETTING_COMPANION_FIRST + i, i < ids.size() ? uint32(ids[i]) : 0);
     }
 
-    // The companions that are online right now
+    // A companion is any guild mate who is in the player's party. Nothing has to be chosen beforehand.
     std::vector<Player*> Companions(Player* player)
+    {
+        std::vector<Player*> found;
+        Group* group = player->GetGroup();
+        if (!group || !player->GetGuildId())
+            return found;
+
+        for (GroupReference* itr = group->GetFirstMember(); itr != nullptr; itr = itr->next())
+            if (Player* bot = itr->GetSource())
+                if (bot != player && bot->IsInWorld() && IsBot(bot) && bot->GetGuildId() == player->GetGuildId())
+                    found.push_back(bot);
+
+        return found;
+    }
+
+    // The guild mates the player travelled with last, who are online now: the ones ".bots call" brings back
+    std::vector<Player*> LastCompanions(Player* player)
     {
         std::vector<Player*> found;
         for (ObjectGuid::LowType id : CompanionIds(player))
             if (Player* bot = ObjectAccessor::FindPlayerByLowGUID(id))
-                if (bot->IsInWorld() && IsBot(bot))
+                if (bot->IsInWorld() && IsBot(bot) && player->GetGuildId() && bot->GetGuildId() == player->GetGuildId())
                     found.push_back(bot);
 
         return found;
+    }
+
+    // Whoever travels with the player now is who comes back at the next call
+    void RememberCompanions(Player* player)
+    {
+        std::vector<ObjectGuid::LowType> now;
+        for (Player* bot : Companions(player))
+            if (now.size() < MAX_COMPANIONS)
+                now.push_back(bot->GetGUID().GetCounter());
+
+        if (!now.empty() && now != CompanionIds(player))
+            StoreCompanionIds(player, now);
+    }
+
+    void InviteToParty(Player* player, Player* bot)
+    {
+        WorldPacket invite(CMSG_GROUP_INVITE, bot->GetName().size() + 5);
+        invite << bot->GetName();
+        invite << uint32(0);
+        player->GetSession()->HandleGroupInviteOpcode(invite);
     }
 
     void StandUp(CompanionState& state)
@@ -329,10 +368,12 @@ namespace
         if (!player->IsAlive() || player->IsInCombat() || player->IsInFlight() || player->InBattleground() || !player->GetGroup())
             return;
 
+        RememberCompanions(player);
+
         // Those travelling with the player and free to do something
         std::vector<Player*> present;
         for (Player* bot : Companions(player))
-            if (bot->GetGroup() == player->GetGroup() && bot->GetMap() == player->GetMap() && bot->IsAlive() && !bot->IsInCombat() &&
+            if (bot->GetMap() == player->GetMap() && bot->IsAlive() && !bot->IsInCombat() &&
                 !bot->IsMounted() && bot->IsWithinDist(player, COMPANION_RANGE))
                 present.push_back(bot);
 
@@ -403,7 +444,7 @@ namespace
     }
 
     // ---------------------------------------------------------------------------------------
-    // Meeting someone: a possible companion walks up and introduces themselves
+    // Meeting someone: a possible guild mate walks up and introduces themselves
     // ---------------------------------------------------------------------------------------
 
     constexpr float MEETING_DISTANCE = 4.0f;                // how far in front of the player the bot stands
@@ -628,13 +669,6 @@ public:
 
     ChatCommandTable GetCommands() const override
     {
-        static ChatCommandTable companionTable =
-        {
-            { "add",    HandleCompanionAdd,    SEC_PLAYER, Console::No },
-            { "remove", HandleCompanionRemove, SEC_PLAYER, Console::No },
-            { "list",   HandleCompanionList,   SEC_PLAYER, Console::No },
-        };
-
         static ChatCommandTable botsTable =
         {
             { "away",      HandleAway,    SEC_PLAYER, Console::No },
@@ -644,7 +678,6 @@ public:
             { "meet",      HandleMeet,    SEC_PLAYER, Console::No },
             { "keep",      HandleKeep,    SEC_PLAYER, Console::No },
             { "pass",      HandlePass,    SEC_PLAYER, Console::No },
-            { "companion", companionTable },
         };
 
         static ChatCommandTable commandTable =
@@ -687,115 +720,65 @@ public:
         return true;
     }
 
-    // .bots companion add <name>: a guild mate becomes a companion
-    static bool HandleCompanionAdd(ChatHandler* handler, std::string name)
-    {
-        Player* player = handler->GetPlayer();
-        if (!player || !normalizePlayerName(name))
-            return false;
-
-        Player* bot = ObjectAccessor::FindPlayerByName(name);
-        if (!bot || !IsBot(bot) || !player->GetGuildId() || bot->GetGuildId() != player->GetGuildId())
-        {
-            handler->PSendSysMessage("{} must be a bot in your guild, and online. Invite them with /ginvite first.", name);
-            return true;
-        }
-
-        std::vector<ObjectGuid::LowType> ids = CompanionIds(player);
-        if (std::find(ids.begin(), ids.end(), bot->GetGUID().GetCounter()) != ids.end())
-        {
-            handler->PSendSysMessage("{} is your companion already.", name);
-            return true;
-        }
-
-        if (ids.size() >= MAX_COMPANIONS)
-        {
-            handler->PSendSysMessage("You have {} companions already. Remove one first: .bots companion remove <name>", MAX_COMPANIONS);
-            return true;
-        }
-
-        ids.push_back(bot->GetGUID().GetCounter());
-        StoreCompanionIds(player, ids);
-        handler->PSendSysMessage("{} is now your companion. \".bots call\" brings your companions to you, \".bots dismiss\" lets them go.", name);
-        return true;
-    }
-
-    static bool HandleCompanionRemove(ChatHandler* handler, std::string name)
-    {
-        Player* player = handler->GetPlayer();
-        if (!player || !normalizePlayerName(name))
-            return false;
-
-        std::vector<ObjectGuid::LowType> ids = CompanionIds(player);
-        ObjectGuid const guid = sCharacterCache->GetCharacterGuidByName(name);
-        auto found = std::find(ids.begin(), ids.end(), guid.GetCounter());
-        if (!guid || found == ids.end())
-        {
-            handler->PSendSysMessage("{} is not one of your companions.", name);
-            return true;
-        }
-
-        ids.erase(found);
-        StoreCompanionIds(player, ids);
-        handler->PSendSysMessage("{} is no longer your companion. They stay in the guild.", name);
-        return true;
-    }
-
-    static bool HandleCompanionList(ChatHandler* handler)
+    // .bots call: the guild mates the player travelled with last join the party and come over.
+    // .bots call <name>: that guild mate.
+    static bool HandleCall(ChatHandler* handler, Optional<std::string> who)
     {
         Player* player = handler->GetPlayer();
         if (!player)
             return false;
 
-        std::vector<ObjectGuid::LowType> const ids = CompanionIds(player);
-        if (ids.empty())
+        if (!player->GetGuildId())
         {
-            handler->SendSysMessage("You have no companions. Choose a guild mate: .bots companion add <name>");
+            handler->SendSysMessage("Companions are the people of your guild. Start a guild, and build it with \".bots meet\".");
             return true;
         }
 
-        for (ObjectGuid::LowType id : ids)
+        std::vector<Player*> wanted;
+        if (who)
         {
-            std::string name;
-            sCharacterCache->GetCharacterNameByGuid(ObjectGuid::Create<HighGuid::Player>(id), name);
-            Player* bot = ObjectAccessor::FindPlayerByLowGUID(id);
-            handler->PSendSysMessage("Companion: {} ({})", name, bot ? "online, level " + std::to_string(bot->GetLevel()) : "not online");
+            std::string name = *who;
+            Player* bot = normalizePlayerName(name) ? ObjectAccessor::FindPlayerByName(name) : nullptr;
+            if (!bot || !IsBot(bot) || bot->GetGuildId() != player->GetGuildId())
+            {
+                handler->PSendSysMessage("{} is not a guild mate who is online.", name);
+                return true;
+            }
+            wanted.push_back(bot);
         }
-        return true;
-    }
+        else
+            wanted = LastCompanions(player);
 
-    // .bots call: the companions join the party and come to the player
-    static bool HandleCall(ChatHandler* handler)
-    {
-        Player* player = handler->GetPlayer();
-        if (!player)
-            return false;
-
-        std::vector<Player*> const companions = Companions(player);
-        if (companions.empty())
+        if (wanted.empty())
         {
-            handler->SendSysMessage("None of your companions is online. Choose one with: .bots companion add <name>");
+            handler->SendSysMessage("Nobody to call yet. Invite a guild mate to your party (the menu lists who is online); next time \".bots call\" brings the same people back.");
             return true;
         }
 
-        for (Player* bot : companions)
+        uint32 coming = 0;
+        for (Player* bot : wanted)
         {
             if (player->GetGroup() && player->GetGroup() == bot->GetGroup())
             {
                 // Already travelling together: just come here
                 if (!bot->IsInCombat() && !bot->IsWithinDist(player, COMPANION_RANGE))
                     bot->TeleportTo(player->GetMapId(), player->GetPositionX(), player->GetPositionY(), player->GetPositionZ(), player->GetOrientation());
+                ++coming;
                 continue;
             }
 
-            // The ordinary invitation; the bot accepts and the bot module brings it over
-            WorldPacket invite(CMSG_GROUP_INVITE, bot->GetName().size() + 5);
-            invite << bot->GetName();
-            invite << uint32(0);
-            player->GetSession()->HandleGroupInviteOpcode(invite);
+            if (bot->GetGroup())
+            {
+                handler->PSendSysMessage("{} is in another group right now.", bot->GetName());
+                continue;
+            }
+
+            InviteToParty(player, bot);                     // the bot accepts and is brought over
+            ++coming;
         }
 
-        handler->SendSysMessage("Your companions are on their way.");
+        if (coming)
+            handler->SendSysMessage(coming == 1 ? "On the way." : "They are on their way.");
         return true;
     }
 
@@ -853,13 +836,13 @@ public:
             ai->ChangeStrategy("+stay,-follow,-new rpg,-grind", BOT_STATE_NON_COMBAT);
 
         ChrClassesEntry const* cls = sChrClassesStore.LookupEntry(bot->getClass());
-        handler->PSendSysMessage("{} comes over: a level {} {}{}. Talk to them if you like. \".bots keep\" takes them on, \".bots meet\" brings someone else, \".bots pass\" ends it.",
+        handler->PSendSysMessage("{} comes over: a level {} {}{}. Talk to them if you like. \".bots keep\" invites them to your guild, \".bots meet\" brings someone else, \".bots pass\" ends it.",
             bot->GetName(), bot->GetLevel(), cls ? cls->name[0] : "adventurer",
             PlayerbotAI::IsTank(bot, true) ? " (tank)" : PlayerbotAI::IsHeal(bot, true) ? " (healer)" : "");
         return true;
     }
 
-    // .bots keep: the person met becomes a guild mate and a companion, and comes along now
+    // .bots keep: the person met joins the player's guild
     static bool HandleKeep(ChatHandler* handler)
     {
         Player* player = handler->GetPlayer();
@@ -867,7 +850,7 @@ public:
         Player* bot = found != meetings.end() && found->second.candidate ? ObjectAccessor::FindConnectedPlayer(found->second.candidate) : nullptr;
         if (!bot)
         {
-            handler->SendSysMessage("There is nobody here to take on. \".bots meet\" brings someone by.");
+            handler->SendSysMessage("There is nobody here to invite. \".bots meet\" brings someone by.");
             return true;
         }
 
@@ -884,38 +867,20 @@ public:
                     old->DeleteMember(bot->GetGUID(), false, false, false);
 
             if (!bot->GetGuildId() && guild->AddMember(bot->GetGUID()))
-            {
-                std::vector<ObjectGuid::LowType> ids = CompanionIds(player);
-                if (ids.size() < MAX_COMPANIONS)
-                {
-                    ids.push_back(bot->GetGUID().GetCounter());
-                    StoreCompanionIds(player, ids);
-                    result += " has joined your guild and is your companion from now on.";
-                }
-                else
-                    result += " has joined your guild. You have " + std::to_string(MAX_COMPANIONS) + " companions already; remove one to make room (.bots companion remove <name>).";
-            }
+                result += " has joined your guild. Invite them to your party whenever you want company.";
             else
-                result += " could not join your guild, but comes along for now.";
+                result += " could not join your guild (they belong to another player's guild).";
         }
         else
         {
             if (player->GetSocial() && !player->GetSocial()->HasFriend(bot->GetGUID()))
                 player->GetSocial()->AddToSocialList(bot->GetGUID(), SOCIAL_FLAG_FRIEND);
-            result += " is on your friends list and comes along for now. Companions are chosen from your guild: start one, and invite them.";
+            result += " is on your friends list. You have no guild yet: start one, then invite them.";
         }
         handler->SendSysMessage(result);
 
-        // And into the party
-        if (!player->GetGroup() || (player->GetGroup()->GetLeaderGUID() == player->GetGUID() && !player->GetGroup()->IsFull()))
-        {
-            WorldPacket invite(CMSG_GROUP_INVITE, bot->GetName().size() + 5);
-            invite << bot->GetName();
-            invite << uint32(0);
-            player->GetSession()->HandleGroupInviteOpcode(invite);
-        }
-
-        found->second.candidate.Clear();
+        // They stay a moment and then go about their own business, as a guild mate now
+        SendOff(found->second);
         found->second.seen.clear();
         return true;
     }
@@ -936,7 +901,7 @@ public:
         return true;
     }
 
-    // .bots dismiss: the companions leave the party and go about their own business
+    // .bots dismiss: the guild mates in the party leave it and go about their own business
     static bool HandleDismiss(ChatHandler* handler)
     {
         Player* player = handler->GetPlayer();
@@ -946,13 +911,12 @@ public:
         uint32 gone = 0;
         if (Group* group = player->GetGroup())
             for (Player* bot : Companions(player))
-                if (bot->GetGroup() == group)
-                {
-                    Player::RemoveFromGroup(group, bot->GetGUID());
-                    ++gone;
-                }
+            {
+                Player::RemoveFromGroup(group, bot->GetGUID());
+                ++gone;
+            }
 
-        handler->SendSysMessage(gone ? "Your companions have gone their own way." : "No companion is in your party.");
+        handler->SendSysMessage(gone ? "Your guild mates have gone their own way. \".bots call\" brings them back." : "No guild mate is in your party.");
         return true;
     }
 };

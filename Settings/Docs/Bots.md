@@ -45,38 +45,42 @@ Create a guild the normal way (a guild master sells the charter; bots sign it wh
 - **They stay who they are.** The system that spreads bot levels leaves a real player's guild alone, and their gear and talents are kept between sessions.
 - **They remember you for good**, greet you when you come online, and talk in guild chat by themselves now and then: see [Bot-Chat.md](Bot-Chat.md).
 
-## Companions
+## Building your guild: meeting people
 
-Up to two guild mates you choose.
-
-| Command | What it does |
-|---|---|
-| `.bots companion add <name>` | A guild mate becomes a companion. |
-| `.bots companion remove <name>` | No longer a companion; stays in the guild. |
-| `.bots companion list` | Who they are and whether they are online. |
-| `.bots call` | They join your party and come to you. |
-| `.bots dismiss` | They leave the party and go their own way. |
-
-While they travel with you they do small things by themselves:
-
-- **When you rest** (stand still for a minute): one lights a campfire, and now and then one sits down, eats, laughs, dances or says something in party chat.
-- **On the road:** a gesture or a remark every three to seven minutes.
-
-Settings: `WowPlus.Bots.Companions.*`.
-
-## Finding a companion: meeting people
-
-Built on 2026-10-12, not yet tried in the game. In the menu under **Find a companion**, or typed:
+Built on 2026-10-12, not yet tried in the game. The idea: your guild is the people you chose, one at a time. In the menu under **Build my guild**, or typed:
 
 | Command | What happens |
 |---|---|
 | `.bots meet` | Someone walks up, waves and introduces themselves out loud: their first name, where they live, what they like doing in the game and when they are on, and what they are like as company. `.bots meet tank`, `healer` or `damage` asks for a role. |
 | (talk) | Say something or whisper them and they answer, as any bot does. You do not have to. |
 | `.bots meet` again | The one in front of you waves and leaves, and someone else comes by. Nobody comes twice until everyone has been. |
-| `.bots keep` | They join your guild, become your companion (if you have fewer than two) and join your party now. Without a guild they go on your friends list and come along for now. |
+| `.bots keep` | They join your guild, wave, and go back to what they were doing, as a guild mate now. Without a guild they go on your friends list. |
 | `.bots pass` | They wave and go their own way. |
 
-They are bots that are really in the world: your side, free, near your level. If nobody near your level is free, someone from another level range becomes your level, as guild mates do. Someone you neither keep nor pass leaves after ten minutes, or when you walk 60 yards away. It works out in the world only, not in a dungeon or a fight.
+They are bots that are really in the world: your side, free, near your level, not in your guild yet. If nobody near your level is free, someone from another level range becomes your level, as guild mates do. Someone you neither keep nor pass leaves after ten minutes, or when you walk 60 yards away. It works out in the world only, not in a dungeon or a fight.
+
+You can still invite anyone you meet with `/ginvite <name>`, or anyone from the group board after a run.
+
+## Companions
+
+**A companion is any guild mate who is in your party.** There is nothing to choose or set up beforehand (until 2026-10-12 there was a list of two).
+
+| How | What happens |
+|---|---|
+| Menu → **Guild mates** | Lists the guild mates who are online, with class and level. Click one and they join your party and come to you. |
+| The guild window, or `/invite <name>` | The same. |
+| **Call** on the bot bar, `.bots call` | The guild mates you travelled with last time (up to four) join your party and come to you. |
+| `.bots call <name>` | That guild mate. |
+| **Dismiss** on the bot bar, `.bots dismiss` | The guild mates in your party leave it and go their own way. |
+
+While they travel with you they do small things by themselves:
+
+- **When you rest** (stand still for a minute): one lights a campfire, and now and then one sits down, eats, laughs, dances or says something in party chat.
+- **On the road:** a gesture or a remark every three to seven minutes.
+
+People who are not guild mates (from the group board, or strangers you invite) do not do these things, and leave after the run.
+
+Settings: `WowPlus.Bots.Companions.*`.
 
 ## The bot bar
 

@@ -50,22 +50,19 @@ local MENU = {
         { "Invite to my group",     func = function(name) InviteUnit(name) end, needsTarget = true, tip = "A bot always accepts and comes to you." },
         { "Invite to my guild",     func = function(name) GuildInvite(name) end, needsTarget = true, tip = "A bot always accepts; one in a guild of bots leaves it first." },
         { "Add to friends",         func = function(name) AddFriend(name) end, needsTarget = true, tip = "A bot on your friends list keeps its level." },
-        { "Make a companion",       target = ".bots companion add %s",    tip = "A guild mate becomes one of your two companions." },
-        { "No longer a companion",  target = ".bots companion remove %s", tip = "Stays in the guild, but is not called any more." },
     } },
-    { title = "Find a companion", items = {
+    { title = "Build my guild", items = {
         { "Meet someone",           command = ".bots meet",        tip = "Someone walks up and introduces themselves. Talk to them if you like." },
         { "Meet a tank",            command = ".bots meet tank",   tip = "The same, but a tank." },
         { "Meet a healer",          command = ".bots meet healer", tip = "The same, but a healer." },
         { "Meet a damage dealer",   command = ".bots meet damage", tip = "The same, but someone who deals damage." },
         { "Someone else, please",   command = ".bots meet",        tip = "The one in front of you waves and leaves, and someone else comes by." },
-        { "Take them on",           command = ".bots keep",        tip = "They join your guild, become your companion and come along now." },
+        { "Invite them to my guild", command = ".bots keep",       tip = "The person in front of you joins your guild." },
         { "Thanks, not today",      command = ".bots pass",        tip = "They wave and go their own way." },
     } },
-    { title = "Companions", items = {
-        { "Call them",              command = ".bots call",           tip = "Your companions join your group and come to you." },
-        { "Send them off",          command = ".bots dismiss",        tip = "They leave the group and go their own way." },
-        { "Who are they",           command = ".bots companion list", tip = "Lists your companions and whether they are online." },
+    { title = "Guild mates", guild = true, items = {
+        { "Call who came last time", command = ".bots call",    tip = "The guild mates you travelled with last join your group and come to you." },
+        { "Send them home",          command = ".bots dismiss", tip = "The guild mates in your group leave it and go their own way." },
     } },
     { title = "Bots around me", items = {
         { "Send them away, once",   command = ".bots away",      tip = "Every free bot near you goes somewhere else." },
@@ -109,6 +106,38 @@ local function Run(item)
     end
 end
 
+-- The guild mates who are online, each as an entry that invites them to your group. A guild mate in your
+-- group is a companion: there is nothing else to set up.
+local CLASS_COLOURS = RAID_CLASS_COLORS
+local function GuildMatesOnline()
+    local entries = {}
+    if not IsInGuild() then
+        tinsert(entries, { text = "You have no guild yet", notCheckable = true, disabled = true })
+        return entries
+    end
+
+    local me = UnitName("player")
+    for index = 1, GetNumGuildMembers(true) do
+        local name, _, _, level, _, zone, _, _, online, _, classToken = GetGuildRosterInfo(index)
+        if name and online and name ~= me then
+            local colour = CLASS_COLOURS[classToken or ""] or { r = 1, g = 1, b = 1 }
+            tinsert(entries, {
+                text = string.format("|cff%02x%02x%02x%s|r  %d", colour.r * 255, colour.g * 255, colour.b * 255, name, level or 0),
+                notCheckable = true,
+                func = function() InviteUnit(name) end,
+                tooltipTitle = name, tooltipText = "Invite to your group. " .. (zone and zone ~= "" and ("Now in " .. zone .. ".") or ""),
+            })
+            if #entries >= 24 then break end
+        end
+    end
+    if #entries == 0 then
+        tinsert(entries, { text = "No guild mate is online", notCheckable = true, disabled = true })
+    else
+        tinsert(entries, 1, { text = "Invite to my group:", isTitle = true, notCheckable = true })
+    end
+    return entries
+end
+
 -- The menu in the shape the game's dropdown wants
 local dropdown = CreateFrame("Frame", "WowPlusMenuDropDown", UIParent, "UIDropDownMenuTemplate")
 local function Build()
@@ -119,6 +148,9 @@ local function Build()
             tinsert(entries, { text = item[1], notCheckable = true, func = function() Run(item) end,
                                tooltipTitle = item[1], tooltipText = item.tip })
         end
+        if section.guild then
+            for _, entry in ipairs(GuildMatesOnline()) do tinsert(entries, entry) end
+        end
         tinsert(menu, { text = section.title, notCheckable = true, hasArrow = true, menuList = entries })
     end
     tinsert(menu, { text = "Close", notCheckable = true, func = function() CloseDropDownMenus() end })
@@ -126,6 +158,7 @@ local function Build()
 end
 
 local function Open(anchor)
+    if IsInGuild() then GuildRoster() end       -- asks the server for a fresh guild list; used the next time the menu opens
     EasyMenu(Build(), dropdown, anchor or "cursor", 0, 0, "MENU")
 end
 

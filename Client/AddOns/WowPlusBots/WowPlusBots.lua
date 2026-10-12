@@ -10,8 +10,8 @@ local BUTTONS = {
     { "Stay",    "stay",          "PARTY",   "The bots in your party stay where they are." },
     { "Attack",  "attack",        "PARTY",   "The bots in your party attack your target." },
     { "Flee",    "flee",          "PARTY",   "The bots in your party stop fighting and run to you." },
-    { "Call",    ".bots call",    "COMMAND", "Your companions join your party and come to you." },
-    { "Dismiss", ".bots dismiss", "COMMAND", "Your companions leave the party and go their own way." },
+    { "Call",    ".bots call",    "COMMAND", "The guild mates you travelled with last join your party and come to you." },
+    { "Dismiss", ".bots dismiss", "COMMAND", "The guild mates in your party leave it and go their own way." },
     { "Away",    ".bots away",    "COMMAND", "Every free bot near you goes somewhere else, once." },
     { "Group",   "",              "BOARD",   "The board of people looking for a group: pick who comes along, or post your own group." },
 }
@@ -57,7 +57,7 @@ local function Send(text, where)
         end
     elseif where == "PARTY" then
         if GetNumPartyMembers() == 0 and GetNumRaidMembers() == 0 then
-            DEFAULT_CHAT_FRAME:AddMessage("Bots: you are not in a party. Invite a bot, or press Call for your companions.")
+            DEFAULT_CHAT_FRAME:AddMessage("Bots: you are not in a party. Invite someone, or press Call for the guild mates you travelled with last.")
             return
         end
         SendChatMessage(text, GetNumRaidMembers() > 0 and "RAID" or "PARTY")
