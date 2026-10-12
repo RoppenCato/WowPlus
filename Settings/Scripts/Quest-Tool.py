@@ -11,6 +11,7 @@ Without the page, for looking things up while writing a quest file by hand:
     python Settings/Scripts/Quest-Tool.py --zone Durotar      who and what is in a zone
     python Settings/Scripts/Quest-Tool.py --zone 14 --side alliance
     python Settings/Scripts/Quest-Tool.py --rewards 10        reward ideas for a level 10 quest
+    python Settings/Scripts/Quest-Tool.py --quests Durotar    the quests the zone has already, with who gives them
 
 How a quest file looks is in Settings/Quests/README.md.
 """
@@ -156,6 +157,25 @@ class World:
         people.sort(key=lambda p: (not p["gives"], p["name"]))
         enemies.sort(key=lambda e: (e["level"], e["name"]))
         return {"people": people, "enemies": enemies}
+
+    def existing_quests(self, zone, side):
+        """The quests a zone has already: title, level, who gives it, and what it asks for."""
+        races = {"horde": 690, "alliance": 1101}.get(side, 0)
+        rows = sql("SELECT q.ID, q.LogTitle, q.QuestLevel, q.AllowableRaces, IFNULL((SELECT ct.name FROM creature_queststarter s JOIN creature_template ct ON ct.entry = s.id "
+                   "WHERE s.quest = q.ID LIMIT 1), ''), q.LogDescription, IFNULL(a.PrevQuestID, 0) "
+                   f"FROM quest_template q LEFT JOIN quest_template_addon a ON a.ID = q.ID WHERE q.QuestSortID = {int(zone)} AND q.LogTitle <> '' ORDER BY q.QuestLevel, q.ID")
+        found = []
+        for number, title, level, allowed, giver, task, before in rows:
+            allowed = int(allowed)
+            if races and allowed and not allowed & races:
+                continue
+            found.append({"id": int(number), "title": title, "level": int(level), "giver": giver, "task": task.replace("$B", " ")[:220], "after": int(before)})
+        return found
+
+    def where(self, row):
+        """Where something is on the zone's map, the way players say it: 45, 62."""
+        xs, ys = [p[0] for p in row["at"]], [p[1] for p in row["at"]]
+        return f"{round(100 * sum(xs) / len(xs))}, {round(100 * sum(ys) / len(ys))}"
 
     def loot(self, creature):
         """What a creature drops that could be asked for: its plain drops, likeliest first."""
@@ -411,6 +431,7 @@ def main():
     p.add_argument("--zone", help="list who and what is in a zone (name or number)")
     p.add_argument("--side", default="horde", help="horde, alliance or both")
     p.add_argument("--rewards", type=int, help="reward ideas for a quest of this level")
+    p.add_argument("--quests", help="list the quests a zone has already (name or number)")
     p.add_argument("--no-browser", action="store_true")
     a = p.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -421,6 +442,17 @@ def main():
             if zone["low"] - 2 <= a.zones <= zone["high"] + 2:
                 print(f"{zone['id']:>5}  {zone['name']:<28} levels {zone['low']} to {zone['high']}")
         return
+    if a.quests:
+        zone = next((z for z in world.zones if str(z["id"]) == a.quests or z["name"].lower() == a.quests.lower()), None)
+        if not zone:
+            print("No such zone. Try --zones <level>.")
+            return
+        found = world.existing_quests(zone["id"], a.side)
+        print(f"{zone['name']} ({zone['id']}): {len(found)} quests for {a.side}")
+        for quest in found:
+            print(f"  {quest['level']:>2}  {quest['title']}  [{quest['giver'] or 'no giver'}]" + (f"  (after {quest['after']})" if quest["after"] > 0 else ""))
+            print(f"        {quest['task']}")
+        return
     if a.zone:
         zone = next((z for z in world.zones if str(z["id"]) == a.zone or z["name"].lower() == a.zone.lower()), None)
         if not zone:
@@ -429,11 +461,11 @@ def main():
         found = world.zone(zone["id"], a.side)
         print(f"{zone['name']} ({zone['id']}), levels {zone['low']} to {zone['high']}, for {a.side}\n\nPeople who could give a quest:")
         for person in found["people"]:
-            print(f"  {person['entry']:>6}  {person['name']}" + (f" <{person['title']}>" if person["title"] else "")
+            print(f"  {person['entry']:>6}  at {world.where(person):<7} {person['name']}" + (f" <{person['title']}>" if person["title"] else "")
                   + (f" ({person['kind']})" if person["kind"] else "") + ("  gives quests already" if person["gives"] else ""))
         print("\nEnemies:")
         for enemy in found["enemies"]:
-            print(f"  {enemy['entry']:>6}  {enemy['name']:<32} level {enemy['low']}-{enemy['level']}, {enemy['count']} of them"
+            print(f"  {enemy['entry']:>6}  around {world.where(enemy):<7} {enemy['name']:<32} level {enemy['low']}-{enemy['level']}, {enemy['count']} of them"
                   + ("" if enemy["loot"] else ", drops nothing"))
         return
     if a.rewards:
