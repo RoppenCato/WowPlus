@@ -126,6 +126,15 @@ Built on 2026-10-12, not yet tried in the game. Code: `Server/modules/mod-wowplu
 
 To try: pull something, let the healer go low and press Ready?; mark a pack with skull and moon and watch who hits what; die on purpose in a dungeon, run back, and see whether the group is on its feet when you arrive.
 
+## A ready-made character for trying something out
+
+When something new needs a character of a certain class and level standing at a certain place, a bot can be handed over to your account. Done once on 2026-10-12 (Tahorn, a level 10 tauren warrior at Hulfnar Stonetotem in Bloodhoof Village). The steps, for Claude:
+
+1. Pick a bot character of the right race and class (`characters` joined to `acore_playerbots.playerbots_account_type`). If it is not in the world, put it on a real character's friends list and restart; friends are always brought in.
+2. In the server's window: `bots prepare <name> <level>`. The bot module gives it the gear, spells and talents it gives its own bots at that level. Then `saveall`.
+3. Stop the server. In the database: set the character's `account` to yours, give it a new `name`, a position and a home, set `money`, and remove it from `guild_member`, `character_social` and `acore_playerbots.playerbots_random_bots`. Add one to `numchars` in `acore_auth.realmcharacters`.
+4. Start the server. Extra items go by mail: `send items <name> "subject" "text" <item>` in the server's window.
+
 ## Health check
 
 `python Settings/Scripts/Test-Bots.py` looks at the database, the logs and the bot module's source and prints pass or fail. It changes nothing. Run it after a restart, a settings change, or an update of the bot module.

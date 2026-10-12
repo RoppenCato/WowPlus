@@ -733,6 +733,7 @@ public:
             { "meet",      HandleMeet,    SEC_PLAYER, Console::No },
             { "keep",      HandleKeep,    SEC_PLAYER, Console::No },
             { "pass",      HandlePass,    SEC_PLAYER, Console::No },
+            { "prepare",   HandlePrepare, SEC_ADMINISTRATOR, Console::Yes },
         };
 
         static ChatCommandTable commandTable =
@@ -937,6 +938,28 @@ public:
         // They stay a moment and then go about their own business, as a guild mate now
         SendOff(found->second);
         found->second.seen.clear();
+        return true;
+    }
+
+    // .bots prepare <name> <level>: a bot that is in the world is made that level, with the gear, spells and
+    // talents the bot module gives its own. For the server's window; it is how a ready-made character for
+    // trying something out is prepared before it is handed to a player's account (Settings/Docs/Bots.md).
+    static bool HandlePrepare(ChatHandler* handler, std::string name, uint8 level)
+    {
+        Player* bot = normalizePlayerName(name) ? ObjectAccessor::FindPlayerByName(name) : nullptr;
+        if (!bot || !IsBot(bot) || !bot->IsInWorld())
+        {
+            handler->PSendSysMessage("{} is not a bot that is in the world right now.", name);
+            return true;
+        }
+
+        level = std::clamp<uint8>(level, 1, uint8(sWorld->getIntConfig(CONFIG_MAX_PLAYER_LEVEL)));
+        if (bot->IsMounted())
+            bot->Dismount();
+        PlayerbotFactory factory(bot, level);
+        factory.Randomize(false);
+        bot->SaveToDB(false, false);
+        handler->PSendSysMessage("{} is level {} now, outfitted and saved.", bot->GetName(), bot->GetLevel());
         return true;
     }
 

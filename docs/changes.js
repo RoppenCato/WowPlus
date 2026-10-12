@@ -239,8 +239,9 @@ window.CHANGELOG = {
       name: "New quests",
       summary: "Quests written for this world, offered by the people who already live in it.",
       items: [
-        { title: "Bold Wolves of the Plains", kind: "feature", status: "built", date: "2026-10-12",
-          text: "Mulgore, level 6: Mull Thunderhorn in Bloodhoof Village wants the prairie wolves thinned before they take more kodo calves." }
+        { title: "The Hatred of the Centaur", kind: "feature", status: "built", date: "2026-10-12",
+          text: "Mulgore, levels 8 to 9, three quests: an old bull in Bloodhoof Village remembers the wandering years, Galak scouts are on the plains again, and Baine Bloodhoof tells why this land is not taken for granted.",
+          details: ["Starts with Hulfnar Stonetotem in Bloodhoof Village."] }
       ]
     },
     {

@@ -1,0 +1,55 @@
+{
+  "id": 9200003,
+  "title": "Scouts of the Galak",
+  "level": 9,
+  "min_level": 6,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 215,
+  "type": "kill",
+  "after": 9200002,
+  "giver": 2988,
+  "turn_in": 2988,
+  "objectives": [
+    {
+      "creature": 2967,
+      "count": 2
+    },
+    {
+      "creature": 2968,
+      "count": 2
+    },
+    {
+      "item": 5030,
+      "count": 3,
+      "drops_from": [
+        {
+          "creature": 2967,
+          "chance": 75
+        },
+        {
+          "creature": 2968,
+          "chance": 75
+        }
+      ]
+    }
+  ],
+  "texts": {
+    "details": "They are Galak, $N, of the clan that holds the Thousand Needles. A centaur war band does not march blind. It sends outrunners ahead to count the herds, to find where the water lies, and to learn how many spears stand between them and both.\n\nThey are out on the plains east of here, toward the pass. Do not let them carry what they have learned back to their khan.\n\nEach wears the bracers of his clan. Bring me three, so that no elder can say I mistook kodo herders for an enemy.",
+    "objectives": "Kill 2 Galak Centaur and 2 Galak Outrunners on the plains east of Bloodhoof Village, and bring 3 Centaur Bracers to Morin Cloudstalker on the road.",
+    "progress": "A scout who returns home is worth a hundred warriors to his khan. Are they still out there?",
+    "completion": "Galak work, as I thought. Look at the knotting.\n\nSo they have come this far north, with so few braves watching the pass. You have bought us a season, perhaps, before their khan wonders why his scouts are late. That is no small thing."
+  },
+  "reward": {
+    "money": 390,
+    "xp_difficulty": 5,
+    "items": [
+      {
+        "item": 118,
+        "count": 2
+      }
+    ],
+    "choices": []
+  },
+  "idea": "Chain 2 of 3: how centaur make war, and that they still test Mulgore."
+}

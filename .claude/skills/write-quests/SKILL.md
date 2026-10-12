@@ -54,7 +54,7 @@ Pick the story that is most interesting and teaches the most, in this order of w
 3. Its giver has a reason to care, and stands near where it happens.
 4. It gives the player a reason to go somewhere in the zone they might not have gone.
 
-Say which story was chosen and, in a line each, which were close and why they lost. Then go on without waiting, unless Robin asked to choose.
+Say which story was chosen and, in a line each, which were close and why they lost. Then go on without waiting, unless Robin asked to choose. Stories that lost but were good go into the "Considered and not used" table of `Settings/Quests/Stories.md`, for the next time the zone comes up.
 
 ### 6. Choose the people
 
@@ -75,7 +75,8 @@ Two or three files. For a chain, each later quest has `"after": <id of the one b
 - Level: within the zone's range and near the level of the enemies used. Later quests in a chain may be one level higher.
 - `min_level`: three below the quest's level.
 - Counts: 6 to 12 kills; 4 to 8 collected items with a drop chance of 35 to 60. Never a number that means more than about fifteen minutes.
-- Money and gear: `python Settings/Scripts/Quest-Tool.py --rewards <level>`. Usual money, experience difficulty 5, and 6 for the last quest of a chain. One or two "choose one" items of different armour types on the last quest; a few potions or nothing on the others.
+- Look at how many of the enemy the zone has (the lookup says "N of them"). Ask for at most a third of them, and with fewer than ten in the zone keep to two or three kills and a drop chance of 75.
+- Money and gear: `python Settings/Scripts/Quest-Tool.py --rewards <level>`. Usual money, experience difficulty 5, and 6 for the last quest of a chain. A choice of three or four items of different armour types (and a weapon) on the last quest; a few healing potions or nothing on the others. Nothing that only some classes can use is "always given".
 
 **Words.** In the voice of the speaker's people, as the game writes them.
 - `details`: 50 to 90 words. The giver speaks to the player; the reason comes before the request. One true piece of lore, said the way that person would say it, not explained like a book.

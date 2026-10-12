@@ -1,0 +1,25 @@
+{
+  "id": 9200002,
+  "title": "The Wandering Years",
+  "level": 8,
+  "min_level": 5,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 215,
+  "type": "deliver",
+  "giver": 10599,
+  "turn_in": 2988,
+  "objectives": [],
+  "texts": {
+    "details": "Sit a moment, $N. The young ones speak of Mulgore as if the Earthmother set us down here at the dawn of things. She did not.\n\nMy father never slept two seasons in one place, nor did his. The centaur came out of the west before any tale I know, and for all those generations we walked, and left our dead where we could not stay.\n\nNow there are hoofprints on the plains east of the lake, and they are not kodo. Go to Morin Cloudstalker on the road. Tell him an old bull remembers what such tracks mean.",
+    "objectives": "Speak with Morin Cloudstalker on the road east of Bloodhoof Village.",
+    "completion": "Hulfnar sent you? Then he has seen what I have seen, and I had hoped I was wrong.\n\nSplit hooves, moving in pairs, keeping off the road. Those are not travellers. Those are scouts, and a scout is only ever the first of many."
+  },
+  "reward": {
+    "money": 150,
+    "xp_difficulty": 3,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 3, The Hatred of the Centaur: why the tauren were nomads."
+}

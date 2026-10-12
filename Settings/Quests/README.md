@@ -103,4 +103,8 @@ A file is named `<number>-<a-few-words>.json`. The number is the quest's `id`: t
 
 | File | Quest |
 |---|---|
-| `9200001-bold-wolves-of-the-plains.json` | Mulgore, level 6, Horde. Mull Thunderhorn in Bloodhoof Village asks for eight prairie wolves. Made with the tool as its first test; not played yet. |
+| `9200002-the-wandering-years.json` | Mulgore, level 8, Horde. Hulfnar Stonetotem in Bloodhoof Village tells of the nomad years and sends you to Morin Cloudstalker on the road east. First of three. |
+| `9200003-scouts-of-the-galak.json` | Level 9. Morin Cloudstalker: kill 2 Galak Centaur and 2 Galak Outrunners on the plains to the east and bring 3 Centaur Bracers. |
+| `9200004-a-debt-remembered.json` | Level 9. Bring word to Baine Bloodhoof, who tells what the centaur once did to him. Choice of four rewards. |
+
+Written with the quest-writing skill (`.claude/skills/write-quests`). Not played yet. The stories used so far are in `Stories.md`. The tool's first test quest, "Bold Wolves of the Plains", was removed: the zone's own "Poison Water" already sends players after the same wolves.

@@ -1,0 +1,43 @@
+{
+  "id": 9200004,
+  "title": "A Debt Remembered",
+  "level": 9,
+  "min_level": 6,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 215,
+  "type": "deliver",
+  "after": 9200003,
+  "giver": 2988,
+  "turn_in": 2993,
+  "objectives": [],
+  "texts": {
+    "details": "Baine Bloodhoof must hear of this. He is the chieftain's son, and the braves at the pass are his to send. But that is not the only reason I send you to him and not another.\n\nAsk him what he knows of the centaur. He does not speak of it often. When you have heard it, you will understand why the Bloodhoof do not take split hoofprints lightly, and why our people stand where they stand.",
+    "objectives": "Bring word of the Galak scouts to Baine Bloodhoof in Bloodhoof Village.",
+    "completion": "Galak, this far north. I know their mark well, $N. I have seen it closer than I would wish.\n\nWhen I was younger the centaur took me from my father's camp. It was not a tauren who brought me home, but a wanderer named Rexxar, who owed us nothing. Then the orcs stood beside us, and for the first time in memory we did not have to run.\n\nThat is why this land is ours. It was not given. Take this, with the thanks of the Bloodhoof."
+  },
+  "reward": {
+    "money": 450,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 5337,
+        "count": 1
+      },
+      {
+        "item": 15399,
+        "count": 1
+      },
+      {
+        "item": 28143,
+        "count": 1
+      },
+      {
+        "item": 5587,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 3 of 3: Baine was taken by centaur and rescued by Rexxar; the orcs' help is why the tauren hold Mulgore and stand with the Horde."
+}
