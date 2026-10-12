@@ -90,12 +90,13 @@ A file is named `<number>-<a-few-words>.json`. The number is the quest's `id`: t
 | `reward.money` | In copper (100 copper is a silver). |
 | `reward.xp_difficulty` | 0 none, 5 the usual amount for the level, 8 the most. |
 | `reward.items`, `reward.choices` | Always given (at most four) and choose-one (at most six). |
+| `spawns` | More of an enemy than the game has: `[ { "creature": number, "map": 1, "x": ..., "y": ..., "z": ..., "o": ... } ]`, at most forty. Each is a copy of one that is there already. `python Settings/Scripts/Quest-Tool.py --spots <creature> <count>` prints places near where the enemy lives, on the ground, ready to paste. They appear after a server restart. |
 | `after` | The number of a quest that must be done first; 0 or left out for none. |
 | `idea` | A note for the writer. Not used by the game. |
 
 ## How it gets into the game
 
-`Settings/Scripts/Make-Quests.py` turns the files into rows in the game's database: the quest itself, who starts and ends it, the things said, and loot that drops only while on the quest. It first removes everything it wrote before (quests 9200000 to 9299999, and loot rows marked "WowPlus quest"), so what is in the game is always exactly what is in this folder. A file with a mistake is left out and named; the others still go in.
+`Settings/Scripts/Make-Quests.py` turns the files into rows in the game's database: the quest itself, who starts and ends it, the things said, loot that drops only while on the quest, added enemies, and **where it shows on the map**: an area around each group of the enemies to kill or to take things from, and a mark on the person it is handed in to. The map marks and added enemies are read by the server when it starts, so those need a restart. It first removes everything it wrote before (quests 9200000 to 9299999, and loot rows marked "WowPlus quest"), so what is in the game is always exactly what is in this folder. A file with a mistake is left out and named; the others still go in.
 
 `Settings/Deploy-Settings.ps1` runs it at every server start.
 

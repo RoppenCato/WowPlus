@@ -914,6 +914,10 @@ public:
         if (!enabled || !sayEnabled || type != CHAT_MSG_SAY || language == LANG_ADDON || IsBot(player))
             return true;
 
+        // Words for the person-meeting in WowPlusBots.cpp, not talk
+        if (msg == "next" || msg == "Next" || msg == "keep" || msg == "Keep" || msg == "pass" || msg == "Pass")
+            return true;
+
         std::vector<Player*> const nearby = BotsNear(player, sayNameRadius);
 
         Player* speaker = nullptr;

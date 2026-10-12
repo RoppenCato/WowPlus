@@ -17,7 +17,9 @@ import glob
 import io
 import json
 import os
+import math
 import re
+import struct
 import subprocess
 import sys
 
@@ -35,6 +37,7 @@ TYPES = {
     "slay": "Kill one named enemy.",
 }
 LOOT_MARK = "WowPlus quest"
+FIRST_SPAWN, LAST_SPAWN = 9200000, 9299999     # the numbers of the enemies our quests add to the world
 
 
 def sql(query, database="acore_world"):
@@ -83,6 +86,7 @@ def known(quests):
     creatures, items = set(), set()
     for quest in quests:
         creatures.update(int(quest[k]) for k in ("giver", "turn_in") if str(quest.get(k, "")).isdigit())
+        creatures.update(int(s["creature"]) for s in quest.get("spawns") or [] if str(s.get("creature", "")).isdigit())
         for objective in quest.get("objectives") or []:
             if "creature" in objective:
                 creatures.add(int(objective["creature"]))
@@ -153,9 +157,133 @@ def validate(quest, creatures, items, ids_seen=None):
     for given in (reward.get("items") or []) + (reward.get("choices") or []):
         need(given.get("item") in items, f"reward item {given.get('item')} does not exist")
         need(isinstance(given.get("count", 1), int) and 1 <= given.get("count", 1) <= 200, "reward item count: 1 to 200")
+    spawns = quest.get("spawns") or []
+    need(len(spawns) <= 40, "at most forty added enemies per quest")
+    for spawn in spawns:
+        need(spawn.get("creature") in creatures, f"spawns: creature {spawn.get('creature')} does not exist")
+        need(all(isinstance(spawn.get(k), (int, float)) for k in ("map", "x", "y", "z")), "spawns: each needs map, x, y and z")
     after = quest.get("after", 0)
     need(isinstance(after, int) and after >= 0, "after: 0, or the number of the quest that must be done first")
     return wrong
+
+
+# ---------------------------------------------------------------------------------------------
+# Where a quest shows on the map: the blue areas for its tasks and the mark for handing it in
+# ---------------------------------------------------------------------------------------------
+
+AREA_REACH = 120.0          # enemies closer together than this are shown as one area
+AREA_MARGIN = 30.0          # how far an area reaches past the outermost enemy
+MOST_AREAS = 3              # areas per task; the game's own quests rarely have more
+
+
+def map_areas():
+    """zone -> the number the client knows that zone's map by (WorldMapArea.dbc)."""
+    found = {}
+    try:
+        with open(os.path.join(ROOT, "Data", "dbc", "WorldMapArea.dbc"), "rb") as f:
+            data = f.read()
+        magic, records, fields, size, strings = struct.unpack_from("<4sIIII", data)
+        for i in range(records):
+            number, map_id, zone = struct.unpack_from("<3I", data, 20 + i * size)
+            if zone:
+                found[zone] = number
+    except (OSError, struct.error):
+        pass
+    return found
+
+
+def hull(points):
+    """The outline around some points, counter-clockwise."""
+    points = sorted(set(points))
+    if len(points) < 3:
+        return points
+
+    def turn(o, a, b):
+        return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+    lower, upper = [], []
+    for point in points:
+        while len(lower) >= 2 and turn(lower[-2], lower[-1], point) <= 0:
+            lower.pop()
+        lower.append(point)
+    for point in reversed(points):
+        while len(upper) >= 2 and turn(upper[-2], upper[-1], point) <= 0:
+            upper.pop()
+        upper.append(point)
+    return lower[:-1] + upper[:-1]
+
+
+def areas(points):
+    """Groups places that lie together and draws an outline around each group, a little wider than the group."""
+    groups = []
+    for point in points:
+        near = [g for g in groups if any(math.hypot(point[0] - q[0], point[1] - q[1]) <= AREA_REACH for q in g)]
+        merged = [point]
+        for g in near:
+            merged += g
+            groups.remove(g)
+        groups.append(merged)
+    groups.sort(key=len, reverse=True)
+    outlines = []
+    for group in groups[:MOST_AREAS]:
+        cx, cy = sum(q[0] for q in group) / len(group), sum(q[1] for q in group) / len(group)
+        ring = []
+        for q in group:                                 # eight points around each place, so that even one enemy gives an area
+            for step in range(8):
+                ring.append((q[0] + AREA_MARGIN * math.cos(step * math.pi / 4), q[1] + AREA_MARGIN * math.sin(step * math.pi / 4)))
+        outline = hull([(round(x), round(y)) for x, y in ring])
+        outlines.append(sorted(outline, key=lambda q: math.atan2(q[1] - cy, q[0] - cx))[:12])
+    return outlines
+
+
+def build_map_marks(quests):
+    """The rows that make the quests show on the map."""
+    wanted = set()
+    for quest in quests:
+        wanted.update((quest["turn_in"],))
+        for objective in quest.get("objectives") or []:
+            if "creature" in objective:
+                wanted.add(objective["creature"])
+            wanted.update(d["creature"] for d in objective.get("drops_from") or [])
+    places = {}                                         # creature -> [(map, x, y)]
+    for entry, map_id, x, y in sql(f"SELECT id, map, position_x, position_y FROM creature WHERE id IN ({numbers(wanted)}) AND guid < {FIRST_SPAWN}"):
+        places.setdefault(int(entry), []).append((int(map_id), float(x), float(y)))
+    for quest in quests:
+        for spawn in quest.get("spawns") or []:
+            places.setdefault(int(spawn["creature"]), []).append((int(spawn["map"]), float(spawn["x"]), float(spawn["y"])))
+
+    zones = map_areas()
+    out = [f"DELETE FROM quest_poi WHERE QuestID BETWEEN {FIRST_ID} AND {LAST_ID};",
+           f"DELETE FROM quest_poi_points WHERE QuestID BETWEEN {FIRST_ID} AND {LAST_ID};"]
+    for quest in quests:
+        number, zone = quest["id"], zones.get(quest["zone"], 0)
+        blob = 0
+
+        def mark(objective_index, points, map_id):
+            nonlocal blob
+            out.append(f"INSERT INTO quest_poi (QuestID, id, ObjectiveIndex, MapID, WorldMapAreaId, Floor, Priority, Flags, VerifiedBuild) "
+                       f"VALUES ({number}, {blob}, {objective_index}, {map_id}, {zone}, 0, 0, 1, 0);")
+            for index, (x, y) in enumerate(points):
+                out.append(f"INSERT INTO quest_poi_points (QuestID, Idx1, Idx2, X, Y, VerifiedBuild) VALUES ({number}, {blob}, {index}, {int(round(x))}, {int(round(y))}, 0);")
+            blob += 1
+
+        kill_index, item_index = 0, 4                   # the game counts enemies from 0 and items from 4
+        for objective in quest.get("objectives") or []:
+            if "creature" in objective:
+                sources, index = [objective["creature"]], kill_index
+                kill_index += 1
+            else:
+                sources, index = [d["creature"] for d in objective.get("drops_from") or []], item_index
+                item_index += 1
+            found = [place for source in sources for place in places.get(source, [])]
+            if not found:
+                continue
+            map_id = found[0][0]
+            for outline in areas([(x, y) for m, x, y in found if m == map_id]):
+                mark(index, outline, map_id)
+        ender = places.get(quest["turn_in"])
+        if ender:
+            mark(-1, [(ender[0][1], ender[0][2])], ender[0][0])
+    return "\n".join(out) + "\n"
 
 
 def text(value):
@@ -177,8 +305,10 @@ def build_sql(quests, creatures, items):
            f"DELETE FROM quest_request_items WHERE ID BETWEEN {FIRST_ID} AND {LAST_ID};",
            f"DELETE FROM quest_template_addon WHERE ID BETWEEN {FIRST_ID} AND {LAST_ID};",
            f"DELETE FROM quest_template WHERE ID BETWEEN {FIRST_ID} AND {LAST_ID};",
-           f"DELETE FROM creature_loot_template WHERE Comment LIKE '{LOOT_MARK} %';"]
+           f"DELETE FROM creature_loot_template WHERE Comment LIKE '{LOOT_MARK} %';",
+           f"DELETE FROM creature WHERE guid BETWEEN {FIRST_SPAWN} AND {LAST_SPAWN};"]
     people = set()
+    spawn_number = FIRST_SPAWN
     for quest in quests:
         number = quest["id"]
         objectives = quest.get("objectives") or []
@@ -213,6 +343,14 @@ def build_sql(quests, creatures, items):
         out.append(f"INSERT IGNORE INTO creature_queststarter (id, quest) VALUES ({quest['giver']}, {number});")
         out.append(f"INSERT IGNORE INTO creature_questender (id, quest) VALUES ({quest['turn_in']}, {number});")
         people.update((quest["giver"], quest["turn_in"]))
+        # More of an enemy than the game has: each is a copy of one that is there already, at a new place
+        for spawn in quest.get("spawns") or []:
+            spawn_number += 1
+            out.append("INSERT INTO creature (guid, id, map, zoneId, areaId, spawnMask, phaseMask, equipment_id, position_x, position_y, position_z, orientation, "
+                       "spawntimesecs, wander_distance, currentwaypoint, curhealth, curmana, MovementType, npcflag, unit_flags, dynamicflags, ScriptName, VerifiedBuild, CreateObject, Comment) "
+                       f"SELECT {spawn_number}, id, {int(spawn['map'])}, zoneId, areaId, spawnMask, phaseMask, equipment_id, {float(spawn['x'])}, {float(spawn['y'])}, {float(spawn['z'])}, "
+                       f"{float(spawn.get('o', 0))}, spawntimesecs, GREATEST(wander_distance, 5), 0, curhealth, curmana, 1, npcflag, unit_flags, dynamicflags, ScriptName, VerifiedBuild, CreateObject, "
+                       f"'{LOOT_MARK} {number}' FROM creature WHERE id = {int(spawn['creature'])} AND guid < {FIRST_SPAWN} ORDER BY guid LIMIT 1;")
         # Items that only drop while someone is on the quest
         for objective in objectives:
             for drop in objective.get("drops_from") or []:
@@ -221,7 +359,7 @@ def build_sql(quests, creatures, items):
                            f"VALUES ({loot}, {objective['item']}, 0, {float(drop['chance'])}, 1, 1, 0, 1, 1, '{LOOT_MARK} {number}');")
     if people:
         out.append(f"UPDATE creature_template SET npcflag = npcflag | 2 WHERE entry IN ({numbers(people)});     -- they must be able to give quests")
-    return "\n".join(out) + "\n"
+    return "\n".join(out) + "\n" + build_map_marks(quests)
 
 
 def check_all():

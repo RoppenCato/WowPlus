@@ -50,6 +50,8 @@
 #include "WorldSession.h"
 #include "WowPlusBotChat.h"
 
+#include <algorithm>
+#include <cctype>
 #include <cmath>
 #include <mutex>
 #include <shared_mutex>
@@ -461,6 +463,7 @@ namespace
         uint32 introduceIn = 0;                             // ms until they speak (they have to arrive first)
         uint32 endsIn = 0;                                  // ms until they give up waiting
         std::vector<ObjectGuid> seen;
+        std::string role;                                   // the role last asked for; "next" asks for the same
         std::vector<std::pair<ObjectGuid, uint32>> leaving; // bots walking off, and in how many ms they are gone
     };
 
@@ -710,6 +713,36 @@ public:
         sRandomPlayerbotMgr.WowPlusFollowFaction(player->GetTeamId(), KnownTo(player->GetGUID().GetCounter()));
     }
 
+    using PlayerScript::OnPlayerCanUseChat;                 // keep the other overloads visible
+
+    // While someone stands in front of the player to be met, saying just "next" brings the next person,
+    // "keep" invites this one to the guild and "pass" ends it. The word itself is not said out loud.
+    bool OnPlayerCanUseChat(Player* player, uint32 type, uint32 language, std::string& msg) override
+    {
+        if (type != CHAT_MSG_SAY || language == LANG_ADDON || IsBot(player) || msg.size() > 8)
+            return true;
+
+        auto found = meetings.find(player->GetGUID());
+        if (found == meetings.end() || !found->second.candidate)
+            return true;
+
+        std::string word = msg;
+        std::transform(word.begin(), word.end(), word.begin(), [](unsigned char c) { return char(std::tolower(c)); });
+        while (!word.empty() && (word.back() == ' ' || word.back() == '.' || word.back() == '!'))
+            word.pop_back();
+
+        std::string command;
+        if (word == "next")
+            command = ".bots meet" + (found->second.role.empty() ? "" : " " + found->second.role);
+        else if (word == "keep" || word == "pass")
+            command = ".bots " + word;
+        else
+            return true;
+
+        ChatHandler(player->GetSession()).ParseCommands(command);
+        return false;
+    }
+
     void OnPlayerLogout(Player* player) override
     {
         nextBuffAt.erase(player->GetGUID());
@@ -876,6 +909,7 @@ public:
             return true;
         }
 
+        meeting.role = role;
         meeting.candidate = bot->GetGUID();
         meeting.seen.push_back(bot->GetGUID());
         if (meeting.seen.size() > MEETINGS_REMEMBERED)
@@ -892,7 +926,7 @@ public:
             ai->ChangeStrategy("+stay,-follow,-new rpg,-grind", BOT_STATE_NON_COMBAT);
 
         ChrClassesEntry const* cls = sChrClassesStore.LookupEntry(bot->getClass());
-        handler->PSendSysMessage("{} comes over: a level {} {}{}. Talk to them if you like. \".bots keep\" invites them to your guild, \".bots meet\" brings someone else, \".bots pass\" ends it.",
+        handler->PSendSysMessage("{} comes over: a level {} {}{}. Talk to them if you like. Say \"next\" for someone else, \"keep\" to invite them to your guild, \"pass\" to end it.",
             bot->GetName(), bot->GetLevel(), cls ? cls->name[0] : "adventurer",
             PlayerbotAI::IsTank(bot, true) ? " (tank)" : PlayerbotAI::IsHeal(bot, true) ? " (healer)" : "");
         return true;

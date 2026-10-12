@@ -3,8 +3,11 @@
 --   Loot      When you loot something blue or better, its name and icon appear in the middle of
 --             the screen in the item's colour, a beam of that colour rises behind it, and the edges of
 --             the screen flash. The better the item, the longer it pulses.
---   Big hits  Your critical hits, and hits close to your best, are shown in large numbers of their own.
---   Record    Your hardest hit is remembered per character. Beat it and you get a fanfare.
+--   Record    Your hardest hit is remembered per character. Beat it and the number pops up once in gold,
+--             with a sound and a line in chat. No flash on the screen.
+--   Big hits  Off unless you switch it on (/flair hits): critical hits and hits close to your best shown in
+--             large numbers of their own. The game shows its own number as well, so every such hit is
+--             shown twice; that is why it is off.
 --
 -- Everything is done by this addon alone; the server is not involved.
 -- /flair shows your record and the switches: /flair loot, /flair hits, /flair record, /flair reset
@@ -32,7 +35,8 @@ local function Options()
     WowPlusFlairDB = WowPlusFlairDB or {}
     local db = WowPlusFlairDB
     if db.loot == nil then db.loot = true end
-    if db.hits == nil then db.hits = true end
+    if not db.calmer then db.hits, db.calmer = false, true end     -- once: the second number on big hits is off from now on
+    if db.hits == nil then db.hits = false end
     if db.record == nil then db.record = true end
     return db
 end
@@ -206,7 +210,6 @@ local function OnDamage(amount, critical, spell, target)
         db.best, db.bestSpell, db.bestTarget, db.bestDate = amount, spell, target, date("%d %b %Y")
         if db.record and amount >= RECORD_QUIET_BELOW and GetTime() - lastFanfare >= RECORD_PAUSE then
             lastFanfare = GetTime()
-            StartEffect(1, 0.82, 0.1, 3, "New record: " .. amount .. "  (" .. spell .. ")", nil)
             PlaySoundFile("Sound\\Interface\\RaidWarning.wav")
             DEFAULT_CHAT_FRAME:AddMessage("|cffffd200Your hardest hit yet: " .. amount .. " with " .. spell .. " on " .. target .. ".|r" ..
                 (record > 0 and " (Before: " .. record .. ")" or ""))

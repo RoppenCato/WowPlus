@@ -53,7 +53,7 @@ local MENU = {
         { "Add to friends",         func = function(name) AddFriend(name) end, needsTarget = true, tip = "A bot on your friends list keeps its level." },
     } },
     { title = "Build my guild", items = {
-        { "Meet someone",           command = ".bots meet",        tip = "Someone walks up and introduces themselves. Talk to them if you like." },
+        { "Meet someone",           command = ".bots meet",        tip = "Someone walks up and introduces themselves. Talk to them if you like. Saying next, keep or pass does the same as the entries below." },
         { "Meet a tank",            command = ".bots meet tank",   tip = "The same, but a tank." },
         { "Meet a healer",          command = ".bots meet healer", tip = "The same, but a healer." },
         { "Meet a damage dealer",   command = ".bots meet damage", tip = "The same, but someone who deals damage." },

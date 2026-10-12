@@ -53,7 +53,7 @@ Built on 2026-10-12, not yet tried in the game. The idea: your guild is the peop
 |---|---|
 | `.bots meet` | Someone walks up, waves and introduces themselves out loud: their first name, where they live, what they like doing in the game and when they are on, and what they are like as company. `.bots meet tank`, `healer` or `damage` asks for a role. |
 | (talk) | Say something or whisper them and they answer, as any bot does. You do not have to. |
-| `.bots meet` again | The one in front of you waves and leaves, and someone else comes by. Nobody comes twice until everyone has been. |
+| Say `next` (or `.bots meet` again) | The one in front of you waves and leaves, and someone else comes by, of the same role if you asked for one. Nobody comes twice until everyone has been. Saying `keep` or `pass` works the same way; the word itself is not spoken out loud. |
 | `.bots keep` | They join your guild, wave, and go back to what they were doing, as a guild mate now. Without a guild they go on your friends list. |
 | `.bots pass` | They wave and go their own way. |
 

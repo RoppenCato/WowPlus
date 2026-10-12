@@ -79,8 +79,8 @@ window.CHANGELOG = {
           text: "8, 10 and 12-slot bags can drop in the zones for levels 10 to 34." },
         { title: "Loot everything at once, junk sells itself", kind: "tweak", status: "built", date: "2026-10-10",
           text: "One loot picks up from every corpse nearby, and grey items turn into gold on the spot." },
-        { title: "Big hits, and a record", kind: "feature", status: "built", date: "2026-10-11",
-          text: "Critical hits are shown large, and beating your hardest hit ever gets a fanfare." }
+        { title: "Your hardest hit is remembered", kind: "feature", status: "built", date: "2026-10-12",
+          text: "Beat your hardest hit ever and the number pops up once in gold, with a sound and a line in chat." }
       ]
     },
     {
@@ -146,7 +146,7 @@ window.CHANGELOG = {
         { title: "Guild mates keep up", kind: "feature", status: "built", date: "2026-10-11",
           text: "A bot in your guild is brought to your level, with gear to match, so it has caught up when you next log in." },
         { title: "Build your guild one person at a time", kind: "feature", status: "built", date: "2026-10-12",
-          text: "Ask to meet someone and a bot walks up and introduces itself: name, where they live, how they play. Talk, invite them to your guild, or ask for someone else." },
+          text: "Ask to meet someone and a bot walks up and introduces itself: name, where they live, how they play. Talk, say \"keep\" to invite them to your guild, or \"next\" for someone else." },
         { title: "Companions", kind: "feature", status: "built", date: "2026-10-11",
           text: "Any guild mate in your party is a companion. Pick who comes from a list of guild mates online, or call back whoever came last time.",
           details: ["When you rest, one lights a campfire; they sit, eat, laugh, dance or say something.", "On the road, a gesture or a remark every few minutes."] },

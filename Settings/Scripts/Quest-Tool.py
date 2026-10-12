@@ -277,6 +277,43 @@ class World:
             wet = off_x <= ix < off_x + width and off_y <= iy < off_y + depth and h < level
         return h, wet
 
+    def ground(self, map_id, x, y):
+        """The height of the ground at a place, smoothed between the four nearest points. None in water or off the land."""
+        fx, fy = 32 - x / TILE, 32 - y / TILE
+        gx, gy = int(fx), int(fy)
+        tile = self.tile(map_id, gx, gy)
+        if not tile or not tile[0]:
+            return None
+        heights, low, water = tile
+        px, py = (fx - gx) * 128, (fy - gy) * 128
+        ix, iy = min(127, int(px)), min(127, int(py))
+        tx, ty = px - ix, py - iy
+        a, b = heights[ix * 129 + iy], heights[(ix + 1) * 129 + iy]
+        c, d = heights[ix * 129 + iy + 1], heights[(ix + 1) * 129 + iy + 1]
+        h = (a * (1 - tx) + b * tx) * (1 - ty) + (c * (1 - tx) + d * tx) * ty
+        if water and water[0] <= ix < water[0] + water[2] and water[1] <= iy < water[1] + water[3] and h < water[4]:
+            return None
+        return h
+
+    def spots(self, creature, count):
+        """Places for more of an enemy: near where it stands already, on ground at about the same height."""
+        import math
+        homes = [(int(r[0]), float(r[1]), float(r[2]), float(r[3])) for r in
+                 sql(f"SELECT map, position_x, position_y, position_z FROM creature WHERE id = {int(creature)} AND guid < 9200000 ORDER BY guid")]
+        found, rng, tries = [], random.Random(f"spots:{creature}"), 0
+        while homes and len(found) < count and tries < count * 60:
+            tries += 1
+            map_id, x, y, z = homes[tries % len(homes)]
+            angle, far = rng.uniform(0, 2 * math.pi), rng.uniform(14, 38)
+            nx, ny = x + far * math.cos(angle), y + far * math.sin(angle)
+            h = self.ground(map_id, nx, ny)
+            if h is None or abs(h - z) > 6:
+                continue
+            if any(abs(nx - s["x"]) + abs(ny - s["y"]) < 10 for s in found):
+                continue
+            found.append({"creature": int(creature), "map": map_id, "x": round(nx, 1), "y": round(ny, 1), "z": round(h + 0.6, 1), "o": round(rng.uniform(0, 6.28), 2)})
+        return found
+
     def terrain(self, zone):
         """The zone as rows of heights for the page to shade, with -9999 for no land and water marked apart."""
         path = os.path.join(CACHE, f"terrain-{int(zone)}.json")
@@ -432,6 +469,7 @@ def main():
     p.add_argument("--side", default="horde", help="horde, alliance or both")
     p.add_argument("--rewards", type=int, help="reward ideas for a quest of this level")
     p.add_argument("--quests", help="list the quests a zone has already (name or number)")
+    p.add_argument("--spots", nargs=2, metavar=("CREATURE", "COUNT"), help="places for more of an enemy, near where it lives already, to paste into a quest file")
     p.add_argument("--no-browser", action="store_true")
     a = p.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -441,6 +479,9 @@ def main():
         for zone in world.zones:
             if zone["low"] - 2 <= a.zones <= zone["high"] + 2:
                 print(f"{zone['id']:>5}  {zone['name']:<28} levels {zone['low']} to {zone['high']}")
+        return
+    if a.spots:
+        print(json.dumps(world.spots(int(a.spots[0]), int(a.spots[1])), indent=2))
         return
     if a.quests:
         zone = next((z for z in world.zones if str(z["id"]) == a.quests or z["name"].lower() == a.quests.lower()), None)
