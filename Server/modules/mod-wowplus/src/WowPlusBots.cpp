@@ -24,6 +24,7 @@
 #include "Chat.h"
 #include "CommandScript.h"
 #include "Config.h"
+#include "DBCStores.h"
 #include "Group.h"
 #include "Guild.h"
 #include "GuildMgr.h"
@@ -37,6 +38,7 @@
 #include "Playerbots.h"
 #include "RandomPlayerbotMgr.h"
 #include "ScriptMgr.h"
+#include "SocialMgr.h"
 #include "SpellInfo.h"
 #include "SpellMgr.h"
 #include "World.h"
@@ -44,6 +46,7 @@
 #include "WorldSession.h"
 #include "WowPlusBotChat.h"
 
+#include <cmath>
 #include <mutex>
 #include <shared_mutex>
 #include <unordered_map>
@@ -398,6 +401,135 @@ namespace
             bot->HandleEmoteCommand(gestures[urand(0, 3)]);
         }
     }
+
+    // ---------------------------------------------------------------------------------------
+    // Meeting someone: a possible companion walks up and introduces themselves
+    // ---------------------------------------------------------------------------------------
+
+    constexpr float MEETING_DISTANCE = 4.0f;                // how far in front of the player the bot stands
+    constexpr float MEETING_ENDS_AT = 60.0f;                // walk this far away and the meeting is over
+    constexpr uint32 MEETING_LASTS = 10 * MINUTE * IN_MILLISECONDS;
+    constexpr uint32 MEETING_LEVELS = 3;
+    constexpr std::size_t MEETINGS_REMEMBERED = 40;         // people not shown again while the player keeps looking
+
+    struct Meeting
+    {
+        ObjectGuid candidate;
+        uint32 introduceIn = 0;                             // ms until they speak (they have to arrive first)
+        uint32 endsIn = 0;                                  // ms until they give up waiting
+        std::vector<ObjectGuid> seen;
+        std::vector<std::pair<ObjectGuid, uint32>> leaving; // bots walking off, and in how many ms they are gone
+    };
+
+    std::unordered_map<ObjectGuid, Meeting> meetings;
+
+    bool FitsRole(Player* bot, std::string const& role)
+    {
+        if (role.empty())
+            return true;
+        bool const tank = PlayerbotAI::IsTank(bot, true), heal = PlayerbotAI::IsHeal(bot, true);
+        return role == "tank" ? tank : role == "healer" ? heal : !tank && !heal;
+    }
+
+    // Someone free, of the player's side, not yet a guild mate and not met in this round
+    Player* SomeoneToMeet(Player* player, Meeting const& meeting, std::string const& role)
+    {
+        std::vector<Player*> closeBy, elsewhere;
+        {
+            std::shared_lock<std::shared_mutex> lock(*HashMapHolder<Player>::GetLock());
+            for (auto const& [guid, bot] : ObjectAccessor::GetPlayers())
+            {
+                if (!bot->IsInWorld() || !IsBot(bot) || !sRandomPlayerbotMgr.IsRandomBot(bot) || bot->GetTeamId() != player->GetTeamId() ||
+                    bot->GetGroup() || !SafeToChange(bot) || (player->GetGuildId() && bot->GetGuildId() == player->GetGuildId()) ||
+                    std::find(meeting.seen.begin(), meeting.seen.end(), guid) != meeting.seen.end() || !FitsRole(bot, role))
+                    continue;
+
+                (uint32(std::abs(int32(bot->GetLevel()) - int32(player->GetLevel()))) <= MEETING_LEVELS ? closeBy : elsewhere).push_back(bot);
+            }
+        }
+
+        if (!closeBy.empty())
+            return closeBy[urand(0, closeBy.size() - 1)];
+        if (elsewhere.empty())
+            return nullptr;
+
+        // Nobody near the player's level: someone from elsewhere becomes that level, as guild mates do
+        Player* bot = elsewhere[urand(0, elsewhere.size() - 1)];
+        uint8 const level = uint8(std::clamp<int32>(int32(player->GetLevel()) + irand(-1, 1), 1, int32(sWorld->getIntConfig(CONFIG_MAX_PLAYER_LEVEL))));
+        if (bot->getClass() == CLASS_DEATH_KNIGHT && level < DEATH_KNIGHT_FIRST_LEVEL)
+            return nullptr;
+        if (bot->IsMounted())
+            bot->Dismount();
+        PlayerbotFactory factory(bot, level);
+        factory.Randomize(false);
+        return bot;
+    }
+
+    // The candidate goes back to its own life
+    void SendOff(Meeting& meeting)
+    {
+        if (Player* bot = ObjectAccessor::FindConnectedPlayer(meeting.candidate))
+            if (bot->IsInWorld() && !bot->GetGroup())
+            {
+                bot->HandleEmoteCommand(EMOTE_ONESHOT_WAVE);
+                meeting.leaving.emplace_back(meeting.candidate, urand(3, 5) * IN_MILLISECONDS);
+            }
+        meeting.candidate.Clear();
+    }
+
+    void UpdateMeeting(Player* player, uint32 elapsed)
+    {
+        auto found = meetings.find(player->GetGUID());
+        if (found == meetings.end())
+            return;
+        Meeting& meeting = found->second;
+
+        for (auto leaving = meeting.leaving.begin(); leaving != meeting.leaving.end();)
+        {
+            if (leaving->second > elapsed)
+            {
+                leaving->second -= elapsed;
+                ++leaving;
+                continue;
+            }
+            if (Player* bot = ObjectAccessor::FindConnectedPlayer(leaving->first))
+                if (bot->IsInWorld() && !bot->GetGroup() && SafeToChange(bot))
+                {
+                    if (PlayerbotAI* ai = GET_PLAYERBOT_AI(bot))
+                        ai->ResetStrategies();
+                    sRandomPlayerbotMgr.RandomTeleportForLevel(bot);
+                }
+            leaving = meeting.leaving.erase(leaving);
+        }
+
+        Player* bot = meeting.candidate ? ObjectAccessor::FindConnectedPlayer(meeting.candidate) : nullptr;
+        if (!bot)
+        {
+            meeting.candidate.Clear();
+            return;
+        }
+
+        if (bot->GetGroup() == player->GetGroup() && player->GetGroup())
+        {
+            meeting.candidate.Clear();                      // taken along: no longer a candidate
+            return;
+        }
+
+        if (meeting.introduceIn)
+        {
+            meeting.introduceIn = meeting.introduceIn > elapsed ? meeting.introduceIn - elapsed : 0;
+            if (!meeting.introduceIn && bot->IsInWorld() && bot->GetMapId() == player->GetMapId())
+            {
+                bot->SetFacingToObject(player);
+                bot->HandleEmoteCommand(EMOTE_ONESHOT_WAVE);
+                WowPlus::BotIntroduces(bot, player);
+            }
+        }
+
+        meeting.endsIn = meeting.endsIn > elapsed ? meeting.endsIn - elapsed : 0;
+        if (!meeting.endsIn || player->GetMapId() != bot->GetMapId() || !player->IsWithinDist(bot, MEETING_ENDS_AT))
+            SendOff(meeting);
+    }
 }
 
 class WowPlusBotsWorld : public WorldScript
@@ -453,6 +585,8 @@ public:
             if (companionsEnabled)
                 UpdateCompanions(player, elapsed);
 
+            UpdateMeeting(player, elapsed);
+
             if (WantsToBeAlone(player))
             {
                 SendBotsAway(player);
@@ -507,6 +641,9 @@ public:
             { "alone",     HandleAlone,   SEC_PLAYER, Console::No },
             { "call",      HandleCall,    SEC_PLAYER, Console::No },
             { "dismiss",   HandleDismiss, SEC_PLAYER, Console::No },
+            { "meet",      HandleMeet,    SEC_PLAYER, Console::No },
+            { "keep",      HandleKeep,    SEC_PLAYER, Console::No },
+            { "pass",      HandlePass,    SEC_PLAYER, Console::No },
             { "companion", companionTable },
         };
 
@@ -659,6 +796,143 @@ public:
         }
 
         handler->SendSysMessage("Your companions are on their way.");
+        return true;
+    }
+
+    // .bots meet [tank|healer|damage]: someone new walks up and introduces themselves. Again: someone else.
+    static bool HandleMeet(ChatHandler* handler, Optional<std::string> wanted)
+    {
+        Player* player = handler->GetPlayer();
+        if (!player)
+            return false;
+
+        std::string role = wanted.value_or("");
+        if (role == "dps")
+            role = "damage";
+        if (!role.empty() && role != "tank" && role != "healer" && role != "damage")
+        {
+            handler->SendSysMessage("Say .bots meet, or .bots meet tank, .bots meet healer, .bots meet damage.");
+            return true;
+        }
+
+        if (player->IsInCombat() || player->GetMap()->IsDungeon() || player->InBattleground() || player->IsInFlight())
+        {
+            handler->SendSysMessage("Not here and now: somewhere out in the world, when you are not fighting.");
+            return true;
+        }
+
+        Meeting& meeting = meetings[player->GetGUID()];
+        if (meeting.candidate)
+            SendOff(meeting);
+
+        Player* bot = SomeoneToMeet(player, meeting, role);
+        if (!bot && !meeting.seen.empty())
+        {
+            meeting.seen.clear();                           // everyone has been by: start over
+            bot = SomeoneToMeet(player, meeting, role);
+        }
+        if (!bot)
+        {
+            handler->SendSysMessage("Nobody is free to come by right now. Try again in a little while.");
+            return true;
+        }
+
+        meeting.candidate = bot->GetGUID();
+        meeting.seen.push_back(bot->GetGUID());
+        if (meeting.seen.size() > MEETINGS_REMEMBERED)
+            meeting.seen.erase(meeting.seen.begin());
+        meeting.introduceIn = 3 * IN_MILLISECONDS;
+        meeting.endsIn = MEETING_LASTS;
+
+        float const facing = player->GetOrientation();
+        if (bot->IsMounted())
+            bot->Dismount();
+        bot->TeleportTo(player->GetMapId(), player->GetPositionX() + MEETING_DISTANCE * std::cos(facing),
+            player->GetPositionY() + MEETING_DISTANCE * std::sin(facing), player->GetPositionZ() + 0.5f, facing + float(M_PI));
+        if (PlayerbotAI* ai = GET_PLAYERBOT_AI(bot))
+            ai->ChangeStrategy("+stay,-follow,-new rpg,-grind", BOT_STATE_NON_COMBAT);
+
+        ChrClassesEntry const* cls = sChrClassesStore.LookupEntry(bot->getClass());
+        handler->PSendSysMessage("{} comes over: a level {} {}{}. Talk to them if you like. \".bots keep\" takes them on, \".bots meet\" brings someone else, \".bots pass\" ends it.",
+            bot->GetName(), bot->GetLevel(), cls ? cls->name[0] : "adventurer",
+            PlayerbotAI::IsTank(bot, true) ? " (tank)" : PlayerbotAI::IsHeal(bot, true) ? " (healer)" : "");
+        return true;
+    }
+
+    // .bots keep: the person met becomes a guild mate and a companion, and comes along now
+    static bool HandleKeep(ChatHandler* handler)
+    {
+        Player* player = handler->GetPlayer();
+        auto found = player ? meetings.find(player->GetGUID()) : meetings.end();
+        Player* bot = found != meetings.end() && found->second.candidate ? ObjectAccessor::FindConnectedPlayer(found->second.candidate) : nullptr;
+        if (!bot)
+        {
+            handler->SendSysMessage("There is nobody here to take on. \".bots meet\" brings someone by.");
+            return true;
+        }
+
+        if (PlayerbotAI* ai = GET_PLAYERBOT_AI(bot))
+            ai->ResetStrategies();
+
+        std::string result = bot->GetName();
+        Guild* guild = player->GetGuildId() ? sGuildMgr->GetGuildById(player->GetGuildId()) : nullptr;
+        if (guild)
+        {
+            // Out of a guild of bots first; a guild led by a real player keeps its members
+            if (Guild* old = bot->GetGuildId() ? sGuildMgr->GetGuildById(bot->GetGuildId()) : nullptr)
+                if (sPlayerbotAIConfig.IsInRandomAccountList(sCharacterCache->GetCharacterAccountIdByGuid(old->GetLeaderGUID())))
+                    old->DeleteMember(bot->GetGUID(), false, false, false);
+
+            if (!bot->GetGuildId() && guild->AddMember(bot->GetGUID()))
+            {
+                std::vector<ObjectGuid::LowType> ids = CompanionIds(player);
+                if (ids.size() < MAX_COMPANIONS)
+                {
+                    ids.push_back(bot->GetGUID().GetCounter());
+                    StoreCompanionIds(player, ids);
+                    result += " has joined your guild and is your companion from now on.";
+                }
+                else
+                    result += " has joined your guild. You have " + std::to_string(MAX_COMPANIONS) + " companions already; remove one to make room (.bots companion remove <name>).";
+            }
+            else
+                result += " could not join your guild, but comes along for now.";
+        }
+        else
+        {
+            if (player->GetSocial() && !player->GetSocial()->HasFriend(bot->GetGUID()))
+                player->GetSocial()->AddToSocialList(bot->GetGUID(), SOCIAL_FLAG_FRIEND);
+            result += " is on your friends list and comes along for now. Companions are chosen from your guild: start one, and invite them.";
+        }
+        handler->SendSysMessage(result);
+
+        // And into the party
+        if (!player->GetGroup() || (player->GetGroup()->GetLeaderGUID() == player->GetGUID() && !player->GetGroup()->IsFull()))
+        {
+            WorldPacket invite(CMSG_GROUP_INVITE, bot->GetName().size() + 5);
+            invite << bot->GetName();
+            invite << uint32(0);
+            player->GetSession()->HandleGroupInviteOpcode(invite);
+        }
+
+        found->second.candidate.Clear();
+        found->second.seen.clear();
+        return true;
+    }
+
+    // .bots pass: thanks, not today
+    static bool HandlePass(ChatHandler* handler)
+    {
+        Player* player = handler->GetPlayer();
+        auto found = player ? meetings.find(player->GetGUID()) : meetings.end();
+        if (found == meetings.end() || !found->second.candidate)
+        {
+            handler->SendSysMessage("There is nobody here.");
+            return true;
+        }
+
+        SendOff(found->second);
+        found->second.seen.clear();
         return true;
     }
 

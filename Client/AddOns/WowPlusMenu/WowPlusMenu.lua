@@ -53,6 +53,15 @@ local MENU = {
         { "Make a companion",       target = ".bots companion add %s",    tip = "A guild mate becomes one of your two companions." },
         { "No longer a companion",  target = ".bots companion remove %s", tip = "Stays in the guild, but is not called any more." },
     } },
+    { title = "Find a companion", items = {
+        { "Meet someone",           command = ".bots meet",        tip = "Someone walks up and introduces themselves. Talk to them if you like." },
+        { "Meet a tank",            command = ".bots meet tank",   tip = "The same, but a tank." },
+        { "Meet a healer",          command = ".bots meet healer", tip = "The same, but a healer." },
+        { "Meet a damage dealer",   command = ".bots meet damage", tip = "The same, but someone who deals damage." },
+        { "Someone else, please",   command = ".bots meet",        tip = "The one in front of you waves and leaves, and someone else comes by." },
+        { "Take them on",           command = ".bots keep",        tip = "They join your guild, become your companion and come along now." },
+        { "Thanks, not today",      command = ".bots pass",        tip = "They wave and go their own way." },
+    } },
     { title = "Companions", items = {
         { "Call them",              command = ".bots call",           tip = "Your companions join your group and come to you." },
         { "Send them off",          command = ".bots dismiss",        tip = "They leave the group and go their own way." },

@@ -292,6 +292,7 @@ namespace
      *       "known"  no bot: which bots remember this player?
      *       "tell"   the bot says in its own words what `text` describes ("You have arrived at the entrance")
      *       "apply"  the bot asks for a place in the group the player posted
+     *       "introduce" the bot has walked up to the player, who is looking for a companion, and says who it is
      */
     void Ask(Player* bot, Player* player, Channel channel, char const* kind, std::string const& text,
         std::vector<Player*> const& others, bool banter = false, std::string const& channelName = "")
@@ -713,6 +714,12 @@ void WowPlus::BotReactsInParty(Player* bot, Player* player, std::string const& h
 {
     if (enabled && partyEnabled)
         Ask(bot, player, CHANNEL_PARTY, "tell", happened, PartyBotsOf(player));
+}
+
+void WowPlus::BotIntroduces(Player* bot, Player* player)
+{
+    if (enabled && sayEnabled)
+        Ask(bot, player, CHANNEL_SAY, "introduce", "", {});
 }
 
 void WowPlus::BotApplies(Player* bot, Player* player, std::string const& wanted)

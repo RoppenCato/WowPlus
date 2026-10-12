@@ -19,6 +19,10 @@ namespace WowPlus
     // the group, told in plain words: "You have arrived at the entrance of Shadowfang Keep."
     void BotReactsInParty(Player* bot, Player* player, std::string const& happened);
 
+    // Has this bot, standing in front of a player who is looking for a companion, say out loud who it is:
+    // its name, where it lives, what and when it plays.
+    void BotIntroduces(Player* bot, Player* player);
+
     // Has this bot whisper the player to ask for a place in the group the player posted. `wanted` is
     // what the post asked for and what the bot is: "a healer for Shadowfang Keep; you are a healer".
     void BotApplies(Player* bot, Player* player, std::string const& wanted);

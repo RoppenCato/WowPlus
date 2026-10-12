@@ -543,6 +543,18 @@ def react(q):
     return [(q["bot"], line) for line in speak(q, task, lean=True)[:1]]
 
 
+def introduce(q):
+    """The bot has walked up to a player who is looking for a companion, and says who it is."""
+    person = minds.person_for(q["bot"], q.get("bgender", ""))
+    name = f"your own first name ({person['first_name']})" if person else "your own first name"
+    task = (f"{q['player']} is looking for someone to travel with and you have walked up to them. Introduce yourself out "
+            f"loud, the way you would to someone you might play with for a long time: {name}, where you live, what you "
+            "like doing in the game and when you are usually on, and one true thing about what you are like as company. "
+            "Two or three short lines, each its own message, in your own way of typing. No sales talk and no question at the end.")
+    lines = speak(q, task)
+    return [(q["bot"], line) for line in lines[:3]]
+
+
 def tell(q):
     """The bot says one line in party chat about something it did or is about to do, given in plain words."""
     task = q["text"] + " One short line in party chat, your own way; at most eight words."
@@ -691,6 +703,8 @@ class Handler(BaseHTTPRequestHandler):
                     lines = meet(q)
                 elif kind == "event" and q.get("text"):
                     lines = react(q)
+                elif kind == "introduce":
+                    lines = introduce(q)
                 elif kind == "tell" and q.get("text"):
                     lines = tell(q)
                 elif kind == "apply" and q.get("text"):

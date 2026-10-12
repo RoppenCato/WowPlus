@@ -64,6 +64,20 @@ While they travel with you they do small things by themselves:
 
 Settings: `WowPlus.Bots.Companions.*`.
 
+## Finding a companion: meeting people
+
+Built on 2026-10-12, not yet tried in the game. In the menu under **Find a companion**, or typed:
+
+| Command | What happens |
+|---|---|
+| `.bots meet` | Someone walks up, waves and introduces themselves out loud: their first name, where they live, what they like doing in the game and when they are on, and what they are like as company. `.bots meet tank`, `healer` or `damage` asks for a role. |
+| (talk) | Say something or whisper them and they answer, as any bot does. You do not have to. |
+| `.bots meet` again | The one in front of you waves and leaves, and someone else comes by. Nobody comes twice until everyone has been. |
+| `.bots keep` | They join your guild, become your companion (if you have fewer than two) and join your party now. Without a guild they go on your friends list and come along for now. |
+| `.bots pass` | They wave and go their own way. |
+
+They are bots that are really in the world: your side, free, near your level. If nobody near your level is free, someone from another level range becomes your level, as guild mates do. Someone you neither keep nor pass leaves after ten minutes, or when you walk 60 yards away. It works out in the world only, not in a dungeon or a fight.
+
 ## The bot bar
 
 A small addon of our own, `WowPlusBots`, gives you one row of buttons instead of typed commands: Follow, Stay, Attack, Flee, Call, Dismiss, Away, Alone. Drag it by the word "Bots" to move it; `/botbar` hides or shows it. It is installed by `Start-Server.bat` like our other addons.

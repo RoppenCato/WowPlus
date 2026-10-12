@@ -139,6 +139,8 @@ window.CHANGELOG = {
           text: "Bots always accept an invitation, and one already in a bot guild leaves it first." },
         { title: "Guild mates keep up", kind: "feature", status: "built", date: "2026-10-11",
           text: "A bot in your guild is brought to your level, with gear to match, so it has caught up when you next log in." },
+        { title: "Meet a companion", kind: "feature", status: "built", date: "2026-10-12",
+          text: "Ask to meet someone and a bot walks up and introduces itself: name, where they live, how they play. Talk, take them on, or ask for someone else." },
         { title: "Companions", kind: "feature", status: "built", date: "2026-10-11",
           text: "Up to two guild mates you choose, called to your side and sent off again.",
           details: ["When you rest, one lights a campfire; they sit, eat, laugh, dance or say something.", "On the road, a gesture or a remark every few minutes."] },
