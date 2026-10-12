@@ -296,20 +296,31 @@ class World:
         return h
 
     def spots(self, creature, count):
-        """Places for more of an enemy: near where it stands already, on ground at about the same height."""
+        """Places for more of an enemy: near where it lives already, on ground at about the same height, and
+        without crowding. The rules are the ones Make-Quests.py checks (quests.crowding): room around each
+        place, not too many creatures in sight of it, and well away from anyone friendly."""
         import math
         homes = [(int(r[0]), float(r[1]), float(r[2]), float(r[3])) for r in
-                 sql(f"SELECT map, position_x, position_y, position_z FROM creature WHERE id = {int(creature)} AND guid < 9200000 ORDER BY guid")]
+                 sql(f"SELECT map, position_x, position_y, position_z FROM creature WHERE id = {int(creature)} AND guid < {quests.FIRST_SPAWN} ORDER BY guid")]
+        if not homes:
+            return []
+        count = min(count, max(2, len(homes) * 2))      # never more than twice as many again as the game has
+        map_id = homes[0][0]
+        others = quests.neighbours(map_id)
+        for _, quest in quests.load_quests():           # and the enemies our quest files have added already
+            if isinstance(quest, dict):
+                others += [(float(s["x"]), float(s["y"]), False) for s in quest.get("spawns") or [] if int(s.get("map", -1)) == map_id]
         found, rng, tries = [], random.Random(f"spots:{creature}"), 0
-        while homes and len(found) < count and tries < count * 60:
+        while len(found) < count and tries < count * 400:
             tries += 1
-            map_id, x, y, z = homes[tries % len(homes)]
-            angle, far = rng.uniform(0, 2 * math.pi), rng.uniform(14, 38)
+            _, x, y, z = homes[tries % len(homes)]
+            angle, far = rng.uniform(0, 2 * math.pi), rng.uniform(quests.ROOM, 45 + tries // 20)     # looks further out when it is full nearby
             nx, ny = x + far * math.cos(angle), y + far * math.sin(angle)
             h = self.ground(map_id, nx, ny)
-            if h is None or abs(h - z) > 6:
+            if h is None or abs(h - z) > 8:
                 continue
-            if any(abs(nx - s["x"]) + abs(ny - s["y"]) < 10 for s in found):
+            placed = [(s["x"], s["y"], False) for s in found]
+            if quests.crowding(nx, ny, others + placed):
                 continue
             found.append({"creature": int(creature), "map": map_id, "x": round(nx, 1), "y": round(ny, 1), "z": round(h + 0.6, 1), "o": round(rng.uniform(0, 6.28), 2)})
         return found

@@ -94,6 +94,21 @@ A file is named `<number>-<a-few-words>.json`. The number is the quest's `id`: t
 | `after` | The number of a quest that must be done first; 0 or left out for none. |
 | `idea` | A note for the writer. Not used by the game. |
 
+## Adding enemies without crowding
+
+A quest may add more of an enemy (`spawns`), but a place must not fill up. Every added enemy has to keep these rules, which the check enforces and the place picker (`Quest-Tool.py --spots`) follows:
+
+| Rule | Number | Why |
+|---|---|---|
+| Room to the nearest other creature | at least 18 yards | So that pulling one does not pull its neighbour. |
+| Creatures within 40 yards, itself not counted | at most 6 | The game's own busy spots are about that full; more feels like a swarm. |
+| Distance from anyone players talk to | at least 60 yards | No enemies next to quest givers, vendors or guards. |
+| How many are added | at most twice what the game has of that enemy | A handful more, never a new population. |
+
+Enemies added by other quest files count as neighbours too. A quest whose added enemies break a rule is left out of the game and named by `Make-Quests.py --check`, until they are moved. The numbers are at the top of `Settings/Scripts/Make-Quests.py`.
+
+The picker looks further out from where the enemy lives when the nearby ground is full, so a crowded camp grows at its edges instead of in its middle.
+
 ## How it gets into the game
 
 `Settings/Scripts/Make-Quests.py` turns the files into rows in the game's database: the quest itself, who starts and ends it, the things said, loot that drops only while on the quest, added enemies, and **where it shows on the map**: an area around each group of the enemies to kill or to take things from, and a mark on the person it is handed in to. The map marks and added enemies are read by the server when it starts, so those need a restart. It first removes everything it wrote before (quests 9200000 to 9299999, and loot rows marked "WowPlus quest"), so what is in the game is always exactly what is in this folder. A file with a mistake is left out and named; the others still go in.

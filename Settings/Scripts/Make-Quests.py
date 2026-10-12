@@ -37,6 +37,12 @@ TYPES = {
     "slay": "Kill one named enemy.",
 }
 LOOT_MARK = "WowPlus quest"
+
+# Adding enemies must not crowd a place. Around every added enemy:
+ROOM = 18.0                 # yards to the nearest other creature: far enough that pulling one does not pull the other
+IN_SIGHT = 40.0             # the distance within which creatures are counted
+MOST_IN_SIGHT = 6           # at most this many creatures within that distance, the added one not counted
+CLEAR_OF_PEOPLE = 60.0      # yards from anyone a player can talk to (quest givers, vendors, guards)
 FIRST_SPAWN, LAST_SPAWN = 9200000, 9299999     # the numbers of the enemies our quests add to the world
 
 
@@ -286,6 +292,46 @@ def build_map_marks(quests):
     return "\n".join(out) + "\n"
 
 
+def neighbours(map_id):
+    """Every creature the game itself has on a map, as (x, y, is someone to talk to)."""
+    rows = sql(f"SELECT c.position_x, c.position_y, (t.npcflag <> 0) FROM creature c JOIN creature_template t ON t.entry = c.id "
+               f"WHERE c.map = {int(map_id)} AND c.guid < {FIRST_SPAWN} AND t.type NOT IN (8, 10)")
+    return [(float(x), float(y), flag == "1") for x, y, flag in rows]
+
+
+def crowding(x, y, others):
+    """Why an enemy should not be added at this place, or '' if there is room. `others`: (x, y, is a person)."""
+    in_sight = 0
+    for ox, oy, person in others:
+        distance = math.hypot(x - ox, y - oy)
+        if distance < 0.5:
+            continue                                    # itself
+        if person and distance < CLEAR_OF_PEOPLE:
+            return f"only {distance:.0f} yards from someone players talk to (at least {CLEAR_OF_PEOPLE:.0f})"
+        if distance < ROOM:
+            return f"only {distance:.0f} yards from another creature (at least {ROOM:.0f})"
+        if distance <= IN_SIGHT:
+            in_sight += 1
+    if in_sight > MOST_IN_SIGHT:
+        return f"{in_sight} creatures within {IN_SIGHT:.0f} yards already (at most {MOST_IN_SIGHT})"
+    return ""
+
+
+def crowded(quests):
+    """Problems with the enemies the quests add, as (quest id, text)."""
+    found, by_map = [], {}
+    for quest in quests:
+        for spawn in quest.get("spawns") or []:
+            by_map.setdefault(int(spawn["map"]), []).append((quest["id"], spawn))
+    for map_id, spawns in by_map.items():
+        others = neighbours(map_id) + [(float(s["x"]), float(s["y"]), False) for _, s in spawns]
+        for number, spawn in spawns:
+            why = crowding(float(spawn["x"]), float(spawn["y"]), others)
+            if why:
+                found.append((number, f"the added enemy at {spawn['x']}, {spawn['y']} is {why}"))
+    return found
+
+
 def text(value):
     """A text for the database: the game writes $B for a new line and $N for the player's name."""
     value = (value or "").replace("\r", "").strip()
@@ -378,6 +424,11 @@ def check_all():
             problems += [f"{name}: {line}" for line in wrong]
         else:
             good.append(quest)
+    # Enemies that would crowd a place are named, and their quest is left out until they are moved
+    tight = crowded(good)
+    for number, why in tight:
+        problems.append(f"quest {number}: {why}")
+    good = [quest for quest in good if quest["id"] not in {number for number, _ in tight}]
     return good, problems, creatures, items
 
 
