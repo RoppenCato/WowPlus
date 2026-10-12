@@ -1,0 +1,83 @@
+{
+  "id": 9200007,
+  "title": "The Moon's Mercy",
+  "level": 10,
+  "min_level": 7,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 215,
+  "type": "slay",
+  "after": 9200006,
+  "giver": 11944,
+  "turn_in": 3064,
+  "objectives": [
+    {
+      "creature": 2973,
+      "count": 1
+    }
+  ],
+  "spawns": [
+    {
+      "creature": 2973,
+      "map": 1,
+      "x": -2731.5,
+      "y": 177.1,
+      "z": 71.8,
+      "o": 1.67
+    },
+    {
+      "creature": 2973,
+      "map": 1,
+      "x": -1014.5,
+      "y": -981.2,
+      "z": 8.0,
+      "o": 4.02
+    },
+    {
+      "creature": 2973,
+      "map": 1,
+      "x": -2715.7,
+      "y": 208.6,
+      "z": 77.5,
+      "o": 5.32
+    },
+    {
+      "creature": 2973,
+      "map": 1,
+      "x": -1004.4,
+      "y": -1013.9,
+      "z": 15.3,
+      "o": 3.73
+    }
+  ],
+  "texts": {
+    "details": "A hunter who only takes has learned half of the hunt. Mu'sha taught the other half.\n\nNorth of here, on the plains toward Thunder Bluff, the kodo gather. Among them are old bulls the herd is leaving behind: too slow now to keep up, too proud to lie down. The wolves know it.\n\nGo and give one of them a clean end, as a hunter should, before the wolves give him a slow one. Then find Gennia Runetotem here in the village, and ask her whose child came of the stag and the moon.",
+    "objectives": "Kill a Kodo Bull on the plains north of Bloodhoof Village, then speak with Gennia Runetotem in Bloodhoof Village.",
+    "progress": "You have the look of one sent by Vorn Skyseer. Is it done?",
+    "completion": "A clean end, and no more taken than was needed. Then you have heard the tale as it should be heard.\n\nOf Apa'ro and Mu'sha was born Cenarius, lord of the forest, child of sky and earth alike. It was he who first taught our people to speak with the trees and the beasts, and every druid since has walked behind him.\n\nTake this, and hunt as one who knows why."
+  },
+  "reward": {
+    "money": 420,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 3217,
+        "count": 1
+      },
+      {
+        "item": 2817,
+        "count": 1
+      },
+      {
+        "item": 23403,
+        "count": 1
+      },
+      {
+        "item": 5344,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Chain 3 of 3: mercy as the other half of the hunt, and Cenarius, child of the stag and the moon, who taught the first druids."
+}

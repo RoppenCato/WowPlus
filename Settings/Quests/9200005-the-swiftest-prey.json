@@ -1,0 +1,31 @@
+{
+  "id": 9200005,
+  "title": "The Swiftest Prey",
+  "level": 7,
+  "min_level": 4,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 215,
+  "type": "kill",
+  "giver": 11944,
+  "turn_in": 11944,
+  "objectives": [
+    {
+      "creature": 2956,
+      "count": 8
+    }
+  ],
+  "texts": {
+    "details": "You hunt well enough, $N. But do you know why we hunt at all?\n\nThe Earthmother gave the hunt to her children so that we would learn the plains by running them. And she set one beast before our first hunters that none could bring down: Apa'ro, the white stag, swifter than thought.\n\nYou will not find Apa'ro. But the plainstriders north-west of the lake still teach what he taught. Run them down, and learn what it is to chase something that does not wish to be caught.",
+    "objectives": "Kill 8 Adult Plainstriders on the plains north-west of Bloodhoof Village, then return to Vorn Skyseer.",
+    "progress": "The striders are quick. Our first hunters chased something swifter.",
+    "completion": "You are breathing hard. Good. So did they.\n\nOur hunters chased the white stag across the whole of the world and never tired of it, for the chase was the gift. But Apa'ro tired of being chased. Sit, and I will tell you where he ran."
+  },
+  "reward": {
+    "money": 200,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Chain 1 of 3, The White Stag and the Moon: the hunt is the Earthmother's gift, and Apa'ro was the prey none could catch."
+}

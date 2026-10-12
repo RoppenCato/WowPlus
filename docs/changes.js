@@ -241,7 +241,10 @@ window.CHANGELOG = {
       items: [
         { title: "The Hatred of the Centaur", kind: "feature", status: "built", date: "2026-10-12",
           text: "Mulgore, levels 8 to 9, three quests: an old bull in Bloodhoof Village remembers the wandering years, Galak scouts are on the plains again, and Baine Bloodhoof tells why this land is not taken for granted.",
-          details: ["Starts with Hulfnar Stonetotem in Bloodhoof Village."] }
+          details: ["Starts with Hulfnar Stonetotem in Bloodhoof Village."] },
+        { title: "The White Stag and the Moon", kind: "feature", status: "built", date: "2026-10-12",
+          text: "Mulgore, levels 7 to 10, three quests: Vorn Skyseer tells the tauren tale of Apa'ro the white stag, the moon who freed him, and what a hunter owes the hunted.",
+          details: ["Starts with Vorn Skyseer in Bloodhoof Village."] }
       ]
     },
     {

@@ -1,0 +1,47 @@
+{
+  "id": 9200006,
+  "title": "Antlers Among the Stars",
+  "level": 8,
+  "min_level": 5,
+  "max_level": 0,
+  "side": "horde",
+  "zone": 215,
+  "type": "collect",
+  "after": 9200005,
+  "giver": 11944,
+  "turn_in": 11944,
+  "objectives": [
+    {
+      "item": 4589,
+      "count": 6,
+      "drops_from": [
+        {
+          "creature": 2970,
+          "chance": 50
+        },
+        {
+          "creature": 2971,
+          "chance": 50
+        }
+      ]
+    }
+  ],
+  "texts": {
+    "details": "With nowhere left on the earth to run, Apa'ro leapt into the sky. There his antlers caught among the stars, and he hung, and could not free himself.\n\nLook up tonight and you will see where he struggled. The stars have never lain straight since.\n\nIt was Mu'sha who found him: the moon, the Earthmother's left eye. When we would speak to her, we burn the feathers of those who hunt in her sky. The swoops over the plains north of here carry what I need.",
+    "objectives": "Bring 6 Long Elegant Feathers from the Swoops and Taloned Swoops of the plains north of Bloodhoof Village to Vorn Skyseer.",
+    "progress": "Mu'sha rises soon. Have you the feathers?",
+    "completion": "These will burn well.\n\nMu'sha saw the great stag caught fast, and she did not leave him there, though no hunter would have blamed her. She freed him, and in freeing him she came to love him.\n\nRemember that, $N, when you next stand over something that cannot run."
+  },
+  "reward": {
+    "money": 260,
+    "xp_difficulty": 5,
+    "items": [
+      {
+        "item": 118,
+        "count": 2
+      }
+    ],
+    "choices": []
+  },
+  "idea": "Chain 2 of 3: Apa'ro caught in the stars, and Mu'sha the moon who freed him."
+}
