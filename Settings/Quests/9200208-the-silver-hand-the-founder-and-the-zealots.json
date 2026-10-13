@@ -1,0 +1,59 @@
+{
+  "id": 9200208,
+  "title": "The Silver Hand: The Founder and the Zealots",
+  "level": 30,
+  "min_level": 30,
+  "max_level": 0,
+  "side": "horde",
+  "class": "paladin",
+  "zone": 85,
+  "type": "kill",
+  "after": 9200206,
+  "giver": 17717,
+  "turn_in": 17717,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": 2600.0,
+        "y": -533.0,
+        "radius": 40
+      },
+      "text": "Stand at the grave at Faol's Rest"
+    },
+    {
+      "creature": 4281,
+      "count": 4
+    },
+    {
+      "creature": 4282,
+      "count": 4
+    }
+  ],
+  "texts": {
+    "details": "Their founder, Alonsus Faol, lies in Tirisfal, in our allies' land. There is a small grave by the road. Stand at it once. Humans built an order that has outlived their kingdom, and it began with that one old man.\n\nThen look up the road. The monastery there was his church. Now it belongs to the Scarlet Crusade.\n\nThey were paladins of his order, $N. When their first knight was dead and the order broken, the survivors gathered under a lord named Mograine. He was murdered, with his own son's help, and what remained was taken up by a man who was no man but a demon in a paladin's skin. They kept the zeal and lost the rest. Their scouts and magicians hold the gardens past the grave. Thin them.",
+    "objectives": "Stand at the grave at Faol's Rest in Tirisfal Glades and kill 4 Scarlet Scouts and 4 Scarlet Magicians in the Whispering Gardens beyond it. Return to Knight-Lord Bloodvalor at the Hall of Blood in Silvermoon.",
+    "progress": "The grave first. Then those who camp beside it.",
+    "completion": "You have seen both. The man who made them, and what they made of themselves.\n\nThe Crusade holds that anyone not of their number may carry the plague, and must die. They began by killing the dead. They have ended by killing farmers. And every one of them would swear to you that he serves the Light.\n\nRemember that when our own people say we are the ones who misuse it. We took the Light by force, at first. I do not deny it. But we have never mistaken cruelty for holiness. Those among the humans who would not follow the Crusade left, and became the Argent Dawn. We have dealt with them. They can be respected.\n\nTake one of these. At forty seasons I will show you something harder."
+  },
+  "reward": {
+    "money": 3000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 16886,
+        "count": 1
+      },
+      {
+        "item": 6194,
+        "count": 1
+      },
+      {
+        "item": 6676,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Silver Hand, level 30: from the wiki, Alonsus Faol founded the order; after Uther's death the survivors were led by Alexandros Mograine, who was killed with the help of his own son, and Saidan Dathrohan, possessed by a dreadlord, made them the Scarlet Crusade, which treats all outsiders as plague carriers; those who rejected it founded the Argent Dawn."
+}

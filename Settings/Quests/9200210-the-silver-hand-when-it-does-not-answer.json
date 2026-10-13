@@ -1,0 +1,43 @@
+{
+  "id": 9200210,
+  "title": "The Silver Hand: When It Does Not Answer",
+  "level": 40,
+  "min_level": 40,
+  "max_level": 0,
+  "side": "horde",
+  "class": "paladin",
+  "zone": 8,
+  "type": "kill",
+  "after": 9200208,
+  "perk": "light_answers",
+  "giver": 17717,
+  "turn_in": 17717,
+  "objectives": [
+    {
+      "talk": 1776,
+      "text": "Ask Magtoor what he prays to now",
+      "says": [
+        "You carry the Light. I can see it on you. I carried it once. I was a vindicator, before the sickness.",
+        "It did not leave in anger. One morning I reached for it and there was nothing there to take my hand. That is all. It has been so ever since.",
+        "I still say the words. Every morning. I do not know who hears them. I say them because the one who said them was a better man than the one who would stop."
+      ]
+    },
+    {
+      "creature": 9210067,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You have seen what the humans built and what it soured into. Now something that concerns us more nearly. What if the Light does not answer at all?\n\nIn the Swamp of Sorrows, in the south of the human lands, there is a village of draenei. Not as you know them. A sickness in the old war twisted them, and since that day the Light has not come when they call. They are named the Broken. Their elder is Magtoor. Ask him what he prays to now.\n\nSome of his kin could not bear the silence. They cursed the Light and gave themselves to rage. One, Haarun, hunts those who still keep faith. He is north-east of the village, by their sanctuary. Stop him, $N.",
+    "objectives": "Ask Magtoor at the Harborage in the Swamp of Sorrows what he prays to now, and kill Haarun the Forsworn near the Fallow Sanctuary. Return to Knight-Lord Bloodvalor at the Hall of Blood in Silvermoon.",
+    "progress": "Listen to the old one first. Then go north-east, to those who stopped listening.",
+    "completion": "One who was abandoned and still says the words, and one who was abandoned and took up a club.\n\nI will tell you why I send our knights there. Our people lost the Sunwell, and when the Light did not come to comfort us, we said: then we shall take it. We chained a being of pure Light under this very hall and drew from it by force. It worked. We were Haarun's answer, $N, with better manners.\n\nThe Sunwell is restored now, and the Light comes to us freely. I have never understood why it should. But I have noticed that it comes soonest to those who would have kept their oaths without it. When you are brought low in a fight, you will find it there.\n\nFifty seasons."
+  },
+  "reward": {
+    "money": 6000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Silver Hand, level 40: from the wiki, the Broken were draenei twisted by the affliction at Shattrath, and the Lost Ones cursed the Light and sank into violence; the Broken of the Harborage under Magtoor are at odds with those of the Fallow Sanctuary. Gives the perk of the Light answering in a hard fight. Invented: Haarun the Forsworn, and Magtoor's account of his own prayers."
+}

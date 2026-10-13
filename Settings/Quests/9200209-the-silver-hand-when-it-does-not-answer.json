@@ -1,0 +1,61 @@
+{
+  "id": 9200209,
+  "title": "The Silver Hand: When It Does Not Answer",
+  "level": 40,
+  "min_level": 40,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "paladin",
+  "zone": 8,
+  "type": "kill",
+  "after": 9200207,
+  "perk": "light_answers",
+  "giver": 928,
+  "turn_in": 928,
+  "creatures": [
+    {
+      "id": 9210067,
+      "kind": "enemy",
+      "like": 763,
+      "name": "Haarun the Forsworn",
+      "title": "The Silver Hand",
+      "level": 41,
+      "map": 0,
+      "x": -9990.0,
+      "y": -3590.0,
+      "z": 22.6,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.7,
+      "size": 1.15
+    }
+  ],
+  "objectives": [
+    {
+      "talk": 1776,
+      "text": "Ask Magtoor what he prays to now",
+      "says": [
+        "You carry the Light. I can see it on you. I carried it once. I was a vindicator, before the sickness.",
+        "It did not leave in anger. One morning I reached for it and there was nothing there to take my hand. That is all. It has been so ever since.",
+        "I still say the words. Every morning. I do not know who hears them. I say them because the one who said them was a better man than the one who would stop."
+      ]
+    },
+    {
+      "creature": 9210067,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You have learned why we fight and what we must not become. Now a harder thing. What if the Light does not answer?\n\nIn the Swamp of Sorrows, east of Duskwood, there is a village of draenei. Not as you know them. These were struck by a sickness in the old war on their world, and it twisted them, and since that day the Light has not come when they call. They are named the Broken. Their elder is Magtoor. Ask him, gently, what he prays to now.\n\nSome of his kin could not bear the silence. They cursed the Light and gave themselves to rage. One, Haarun, leads hunts against those who still keep faith. He is north-east of the village, by their sanctuary. Stop him, $N.",
+    "objectives": "Ask Magtoor at the Harborage in the Swamp of Sorrows what he prays to now, and kill Haarun the Forsworn near the Fallow Sanctuary. Return to Lord Grayson Shadowbreaker at the Cathedral of Light in Stormwind.",
+    "progress": "Listen to the old one first. Then go north-east, to those who stopped listening.",
+    "completion": "So. One who was abandoned and still says the words, and one who was abandoned and took up a club.\n\nThat is the third lesson, and I cannot make it easy. The Light is not a wage. Magtoor has been paid nothing for thirty years, and he is the truest servant of it I have ever heard of. A paladin whose faith needs an answer has a bargain, not a faith.\n\nAnd yet. I have seen this too often to doubt it: those who would keep faith without an answer are the ones who are answered. When you are brought low in a fight, $N, you will find you are not alone in it.\n\nFifty seasons."
+  },
+  "reward": {
+    "money": 6000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Silver Hand, level 40: from the wiki, the Broken were draenei twisted by the affliction at Shattrath, and the Lost Ones cursed the Light and sank into violence; the Broken of the Harborage under Magtoor are at odds with those of the Fallow Sanctuary. Gives the perk of the Light answering in a hard fight. Invented: Haarun the Forsworn, and Magtoor's account of his own prayers."
+}

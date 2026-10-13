@@ -1,0 +1,33 @@
+{
+  "id": 9200206,
+  "title": "The Silver Hand: Why Priests Were Not Enough",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "horde",
+  "class": "paladin",
+  "zone": 10,
+  "type": "kill",
+  "perk": "wild_rest",
+  "giver": 17717,
+  "turn_in": 17717,
+  "objectives": [
+    {
+      "creature": 9210066,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "So Noellene has sent me another. Good. Sit, and learn why humans needed paladins at all.\n\nIn their first war with the orcs, their Church sent priests to the armies. Healers, gentle and learned, and not one had been taught to hold a line. They were butchered. Their archbishop, Faol, saw it and conceived a new kind of servant of the Light: one that would not die so easily. He had an apprentice named Uther find the first of them.\n\nThat war left its dead in the south, in a forest the humans now call Duskwood. One was a knight who fell with no priest to bless him. Sir Garrick. He walks a cemetery east of their town of Darkshire. Give him rest, $N. Go quietly; the living there are no friends of ours.",
+    "objectives": "Lay Sir Garrick the Unresting to rest at the Tranquil Gardens Cemetery, east of Darkshire in Duskwood. Return to Knight-Lord Bloodvalor at the Hall of Blood in Silvermoon.",
+    "progress": "He will fight you as a knight. Answer him as one.",
+    "completion": "Then he is at peace, a generation late, and by an elf's hand. I doubt he would have minded.\n\nMark the lesson. Their order was not born of piety. It was born of losses. A priest who cannot fight is a casualty, and so they made priests who could. We made ourselves for much the same reason, after the Scourge.\n\nAnd you will have felt something on that road. One who keeps a vigil learns to mend between one fight and the next without stopping to sleep. It is yours now.\n\nAt thirty seasons, come back. I will send you to their founder."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Silver Hand, level 20: from the wiki, the clerics of Northshire were devastated in the First War, and Archbishop Faol created a new order \"that would suffer less attrition in battle\", his apprentice Uther recruiting the first paladins; Grand Hamlet (now Darkshire) was fought over in the First War. Gives the perk of faster health and mana out of combat. Invented: Sir Garrick."
+}

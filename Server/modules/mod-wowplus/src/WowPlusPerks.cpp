@@ -19,12 +19,14 @@
  *   herbs        gathering a herb sometimes gives one more
  *   shard_luck   a kill worth experience sometimes leaves a soul shard without draining for it
  *   demon_mend   a warlock's demon mends itself out of combat
+ *   light_answers  once every ten minutes, dropping below a fifth of health in a fight gives a fifth back
  */
 
 #include "Chat.h"
 #include "Creature.h"
 #include "DBCStores.h"
 #include "Formulas.h"
+#include "GameTime.h"
 #include "GameObject.h"
 #include "DatabaseEnv.h"
 #include "Item.h"
@@ -58,11 +60,15 @@ namespace
     constexpr uint32 ITEM_SOUL_SHARD = 6265;
     constexpr uint32 SHARD_CHANCE = 20;                     // percent
     constexpr float MEND_SHARE = 0.02f;                     // of the demon's full health, back on each beat out of combat
+    constexpr float ANSWER_BELOW = 0.2f;                    // of full health: when the Light answers
+    constexpr float ANSWER_SHARE = 0.2f;                    // of full health, given back
+    constexpr time_t ANSWER_EVERY = 10 * MINUTE;
 
     std::unordered_map<std::string, std::vector<uint32>> questsWithPerk;    // perk -> the quests that give it
     std::unordered_map<uint32, std::string> perkOfQuest;
     uint32 sinceHappiness = 0;
     uint32 sinceRest = 0;
+    std::unordered_map<ObjectGuid, time_t> lastAnswer;      // when the Light last answered each player
 
     uint32 LoadPerks()
     {
@@ -139,6 +145,34 @@ void WowPlusPerksWorld::Rest(uint32 diff)
     if (sinceRest < REST_TICK)
         return;
     sinceRest = 0;
+
+    // The Light answers those hard pressed in a fight
+    if (questsWithPerk.find("light_answers") != questsWithPerk.end())
+    {
+        std::vector<Player*> fighting;
+        {
+            std::shared_lock<std::shared_mutex> lock(*HashMapHolder<Player>::GetLock());
+            for (auto const& [guid, player] : ObjectAccessor::GetPlayers())
+                if (player->IsInWorld() && !player->GetSession()->IsHeadless() && player->IsAlive() && player->IsInCombat()
+                    && player->GetHealth() < player->GetMaxHealth() * ANSWER_BELOW)
+                    fighting.push_back(player);
+        }
+
+        time_t const now = GameTime::GetGameTime().count();
+        for (Player* player : fighting)
+        {
+            if (!HasPerk(player, "light_answers"))
+                continue;
+
+            time_t& last = lastAnswer[player->GetGUID()];
+            if (now - last < ANSWER_EVERY)
+                continue;
+
+            last = now;
+            player->ModifyHealth(int32(player->GetMaxHealth() * ANSWER_SHARE));
+            ChatHandler(player->GetSession()).SendSysMessage("The Light answers.");
+        }
+    }
 
     bool const rage = questsWithPerk.find("rage_hold") != questsWithPerk.end();
     bool const wind = questsWithPerk.find("second_wind") != questsWithPerk.end();
@@ -221,6 +255,8 @@ public:
             chat.SendSysMessage("You have learned that the dead owe you: now and then a kill will leave a soul shard in your bag without your draining for it.");
         else if (found->second == "demon_mend")
             chat.SendSysMessage("You have learned to bind with a looser hand: your demon mends itself out of combat from now on.");
+        else if (found->second == "light_answers")
+            chat.SendSysMessage("You have learned that the Light does not leave: once every ten minutes, when a fight brings you below a fifth of your health, a fifth of it will come back.");
         else if (found->second == "wild_rest")
             chat.SendSysMessage("You have learned to rest as the wild rests: your health and mana both come back faster out of combat from now on.");
         else if (found->second == "herbs")

@@ -1,0 +1,59 @@
+{
+  "id": 9200207,
+  "title": "The Silver Hand: The Founder and the Zealots",
+  "level": 30,
+  "min_level": 30,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "paladin",
+  "zone": 85,
+  "type": "kill",
+  "after": 9200205,
+  "giver": 928,
+  "turn_in": 928,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": 2600.0,
+        "y": -533.0,
+        "radius": 40
+      },
+      "text": "Stand at the grave at Faol's Rest"
+    },
+    {
+      "creature": 4281,
+      "count": 4
+    },
+    {
+      "creature": 4282,
+      "count": 4
+    }
+  ],
+  "texts": {
+    "details": "Archbishop Alonsus Faol lies in Tirisfal, north of the ruins of Lordaeron's capital. It is Forsaken country now. You will have to go carefully. But you should stand at his grave once.\n\nAnd when you have, look up the road. The old monastery there was his church. It belongs to the Scarlet Crusade.\n\nThey were us, $N. When Uther was dead and the order broken, the survivors gathered under the Highlord Mograine. Then Mograine was murdered, with his own son's help, and what remained was gathered up by a man who was no longer a man at all, but a demon wearing a paladin's face. They have the zeal. They have lost everything else. Their scouts and magicians hold the gardens past the grave. Thin them.",
+    "objectives": "Stand at the grave at Faol's Rest in Tirisfal Glades and kill 4 Scarlet Scouts and 4 Scarlet Magicians in the Whispering Gardens beyond it. Return to Lord Grayson Shadowbreaker at the Cathedral of Light in Stormwind.",
+    "progress": "The grave first. Then those who camp beside it.",
+    "completion": "You have seen both, then. The man who made us, and what we become when we keep the fire and forget what it was lit for.\n\nThe Crusade believes that anyone not of their number may carry the plague, and must die. They began by killing the dead. They have ended by killing farmers. Every one of them would tell you, sincerely, that he serves the Light.\n\nThat is the second lesson. Zeal is not faith. Those who would not follow that road left, and became the Argent Dawn. Remember which way they went.\n\nTake one of these. At forty seasons I will show you something harder."
+  },
+  "reward": {
+    "money": 3000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 16886,
+        "count": 1
+      },
+      {
+        "item": 6194,
+        "count": 1
+      },
+      {
+        "item": 6676,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Silver Hand, level 30: from the wiki, Alonsus Faol founded the order; after Uther's death the survivors were led by Alexandros Mograine, who was killed with the help of his own son, and Saidan Dathrohan, possessed by a dreadlord, made them the Scarlet Crusade, which treats all outsiders as plague carriers; those who rejected it founded the Argent Dawn."
+}

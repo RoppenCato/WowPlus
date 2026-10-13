@@ -1,0 +1,51 @@
+{
+  "id": 9200214,
+  "title": "The Silver Hand: A Thousand and One",
+  "level": 60,
+  "min_level": 60,
+  "max_level": 0,
+  "side": "horde",
+  "class": "paladin",
+  "zone": 139,
+  "type": "kill",
+  "after": 9200212,
+  "giver": 17717,
+  "turn_in": 17717,
+  "objectives": [
+    {
+      "creature": 9210069,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "The last grave is not one grave. It is a thousand.\n\nIn the Eastern Plaguelands, south of our own lands, stands Light's Hope Chapel. After Lordaeron fell, a few humans went out by night and dug up the bodies of its heroes, a thousand of them, and laid them under holy ground, so that the Lich King could never have them.\n\nThey did not reach everyone. Some of their knights were taken, and raised, and made into a paladin turned inside out. A death knight. One walks the hills west of the chapel. In life he was Sir Dareth of the Silver Hand.\n\nNo company, $N. He will know what you are, and he will want to see whether an elf who took the Light by force can stand where his order stood. Show him.",
+    "objectives": "Defeat Sir Dareth the Fallen west of Light's Hope Chapel in the Eastern Plaguelands, alone and with no companions. Return to Knight-Lord Bloodvalor at the Hall of Blood in Silvermoon.",
+    "progress": "Alone. It is between him and one who took the same oath.",
+    "completion": "So he has his answer, and he is at rest.\n\nYou have walked all of it. A founder who saw that mercy must be armed. Zealots who kept the arms and lost the mercy. The Broken, who keep faith with no answer. A knight who refused an order, and a prince who gave it. And the dead whom their people would not surrender.\n\nAt that chapel the last of their order joined itself to the Argent Dawn, and made a crusade that turns no one away who will stand against the dark. Not even us. Lady Liadrin has seen to it that we stand there.\n\nWear their colors, $N. A Blood Knight may. We began as thieves of the Light. We need not end as that."
+  },
+  "reward": {
+    "money": 15000,
+    "xp_difficulty": 7,
+    "items": [
+      {
+        "item": 22999,
+        "count": 1
+      }
+    ],
+    "choices": [
+      {
+        "item": 13246,
+        "count": 1
+      },
+      {
+        "item": 18717,
+        "count": 1
+      },
+      {
+        "item": 22401,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Silver Hand, level 60: a duel fought alone against a paladin raised as a death knight. From the wiki: about a thousand heroes were reinterred beneath Light's Hope Chapel so the Lich King could not raise them; some fallen paladins became death knights; at the chapel Tirion Fordring reclaimed the Ashbringer and merged his knights with the Argent Dawn into the Argent Crusade. Gives the Tabard of the Argent Dawn. Invented: Sir Dareth."
+}

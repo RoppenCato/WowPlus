@@ -1,0 +1,51 @@
+{
+  "id": 9200205,
+  "title": "The Silver Hand: Why Priests Were Not Enough",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "paladin",
+  "zone": 10,
+  "type": "kill",
+  "perk": "wild_rest",
+  "giver": 928,
+  "turn_in": 928,
+  "creatures": [
+    {
+      "id": 9210066,
+      "kind": "enemy",
+      "like": 48,
+      "name": "Sir Garrick the Unresting",
+      "title": "The Silver Hand",
+      "level": 21,
+      "map": 0,
+      "x": -10948.0,
+      "y": -1340.0,
+      "z": 52.2,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.7,
+      "size": 1.2
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210066,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Wilhelm's student. Then we begin where the order begins: with a failure.\n\nIn the first war against the orcs, the Church sent its clerics to the armies. The priests of Northshire. Healers, gentle and learned, and not one of them had been taught to hold a line. They were butchered. Archbishop Faol saw what had happened and conceived a new kind of servant of the Light: one that would not die so easily. His apprentice Uther went out and found the first of them.\n\nThat war left its dead in the south, in what is now Duskwood. One was a knight of old Stormwind who fell at Grand Hamlet with no priest to bless him. Sir Garrick. He walks the cemetery east of Darkshire. Give him the rest he was owed, $N.",
+    "objectives": "Lay Sir Garrick the Unresting to rest at the Tranquil Gardens Cemetery, east of Darkshire in Duskwood. Return to Lord Grayson Shadowbreaker at the Cathedral of Light in Stormwind.",
+    "progress": "He will fight you as a knight. Answer him as one.",
+    "completion": "Then he is at peace, a generation late.\n\nThat is the first thing the order teaches. The Light must be able to stand in the battle line, or those who carry it die, and those they would have healed die after them. We are that answer. Never be ashamed that you carry a hammer as well as a prayer.\n\nAnd you have felt something on the road, I think. One who keeps a vigil learns to mend between one fight and the next without stopping to sleep. It is yours now.\n\nAt thirty seasons, come back. I will send you to the founder."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Silver Hand, level 20: from the wiki, the clerics of Northshire were devastated in the First War, and Archbishop Faol created a new order \"that would suffer less attrition in battle\", his apprentice Uther recruiting the first paladins; Grand Hamlet (now Darkshire) was fought over in the First War. Gives the perk of faster health and mana out of combat. Invented: Sir Garrick."
+}

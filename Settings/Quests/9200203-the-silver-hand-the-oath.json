@@ -1,0 +1,63 @@
+{
+  "id": 9200203,
+  "title": "The Silver Hand: The Oath",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "paladin",
+  "zone": 1,
+  "type": "slay",
+  "giver": 1232,
+  "turn_in": 1232,
+  "creatures": [
+    {
+      "id": 9210064,
+      "kind": "enemy",
+      "like": 1122,
+      "name": "Hakk the Skinner",
+      "title": "The Silver Hand",
+      "level": 10,
+      "map": 0,
+      "x": -5590.0,
+      "y": 400.0,
+      "z": 382.2,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.5,
+      "size": 1.1
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210064,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Ye've sworn to protect the weak. Everybody says the words. I want to know if ye meant them.\n\nThere's a Frostmane out west, past the lake, name o' Hakk. A hideskinner. He doesn't raid the camps. He waits on the road for trappers walkin' alone, because they can't fight back. The mountaineers have none to spare for him.\n\nThat's what your oath's for, $N. No' dragons. Go an' deal wi' him.",
+    "objectives": "Kill Hakk the Skinner among the Frostmane west of Kharanos, then return to Azar Stronghammer.",
+    "progress": "He'll run from a patrol. He'll no' expect a paladin.",
+    "completion": "Then the road's safe for them as had nobody else. Mind how small it was, $N. Near all the work's that small.\n\nNow I'll tell ye a thing about the order ye've joined. It's young. I've known men who were there when it was made. Its founder, its first knight, its greatest traitor an' its dead all lie within a few weeks' ride o' the human capital.\n\nI mean for ye to visit them. Each'll teach ye what the Light is for, an' no two o' them agree. Pick one o' these. When ye've twenty seasons, go to the Cathedral in Stormwind an' ask for Lord Grayson Shadowbreaker."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 1394,
+        "count": 1
+      },
+      {
+        "item": 15335,
+        "count": 1
+      },
+      {
+        "item": 3160,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Silver Hand, level 10 (Alliance, Dun Morogh): the oath put to a small test. Invented: Hakk the Skinner."
+}

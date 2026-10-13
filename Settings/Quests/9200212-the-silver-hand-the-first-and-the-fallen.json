@@ -1,0 +1,59 @@
+{
+  "id": 9200212,
+  "title": "The Silver Hand: The First and the Fallen",
+  "level": 50,
+  "min_level": 50,
+  "max_level": 0,
+  "side": "horde",
+  "class": "paladin",
+  "zone": 28,
+  "type": "kill",
+  "after": 9200210,
+  "giver": 17717,
+  "turn_in": 17717,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": 1000.0,
+        "y": -1823.0,
+        "radius": 70
+      },
+      "text": "Go to Uther's Tomb"
+    },
+    {
+      "creature": 9210068,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Now the grave that matters most, to them and to us.\n\nUther the Lightbringer was the first human paladin. Faol's apprentice. He trained a prince, Arthas Menethil, who was inducted into the order and whom Uther loved as a son.\n\nYou know that name. When the plague came, the prince asked Uther to help butcher a city. Uther refused. Arthas stripped the order of its standing, and not long after killed his teacher with his own hand. Then he came north. He marched through Quel'Thalas, $N, to our Sunwell. The scar he left runs through our land still.\n\nGo to the tomb, in the Western Plaguelands. A living priest keeps it; give him a wide berth. Nearby walk knights of that order whom the Scourge raised. One is Sir Thomas. Free him.",
+    "objectives": "Go to Uther's Tomb on Sorrow Hill in the Western Plaguelands and lay Sir Thomas the Risen to rest nearby. Return to Knight-Lord Bloodvalor at the Hall of Blood in Silvermoon.",
+    "progress": "The tomb, and then the knight. He will be close to it. They always are.",
+    "completion": "You have stood where their first knight lies, and freed one of his.\n\nUnderstand what joins us to those humans, more than any treaty could. The same hand struck us both. Uther died refusing to do what Arthas asked. Our people died because no one could stop him afterward. I have fought beside the heirs of that order since, in the north, and I did not find them strangers.\n\nAnd mark how he fell. He was the best of them. He decided once that the end excused the means, and then he decided it again. We of all people should remember where that road goes.\n\nTake your choice of plate. One grave remains."
+  },
+  "reward": {
+    "money": 9000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 12021,
+        "count": 1
+      },
+      {
+        "item": 9656,
+        "count": 1
+      },
+      {
+        "item": 10740,
+        "count": 1
+      },
+      {
+        "item": 11195,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Silver Hand, level 50: from the wiki, Uther was the first paladin; Arthas was inducted into the order, suspended it when Uther refused the culling of Stratholme (\"I hereby relieve you of your command and suspend your paladins from service\"), and killed Uther at Andorhal; some fallen paladins became death knights. Invented: Sir Thomas."
+}

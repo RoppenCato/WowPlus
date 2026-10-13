@@ -1,0 +1,63 @@
+{
+  "id": 9200204,
+  "title": "The Silver Hand: Masters, Not Servants",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "horde",
+  "class": "paladin",
+  "zone": 3430,
+  "type": "slay",
+  "giver": 16275,
+  "turn_in": 16275,
+  "creatures": [
+    {
+      "id": 9210065,
+      "kind": "enemy",
+      "like": 15645,
+      "name": "Vaelos the Hollow",
+      "title": "The Silver Hand",
+      "level": 10,
+      "map": 530,
+      "x": 8760.0,
+      "y": -6060.0,
+      "z": 5.3,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.5,
+      "size": 1.15
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210065,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You have taken up the Light. Understand what that means among our people. We do not kneel to it. The order was founded so that we might be masters of this power, not servants of it.\n\nNow look south-west, to where the Wretched gather. They were sin'dorei. They could not master their hunger, and it hollowed them. One of them, Vaelos, has begun waylaying apprentices on the road for the trinkets they carry. Our people call his kind parasites, and look away.\n\nA Blood Knight does not look away, $N. Go and end him.",
+    "objectives": "Kill Vaelos the Hollow among the Wretched south-west of Falconwing Square, then return to Noellene.",
+    "progress": "Look closely at him before you strike. That is what it is to be mastered.",
+    "completion": "It is done? Good. Remember his face. He is what becomes of power without a will behind it.\n\nNow I will tell you something our order does not say aloud. We are very new. The humans have wielded the Light as knights for a generation longer than we have, and they did it without chains and without theft. Their order's founder, its first knight, its greatest traitor and its dead all lie in the old lands of Lordaeron, south of here.\n\nKnight-Lord Bloodvalor sends the most promising of us to look at them. Not to bow. To learn what they knew. Take one of these. When you have twenty seasons, go to him at the Hall of Blood in Silvermoon."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 1394,
+        "count": 1
+      },
+      {
+        "item": 15335,
+        "count": 1
+      },
+      {
+        "item": 3160,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Silver Hand, level 10 (Horde, Eversong): from the wiki, the Blood Knights were conceived as \"masters of their power, not servants of it\"; the Wretched are elves who could not control their magical addiction, seen as parasites. Invented: Vaelos the Hollow, and that Blood Knights are sent to study the human order."
+}
