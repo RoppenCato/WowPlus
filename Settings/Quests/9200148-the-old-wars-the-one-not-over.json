@@ -1,0 +1,56 @@
+{
+  "id": 9200148,
+  "title": "The Old Wars: The One Not Over",
+  "level": 50,
+  "min_level": 50,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "warrior",
+  "zone": 28,
+  "type": "kill",
+  "after": 9200146,
+  "perk": "repairs",
+  "giver": 10838,
+  "turn_in": 10838,
+  "creatures": [
+    {
+      "id": 9210028,
+      "kind": "enemy",
+      "like": 1785,
+      "name": "Sir Aldric the Unburied",
+      "title": "The Old Wars",
+      "level": 52,
+      "map": 0,
+      "x": 1250.0,
+      "y": -1650.0,
+      "z": 43.5,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.6,
+      "size": 1.15
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 1791,
+      "count": 8
+    },
+    {
+      "creature": 9210028,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You have been sent to learn of a war from someone who fought it. I am still fighting it. Look past my shoulder.\n\nIt began with bread. A necromancer's cult poisoned the grain at Andorhal, and those who ate it died and got up again. Our prince went north to end it, and came home changed. He walked into his father's throne room, and told the old King that he need no longer sacrifice for his people, and killed him where he sat. The capital fell that day. Lordaeron fell after.\n\nUnderstand what that means for a soldier, $N. Every knight who died defending this kingdom was raised to fight against it. The dead on that hill to the east were our own.\n\nThere are ghouls on Sorrow Hill. Take eight. And there is one there who still wears his spurs. In life he was Sir Aldric. Lay him down.",
+    "objectives": "Kill 8 Slavering Ghouls and then Sir Aldric the Unburied on Sorrow Hill. Return to Commander Ashlam Valorfist at Chillwind Camp.",
+    "progress": "Do not look for the man in him. There is nothing left there to find.",
+    "completion": "Sir Aldric is at rest. Thank you. Someone will remember his name now, and not what was done with his body.\n\nThis war teaches a hard thing, and I will not dress it. It does not end. There is no last battle here; there is only tomorrow's patrol. A warrior in such a war learns to look after his arms as a farmer looks after his plough, because he will need them every day for the rest of his life.\n\nYou have that habit now, I think. You will find the smiths ask less of you for it.\n\nOne fight remains for you, and it is not against the dead. Go to the Burning Steppes when you have sixty seasons. At Flame Crest sits a man they call Ragged John. He will show you where to stand."
+  },
+  "reward": {
+    "money": 9000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Old Wars, level 50 (Alliance): the war against the Scourge. From the wiki: Kel'Thuzad's cult spread the plague through grain from Andorhal; Arthas returned from Northrend and killed King Terenas at the throne (\"You no longer need to sacrifice for your people\"); the capital and the kingdom fell; the Scourge raised its fallen enemies. Gives the perk of cheaper repairs. Invented: Sir Aldric."
+}

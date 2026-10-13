@@ -1,0 +1,66 @@
+{
+  "id": 9200150,
+  "title": "The Old Wars: One Against One",
+  "level": 60,
+  "min_level": 60,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "warrior",
+  "zone": 46,
+  "type": "kill",
+  "after": 9200148,
+  "giver": 9563,
+  "turn_in": 9563,
+  "creatures": [
+    {
+      "id": 9210029,
+      "kind": "enemy",
+      "like": 7029,
+      "name": "Karg Ironvow",
+      "title": "The Old Wars",
+      "level": 60,
+      "map": 0,
+      "x": -7560.0,
+      "y": -1760.0,
+      "z": 214.8,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 2.0,
+      "damage": 1.15,
+      "size": 1.2,
+      "alone": true
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210029,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "So you are the one they have been sending round the world to learn about wars. Sit. This is the last of it, and it is short.\n\nAt the foot of that mountain, at the end of the Second War, two armies stopped fighting to watch two warriors. Doomhammer, Warchief of the Horde, cut his way alone through the whole Alliance line to reach one man. Lothar, the Lion of Azeroth, came out to meet him. Doomhammer crushed his skull. A moment later a human knight struck Doomhammer down with the dead man's broken sword, and the war was over.\n\nEverything you have been taught about fighting beside others is true. And sometimes it comes down to one against one all the same.\n\nThere is an orc out there who was on that slope. Karg Ironvow. He will fight anyone who comes alone, and no one who does not. Go without your friends, $N. Do not come back if you bring them.",
+    "objectives": "Defeat Karg Ironvow in single combat, alone, on the plain between Flame Crest and Blackrock Mountain. Return to Ragged John at Flame Crest.",
+    "progress": "Alone. He will know. I do not know how, but he always knows.",
+    "completion": "You went alone and you came back. Then it is done, and I have nothing left to teach that you do not already carry.\n\nRage, held. Breath, kept. A line that stands because each one in it stands. A fight made for time and not for winning. Arms cared for because the war does not end. And at the last, yourself, with no one to hide behind. That is all a warrior is. The rest is practice.\n\nThese were his. Take one. The axe has a name among the Blackrock; they say it has been on that mountain since the day Lothar fell. I would not swear to that. But it is a good story, and you have earned a weapon with a story."
+  },
+  "reward": {
+    "money": 15000,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": [
+      {
+        "item": 13285,
+        "count": 1
+      },
+      {
+        "item": 13286,
+        "count": 1
+      },
+      {
+        "item": 13204,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Old Wars, level 60: a duel fought alone. From the wiki: at Blackrock Mountain Doomhammer's charge cut a path to Lothar, he crushed Lothar's skull, and Turalyon knocked him down with Lothar's broken weapon and routed the Horde. Karg Ironvow breaks off the fight if anyone joins in or his opponent is in a group. Invented: Karg Ironvow, and the story told of the axe."
+}

@@ -1,0 +1,50 @@
+{
+  "id": 9200147,
+  "title": "The Old Wars: The Third",
+  "level": 40,
+  "min_level": 40,
+  "max_level": 0,
+  "side": "horde",
+  "class": "warrior",
+  "zone": 405,
+  "type": "kill",
+  "after": 9200145,
+  "giver": 5641,
+  "turn_in": 5641,
+  "objectives": [
+    {
+      "creature": 4681,
+      "count": 6
+    },
+    {
+      "creature": 9210027,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Krusk's warrior. Then you have heard how we lost two wars to our own madness. Hear now of the one we did not lose.\n\nThe demons who had made slaves of us came for the world themselves. And on a mountain in the north of this land, the Warchief did a thing no orc had ever done. He stood beside humans. There were three camps on one slope: the humans lowest, under a sorceress. Ours above them. The night elves at the top. None of us could have held alone. So we did not try to win. We tried only to be slow.\n\nThe humans fell first. Then we did. Then the elves. And when the demon lord reached their great tree at last, the spirits of that forest rose and unmade him. That was Hyjal, $N. That was the Horde, as it was meant to be.\n\nSome of his host never left. They are at Mannoroc Coven, south of this post. Six of their mage hunters. And their captain: Xarkoth.",
+    "objectives": "Kill 6 Mage Hunters and then Xarkoth at Mannoroc Coven in Desolace. Return to Takata Steelblade at Ghost Walker Post.",
+    "progress": "They do not tire, and they do not doubt. You will have to be better than tireless.",
+    "completion": "Xarkoth is gone. The Legion is one captain poorer, and does not even know it.\n\nThe Third War teaches the last thing a warrior learns. There are fights you cannot win, and you must make them anyway, because of what the holding buys. Every base on that mountain fell. Each one was meant to. The victory was in the time.\n\nA warrior who can do that needs weapons that will not fail before he does. Choose one of these. They have seen that kind of work.\n\nTwo wars remain, and they are not behind us. For the one still being fought, go to the Plaguelands when you have fifty seasons. The Bulwark, where Tirisfal meets the Western Plaguelands. Ask for High Executor Derrington."
+  },
+  "reward": {
+    "money": 6000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 10823,
+        "count": 1
+      },
+      {
+        "item": 6830,
+        "count": 1
+      },
+      {
+        "item": 9423,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Old Wars, level 40 (Horde): the Third War, as above, told by an orc. The demons of Mannoroc Coven."
+}

@@ -1,0 +1,71 @@
+{
+  "id": 9200140,
+  "title": "The Old Wars: A First Blooding",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "horde",
+  "class": "warrior",
+  "zone": 215,
+  "type": "kill",
+  "giver": 3063,
+  "turn_in": 3063,
+  "creatures": [
+    {
+      "id": 9210022,
+      "kind": "enemy",
+      "like": 3232,
+      "name": "Snagtooth",
+      "title": "The Old Wars",
+      "level": 10,
+      "map": 1,
+      "x": -1068.0,
+      "y": -1080.0,
+      "z": 27.0,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.6,
+      "size": 1.2
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 3232,
+      "count": 6
+    },
+    {
+      "creature": 9210022,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You strike the post with strength. The post does not strike back, and it has no kin.\n\nBefore I teach you more, I must see what you do when something wishes you dead. The Bristleback have come into our lands, to the north-east. Take six of their interlopers. One at a time if you can, and learn what happens when you cannot.\n\nThere is one among them the braves call Snagtooth. He is larger than the rest, and proud of it. Bring him down, $N. Then we will speak of war.",
+    "objectives": "Kill 6 Bristleback Interlopers and then Snagtooth, among the quilboar north-east of Bloodhoof Village. Return to your trainer when it is done.",
+    "progress": "Stand firm. The earth holds up those who hold their ground.",
+    "completion": "Snagtooth has fallen, and you stand. That is the first test, and the only one that matters.\n\nNow hear me. Our people came late to the wars of this world. The orcs and the humans had fought two before we ever met them, and we joined them for the third. A warrior who does not know those wars does not know why the Horde is what it is.\n\nSo that is how you will be taught. One war at a time, by those who fought it. Choose one of these. When you have twenty seasons of sense, go to Thork at the Crossroads, in the Barrens. He will tell you of the first."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 15335,
+        "count": 1
+      },
+      {
+        "item": 5344,
+        "count": 1
+      },
+      {
+        "item": 1394,
+        "count": 1
+      },
+      {
+        "item": 3586,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Old Wars, level 10 (Horde): the warrior's first real fight, against one the trainer names. Invented: Snagtooth."
+}

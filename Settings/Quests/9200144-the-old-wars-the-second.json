@@ -1,0 +1,56 @@
+{
+  "id": 9200144,
+  "title": "The Old Wars: The Second",
+  "level": 30,
+  "min_level": 30,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "warrior",
+  "zone": 36,
+  "type": "kill",
+  "after": 9200142,
+  "perk": "second_wind",
+  "giver": 2263,
+  "turn_in": 2263,
+  "creatures": [
+    {
+      "id": 9210026,
+      "kind": "enemy",
+      "like": 2241,
+      "name": "Warden Halric Voss",
+      "title": "The Old Wars",
+      "level": 32,
+      "map": 0,
+      "x": 132.0,
+      "y": -760.0,
+      "z": 77.9,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.8,
+      "size": 1.1
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 2240,
+      "count": 6
+    },
+    {
+      "creature": 9210026,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Marris sent you? Then he will have told you how we lost the first. I can tell you how we won the second, and what it cost.\n\nWe won because we were no longer alone. King Terenas called the seven kingdoms together, and Lothar was given command of them all. Elves came, and dwarves. When the Horde landed on this very coast, it was the new paladins who turned the day. That was the Alliance, $N, and there had never been anything like it.\n\nAnd one of the seven sold us. Alterac's king let the orcs march through his passes to strike at Lordaeron's heart. Only Trollbane of Stromgarde, seizing those passes, saved the capital.\n\nAlterac's traitors are still here. They call themselves the Syndicate. North of the river, in the hills, you will find their footpads. Take six. One of their officers is with them, a man named Voss. He wore the Alliance's colours once.",
+    "objectives": "Kill 6 Syndicate Footpads and then Warden Halric Voss, in the hills north of Tarren Mill. Return to Marshal Redpath in Southshore.",
+    "progress": "A traitor fights like a man with nowhere to go. Do not expect him to yield.",
+    "completion": "Voss is dead. I knew his name. I will not say I am sorry.\n\nThe Second War teaches the opposite of the first. No one wins alone. We held because a paladin stood beside a ranger beside a dwarf, and each covered what the other could not. And we nearly lost because one ally thought of himself.\n\nSo learn to take your breath when the line gives you the chance. The strongest arm in the Alliance is no use if it has nothing left for the next charge. Those who came through that war all had the trick of it. You have it now.\n\nFor the Third War, go west over the sea, to Desolace. At Nijel's Point there is a night elf named Vahlarriel Demonslayer. Forty seasons, $N."
+  },
+  "reward": {
+    "money": 3000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Old Wars, level 30 (Alliance): the Second War. From the wiki: Terenas and Lothar formed the Alliance of Lordaeron, Lothar its Supreme Commander; elves and dwarves joined; at Hillsbrad the paladins saved the day; Aiden Perenolde of Alterac gave the Horde passage through the mountains, and Thoras Trollbane of Stromgarde seized the passes. Gives the perk of faster recovery between fights. Invented: Warden Halric Voss."
+}

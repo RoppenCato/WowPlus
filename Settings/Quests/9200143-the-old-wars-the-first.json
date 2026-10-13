@@ -1,0 +1,55 @@
+{
+  "id": 9200143,
+  "title": "The Old Wars: The First",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "horde",
+  "class": "warrior",
+  "zone": 17,
+  "type": "kill",
+  "perk": "rage_hold",
+  "giver": 3429,
+  "turn_in": 3429,
+  "creatures": [
+    {
+      "id": 9210025,
+      "kind": "enemy",
+      "like": 3379,
+      "name": "Kragh Bloodhaze",
+      "title": "The Old Wars",
+      "level": 20,
+      "map": 1,
+      "x": 360.0,
+      "y": -2230.0,
+      "z": 217.0,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.9,
+      "size": 1.2
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 3379,
+      "count": 8
+    },
+    {
+      "creature": 9210025,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "So you were sent to hear of the First War. Good. It is ours, and we should be the ones to tell it.\n\nOur world was dying. A door was opened to this one, and we came through it. But we did not come as ourselves, $N. Our chieftains had drunk the blood of a demon, and we with them. It made us strong and it made us mad. We took the humans' lands and razed all we could see, and we called it glory.\n\nNo clan was madder than the Burning Blade. They had the finest swordsmen who ever lived, and they could not be led. They would turn on other orcs. The Horde had to set ogres to hold them back.\n\nSome of that clan swore themselves free, and they guard the Warchief now. The rest still serve the demons, and they are on Dreadmist Peak, north of here. Take eight of their bruisers. Then find the one who leads them: Kragh Bloodhaze.",
+    "objectives": "Kill 8 Burning Blade Bruisers and then Kragh Bloodhaze, on Dreadmist Peak north of the Crossroads. Return to Thork.",
+    "progress": "He fights the way we all fought then. Look well. It is not something to admire.",
+    "completion": "Kragh is dead. He was what we all were, once.\n\nHere is what the First War teaches, and it took our people a generation to learn it. Rage wins the charge and loses everything after. We had fury enough to burn a kingdom, and when it was burned we had nothing: no honor, no plan, and a debt to demons.\n\nDo not throw your anger away, $N, and do not let it drive you. Hold it. A warrior who can carry it from one fight to the next, cold, is worth ten who cannot. You will find you can do that now.\n\nFor the Second War, go to Tarren Mill, in Hillsbrad, when you have thirty seasons. There is an orc there named Krusk."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Old Wars, level 20 (Horde): the First War. From the wiki: the Horde came because Draenor was dying, driven by the blood-curse of Mannoroth's blood; \"We took the lands of Azeroth from the Humans and razed all that we surveyed\"; the Burning Blade clan, its feared blademasters, so chaotic it attacked fellow orcs and was held in check by ogres; survivors became Thrall's honor guard while the rest became a demon cult with a site at Dreadmist Peak. Gives the perk of rage that drains slower. Invented: Kragh Bloodhaze."
+}

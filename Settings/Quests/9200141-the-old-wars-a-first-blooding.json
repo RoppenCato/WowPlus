@@ -1,0 +1,71 @@
+{
+  "id": 9200141,
+  "title": "The Old Wars: A First Blooding",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "horde",
+  "class": "warrior",
+  "zone": 85,
+  "type": "kill",
+  "giver": 2131,
+  "turn_in": 2131,
+  "creatures": [
+    {
+      "id": 9210023,
+      "kind": "enemy",
+      "like": 1675,
+      "name": "Carrion Tooth",
+      "title": "The Old Wars",
+      "level": 10,
+      "map": 0,
+      "x": 2790.0,
+      "y": 390.0,
+      "z": 22.8,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.6,
+      "size": 1.2
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 1675,
+      "count": 6
+    },
+    {
+      "creature": 9210023,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You strike the post well enough. The post does not strike back. You may remember a time when you did not, either.\n\nBefore I teach you another thing, I will see what you do when something tries to end you a second time. The Rot Hide gnolls are in the hills north of here. Take six of their mongrels. One at a time if you can, and learn what happens when you cannot.\n\nThere is one among them the Deathguards call Carrion Tooth. He is bigger than the rest, and pleased about it. Bring him down, $N. Then we will speak of war.",
+    "objectives": "Kill 6 Rot Hide Mongrels and then Carrion Tooth, among the gnolls north of Brill. Return to your trainer when it is done.",
+    "progress": "Keep your feet. We fall apart easily enough without help.",
+    "completion": "Carrion Tooth is finished, and you are not. That is the first test and the only one that counts.\n\nNow listen. Some of us fought in the old wars when we were alive: the First, the Second. The Third is the one that killed us. A warrior who does not know those wars does not know what he is, or who made him so.\n\nSo that is how you will be taught. One war at a time, by those who were there. Take one of these. When you have twenty seasons of sense, cross to Kalimdor and find Thork at the Crossroads, in the Barrens. An orc should tell you of the first. It was theirs."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 15335,
+        "count": 1
+      },
+      {
+        "item": 5344,
+        "count": 1
+      },
+      {
+        "item": 1394,
+        "count": 1
+      },
+      {
+        "item": 3586,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Old Wars, level 10 (Horde): the warrior's first real fight, against one the trainer names. Invented: Carrion Tooth."
+}

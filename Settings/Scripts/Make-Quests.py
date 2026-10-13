@@ -34,6 +34,9 @@ PERKS = {
     "pet_fed": "A hunter's pet loses happiness half as fast.",
     "stable_slot": "One stable slot, free, when the quest is handed in.",
     "skinning": "Skinning a beast sometimes gives one more of what it gave.",
+    "rage_hold": "Rage drains half as fast out of combat.",
+    "second_wind": "Health comes back faster out of combat.",
+    "repairs": "Repairs cost a quarter less.",
 }
 TYPES = {
     "visit": "Go to a place, or hear someone out (may be mixed with the other tasks).",
@@ -446,7 +449,7 @@ def build_sql(quests, creatures, items):
             number, like, person = new["id"], new["like"], new["kind"] == "person"
             out += ["DROP TEMPORARY TABLE IF EXISTS wp_new;",
                     f"CREATE TEMPORARY TABLE wp_new AS SELECT * FROM creature_template WHERE entry = {like};",
-                    f"UPDATE wp_new SET entry = {number}, name = {text(new['name'])}, subname = {text(new.get('title', ''))}, AIName = '', ScriptName = '', "
+                    f"UPDATE wp_new SET entry = {number}, name = {text(new['name'])}, subname = {text(new.get('title', ''))}, AIName = '', ScriptName = '{'wowplus_duelist' if new.get('alone') else ''}', "
                     f"gossip_menu_id = 0, KillCredit1 = 0, KillCredit2 = 0, npcflag = {3 if person else 0}, "
                     f"`rank` = {int(new.get('rank', 0)) if not person else '`rank`'}, HealthModifier = HealthModifier * {float(new.get('health', 1))}, DamageModifier = DamageModifier * {float(new.get('damage', 1))}"
                     + (f", minlevel = {int(new['level'])}, maxlevel = {int(new['level'])}" if isinstance(new.get("level"), int) else "") + ";",

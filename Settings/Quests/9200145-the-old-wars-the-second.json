@@ -1,0 +1,38 @@
+{
+  "id": 9200145,
+  "title": "The Old Wars: The Second",
+  "level": 30,
+  "min_level": 30,
+  "max_level": 0,
+  "side": "horde",
+  "class": "warrior",
+  "zone": 36,
+  "type": "kill",
+  "after": 9200143,
+  "perk": "second_wind",
+  "giver": 2229,
+  "turn_in": 2229,
+  "objectives": [
+    {
+      "creature": 2240,
+      "count": 6
+    },
+    {
+      "creature": 9210026,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Thork sent you for the Second War. Sit. I was a whelp in it, and I remember the end better than the beginning.\n\nDoomhammer led us then. He had killed Blackhand and meant to make the Horde something with honor in it. He had the forest trolls with him, and goblin ships, and dragons in chains. We burned the elves' forests. We stood at the gates of the humans' greatest city. We had it won, $N.\n\nThen the warlock Gul'dan took two whole clans and sailed away after power of his own. Doomhammer knew in that hour the war was lost. What followed was the mountain, and the Portal, and the camps.\n\nThere are humans north of this river who wish the camps had never been opened. The Syndicate. One of them, Voss, was an officer in such a place. Take six of their footpads. Then take him.",
+    "objectives": "Kill 6 Syndicate Footpads and then Warden Halric Voss, in the hills north of Tarren Mill. Return to Krusk in Tarren Mill.",
+    "progress": "He kept orcs behind a fence. Remember that when he asks for quarter.",
+    "completion": "The warden is dead. Good. I will sleep well tonight.\n\nThe Second War teaches the opposite of the first. No one wins alone, and no one is beaten by the enemy as surely as by his own side. We had the strength. One of ours thought only of himself, and so every orc alive paid for it behind a fence.\n\nSo learn to take your breath when the line lets you. The strongest arm in the Horde is no use if it has nothing left for the next charge. Those of us who came through the camps all learned to save something back. You have the way of it now.\n\nFor the Third War, cross the sea to Desolace. At Ghost Walker Post there is an orc named Takata Steelblade. Forty seasons, $N."
+  },
+  "reward": {
+    "money": 3000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Old Wars, level 30 (Horde): the Second War. From the wiki: Doomhammer wanted to make the Horde an honorable force; forest trolls under Zul'jin, goblin shipbuilders and enslaved red dragons; the burning of Quel'Thalas and the siege of Lordaeron's capital; Gul'dan abandoned the Horde with two clans and \"Doomhammer understood the campaign was lost\"; the internment camps. Gives the perk of faster recovery between fights. Invented: that Voss was a camp officer."
+}

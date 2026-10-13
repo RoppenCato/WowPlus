@@ -7,6 +7,9 @@
  *   pet_fed      a hunter's pet loses happiness half as fast
  *   stable_slot  one stable slot, free, when the quest is handed in
  *   skinning     skinning a beast sometimes gives one more of what it gave
+ *   rage_hold    rage drains half as fast out of combat
+ *   second_wind  health comes back faster out of combat
+ *   repairs      repairs cost a quarter less
  */
 
 #include "Chat.h"
@@ -34,10 +37,15 @@ namespace
     constexpr uint32 HAPPINESS_TICK = 7500;                 // ms, the same beat at which a pet loses happiness
     constexpr int32 HAPPINESS_BACK = 335;                   // half of what a resting pet loses on each beat
     constexpr uint32 EXTRA_SKIN_CHANCE = 40;                // percent
+    constexpr uint32 REST_TICK = 2000;                      // ms, the beat at which rage drains out of combat
+    constexpr int32 RAGE_BACK = 10;                         // half of the 2 rage (20 in the game's units) lost on each beat
+    constexpr float WIND_SHARE = 0.01f;                     // of full health, back on each beat out of combat
+    constexpr float REPAIR_SHARE = 0.75f;                   // of the usual price
 
     std::unordered_map<std::string, std::vector<uint32>> questsWithPerk;    // perk -> the quests that give it
     std::unordered_map<uint32, std::string> perkOfQuest;
     uint32 sinceHappiness = 0;
+    uint32 sinceRest = 0;
 
     uint32 LoadPerks()
     {
@@ -83,8 +91,11 @@ public:
         LOG_INFO("server.loading", ">> WowPlus perks: {} quests give a lasting perk", LoadPerks());
     }
 
+    void Rest(uint32 diff);
+
     void OnUpdate(uint32 diff) override
     {
+        Rest(diff);
         sinceHappiness += diff;
         if (sinceHappiness < HAPPINESS_TICK || questsWithPerk.find("pet_fed") == questsWithPerk.end())
             return;
@@ -104,6 +115,35 @@ public:
                     pet->ModifyPower(POWER_HAPPINESS, HAPPINESS_BACK);
     }
 };
+
+void WowPlusPerksWorld::Rest(uint32 diff)
+{
+    sinceRest += diff;
+    if (sinceRest < REST_TICK)
+        return;
+    sinceRest = 0;
+
+    bool const rage = questsWithPerk.find("rage_hold") != questsWithPerk.end();
+    bool const wind = questsWithPerk.find("second_wind") != questsWithPerk.end();
+    if (!rage && !wind)
+        return;
+
+    std::vector<Player*> resting;
+    {
+        std::shared_lock<std::shared_mutex> lock(*HashMapHolder<Player>::GetLock());
+        for (auto const& [guid, player] : ObjectAccessor::GetPlayers())
+            if (player->IsInWorld() && !player->GetSession()->IsHeadless() && player->IsAlive() && !player->IsInCombat())
+                resting.push_back(player);
+    }
+
+    for (Player* player : resting)
+    {
+        if (rage && player->getPowerType() == POWER_RAGE && player->GetPower(POWER_RAGE) > 0 && HasPerk(player, "rage_hold"))
+            player->ModifyPower(POWER_RAGE, RAGE_BACK);
+        if (wind && player->GetHealth() < player->GetMaxHealth() && HasPerk(player, "second_wind"))
+            player->ModifyHealth(int32(player->GetMaxHealth() * WIND_SHARE));
+    }
+}
 
 class WowPlusPerksPlayer : public PlayerScript
 {
@@ -132,6 +172,18 @@ public:
             chat.SendSysMessage("You have learned to keep a beast content: your pets lose happiness half as fast from now on.");
         else if (found->second == "skinning")
             chat.SendSysMessage("You have learned to waste nothing: skinning a beast will sometimes give you one more of what it gave.");
+        else if (found->second == "rage_hold")
+            chat.SendSysMessage("You have learned to hold your anger: your rage drains half as fast out of combat from now on.");
+        else if (found->second == "second_wind")
+            chat.SendSysMessage("You have learned to catch your breath: your health comes back faster between fights from now on.");
+        else if (found->second == "repairs")
+            chat.SendSysMessage("You have learned to care for your arms: repairs cost you a quarter less from now on.");
+    }
+
+    void OnPlayerBeforeDurabilityRepair(Player* player, ObjectGuid /*npcGUID*/, ObjectGuid /*itemGUID*/, float& discountMod, uint8 /*guildBank*/) override
+    {
+        if (HasPerk(player, "repairs"))
+            discountMod *= REPAIR_SHARE;
     }
 
     void OnPlayerLootItem(Player* player, Item* item, uint32 /*count*/, ObjectGuid lootguid) override

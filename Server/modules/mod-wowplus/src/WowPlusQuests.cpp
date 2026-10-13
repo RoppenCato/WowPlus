@@ -22,6 +22,8 @@
 #include "Player.h"
 #include "QuestDef.h"
 #include "ScriptMgr.h"
+#include "ScriptedCreature.h"
+#include "Group.h"
 #include "WorldSession.h"
 
 #include <shared_mutex>
@@ -174,6 +176,48 @@ public:
     }
 };
 
+// An enemy that will only fight one opponent: it breaks off if a second joins in or its opponent is in a group.
+// Make-Quests.py gives it to a named enemy that has "alone": true.
+class WowPlusDuelist : public CreatureScript
+{
+public:
+    WowPlusDuelist() : CreatureScript("wowplus_duelist") { }
+
+    struct DuelistAI : public ScriptedAI
+    {
+        DuelistAI(Creature* creature) : ScriptedAI(creature) { }
+
+        void UpdateAI(uint32 diff) override
+        {
+            if (!UpdateVictim())
+                return;
+
+            sinceLook += diff;
+            if (sinceLook >= 1000)
+            {
+                sinceLook = 0;
+                Player* opponent = me->GetVictim() ? me->GetVictim()->GetCharmerOrOwnerPlayerOrPlayerItself() : nullptr;
+                if (me->GetThreatMgr().GetThreatListSize() > 1 || (opponent && opponent->GetGroup()))
+                {
+                    me->Yell("I fight one. Come alone, or do not come.", LANG_UNIVERSAL);
+                    EnterEvadeMode();
+                    return;
+                }
+            }
+
+            DoMeleeAttackIfReady();
+        }
+
+    private:
+        uint32 sinceLook = 0;
+    };
+
+    CreatureAI* GetAI(Creature* creature) const override
+    {
+        return new DuelistAI(creature);
+    }
+};
+
 class WowPlusQuestsCommands : public CommandScript
 {
 public:
@@ -208,4 +252,5 @@ void AddSC_WowPlusQuests()
     new WowPlusQuestsWorld();
     new WowPlusQuestsTalk();
     new WowPlusQuestsCommands();
+    new WowPlusDuelist();
 }

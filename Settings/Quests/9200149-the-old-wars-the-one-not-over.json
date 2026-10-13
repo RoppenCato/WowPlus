@@ -1,0 +1,38 @@
+{
+  "id": 9200149,
+  "title": "The Old Wars: The One Not Over",
+  "level": 50,
+  "min_level": 50,
+  "max_level": 0,
+  "side": "horde",
+  "class": "warrior",
+  "zone": 28,
+  "type": "kill",
+  "after": 9200147,
+  "perk": "repairs",
+  "giver": 10837,
+  "turn_in": 10837,
+  "objectives": [
+    {
+      "creature": 1791,
+      "count": 8
+    },
+    {
+      "creature": 9210028,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You have been sent to learn of a war from one who fought it. I did not fight it. I lost it. I was a man of Lordaeron, and then I was a corpse, and then I was his.\n\nIt began with bread. A necromancer's cult poisoned the grain at Andorhal. Those who ate it died and rose. Our prince went north to end it, and came home changed. He walked into his father's throne room, told the old King he need no longer sacrifice for his people, and killed him. The capital fell that day. That is the city under which we now live.\n\nUnderstand what it is, $N. Every soldier who died for this kingdom was raised to fight against it. The Dark Lady broke his hold on us. On those out there, she did not.\n\nThere are ghouls on Sorrow Hill, east of here. Take eight. And one there still wears a knight's spurs. In life he was Sir Aldric. He was not as lucky as I.",
+    "objectives": "Kill 8 Slavering Ghouls and then Sir Aldric the Unburied on Sorrow Hill in the Western Plaguelands. Return to High Executor Derrington at the Bulwark.",
+    "progress": "He is what every one of us was. Be quick about it.",
+    "completion": "Then he is free of it, the only way left to him.\n\nThis war teaches a hard thing, and I will not soften it. It does not end. There is no last battle here; there is only tomorrow's patrol. A warrior in such a war learns to look after his arms as a farmer looks after his plough, because he will need them every day for as long as he lasts. We last a long time.\n\nYou have that habit now, I think. You will find the smiths ask less of you for it.\n\nOne fight remains for you, and it is not against the dead. Go to the Burning Steppes when you have sixty seasons. At Flame Crest sits a human they call Ragged John. He takes no side. He will show you where to stand."
+  },
+  "reward": {
+    "money": 9000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Old Wars, level 50 (Horde): the war against the Scourge, told by a Forsaken who was raised by it. Gives the perk of cheaper repairs."
+}

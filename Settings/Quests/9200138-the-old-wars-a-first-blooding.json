@@ -1,0 +1,71 @@
+{
+  "id": 9200138,
+  "title": "The Old Wars: A First Blooding",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "warrior",
+  "zone": 141,
+  "type": "kill",
+  "giver": 3598,
+  "turn_in": 3598,
+  "creatures": [
+    {
+      "id": 9210020,
+      "kind": "enemy",
+      "like": 2008,
+      "name": "Bramblepaw",
+      "title": "The Old Wars",
+      "level": 10,
+      "map": 1,
+      "x": 9800.0,
+      "y": 640.0,
+      "z": 1298.1,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.6,
+      "size": 1.2
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 2008,
+      "count": 6
+    },
+    {
+      "creature": 9210020,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You strike the target cleanly. The target does not strike back, and it has no kin to avenge it.\n\nBefore I teach you anything more, I must know what you do when something means to kill you. The Gnarlpine are in the woods east of here. Take six of their warriors. One at a time if you can, and learn what happens when you cannot.\n\nThere is one among them the Sentinels call Bramblepaw. He is larger than the rest, and he knows it. Bring him down, $N. Then we will speak of war.",
+    "objectives": "Kill 6 Gnarlpine Warriors and then Bramblepaw, among the Gnarlpine east of Dolanaar. Return to your trainer when it is done.",
+    "progress": "Keep your balance. A warrior on the ground is finished.",
+    "completion": "Bramblepaw has fallen, and you are standing. That is the first test, and the only one that matters.\n\nNow hear me. Our people fought the first war this world ever saw, ten thousand years ago. The younger races have had three more since, and they number them, as though that made them tidy. A warrior who does not know those wars is only someone holding sharp metal.\n\nSo that is how you will be taught. One war at a time, by those who fought it. Choose one of these. When you have twenty seasons of sense, cross the sea to the human town of Lakeshire, in the Redridge Mountains, and find Marshal Marris. He was there for their first."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 15335,
+        "count": 1
+      },
+      {
+        "item": 5344,
+        "count": 1
+      },
+      {
+        "item": 1394,
+        "count": 1
+      },
+      {
+        "item": 3586,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Old Wars, level 10 (Alliance): the warrior's first real fight, against one the trainer names. Invented: Bramblepaw."
+}
