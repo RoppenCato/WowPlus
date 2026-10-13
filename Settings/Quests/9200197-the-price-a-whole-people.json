@@ -1,0 +1,34 @@
+{
+  "id": 9200197,
+  "title": "The Price: A Whole People",
+  "level": 40,
+  "min_level": 40,
+  "max_level": 0,
+  "side": "horde",
+  "class": "warlock",
+  "zone": 8,
+  "type": "slay",
+  "after": 9200195,
+  "perk": "demon_mend",
+  "giver": 6251,
+  "turn_in": 6251,
+  "objectives": [
+    {
+      "creature": 9210060,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Now the largest bill ever run up in our art.\n\nThere was an orc named Gul'dan. A lord of the Burning Legion, Kil'jaeden, taught him, and he became the first warlock of his people. He gathered others in secret and called them the Shadow Council. They made a puppet of the Warchief. And when the time came they held out a cup of a pit lord's blood to every chieftain of the orcs, and nearly all of them drank.\n\nOne warlock, $N. One people, for a generation.\n\nThe Warchief Doomhammer found the Council out at last and slaughtered it. Nearly. One of them is said to live yet, in the swamp where the old Horde first set foot on this world. Gorzak. He has never repented a word. Go to the Swamp of Sorrows and end him.",
+    "objectives": "Kill Gorzak the Unrepentant in the Swamp of Sorrows, west of Stonard. Return to Strahad Farsan in Ratchet.",
+    "progress": "He will tell you it was glorious. Let him finish, if you have the stomach. Then finish him.",
+    "completion": "Dead? Then the old Council is one nearer to gone.\n\nYou see the size of it now. When one of us overreaches, it is not he who pays. Gul'dan wanted to be a god, and it cost the orcs their world and their honor, and the humans a kingdom. He was torn apart by demons in the end, in a tomb he had raised from the sea. It was not enough.\n\nSince you are plainly not going to stop, learn to be a better master than he was. Bind with a looser hand. A demon that is not fighting your grip every moment has strength to spare for mending itself. Yours will, from today.\n\nFifty seasons."
+  },
+  "reward": {
+    "money": 6000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Price, level 40: from the wiki, Gul'dan, taught by Kil'jaeden, was the first orc warlock, founded the Shadow Council, made Blackhand a puppet Warchief and offered the chieftains the blood of Mannoroth; Doomhammer annihilated most of the Council's warlocks; Gul'dan was torn apart by demons at the Tomb of Sargeras. Gives the perk of a demon that mends itself. Invented: Gorzak the Unrepentant, a Council survivor."
+}

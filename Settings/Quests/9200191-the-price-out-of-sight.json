@@ -1,0 +1,68 @@
+{
+  "id": 9200191,
+  "title": "The Price: Out of Sight",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "horde",
+  "class": "warlock",
+  "zone": 85,
+  "type": "fetch",
+  "giver": 2127,
+  "turn_in": 2127,
+  "creatures": [
+    {
+      "id": 9210058,
+      "kind": "enemy",
+      "like": 8996,
+      "name": "Unleashed Servant",
+      "title": "The Price",
+      "level": 10,
+      "map": 0,
+      "x": 2180.0,
+      "y": 354.0,
+      "z": 45.6,
+      "o": 1.0,
+      "respawn": 240,
+      "faction": 14,
+      "health": 1.4,
+      "size": 0.8
+    }
+  ],
+  "objectives": [
+    {
+      "item": 6265,
+      "count": 2
+    },
+    {
+      "creature": 9210058,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Come in. No one minds what we do here; that is one mercy of being dead.\n\nWhen I lived, I practised this art in a cellar and expected the pyre. Ask yourself why. Then bring me two soul shards, taken by your own hand, so that I know you understand what you are taking. You, of all people, should.\n\nAnd there is a thing to clean up. A student of mine bound a servant from the void and lost hold of it. It is loose in the fields south-west of the town. Destroy it, $N. We do not leave our work lying about.",
+    "objectives": "Bring 2 Soul Shards to your teacher and destroy the Unleashed Servant, which haunts the fields south-west of Brill. Then return.",
+    "progress": "The shards first. I will not teach one who flinches at the taking.",
+    "completion": "Two shards, and the thing unmade. Then you have paid the smallest price there is, and seen what the first one buys.\n\nListen. Every power we hold was paid for by someone. The living warlocks pay in secrecy; I did, for thirty years. We Forsaken are excused that, because there is nothing left to take from us. Do not mistake it for a bargain.\n\nI am going to have you shown the rest of the bill. Take one of these. When you have twenty seasons, cross the sea to Kalimdor, to the goblin port of Ratchet. There is a tower on the hill, and a living man in it named Strahad Farsan."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 11287,
+        "count": 1
+      },
+      {
+        "item": 1933,
+        "count": 1
+      },
+      {
+        "item": 15396,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Price, level 10 (Horde): bring soul shards and destroy a demon that slipped its master. From the wiki: warlocks were shunned and hunted until after the Third War and most still practise in hidden enclaves. Invented: the Unleashed Servant."
+}

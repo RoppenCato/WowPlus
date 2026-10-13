@@ -1,0 +1,68 @@
+{
+  "id": 9200189,
+  "title": "The Price: Out of Sight",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "warlock",
+  "zone": 1,
+  "type": "fetch",
+  "giver": 5612,
+  "turn_in": 5612,
+  "creatures": [
+    {
+      "id": 9210056,
+      "kind": "enemy",
+      "like": 8996,
+      "name": "Unleashed Servant",
+      "title": "The Price",
+      "level": 10,
+      "map": 0,
+      "x": -5748.0,
+      "y": -480.0,
+      "z": 396.3,
+      "o": 1.0,
+      "respawn": 240,
+      "faction": 14,
+      "health": 1.4,
+      "size": 0.8
+    }
+  ],
+  "objectives": [
+    {
+      "item": 6265,
+      "count": 2
+    },
+    {
+      "creature": 9210056,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Shut the door, shut the door! Nobody saw you? Good.\n\nYou'll have noticed where I teach. We had halls for this in Gnomeregan. Now we've a back room, and the King's people look in on us. Ask yourself why. Then bring me two soul shards, taken by your own hand, so I know you understand what it is you're taking.\n\nAnd there's a mess to clean. A student of mine bound a servant from the void and lost hold of it. It's loose in the snow south-west of the village. If the mountaineers find it first they'll come asking who called it. Destroy it, $N.",
+    "objectives": "Bring 2 Soul Shards to your teacher and destroy the Unleashed Servant, which haunts the snow south-west of Kharanos. Then return.",
+    "progress": "Shards first. I'll not teach anyone who flinches at the taking.",
+    "completion": "Two shards, and the thing unmade. Then you've paid the smallest price there is, and seen what the first one buys.\n\nListen now. Every power we hold was paid for by someone. The mages will tell you their art is a line of teachers. Ours is a line of debts. I pay mine in a back room, watched, and until a few years ago they'd have done worse than watch.\n\nI'm going to have you shown the rest of the bill. Pick one of these. When you've twenty seasons, cross the sea to the goblin port of Ratchet. There's a tower on the hill, and a man in it named Strahad Farsan."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 11287,
+        "count": 1
+      },
+      {
+        "item": 1933,
+        "count": 1
+      },
+      {
+        "item": 15396,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Price, level 10 (Alliance): bring soul shards and destroy a demon that slipped its master. From the wiki: warlocks were shunned and hunted until after the Third War and most still practise in hidden enclaves. Invented: the Unleashed Servant."
+}

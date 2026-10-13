@@ -1,0 +1,68 @@
+{
+  "id": 9200190,
+  "title": "The Price: Out of Sight",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "horde",
+  "class": "warlock",
+  "zone": 14,
+  "type": "fetch",
+  "giver": 3172,
+  "turn_in": 3172,
+  "creatures": [
+    {
+      "id": 9210057,
+      "kind": "enemy",
+      "like": 8996,
+      "name": "Unleashed Servant",
+      "title": "The Price",
+      "level": 10,
+      "map": 1,
+      "x": 438.0,
+      "y": -4791.2,
+      "z": 36.1,
+      "o": 1.0,
+      "respawn": 240,
+      "faction": 14,
+      "health": 1.4,
+      "size": 0.8
+    }
+  ],
+  "objectives": [
+    {
+      "item": 6265,
+      "count": 2
+    },
+    {
+      "creature": 9210057,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Come in. Sit where the grunts cannot see you from the road.\n\nYou have noticed how they look at me. Not one of them will meet my eye, and not one of them would lift a hand if I were found dead. Ask yourself why. Then bring me two soul shards, taken by your own hand, so that I know you understand what you are taking.\n\nAnd there is a thing to clean up. A student of mine bound a servant from the void and lost hold of it. It is loose in the hills north of here. If the grunts find it before you do, they will remember every reason they have to hate our kind. Destroy it, $N.",
+    "objectives": "Bring 2 Soul Shards to your teacher and destroy the Unleashed Servant, which haunts the hills north of Razor Hill. Then return.",
+    "progress": "The shards first. I will not teach one who flinches at the taking.",
+    "completion": "Two shards, and the thing unmade. Then you have paid the smallest price there is, and seen what the first one buys.\n\nListen. Every power we hold was paid for by someone. For orcs the bill is very long, and the whole Horde knows it. Warlocks made our people slaves to demons. So we practise in shadow, in the cleft under Orgrimmar, and the Warchief allows it, and no one thanks us.\n\nI am going to have you shown the rest of that bill. Take one of these. When you have twenty seasons, go south to the goblin port of Ratchet. There is a tower on the hill, and a human in it named Strahad Farsan. He teaches any who can bear it."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 11287,
+        "count": 1
+      },
+      {
+        "item": 1933,
+        "count": 1
+      },
+      {
+        "item": 15396,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Price, level 10 (Horde): bring soul shards and destroy a demon that slipped its master. From the wiki: warlocks were shunned and hunted until after the Third War and most still practise in hidden enclaves. Invented: the Unleashed Servant."
+}

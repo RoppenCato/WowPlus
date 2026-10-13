@@ -1,0 +1,68 @@
+{
+  "id": 9200194,
+  "title": "The Price: What You Ride",
+  "level": 30,
+  "min_level": 30,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "warlock",
+  "zone": 405,
+  "type": "kill",
+  "after": 9200192,
+  "giver": 6251,
+  "turn_in": 6251,
+  "creatures": [
+    {
+      "id": 9210059,
+      "kind": "enemy",
+      "like": 4666,
+      "name": "Horsebinder Rakk",
+      "title": "The Price",
+      "level": 32,
+      "map": 1,
+      "x": -342.0,
+      "y": 1700.0,
+      "z": 130.4,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.7,
+      "size": 1.1
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 4666,
+      "count": 6
+    },
+    {
+      "creature": 9210059,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You ride a felsteed, or soon will. Have you asked where it came from?\n\nAcross the bay and far to the west lies Desolace. In the north of it stands Thunder Axe Fortress, held by the Burning Blade for their masters, the Shadow Council. And in that fortress the Council's elders take wild horses off the plain and bind demons into them. The horse does not consent. The horse is still in there, $N, under the fire.\n\nThat is the third price, and it is the one we never pay ourselves. Go to Thunder Axe. Kill six of the Felsworn who do the work, and the one who oversees it: Horsebinder Rakk.",
+    "objectives": "Kill 6 Burning Blade Felsworn and Horsebinder Rakk at Thunder Axe Fortress in Desolace. Return to Strahad Farsan in Ratchet.",
+    "progress": "You will hear the horses before you see the walls.",
+    "completion": "Then there will be a few fewer made this year.\n\nI do not tell you to give up your mount. I have not given up mine. I tell you to know what it is every time you call it. A warlock who forgets what his servants cost is halfway to a cultist already.\n\nTake one of these. At forty seasons, come back. I will send you to meet one of the old ones."
+  },
+  "reward": {
+    "money": 3000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 16889,
+        "count": 1
+      },
+      {
+        "item": 5244,
+        "count": 1
+      },
+      {
+        "item": 15455,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Price, level 30: from the wiki, Shadow Council elders in Desolace bound wild horses into felsteeds, and the Burning Blade holds Thunder Axe Fortress. Invented: Horsebinder Rakk."
+}

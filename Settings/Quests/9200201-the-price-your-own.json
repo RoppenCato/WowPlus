@@ -1,0 +1,42 @@
+{
+  "id": 9200201,
+  "title": "The Price: Your Own",
+  "level": 60,
+  "min_level": 60,
+  "max_level": 0,
+  "side": "horde",
+  "class": "warlock",
+  "zone": 4,
+  "type": "slay",
+  "after": 9200199,
+  "giver": 6251,
+  "turn_in": 6251,
+  "objectives": [
+    {
+      "creature": 9210062,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "This is the last lesson, and I cannot teach it. I can only send you to it.\n\nIn the Blasted Lands, near where Gul'dan's door stood, the Council has gathered again. The Shadowsworn. A demon named Razelikh rules them from hiding. At the Altar of Storms one of their number, Keeper Vorlath, guards a thing of real power: a shard cut from the Altar itself, which they say the old Horde's warlocks raised.\n\nTake it from him. Alone, $N. He will bring down the whole sect on a company, but one challenger he will meet, out of pride.\n\nThen come back, and I will ask you a question.",
+    "objectives": "Kill Keeper Vorlath near the Altar of Storms in the Blasted Lands, alone and with no companions. Return to Strahad Farsan in Ratchet.",
+    "progress": "Alone. Pride is the one thing you can rely on in them.",
+    "completion": "So. You have it.\n\nHere is the question, and it is the only one that matters in our art. What will you do with it?\n\nYou may keep it. It is power, the real thing, the same that made the Council. I can set it in a form you can carry: a mark of tyranny, and it will serve you well. Or you may hand it to me, and I will break it, and in its place I will give you a seal of those who fight what the Council serves.\n\nI shall not tell you which is right. I have made that choice myself, long ago, and I have never been certain. Every warlock before you paid a price, $N. This is where you set your own."
+  },
+  "reward": {
+    "money": 15000,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": [
+      {
+        "item": 13966,
+        "count": 1
+      },
+      {
+        "item": 13209,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Price, level 60: a kill made alone, then a choice between two rewards that stand for keeping the power or destroying it. From the wiki: Razelikh the Defiler united the Shadow Council's sects in the Blasted Lands as the Shadowsworn; the Altar of Storms is a place in the Blasted Lands (the quest only says the old Horde's warlocks are said to have raised it). Invented: Keeper Vorlath and the shard."
+}

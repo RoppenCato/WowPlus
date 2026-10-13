@@ -1,0 +1,39 @@
+{
+  "id": 9200193,
+  "title": "The Price: Someone Else's Hand",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "horde",
+  "class": "warlock",
+  "zone": 17,
+  "type": "collect",
+  "perk": "shard_luck",
+  "giver": 6251,
+  "turn_in": 6251,
+  "objectives": [
+    {
+      "item": 6276,
+      "count": 1,
+      "drops_from": [
+        {
+          "creature": 3380,
+          "chance": 30
+        }
+      ]
+    }
+  ],
+  "texts": {
+    "details": "So you are the one who is being shown the bill. Sit. I teach any who climb this hill, of either banner, and I tell them all the same thing first.\n\nA warlock commands. That is the whole of the art: your will over the demon's. There is another sort of person who deals with demons, and you must learn to tell the two apart, because from a distance they look alike.\n\nIn the Barrens, north of the Crossroads, there is a peak the orcs avoid. A cult called the Burning Blade keeps it. They are not warlocks, $N. They are worshippers. Bring me something one of them has written. They all keep notes; they think they are scholars.",
+    "objectives": "Bring a Musty Note from the Burning Blade Acolytes on Dreadmist Peak, north of the Crossroads, to Strahad Farsan in Ratchet.",
+    "progress": "Any of them will have one. They write a great deal for people with nothing of their own to say.",
+    "completion": "Let me see. Yes. Read it.\n\n\"I no longer dream my own dreams. The master's voice is with me always. I am content.\"\n\nThat is the second price, and the commonest. Not gold, not blood. The will. This one did not bind a demon. He asked one to bind him, and thanked it. Every cult of the Legion is made of such people, and there is always one more of them than you have killed.\n\nYou have taken their souls for shards, and it sits ill with you; I can tell. Good. But understand what you have learned by it: the dead owe us, whether we collect or not. You will find, now and then, that a shard comes to you unasked.\n\nCome back at thirty seasons."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Price, level 20: the difference between a warlock and a cultist. From the wiki: the Cult of the Dark Strand in Darkshore and the Burning Blade in the Barrens are sects of the Shadow Council, a cult of mortals serving the Burning Legion. Gives the perk of occasional free soul shards. Invented: the note's words."
+}

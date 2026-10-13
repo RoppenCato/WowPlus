@@ -17,11 +17,14 @@
  *   double_conjure  conjuring food or water makes twice as much
  *   wild_rest    health and mana both come back faster out of combat
  *   herbs        gathering a herb sometimes gives one more
+ *   shard_luck   a kill worth experience sometimes leaves a soul shard without draining for it
+ *   demon_mend   a warlock's demon mends itself out of combat
  */
 
 #include "Chat.h"
 #include "Creature.h"
 #include "DBCStores.h"
+#include "Formulas.h"
 #include "GameObject.h"
 #include "DatabaseEnv.h"
 #include "Item.h"
@@ -52,6 +55,9 @@ namespace
     constexpr float REPAIR_SHARE = 0.75f;                   // of the usual price
     constexpr float MANA_SHARE = 0.01f;                     // of full mana, back on each beat out of combat
     constexpr uint32 SPELL_POLYMORPH_PIG = 28272;
+    constexpr uint32 ITEM_SOUL_SHARD = 6265;
+    constexpr uint32 SHARD_CHANCE = 20;                     // percent
+    constexpr float MEND_SHARE = 0.02f;                     // of the demon's full health, back on each beat out of combat
 
     std::unordered_map<std::string, std::vector<uint32>> questsWithPerk;    // perk -> the quests that give it
     std::unordered_map<uint32, std::string> perkOfQuest;
@@ -138,7 +144,8 @@ void WowPlusPerksWorld::Rest(uint32 diff)
     bool const wind = questsWithPerk.find("second_wind") != questsWithPerk.end();
     bool const mana = questsWithPerk.find("mana_rest") != questsWithPerk.end();
     bool const wild = questsWithPerk.find("wild_rest") != questsWithPerk.end();
-    if (!rage && !wind && !mana && !wild)
+    bool const mend = questsWithPerk.find("demon_mend") != questsWithPerk.end();
+    if (!rage && !wind && !mana && !wild && !mend)
         return;
 
     std::vector<Player*> resting;
@@ -153,6 +160,10 @@ void WowPlusPerksWorld::Rest(uint32 diff)
     {
         if (rage && player->getPowerType() == POWER_RAGE && player->GetPower(POWER_RAGE) > 0 && HasPerk(player, "rage_hold"))
             player->ModifyPower(POWER_RAGE, RAGE_BACK);
+        if (mend && player->getClass() == CLASS_WARLOCK)
+            if (Pet* demon = player->GetPet())
+                if (demon->IsAlive() && !demon->IsInCombat() && demon->GetHealth() < demon->GetMaxHealth() && HasPerk(player, "demon_mend"))
+                    demon->ModifyHealth(int32(demon->GetMaxHealth() * MEND_SHARE));
         bool const rests = wild && HasPerk(player, "wild_rest");
         if (rests && player->GetHealth() < player->GetMaxHealth())
             player->ModifyHealth(int32(player->GetMaxHealth() * WIND_SHARE));
@@ -206,6 +217,10 @@ public:
         }
         else if (found->second == "double_conjure")
             chat.SendSysMessage("You have learned to waste nothing of a spell: conjuring food or water makes twice as much from now on.");
+        else if (found->second == "shard_luck")
+            chat.SendSysMessage("You have learned that the dead owe you: now and then a kill will leave a soul shard in your bag without your draining for it.");
+        else if (found->second == "demon_mend")
+            chat.SendSysMessage("You have learned to bind with a looser hand: your demon mends itself out of combat from now on.");
         else if (found->second == "wild_rest")
             chat.SendSysMessage("You have learned to rest as the wild rests: your health and mana both come back faster out of combat from now on.");
         else if (found->second == "herbs")
@@ -216,6 +231,15 @@ public:
             chat.SendSysMessage("You have learned what to look for: you find a tenth more coin on everything you loot from now on.");
         else if (found->second == "repairs")
             chat.SendSysMessage("You have learned to care for your arms: repairs cost you a quarter less from now on.");
+    }
+
+    void OnPlayerCreatureKill(Player* killer, Creature* killed) override
+    {
+        if (!killer || !killed || killer->getClass() != CLASS_WARLOCK || killed->GetLevel() <= Acore::XP::GetGrayLevel(killer->GetLevel()))
+            return;
+
+        if (HasPerk(killer, "shard_luck") && roll_chance_i(SHARD_CHANCE))
+            killer->AddItem(ITEM_SOUL_SHARD, 1);
     }
 
     void OnPlayerCreateItem(Player* player, Item* item, uint32 count) override

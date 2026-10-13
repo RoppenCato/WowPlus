@@ -44,6 +44,8 @@ PERKS = {
     "double_conjure": "Conjuring food or water makes twice as much.",
     "wild_rest": "Health and mana both come back faster out of combat.",
     "herbs": "Gathering a herb sometimes gives one more.",
+    "shard_luck": "A kill sometimes leaves a soul shard without draining for it.",
+    "demon_mend": "A warlock's demon mends itself out of combat.",
 }
 TYPES = {
     "visit": "Go to a place, or hear someone out (may be mixed with the other tasks).",

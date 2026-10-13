@@ -1,0 +1,64 @@
+{
+  "id": 9200198,
+  "title": "The Price: The Land",
+  "level": 50,
+  "min_level": 50,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "warlock",
+  "zone": 361,
+  "type": "slay",
+  "after": 9200196,
+  "giver": 6251,
+  "turn_in": 6251,
+  "creatures": [
+    {
+      "id": 9210061,
+      "kind": "enemy",
+      "like": 7120,
+      "name": "Voice of the Hold",
+      "title": "The Price",
+      "level": 52,
+      "map": 1,
+      "x": 4760.0,
+      "y": -720.0,
+      "z": 316.3,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.7,
+      "size": 1.1
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210061,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Gul'dan's skull outlived him. That is not a figure of speech.\n\nIn the last war the Legion carried it into the north of this continent and used it to befoul a forest the night elves had tended since before our peoples could speak. Everything in that wood that the fire did not kill, the skull cursed. They call it Felwood now.\n\nAnd in the middle of it the Shadow Council has its seat, reborn, every race under one roof: Jaedenar. Their lord is called Banehollow and he sits under the ground. One who speaks for him walks outside, at the eastern edge, and calls to travellers. They call him the Voice of the Hold. Silence him, $N. And look at the trees while you are there.",
+    "objectives": "Kill the Voice of the Hold at the eastern edge of Jaedenar in Felwood. Return to Strahad Farsan in Ratchet.",
+    "progress": "He will offer you a place. They always need more.",
+    "completion": "He offered, did he not? And you were not tempted, or you would not be standing here.\n\nThat was the fourth price. A servant, a will, a people, and now the ground itself. The elves have been trying to heal that forest ever since, and they have failed, and they will go on failing.\n\nTake one of these; you will want something to turn aside what is coming.\n\nThere is one bill left, and it is yours. At sixty seasons."
+  },
+  "reward": {
+    "money": 9000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 7734,
+        "count": 1
+      },
+      {
+        "item": 1490,
+        "count": 1
+      },
+      {
+        "item": 17774,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Price, level 50: from the wiki, the Legion befouled Felwood with the Skull of Gul'dan; the reformed Shadow Council, a mix of races, has its seat in Shadow Hold at Jaedenar under Lord Banehollow; attempts to heal the land have failed. Invented: the Voice of the Hold."
+}
