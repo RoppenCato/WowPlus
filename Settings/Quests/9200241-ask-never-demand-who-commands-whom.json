@@ -1,0 +1,87 @@
+{
+  "id": 9200241,
+  "title": "Ask, Never Demand: Who Commands Whom",
+  "level": 60,
+  "min_level": 60,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "shaman",
+  "zone": 1377,
+  "type": "kill",
+  "after": 9200239,
+  "giver": 17204,
+  "turn_in": 17204,
+  "creatures": [
+    {
+      "id": 9210093,
+      "kind": "enemy",
+      "like": 11882,
+      "name": "Twilight Windcaller",
+      "title": "Ask, Never Demand",
+      "map": 1,
+      "x": -6800.0,
+      "y": 1600.0,
+      "z": 4.4,
+      "o": 1.0,
+      "level": 60,
+      "respawn": 240,
+      "faction": 14,
+      "health": 1.5,
+      "alone": true
+    },
+    {
+      "id": 9210094,
+      "kind": "person",
+      "like": 11576,
+      "name": "A Voice of the Abyssal Council",
+      "title": "Ask, Never Demand",
+      "map": 1,
+      "x": -6814.4,
+      "y": 1579.0,
+      "z": 2.5,
+      "o": 1.0,
+      "faction": 35
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210093,
+      "count": 1
+    },
+    {
+      "talk": 9210094,
+      "text": "Hear the Voice of the Abyssal Council",
+      "says": [
+        "You have broken my speaker. No matter. They are easily replaced, and they come to us eager.",
+        "Did you think he had bound me, little asker? He stood at the stone to receive his orders. They all do. We were lieutenants of the old masters before your peoples had names.",
+        "You ask. It is a pretty custom. I will tell you what I tell them: we answer whom we please. Go back and ask your kindly spirits what they did in the first war."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "The last. Go to Silithus, in the far south of Kalimdor.\n\nThe Twilight's Hammer has camps there, and in the camps there are stones through which they call up lords of the elements. You have met this cult before, at the drowned temple. You will think you know what you are going to see: binders, and the bound.\n\nGo alone, $N. Find one of their callers at his stone, in the camp west of Cenarion Hold, and strike him down. Then hear what he called. I will not tell you what it will say. I want you to hear it as I heard the wind: without being told beforehand what it meant.",
+    "objectives": "Alone, kill the Twilight Windcaller at the Twilight's Hammer camp west of Cenarion Hold in Silithus, and hear the Voice of the Abyssal Council that he called. Return to Farseer Nobundo in the Crystal Hall of the Exodar.",
+    "progress": "Go alone. He will not stand against a company, and what he called will not speak to one.",
+    "completion": "So now you know the thing that most shaman would rather not. They were not bound. They commanded, and the cult obeyed.\n\nThe elements are not ours, $N. They were here before us, they served the oldest evil of this world willingly, and some of them miss it. That is who we ask. That is who answered a broken, faithless vindicator on a mountain, when nothing else would.\n\nSo why ask, and never demand? Not because they are good. Because asking leaves them free, and leaves you free. What it said to you was meant to shame you. Notice that it could not command you. That is the whole of the difference.\n\nYou have nothing more to learn from me that the wind will not teach you better. Take one of these; I shaped them myself."
+  },
+  "reward": {
+    "money": 15000,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": [
+      {
+        "item": 23199,
+        "count": 1
+      },
+      {
+        "item": 23200,
+        "count": 1
+      },
+      {
+        "item": 22395,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Ask, Never Demand, level 60: the wind stones of Silithus, fought alone. From the wiki: the Abyssal Council of elemental nobles controls the Twilight's Hammer in Silithus and speaks to it through the wind stones, where cultists receive their orders; the Elemental Lords were lieutenants of the Old Gods before they were imprisoned. Gives a choice of totem relics. Invented: the Windcaller and the Voice's words."
+}

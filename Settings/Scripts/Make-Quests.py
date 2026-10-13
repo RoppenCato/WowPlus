@@ -49,6 +49,8 @@ PERKS = {
     "light_answers": "Once every ten minutes, dropping below a fifth of health in a fight gives a fifth back.",
     "prayer_answered": "The same as light_answers, in words that suit any faith.",
     "consolation": "When a companion falls nearby, some mana returns.",
+    "elements_answer": "The same as light_answers, in a shaman's words.",
+    "totems_linger": "Totems that stand a minute or more stand half as long again.",
 }
 TYPES = {
     "visit": "Go to a place, or hear someone out (may be mixed with the other tasks).",

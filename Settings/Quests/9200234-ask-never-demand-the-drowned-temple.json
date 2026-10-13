@@ -1,0 +1,42 @@
+{
+  "id": 9200234,
+  "title": "Ask, Never Demand: The Drowned Temple",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "horde",
+  "class": "shaman",
+  "zone": 331,
+  "type": "kill",
+  "perk": "mana_rest",
+  "giver": 3344,
+  "turn_in": 3344,
+  "objectives": [
+    {
+      "creature": 9210087,
+      "count": 1
+    },
+    {
+      "talk": 9210088,
+      "text": "Hear the Bound Tide",
+      "says": [
+        "It is off. The thing they tied on me is off. Stand there. Let me look at you. You are one of the ones who ask.",
+        "They do not ask. They speak a word that is older than they are and the water in the deep place does what the word says. It does not want to. It does.",
+        "There is something growing under the temple that they feed. I will not say more of it. Go back to the land. You asked me nothing. So I will give you something."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "So Swart or Narm has stood you before a spirit's anger. Then you may begin.\n\nGo north to Ashenvale, to the shore called the Zoram Strand. There is a temple there under the sea. The night elves built it to their goddess, and it sank when the world was broken.\n\nA cult holds it now. The Twilight's Hammer. They serve things older than the elements, and they do not ask water for its help. They bind it. The naga on that shore are their allies. Je'neu of the Earthen Ring keeps watch on them from Zoram'gar.\n\nOne of their binders works on the strand itself, with a spirit of the tide held fast. Free it, $N. Then listen.",
+    "objectives": "Kill the Twilight Tidebinder on the Zoram Strand in the north-west of Ashenvale and hear the Bound Tide. Return to Kardris Dreamseeker in the Valley of Wisdom in Orgrimmar.",
+    "progress": "Free it first. Then be quiet, and let it speak if it wishes to.",
+    "completion": "It gave you something, and you had asked for nothing. Good. Remember how that felt.\n\nThat is the first of those who demanded. The cult has power over water, more than you have. And the water hates them, and waits. Every binding is a debt, and the elements are patient about debts. We learned that on Draenor.\n\nYou will find that when you are still, after a fight, your strength returns as water returns to a hollow. That is its gift, not mine.\n\nThirty seasons."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Ask, Never Demand, level 20: the Twilight's Hammer at Blackfathom. From the wiki: Blackfathom Deeps was a temple of Elune that sank in the Sundering; the Twilight's Hammer took it over and sacrifice to Aku'mai, a servant of the Old Gods, with naga as allies; the Earthen Ring (Je'neu Sancrea at Zoram'gar) watches them. Gives the perk of faster mana out of combat. Invented: the Tidebinder on the shore and the Bound Tide."
+}

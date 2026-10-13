@@ -1,0 +1,75 @@
+{
+  "id": 9200233,
+  "title": "Ask, Never Demand: The Drowned Temple",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "shaman",
+  "zone": 331,
+  "type": "kill",
+  "after": 9200232,
+  "perk": "mana_rest",
+  "giver": 17204,
+  "turn_in": 17204,
+  "creatures": [
+    {
+      "id": 9210087,
+      "kind": "enemy",
+      "like": 2338,
+      "name": "Twilight Tidebinder",
+      "title": "Ask, Never Demand",
+      "map": 1,
+      "x": 4097.0,
+      "y": 905.2,
+      "z": 7.5,
+      "o": 1.0,
+      "level": 21,
+      "respawn": 240,
+      "faction": 14,
+      "health": 1.6
+    },
+    {
+      "id": 9210088,
+      "kind": "person",
+      "like": 691,
+      "name": "The Bound Tide",
+      "title": "Ask, Never Demand",
+      "map": 1,
+      "x": 4060.0,
+      "y": 820.0,
+      "z": 3.9,
+      "o": 1.0,
+      "faction": 35,
+      "size": 0.7
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210087,
+      "count": 1
+    },
+    {
+      "talk": 9210088,
+      "text": "Hear the Bound Tide",
+      "says": [
+        "It is off. The thing they tied on me is off. Stand there. Let me look at you. You are one of the ones who ask.",
+        "They do not ask. They speak a word that is older than they are and the water in the deep place does what the word says. It does not want to. It does.",
+        "There is something growing under the temple that they feed. I will not say more of it. Go back to the land. You asked me nothing. So I will give you something."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "So you have stood before a spirit's anger and did not curse it. Then you may begin.\n\nGo to the far shore of Ashenvale, to the place called the Zoram Strand. There is a temple there under the sea. The night elves built it to their goddess, long ago, and it sank when the world was broken.\n\nA cult holds it now. The Twilight's Hammer. They serve things older than the elements, and they do not ask water for its help. They bind it. The naga on that shore are their allies.\n\nOne of their binders works on the strand itself, with a spirit of the tide held fast. Free it, $N. Then listen.",
+    "objectives": "Kill the Twilight Tidebinder on the Zoram Strand in the north-west of Ashenvale and hear the Bound Tide. Return to Farseer Nobundo in the Crystal Hall of the Exodar.",
+    "progress": "Free it first. Then be quiet, and let it speak if it wishes to.",
+    "completion": "It gave you something, though you asked for nothing. Yes. That is how it has always been with me, also.\n\nHere is the first of those who demanded. The cult has power over water, real power, more than you have. And the water hates them, and waits. Every binding is a debt, and the elements are very patient about debts.\n\nYou will find that when you are still, after a fight, your strength returns as water returns to a hollow. That is its gift, not mine.\n\nThirty seasons."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Ask, Never Demand, level 20: the Twilight's Hammer at Blackfathom. From the wiki: Blackfathom Deeps was a temple of Elune that sank in the Sundering; the Twilight's Hammer took it over and sacrifice to Aku'mai, a servant of the Old Gods, with naga as allies; the Earthen Ring (Je'neu Sancrea at Zoram'gar) watches them. Gives the perk of faster mana out of combat. Invented: the Tidebinder on the shore and the Bound Tide."
+}

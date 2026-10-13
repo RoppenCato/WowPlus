@@ -1,0 +1,64 @@
+{
+  "id": 9200232,
+  "title": "Ask, Never Demand: The First Asking",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "shaman",
+  "zone": 3524,
+  "type": "slay",
+  "giver": 17212,
+  "turn_in": 17212,
+  "creatures": [
+    {
+      "id": 9210086,
+      "kind": "enemy",
+      "like": 691,
+      "name": "Roused Spirit of Water",
+      "title": "Ask, Never Demand",
+      "map": 530,
+      "x": -4263.6,
+      "y": -12379.0,
+      "z": 15.7,
+      "o": 1.0,
+      "level": 10,
+      "respawn": 240,
+      "faction": 14,
+      "health": 1.4,
+      "size": 0.6
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210086,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You have your first totems. Some of our people still say this path is a heresy. It is new to us, yes. We have followed it for less time than you have been alive.\n\nIt came to us through one of the Broken. Nobundo was a vindicator, and when the Light no longer answered him he prayed for years on the mountain tops for it to return. It did not. The wind answered instead. Remember that he prayed. He did not command.\n\nThe crash of our ship has roused a spirit of water among the trees south-west of here. It is angry and afraid. Go to it. It will strike at you. Do not strike in hatred. Stand, and let its anger spend itself.",
+    "objectives": "Wear out the anger of the Roused Spirit of Water, among the trees south-west of Azure Watch, then return to your teacher.",
+    "progress": "You cannot kill a spirit. You can only outlast its anger.",
+    "completion": "It is calm? Good. It is not dead; water does not die. It has gone back into the ground, and it will remember that you stood and did not curse it.\n\nThe first thing the wind said to Nobundo was this: everything that is, is alive. If that is so, $N, then nothing we call upon is a tool. A shaman asks. A shaman never demands.\n\nThis world is full of those who demanded instead. The Farseer would have you see what became of each. Choose one of these. When you have twenty seasons, go to him in the Crystal Hall of the Exodar."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 2267,
+        "count": 1
+      },
+      {
+        "item": 1933,
+        "count": 1
+      },
+      {
+        "item": 3653,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Ask, Never Demand, level 10 (Alliance): one roused spirit near home, and the rule that a shaman asks. Invented: the spirit."
+}

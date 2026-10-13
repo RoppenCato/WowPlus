@@ -22,6 +22,8 @@
  *   light_answers  once every ten minutes, dropping below a fifth of health in a fight gives a fifth back
  *   prayer_answered  the same, in words that suit any faith
  *   consolation  when a companion in the group falls nearby, some mana returns
+ *   elements_answer  the same as light_answers, in a shaman's words
+ *   totems_linger  totems that stand a minute or more stand half as long again (the two elemental totems excepted)
  */
 
 #include "Chat.h"
@@ -42,6 +44,7 @@
 #include "QuestDef.h"
 #include "Random.h"
 #include "ScriptMgr.h"
+#include "Totem.h"
 #include "WorldSession.h"
 
 #include <shared_mutex>
@@ -68,6 +71,9 @@ namespace
     constexpr time_t ANSWER_EVERY = 10 * MINUTE;
     constexpr float CONSOLE_SHARE = 0.15f;                  // of full mana, when a companion falls
     constexpr float CONSOLE_REACH = 60.0f;                  // yards
+    constexpr uint32 LINGER_FROM = 60 * IN_MILLISECONDS;    // shorter totems are left alone: those are the ones that decide a fight
+    constexpr uint32 FIRE_ELEMENTAL_TOTEM = 15439;
+    constexpr uint32 EARTH_ELEMENTAL_TOTEM = 15430;
 
     std::unordered_map<std::string, std::vector<uint32>> questsWithPerk;    // perk -> the quests that give it
     std::unordered_map<uint32, std::string> perkOfQuest;
@@ -152,7 +158,8 @@ void WowPlusPerksWorld::Rest(uint32 diff)
     sinceRest = 0;
 
     // The Light answers those hard pressed in a fight
-    if (questsWithPerk.find("light_answers") != questsWithPerk.end() || questsWithPerk.find("prayer_answered") != questsWithPerk.end())
+    if (questsWithPerk.find("light_answers") != questsWithPerk.end() || questsWithPerk.find("prayer_answered") != questsWithPerk.end()
+        || questsWithPerk.find("elements_answer") != questsWithPerk.end())
     {
         std::vector<Player*> fighting;
         {
@@ -167,7 +174,8 @@ void WowPlusPerksWorld::Rest(uint32 diff)
         for (Player* player : fighting)
         {
             bool const light = HasPerk(player, "light_answers");
-            if (!light && !HasPerk(player, "prayer_answered"))
+            bool const elements = !light && HasPerk(player, "elements_answer");
+            if (!light && !elements && !HasPerk(player, "prayer_answered"))
                 continue;
 
             time_t& last = lastAnswer[player->GetGUID()];
@@ -176,7 +184,7 @@ void WowPlusPerksWorld::Rest(uint32 diff)
 
             last = now;
             player->ModifyHealth(int32(player->GetMaxHealth() * ANSWER_SHARE));
-            ChatHandler(player->GetSession()).SendSysMessage(light ? "The Light answers." : "Your prayer is answered.");
+            ChatHandler(player->GetSession()).SendSysMessage(light ? "The Light answers." : elements ? "The elements answer." : "Your prayer is answered.");
         }
     }
 
@@ -267,6 +275,10 @@ public:
             chat.SendSysMessage("You have learned that you are heard: once every ten minutes, when a fight brings you below a fifth of your health, a fifth of it will come back.");
         else if (found->second == "consolation")
             chat.SendSysMessage("You have learned to carry the fallen: when a companion falls near you, some of your mana will return.");
+        else if (found->second == "elements_answer")
+            chat.SendSysMessage("You have learned that asking is answered: once every ten minutes, when a fight brings you below a fifth of your health, a fifth of it will come back.");
+        else if (found->second == "totems_linger")
+            chat.SendSysMessage("You have learned to set a totem as the earth would hold it: your lasting totems stand half as long again from now on.");
         else if (found->second == "wild_rest")
             chat.SendSysMessage("You have learned to rest as the wild rests: your health and mana both come back faster out of combat from now on.");
         else if (found->second == "herbs")
@@ -376,8 +388,31 @@ void WowPlusPerksReload()
     LoadPerks();
 }
 
+class WowPlusPerksCreature : public AllCreatureScript
+{
+public:
+    WowPlusPerksCreature() : AllCreatureScript("WowPlusPerksCreature") { }
+
+    void OnCreatureAddWorld(Creature* creature) override
+    {
+        if (!creature->IsTotem() || questsWithPerk.find("totems_linger") == questsWithPerk.end())
+            return;
+
+        Totem* totem = creature->ToTotem();
+        uint32 const lasts = totem->GetTotemDuration();
+        if (lasts < LINGER_FROM || creature->GetEntry() == FIRE_ELEMENTAL_TOTEM || creature->GetEntry() == EARTH_ELEMENTAL_TOTEM)
+            return;
+
+        Unit* owner = totem->GetOwner();
+        if (Player* player = owner ? owner->ToPlayer() : nullptr)
+            if (!player->GetSession()->IsHeadless() && HasPerk(player, "totems_linger"))
+                totem->SetTotemDuration(lasts + lasts / 2);
+    }
+};
+
 void AddSC_WowPlusPerks()
 {
     new WowPlusPerksWorld();
     new WowPlusPerksPlayer();
+    new WowPlusPerksCreature();
 }

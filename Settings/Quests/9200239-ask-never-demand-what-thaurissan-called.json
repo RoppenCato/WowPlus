@@ -1,0 +1,75 @@
+{
+  "id": 9200239,
+  "title": "Ask, Never Demand: What Thaurissan Called",
+  "level": 50,
+  "min_level": 50,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "shaman",
+  "zone": 51,
+  "type": "kill",
+  "after": 9200237,
+  "perk": "elements_answer",
+  "giver": 17204,
+  "turn_in": 17204,
+  "creatures": [
+    {
+      "id": 9210091,
+      "kind": "person",
+      "like": 9542,
+      "name": "Shade of a Dark Iron Runewright",
+      "title": "Ask, Never Demand",
+      "map": 0,
+      "x": -6822.0,
+      "y": -1100.0,
+      "z": 242.4,
+      "o": 1.0,
+      "faction": 35
+    },
+    {
+      "id": 9210092,
+      "kind": "enemy",
+      "like": 5852,
+      "name": "Thaurissan's Answer",
+      "title": "Ask, Never Demand",
+      "map": 0,
+      "x": -6965.6,
+      "y": -1228.0,
+      "z": 145.0,
+      "o": 1.0,
+      "level": 50,
+      "respawn": 240,
+      "faction": 14,
+      "health": 1.5,
+      "size": 1.3
+    }
+  ],
+  "objectives": [
+    {
+      "talk": 9210091,
+      "text": "Hear the Shade of a Dark Iron Runewright",
+      "says": [
+        "Ye can see me. Two hundred years an' more, an' ye're the first tae stop. I cut the runes, ye ken. No' the words. I only cut what I was given.",
+        "We were losin'. Both our kin at the gates. The Thane said there was a power under the stone that would end it, an' it would come if it was called by its right name.",
+        "It came. It didnae ask what we wanted. There was a mountain range here, did ye know? My grandbairns' grandbairns haul slag for it still. Put out one flame o' it for me."
+      ]
+    },
+    {
+      "creature": 9210092,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Now the worst of them. Go to the Searing Gorge, in the south of the dwarven lands.\n\nMore than two hundred years ago there was a war between the dwarf clans, and the Dark Irons were losing it. Their sorcerer-thane, Thaurissan, would not lose. He and seven others reached down for a power to destroy their enemies. They did not ask. They summoned.\n\nWhat came was Ragnaros, the lord of all fire. It killed them where they stood. It broke a range of mountains. And it has owned the Dark Irons ever since.\n\nThere is a shade near Thorium Point, one who had a hand in it. Hear him. Then go south into the Cauldron and put out a little of what he helped to call.",
+    "objectives": "Hear the Shade of a Dark Iron Runewright south-west of Thorium Point in the Searing Gorge and destroy Thaurissan's Answer in the Cauldron. Return to Farseer Nobundo in the Crystal Hall of the Exodar.",
+    "progress": "He will not ask your pardon. Hear him anyway.",
+    "completion": "He cut what he was given. Yes. There is always someone who only cut the runes.\n\nI was at Shattrath, $N, when the orcs came with their new power. I have seen what a people becomes when it stops asking. I did not think to see it again on another world, in another people, but it is the same. They wished to command fire, and now fire commands them.\n\nThat is the end of every demand. The elements answer it. They always answer. It is only that they choose how.\n\nYou have asked, all this way. So in a hard hour, you will be answered differently.\n\nSixty seasons. There is one more."
+  },
+  "reward": {
+    "money": 9000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Ask, Never Demand, level 50: the summoning of Ragnaros. From the wiki: facing defeat in the War of the Three Hammers, Sorcerer-Thane Thaurissan and the Seven summoned Ragnaros to destroy their enemies; they were killed at once, the blast shattered the Redridge range and raised Blackrock, and the Dark Irons have served the Firelord since. Gives the perk of the elements answering in a hard fight. Invented: the runewright's shade and the elemental named Thaurissan's Answer."
+}

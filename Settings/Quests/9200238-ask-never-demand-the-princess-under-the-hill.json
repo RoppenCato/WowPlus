@@ -1,0 +1,57 @@
+{
+  "id": 9200238,
+  "title": "Ask, Never Demand: The Princess Under the Hill",
+  "level": 40,
+  "min_level": 40,
+  "max_level": 0,
+  "side": "horde",
+  "class": "shaman",
+  "zone": 45,
+  "type": "visit",
+  "after": 9200236,
+  "perk": "totems_linger",
+  "giver": 3344,
+  "turn_in": 3344,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -850.0,
+        "y": -1790.0,
+        "radius": 60
+      },
+      "text": "Stand in the Circle of West Binding"
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": -1532.0,
+        "y": -2168.0,
+        "radius": 70
+      },
+      "text": "Stand in the Circle of Inner Binding"
+    },
+    {
+      "talk": 9210090,
+      "text": "Hear the Exile That Stayed",
+      "says": [
+        "You are not here for the key. Good. They all come for the key. She sends them. She has a very sweet voice, through the crystal.",
+        "She is a princess of the earth and I am hers. The old whisperers under the world got into her and she has not been herself since before your kind could speak.",
+        "The giants shut her under this hill. It was a hard thing to do to her. It was right. I guard the stone that holds my own lady, and no one asked me to."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "Twice I have sent you to those who bind, and you come back certain that all binding is wicked. Now I must spoil that for you.\n\nGo to the Arathi Highlands, in the east, where our people keep Hammerfall. There are four rings of standing stones there. Under them a princess of the earth is held fast. Her name is Myzrael. Giants bound her there, the stone servants of whoever made this world.\n\nShe calls to travellers through shards of crystal, and asks very sweetly to be let out.\n\nStand in the west circle, and the inner one. An exile of the earth keeps to the inner stones, one that does not attack. Hear it. Take nothing and free nothing.",
+    "objectives": "Stand in the Circle of West Binding and the Circle of Inner Binding in the Arathi Highlands, and hear the Exile That Stayed near the inner circle. Return to Kardris Dreamseeker in the Valley of Wisdom in Orgrimmar.",
+    "progress": "Do not go to free anything, this time. Go and look at a binding that was needed.",
+    "completion": "So. A binding that was right, kept by one who loves what it binds.\n\nI did not send you to unlearn the rule. A shaman still does not demand. But do not become a fool about the elements. They are not gentle because we are polite. Some of them served terrible masters once, and some would again.\n\nTo ask is not to trust blindly, $N. It is to leave the other free to answer, and to hear it, even when the answer is no.\n\nThe earth held something for a long age there. It will hold what you set down a little longer, now.\n\nFifty seasons."
+  },
+  "reward": {
+    "money": 6000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "Ask, Never Demand, level 40: Myzrael and the Stones of Binding, with no fight asked for. From the wiki: Myzrael, a princess of the earth, was driven mad by the Old Gods and bound beneath the Arathi Highlands by the giants; she calls for help through crystal shards and manipulates those who answer; elemental exiles guard the keys to the stones. Gives the perk of totems that stand longer. Invented: the Exile That Stayed and its words."
+}

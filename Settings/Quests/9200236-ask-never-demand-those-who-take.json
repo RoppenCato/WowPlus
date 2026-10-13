@@ -1,0 +1,55 @@
+{
+  "id": 9200236,
+  "title": "Ask, Never Demand: Those Who Take",
+  "level": 30,
+  "min_level": 30,
+  "max_level": 0,
+  "side": "horde",
+  "class": "shaman",
+  "zone": 400,
+  "type": "kill",
+  "after": 9200234,
+  "giver": 3344,
+  "turn_in": 3344,
+  "objectives": [
+    {
+      "creature": 10760,
+      "count": 6
+    },
+    {
+      "talk": 9210089,
+      "text": "Hear the Held Stone",
+      "says": [
+        "Lighter. It is lighter. Some of the hands are gone from me.",
+        "They are of the people who first learned to speak to us. That is why it is bitter. They know every courtesy. They have chosen to leave them out.",
+        "They say the land is angry and must be purged. I am the land. I was not angry until they came. Tell that to the ones who still ask."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "This one is close to home, and you will not enjoy it. Go south to the Thousand Needles.\n\nThe tauren taught half the Horde what it knows of the elements. But one tribe of them, the Grimtotem, have turned from the old courtesy. Their geomancers do not ask the earth. They take from it, and call themselves earthbinders, and are proud of the name. Their matriarch sits in Thunder Bluff and smiles at the Warchief.\n\nThey hold a spire of rock there, Darkcloud Pinnacle. A spirit of stone lies under it, and they draw on it as one draws on a well.\n\nGo up and loosen their hold, $N. Then go down to the foot, and hear what they were holding.",
+    "objectives": "Kill 6 Grimtotem Geomancers on Darkcloud Pinnacle in Thousand Needles and hear the Held Stone at the foot of the pinnacle. Return to Kardris Dreamseeker in the Valley of Wisdom in Orgrimmar.",
+    "progress": "The geomancers are on the heights. What they hold is at the bottom.",
+    "completion": "It said that? That it was not angry until they came?\n\nI believe it. The Grimtotem say the spirits are angry and the land must be purged. A shaman who tells you what the spirits want, and it is always what she wanted already, has stopped listening.\n\nThey did not begin as monsters, $N. They began as shaman in a hurry. Taking is quicker than asking. It was quicker for us, too, once. Take one of these.\n\nForty seasons."
+  },
+  "reward": {
+    "money": 3000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 4256,
+        "count": 1
+      },
+      {
+        "item": 4066,
+        "count": 1
+      },
+      {
+        "item": 5256,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "Ask, Never Demand, level 30: the Grimtotem. From the wiki: the Grimtotem reject the peaceful teachings of tauren shamans and take from the land instead of respecting it; 'Earthbinder' is one of their titles; Darkcloud Pinnacle is their settlement in Thousand Needles. Invented: the Held Stone, and that the geomancers keep it bound."
+}
