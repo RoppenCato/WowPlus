@@ -192,7 +192,8 @@ window.CHANGELOG = {
       summary: "Not slow alone, and new places pay better than grinding.",
       items: [
         { title: "Faster experience", kind: "tweak", status: "built", date: "2026-10-11",
-          text: "Kills and quests give one and a half times the experience, discovering an area three times." },
+          text: "Kills and quests give one and a half times the experience, discovering an area three times.",
+          details: ["For now, while new quests are being tried out: four times that (six times the original game). Bots level at their usual pace."] },
         { title: "Bots do not eat your experience", kind: "tweak", status: "built", date: "2026-10-11",
           text: "In a party of bots you keep 45 to 75 percent of a kill, where the game would leave you 28 to 50." },
         { title: "First-kill bonuses", kind: "feature", status: "built", date: "2026-10-11",
