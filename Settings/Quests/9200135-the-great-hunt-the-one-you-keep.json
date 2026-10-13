@@ -1,0 +1,56 @@
+{
+  "id": 9200135,
+  "title": "The Great Hunt: The One You Keep",
+  "level": 60,
+  "min_level": 60,
+  "max_level": 0,
+  "side": "horde",
+  "class": "hunter",
+  "zone": 618,
+  "type": "visit",
+  "after": 9200133,
+  "giver": 10303,
+  "turn_in": 10303,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": 7700.0,
+        "y": -4200.0,
+        "radius": 70
+      },
+      "text": "Find Winter's Daughter's range"
+    },
+    {
+      "place": {
+        "map": 1,
+        "x": 7386.0,
+        "y": -4549.6,
+        "radius": 70
+      },
+      "text": "Find Deepsnow's range"
+    },
+    {
+      "place": {
+        "map": 1,
+        "x": 5640.0,
+        "y": -4950.0,
+        "radius": 70
+      },
+      "text": "Find the range of Silence"
+    }
+  ],
+  "texts": {
+    "details": "Torwa's hunter. So you have come to the end of it.\n\nFive beasts you have killed, and learned from each. The sixth you will not kill. The last of the Great Hunt is the one you walk away with.\n\nThree great ones live in this valley. On the slopes below Frostsaber Rock walks a white cat the elves call Winter's Daughter. Her kind are a savage breed and hard to win. Long ago their queen, Shy-Rotam, was saved from the ice giants by a priestess of the elves, and they have been bound to that people since. In the hills south of the Rock is Deepsnow, an old bear no blizzard has ever driven to shelter. And far to the south, in the thicket of the owls, there is one called Silence. You will understand the name.\n\nFind all three, $N. Look at each. Then come back to me.",
+    "objectives": "Find the ranges of Winter's Daughter below Frostsaber Rock, of Deepsnow in the hills south of it, and of Silence in the Owl Wing Thicket. Return to Storm Shadowhoof in Everlook.",
+    "progress": "Do not raise your weapon at any of them. That is not what you came for.",
+    "completion": "You have seen all three, and you have not killed one. Then the Great Hunt is finished, and you have understood it.\n\nIt was never about the kills. A boar taught you respect. A cat taught you patience. A raptor taught you to see who leads, an ape that prey can think, and the great lizard that nothing is to be wasted. Every one of those is a thing you must know before a beast like these will walk beside you.\n\nGo back out, $N. Choose one, and win it, if it will have you. Or choose none; that is also an answer. I will not tell you which. No one may. That is the whole of the sixth lesson."
+  },
+  "reward": {
+    "money": 15000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Great Hunt, level 60: three great beasts in Winterspring, each tameable, of which the hunter may win one. From the wiki: frostsabers are a savage breed, hard to tame; Tyrande rescued their queen Shy-Rotam from ice giants, binding them to the night elves. Invented: Winter's Daughter, Deepsnow and Silence."
+}

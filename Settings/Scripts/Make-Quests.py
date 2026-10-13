@@ -29,6 +29,12 @@ MYSQL = os.path.join(ROOT, "Tools", "mysql", "bin", "mysql.exe")
 QUESTS_DIR = os.path.join(ROOT, "Settings", "Quests")
 FIRST_ID, LAST_ID = 9200000, 9299999
 RACES = {"horde": 690, "alliance": 1101, "both": 0}
+CLASSES = {"warrior": 1, "paladin": 2, "hunter": 4, "rogue": 8, "priest": 16, "death knight": 32, "shaman": 64, "mage": 128, "warlock": 256, "druid": 1024}
+PERKS = {
+    "pet_fed": "A hunter's pet loses happiness half as fast.",
+    "stable_slot": "One stable slot, free, when the quest is handed in.",
+    "skinning": "Skinning a beast sometimes gives one more of what it gave.",
+}
 TYPES = {
     "visit": "Go to a place, or hear someone out (may be mixed with the other tasks).",
     "kill": "Kill a number of one or more kinds of enemy.",
@@ -147,6 +153,8 @@ def validate(quest, creatures, items, ids_seen=None):
         need(isinstance(quest.get("min_level"), int) and 1 <= quest["min_level"] <= level, "min_level: from 1 up to the quest's level")
         need(quest.get("max_level", 0) == 0 or (isinstance(quest.get("max_level"), int) and quest["max_level"] >= level), "max_level: 0 for none, or at least the quest's level")
     need(quest.get("side") in RACES, "side: horde, alliance or both")
+    need(quest.get("class") is None or quest.get("class") in CLASSES, "class: leave out for everyone, or one of " + ", ".join(CLASSES))
+    need(quest.get("perk") is None or quest.get("perk") in PERKS, "perk: leave out, or one of " + ", ".join(PERKS))
     need(quest.get("type") in TYPES, "type: " + ", ".join(TYPES))
     need(isinstance(quest.get("zone"), int) and quest["zone"] > 0, "zone: the number of the zone it belongs to")
     for who in ("giver", "turn_in"):
@@ -423,7 +431,10 @@ def build_sql(quests, creatures, items):
     for table, column in (("creature_template", "entry"), ("creature_template_model", "CreatureID"), ("creature_equip_template", "CreatureID"),
                           ("creature_template_addon", "entry")):
         out.append(f"DELETE FROM {table} WHERE {column} BETWEEN {FIRST_CREATURE} AND {LAST_CREDIT};")
-    out += ["DROP TABLE IF EXISTS wowplus_quest_goals;",
+    out += ["DROP TABLE IF EXISTS wowplus_quest_perks;",
+            "CREATE TABLE wowplus_quest_perks (quest INT UNSIGNED NOT NULL PRIMARY KEY, perk VARCHAR(32) NOT NULL) "
+            "COMMENT='WowPlus: lasting perks our quests give when handed in. Made by Settings/Scripts/Make-Quests.py';",
+            "DROP TABLE IF EXISTS wowplus_quest_goals;",
             "CREATE TABLE wowplus_quest_goals (quest INT UNSIGNED NOT NULL, credit INT UNSIGNED NOT NULL, kind TINYINT UNSIGNED NOT NULL, map INT UNSIGNED NOT NULL, "
             "x FLOAT NOT NULL, y FLOAT NOT NULL, radius FLOAT NOT NULL, creature INT UNSIGNED NOT NULL, says TEXT, PRIMARY KEY (quest, credit)) "
             "COMMENT='WowPlus: places to reach and people to hear for our quests. Made by Settings/Scripts/Make-Quests.py';"]
@@ -437,11 +448,12 @@ def build_sql(quests, creatures, items):
                     f"CREATE TEMPORARY TABLE wp_new AS SELECT * FROM creature_template WHERE entry = {like};",
                     f"UPDATE wp_new SET entry = {number}, name = {text(new['name'])}, subname = {text(new.get('title', ''))}, AIName = '', ScriptName = '', "
                     f"gossip_menu_id = 0, KillCredit1 = 0, KillCredit2 = 0, npcflag = {3 if person else 0}, "
-                    f"`rank` = {int(new.get('rank', 0)) if not person else '`rank`'}, HealthModifier = HealthModifier * {float(new.get('health', 1))}"
+                    f"`rank` = {int(new.get('rank', 0)) if not person else '`rank`'}, HealthModifier = HealthModifier * {float(new.get('health', 1))}, DamageModifier = DamageModifier * {float(new.get('damage', 1))}"
                     + (f", minlevel = {int(new['level'])}, maxlevel = {int(new['level'])}" if isinstance(new.get("level"), int) else "") + ";",
                     "INSERT INTO creature_template SELECT * FROM wp_new;", "DROP TEMPORARY TABLE wp_new;",
                     f"INSERT INTO creature_template_model (CreatureID, Idx, CreatureDisplayID, DisplayScale, Probability, VerifiedBuild) "
-                    f"SELECT {number}, Idx, CreatureDisplayID, DisplayScale * {float(new.get('size', 1))}, Probability, VerifiedBuild FROM creature_template_model WHERE CreatureID = {like};",
+                    f"SELECT {number}, Idx, CreatureDisplayID, DisplayScale * {float(new.get('size', 1))}, Probability, VerifiedBuild FROM creature_template_model "
+                    f"WHERE CreatureID = {int(new.get('looks_like', like))};",
                     f"INSERT INTO creature_equip_template (CreatureID, ID, ItemID1, ItemID2, ItemID3, VerifiedBuild) "
                     f"SELECT {number}, ID, ItemID1, ItemID2, ItemID3, VerifiedBuild FROM creature_equip_template WHERE CreatureID = {like};"]
             spawn_number += 1
@@ -494,7 +506,10 @@ def build_sql(quests, creatures, items):
             if talk:
                 listeners.add(objective["talk"])
         out.append(f"INSERT INTO quest_template ({', '.join(columns)}) VALUES ({', '.join(str(v) for v in values)});")
-        out.append(f"INSERT INTO quest_template_addon (ID, MaxLevel, PrevQuestID) VALUES ({number}, {quest.get('max_level', 0)}, {quest.get('after', 0)});")
+        out.append(f"INSERT INTO quest_template_addon (ID, MaxLevel, AllowableClasses, PrevQuestID) "
+                   f"VALUES ({number}, {quest.get('max_level', 0)}, {CLASSES.get(quest.get('class'), 0)}, {quest.get('after', 0)});")
+        if quest.get("perk"):
+            out.append(f"INSERT INTO wowplus_quest_perks (quest, perk) VALUES ({number}, '{quest['perk']}');")
         out.append(f"INSERT INTO quest_offer_reward (ID, RewardText, VerifiedBuild) VALUES ({number}, {text(texts['completion'])}, 0);")
         if texts.get("progress"):
             out.append(f"INSERT INTO quest_request_items (ID, EmoteOnComplete, EmoteOnIncomplete, CompletionText, VerifiedBuild) VALUES ({number}, 0, 0, {text(texts['progress'])}, 0);")

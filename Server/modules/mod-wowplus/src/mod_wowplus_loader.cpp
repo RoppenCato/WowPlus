@@ -22,6 +22,7 @@ void AddSC_WowPlusCoach();
 void AddSC_WowPlusBoard();
 void AddSC_WowPlusGroupCare();
 void AddSC_WowPlusQuests();
+void AddSC_WowPlusPerks();
 
 void Addmod_wowplusScripts()
 {
@@ -45,4 +46,5 @@ void Addmod_wowplusScripts()
     AddSC_WowPlusBoard();
     AddSC_WowPlusGroupCare();
     AddSC_WowPlusQuests();
+    AddSC_WowPlusPerks();
 }

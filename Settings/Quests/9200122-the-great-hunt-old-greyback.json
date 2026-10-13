@@ -1,0 +1,67 @@
+{
+  "id": 9200122,
+  "title": "The Great Hunt: Old Greyback",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "hunter",
+  "zone": 1,
+  "type": "kill",
+  "giver": 1231,
+  "turn_in": 1231,
+  "creatures": [
+    {
+      "id": 9210006,
+      "kind": "enemy",
+      "like": 1127,
+      "name": "Old Greyback",
+      "title": "The Great Hunt",
+      "level": 10,
+      "map": 0,
+      "x": -5401.0,
+      "y": -707.5,
+      "z": 397.2,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.6,
+      "size": 1.35
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 1127,
+      "count": 6
+    },
+    {
+      "creature": 9210006,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Ye've a beast at your heel an' a bow that's seen use. Good. That makes ye someone who can shoot. It doesn't make ye a hunter.\n\nA hunter knows one animal the way a smith knows iron. So we'll begin wi' one. The crag boar. Go an' take six o' the elders in the hills here. Watch how they turn to face ye. Watch what they do when they're hurt.\n\nWhen ye know them, there's an old one out there the whole village has a name for. Greyback. He's put two o' my students on their backs. Bring him down, $N, an' ye've begun the Great Hunt.",
+    "objectives": "Kill 6 Elder Crag Boars and then Old Greyback, in the snows around Kharanos. Return to your trainer when it is done.",
+    "progress": "A boar charges straight. That's all the warnin' ye get, an' all ye need.",
+    "completion": "Greyback. Well, well. I'll miss the old devil, an' I'll no' pretend otherwise.\n\nThat's the first lesson, an' ye'll no' find it in any book: ye can't hunt a thing well without comin' to respect it. The ones who only want the kill never get good.\n\nThere's a Great Hunt, $N. It's as old as the craft. Six beasts, each harder an' further off than the last. This was the first. Take your pick o' these, an' come back to the trade when ye've twenty seasons' worth o' sense. Others will take ye on from there."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 3036,
+        "count": 1
+      },
+      {
+        "item": 2904,
+        "count": 1
+      },
+      {
+        "item": 27402,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Great Hunt, level 10 (Alliance): the hunter's first true hunt, of one old beast the trainer names. Invented: Old Greyback."
+}

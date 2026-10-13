@@ -31,6 +31,8 @@
 
 using namespace Acore::ChatCommands;
 
+void WowPlusPerksReload();                              // WowPlusPerks.cpp
+
 namespace
 {
     constexpr uint32 TICK = 2000;                           // ms between looks at where the players are
@@ -196,6 +198,7 @@ public:
     static bool HandleReload(ChatHandler* handler)
     {
         handler->PSendSysMessage("WowPlus quests: {} places to reach and people to hear.", LoadGoals());
+        WowPlusPerksReload();
         return true;
     }
 };

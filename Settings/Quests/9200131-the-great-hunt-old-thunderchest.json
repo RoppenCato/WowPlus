@@ -1,0 +1,46 @@
+{
+  "id": 9200131,
+  "title": "The Great Hunt: Old Thunderchest",
+  "level": 40,
+  "min_level": 40,
+  "max_level": 0,
+  "side": "horde",
+  "class": "hunter",
+  "zone": 33,
+  "type": "kill",
+  "after": 9200129,
+  "giver": 716,
+  "turn_in": 716,
+  "objectives": [
+    {
+      "creature": 1557,
+      "count": 8
+    },
+    {
+      "creature": 9210013,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "So you're on the Great Hunt, are ye? Ha! Old Hemet would've liked you. He's off in Nagrand now, past the Portal, after what he calls more dangerous game. His lad runs the camp. I write the book.\n\nI'll tell ye what the book says about the fourth beast, because nobody believes it till it's happened to them. The ape hunts you back. I have seen the young ones hang from a branch by their feet so as to have both hands free to throw things at me. There's one out on Jaguero Isle, Mukla, that keeps a tauren princess captive. Keeps her. Think about what that takes.\n\nGo south, nearly to Booty Bay, to the Mistvale. Take eight of the elders. Then find the big silverback: Old Thunderchest. He'll find you, more likely.",
+    "objectives": "Kill 8 Elder Mistvale Gorillas in the Mistvale Valley of Stranglethorn and then Old Thunderchest. Return to Barnil Stonepot at Nesingwary's Expedition.",
+    "progress": "If something hits ye in the back o' the head, that was him, an' he's laughing.",
+    "completion": "Old Thunderchest! I'll put it in the book. Chapter and verse.\n\nThat's the fourth lesson, $N, and it's the one that makes the difference between a hunter and a dead hunter: sooner or later the thing you're after is as clever as you are. Then it stops being a hunt and becomes a contest, and you'd best have the better tools.\n\nWhich brings me to these. Master Hunter's make. Hemet had them done for those who'd earned them. Choose.\n\nThe fifth beast is across the sea, in a crater in the south of Kalimdor that's had no business surviving this long. Un'Goro. A tauren named Torwa Pathfinder watches the way in. Fifty seasons, mind, or it'll eat you."
+  },
+  "reward": {
+    "money": 6000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 4110,
+        "count": 1
+      },
+      {
+        "item": 4111,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Great Hunt, level 40: the gorilla, clever prey. From the wiki: Hemet Nesingwary went to Nagrand 'to pursue more dangerous game' and his son runs the camp; Barnil Stonepot gives The Green Hills of Stranglethorn; young apes hang by their feet to fling objects; King Mukla on Jaguero Isle holds the tauren Princess Poobah. Invented: Old Thunderchest, and that the Master Hunter's arms were Hemet's gift."
+}

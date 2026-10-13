@@ -66,7 +66,7 @@ A fair aim is **three quests per side for every dungeon**, at least one of them 
 
 <!-- Made by the script from here on -->
 
-Made by `Settings/Scripts/Make-Zone-Audit.py` on 2026-10-12. Run it again after adding quests.
+Made by `Settings/Scripts/Make-Zone-Audit.py` on 2026-10-13. Run it again after adding quests.
 
 ## How to read it
 
@@ -81,19 +81,19 @@ Made by `Settings/Scripts/Make-Zone-Audit.py` on 2026-10-12. Run it again after 
 |---|---|---|---|---|---|---|---|
 | 5-9 | Eversong Woods | Eastern Kingdoms | 73 (215%) | – |  | 10 | enough |
 | 5-10 | Azuremyst Isle | Kalimdor | – | 65 (132%) |  | 17 | enough |
-| 5-10 | Dun Morogh | Eastern Kingdoms | 15 (2%) passing through | 66 (160%) | 3 | 13 | enough |
+| 5-10 | Dun Morogh | Eastern Kingdoms | 15 (2%) passing through | 67 (165%) | 4 | 13 | enough |
 | 5-10 | Elwynn Forest | Eastern Kingdoms | – | 53 (113%) | 5 | 8 | enough |
-| 5-10 | Mulgore | Kalimdor | 46 (130%) | 3 (8%) passing through | 6 | 9 | enough |
-| 5-10 | Teldrassil | Kalimdor | 3 (14%) passing through | 56 (243%) | 3 | 13 | enough |
+| 5-10 | Mulgore | Kalimdor | 47 (135%) | 3 (8%) passing through | 7 | 9 | enough |
+| 5-10 | Teldrassil | Kalimdor | 3 (14%) passing through | 57 (248%) | 4 | 13 | enough |
 | 5-10 | Tirisfal Glades | Eastern Kingdoms | 51 (146%) | – | 4 | 7 | enough |
-| 5-11 | Durotar | Kalimdor | 47 (103%) | 3 (7%) passing through | 4 | 14 | enough |
+| 5-11 | Durotar | Kalimdor | 48 (107%) | 3 (7%) passing through | 5 | 13 | enough |
 | 12-17 | Silverpine Forest | Eastern Kingdoms | 47 (78%) | 4 (7%) passing through | 3 | 10 | enough |
 | 12-18 | Ghostlands | Eastern Kingdoms | 63 (118%) | – |  | 10 | enough |
 | 12-18 | Westfall | Eastern Kingdoms | 7 (11%) passing through | 40 (100%) | 4 | 7 | enough |
 | 14-18 | Bloodmyst Isle | Kalimdor | – | 74 (130%) |  | 7 | enough |
 | 14-18 | Loch Modan | Eastern Kingdoms | – | 44 (102%) | 3 | 4 | enough |
-| 14-20 | Darkshore | Kalimdor | 11 (18%) passing through | 76 (107%) | 3 | 16 | enough |
-| 14-21 | The Barrens | Kalimdor | 99 (126%) | 22 (22%) passing through | 5 | 21 | enough |
+| 14-20 | Darkshore | Kalimdor | 11 (18%) passing through | 77 (110%) | 4 | 16 | enough |
+| 14-21 | The Barrens | Kalimdor | 100 (128%) | 22 (22%) passing through | 6 | 21 | enough |
 | 14-55 | Darnassus | Kalimdor | – | 21 |  | 0 | city |
 | 16-23 | Redridge Mountains | Eastern Kingdoms | – | 40 (45%) | 3 | 3 | A +19 |
 | 21-26 | Stonetalon Mountains | Kalimdor | 35 (52%) | 27 (43%) | 4 | 14 | H +11, A +16 |
@@ -107,10 +107,10 @@ Made by `Settings/Scripts/Make-Zone-Audit.py` on 2026-10-12. Run it again after 
 | 33-38 | Desolace | Kalimdor | 39 (52%) | 42 (59%) | 2 | 24 | H +13, A +8 |
 | 33-60 | Orgrimmar | Kalimdor | 85 | 4 |  | 0 | city |
 | 34-40 | Alterac Mountains | Eastern Kingdoms | 3 (9%) passing through | 16 (22%) | 1 | 5 | A +38 |
+| 35-40 | Arathi Highlands | Eastern Kingdoms | 39 (49%) | 28 (39%) | 2 | 13 | H +15, A +22 |
 | 36-39 | Dustwallow Marsh | Kalimdor | 68 (113%) | 76 (116%) | 1 | 16 | enough |
 | 36-56 | Undercity | Eastern Kingdoms | 28 | – |  | 0 | city |
-| 37-40 | Arathi Highlands | Eastern Kingdoms | 38 (68%) | 27 (54%) | 1 | 13 | H +1, A +8 |
-| 37-43 | Stranglethorn Vale | Eastern Kingdoms | 110 (79%) | 114 (76%) | 1 | 12 | enough |
+| 37-43 | Stranglethorn Vale | Eastern Kingdoms | 111 (80%) | 115 (77%) | 2 | 12 | enough |
 | 37-44 | Swamp of Sorrows | Eastern Kingdoms | 22 (23%) | 15 (13%) | 2 | 16 | H +45, A +54 |
 | 39-43 | Badlands | Eastern Kingdoms | 38 (45%) | 52 (54%) | 1 | 5 | H +15, A +9 |
 | 43-60 | Ironforge | Eastern Kingdoms | – | 77 |  | 0 | city |
@@ -121,11 +121,11 @@ Made by `Settings/Scripts/Make-Zone-Audit.py` on 2026-10-12. Run it again after 
 | 50-57 | Blasted Lands | Eastern Kingdoms | 20 (16%) | 21 (19%) | 1 | 4 | H +53, A +50 |
 | 50-60 | The Exodar | Kalimdor | – | 6 |  | 0 | city |
 | 52-54 | Burning Steppes | Eastern Kingdoms | 10 (25%) | 12 (29%) | 1 | 23 | H +17, A +15 |
-| 52-54 | Un'Goro Crater | Kalimdor | 47 (115%) | 45 (109%) | 1 | 1 | enough |
+| 52-54 | Un'Goro Crater | Kalimdor | 48 (118%) | 46 (112%) | 2 | 1 | enough |
 | 52-58 | Azshara | Kalimdor | 31 (26%) | 23 (21%) | 1 | 51 | H +38, A +42 |
 | 54-55 | Felwood | Kalimdor | 33 (128%) | 34 (116%) | 1 | 0 | enough |
 | 54-57 | Western Plaguelands | Eastern Kingdoms | 58 (75%) | 56 (75%) | 1 | 27 | enough |
-| 56-59 | Winterspring | Kalimdor | 39 (49%) | 46 (59%) | 1 | 19 | H +11, A +6 |
+| 56-59 | Winterspring | Kalimdor | 40 (51%) | 47 (62%) | 2 | 19 | H +10, A +5 |
 | 56-60 | Eastern Plaguelands | Eastern Kingdoms | 63 (61%) | 56 (57%) | 2 | 48 | H +7, A +10 |
 | 57-60 | Moonglade | Kalimdor | 8 | 8 |  | 1 | druid sanctuary |
 | 59-60 | Silithus | Kalimdor | 67 (119%) | 67 (119%) | 2 | 4 | enough |
@@ -162,8 +162,8 @@ For every five levels: the zones a side can level in (at least 3 quests there), 
 | 16-20 | 3: Silverpine Forest, Ghostlands, The Barrens | 3 | 5: Westfall, Bloodmyst Isle, Loch Modan, Darkshore, Redridge Mountains | 4 |
 | 21-25 | 3: The Barrens, Stonetalon Mountains, Ashenvale | 1 | 5: Redridge Mountains, Stonetalon Mountains, Ashenvale, Wetlands, Duskwood | 1 |
 | 26-30 | 4: Stonetalon Mountains, Ashenvale, Hillsbrad Foothills, Thousand Needles | 0 | 6: Stonetalon Mountains, Ashenvale, Wetlands, Duskwood, Hillsbrad Foothills, Thousand Needles | 1 |
-| 31-35 | 3: Hillsbrad Foothills, Thousand Needles, Desolace | 0 | 4: Hillsbrad Foothills, Thousand Needles, Desolace, Alterac Mountains | 0 |
-| 36-40 | 7: Thousand Needles, Desolace, Dustwallow Marsh, Arathi Highlands, Stranglethorn Vale, Swamp of Sorrows, Badlands | 2 | 8: Thousand Needles, Desolace, Alterac Mountains, Dustwallow Marsh, Arathi Highlands, Stranglethorn Vale, Swamp of Sorrows, Badlands | 2 |
+| 31-35 | 4: Hillsbrad Foothills, Thousand Needles, Desolace, Arathi Highlands | 0 | 5: Hillsbrad Foothills, Thousand Needles, Desolace, Alterac Mountains, Arathi Highlands | 0 |
+| 36-40 | 7: Thousand Needles, Desolace, Arathi Highlands, Dustwallow Marsh, Stranglethorn Vale, Swamp of Sorrows, Badlands | 2 | 8: Thousand Needles, Desolace, Alterac Mountains, Arathi Highlands, Dustwallow Marsh, Stranglethorn Vale, Swamp of Sorrows, Badlands | 2 |
 | 41-45 | 5: Stranglethorn Vale, Swamp of Sorrows, Badlands, Feralas, The Hinterlands | 1 | 5: Stranglethorn Vale, Swamp of Sorrows, Badlands, Feralas, The Hinterlands | 1 |
 | 46-50 | 5: Feralas, The Hinterlands, Searing Gorge, Tanaris, Blasted Lands | 0 | 5: Feralas, The Hinterlands, Searing Gorge, Tanaris, Blasted Lands | 0 |
 | 51-55 | 7: Tanaris, Blasted Lands, Burning Steppes, Un'Goro Crater, Azshara, Felwood, Western Plaguelands | 3 | 7: Tanaris, Blasted Lands, Burning Steppes, Un'Goro Crater, Azshara, Felwood, Western Plaguelands | 3 |
@@ -464,7 +464,7 @@ Going from level 5 to 11 costs 30,400 experience.
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
 | Horde | 15 | 12 | 464 | 2% | 6 | 1:1 20:2 30:7 34:2 35:3 | only passing through |
-| Alliance | 66 | 20 | 48,558 | 160% | 26 | 1:3 2:1 3:3 4:2 5:7 6:3 7:4 8:2 9:4 10:7 11:3 12:2 20:2 22:1 23:1 26:2 27:2 28:1 30:12 34:2 35:1 75:1 | nothing; it carries itself |
+| Alliance | 67 | 20 | 50,133 | 165% | 27 | 1:3 2:1 3:3 4:2 5:7 6:3 7:4 8:2 9:4 10:8 11:3 12:2 20:2 22:1 23:1 26:2 27:2 28:1 30:12 34:2 35:1 75:1 | nothing; it carries itself |
 
 **Enemies no quest uses:** Winter Wolf (7-8, 23 of them), Rockjaw Ambusher (9-10, 18 of them), Juvenile Snow Leopard (5-6, 15 of them), Snow Tracker Wolf (6-7, 12 of them), Dark Iron Spy (9-10, 12 of them), Frostmane Hideskinner (9-10, 11 of them), Rockjaw Raider (3-4, 10 of them), Frostmane Shadowcaster (9-10, 8 of them), Frostmane Novice (3-4, 8 of them), Frostmane Troll (7-8, 7 of them), and 3 more.
 
@@ -484,7 +484,7 @@ Going from level 5 to 11 costs 30,400 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 46 | 0 | 39,558 | 130% | 21 | 1:1 2:2 3:3 4:3 5:4 6:4 7:5 8:8 9:2 10:8 11:1 12:3 14:1 20:1 | nothing; it carries itself |
+| Horde | 47 | 0 | 41,133 | 135% | 22 | 1:1 2:2 3:3 4:3 5:4 6:4 7:5 8:8 9:2 10:9 11:1 12:3 14:1 20:1 | nothing; it carries itself |
 | Alliance | 3 | 0 | 2,392 | 8% | 1 | 8:1 12:1 20:1 | only passing through |
 
 **Enemies no quest uses:** Windfury Sorceress (9-10, 47 of them), Windfury Matriarch (10-11, 46 of them), Venture Co. Laborer (6-7, 14 of them), Venture Co. Hireling (5-6, 11 of them), Kodo Calf (7-8, 8 of them), Venture Co. Taskmaster (7-8, 7 of them), Redrock Earth Spirit (1, 5 of them), Kodo Matriarch (11-12, 4 of them), "Squealer" Thornmantle (5, 4 of them).
@@ -496,11 +496,9 @@ Going from level 5 to 11 costs 30,400 experience.
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
 | Horde | 3 | 0 | 4,379 | 14% | 1 | 10:1 12:1 60:1 | only passing through |
-| Alliance | 56 | 0 | 73,777 | 243% | 23 | 1:2 2:1 3:2 4:5 5:8 6:4 7:5 8:4 9:5 10:7 11:4 12:4 47:1 55:1 56:1 57:1 60:1 | nothing; it carries itself |
+| Alliance | 57 | 0 | 75,352 | 248% | 24 | 1:2 2:1 3:2 4:5 5:8 6:4 7:5 8:4 9:5 10:8 11:4 12:4 47:1 55:1 56:1 57:1 60:1 | nothing; it carries itself |
 
 **Enemies no quest uses:** Gnarlpine Defender (7-8, 51 of them), Gnarlpine Warrior (6-7, 34 of them), Gnarlpine Augur (8-9, 25 of them), Gnarlpine Pathfinder (9-10, 14 of them), Gnarlpine Gardener (5-6, 13 of them), Vicious Grell (7, 11 of them), Gnarlpine Avenger (9-10, 11 of them), Shadow Sprite (5-6, 10 of them), Gnarlpine Ursa (5-6, 10 of them), Rascal Sprite (5-6, 8 of them), and 3 more.
-
-**Places nothing is asked of you:** Starbreeze Village (25 enemies).
 
 ### Tirisfal Glades (5-10, Eastern Kingdoms)
 
@@ -520,10 +518,10 @@ Going from level 5 to 12 costs 39,100 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 47 | 0 | 40,195 | 103% | 23 | 1:3 2:1 3:2 4:3 5:5 7:7 8:5 9:6 10:2 11:3 12:7 13:1 14:1 20:1 | nothing; it carries itself |
+| Horde | 48 | 0 | 41,770 | 107% | 24 | 1:3 2:1 3:2 4:3 5:5 7:7 8:5 9:6 10:3 11:3 12:7 13:1 14:1 20:1 | nothing; it carries itself |
 | Alliance | 3 | 0 | 2,722 | 7% | 1 | 9:1 11:1 20:1 | only passing through |
 
-**Enemies no quest uses:** Elder Mottled Boar (8-9, 120 of them), Dire Mottled Boar (6-7, 114 of them), Clattering Scorpid (5-6, 71 of them), Armored Scorpid (7-8, 62 of them), Bloodtalon Taillasher (6-8, 58 of them), Venomtail Scorpid (9-10, 42 of them), Bloodtalon Scythemaw (8-10, 36 of them), Felstalker (3-4, 16 of them), Dustwind Harpy (7-8, 16 of them), Dustwind Pillager (7-8, 12 of them), and 4 more.
+**Enemies no quest uses:** Dire Mottled Boar (6-7, 114 of them), Clattering Scorpid (5-6, 71 of them), Armored Scorpid (7-8, 62 of them), Bloodtalon Taillasher (6-8, 58 of them), Venomtail Scorpid (9-10, 42 of them), Bloodtalon Scythemaw (8-10, 36 of them), Felstalker (3-4, 16 of them), Dustwind Harpy (7-8, 16 of them), Dustwind Pillager (7-8, 12 of them), Thunder Lizard (9-10, 11 of them), and 3 more.
 
 **Places nothing is asked of you:** Razorwind Canyon (23 enemies).
 
@@ -592,7 +590,7 @@ Going from level 14 to 21 costs 115,200 experience.
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
 | Horde | 11 | 0 | 20,535 | 18% | 5 | 12:1 14:2 15:1 16:1 17:2 18:1 20:2 22:1 | only passing through |
-| Alliance | 76 | 1 | 123,351 | 107% | 24 | 1:1 10:4 12:5 13:5 14:10 15:5 16:5 17:7 18:8 19:3 20:14 21:1 22:2 24:2 28:2 31:2 | nothing; it carries itself |
+| Alliance | 77 | 1 | 126,276 | 110% | 24 | 1:1 10:4 12:5 13:5 14:10 15:5 16:5 17:7 18:8 19:3 20:15 21:1 22:2 24:2 28:2 31:2 | nothing; it carries itself |
 
 **Enemies no quest uses:** Foreststrider Fledgling (11-13, 98 of them), Thistle Bear (11-12, 81 of them), Foreststrider (14-16, 48 of them), Coastal Frenzy (14-16, 46 of them), Blackwood Warrior (16-17, 27 of them), Moonkin (12-13, 26 of them), Raging Moonkin (12-14, 22 of them), Stormscale Warrior (20-21, 19 of them), Stormscale Siren (16-17, 19 of them), Stormscale Wave Rider (15-16, 17 of them), and 6 more.
 
@@ -602,7 +600,7 @@ Going from level 14 to 22 costs 137,600 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 99 | 5 | 173,315 | 126% | 30 | 10:10 11:1 12:2 13:3 14:10 15:9 16:8 17:3 18:9 19:4 20:11 21:3 22:2 23:2 24:4 25:6 26:4 27:3 29:2 30:2 33:1 | nothing; it carries itself |
+| Horde | 100 | 5 | 176,240 | 128% | 30 | 10:10 11:1 12:2 13:3 14:10 15:9 16:8 17:3 18:9 19:4 20:12 21:3 22:2 23:2 24:4 25:6 26:4 27:3 29:2 30:2 33:1 | nothing; it carries itself |
 | Alliance | 22 | 4 | 30,712 | 22% | 10 | 14:7 16:3 18:4 20:1 21:1 24:1 25:1 26:1 27:1 30:2 | only passing through |
 
 **Enemies no quest uses:** Hecklefang Hyena (15-16, 108 of them), Barrens Giraffe (15-16, 75 of them), Venture Co. Drudger (14-15, 51 of them), Wandering Barrens Giraffe (18-19, 37 of them), Hecklefang Stalker (22-23, 37 of them), Hecklefang Snarler (18-19, 28 of them), Lost Barrens Kodo (14-15, 27 of them), Slimeshell Makrura (18-19, 26 of them), Burning Blade Bruiser (10-11, 26 of them), Dreadmaw Crocolisk (9-11, 24 of them), and 11 more.
@@ -767,6 +765,19 @@ Going from level 34 to 41 costs 438,200 experience.
 
 **Places nothing is asked of you:** Dalaran Crater (37 enemies), Growless Cave (32 enemies), Chillwind Point (24 enemies), Ravenholdt Manor (22 enemies), Lordamere Lake (17 enemies), Lordamere Internment Camp (14 enemies), Misty Shore (13 enemies), The Headland (12 enemies).
 
+### Arathi Highlands (35-40, Eastern Kingdoms)
+
+Going from level 35 to 41 costs 386,800 experience.
+
+| Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
+|---|---|---|---|---|---|---|---|
+| Horde | 39 | 1 | 191,272 | 49% | 11 | 30:1 32:1 33:1 34:4 35:3 37:5 38:2 40:15 41:1 42:4 44:1 50:1 | 15 quests, about 79,488 experience, 5 with gear |
+| Alliance | 28 | 1 | 152,205 | 39% | 10 | 30:1 31:1 35:3 36:1 37:2 38:1 39:6 40:10 42:1 44:1 50:1 | 22 quests, about 118,555 experience, 8 with gear |
+
+**Enemies no quest uses:** Plains Creeper (32-33, 113 of them), Giant Plains Creeper (35-36, 43 of them), Young Mesa Buzzard (31-32, 18 of them), Boulderfist Ogre (32-33, 17 of them), Rumbling Exile (38-39, 16 of them), Boulderfist Enforcer (33-34, 16 of them), Mesa Buzzard (34-35, 14 of them), Cresting Exile (38-39, 14 of them), Burning Exile (38-39, 14 of them), Thundering Exile (38-39, 12 of them), and 3 more.
+
+**Places nothing is asked of you:** Circle of West Binding (15 enemies), Faldir's Cove (10 enemies).
+
 ### Dustwallow Marsh (36-39, Kalimdor)
 
 Going from level 36 to 40 costs 257,500 experience.
@@ -792,27 +803,14 @@ Going from level 36 to 57 costs 2,161,500 experience.
 
 **Enemies no quest uses:** none of note.
 
-### Arathi Highlands (37-40, Eastern Kingdoms)
-
-Going from level 37 to 41 costs 273,100 experience.
-
-| Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
-|---|---|---|---|---|---|---|---|
-| Horde | 38 | 1 | 186,697 | 68% | 11 | 32:1 33:1 34:4 35:3 37:5 38:2 40:15 41:1 42:4 44:1 50:1 | 1 quests, about 4,473 experience, 1 with gear |
-| Alliance | 27 | 1 | 147,630 | 54% | 10 | 31:1 35:3 36:1 37:2 38:1 39:6 40:10 42:1 44:1 50:1 | 8 quests, about 43,540 experience, 3 with gear |
-
-**Enemies no quest uses:** Plains Creeper (32-33, 113 of them), Giant Plains Creeper (35-36, 43 of them), Young Mesa Buzzard (31-32, 18 of them), Boulderfist Ogre (32-33, 17 of them), Rumbling Exile (38-39, 16 of them), Boulderfist Enforcer (33-34, 16 of them), Mesa Buzzard (34-35, 14 of them), Cresting Exile (38-39, 14 of them), Burning Exile (38-39, 14 of them), Thundering Exile (38-39, 12 of them), and 3 more.
-
-**Places nothing is asked of you:** Circle of West Binding (15 enemies), Faldir's Cove (10 enemies).
-
 ### Stranglethorn Vale (37-43, Eastern Kingdoms)
 
 Going from level 37 to 44 costs 521,500 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 110 | 34 | 409,417 | 79% | 64 | 30:1 31:3 32:1 33:3 34:3 35:3 36:6 37:6 38:3 40:7 41:11 42:10 43:5 44:5 45:3 46:3 50:2 51:1 55:1 58:3 60:30 | nothing; it carries itself |
-| Alliance | 114 | 35 | 394,177 | 76% | 65 | 30:1 31:3 32:2 33:4 34:2 35:4 36:4 37:13 38:4 39:1 40:9 41:8 42:10 43:6 44:4 45:1 46:1 50:2 51:1 55:1 58:3 60:30 | nothing; it carries itself |
+| Horde | 111 | 34 | 417,592 | 80% | 65 | 30:1 31:3 32:1 33:3 34:3 35:3 36:6 37:6 38:3 40:8 41:11 42:10 43:5 44:5 45:3 46:3 50:2 51:1 55:1 58:3 60:30 | nothing; it carries itself |
+| Alliance | 115 | 35 | 402,352 | 77% | 66 | 30:1 31:3 32:2 33:4 34:2 35:4 36:4 37:13 38:4 39:1 40:10 41:8 42:10 43:6 44:4 45:1 46:1 50:2 51:1 55:1 58:3 60:30 | nothing; it carries itself |
 
 **Enemies no quest uses:** Jungle Thunderer (37-38, 41 of them), Southern Sand Crawler (40-41, 24 of them), Skymane Gorilla (41, 19 of them), Sharptooth Frenzy (31-32, 18 of them), Jaguero Stalker (41, 14 of them), Saltwater Crocolisk (35-36, 13 of them), Mistvale Gorilla (32-33, 11 of them), Kurmokk (42, 11 of them), Silverback Patriarch (42-43, 9 of them), Bloodscalp Tiger (34-35, 6 of them), and 2 more.
 
@@ -946,8 +944,8 @@ Going from level 52 to 55 costs 411,000 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 47 | 2 | 473,325 | 115% | 12 | 50:2 51:3 52:11 53:16 54:4 55:8 56:2 78:1 | nothing; it carries itself |
-| Alliance | 45 | 2 | 447,570 | 109% | 10 | 50:2 51:3 52:12 53:13 54:4 55:8 56:2 78:1 | nothing; it carries itself |
+| Horde | 48 | 2 | 486,075 | 118% | 12 | 50:3 51:3 52:11 53:16 54:4 55:8 56:2 78:1 | nothing; it carries itself |
+| Alliance | 46 | 2 | 460,320 | 112% | 10 | 50:3 51:3 52:12 53:13 54:4 55:8 56:2 78:1 | nothing; it carries itself |
 
 **Enemies no quest uses:** Spirit Healer (60, 4 of them).
 
@@ -996,8 +994,8 @@ Going from level 56 to 60 costs 651,700 experience.
 
 | Side | Quests | Group or dungeon | Experience from solo quests | Share | Give gear | Spread by quest level | Would be good to add |
 |---|---|---|---|---|---|---|---|
-| Horde | 39 | 5 | 317,180 | 49% | 15 | 52:2 54:3 56:11 57:2 58:4 59:5 60:12 | 11 quests, about 139,010 experience, 4 with gear |
-| Alliance | 46 | 5 | 385,490 | 59% | 16 | 52:2 54:2 56:13 57:3 58:6 59:8 60:12 | 6 quests, about 70,700 experience, 2 with gear |
+| Horde | 40 | 5 | 335,030 | 51% | 15 | 52:2 54:3 56:11 57:2 58:4 59:5 60:13 | 10 quests, about 121,160 experience, 4 with gear |
+| Alliance | 47 | 5 | 403,340 | 62% | 16 | 52:2 54:2 56:13 57:3 58:6 59:8 60:13 | 5 quests, about 52,850 experience, 2 with gear |
 
 **Enemies no quest uses:** Shardtooth Mauler (55-56, 55 of them), Elder Shardtooth (57-58, 45 of them), Winterspring Owl (54-56, 44 of them), Frostsaber Stalker (59-60, 42 of them), Winterspring Screecher (57-59, 37 of them), Shardtooth Bear (53-54, 34 of them), Ragged Owlbeast (53-55, 30 of them), Suffering Highborne (54-55, 26 of them), Frostsaber Huntress (58-59, 25 of them), Raging Owlbeast (54-56, 22 of them), and 9 more.
 
@@ -1431,3 +1429,17 @@ Going from level 80 to 81 costs 0 experience.
 | 9200119 | The Wall and the Scepter | Silithus | 58 | both | visit |
 | 9200120 | The Last Guardian's Tower | Deadwind Pass | 56 | alliance | visit |
 | 9200121 | The Riders' Master | Deadwind Pass | 56 | horde | visit |
+| 9200122 | The Great Hunt: Old Greyback | Dun Morogh | 10 | alliance | kill |
+| 9200123 | The Great Hunt: The Pale Weaver | Teldrassil | 10 | alliance | kill |
+| 9200124 | The Great Hunt: Scarhide | Durotar | 10 | horde | kill |
+| 9200125 | The Great Hunt: Lonefang | Mulgore | 10 | horde | kill |
+| 9200126 | The Great Hunt: Nightmother | Darkshore | 20 | alliance | kill |
+| 9200127 | The Great Hunt: Sunmane | The Barrens | 20 | horde | kill |
+| 9200128 | The Great Hunt: Mother Ashtalon | Arathi Highlands | 30 | alliance | kill |
+| 9200129 | The Great Hunt: Mother Ashtalon | Arathi Highlands | 30 | horde | kill |
+| 9200130 | The Great Hunt: Old Thunderchest | Stranglethorn Vale | 40 | alliance | kill |
+| 9200131 | The Great Hunt: Old Thunderchest | Stranglethorn Vale | 40 | horde | kill |
+| 9200132 | The Great Hunt: The Yearling | Un'Goro Crater | 50 | alliance | kill |
+| 9200133 | The Great Hunt: The Yearling | Un'Goro Crater | 50 | horde | kill |
+| 9200134 | The Great Hunt: The One You Keep | Winterspring | 60 | alliance | visit |
+| 9200135 | The Great Hunt: The One You Keep | Winterspring | 60 | horde | visit |

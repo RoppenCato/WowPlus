@@ -1,0 +1,38 @@
+{
+  "id": 9200129,
+  "title": "The Great Hunt: Mother Ashtalon",
+  "level": 30,
+  "min_level": 30,
+  "max_level": 0,
+  "side": "horde",
+  "class": "hunter",
+  "zone": 45,
+  "type": "kill",
+  "after": 9200127,
+  "perk": "stable_slot",
+  "giver": 2706,
+  "turn_in": 2706,
+  "objectives": [
+    {
+      "creature": 2559,
+      "count": 8
+    },
+    {
+      "creature": 9210012,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Jorn's hunter, eh? Den sit down, mon, an' keep ya voice low. Tor'gan been watchin' dese raptors a long time, an' he still not sure who be watchin' who.\n\nDey be clever. Not clever for a beast. Clever. Down in de Barrens a pack of dem stole a whole shipment of silver from de Crossroads, an' nobody yet figured what dey wanted it for. Dey wear feathers. Dey wear beads. My people say de raptor be de truest form of a hunter. We been allies since before ya orcs had a name.\n\nTake eight of de striders on de plains west of here. Watch who gives de signal. Den find de one de others watch: an old female. I call her Mother Ashtalon.",
+    "objectives": "Kill 8 Highland Striders in the Arathi Highlands and then Mother Ashtalon, among the raptors west of Refuge Pointe. Return to Tor'gan at Hammerfall.",
+    "progress": "Don't look for de biggest. Look for de one de others keep glancin' at.",
+    "completion": "So she is down. And her pack scattered the moment she fell, did you see? That is the third lesson. With cats you hunt the animal. With raptors you hunt the one that is doing the thinking.\n\nA hunter who has learned that can keep more than one companion, each for its own work, and know which to bring. The stable masters hold to an old custom: one who has taken the third beast of the Hunt is owed a stall. It is yours.\n\nThe fourth beast is far south, in Stranglethorn. At Nesingwary's camp, north of the river, ask for Barnil Stonepot. Go when you have forty seasons of sense, and not before."
+  },
+  "reward": {
+    "money": 3000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Great Hunt, level 30 (Horde): the raptor, told by a troll; raptors are longtime allies of the trolls. Gives a stable slot."
+}

@@ -1,0 +1,55 @@
+{
+  "id": 9200127,
+  "title": "The Great Hunt: Sunmane",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "horde",
+  "class": "hunter",
+  "zone": 17,
+  "type": "kill",
+  "perk": "pet_fed",
+  "giver": 3387,
+  "turn_in": 3387,
+  "creatures": [
+    {
+      "id": 9210011,
+      "kind": "enemy",
+      "like": 3241,
+      "name": "Sunmane",
+      "title": "The Great Hunt",
+      "level": 20,
+      "map": 1,
+      "x": 383.0,
+      "y": -2184.8,
+      "z": 194.0,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.8,
+      "size": 1.3
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 3425,
+      "count": 8
+    },
+    {
+      "creature": 9210011,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You have the look of one who has taken a first great beast. Good. Now the plains will teach you what the boar and the wolf could not.\n\nThe lion does not charge blind, and he does not run you down. He chooses his moment. Our people say of the white lion Echeyakee, king of the savannah cats, that he is both mercy and death. That is every lion: he kills quickly, and only when he is sure.\n\nTake eight of the prowlers on the plains. Learn to feel when you are watched. Then go north, past the Crossroads. There is a great male there the caravan guards call Sunmane. Face him, $N.",
+    "objectives": "Kill 8 Savannah Prowlers in the Barrens and then Sunmane, on the plains north of the Crossroads. Return to Jorn Skyseer at Camp Taurajo.",
+    "progress": "When the grass stops moving, he has stopped moving. Then is the time to fear.",
+    "completion": "Sunmane has fallen. He will be remembered at this fire.\n\nYou will have seen what the long stalk did to your companion. A beast that waits beside you for hours without a kill grows restless, then sullen. The second teaching of the Hunt is for them, not for you: a hunter keeps the animal content through the waiting. Feed it before it asks. Rest when it rests.\n\nYou have the way of it now. It will stay with you. When you have thirty seasons behind you, go to Hammerfall, in the Arathi Highlands. A troll there named Tor'gan knows the raptors. The third beast is his to show you."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Great Hunt, level 20 (Horde): the great cat. Echeyakee, 'Whitemist', king of the savannah cats, 'both mercy and death' (from the wiki). Gives the perk of a pet that stays content longer. Invented: Sunmane."
+}

@@ -1,0 +1,67 @@
+{
+  "id": 9200125,
+  "title": "The Great Hunt: Lonefang",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "horde",
+  "class": "hunter",
+  "zone": 215,
+  "type": "kill",
+  "giver": 3065,
+  "turn_in": 3065,
+  "creatures": [
+    {
+      "id": 9210009,
+      "kind": "enemy",
+      "like": 2960,
+      "name": "Lonefang",
+      "title": "The Great Hunt",
+      "level": 11,
+      "map": 1,
+      "x": -1494.8,
+      "y": -797.0,
+      "z": -19.5,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.6,
+      "size": 1.3
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 2960,
+      "count": 6
+    },
+    {
+      "creature": 9210009,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You walk with a companion, and your aim is true. That is a beginning. It is not yet the hunt.\n\nA hunter knows one animal as the plains know the wind. We will begin with one. The wolf. Take six of the pack leaders on the plains east of here. Do not think of it as killing. Watch how each one holds its pack together, and what the pack does when it falls.\n\nWhen you know them, there is one who has no pack. The braves call him Lonefang. He hunts alone, and that makes him wiser than the rest. Bring him down with honor, $N, and you will have begun the Great Hunt.",
+    "objectives": "Kill 6 Prairie Wolf Alphas and then Lonefang, on the plains of Mulgore. Return to your trainer when it is done.",
+    "progress": "A wolf alone has no one to warn him. He has learned to warn himself.",
+    "completion": "Lonefang. He was a worthy one. I will speak of him at the fire tonight.\n\nHere is the first teaching, and you will not hear it in the village: you cannot hunt well what you do not respect. Those who want only the kill never become hunters.\n\nThere is a Great Hunt, $N, older than the tribes. Six beasts, each harder and further than the last. This was the first. Choose one of these gifts, and take up the trail again when you have twenty seasons of sense. Others will guide you then."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 3036,
+        "count": 1
+      },
+      {
+        "item": 2904,
+        "count": 1
+      },
+      {
+        "item": 27402,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Great Hunt, level 10 (Horde): the hunter's first true hunt, of one old beast the trainer names. Invented: Lonefang."
+}

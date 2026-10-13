@@ -1,0 +1,67 @@
+{
+  "id": 9200124,
+  "title": "The Great Hunt: Scarhide",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "horde",
+  "class": "hunter",
+  "zone": 14,
+  "type": "kill",
+  "giver": 3171,
+  "turn_in": 3171,
+  "creatures": [
+    {
+      "id": 9210008,
+      "kind": "enemy",
+      "like": 3100,
+      "name": "Scarhide",
+      "title": "The Great Hunt",
+      "level": 10,
+      "map": 1,
+      "x": 870.0,
+      "y": -4380.0,
+      "z": 18.6,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.6,
+      "size": 1.35
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 3100,
+      "count": 6
+    },
+    {
+      "creature": 9210008,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You have a beast at your side and you can throw a spear straight. Good. That makes you a fighter with an animal. It does not make you a hunter.\n\nA hunter knows one prey the way a smith knows iron. So we begin with one. The boar. Take six of the old mottled ones in the hills north of here. Watch how they turn to face you. Watch what they do when they bleed.\n\nWhen you know them, there is one the grunts have a name for. Scarhide. He has opened the leg of more than one peon. Bring him down, $N, and you have begun the Great Hunt.",
+    "objectives": "Kill 6 Elder Mottled Boars and then Scarhide, in the dry hills north of Razor Hill. Return to your trainer when it is done.",
+    "progress": "A boar comes straight. That is all the warning it gives, and all you should need.",
+    "completion": "Scarhide. Hah! The peons will sleep easier. I may miss him.\n\nThat is the first lesson, and no one will carve it on a wall for you: you cannot hunt a thing well without coming to respect it. The ones who only want blood never grow good at this.\n\nThere is a Great Hunt, $N. It is as old as the craft. Six beasts, each harder and further away than the last. This was the first. Take one of these, and come back to the trail when you have twenty seasons of sense. Others will take you on from there."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 3036,
+        "count": 1
+      },
+      {
+        "item": 2904,
+        "count": 1
+      },
+      {
+        "item": 27402,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Great Hunt, level 10 (Horde): the hunter's first true hunt, of one old beast the trainer names. Invented: Scarhide."
+}
