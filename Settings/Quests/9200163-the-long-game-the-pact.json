@@ -1,0 +1,62 @@
+{
+  "id": 9200163,
+  "title": "The Long Game: The Pact",
+  "level": 50,
+  "min_level": 50,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "rogue",
+  "zone": 361,
+  "type": "collect",
+  "after": 9200161,
+  "perk": "fence",
+  "giver": 6707,
+  "turn_in": 6707,
+  "creatures": [
+    {
+      "id": 9210036,
+      "kind": "enemy",
+      "like": 7112,
+      "name": "Vess the Quiet",
+      "title": "The Long Game",
+      "level": 51,
+      "map": 1,
+      "x": 4840.0,
+      "y": -640.0,
+      "z": 310.0,
+      "o": 1.0,
+      "respawn": 180,
+      "health": 1.4
+    }
+  ],
+  "objectives": [
+    {
+      "item": 18226,
+      "count": 1,
+      "drops_from": [
+        {
+          "creature": 9210036,
+          "chance": 100,
+          "pickpocket": true
+        }
+      ]
+    },
+    {
+      "creature": 9210036,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "We know the name of the hand now. I want the arm.\n\nThe Argus Wake does not think for itself. It belongs to a larger thing, the Shadow Council: mortals who serve the Burning Legion of their own will. And the Council's seat is in Kalimdor, in the poisoned forest called Felwood, at a place named Jaedenar.\n\nWord passes between Jaedenar and the Wake by courier. One of them is called Vess. They call him the Quiet, which is a challenge, if you like. He carries a sealed pact. Take it from him, $N, unseen. Only then, when it is safe in your hand, kill him. In that order. A pact taken from a corpse is a pact they know is lost.",
+    "objectives": "Pick the pocket of Vess the Quiet at the edge of Jaedenar, in Felwood, to take A Sealed Pact, and then kill him. Return to Fahrad at Ravenholdt Manor.",
+    "progress": "The pact first. Then the man. Never the other way.",
+    "completion": "Sealed, and the seal unbroken. They will not know for days. Good.\n\nIt is all here. The bargain between the Wake and the Syndicate: Alterac restored to its lords, in return for a fortress held open. And above the Wake's mark, another, from Jaedenar. An envoy who carries the Council's will to the Wake and back.\n\nYou have looted a great many pockets and corpses by now, $N, and I think you have begun to see what is worth taking and what is dross. That eye does not leave you. You will find a little more in everything, from here on.\n\nOne job remains. At sixty seasons, come back to me."
+  },
+  "reward": {
+    "money": 9000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Long Game, level 50: from the wiki, the Argus Wake are members of the Shadow Council, based at Jaedenar, and expected the Syndicate to retake Alterac. Gives the perk of a tenth more coin from loot. Invented: Vess the Quiet and the pact."
+}

@@ -1,0 +1,69 @@
+{
+  "id": 9200156,
+  "title": "The Long Game: Light Fingers",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "horde",
+  "class": "rogue",
+  "zone": 85,
+  "type": "collect",
+  "giver": 2130,
+  "turn_in": 2130,
+  "creatures": [
+    {
+      "id": 9210034,
+      "kind": "enemy",
+      "like": 1536,
+      "name": "Brother Aldous",
+      "title": "The Long Game",
+      "level": 10,
+      "map": 0,
+      "x": 1874.0,
+      "y": 800.0,
+      "z": 33.7,
+      "o": 1.0,
+      "respawn": 180,
+      "health": 1.3
+    }
+  ],
+  "objectives": [
+    {
+      "item": 4100,
+      "count": 1,
+      "drops_from": [
+        {
+          "creature": 9210034,
+          "chance": 100,
+          "pickpocket": true
+        }
+      ]
+    }
+  ],
+  "texts": {
+    "details": "Anyone can open a throat. It takes no skill, and it leaves you a body and no answers. We have bodies enough.\n\nI will teach you the other thing. South-west of here the Scarlet Crusade sends its missionaries about. One of them, Brother Aldous, does more than preach. He carries messages for people who do not want them read. I want what is in his pocket, $N. I do not want him dead. A dead courier is replaced by morning, and the next one I will not know.\n\nCome at him from behind, unseen, and take it. If he sees you, walk away and return when he has forgotten.",
+    "objectives": "Pick the pocket of Brother Aldous, a Scarlet missionary south-west of Brill, and bring the Crumpled Note he carries to your trainer. Killing him will not give it to you.",
+    "progress": "From behind, and quietly. If he is dead you have failed, whatever you bring me.",
+    "completion": "He never felt it? Good. That is the trade, $N. All the rest is knife work.\n\nLet me see. \"Red stones, two crates. The buyers want them at the port before the moon turns.\" No names. There never are.\n\nRed stones, and a Crusader running errands for someone who is not the Crusade. I will see this reaches those who are paid to worry. You have pulled a thread, and in this work one never knows how long a thread is. Take one of these. When you have twenty seasons, cross to Kalimdor, go to the Crossroads in the Barrens and find an orc named Gazrog. Tell him Marion Call sent you about the stones."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 15396,
+        "count": 1
+      },
+      {
+        "item": 15335,
+        "count": 1
+      },
+      {
+        "item": 1394,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Long Game, level 10 (Horde): lift a note from a smuggler without killing him. The first pull on a thread that leads to the Syndicate. Invented: Brother Aldous and the note."
+}

@@ -37,6 +37,8 @@ PERKS = {
     "rage_hold": "Rage drains half as fast out of combat.",
     "second_wind": "Health comes back faster out of combat.",
     "repairs": "Repairs cost a quarter less.",
+    "pockets": "Picking a pocket brings in twice the coin.",
+    "fence": "A tenth more coin from everything looted.",
 }
 TYPES = {
     "visit": "Go to a place, or hear someone out (may be mixed with the other tasks).",
@@ -197,7 +199,8 @@ def validate(quest, creatures, items, ids_seen=None):
         for drop in objective.get("drops_from") or []:
             creature = creatures.get(drop.get("creature"))
             need(creature is not None, f"drops_from: creature {drop.get('creature')} does not exist")
-            need(creature is None or creature["loot"] > 0, f"drops_from: {creature['name'] if creature else '?'} has no loot of its own, so nothing can be added to it")
+            need(creature is None or drop.get("pickpocket") or creature["loot"] > 0,
+                 f"drops_from: {creature['name'] if creature else '?'} has no loot of its own, so nothing can be added to it")
             need(isinstance(drop.get("chance"), (int, float)) and 0 < drop["chance"] <= 100, "drops_from: chance from 1 to 100")
     kind = quest.get("type")
     if kind == "visit":
@@ -430,6 +433,7 @@ def build_sql(quests, creatures, items):
            f"DELETE FROM quest_template_addon WHERE ID BETWEEN {FIRST_ID} AND {LAST_ID};",
            f"DELETE FROM quest_template WHERE ID BETWEEN {FIRST_ID} AND {LAST_ID};",
            f"DELETE FROM creature_loot_template WHERE Comment LIKE '{LOOT_MARK} %';",
+           f"DELETE FROM pickpocketing_loot_template WHERE Comment LIKE '{LOOT_MARK} %';",
            f"DELETE FROM creature WHERE guid BETWEEN {FIRST_SPAWN} AND {LAST_SPAWN};"]
     for table, column in (("creature_template", "entry"), ("creature_template_model", "CreatureID"), ("creature_equip_template", "CreatureID"),
                           ("creature_template_addon", "entry")):
@@ -530,6 +534,15 @@ def build_sql(quests, creatures, items):
         # Items that only drop while someone is on the quest
         for objective in objectives:
             for drop in objective.get("drops_from") or []:
+                if drop.get("pickpocket"):
+                    # Only a pickpocket finds it; killing the mark does not. One of our own people gets a pocket of its own.
+                    mark = int(drop["creature"])
+                    if mark >= FIRST_CREATURE:
+                        out.append(f"UPDATE creature_template SET pickpocketloot = entry WHERE entry = {mark};")
+                    out.append("INSERT IGNORE INTO pickpocketing_loot_template (Entry, Item, Reference, Chance, QuestRequired, LootMode, GroupId, MinCount, MaxCount, Comment) "
+                               f"SELECT pickpocketloot, {objective['item']}, 0, {float(drop['chance'])}, 1, 1, 0, 1, 1, '{LOOT_MARK} {number}' "
+                               f"FROM creature_template WHERE entry = {mark} AND pickpocketloot > 0;")
+                    continue
                 loot = creatures[drop["creature"]]["loot"]
                 out.append("INSERT IGNORE INTO creature_loot_template (Entry, Item, Reference, Chance, QuestRequired, LootMode, GroupId, MinCount, MaxCount, Comment) "
                            f"VALUES ({loot}, {objective['item']}, 0, {float(drop['chance'])}, 1, 1, 0, 1, 1, '{LOOT_MARK} {number}');")
@@ -567,7 +580,7 @@ def check_all():
 def reload_server():
     """Tells the running world server to read quests again. Nothing happens if it is not running."""
     sender = os.path.join(HERE, "Send-Server-Command.ps1")
-    for command in ("reload quest_template", "reload creature_queststarter", "reload creature_questender", "reload creature_loot_template", "wowplus quests"):
+    for command in ("reload quest_template", "reload creature_queststarter", "reload creature_questender", "reload creature_loot_template", "reload pickpocketing_loot_template", "wowplus quests"):
         subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", sender, command],
                        capture_output=True, creationflags=getattr(subprocess, "CREATE_NEW_CONSOLE", 0))
 

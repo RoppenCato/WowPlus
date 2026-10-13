@@ -1,0 +1,58 @@
+{
+  "id": 9200159,
+  "title": "The Long Game: The Emblem",
+  "level": 30,
+  "min_level": 30,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "rogue",
+  "zone": 36,
+  "type": "collect",
+  "after": 9200157,
+  "perk": "pockets",
+  "giver": 6707,
+  "turn_in": 6707,
+  "creatures": [
+    {
+      "id": 9210035,
+      "kind": "enemy",
+      "like": 2241,
+      "name": "Captain Renwick Ashe",
+      "title": "The Long Game",
+      "level": 33,
+      "map": 0,
+      "x": 90.0,
+      "y": -680.0,
+      "z": 86.3,
+      "o": 1.0,
+      "respawn": 180,
+      "health": 1.5
+    }
+  ],
+  "objectives": [
+    {
+      "item": 17124,
+      "count": 1,
+      "drops_from": [
+        {
+          "creature": 9210035,
+          "chance": 100,
+          "pickpocket": true
+        }
+      ]
+    }
+  ],
+  "texts": {
+    "details": "So you are the one who followed two crates of stone across half the world. Lord Ravenholdt noticed. He notices patience; it is rarer than skill.\n\nAll who wish to hone their skills as assassins and thieves are welcome in this house. That is his word. And this house has one enemy: the Syndicate. We do not make war on them. War is noisy. We shame them.\n\nEach of their officers carries an emblem. Without it he is nothing to his fellows, and they deal with him themselves. In the hills north of Tarren Mill there is a captain, Renwick Ashe. Take his emblem from his belt, $N. Leave him breathing, so he may explain to his masters where it went.",
+    "objectives": "Pick the pocket of Captain Renwick Ashe, in the hills north of Tarren Mill, and bring his Syndicate Emblem to Fahrad at Ravenholdt Manor. Killing him will not serve.",
+    "progress": "He must be alive to be shamed. A corpse has an excuse.",
+    "completion": "His emblem. And he walked on, never knowing? Then by tomorrow he will be explaining himself to men who do not accept explanations.\n\nYou see how it is done here. We have stripped the Syndicate one emblem at a time for years, and they have never once found a throat to cut for it.\n\nAnd you have learned the first thing this house teaches: a pocket is a map of a person. You will find you look in the right place now, and come away with more. Stay with us. Your thread is not finished. When you have forty seasons, I will tell you what is at the other end of the bloodstone."
+  },
+  "reward": {
+    "money": 3000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Long Game, level 30: Ravenholdt, the Assassin's League under Lord Jorach Ravenholdt (\"All who wish to hone their skills as assassins and thieves are welcome in Ravenholdt Manor\"), fights the Syndicate by stealing its members' emblems, since a shamed member is dealt with internally (from the wiki). Gives the perk of more coin from pockets. Invented: Captain Renwick Ashe."
+}

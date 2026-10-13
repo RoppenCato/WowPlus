@@ -1,0 +1,51 @@
+{
+  "id": 9200162,
+  "title": "The Long Game: The Advisor",
+  "level": 40,
+  "min_level": 40,
+  "max_level": 0,
+  "side": "horde",
+  "class": "rogue",
+  "zone": 45,
+  "type": "visit",
+  "after": 9200160,
+  "giver": 6707,
+  "turn_in": 6707,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -1661.0,
+        "y": -1931.0,
+        "radius": 40
+      },
+      "text": "Get close to Marez Cowl"
+    }
+  ],
+  "texts": {
+    "details": "You asked what a pack of ruined nobles wants with bloodstone. So did we. Here is as far as we have got.\n\nThe Syndicate holds part of the fallen city of Stromgarde. Their lords there have an advisor. She is an orc, of all things, named Marez Cowl, and they do nothing without her word. It was she who told them to take that city and hold it.\n\nAn advisor who gives orders is not an advisor. I want to know whose orders they are. Go to Stromgarde, $N, into the Syndicate's quarter, and get near her. Close enough to hear her speak to her own people, when she thinks no lord is listening.",
+    "objectives": "Get close to Marez Cowl in the Syndicate's part of Stromgarde Keep, in the Arathi Highlands, then return to Fahrad at Ravenholdt Manor.",
+    "progress": "Stromgarde is full of blades. You are not there to cross any of them.",
+    "completion": "She said that? \"The Wake is patient\"?\n\nThen it is as Lord Ravenholdt feared. There is a circle called the Argus Wake. Warlocks. They have had their hooks in the Syndicate for years, and the Syndicate's lords believe it is an alliance. The bloodstone is for amulets, which the Wake hands out to Syndicate agents; they are used in the summoning of demons.\n\nAnd Stromgarde. They were told to take it so that there would be a stronghold ready, when the Burning Legion comes again. Those nobles think they are winning back a kingdom, $N. They are holding a door.\n\nChoose one of these. You have earned a better edge. At fifty seasons, we find out where the Wake takes its own orders."
+  },
+  "reward": {
+    "money": 6000,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 6831,
+        "count": 1
+      },
+      {
+        "item": 10823,
+        "count": 1
+      },
+      {
+        "item": 10761,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Long Game, level 40: from the wiki, Marez Cowl is an orc advisor to the Syndicate at Stromgarde, secretly a warlock of the Argus Wake, which manipulates the Syndicate, gives its agents Bloodstone Amulets for demonic summoning, and urged it to seize Stromgarde as a power base for the Burning Legion's next invasion. Invented: what she is overheard to say."
+}

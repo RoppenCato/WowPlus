@@ -1,0 +1,46 @@
+{
+  "id": 9200157,
+  "title": "The Long Game: The Tower",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "rogue",
+  "zone": 40,
+  "type": "visit",
+  "giver": 7024,
+  "turn_in": 7024,
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -11133.0,
+        "y": 551.0,
+        "radius": 30
+      },
+      "text": "Get close to Klaven's Tower"
+    }
+  ],
+  "texts": {
+    "details": "About the stones? Then keep your voice down. I have been watching that tower for SI:7 longer than I care to count.\n\nA man named Klaven Mortwake keeps it for the Defias. Things go in by night and do not come out the same way. Two crates of your red stones went in four days ago. Someone is coming to collect them, and whoever it is, it is not the Brotherhood.\n\nI cannot get close; they know my face. They do not know yours. Go up to the tower, $N, right up under the wall, and listen. You need not go inside. Stay until you have heard who is buying.",
+    "objectives": "Get close to Klaven's Tower in the south-east of Westfall, then return to Agent Kearnen.",
+    "progress": "Right under the wall. Sound carries down the stair.",
+    "completion": "You heard it? Tell me exactly.\n\n\"Bloodstone.\" And the buyers are \"the lords in the north, who pay in Alterac silver.\" So. Not Defias business at all. The Brotherhood is only the hauler.\n\nThere is one company of thieves in the north that styles itself lords, and that is the Syndicate. What a pack of fallen nobles wants with bloodstone I do not know, and SI:7 has no one up there to ask. But someone else has been asking after those crates, $N. A stranger left this for whoever found out. A cloak, and one line: \"Ravenholdt Manor, above Hillsbrad. Come when you have thirty seasons.\" I should keep the appointment."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 2316,
+        "count": 1
+      },
+      {
+        "item": 14376,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Long Game, level 20 (Alliance): listen at Klaven's Tower. From the wiki: SI:7 sent Agent Kearnen to Westfall to spy on Klaven's Tower. Invented: the bloodstone shipment and what is overheard."
+}

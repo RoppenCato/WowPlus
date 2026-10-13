@@ -1,0 +1,69 @@
+{
+  "id": 9200155,
+  "title": "The Long Game: Light Fingers",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "horde",
+  "class": "rogue",
+  "zone": 14,
+  "type": "collect",
+  "giver": 3170,
+  "turn_in": 3170,
+  "creatures": [
+    {
+      "id": 9210033,
+      "kind": "enemy",
+      "like": 3195,
+      "name": "Grash",
+      "title": "The Long Game",
+      "level": 10,
+      "map": 1,
+      "x": 780.0,
+      "y": -4720.0,
+      "z": 46.5,
+      "o": 1.0,
+      "respawn": 180,
+      "health": 1.3
+    }
+  ],
+  "objectives": [
+    {
+      "item": 4100,
+      "count": 1,
+      "drops_from": [
+        {
+          "creature": 9210033,
+          "chance": 100,
+          "pickpocket": true
+        }
+      ]
+    }
+  ],
+  "texts": {
+    "details": "Any grunt can open a throat. It takes no skill, and it leaves you a corpse and no answers.\n\nI will teach you the other thing. North of here, where the Burning Blade skulk, there is an orc called Grash. He carries messages for those who do not want them read. I want what is in his pouch, $N. I do not want him dead. A dead runner is replaced by morning, and the next one I will not know.\n\nCome at him from behind, unseen, and take it. If he sees you, walk away, and come back when he has forgotten.",
+    "objectives": "Pick the pocket of Grash, among the Burning Blade north of Razor Hill, and bring the Crumpled Note he carries to your trainer. Killing him will not give it to you.",
+    "progress": "From behind, and quiet. If he is dead you have failed, whatever you bring me.",
+    "completion": "He never felt it? Good. That is the trade, $N. All the rest is knife work.\n\nLet me see. \"Red stones, two crates. The buyers want them at the port before the moon turns.\" No names. There are never names.\n\nRed stones. That is not ore and it is not gems, and the Burning Blade does nothing without a master behind it. I will send this up to Shenthul in the Cleft of Shadow. You have pulled a thread, and in this work you never know how long a thread is. Take one of these. When you have twenty seasons, go to the Crossroads and find Gazrog. Tell him Kaplak sent you about the stones."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 15396,
+        "count": 1
+      },
+      {
+        "item": 15335,
+        "count": 1
+      },
+      {
+        "item": 1394,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Long Game, level 10 (Horde): lift a note from a smuggler without killing him. The first pull on a thread that leads to the Syndicate. Invented: Grash and the note."
+}

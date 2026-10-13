@@ -1,0 +1,65 @@
+{
+  "id": 9200165,
+  "title": "The Long Game: One Clean Kill",
+  "level": 60,
+  "min_level": 60,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "rogue",
+  "zone": 361,
+  "type": "slay",
+  "after": 9200163,
+  "giver": 6707,
+  "turn_in": 6707,
+  "creatures": [
+    {
+      "id": 9210037,
+      "kind": "enemy",
+      "like": 7120,
+      "name": "Envoy Malrec Thane",
+      "title": "The Long Game",
+      "level": 60,
+      "map": 1,
+      "x": 4940.0,
+      "y": -700.0,
+      "z": 303.7,
+      "o": 1.0,
+      "respawn": 180,
+      "health": 1.9,
+      "damage": 1.1,
+      "alone": true
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210037,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "This is the end of your thread, or as near the end as anyone has ever come.\n\nThe envoy named in the pact is called Malrec Thane. He stands outside Jaedenar, between the Council and the world, and every order the Wake has ever given the Syndicate passed through his mouth.\n\nI will be honest with you, as this house is with its own. He is not the master. No one has ever learned who the master of the Argus Wake is, and I do not think we will. But cut out the tongue and the hand goes deaf for a long while.\n\nHe will not fight a crowd; he will vanish, and we will never find him again. So this one is yours alone, $N. No companions. One clean kill, and walk away.",
+    "objectives": "Kill Envoy Malrec Thane outside Jaedenar in Felwood, alone and with no companions. Return to Fahrad at Ravenholdt Manor.",
+    "progress": "Alone. If he sees two of you he is gone.",
+    "completion": "It is done, then. From a crumpled note in a courier's pocket to the Shadow Council's own envoy. Fifty seasons on one thread. I have known masters of this house who never ran one so long.\n\nUnderstand what you did and did not do. The Syndicate still stands. The Wake still has its master, whoever that is. The Legion will still come. But for a year, perhaps two, a fortress in Arathi will wait for orders that do not arrive. In our work, $N, that is what winning looks like.\n\nThese were his. Take one. Lord Ravenholdt says you are welcome in this house for as long as it stands."
+  },
+  "reward": {
+    "money": 15000,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": [
+      {
+        "item": 18372,
+        "count": 1
+      },
+      {
+        "item": 13953,
+        "count": 1
+      },
+      {
+        "item": 13368,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Long Game, level 60: a kill made alone. From the wiki: the true master of the Argus Wake was never revealed, and the quest says so. Invented: Envoy Malrec Thane."
+}

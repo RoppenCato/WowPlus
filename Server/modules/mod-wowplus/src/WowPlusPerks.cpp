@@ -10,6 +10,8 @@
  *   rage_hold    rage drains half as fast out of combat
  *   second_wind  health comes back faster out of combat
  *   repairs      repairs cost a quarter less
+ *   pockets      picking a pocket brings in twice the coin
+ *   fence        a tenth more coin from everything looted
  */
 
 #include "Chat.h"
@@ -176,8 +178,23 @@ public:
             chat.SendSysMessage("You have learned to hold your anger: your rage drains half as fast out of combat from now on.");
         else if (found->second == "second_wind")
             chat.SendSysMessage("You have learned to catch your breath: your health comes back faster between fights from now on.");
+        else if (found->second == "pockets")
+            chat.SendSysMessage("You have learned where people keep what matters: picking a pocket brings you twice the coin from now on.");
+        else if (found->second == "fence")
+            chat.SendSysMessage("You have learned what to look for: you find a tenth more coin on everything you loot from now on.");
         else if (found->second == "repairs")
             chat.SendSysMessage("You have learned to care for your arms: repairs cost you a quarter less from now on.");
+    }
+
+    void OnPlayerBeforeLootMoney(Player* player, Loot* loot) override
+    {
+        if (!loot || !loot->gold)
+            return;
+
+        if (loot->loot_type == LOOT_PICKPOCKETING && HasPerk(player, "pockets"))
+            loot->gold *= 2;
+        if (HasPerk(player, "fence"))
+            loot->gold += loot->gold / 10;
     }
 
     void OnPlayerBeforeDurabilityRepair(Player* player, ObjectGuid /*npcGUID*/, ObjectGuid /*itemGUID*/, float& discountMod, uint8 /*guildBank*/) override

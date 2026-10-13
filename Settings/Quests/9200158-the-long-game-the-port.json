@@ -1,0 +1,46 @@
+{
+  "id": 9200158,
+  "title": "The Long Game: The Port",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "horde",
+  "class": "rogue",
+  "zone": 17,
+  "type": "visit",
+  "giver": 3464,
+  "turn_in": 3464,
+  "objectives": [
+    {
+      "place": {
+        "map": 1,
+        "x": -956.0,
+        "y": -3655.0,
+        "radius": 70
+      },
+      "text": "Get close to the docks at Ratchet"
+    }
+  ],
+  "texts": {
+    "details": "About the stones? Then lower your voice. Even here.\n\nYour note said \"the port.\" There is only one port on this coast that asks no questions, and that is Ratchet. Goblins. They will ship anything for anyone, and it is not our place to stop them. But it is very much our place to know.\n\nTwo crates of your red stones came down from Durotar four days ago. They are sitting on that dock waiting for a ship. Go to Ratchet, $N. Walk the docks like any traveller with coin. Stay until you have heard where those crates are bound, and who is paying.",
+    "objectives": "Get close to the docks at Ratchet, on the coast of the Barrens, then return to Gazrog at the Crossroads.",
+    "progress": "The dock hands talk. They always talk. You only have to be near.",
+    "completion": "You heard? Tell me all of it.\n\n\"Bloodstone.\" Bound across the sea, for \"the lords in the north, who pay in Alterac silver.\" Hm. So the Burning Blade was only the carrier.\n\nThere is one band of human thieves in the north that calls itself lords, and that is the Syndicate. What fallen nobles want with bloodstone I cannot say, and the Hand has no one there to ask. But someone else has been asking after those crates, $N. A stranger left this with the dockmaster for whoever found out. A cloak, and one line: \"Ravenholdt Manor, above Hillsbrad. Come when you have thirty seasons.\" I would keep that appointment."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 5,
+    "items": [],
+    "choices": [
+      {
+        "item": 2316,
+        "count": 1
+      },
+      {
+        "item": 14376,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Long Game, level 20 (Horde): listen at Ratchet, a place the game asks nothing of. Invented: the bloodstone shipment and what is overheard."
+}

@@ -1,0 +1,69 @@
+{
+  "id": 9200153,
+  "title": "The Long Game: Light Fingers",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "rogue",
+  "zone": 1,
+  "type": "collect",
+  "giver": 1234,
+  "turn_in": 1234,
+  "creatures": [
+    {
+      "id": 9210031,
+      "kind": "enemy",
+      "like": 6123,
+      "name": "Durgan Slatehand",
+      "title": "The Long Game",
+      "level": 10,
+      "map": 0,
+      "x": -5860.0,
+      "y": -1972.0,
+      "z": 403.5,
+      "o": 1.0,
+      "respawn": 180,
+      "health": 1.3
+    }
+  ],
+  "objectives": [
+    {
+      "item": 4100,
+      "count": 1,
+      "drops_from": [
+        {
+          "creature": 9210031,
+          "chance": 100,
+          "pickpocket": true
+        }
+      ]
+    }
+  ],
+  "texts": {
+    "details": "Any fool can split a skull. Takes no craft, an' it leaves ye wi' a body an' no answers.\n\nI'll teach ye the other thing. Far east o' here, by the pass to Loch Modan, the Dark Irons have spies. One o' them, Durgan Slatehand, carries messages for folk who'd sooner they weren't read. I want what's in his pocket, $N. I don't want him dead. A dead courier's replaced by mornin', an' the next one I'll no' know by sight.\n\nCome at him from behind, unseen, an' take it. If he sees ye, walk off an' try again when he's forgotten.",
+    "objectives": "Pick the pocket of Durgan Slatehand, among the Dark Iron spies in the far east of Dun Morogh, and bring the Crumpled Note he carries to your trainer. Killing him will not give it to you.",
+    "progress": "From behind, an' quiet. If he's dead ye've failed, whatever ye bring me.",
+    "completion": "Never felt it, did he? Good. That's the trade, $N. All the rest is knife work.\n\nLet's see. \"Red stones, two crates. The buyers want them by the tower in Westfall before the moon turns.\" No names. There never are.\n\nRed stones. That's no' iron an' it's no' gems. I'll pass this to them as are paid to worry. You, meantime, have pulled a thread, an' in this work ye never know how long a thread is. Take your pick o' these. When ye've twenty seasons, go to Westfall, in the human lands, an' find a woman called Kearnen by the tower in the south-east. Tell her Hogral sent ye about the stones."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 15396,
+        "count": 1
+      },
+      {
+        "item": 15335,
+        "count": 1
+      },
+      {
+        "item": 1394,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Long Game, level 10 (Alliance): lift a note from a smuggler without killing him. The first pull on a thread that leads to the Syndicate. Invented: Durgan Slatehand and the note."
+}
