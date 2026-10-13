@@ -1,0 +1,62 @@
+{
+  "id": 9200224,
+  "title": "The Unquiet: What Cannot Be Forgiven",
+  "level": 40,
+  "min_level": 40,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "priest",
+  "zone": 8,
+  "type": "visit",
+  "after": 9200222,
+  "perk": "prayer_answered",
+  "giver": 376,
+  "turn_in": 376,
+  "creatures": [
+    {
+      "id": 9210078,
+      "kind": "person",
+      "like": 7572,
+      "name": "Morgha of the First Landing",
+      "title": "The Unquiet",
+      "map": 0,
+      "x": -10690.0,
+      "y": -3090.0,
+      "z": 21.0,
+      "o": 1.0
+    }
+  ],
+  "objectives": [
+    {
+      "talk": 9210078,
+      "text": "Hear the spirit of Morgha",
+      "says": [
+        "A priest. Hah. We had none. We had warlocks. Sit, then, if you can sit with a thing like me.",
+        "I came through the Portal with the first of us. We were promised a world. I had the blood in me. There was a village of the draenei, before, and then a village of men.",
+        "The blood is gone now. It left when the pit lord died. Everything I did is still here, and I can see all of it, clearly, for the first time."
+      ]
+    },
+    {
+      "talk": 7572,
+      "text": "Carry Morgha's words to the Fallen Hero of the Horde",
+      "says": [
+        "Morgha. I knew her. She was among the first through. So she is still there.",
+        "Tell her this, from one who also cannot rest. It was done. It cannot be undone. Those are two different things, and only the first is a chain.",
+        "I stay because there is work here. She stays because she thinks she deserves to. Tell her the dead she wronged are not served by her standing in a swamp."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "Now I will ask something of you that I could not ask of every priest. Go to the Swamp of Sorrows, east of Duskwood. That is where the orcs first set foot on our world.\n\nOne of them has never left. She came through the Portal with the first of the Horde, and she died in that swamp, and she has stood there since. I am told she is not held by any creature. She is held by what she did.\n\nShe was our enemy, $N. She helped burn Stormwind. I am sending you to hear her. There is another of her kind who keeps a vigil nearby, by the road south. Carry her words to him.",
+    "objectives": "Hear the spirit of Morgha west of Stonard in the Swamp of Sorrows and carry her words to the Fallen Hero of the Horde at the border of the Blasted Lands. Return to High Priestess Laurena at the Cathedral of Light in Stormwind.",
+    "progress": "Two of the dead, this time. One of them can help the other.",
+    "completion": "So one of them freed the other. And you carried it.\n\nI have buried a great many who died at orcish hands. I did not expect to feel what I feel, hearing this. She saw it clearly, at the end, and it held her there thirty years. That is not a monster. A monster would have slept soundly.\n\nThe Light is not a wage, and it is not a court. If it were, none of us would be heard. But you are heard, $N. In a hard hour you will find that out.\n\nFifty seasons."
+  },
+  "reward": {
+    "money": 6000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Unquiet, level 40: a soldier of the old Horde. From the wiki: the old Horde came through the Dark Portal into the Black Morass under the blood-curse of Mannoroth, which was broken when Grom killed him; the Fallen Hero of the Horde stands at the border of the Blasted Lands. Gives the perk of a prayer answered in a hard fight. Invented: Morgha, and the Fallen Hero's words."
+}

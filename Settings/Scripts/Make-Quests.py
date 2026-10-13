@@ -47,6 +47,8 @@ PERKS = {
     "shard_luck": "A kill sometimes leaves a soul shard without draining for it.",
     "demon_mend": "A warlock's demon mends itself out of combat.",
     "light_answers": "Once every ten minutes, dropping below a fifth of health in a fight gives a fifth back.",
+    "prayer_answered": "The same as light_answers, in words that suit any faith.",
+    "consolation": "When a companion falls nearby, some mana returns.",
 }
 TYPES = {
     "visit": "Go to a place, or hear someone out (may be mixed with the other tasks).",

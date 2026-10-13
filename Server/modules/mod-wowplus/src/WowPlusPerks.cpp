@@ -20,6 +20,8 @@
  *   shard_luck   a kill worth experience sometimes leaves a soul shard without draining for it
  *   demon_mend   a warlock's demon mends itself out of combat
  *   light_answers  once every ten minutes, dropping below a fifth of health in a fight gives a fifth back
+ *   prayer_answered  the same, in words that suit any faith
+ *   consolation  when a companion in the group falls nearby, some mana returns
  */
 
 #include "Chat.h"
@@ -27,6 +29,7 @@
 #include "DBCStores.h"
 #include "Formulas.h"
 #include "GameTime.h"
+#include "Group.h"
 #include "GameObject.h"
 #include "DatabaseEnv.h"
 #include "Item.h"
@@ -63,6 +66,8 @@ namespace
     constexpr float ANSWER_BELOW = 0.2f;                    // of full health: when the Light answers
     constexpr float ANSWER_SHARE = 0.2f;                    // of full health, given back
     constexpr time_t ANSWER_EVERY = 10 * MINUTE;
+    constexpr float CONSOLE_SHARE = 0.15f;                  // of full mana, when a companion falls
+    constexpr float CONSOLE_REACH = 60.0f;                  // yards
 
     std::unordered_map<std::string, std::vector<uint32>> questsWithPerk;    // perk -> the quests that give it
     std::unordered_map<uint32, std::string> perkOfQuest;
@@ -147,7 +152,7 @@ void WowPlusPerksWorld::Rest(uint32 diff)
     sinceRest = 0;
 
     // The Light answers those hard pressed in a fight
-    if (questsWithPerk.find("light_answers") != questsWithPerk.end())
+    if (questsWithPerk.find("light_answers") != questsWithPerk.end() || questsWithPerk.find("prayer_answered") != questsWithPerk.end())
     {
         std::vector<Player*> fighting;
         {
@@ -161,7 +166,8 @@ void WowPlusPerksWorld::Rest(uint32 diff)
         time_t const now = GameTime::GetGameTime().count();
         for (Player* player : fighting)
         {
-            if (!HasPerk(player, "light_answers"))
+            bool const light = HasPerk(player, "light_answers");
+            if (!light && !HasPerk(player, "prayer_answered"))
                 continue;
 
             time_t& last = lastAnswer[player->GetGUID()];
@@ -170,7 +176,7 @@ void WowPlusPerksWorld::Rest(uint32 diff)
 
             last = now;
             player->ModifyHealth(int32(player->GetMaxHealth() * ANSWER_SHARE));
-            ChatHandler(player->GetSession()).SendSysMessage("The Light answers.");
+            ChatHandler(player->GetSession()).SendSysMessage(light ? "The Light answers." : "Your prayer is answered.");
         }
     }
 
@@ -257,6 +263,10 @@ public:
             chat.SendSysMessage("You have learned to bind with a looser hand: your demon mends itself out of combat from now on.");
         else if (found->second == "light_answers")
             chat.SendSysMessage("You have learned that the Light does not leave: once every ten minutes, when a fight brings you below a fifth of your health, a fifth of it will come back.");
+        else if (found->second == "prayer_answered")
+            chat.SendSysMessage("You have learned that you are heard: once every ten minutes, when a fight brings you below a fifth of your health, a fifth of it will come back.");
+        else if (found->second == "consolation")
+            chat.SendSysMessage("You have learned to carry the fallen: when a companion falls near you, some of your mana will return.");
         else if (found->second == "wild_rest")
             chat.SendSysMessage("You have learned to rest as the wild rests: your health and mana both come back faster out of combat from now on.");
         else if (found->second == "herbs")
@@ -267,6 +277,26 @@ public:
             chat.SendSysMessage("You have learned what to look for: you find a tenth more coin on everything you loot from now on.");
         else if (found->second == "repairs")
             chat.SendSysMessage("You have learned to care for your arms: repairs cost you a quarter less from now on.");
+    }
+
+    void OnPlayerKilledByCreature(Creature* /*killer*/, Player* killed) override
+    {
+        if (!killed || questsWithPerk.find("consolation") == questsWithPerk.end())
+            return;
+
+        Group* group = killed->GetGroup();
+        if (!group)
+            return;
+
+        for (GroupReference* ref = group->GetFirstMember(); ref; ref = ref->next())
+        {
+            Player* member = ref->GetSource();
+            if (!member || member == killed || !member->IsAlive() || member->GetSession()->IsHeadless() || !member->IsWithinDistInMap(killed, CONSOLE_REACH))
+                continue;
+
+            if (member->getPowerType() == POWER_MANA && HasPerk(member, "consolation"))
+                member->ModifyPower(POWER_MANA, int32(member->GetMaxPower(POWER_MANA) * CONSOLE_SHARE));
+        }
     }
 
     void OnPlayerCreatureKill(Player* killer, Creature* killed) override

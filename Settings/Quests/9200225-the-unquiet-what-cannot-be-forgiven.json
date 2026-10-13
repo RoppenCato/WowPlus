@@ -1,0 +1,48 @@
+{
+  "id": 9200225,
+  "title": "The Unquiet: What Cannot Be Forgiven",
+  "level": 40,
+  "min_level": 40,
+  "max_level": 0,
+  "side": "horde",
+  "class": "priest",
+  "zone": 8,
+  "type": "visit",
+  "after": 9200223,
+  "perk": "prayer_answered",
+  "giver": 4606,
+  "turn_in": 4606,
+  "objectives": [
+    {
+      "talk": 9210078,
+      "text": "Hear the spirit of Morgha",
+      "says": [
+        "A priest. Hah. We had none. We had warlocks. Sit, then, if you can sit with a thing like me.",
+        "I came through the Portal with the first of us. We were promised a world. I had the blood in me. There was a village of the draenei, before, and then a village of men.",
+        "The blood is gone now. It left when the pit lord died. Everything I did is still here, and I can see all of it, clearly, for the first time."
+      ]
+    },
+    {
+      "talk": 7572,
+      "text": "Carry Morgha's words to the Fallen Hero of the Horde",
+      "says": [
+        "Morgha. I knew her. She was among the first through. So she is still there.",
+        "Tell her this, from one who also cannot rest. It was done. It cannot be undone. Those are two different things, and only the first is a chain.",
+        "I stay because there is work here. She stays because she thinks she deserves to. Tell her the dead she wronged are not served by her standing in a swamp."
+      ]
+    }
+  ],
+  "texts": {
+    "details": "This one is ours. Go to the Swamp of Sorrows, in the south of the human lands. That is where the Horde first set foot on this world.\n\nOne of them has never left. She came through the Portal with the first, with the demon's blood in her, and she died in that swamp, and has stood there since. No creature holds her. She is held by what she did.\n\nThe orcs do not like to speak of those years, $N. A priest does not have that luxury. Hear her. Another of her kind keeps a vigil nearby, by the road south. Carry her words to him.",
+    "objectives": "Hear the spirit of Morgha west of Stonard in the Swamp of Sorrows and carry her words to the Fallen Hero of the Horde at the border of the Blasted Lands. Return to Aelthalyste in the War Quarter of the Undercity.",
+    "progress": "Two of the dead, this time. One of them can help the other.",
+    "completion": "So one of the dead freed another. And you carried it between them.\n\nI will tell you why I sent a priest of the Horde to that. Every people in our alliance is built on something that cannot be forgiven. The orcs have that swamp. We have what we did in the Scourge's service before we were freed. She saw hers clearly, and it held her thirty years.\n\nWe are taught that nothing waits beyond. Even so, $N: you are heard. I cannot tell you by what. In a hard hour you will find it out.\n\nFifty seasons."
+  },
+  "reward": {
+    "money": 6000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Unquiet, level 40: a soldier of the old Horde. From the wiki: the old Horde came through the Dark Portal into the Black Morass under the blood-curse of Mannoroth, which was broken when Grom killed him; the Fallen Hero of the Horde stands at the border of the Blasted Lands. Gives the perk of a prayer answered in a hard fight. Invented: Morgha, and the Fallen Hero's words."
+}

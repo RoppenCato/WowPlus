@@ -1,0 +1,60 @@
+{
+  "id": 9200223,
+  "title": "The Unquiet: Certain to the End",
+  "level": 30,
+  "min_level": 30,
+  "max_level": 0,
+  "side": "horde",
+  "class": "priest",
+  "zone": 85,
+  "type": "visit",
+  "after": 9200221,
+  "giver": 4606,
+  "turn_in": 4606,
+  "objectives": [
+    {
+      "talk": 9210077,
+      "text": "Hear the spirit of Sister Verity",
+      "says": [
+        "Do not come nearer. You may carry it. Anyone may. That is what we were taught, and it was true, it was true.",
+        "I held the lamp while they questioned a farmer. He had a cough. He said it was the damp. I held the lamp very steady.",
+        "I came out here to pray at the Archbishop's grave, afterward. I could not find the words. I have been looking for them ever since."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": 2800.0,
+        "y": -750.0,
+        "radius": 70
+      },
+      "text": "Go as far as the Whispering Gardens"
+    }
+  ],
+  "texts": {
+    "details": "This one you will enjoy less than you expect. Go to Tirisfal, to the grave by the road they call Faol's Rest.\n\nA spirit keeps to that grave. In life she was a sister of the Scarlet Crusade. You know them. They have tortured our kind for sport and called it holiness.\n\nShe did not die in battle, $N. I do not know how she died. Hear her. Then walk up the road as far as the gardens of their monastery, where she served, and look at it as she must have.",
+    "objectives": "Hear the spirit of Sister Verity at Faol's Rest in Tirisfal Glades and go as far as the Whispering Gardens, where she served. Return to Aelthalyste in the War Quarter of the Undercity.",
+    "progress": "She will not thank you. Hear her anyway.",
+    "completion": "She has gone? Good. And you did not gloat. I can tell.\n\nI wanted you to see it from the inside. They are not monsters. They are frightened people who were given certainty in place of comfort, and certainty is a drug. She was not wicked. She held a lamp.\n\nWe Forsaken are told the Light failed us. Perhaps. But what we practise in its place has one great virtue: it insists on balance, and it does not permit us to forget what we are. Take one of these.\n\nForty seasons."
+  },
+  "reward": {
+    "money": 3000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 16889,
+        "count": 1
+      },
+      {
+        "item": 5244,
+        "count": 1
+      },
+      {
+        "item": 15455,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Unquiet, level 30: a priest of the Scarlet Crusade. From the wiki: the Crusade came to believe that all outsiders were potential carriers of the plague and must be destroyed, tortured innocents as supposed carriers, and holds the old monastery that Archbishop Faol treated as his church. Invented: Sister Verity."
+}

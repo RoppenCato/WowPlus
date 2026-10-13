@@ -1,0 +1,42 @@
+{
+  "id": 9200221,
+  "title": "The Unquiet: No One Left to Bury Them",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "horde",
+  "class": "priest",
+  "zone": 10,
+  "type": "kill",
+  "perk": "mana_rest",
+  "giver": 4606,
+  "turn_in": 4606,
+  "objectives": [
+    {
+      "talk": 9210075,
+      "text": "Hear the spirit of Wren Aldous",
+      "says": [
+        "You can see me? Oh, thank the Light. I've been calling and calling. Is it morning? I have to get the cows in.",
+        "They came up out of the graveyard at dusk. All of them at once. I ran for the lane and I... I don't remember the lane.",
+        "There's one of them still by the fence. It keeps coming back to where I fell. I can't go past it. I've tried and tried."
+      ]
+    },
+    {
+      "creature": 9210076,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "So Beryl's student has laid a first, and is sent for more. Then go south, across the sea, to a forest the humans call Duskwood.\n\nThere was a town in the west of it, by a great cemetery. Raven Hill. When the dead rose there, the people ran, and not all of them reached the road. No one has gone back to gather those who fell. Humans, $N. It does not matter. The dead take no side.\n\nA farm girl named Wren died by her own fence. She is there still. Go and hear her. Something is keeping her where she lies. Find it and end it.",
+    "objectives": "Hear the spirit of Wren Aldous at Raven Hill in the west of Duskwood and destroy the Gnawer nearby. Return to Aelthalyste in the War Quarter of the Undercity.",
+    "progress": "Listen first. It is most of what you are there to do.",
+    "completion": "She is gone on? And you heard her first. Good. It is the hearing that frees them.\n\nMark what you have learned. They do not stay out of malice. They stay because no one came. I haunted a ruined farm for a year before the Dark Lady gathered us. I remember.\n\nThe listening costs more than the fighting. One learns to be still afterward and let it come back. You have the way of that now.\n\nThirty seasons."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Unquiet, level 20: a villager of Raven Hill. From the wiki: Raven Hill's cemetery is a major source of Duskwood's undead and the town was lost to them. Gives the perk of faster mana out of combat. Invented: Wren Aldous and the Gnawer."
+}

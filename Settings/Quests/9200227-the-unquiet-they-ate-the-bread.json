@@ -1,0 +1,43 @@
+{
+  "id": 9200227,
+  "title": "The Unquiet: They Ate the Bread",
+  "level": 50,
+  "min_level": 50,
+  "max_level": 0,
+  "side": "horde",
+  "class": "priest",
+  "zone": 28,
+  "type": "kill",
+  "after": 9200225,
+  "perk": "consolation",
+  "giver": 4606,
+  "turn_in": 4606,
+  "objectives": [
+    {
+      "talk": 9210079,
+      "text": "Hear the spirit of Goodwife Harrow",
+      "says": [
+        "Oh! A visitor. You will take something? I've a loaf just out. The children had theirs already. They were so hungry.",
+        "It was good flour. From Andorhal, the same as always. I remember thinking it was a little grey. But it was dear that year, and you do not throw away bread.",
+        "They went to sleep so quiet. And then they got up. And I... someone has the oven still lit, up at the field. I can smell it. Please. Put it out."
+      ]
+    },
+    {
+      "creature": 9210080,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Go east now, into the Plaguelands. I have put this one off as long as I could, for my own sake.\n\nSouth of Andorhal, on Sorrow Hill, there is the spirit of a farmer's wife. Andorhal was the granary of Lordaeron; every village's flour passed through it. A necromancer's cult poisoned the grain. She baked with it.\n\nThat is how it was done to us, $N. To me. Hear her. She does not fully know what happened. Then go north-west to Felstone Field. The Scourge keeps a cauldron there, brewing the same plague still, and a thing that tends it. She can smell it.",
+    "objectives": "Hear the spirit of Goodwife Harrow on Sorrow Hill in the Western Plaguelands and destroy the Cauldron's Tender at Felstone Field. Return to Aelthalyste in the War Quarter of the Undercity.",
+    "progress": "She will offer you bread. Do not let her see what that does to you.",
+    "completion": "It is out, and she is gone? Thank you. I could not have done that one. I ate the bread too.\n\nThere is no lesson in it. She did nothing wrong. She fed her children. If you must take something, take this: when those beside you fall, it will not be because they earned it. Do not spend yourself on why. Spend yourself on whoever is still standing.\n\nYou will find, now, that when a companion goes down near you, something comes back to you for the rest.\n\nSixty seasons. There is one more."
+  },
+  "reward": {
+    "money": 9000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Unquiet, level 50: a family of Andorhal. From the wiki: Andorhal was the grain distribution centre of northern Lordaeron, where Kel'Thuzad's cult infected the grain; the lich Araj oversees the plague cauldrons of the Western Plaguelands. Gives the perk of mana returning when a companion falls. Invented: Goodwife Harrow and the Cauldron's Tender."
+}

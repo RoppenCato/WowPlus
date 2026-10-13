@@ -1,0 +1,72 @@
+{
+  "id": 9200220,
+  "title": "The Unquiet: No One Left to Bury Them",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "priest",
+  "zone": 10,
+  "type": "kill",
+  "perk": "mana_rest",
+  "giver": 376,
+  "turn_in": 376,
+  "creatures": [
+    {
+      "id": 9210075,
+      "kind": "person",
+      "like": 11064,
+      "name": "Wren Aldous",
+      "title": "The Unquiet",
+      "map": 0,
+      "x": -10890.0,
+      "y": 310.0,
+      "z": 32.1,
+      "o": 1.0
+    },
+    {
+      "id": 9210076,
+      "kind": "enemy",
+      "like": 3,
+      "name": "The Gnawer",
+      "title": "The Unquiet",
+      "map": 0,
+      "x": -10840.0,
+      "y": 250.0,
+      "z": 37.0,
+      "o": 1.0,
+      "level": 21,
+      "respawn": 240,
+      "health": 1.6,
+      "size": 1.2
+    }
+  ],
+  "objectives": [
+    {
+      "talk": 9210075,
+      "text": "Hear the spirit of Wren Aldous",
+      "says": [
+        "You can see me? Oh, thank the Light. I've been calling and calling. Is it morning? I have to get the cows in.",
+        "They came up out of the graveyard at dusk. All of them at once. I ran for the lane and I... I don't remember the lane.",
+        "There's one of them still by the fence. It keeps coming back to where I fell. I can't go past it. I've tried and tried."
+      ]
+    },
+    {
+      "creature": 9210076,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "So you have laid your first, and you are sent for more. Then go south, into Duskwood.\n\nThere was a town in the west of that forest, by a great cemetery. Raven Hill. When the dead began to rise there, the people ran, and not all of them reached the road. No one has dared go back to gather those who fell.\n\nA farm girl named Wren died by her own fence. She is there still. Go and hear her, $N; let her tell it in her own time. Something is keeping her where she lies. Find it and end it.",
+    "objectives": "Hear the spirit of Wren Aldous at Raven Hill in the west of Duskwood and destroy the Gnawer nearby. Return to High Priestess Laurena at the Cathedral of Light in Stormwind.",
+    "progress": "Listen first. It is most of what you are there to do.",
+    "completion": "She is gone on? And you heard her out first. Good. It is the hearing that frees them, more than the blow.\n\nHere is what you have learned. They do not stay out of malice. They stay because no one came. A kingdom that cannot spare the hands to bury its dead will have them underfoot for a generation.\n\nYou will have found the listening costs you more than the fighting. One learns to be still afterward, and let it come back. You have the way of that now.\n\nThirty seasons."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Unquiet, level 20: a villager of Raven Hill. From the wiki: Raven Hill's cemetery is a major source of Duskwood's undead and the town was lost to them. Gives the perk of faster mana out of combat. Invented: Wren Aldous and the Gnawer."
+}

@@ -1,0 +1,74 @@
+{
+  "id": 9200222,
+  "title": "The Unquiet: Certain to the End",
+  "level": 30,
+  "min_level": 30,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "priest",
+  "zone": 85,
+  "type": "visit",
+  "after": 9200220,
+  "giver": 376,
+  "turn_in": 376,
+  "creatures": [
+    {
+      "id": 9210077,
+      "kind": "person",
+      "like": 14494,
+      "name": "Sister Verity",
+      "title": "The Unquiet",
+      "map": 0,
+      "x": 2578.0,
+      "y": -590.0,
+      "z": 89.6,
+      "o": 1.0
+    }
+  ],
+  "objectives": [
+    {
+      "talk": 9210077,
+      "text": "Hear the spirit of Sister Verity",
+      "says": [
+        "Do not come nearer. You may carry it. Anyone may. That is what we were taught, and it was true, it was true.",
+        "I held the lamp while they questioned a farmer. He had a cough. He said it was the damp. I held the lamp very steady.",
+        "I came out here to pray at the Archbishop's grave, afterward. I could not find the words. I have been looking for them ever since."
+      ]
+    },
+    {
+      "place": {
+        "map": 0,
+        "x": 2800.0,
+        "y": -750.0,
+        "radius": 70
+      },
+      "text": "Go as far as the Whispering Gardens"
+    }
+  ],
+  "texts": {
+    "details": "This one will be harder to pity. Go north, to Tirisfal, to the grave of Archbishop Faol.\n\nA spirit keeps to that grave. In life she was a sister of the Scarlet Crusade. You know what they are: they began by fighting the dead and ended by putting the living to the question, anyone who was not of their own, for fear of plague.\n\nShe did not die in battle, $N. I do not know how she died. Hear her. Then walk up the road as far as the gardens of their monastery, where she served, and look at it as she must have.",
+    "objectives": "Hear the spirit of Sister Verity at Faol's Rest in Tirisfal Glades and go as far as the Whispering Gardens, where she served. Return to High Priestess Laurena at the Cathedral of Light in Stormwind.",
+    "progress": "She will not thank you. Hear her anyway.",
+    "completion": "She has gone? I am glad. And I am glad it was one of us who went.\n\nThe Crusade's priests pray to the same Light we do, in the same words. That is what should frighten you. She was not wicked. She was certain. A priest who is certain can hold a lamp steady for anything.\n\nDoubt is not the enemy of faith, $N. I have come to think it is the keel. Take one of these.\n\nForty seasons."
+  },
+  "reward": {
+    "money": 3000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 16889,
+        "count": 1
+      },
+      {
+        "item": 5244,
+        "count": 1
+      },
+      {
+        "item": 15455,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Unquiet, level 30: a priest of the Scarlet Crusade. From the wiki: the Crusade came to believe that all outsiders were potential carriers of the plague and must be destroyed, tortured innocents as supposed carriers, and holds the old monastery that Archbishop Faol treated as his church. Invented: Sister Verity."
+}

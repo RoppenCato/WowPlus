@@ -1,0 +1,63 @@
+{
+  "id": 9200215,
+  "title": "The Unquiet: First Rites",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "priest",
+  "zone": 12,
+  "type": "slay",
+  "giver": 377,
+  "turn_in": 377,
+  "creatures": [
+    {
+      "id": 9210070,
+      "kind": "enemy",
+      "like": 1531,
+      "name": "Restless Shade",
+      "title": "The Unquiet",
+      "map": 0,
+      "x": -9319.6,
+      "y": -126.0,
+      "z": 64.1,
+      "o": 1.0,
+      "level": 10,
+      "respawn": 240,
+      "faction": 14,
+      "health": 1.4
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210070,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You can mend a wound. So can a field surgeon with a needle. That is not why the Light calls priests.\n\nThere is a thing in the woods north-east of the village that was a person, once. It does not know it is dead. It wanders where it used to walk and grows angry that no one answers. The farmers are afraid of it. They need not be; it is we who should be ashamed that it was left.\n\nGo and give it rest, $N. It will fight you. They always do. They think you have come to take the last thing they have.",
+    "objectives": "Lay the Restless Shade to rest, in the woods north-east of Goldshire, then return to your teacher.",
+    "progress": "Be gentle, as far as it lets you.",
+    "completion": "It is at peace? Then you have done the oldest thing our calling does. Older than healing. Older than the Church.\n\nThe Light teaches that no soul should be left alone in the dark. Most of the dead go where they should. A few cannot, because of how they died, or what they left undone. Those are ours.\n\nThis land has had three wars and a plague in my lifetime. It is full of the unquiet, $N, and each one is a piece of history that no one stayed to bury. I would have you attend them. Choose one of these. When you have twenty seasons, go to High Priestess Laurena at the Cathedral in Stormwind."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 11287,
+        "count": 1
+      },
+      {
+        "item": 1933,
+        "count": 1
+      },
+      {
+        "item": 1394,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Unquiet, level 10 (Alliance): lay one restless shade near home, in the voice of the priest's own faith. Invented: the shade."
+}

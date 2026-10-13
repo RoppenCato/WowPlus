@@ -1,0 +1,110 @@
+{
+  "id": 9200228,
+  "title": "The Unquiet: Killed to Save Them",
+  "level": 60,
+  "min_level": 60,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "priest",
+  "zone": 139,
+  "type": "visit",
+  "after": 9200226,
+  "giver": 376,
+  "turn_in": 376,
+  "creatures": [
+    {
+      "id": 9210081,
+      "kind": "person",
+      "like": 14485,
+      "name": "Tobin the Baker",
+      "title": "The Unquiet",
+      "map": 0,
+      "x": 3186.0,
+      "y": -3300.0,
+      "z": 158.6,
+      "o": 1.0
+    },
+    {
+      "id": 9210082,
+      "kind": "person",
+      "like": 14494,
+      "name": "Anwen Farrow",
+      "title": "The Unquiet",
+      "map": 0,
+      "x": 3210.0,
+      "y": -3330.0,
+      "z": 161.3,
+      "o": 1.0
+    },
+    {
+      "id": 9210083,
+      "kind": "person",
+      "like": 10926,
+      "name": "Little Jory",
+      "title": "The Unquiet",
+      "map": 0,
+      "x": 3225.0,
+      "y": -3345.0,
+      "z": 150.9,
+      "o": 1.0
+    }
+  ],
+  "objectives": [
+    {
+      "talk": 9210081,
+      "text": "Hear the spirit of Tobin the Baker",
+      "says": [
+        "The Prince is at the gate! They say he's come about the sickness. We'll be all right now. He's the King's own son.",
+        "I baked for the garrison, sir. I baked for the whole south quarter. I never knew. You'll tell them I never knew?"
+      ]
+    },
+    {
+      "talk": 9210082,
+      "text": "Hear the spirit of Anwen Farrow",
+      "says": [
+        "They told us to stay indoors. Then we heard the doors being broken, one after another, down the street. Coming nearer.",
+        "He looked at me. The Prince. I held up my little one so he could see we were not sick. He looked right at us.",
+        "I am not angry. Is that strange? I only want to know whether he was right. Would we have turned? Does anyone know?"
+      ]
+    },
+    {
+      "talk": 9210083,
+      "text": "Hear the spirit of Little Jory",
+      "says": [
+        "Are you a soldier? The soldiers had the same picture on them as the ones who guard the gate. I thought they were the same ones.",
+        "Mama said don't look. I looked. Is it over? Can we go home now?"
+      ]
+    }
+  ],
+  "texts": {
+    "details": "The last. Go to the north of the Eastern Plaguelands, to the gates of Stratholme.\n\nYou know what was done there. The plague had reached the city in its bread. Prince Arthas came to the gate and judged that every soul within would die and rise, and so he ordered them killed first, by his own soldiers, house by house. Lord Uther refused him. Lady Proudmoore refused him. He did it without them.\n\nThree of those people are still outside the walls. A baker, a mother, and a child. There is nothing there for you to fight, $N. Go and hear each of them. That is all. It is the whole of our calling.",
+    "objectives": "Hear the three spirits who wait outside the gates of Stratholme in the Eastern Plaguelands. Return to High Priestess Laurena at the Cathedral of Light in Stormwind.",
+    "progress": "There is nothing to fight there. That is the hard part.",
+    "completion": "You heard all three. Then you have done what no one did for them on the day.\n\nShe asked whether he was right. I do not know. No one does. Many of them rose regardless. I only know that a priest's place was beside them, and not one of us was.\n\nThat is what I have been teaching you, since your first shade in the woods. Not how to end the unquiet. How to stay. A girl by a fence, a sister with a lamp, a soldier in a swamp, a mother at her oven, and now these. Each a chapter of the world that no one remained to close.\n\nThe child left this for you. I think it was his mother's. Keep it. And take a staff; you have a great many more to sit with."
+  },
+  "reward": {
+    "money": 15000,
+    "xp_difficulty": 7,
+    "items": [
+      {
+        "item": 15805,
+        "count": 1
+      }
+    ],
+    "choices": [
+      {
+        "item": 22394,
+        "count": 1
+      },
+      {
+        "item": 13161,
+        "count": 1
+      },
+      {
+        "item": 18491,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Unquiet, level 60: the people of Stratholme, with no fight. From the wiki: plagued grain from Andorhal reached Stratholme; Arthas ordered the city purged before its people could turn; Uther and Jaina refused; citizens were killed in their sleep, as zombies, and while still human and fleeing; many rose anyway. Gives a keepsake (Penelope's Rose). Invented: the three spirits and their words."
+}
