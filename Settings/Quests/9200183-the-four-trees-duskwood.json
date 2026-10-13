@@ -1,0 +1,60 @@
+{
+  "id": 9200183,
+  "title": "The Four Trees: Duskwood",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "both",
+  "class": "druid",
+  "zone": 10,
+  "type": "kill",
+  "perk": "wild_rest",
+  "giver": 12042,
+  "turn_in": 12042,
+  "creatures": [
+    {
+      "id": 9210051,
+      "kind": "enemy",
+      "like": 628,
+      "name": "Dreamsick Ravager",
+      "title": "The Four Trees",
+      "level": 21,
+      "map": 0,
+      "x": -10150.0,
+      "y": -700.0,
+      "z": 43.1,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.6,
+      "size": 1.25
+    }
+  ],
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": -10440.0,
+        "y": -442.0,
+        "radius": 135
+      },
+      "text": "Go to the edge of the Twilight Grove"
+    },
+    {
+      "creature": 9210051,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "So your teacher has spoken to you of the Dream, and of the four trees. Good. You will go to each, and at each I will tell you a little more. That is how I was taught.\n\nThe first is the nearest to ruin. Far to the east, across the sea, in the human lands, lies a forest where the sun no longer comes. They call it Duskwood. At its heart is a ring of hills, and within the ring a great tree, and at its foot a moonwell that our people built. Go to the edge of that grove, $N. No nearer. Something very large sleeps badly there.\n\nThe beasts around it are not as they should be. One, a ravager, wanders outside the hills to the north-east, sick with dreams that are not its own. Give it peace.",
+    "objectives": "Go to the edge of the Twilight Grove in the middle of Duskwood and kill the Dreamsick Ravager outside the hills to the north-east of it. Return to Loganaar in Nighthaven.",
+    "progress": "The edge only. You are not ready for what lies at the root.",
+    "completion": "You have stood at the first door.\n\nNow hear what the Dream is for. When this world was shaped, one was set to watch over it from within the Dream: Ysera, the Dreamer, queen of the green dragons. She sleeps always. Her children keep the ways between the Dream and the waking world, and it was they who guarded the four trees.\n\nYou have felt for yourself how a druid rests, between one labor and the next. Not as the cities rest, behind a door. As a deer rests, or a tree in winter: all at once, wherever it stands. Keep that. It is the Dream's first gift, and it is yours now.\n\nAt thirty seasons, come back, and I will send you to Ashenvale."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Four Trees, level 20: the Twilight Grove. From the wiki: the Great Trees are portals to the Emerald Dream guarded by Ysera's green dragonflight; the grove has a moonwell and a night elf gazebo; Ysera was charged with watching over Azeroth from the Dream. Gives the perk of faster health and mana out of combat. Invented: the Dreamsick Ravager."
+}

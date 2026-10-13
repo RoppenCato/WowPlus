@@ -1,0 +1,61 @@
+{
+  "id": 9200185,
+  "title": "The Four Trees: The Hinterlands",
+  "level": 40,
+  "min_level": 40,
+  "max_level": 0,
+  "side": "both",
+  "class": "druid",
+  "zone": 47,
+  "type": "kill",
+  "after": 9200184,
+  "perk": "herbs",
+  "giver": 12042,
+  "turn_in": 12042,
+  "creatures": [
+    {
+      "id": 9210053,
+      "kind": "enemy",
+      "like": 742,
+      "name": "Lost Wyrmkin of Seradane",
+      "title": "The Four Trees",
+      "level": 41,
+      "map": 0,
+      "x": 560.0,
+      "y": -3768.0,
+      "z": 123.3,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.3,
+      "size": 1.0
+    }
+  ],
+  "objectives": [
+    {
+      "place": {
+        "map": 0,
+        "x": 770.0,
+        "y": -4010.0,
+        "radius": 150
+      },
+      "text": "Go to the edge of Seradane"
+    },
+    {
+      "creature": 9210053,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "The third tree is in the north of the eastern lands, in the high country the dwarves call the Hinterlands. The place is named Seradane. Its warden was Lethon.\n\nI told you the four great dragons were the wardens of the doors. Now I will tell you what I held back. Something came through the doors the other way. We call it the Nightmare. It is a sickness in the Dream itself, and the first it took were the ones standing nearest: the four wardens. Ysondre, Taerar, Lethon, Emeriss. They are still at their trees, $N. They are not guarding them any longer.\n\nTheir lesser kin have suffered the same. One, a wyrmkin, has wandered out from Seradane and attacks whatever it meets. Go to the edge of the grove, and then find it.",
+    "objectives": "Go to the edge of Seradane in the north-east of the Hinterlands and kill the Lost Wyrmkin of Seradane, which wanders to the south-west of it. Return to Loganaar in Nighthaven.",
+    "progress": "If the great one stirs, leave. There is no shame in it.",
+    "completion": "Three doors. And now you know why I would not let you near them.\n\nThe Dragons of Nightmare, they are called now. The noblest of the green flight, turned against the world they were set to watch. Nothing our Circle has tried has reached them.\n\nBut the Dream is not only sick. It is still what it was. You have walked far in its service, and it answers those who do. When you take a herb from the earth, take it as the Dream would have it taken: clean, at the stem, the root unharmed. You will find the plant gives more to a hand like that.\n\nOne tree remains. At fifty seasons."
+  },
+  "reward": {
+    "money": 6000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Four Trees, level 40: Seradane. From the wiki: Ysera's four lieutenants were corrupted by the Emerald Nightmare and became the Dragons of Nightmare, passing through the Great Trees into the waking world. Gives the perk of extra herbs. Invented: the Lost Wyrmkin."
+}

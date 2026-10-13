@@ -15,10 +15,14 @@
  *   mana_rest    mana comes back faster out of combat
  *   polymorph_pig   teaches the pig shape of Polymorph when the quest is handed in
  *   double_conjure  conjuring food or water makes twice as much
+ *   wild_rest    health and mana both come back faster out of combat
+ *   herbs        gathering a herb sometimes gives one more
  */
 
 #include "Chat.h"
 #include "Creature.h"
+#include "DBCStores.h"
+#include "GameObject.h"
 #include "DatabaseEnv.h"
 #include "Item.h"
 #include "Log.h"
@@ -133,7 +137,8 @@ void WowPlusPerksWorld::Rest(uint32 diff)
     bool const rage = questsWithPerk.find("rage_hold") != questsWithPerk.end();
     bool const wind = questsWithPerk.find("second_wind") != questsWithPerk.end();
     bool const mana = questsWithPerk.find("mana_rest") != questsWithPerk.end();
-    if (!rage && !wind && !mana)
+    bool const wild = questsWithPerk.find("wild_rest") != questsWithPerk.end();
+    if (!rage && !wind && !mana && !wild)
         return;
 
     std::vector<Player*> resting;
@@ -148,6 +153,11 @@ void WowPlusPerksWorld::Rest(uint32 diff)
     {
         if (rage && player->getPowerType() == POWER_RAGE && player->GetPower(POWER_RAGE) > 0 && HasPerk(player, "rage_hold"))
             player->ModifyPower(POWER_RAGE, RAGE_BACK);
+        bool const rests = wild && HasPerk(player, "wild_rest");
+        if (rests && player->GetHealth() < player->GetMaxHealth())
+            player->ModifyHealth(int32(player->GetMaxHealth() * WIND_SHARE));
+        if (rests && player->GetPower(POWER_MANA) < player->GetMaxPower(POWER_MANA))
+            player->ModifyPower(POWER_MANA, int32(player->GetMaxPower(POWER_MANA) * MANA_SHARE));
         if (wind && player->GetHealth() < player->GetMaxHealth() && HasPerk(player, "second_wind"))
             player->ModifyHealth(int32(player->GetMaxHealth() * WIND_SHARE));
         if (mana && player->getPowerType() == POWER_MANA && player->GetPower(POWER_MANA) < player->GetMaxPower(POWER_MANA) && HasPerk(player, "mana_rest"))
@@ -196,6 +206,10 @@ public:
         }
         else if (found->second == "double_conjure")
             chat.SendSysMessage("You have learned to waste nothing of a spell: conjuring food or water makes twice as much from now on.");
+        else if (found->second == "wild_rest")
+            chat.SendSysMessage("You have learned to rest as the wild rests: your health and mana both come back faster out of combat from now on.");
+        else if (found->second == "herbs")
+            chat.SendSysMessage("You have learned to take without harming the root: gathering a herb will sometimes give you one more.");
         else if (found->second == "pockets")
             chat.SendSysMessage("You have learned where people keep what matters: picking a pocket brings you twice the coin from now on.");
         else if (found->second == "fence")
@@ -233,7 +247,30 @@ public:
 
     void OnPlayerLootItem(Player* player, Item* item, uint32 /*count*/, ObjectGuid lootguid) override
     {
-        if (!item || !lootguid.IsCreature() || !HasPerk(player, "skinning"))
+        if (!item)
+            return;
+
+        // A herb picked from a plant in the ground
+        if (lootguid.IsGameObject())
+        {
+            if (!HasPerk(player, "herbs"))
+                return;
+
+            GameObject* plant = ObjectAccessor::GetGameObject(*player, lootguid);
+            LockEntry const* lock = plant ? sLockStore.LookupEntry(plant->GetGOInfo()->GetLockId()) : nullptr;
+            if (!lock || !roll_chance_i(EXTRA_SKIN_CHANCE))
+                return;
+
+            for (uint8 i = 0; i < MAX_LOCK_CASE; ++i)
+                if (lock->Type[i] == LOCK_KEY_SKILL && lock->Index[i] == LOCKTYPE_HERBALISM)
+                {
+                    player->AddItem(item->GetEntry(), 1);
+                    return;
+                }
+            return;
+        }
+
+        if (!lootguid.IsCreature() || !HasPerk(player, "skinning"))
             return;
 
         Creature* creature = ObjectAccessor::GetCreature(*player, lootguid);

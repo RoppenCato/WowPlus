@@ -1,0 +1,63 @@
+{
+  "id": 9200182,
+  "title": "The Four Trees: Those Who Sleep",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "horde",
+  "class": "druid",
+  "zone": 215,
+  "type": "slay",
+  "giver": 3064,
+  "turn_in": 3064,
+  "creatures": [
+    {
+      "id": 9210050,
+      "kind": "enemy",
+      "like": 2951,
+      "name": "Bonepicker",
+      "title": "The Four Trees",
+      "level": 10,
+      "map": 1,
+      "x": -1120.0,
+      "y": -950.0,
+      "z": 0.1,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.5,
+      "size": 1.15
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210050,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You have taken your first shape, and you think the shape is the art. It is the smallest part of it.\n\nNorth-east of the village are the Red Rocks, where our dead are laid to rest. The night elves, who taught us this path again, do not burn or bury their druids while they live. They lay them in dens under the earth, asleep, for hundreds of years. We have no such dens. But I think of the Red Rocks in the same way: a place where those who cannot defend themselves must be watched over.\n\nA Palemane gnoll the braves call Bonepicker has been at the graves. Go and end it, $N.",
+    "objectives": "Kill Bonepicker at the Red Rocks, north-east of Bloodhoof Village, then return to Gennia Runetotem.",
+    "progress": "Tread gently there. It is not only the living who notice.",
+    "completion": "Bonepicker is gone? Then they will rest.\n\nHere is your first lesson. The elven sleepers are not idle. While the body lies in the earth, the spirit walks a place they call the Emerald Dream. It is this world as it would have been if no thinking creature had ever laid a hand on it. Every druid, in his season, lies down and wanders there.\n\nOur old tale says the Forest Lord taught the tauren this path before any other people. Then we lost it. Hamuul Runetotem was the first of us to walk it again in nearly twenty generations, and he had it from an elf.\n\nThere are doors to the Dream in the waking world: four great trees. When you have twenty seasons, go to the Moonglade and seek Loganaar in Nighthaven."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 15397,
+        "count": 1
+      },
+      {
+        "item": 1394,
+        "count": 1
+      },
+      {
+        "item": 15396,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Four Trees, level 10 (Horde): from the wiki, an ancient tale says Cenarius taught the tauren as the first druids, and Hamuul Runetotem, taught by Malfurion, was the first tauren druid in nearly twenty generations. Invented: Bonepicker, and Gennia's likening of the Red Rocks to a barrow den."
+}

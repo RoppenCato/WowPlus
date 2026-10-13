@@ -1,0 +1,63 @@
+{
+  "id": 9200181,
+  "title": "The Four Trees: Those Who Sleep",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "druid",
+  "zone": 141,
+  "type": "slay",
+  "giver": 3602,
+  "turn_in": 3602,
+  "creatures": [
+    {
+      "id": 9210049,
+      "kind": "enemy",
+      "like": 2009,
+      "name": "Mossfang",
+      "title": "The Four Trees",
+      "level": 10,
+      "map": 1,
+      "x": 9240.0,
+      "y": 1400.0,
+      "z": 1302.6,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.5,
+      "size": 1.2
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210049,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You have taken your first shape, and you think the shape is the art. It is the least of it.\n\nSouth-west of here is Ban'ethil Hollow. Under the hill there is a barrow den, and in the den our brothers and sisters lie asleep. Some have slept for a thousand years. They are not idle, $N. While the body lies in the earth the spirit walks another place, and tends it. That is what a druid is for.\n\nThe Gnarlpine have broken into the Hollow, and one of their shamans, Mossfang, works his filth at the very mouth of the den. A sleeper cannot defend himself. You can.",
+    "objectives": "Kill Mossfang at Ban'ethil Hollow, south-west of Dolanaar, then return to Kal.",
+    "progress": "Do not go into the den. It is not for you yet.",
+    "completion": "Mossfang is gone? Then they will sleep a little safer.\n\nHere is your first lesson, and I will put it plainly. The place where the sleepers walk is called the Emerald Dream. It is this world as it would have been if no thinking creature had ever laid a hand on it. Since the first war against the demons, every druid has lain down, in his season, and wandered there.\n\nThere are doors to it in the waking world. Four great trees, far from here. When you have twenty seasons, use the gift of our order and go to the Moonglade. Seek Loganaar in Nighthaven. He will send you to the first."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 15397,
+        "count": 1
+      },
+      {
+        "item": 1394,
+        "count": 1
+      },
+      {
+        "item": 15396,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Four Trees, level 10 (Alliance): the sleepers of Ban'ethil Barrow Den, which the Gnarlpine invaded. From the wiki: the Emerald Dream is Azeroth as it would have been if intelligent beings had not altered it, and since the War of the Ancients all druids have periodically hibernated while their spirits wandered it. Invented: Mossfang."
+}

@@ -42,6 +42,8 @@ PERKS = {
     "mana_rest": "Mana comes back faster out of combat.",
     "polymorph_pig": "Teaches the pig shape of Polymorph.",
     "double_conjure": "Conjuring food or water makes twice as much.",
+    "wild_rest": "Health and mana both come back faster out of combat.",
+    "herbs": "Gathering a herb sometimes gives one more.",
 }
 TYPES = {
     "visit": "Go to a place, or hear someone out (may be mixed with the other tasks).",

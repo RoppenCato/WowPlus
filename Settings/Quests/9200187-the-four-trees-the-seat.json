@@ -1,0 +1,65 @@
+{
+  "id": 9200187,
+  "title": "The Four Trees: The Seat",
+  "level": 60,
+  "min_level": 60,
+  "max_level": 0,
+  "side": "both",
+  "class": "druid",
+  "zone": 493,
+  "type": "visit",
+  "after": 9200186,
+  "giver": 12042,
+  "turn_in": 12042,
+  "objectives": [
+    {
+      "talk": 11832,
+      "text": "Hear Keeper Remulos",
+      "says": [
+        "So you are the one who has walked to all four of the trees. I have watched you go. I am Remulos. My father was Cenarius.",
+        "It was I who opened this glade to every people that follows our path, and I who brought the tauren into the Circle, though the Archdruid would not have it. I have not regretted it.",
+        "Go south, to the barrow dens that bear his name. Stand at their mouth a while. Then you will know what the Circle is waiting for, and why it needs those who are awake."
+      ]
+    },
+    {
+      "place": {
+        "map": 1,
+        "x": 7631.0,
+        "y": -2990.0,
+        "radius": 70
+      },
+      "text": "Stand before the Stormrage Barrow Dens"
+    }
+  ],
+  "texts": {
+    "details": "You have come to the end of the pilgrimage, and it ends where it should: at home.\n\nThis glade is the heart of the Cenarion Circle. Malfurion himself founded our order here, so that druids would keep watch on one another and none go too far alone. Night elf and tauren live side by side in Nighthaven, and nowhere else in the world as easily.\n\nIts guardian is not one of us. West of the town, at the shrine, stands Keeper Remulos. He has asked to see you, $N. Go and hear him. Then do as he bids.",
+    "objectives": "Hear Keeper Remulos at his shrine west of Nighthaven and stand before the Stormrage Barrow Dens in the south of the Moonglade. Return to Loganaar.",
+    "progress": "The Keeper does not ask for many. Do not keep him waiting.",
+    "completion": "You have stood where he lies.\n\nThat is all there is to show you. Under those hills sleeps the one who began our order, and he does not wake. At four trees sit four wardens who have forgotten what they warded. And between them and the world there is the Circle: a few thousand of us, elf and tauren, who are still awake.\n\nThat is your seat, $N. It is not a chair in a hall. It is a place in the watch. The Dream is sick, and it is still the truest thing there is, and we are what stands at its doors now.\n\nTake a staff; you have walked far enough to need one. And this. It hatched on the edge of the Dream Bough. The little ones of the Dream were never touched by what took the great."
+  },
+  "reward": {
+    "money": 15000,
+    "xp_difficulty": 7,
+    "items": [
+      {
+        "item": 11474,
+        "count": 1
+      }
+    ],
+    "choices": [
+      {
+        "item": 22394,
+        "count": 1
+      },
+      {
+        "item": 15854,
+        "count": 1
+      },
+      {
+        "item": 13161,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Four Trees, level 60: Moonglade, with no kill. From the wiki: Moonglade is the haven of druids and home of the Cenarion Circle, which Malfurion founded there; tauren and night elves coexist in Nighthaven; Keeper Remulos is its guardian, opened it to all druid races, and admitted the tauren over Fandral Staghelm's objections; Malfurion's body is implied to rest by the Stormrage Barrow Dens. That Remulos is Cenarius's son is from the game's own older lore (the wiki's page marks only the tabletop source for it). Gives a Sprite Darter Egg. Invented: Remulos's words."
+}
