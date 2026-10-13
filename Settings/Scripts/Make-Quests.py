@@ -39,6 +39,9 @@ PERKS = {
     "repairs": "Repairs cost a quarter less.",
     "pockets": "Picking a pocket brings in twice the coin.",
     "fence": "A tenth more coin from everything looted.",
+    "mana_rest": "Mana comes back faster out of combat.",
+    "polymorph_pig": "Teaches the pig shape of Polymorph.",
+    "double_conjure": "Conjuring food or water makes twice as much.",
 }
 TYPES = {
     "visit": "Go to a place, or hear someone out (may be mixed with the other tasks).",
@@ -456,6 +459,7 @@ def build_sql(quests, creatures, items):
                     f"UPDATE wp_new SET entry = {number}, name = {text(new['name'])}, subname = {text(new.get('title', ''))}, AIName = '', ScriptName = '{'wowplus_duelist' if new.get('alone') else ''}', "
                     f"gossip_menu_id = 0, KillCredit1 = 0, KillCredit2 = 0, npcflag = {3 if person else 0}, "
                     f"`rank` = {int(new.get('rank', 0)) if not person else '`rank`'}, HealthModifier = HealthModifier * {float(new.get('health', 1))}, DamageModifier = DamageModifier * {float(new.get('damage', 1))}"
+                    + (f", faction = {int(new['faction'])}" if isinstance(new.get("faction"), int) else "")
                     + (f", minlevel = {int(new['level'])}, maxlevel = {int(new['level'])}" if isinstance(new.get("level"), int) else "") + ";",
                     "INSERT INTO creature_template SELECT * FROM wp_new;", "DROP TEMPORARY TABLE wp_new;",
                     f"INSERT INTO creature_template_model (CreatureID, Idx, CreatureDisplayID, DisplayScale, Probability, VerifiedBuild) "

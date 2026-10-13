@@ -12,6 +12,9 @@
  *   repairs      repairs cost a quarter less
  *   pockets      picking a pocket brings in twice the coin
  *   fence        a tenth more coin from everything looted
+ *   mana_rest    mana comes back faster out of combat
+ *   polymorph_pig   teaches the pig shape of Polymorph when the quest is handed in
+ *   double_conjure  conjuring food or water makes twice as much
  */
 
 #include "Chat.h"
@@ -43,6 +46,8 @@ namespace
     constexpr int32 RAGE_BACK = 10;                         // half of the 2 rage (20 in the game's units) lost on each beat
     constexpr float WIND_SHARE = 0.01f;                     // of full health, back on each beat out of combat
     constexpr float REPAIR_SHARE = 0.75f;                   // of the usual price
+    constexpr float MANA_SHARE = 0.01f;                     // of full mana, back on each beat out of combat
+    constexpr uint32 SPELL_POLYMORPH_PIG = 28272;
 
     std::unordered_map<std::string, std::vector<uint32>> questsWithPerk;    // perk -> the quests that give it
     std::unordered_map<uint32, std::string> perkOfQuest;
@@ -127,7 +132,8 @@ void WowPlusPerksWorld::Rest(uint32 diff)
 
     bool const rage = questsWithPerk.find("rage_hold") != questsWithPerk.end();
     bool const wind = questsWithPerk.find("second_wind") != questsWithPerk.end();
-    if (!rage && !wind)
+    bool const mana = questsWithPerk.find("mana_rest") != questsWithPerk.end();
+    if (!rage && !wind && !mana)
         return;
 
     std::vector<Player*> resting;
@@ -144,6 +150,8 @@ void WowPlusPerksWorld::Rest(uint32 diff)
             player->ModifyPower(POWER_RAGE, RAGE_BACK);
         if (wind && player->GetHealth() < player->GetMaxHealth() && HasPerk(player, "second_wind"))
             player->ModifyHealth(int32(player->GetMaxHealth() * WIND_SHARE));
+        if (mana && player->getPowerType() == POWER_MANA && player->GetPower(POWER_MANA) < player->GetMaxPower(POWER_MANA) && HasPerk(player, "mana_rest"))
+            player->ModifyPower(POWER_MANA, int32(player->GetMaxPower(POWER_MANA) * MANA_SHARE));
     }
 }
 
@@ -178,12 +186,32 @@ public:
             chat.SendSysMessage("You have learned to hold your anger: your rage drains half as fast out of combat from now on.");
         else if (found->second == "second_wind")
             chat.SendSysMessage("You have learned to catch your breath: your health comes back faster between fights from now on.");
+        else if (found->second == "mana_rest")
+            chat.SendSysMessage("You have learned to draw on what is around you: your mana comes back faster out of combat from now on.");
+        else if (found->second == "polymorph_pig")
+        {
+            if (!player->HasSpell(SPELL_POLYMORPH_PIG))
+                player->learnSpell(SPELL_POLYMORPH_PIG);
+            chat.SendSysMessage("You have learned a new shape for Polymorph: the pig.");
+        }
+        else if (found->second == "double_conjure")
+            chat.SendSysMessage("You have learned to waste nothing of a spell: conjuring food or water makes twice as much from now on.");
         else if (found->second == "pockets")
             chat.SendSysMessage("You have learned where people keep what matters: picking a pocket brings you twice the coin from now on.");
         else if (found->second == "fence")
             chat.SendSysMessage("You have learned what to look for: you find a tenth more coin on everything you loot from now on.");
         else if (found->second == "repairs")
             chat.SendSysMessage("You have learned to care for your arms: repairs cost you a quarter less from now on.");
+    }
+
+    void OnPlayerCreateItem(Player* player, Item* item, uint32 count) override
+    {
+        if (!item || !count || !HasPerk(player, "double_conjure"))
+            return;
+
+        ItemTemplate const* made = item->GetTemplate();
+        if (made->Class == ITEM_CLASS_CONSUMABLE && made->SubClass == ITEM_SUBCLASS_FOOD && made->HasFlag(ITEM_FLAG_CONJURED))
+            player->AddItem(made->ItemId, count);
     }
 
     void OnPlayerBeforeLootMoney(Player* player, Loot* loot) override

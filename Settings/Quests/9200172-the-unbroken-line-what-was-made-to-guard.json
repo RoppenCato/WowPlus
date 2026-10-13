@@ -1,0 +1,51 @@
+{
+  "id": 9200172,
+  "title": "The Unbroken Line: What Was Made to Guard",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "horde",
+  "class": "mage",
+  "zone": 85,
+  "type": "slay",
+  "perk": "mana_rest",
+  "giver": 1938,
+  "turn_in": 1938,
+  "creatures": [
+    {
+      "id": 9210043,
+      "kind": "enemy",
+      "like": 1555,
+      "name": "The First Weaver",
+      "title": "The Unbroken Line",
+      "level": 20,
+      "map": 0,
+      "x": 2400.0,
+      "y": -820.0,
+      "z": 70.1,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.8,
+      "size": 1.5
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210043,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "So you are sent to learn where the line leads. Then you must go back to Tirisfal, to a place you have walked past.\n\nSome twenty-seven centuries ago the wizards of Dalaran were careless. They worked great magics for small reasons, and demons slipped into the world through the holes. So the magi of Dalaran and the elves of Quel'Thalas made a secret order to hunt what they had let in, and poured their power into one mage in each age: the Guardian. They met in a vale in the east of Tirisfal.\n\nOne of that order made spiders to keep the meeting place private. It was a mad thing to do. No one ever unmade them. The oldest is there still. Go to Venomweb Vale, $N, and do what its maker should have done.",
+    "objectives": "Destroy the First Weaver in Venomweb Vale, in the east of Tirisfal Glades, then return to Dalar Dawnweaver at the Sepulcher.",
+    "progress": "It was made to keep people out. It is very good at it.",
+    "completion": "Unmade at last. It has waited longer than our kingdom stood.\n\nThat is the second link, $N. Above your teacher stands every mage who ever mended what a mage had torn. The order took the name of those glades: the Council of Tirisfal. Its last Guardian was Medivh, and you will hear more of him than you wish.\n\nNow, a gift from that tradition. Those hunters could not stop to rest for an hour between fights. They learned to draw back what they had spent from the world around them. You have earned the trick of it.\n\nAt thirty seasons, come back to me. There is a town in the south of this forest where Dalaran is trying to wake something it should not."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Unbroken Line, level 20 (Horde): the Council of Tirisfal met in Venomweb Vale, where one of its members created the spiders \"in a mad bid to secure the meeting place\" (from the wiki). Gives the perk of faster mana out of combat. Invented: the First Weaver."
+}

@@ -1,0 +1,52 @@
+{
+  "id": 9200177,
+  "title": "The Unbroken Line: The Source",
+  "level": 50,
+  "min_level": 50,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "mage",
+  "zone": 16,
+  "type": "slay",
+  "after": 9200175,
+  "perk": "double_conjure",
+  "giver": 8395,
+  "turn_in": 8395,
+  "creatures": [
+    {
+      "id": 9210047,
+      "kind": "enemy",
+      "like": 6117,
+      "name": "Magistrix Selaneth",
+      "title": "The Unbroken Line",
+      "level": 50,
+      "map": 1,
+      "x": 2900.0,
+      "y": -4040.0,
+      "z": 142.0,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.7,
+      "size": 1.2
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210047,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "The Archmage is occupied. He is always occupied. I am permitted to instruct those he has not time for, which is everyone.\n\nYou have followed your line back to the elves who taught the hundred. Now learn where they had it from. Ten thousand years ago there was one great source of arcane power in the world, the Well of Eternity, and one people who drew on it without restraint: the Highborne, the court of Queen Azshara. This coast was their capital. Their abuse of the Well brought the demons, and the war that followed broke the world in two.\n\nSome Highborne survived, crossed the sea, and became the high elves. That is where your hundred's teachers came from. So every spell you cast began here, $N, in the worst mistake ever made.\n\nOne of that court has not left. South-west of here, in the ruins, walks the shade of Magistrix Selaneth. End her.",
+    "objectives": "Destroy the shade of Magistrix Selaneth in the Highborne ruins south-west of Xylem's cliff in Azshara, then return to Sanath Lim-yo.",
+    "progress": "She will think you a servant come to fetch something. They always do.",
+    "completion": "She is unmade? Then the oldest debt on your line is a little lighter.\n\nThat is the fifth link, and the first. There is nothing behind the Highborne but the Well itself. You have walked the whole of it now: your teacher, the hunters of Tirisfal, Dalaran, the hundred, the high elves, the queen's court.\n\nThey were wasteful beyond imagining, the Highborne. The Archmage says the mark of a mage who has understood them is that he wastes nothing. A spell that makes one loaf can make two, if every part of it is used. You will find that it does, for you, from today.\n\nOne thing remains, and it is not a link. It is what the line cost. Come back at sixty seasons."
+  },
+  "reward": {
+    "money": 9000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Unbroken Line, level 50: the Highborne and the Well of Eternity. From the wiki: the Highborne of Queen Azshara's court abused the Well's arcane magic; Azshara's coast was part of Zin-Azshari; exiled Highborne under Dath'Remar became the high elves; Archmage Xylem's tower is reached through his apprentice Sanath Lim-yo. Gives the perk of double conjured food and water. Invented: Magistrix Selaneth."
+}

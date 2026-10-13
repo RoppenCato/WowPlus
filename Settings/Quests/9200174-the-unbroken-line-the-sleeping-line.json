@@ -1,0 +1,52 @@
+{
+  "id": 9200174,
+  "title": "The Unbroken Line: The Sleeping Line",
+  "level": 30,
+  "min_level": 30,
+  "max_level": 0,
+  "side": "horde",
+  "class": "mage",
+  "zone": 130,
+  "type": "slay",
+  "after": 9200172,
+  "perk": "polymorph_pig",
+  "giver": 1938,
+  "turn_in": 1938,
+  "creatures": [
+    {
+      "id": 9210045,
+      "kind": "enemy",
+      "like": 1920,
+      "name": "Magus Orrin Vale",
+      "title": "The Unbroken Line",
+      "level": 30,
+      "map": 0,
+      "x": -132.0,
+      "y": 881.2,
+      "z": 64.7,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.8,
+      "size": 1.05
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210045,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You wish to see Dalaran. So did I, once; I studied there. You cannot. It is gone.\n\nAfter the Troll Wars the magi of Arathor founded that city, so that there would be one place in the world where our craft governed itself. The Kirin Tor ruled it, and the Council of Six ruled the Kirin Tor. The demon Archimonde brought it down in an afternoon. They rebuilt it under a dome. Then they lifted the whole city from the ground and sent it north. There is a hole by the lake where it stood.\n\nBut they left people here. South of us is Ambermill. It sits on a sleeping ley line, a vein of the world's own power, and the Kirin Tor mean to wake it. If they do, this forest is theirs. The one doing the work is Magus Orrin Vale. Stop him, $N.",
+    "objectives": "Kill Magus Orrin Vale at Ambermill in Silverpine Forest, then return to Dalar Dawnweaver at the Sepulcher.",
+    "progress": "He is of my old school. He will be better prepared than a farmer with a wand.",
+    "completion": "Then the line under Ambermill sleeps a while longer.\n\nThat is the third link, $N. Above the hunters of Tirisfal stands the city that trained them. I was taught there. So, through me, were you. We are its enemies now, and we still cast in its hand.\n\nIt is also the home of an old joke. An apprentice who cannot yet be trusted with a sheep is given something smaller to practise on. I was made to do it. Now so are you. You know the pig.\n\nThe next link is older than Dalaran. In the marsh of Dustwallow, in Kalimdor, lives a human named Tabetha who takes students from any people. Go to her at forty seasons."
+  },
+  "reward": {
+    "money": 3000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Unbroken Line, level 30 (Horde): Dalaran, from a Forsaken who studied there; from the wiki, Ambermill sits atop a dormant ley line node that the Kirin Tor tried to reactivate, and the Forsaken interrupted it, fearing to lose Silverpine. Teaches Polymorph: Pig. Invented: Magus Orrin Vale."
+}

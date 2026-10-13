@@ -1,0 +1,52 @@
+{
+  "id": 9200171,
+  "title": "The Unbroken Line: What Slipped Through",
+  "level": 20,
+  "min_level": 20,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "mage",
+  "zone": 12,
+  "type": "slay",
+  "perk": "mana_rest",
+  "giver": 313,
+  "turn_in": 313,
+  "creatures": [
+    {
+      "id": 9210042,
+      "kind": "enemy",
+      "like": 6116,
+      "name": "Thing from the Rift",
+      "title": "The Unbroken Line",
+      "level": 20,
+      "map": 0,
+      "x": -9640.0,
+      "y": -800.0,
+      "z": 44.4,
+      "o": 1.0,
+      "respawn": 240,
+      "faction": 14,
+      "health": 1.7,
+      "size": 1.1
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210042,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Zaldimar sends me his promising ones. Sit, and I will tell you the first thing a mage is ashamed of.\n\nSome twenty-seven centuries ago the wizards of Dalaran were careless. They worked great magics for small reasons, and the fabric wore thin, and demons began to slip into the world through the holes. So the magi of Dalaran and the elves of Quel'Thalas made a secret order to hunt what they had let in. They chose one mage in each age and poured their own power into that one: the Guardian. For near three thousand years, that was the price of our craft.\n\nHoles still open, $N. One has, in the woods south of my tower. A small thing came through. Go and close the account.",
+    "objectives": "Destroy the Thing from the Rift, in the woods near the Tower of Azora, then return to Theocritus.",
+    "progress": "It is small. That is no comfort; they all begin small.",
+    "completion": "Gone? Good. One fewer debts.\n\nThat is the second link in your line, $N. Above your teacher stands every mage who ever mended what a mage had torn. The order took its name from the glades where it met: the Council of Tirisfal. Its last Guardian was Medivh, and you will hear more of him than you wish before you are done.\n\nNow, a gift from that tradition. Those hunters could not stop to rest for an hour between fights. They learned to draw back what they had spent from the world around them. You have earned the trick of it.\n\nAt thirty seasons, go north, to where Dalaran stood. Ask for Archmage Ansirem Runeweaver, at the crater by Lordamere Lake."
+  },
+  "reward": {
+    "money": 1500,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Unbroken Line, level 20 (Alliance): the Council of Tirisfal. From the wiki: about 2680 years before the Dark Portal, Dalaran's reckless magic let demons into the world, and the magi of Dalaran and Quel'Thalas formed a secret order that empowered a Guardian; it met in Tirisfal Glades; Medivh was the last. Gives the perk of faster mana out of combat. Invented: the Thing from the Rift."
+}

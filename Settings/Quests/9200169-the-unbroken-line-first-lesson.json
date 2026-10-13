@@ -1,0 +1,68 @@
+{
+  "id": 9200169,
+  "title": "The Unbroken Line: First Lesson",
+  "level": 10,
+  "min_level": 10,
+  "max_level": 0,
+  "side": "horde",
+  "class": "mage",
+  "zone": 14,
+  "type": "fetch",
+  "giver": 5880,
+  "turn_in": 5880,
+  "creatures": [
+    {
+      "id": 9210040,
+      "kind": "enemy",
+      "like": 15274,
+      "name": "Wandering Ember",
+      "title": "The Unbroken Line",
+      "level": 10,
+      "map": 1,
+      "x": -712.0,
+      "y": -4820.0,
+      "z": 29.2,
+      "o": 1.0,
+      "respawn": 240,
+      "faction": 14,
+      "health": 1.5,
+      "size": 1.3
+    }
+  ],
+  "objectives": [
+    {
+      "item": 5350,
+      "count": 2
+    },
+    {
+      "creature": 9210040,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Ya can throw fire. So can a torch, mon. Sit.\n\nTwo tings Un'Thuwa want from ya today, an' dey be de same lesson. First: conjure me water. Two flasks, made by ya own hand, out of nothin'. Not from de well. I gonna know.\n\nSecond. Some weeks back, one of my students made a familiar an' did not unmake it. It been driftin' along de shore ever since, growin', scarin' de raptors. We call it de Wandering Ember. Go an' take it apart, $N.",
+    "objectives": "Conjure 2 Conjured Water for your teacher and unmake Wandering Ember, which drifts on the shore near Sen'jin Village. Then return.",
+    "progress": "Water first. Anybody can break a ting. Show me ya can make one.",
+    "completion": "Good water. Cold. An' de Ember be gone? Den ya done both halves of what a mage does. Ya made a ting from nothin', an' ya cleaned up after one.\n\nRemember de second half. Every spell leaves someting behind. Mine, yours, de spells of mages dead tree thousand years. De world be full of what we forgot ta unmake.\n\nAn' know dis, $N. Someone taught me, an' someone taught dem, back an' back, never broken, all de way to de first. Ya be de newest link in dat line. I mean for ya ta walk it. Choose one of dese. When ya got twenty seasons, cross de sea ta Silverpine Forest. At de Sepulcher dere be a dead mage named Dalar Dawnweaver. He knows where de line goes."
+  },
+  "reward": {
+    "money": 300,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 11287,
+        "count": 1
+      },
+      {
+        "item": 1933,
+        "count": 1
+      },
+      {
+        "item": 15396,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Unbroken Line, level 10 (Horde): conjure water and unmake a loose conjuration. Invented: Wandering Ember."
+}

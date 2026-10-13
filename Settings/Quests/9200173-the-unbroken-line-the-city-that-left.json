@@ -1,0 +1,53 @@
+{
+  "id": 9200173,
+  "title": "The Unbroken Line: The City That Left",
+  "level": 30,
+  "min_level": 30,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "mage",
+  "zone": 36,
+  "type": "slay",
+  "after": 9200171,
+  "perk": "polymorph_pig",
+  "giver": 2543,
+  "turn_in": 2543,
+  "creatures": [
+    {
+      "id": 9210044,
+      "kind": "enemy",
+      "like": 2359,
+      "name": "Unbound Servant",
+      "title": "The Unbroken Line",
+      "level": 31,
+      "map": 0,
+      "x": 106.0,
+      "y": 380.0,
+      "z": 45.1,
+      "o": 1.0,
+      "respawn": 240,
+      "faction": 14,
+      "health": 1.7,
+      "size": 1.2
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210044,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Theocritus's student. You have come to see Dalaran, and I must show you a hole.\n\nAfter the Troll Wars the magi of Arathor founded a city here, so that there would be one place in the world where our craft governed itself. The Kirin Tor ruled it, and the Council of Six ruled the Kirin Tor. For near three thousand years, every mage of note passed through the Violet Citadel.\n\nThen the demon Archimonde brought it down in an afternoon. We came back. We raised a dome over the ruin and rebuilt inside it. And when the work was done, we lifted the whole city out of the ground and sent it north, to stand over the war against the Lich King. That is why you are looking at a crater.\n\nWe left in haste, $N. One of our bound servants slipped its binding in the confusion. It is still here, on the far rim. Unmake it.",
+    "objectives": "Destroy the Unbound Servant at the rim of the Dalaran crater, then return to Archmage Ansirem Runeweaver.",
+    "progress": "It was made to serve. Without a master it only breaks things.",
+    "completion": "Unbound and now unmade. Thank you. It should not have been left.\n\nThat is the third link. Above the hunters of Tirisfal stands the city that trained them. Whatever school you learned in, $N, whoever taught you, the forms you use were set down within those walls.\n\nIt is also the home of our oldest joke. An apprentice who cannot yet be trusted with a sheep is given something smaller to practise on. I think you are past that, but tradition is tradition. You know the pig now.\n\nThe next link is older than Dalaran. In the marsh of Dustwallow, in Kalimdor, lives a woman named Tabetha who has taught more apprentices than the Citadel remembers. Go to her at forty seasons."
+  },
+  "reward": {
+    "money": 3000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": []
+  },
+  "idea": "The Unbroken Line, level 30 (Alliance): Dalaran. From the wiki: founded by the magi of Arathor after the Troll Wars, ruled by the Kirin Tor under the Council of Six, with the Violet Citadel; destroyed by Archimonde; rebuilt under a dome and moved to Northrend for the war against the Lich King. Teaches Polymorph: Pig. Invented: the Unbound Servant and the tradition of the pig."
+}

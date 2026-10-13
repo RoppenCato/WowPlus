@@ -1,0 +1,46 @@
+{
+  "id": 9200180,
+  "title": "The Unbroken Line: The Last Guardian",
+  "level": 60,
+  "min_level": 60,
+  "max_level": 0,
+  "side": "horde",
+  "class": "mage",
+  "zone": 41,
+  "type": "slay",
+  "after": 9200178,
+  "giver": 8395,
+  "turn_in": 8395,
+  "objectives": [
+    {
+      "creature": 9210048,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "You know where our art came from. You should see where it nearly ended.\n\nThe hunters of Tirisfal poured their power into one Guardian in each age. The last but one was a woman, Aegwynn, who would not give that power back. She built a tower on a knot of the world's ley lines, in a pass south of Elwynn. Her son Medivh inherited her power and the tower both. He was the greatest of us. And the lord of all demons was inside him from before he was born.\n\nIt was Medivh who opened the door the orcs came through. His own apprentice, Khadgar, and his oldest friend put an end to him in that tower. The order died with him. There has been no Guardian since.\n\nOthers went into Karazhan after. They did not come out. One was a mage of promise named Hale Magefire. What is left of him walks the pass. Go alone, $N. He will not show himself to a company.",
+    "objectives": "Defeat the Echo of Hale Magefire in Deadwind Pass, alone and with no companions. Return to Sanath Lim-yo in Azshara.",
+    "progress": "Alone. He was alone when it took him.",
+    "completion": "Then he is at rest, and you have stood in the shadow of that tower and come away. Few of our calling can say it.\n\nHere is the whole of the lesson, and then I have nothing more to teach you. The line is unbroken. From the Well, through a queen's court, through exiles and one hundred students and a city and three thousand years of Guardians, to you. Every one of them was brilliant. And every link in that chain is also a catastrophe: a sundered world, a demon's foothold, a fallen city, a possessed man.\n\nThat is what you carry, $N. Not power. A debt, and the knowledge of how it was run up. Carry it better than they did.\n\nThis was his. Take it, or one of the others."
+  },
+  "reward": {
+    "money": 15000,
+    "xp_difficulty": 7,
+    "items": [],
+    "choices": [
+      {
+        "item": 13000,
+        "count": 1
+      },
+      {
+        "item": 20654,
+        "count": 1
+      },
+      {
+        "item": 18372,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Unbroken Line, level 60: a duel fought alone. From the wiki: Aegwynn refused to return the Guardian's power and built Karazhan on potent ley lines; Medivh, the last Guardian, was possessed by Sargeras and was killed by Lothar and his apprentice Khadgar; those who entered the tower never emerged. Invented: Hale Magefire as one who entered (the staff bears that name in the game, with no story of its own)."
+}

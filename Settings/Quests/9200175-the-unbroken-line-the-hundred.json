@@ -1,0 +1,64 @@
+{
+  "id": 9200175,
+  "title": "The Unbroken Line: The Hundred",
+  "level": 40,
+  "min_level": 40,
+  "max_level": 0,
+  "side": "alliance",
+  "class": "mage",
+  "zone": 45,
+  "type": "slay",
+  "after": 9200173,
+  "giver": 6546,
+  "turn_in": 6546,
+  "creatures": [
+    {
+      "id": 9210046,
+      "kind": "enemy",
+      "like": 2762,
+      "name": "Exile of the Outer Stone",
+      "title": "The Unbroken Line",
+      "level": 40,
+      "map": 0,
+      "x": -1367.0,
+      "y": -2765.2,
+      "z": 56.7,
+      "o": 1.0,
+      "respawn": 240,
+      "health": 1.7,
+      "size": 1.25
+    }
+  ],
+  "objectives": [
+    {
+      "creature": 9210046,
+      "count": 1
+    }
+  ],
+  "texts": {
+    "details": "Your errand must mean much, to draw you so deep into the marsh. Sit. I have taught the young of both your peoples, and I tell them all the same thing at this point.\n\nDalaran did not invent this. Nearly three thousand years ago there were no human mages at all. The elves of Quel'Thalas were being overrun by trolls, and they came to the human king, Thoradin, for soldiers. In return they agreed to teach one hundred of his people the arcane. One hundred. They chose those hundred carefully, and they taught them only as much as the war required.\n\nIt was enough. Everything since comes down from those hundred, in the hills of Arathi. There is far older magic lying in those same hills, bound into rings of standing stones, and it does not sleep well. One of its exiles is loose at the Outer Stone. Go and unmake it, $N. You know how to travel.",
+    "objectives": "Destroy the Exile of the Outer Stone at the Circle of Outer Binding in the Arathi Highlands, then return to Tabetha in Dustwallow Marsh.",
+    "progress": "The stones are a binding. Do not ask me whose. No one living knows.",
+    "completion": "Then it is quiet again, for a time.\n\nThat is the fourth link. Above Dalaran stand one hundred students, and the elves who decided how much they could be trusted with. Think on that. Our whole art began as a loan, with conditions.\n\nYou have come far enough to be given proper tools. Choose one.\n\nThe fifth link is the elves' own, and to find it you must go where they do not like to go. In Azshara, in the north-east of this land, the Archmage Xylem keeps a tower. He will not see you. His apprentice Sanath Lim-yo, at the foot of the cliff, will. Fifty seasons."
+  },
+  "reward": {
+    "money": 6000,
+    "xp_difficulty": 6,
+    "items": [],
+    "choices": [
+      {
+        "item": 4134,
+        "count": 1
+      },
+      {
+        "item": 10704,
+        "count": 1
+      },
+      {
+        "item": 11262,
+        "count": 1
+      }
+    ]
+  },
+  "idea": "The Unbroken Line, level 40: the first hundred human mages. From the wiki: the high elves agreed to teach a hundred humans arcane magic in exchange for military aid against the Amani; Tabetha has trained generations of apprentices of both factions, and her greeting is the game's own; the Circles of Binding in Arathi are guarded by elementals and hold some unknown entity. Invented: the Exile of the Outer Stone."
+}
