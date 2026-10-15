@@ -48,6 +48,13 @@ ping -n 2 127.0.0.1 >nul
 netstat -an | find ":3724 " | find "LISTENING" >nul
 if errorlevel 1 goto waitauth
 
+rem The bot chat window lets bots answer; start it unless one is already listening.
+netstat -an | find "127.0.0.1:8586 " | find "LISTENING" >nul
+if errorlevel 1 (
+  echo Starting bot chat...
+  start "WowPlus Bot Chat" /min "%ROOT%Start-Bot-Chat.bat"
+)
+
 echo Starting world server...
 echo To stop it, type:  server shutdown 5
 "%BIN%\worldserver.exe"

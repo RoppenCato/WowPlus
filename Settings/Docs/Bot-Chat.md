@@ -7,7 +7,7 @@ Talk to a bot and it answers like the person playing that character: someone wit
 ## How to use it
 
 1. Once: run `Login-Bot-Chat.bat` and sign in with your Claude account.
-2. Start `Start-Bot-Chat.bat` and leave the window open while you play. It shows every exchange.
+2. `Start-Server.bat` opens the bot chat window for you (minimised, as "WowPlus Bot Chat"), unless one is already running. Leave it open while you play; it shows every exchange. `Start-Bot-Chat.bat` starts it by hand.
 3. In the game, talk to a bot.
 
 Close the window with Ctrl+C rather than the X: the bots then write down what they remember first. Without the window, bots simply stay quiet.
