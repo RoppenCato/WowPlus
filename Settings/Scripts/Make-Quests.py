@@ -385,6 +385,41 @@ def build_map_marks(quests):
     return "\n".join(out) + "\n"
 
 
+BOUNTY_FIRST, BOUNTY_LAST = 9100000, 9199999
+BOUNTY_REACH = 35                                       # yards around the champion's spawn that the map shades
+
+
+def build_bounty_marks():
+    """Map marks for the bounties on champions (Settings/SQL/world/2026-10-11_champions.sql makes those quests,
+    and runs before this at every start): where the champion lives, and an innkeeper of its zone to hand in to."""
+    zones = map_areas()
+    out = [f"DELETE FROM quest_poi WHERE QuestID BETWEEN {BOUNTY_FIRST} AND {BOUNTY_LAST};",
+           f"DELETE FROM quest_poi_points WHERE QuestID BETWEEN {BOUNTY_FIRST} AND {BOUNTY_LAST};"]
+    rows = sql(f"SELECT q.ID, q.QuestSortID, "
+               f"(SELECT CONCAT(c.map, ' ', c.position_x, ' ', c.position_y) FROM creature c WHERE c.id = q.RequiredNpcOrGo1 ORDER BY c.guid LIMIT 1), "
+               f"(SELECT CONCAT(g.map, ' ', g.position_x, ' ', g.position_y) FROM creature_questender e JOIN creature g ON g.id = e.id "
+               f"WHERE e.quest = q.ID AND g.zoneId = q.QuestSortID ORDER BY g.guid LIMIT 1) "
+               f"FROM quest_template q WHERE q.ID BETWEEN {BOUNTY_FIRST} AND {BOUNTY_LAST}")
+    for number, zone, lives, ender in rows:
+        on_map = zones.get(int(zone), 0)
+        if not on_map or not lives or lives == "NULL":
+            continue
+        map_id, x, y = lives.split()
+        x, y = float(x), float(y)
+        out.append(f"INSERT INTO quest_poi (QuestID, id, ObjectiveIndex, MapID, WorldMapAreaId, Floor, Priority, Flags, VerifiedBuild) "
+                   f"VALUES ({number}, 0, 0, {map_id}, {on_map}, 0, 0, 1, 0);")
+        for index in range(8):
+            out.append(f"INSERT INTO quest_poi_points (QuestID, Idx1, Idx2, X, Y, VerifiedBuild) VALUES ({number}, 0, {index}, "
+                       f"{int(round(x + BOUNTY_REACH * math.cos(index * math.pi / 4)))}, {int(round(y + BOUNTY_REACH * math.sin(index * math.pi / 4)))}, 0);")
+        if ender and ender != "NULL":
+            end_map, end_x, end_y = ender.split()
+            out.append(f"INSERT INTO quest_poi (QuestID, id, ObjectiveIndex, MapID, WorldMapAreaId, Floor, Priority, Flags, VerifiedBuild) "
+                       f"VALUES ({number}, 1, -1, {end_map}, {on_map}, 0, 0, 1, 0);")
+            out.append(f"INSERT INTO quest_poi_points (QuestID, Idx1, Idx2, X, Y, VerifiedBuild) VALUES ({number}, 1, 0, "
+                       f"{int(round(float(end_x)))}, {int(round(float(end_y)))}, 0);")
+    return "\n".join(out) + "\n"
+
+
 def neighbours(map_id):
     """Every creature the game itself has on a map, as (x, y, is someone to talk to)."""
     rows = sql(f"SELECT c.position_x, c.position_y, (t.npcflag <> 0) FROM creature c JOIN creature_template t ON t.entry = c.id "
@@ -602,6 +637,7 @@ def apply(reload=False):
     """Checks and applies. Returns (number of quests in the game, problems)."""
     good, problems, creatures, items = check_all()
     run_sql(build_sql(good, creatures, items))
+    run_sql(build_bounty_marks())
     if reload:
         reload_server()
     return len(good), problems
