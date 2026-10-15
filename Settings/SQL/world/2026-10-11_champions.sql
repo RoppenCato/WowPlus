@@ -127,9 +127,10 @@ ALTER TABLE wp_copy DROP COLUMN wp_entry;
 INSERT INTO smart_scripts SELECT * FROM wp_copy;
 DROP TEMPORARY TABLE wp_copy;
 
--- Put them in the world: that one spawn becomes the champion, and comes back after 4 to 8 hours
+-- Put them in the world: that one spawn becomes the champion, and comes back after two minutes, like
+-- every quest boss (2026-10-15; it was 4 to 8 hours, and a bot could take a bounty away for a night)
 UPDATE creature c JOIN wowplus_champions w ON w.guid = c.guid
-    SET c.id = w.entry, c.spawntimesecs = 14400 + CRC32(CONCAT(@seed, ':time:', c.guid)) % 14400;
+    SET c.id = w.entry, c.spawntimesecs = 120;
 
 -- Bounties -------------------------------------------------------------------------------------
 -- Every champion has a price on its head: a real quest, offered and paid by the innkeepers of

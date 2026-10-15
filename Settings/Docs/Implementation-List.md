@@ -263,7 +263,7 @@ The whole picture is in [Bots.md](Bots.md) and [Bot-Chat.md](Bot-Chat.md).
 
 ## Champions (decided 2026-10-11)
 
-- [~] One or two enemies per zone are champions, chosen by the world seed: a name, a rare's silver dragon, more health, bigger, a level higher, back after 4 to 8 hours. As rares they always drop an extra item and give the first-kill bonus. (`Settings/SQL/world/2026-10-11_champions.sql`, table `wowplus_champions`)
+- [~] One or two enemies per zone are champions, chosen by the world seed: a name, a rare's silver dragon, more health, bigger, a level higher, back two minutes after they die. As rares they always drop an extra item and give the first-kill bonus. (`Settings/SQL/world/2026-10-11_champions.sql`, table `wowplus_champions`)
 - [~] A bounty on every champion: a real quest from the innkeepers of its zone (flight masters where there is no inn), paid in gold and experience. 86 of the 111 champions have someone to offer it; the rest stand in zones with neither.
 - [~] Bots pass on where a champion has been seen
 - [ ] Bounty boards as objects in towns, and bounties on other things than champions

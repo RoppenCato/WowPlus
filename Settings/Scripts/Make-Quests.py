@@ -385,6 +385,7 @@ def build_map_marks(quests):
     return "\n".join(out) + "\n"
 
 
+QUEST_BOSS_RESPAWN = 120                                # seconds; every quest boss comes back this soon (2026-10-15)
 BOUNTY_FIRST, BOUNTY_LAST = 9100000, 9199999
 BOUNTY_REACH = 35                                       # yards around the champion's spawn that the map shades
 
@@ -515,7 +516,7 @@ def build_sql(quests, creatures, items):
             out.append("INSERT INTO creature (guid, id, map, zoneId, areaId, spawnMask, phaseMask, equipment_id, position_x, position_y, position_z, orientation, "
                        "spawntimesecs, wander_distance, currentwaypoint, curhealth, curmana, MovementType, npcflag, unit_flags, dynamicflags, ScriptName, VerifiedBuild, CreateObject, Comment) "
                        f"SELECT {spawn_number}, {number}, {int(new['map'])}, {int(quest['zone'])}, 0, 1, 1, (SELECT IF(COUNT(*) > 0, 1, 0) FROM creature_equip_template WHERE CreatureID = {like}), "
-                       f"{float(new['x'])}, {float(new['y'])}, {float(new['z'])}, {float(new.get('o', 0))}, {int(new.get('respawn', 300))}, {0 if person else 4}, 0, 1, 0, {0 if person else 1}, "
+                       f"{float(new['x'])}, {float(new['y'])}, {float(new['z'])}, {float(new.get('o', 0))}, {min(int(new.get('respawn', QUEST_BOSS_RESPAWN)), QUEST_BOSS_RESPAWN)}, {0 if person else 4}, 0, 1, 0, {0 if person else 1}, "
                        f"0, 0, 0, '', 0, 0, '{LOOT_MARK} {quest['id']}';")
     for quest in quests:
         number = quest["id"]
