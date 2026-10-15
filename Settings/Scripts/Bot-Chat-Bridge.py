@@ -726,6 +726,12 @@ class Handler(BaseHTTPRequestHandler):
         pass
 
 
+class OneServer(ThreadingHTTPServer):
+    # On Windows "reuse" lets a second window take the same port, and the game's lines are then shared
+    # out between both (on 2026-10-15 a forgotten copy from three days before answered half of them with nothing)
+    allow_reuse_address = False
+
+
 def start_minds(quiet=False):
     global minds
     os.makedirs(MEMORY_DIR, exist_ok=True)
@@ -757,6 +763,12 @@ def main():
         if a.remember:
             remember_what_is_due(everything=True)
         return
+    try:
+        server = OneServer(("127.0.0.1", PORT), Handler)
+    except OSError:
+        log(f"Another bot chat bridge is already listening on port {PORT}. Close it first (it may have no window:")
+        log("look for python.exe running Bot-Chat-Bridge.py in Task Manager), then start this one again.")
+        return
     forget_strangers()
     threading.Thread(target=memory_keeper, daemon=True).start()
     full = sum(os.path.exists(minds.background_path(person)) for person in minds.people)
@@ -764,7 +776,7 @@ def main():
     log(f"Using {minds.claude}")
     log("Whisper a bot, or talk in /say, party, guild or General chat. Close this window with Ctrl+C.")
     try:
-        ThreadingHTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
+        server.serve_forever()
     except KeyboardInterrupt:
         log("Writing down what the bots remember...")
         remember_what_is_due(everything=True)

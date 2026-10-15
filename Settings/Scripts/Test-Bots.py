@@ -104,6 +104,21 @@ def quick():
             return s.connect_ex(("127.0.0.1", port)) == 0
     report(listening(8085), "World server running", "port 8085 answers" if listening(8085) else "nothing listens on port 8085: start it with Start-Server.bat")
     report(None, "Bot chat window", "running" if listening(8586) else "not running (Start-Bot-Chat.bat); bots will not talk")
+    if listening(8586):
+        # Ask it something that needs no reply from Claude, a few times: an old copy left running on the same
+        # port takes some of the game's lines and drops them (2026-10-15)
+        def answers():
+            try:
+                with socket.create_connection(("127.0.0.1", 8586), timeout=5) as s:
+                    body = b"kind=known&player=__health_check__"
+                    s.sendall(b"POST /chat HTTP/1.0\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: "
+                              + str(len(body)).encode() + b"\r\n\r\n" + body)
+                    return s.recv(64).startswith(b"HTTP/1.0 200")
+            except OSError:
+                return False
+        tries = [answers() for _ in range(8)]
+        report(all(tries), "Bot chat answers the game", f"{sum(tries)} of {len(tries)} test lines answered"
+               + ("" if all(tries) else ": another copy of Bot-Chat-Bridge.py is probably running, maybe without a window (Task Manager, python.exe)"))
 
     # How many
     wanted_low, wanted_high = int(setting("Playerbots.MinRandomBots", 500)), int(setting("Playerbots.MaxRandomBots", 500))
