@@ -25,7 +25,7 @@ Kept outside the project, in `C:\dev\addon-refs` (read only, never run).
 | 1b | Dungeon maps for the Guide | Most old dungeons have no map in 3.3.5. Drawn by us from the walkable ground the server already has for each dungeon (`Data/mmaps`), with the bosses where they stand. | planned |
 | 2 | **WowPlus Dialogue** | Talking to an NPC: their face up close and talking, the text a page at a time, Space to go on, number keys to answer. Quest details, progress, rewards and NPC options. | built, not tried ([Dialogue.md](Dialogue.md)) |
 | 3 | **Voices** | The game's own quests and the zone lore: Spoken's voice packs, played by Spoken's own 3.3.5 player (Robin, 2026-10-27: "Cant you use the spoken voices"). Our own 241 quests: our own pack in the same shape, made on this PC with Kokoro (Robin on the samples: "they were alright"). The Guide reads a zone's story the first time you come there. | built, not heard ([Voice.md](Voice.md)) |
-| 4 | **WowPlus Map** | First: the whole map shown, coordinates, dungeon entrances, flight paths, boats, pins for champions and our quest givers. Then: the seamless continent to zoom and pan. | planned |
+| 4 | **WowPlus Map** | First: the unexplored shown faintly, coordinates, pins for dungeon entrances, champions, flight masters, inns and our quest givers. Then: the seamless continent to zoom and pan. | first part built, not tried ([Map.md](Map.md)); seamless map planned |
 
 ## Rules for all of them
 

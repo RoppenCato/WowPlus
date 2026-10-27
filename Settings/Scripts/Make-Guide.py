@@ -17,6 +17,7 @@ download.
 import glob
 import importlib.util
 import io
+import json
 import os
 import re
 import struct
@@ -30,6 +31,9 @@ OUT = os.path.join(ROOT, "Client", "AddOns", "WowPlusGuide", "Places.lua")
 STORIES = os.path.join(ROOT, "Settings", "Reference", "Boss-Stories.lua")
 LORE_IN = os.path.join(ROOT, "Settings", "Reference", "Zone-Lore")
 LORE_OUT = os.path.join(ROOT, "Client", "AddOns", "WowPlusGuide", "Lore.lua")
+MAP_OUT = os.path.join(ROOT, "Client", "AddOns", "WowPlusMap", "Data.lua")
+QUESTS = os.path.join(ROOT, "Settings", "Quests")
+FLIGHT_MASTER, INNKEEPER = 8192, 65536
 ZONE_VOICES = "SpokenZonesAudio"                    # Spoken's narrated lore, installed in the game (Settings/Docs/Voice.md)
 
 spec = importlib.util.spec_from_file_location("boss_loot", os.path.join(HERE, "Make-Boss-Loot.py"))
@@ -202,7 +206,7 @@ def main():
     zone_to_map = {n[0]: n[1] for n, _ in areas if n[2] == 0 and n[1] not in CONTINENTS}   # zone -> the map it is on
     maps_info, map_text = table("Map.dbc")
     instances = {n[0]: (map_text(n[5]), n[2] == 2) for n, _ in maps_info if n[2] in (1, 2)}   # dungeons and raids: name, raid?
-    world_maps, _ = table("WorldMapArea.dbc")
+    world_maps, world_text = table("WorldMapArea.dbc")
     zone_maps = [(n[1], n[2], f[4], f[5], f[6], f[7]) for n, f in world_maps if n[2] and n[1] in CONTINENTS]
 
     parent = {n[0]: n[2] for n, _ in areas}
@@ -360,6 +364,73 @@ def main():
 
     unchanged = write(OUT, "\n".join(out) + "\n")
     lore = write_lore()
+
+    # For WowPlus Map: every zone map's pieces (to show what is not explored yet), and the pins
+    file_of_zone = {area_name.get(n[2], ""): world_text(n[3]) for n, _ in world_maps if n[2] and n[1] in CONTINENTS}
+    file_of_map_area = {n[0]: world_text(n[3]) for n, _ in world_maps}
+    overlays = {}
+    pieces, piece_text = table("WorldMapOverlay.dbc")
+    for n, _ in pieces:
+        name = file_of_map_area.get(n[1])
+        if name and piece_text(n[8]):
+            overlays.setdefault(name, []).append((piece_text(n[8]), n[9], n[10], n[11], n[12]))
+    pins = {}
+
+    def pin(spot, *fields):
+        if spot and spot[0] in file_of_zone:
+            pins.setdefault(file_of_zone[spot[0]], []).append((spot[1], spot[2]) + fields)
+
+    for map_id in sorted(maps):
+        if map_id in entrances:
+            name, raid = instances[map_id]
+            low, high, _ = levels.get(map_id, (0, 0, 0))
+            pin(entrances[map_id], "raid" if raid else "dungeon", name, (f"Levels {low}-{high}" if low else ""), pictures.get(map_id, ""))
+    for level, name, kind, spot, entry, drops, bounty in champions:
+        pin(spot, "champion", name, f"Level {level}, a champion among the {kind}" + (". A bounty is out on it." if bounty else "."), "")
+    for entry, name, subname, flags, map_id, x, y in sql(
+            f"SELECT t.entry, t.name, t.subname, t.npcflag, c.map, c.position_x, c.position_y FROM creature c JOIN creature_template t ON t.entry = c.id "
+            f"WHERE c.map IN (0, 1, 530, 571) AND t.npcflag & {FLIGHT_MASTER | INNKEEPER} AND t.entry < 9000000"):
+        pin(on_map(int(map_id), float(x), float(y)), "flight" if int(flags) & FLIGHT_MASTER else "inn", name, subname if subname != "NULL" else "", "")
+    # Our own quests, at their giver
+    ours = {}
+    for path in sorted(glob.glob(os.path.join(QUESTS, "92*.json"))):
+        with io.open(path, encoding="utf-8") as f:
+            q = json.load(f)
+        ours.setdefault(q["giver"], []).append(q)
+        for creature in q.get("creatures") or []:
+            if creature.get("kind") == "person":
+                ours.setdefault(("at", creature["id"]), (creature["map"], creature["x"], creature["y"]))
+    givers = [g for g in ours if isinstance(g, int)]
+    placed = {}
+    for entry, map_id, x, y in sql(f"SELECT id, map, position_x, position_y FROM creature WHERE id IN ({','.join(str(g) for g in givers)}) "
+                                   f"AND map IN (0, 1, 530, 571) ORDER BY guid"):
+        placed.setdefault(int(entry), (int(map_id), float(x), float(y)))
+    names = {int(e): n for e, n in sql(f"SELECT entry, name FROM creature_template WHERE entry IN ({','.join(str(g) for g in givers)})")}
+    for giver in givers:
+        at = placed.get(giver) or ours.get(("at", giver))
+        if not at:
+            continue
+        offered = ",".join("{%d,%s,%d,%s,%s}" % (q["id"], lua(q["title"]), q["level"], lua({"alliance": "A", "horde": "H"}.get(q["side"], "")),
+                                                lua(q.get("class", "").replace(" ", "").upper()))
+                           for q in sorted(ours[giver], key=lambda q: (q["level"], q["id"])))
+        pin(on_map(*at), "quest", names.get(giver, "?"), "{" + offered + "}", "")
+
+    out = ["-- Made by Settings/Scripts/Make-Guide.py at every server start, for WowPlus Map. Do not edit: it is written over.",
+           "-- Overlays: each zone map's pieces {texture, width, height, x, y}, from the client's WorldMapOverlay table.",
+           "-- Pins: {x %, y %, kind, name, note, extra}; for kind \"quest\" the note is the list {quest, title, level, side}.",
+           "WowPlusMapOverlays = {"]
+    for name in sorted(overlays):
+        out.append("  [%s] = {%s}," % (lua(name), ",".join("{%s,%d,%d,%d,%d}" % (lua(t), w, h, x, y) for t, w, h, x, y in overlays[name])))
+    out.append("}")
+    out.append("WowPlusMapPins = {")
+    for name in sorted(pins):
+        rows = []
+        for x, y, kind, label, note, extra in sorted(pins[name], key=lambda row: (row[2], row[0], row[1])):
+            rows.append("{%s,%s,%s,%s,%s,%s}" % (x, y, lua(kind), lua(label), note if kind == "quest" else lua(note), lua(extra)))
+        out.append("  [%s] = {%s}," % (lua(name), ",".join(rows)))
+    out.append("}")
+    write(MAP_OUT, "\n".join(out) + "\n")
+    print(f"Map: pieces of {len(overlays)} zone maps, {sum(len(v) for v in pins.values())} pins.")
     told = sum(len(s) for s in stories.values())
     print(f"Guide: {len(maps)} places ({len(entrances)} with an entrance, {sum(len(q) for q in quests.values())} quests, {told} boss stories), "
           f"{len(champions)} champions, lore of {lore} places, in {time.time() - started:.1f} s." + ("" if unchanged else " Written."))

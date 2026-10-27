@@ -14,6 +14,7 @@ addon's own code runs from start to end. Each step after the addon's name is one
     search TEXT        types into WowPlusGuideSearch
     update             runs every frame's OnUpdate once (1.6 seconds passed)
     texts              prints the text of every shown text on shown frames (what the window says)
+    show NAME          shows a named frame (its OnShow runs)
 Needs the Python package lupa (pip install lupa).
 """
 import importlib
@@ -145,6 +146,18 @@ GetGreetingText = function() return "Hello." end
 IsQuestCompletable = function() return true end
 GetCoinTextureString = function(n) return tostring(n) .. "c" end
 UnitOnTaxi = function() return false end
+-- The world map, as WowPlus Map sees it: Westfall, with one piece explored
+WorldMapFrame = CreateFrame("Frame", "WorldMapFrame"); WorldMapFrame._shown = false
+WorldMapDetailFrame = CreateFrame("Frame", "WorldMapDetailFrame")
+WorldMapButton = CreateFrame("Button", "WorldMapButton")
+WorldMapTooltip = CreateFrame("GameTooltip", "WorldMapTooltip")
+GetMapInfo = function() return "Westfall", 668 end
+GetNumMapOverlays = function() return 1 end
+GetMapOverlayInfo = function(i) return "Interface\\WorldMap\\Westfall\\SentinelHill", 195, 240, 442, 241 end
+GetPlayerMapPosition = function() return 0.5, 0.47 end
+UnitFactionGroup = function() return "Alliance", "Alliance" end
+UnitClass = function() return "Rogue", "ROGUE" end
+GetQuestsCompleted = function(t) t[9200027] = true return t end
 -- Spoken's player (SpokenPlayer), as far as its public interface goes: it prints what it is given to play
 Spoken = { sources = {} }
 function Spoken:IsCompatible(n) return n <= 1 end
@@ -230,6 +243,8 @@ def main():
             g.updateAll()
         elif word == "texts":
             g.texts()
+        elif word == "show":
+            g[rest].Show(g[rest])
     print("No Lua errors.")
     return 0
 

@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: WowPlus Map
+## Notes: The world map shows what you have not explored yet (faintly), coordinates, and pins: dungeon entrances, champions, flight masters, inns and this server's own quests. /wpmap
+## SavedVariablesPerCharacter: WowPlusMapDB
+
+Data.lua
+WowPlusMap.lua

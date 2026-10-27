@@ -137,6 +137,12 @@ if (Get-Command python -ErrorAction SilentlyContinue) {
 # Our own quests: one file each in Settings\Quests, put into the game here (Settings\Quests\README.md).
 if (Get-Command python -ErrorAction SilentlyContinue) {
     & python (Join-Path $PSScriptRoot 'Scripts\Make-Quests.py') 2>&1 | ForEach-Object { Write-Host $_ }
+    # Their voices, for quests that are new or changed (Settings\Docs\Voice.md). Only where the voice
+    # model is installed; anywhere else the voices from last time stay.
+    & python -c "import kokoro_onnx" 2>$null
+    if ($LASTEXITCODE -eq 0) {
+        & python (Join-Path $PSScriptRoot 'Scripts\Make-Voices.py') 2>&1 | ForEach-Object { Write-Host $_ }
+    }
 }
 
 # Our own addons (Client\AddOns) are copied into every game copy, so the game always has the
