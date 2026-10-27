@@ -1,0 +1,6 @@
+## Interface: 30300
+## Title: WowPlus Dialogue
+## Notes: Talking to someone shows them up close, a few lines at a time: Space to go on, 1-9 to answer. Instead of the quest and gossip windows. /dialogue off brings those back.
+## SavedVariables: WowPlusDialogueDB
+
+WowPlusDialogue.lua

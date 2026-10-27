@@ -738,7 +738,7 @@ local function ShowPlace()
     local info = place.info or {}
     local where = info.where and string.format("Entrance in %s, %.0f, %.0f", info.where[1], info.where[2], info.where[3]) or ""
     local levels = Levels(place) ~= "" and ("Levels " .. Levels(place) .. (info.levels and info.levels[3] < place.from and (", open from " .. info.levels[3]) or "")) or ""
-    ShowBanner(info.picture, place.name, levels .. (levels ~= "" and where ~= "" and "   " .. GREY .. "|r   " or "") .. where)
+    ShowBanner(info.picture, place.name, levels .. (levels ~= "" and where ~= "" and ("     " .. GREY .. "/|r     ") or "") .. where)
 
     sectionButtons.bosses:SetText("Bosses (" .. #place.bosses .. ")")
     sectionButtons.quests:SetText("Quests (" .. (info.quests and #info.quests or 0) .. ")")

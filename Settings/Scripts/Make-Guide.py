@@ -85,6 +85,30 @@ def clean(text):
     return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
+TILE = 533.3333
+map_files = {}
+
+
+def area_at(map_id, x, y):
+    """The area (AreaTable) a point is in, from the server's map files (Data/maps), or 0."""
+    fx, fy = 32 - x / TILE, 32 - y / TILE
+    gx, gy = int(fx), int(fy)
+    key = (map_id, gx, gy)
+    if key not in map_files:
+        try:
+            with open(os.path.join(ROOT, "Data", "maps", "%03u%02u%02u.map" % key), "rb") as f:
+                data = f.read()
+            at = struct.unpack_from("<I", data, 12)[0]
+            flags, whole = struct.unpack_from("<HH", data, at + 4)
+            map_files[key] = whole if flags & 1 else struct.unpack_from("<256H", data, at + 8)
+        except (OSError, struct.error):
+            map_files[key] = 0
+    found = map_files[key]
+    if isinstance(found, int):
+        return found
+    return found[min(15, int((fx - gx) * 16)) * 16 + min(15, int((fy - gy) * 16))]
+
+
 def write(path, text):
     """Writes a file unless it already says this. Returns True when nothing changed."""
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -151,8 +175,19 @@ def main():
     world_maps, _ = table("WorldMapArea.dbc")
     zone_maps = [(n[1], n[2], f[4], f[5], f[6], f[7]) for n, f in world_maps if n[2] and n[1] in CONTINENTS]
 
+    parent = {n[0]: n[2] for n, _ in areas}
+    map_of_zone = {(m, area): (left, right, top, bottom) for m, area, left, right, top, bottom in zone_maps}
+
     def on_map(map_id, x, y):
-        """(zone name, x %, y %) of a point, on the smallest zone map that holds it."""
+        """(zone name, x %, y %) of a point: the zone the server's map files say it is in, on that zone's
+        map; else the smallest zone map that holds it (zone maps overlap: the Barrens' and Mulgore's do)."""
+        zone = area_at(map_id, x, y)
+        while zone and parent.get(zone):
+            zone = parent[zone]
+        bounds = map_of_zone.get((map_id, zone))
+        if bounds:
+            left, right, top, bottom = bounds
+            return area_name.get(zone, "?"), round((left - y) / (left - right) * 100, 1), round((top - x) / (top - bottom) * 100, 1)
         best = None
         for m, area, left, right, top, bottom in zone_maps:
             if m == map_id and right <= y <= left and bottom <= x <= top:
@@ -169,6 +204,8 @@ def main():
     dungeons, dungeon_text = table("LFGDungeons.dbc")
     for n, _ in dungeons:
         map_id, low, high, enter = n[23], n[21], n[22], n[18]
+        if not low and n[20]:                           # some give only the level they are aimed at
+            low, high = n[20] - 2, n[20]
         if n[24] == 0 and low and not n[25] & 4:
             have = levels.get(map_id)
             levels[map_id] = (min(have[0], low), max(have[1], high), min(have[2], enter)) if have else (low, high, enter)
