@@ -1,6 +1,6 @@
 """Works out what every dungeon and raid boss drops on this server, and writes it down twice:
-for the game (the table acore_world.wowplus_boss_loot) and for the loot book addon
-(Client/AddOns/WowPlusLootBook/Data.lua). Run by Settings/Deploy-Settings.ps1 at every server start;
+for the game (the table acore_world.wowplus_boss_loot) and for the guide addon
+(Client/AddOns/WowPlusGuide/Loot.lua). Run by Settings/Deploy-Settings.ps1 at every server start;
 running it by hand is harmless.
 
     python Settings/Scripts/Make-Boss-Loot.py            make both
@@ -26,7 +26,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 MYSQL = os.path.join(ROOT, "Tools", "mysql", "bin", "mysql.exe")
 DBC = os.path.join(ROOT, "Data", "dbc")
-BOOK = os.path.join(ROOT, "Client", "AddOns", "WowPlusLootBook", "Data.lua")
+BOOK = os.path.join(ROOT, "Client", "AddOns", "WowPlusGuide", "Loot.lua")
 
 ITEM_WEAPON, ITEM_ARMOR, ITEM_RECIPE = 2, 4, 9
 UNCOMMON, RARE, EPIC = 2, 3, 4
@@ -254,7 +254,7 @@ def main():
                 written.append((entry, item["id"], 1, cls, 1))
 
         if modes:
-            place = book.setdefault(boss["map"], {"name": info["name"], "raid": info["raid"], "bosses": [], "level": 0})
+            place = book.setdefault(boss["map"], {"map": boss["map"], "name": info["name"], "raid": info["raid"], "bosses": [], "level": 0})
             place["bosses"].append({"name": boss["name"], "entry": boss["entry"], "order": boss["order"], "level": boss["level"], "modes": modes})
             place["level"] = max(place["level"], boss["level"])
 
@@ -282,7 +282,7 @@ def main():
         script.append("INSERT INTO wowplus_boss_loot VALUES " + ",".join("(%d,%d,%d,%d,%s)" % row for row in rows[start:start + 1000]) + ";")
     run_sql("\n".join(script))
 
-    # For the loot book
+    # For the guide
     def lua(text):
         return '"' + text.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
@@ -290,11 +290,11 @@ def main():
     out = ["-- Made by Settings/Scripts/Make-Boss-Loot.py at every server start. Do not edit: it is written over.",
            f"-- World seed {seed}. Places, their bosses, and for each way of playing (normal, heroic ...) what drops:",
            "-- o = the game's own loot as {item, chance in percent}, n = new on this server as {item, class}.",
-           "WowPlusLootBookData = {"]
+           "WowPlusGuideLoot = {"]
     for place in sorted(book.values(), key=lambda place: (place["raid"], place["level"], place["name"])):
-        out.append(f"  {{ name = {lua(place['name'])}, raid = {'true' if place['raid'] else 'false'}, level = {place['level']}, bosses = {{")
+        out.append(f"  {{ map = {place['map']}, name = {lua(place['name'])}, raid = {'true' if place['raid'] else 'false'}, level = {place['level']}, bosses = {{")
         for boss in sorted(place["bosses"], key=lambda boss: (boss["order"], boss["name"])):
-            out.append(f"    {{ name = {lua(boss['name'])}, modes = {{")
+            out.append(f"    {{ name = {lua(boss['name'])}, entry = {boss['entry']}, modes = {{")
             for mode in boss["modes"]:
                 own = ",".join("{%d,%s}" % (item["id"], ("%.1f" % chance).rstrip("0").rstrip(".")) for item, chance in mode["own"])
                 new = ",".join("{%d,%d}" % (item["id"], cls) for item, cls in mode["new"])
@@ -305,7 +305,7 @@ def main():
         out.append("  } },")
     out.append("}")
     out.append("-- Names and qualities, so that the book can show and search items the game has not loaded yet")
-    out.append("WowPlusLootBookItems = {")
+    out.append("WowPlusGuideItems = {")
     for item in sorted(names.values(), key=lambda item: item["id"]):
         out.append(f"[{item['id']}]={{{lua(item['name'])},{item['quality']},{item['level']}}},")
     out.append("}")
@@ -323,7 +323,7 @@ def main():
     new_count = sum(1 for row in rows if row[2])
     print(f"Boss loot: {sum(len(place['bosses']) for place in book.values())} bosses in {len(book)} dungeons and raids, "
           f"{len(rows) - new_count} of the game's own drops and {new_count} new ones (seed {seed}), in {time.time() - started:.1f} s."
-          + ("" if unchanged else " Loot book written."))
+          + ("" if unchanged else " Guide's loot written."))
 
 
 if __name__ == "__main__":

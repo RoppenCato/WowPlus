@@ -18,7 +18,7 @@ local MENU = {
     { title = "Windows", items = {
         { "Group board",            slash = "WOWPLUSGROUP",   tip = "People looking for a group: pick who comes along, or post your own group." },
         { "Journal",                slash = "WOWPLUSJOURNAL", tip = "What you killed, found and reached, and who you met." },
-        { "Loot book",              slash = "WOWPLUSLOOTBOOK", tip = "What every dungeon and raid boss drops, with the drops that are new on this server." },
+        { "Guide",                  slash = "WOWPLUSGUIDE",   tip = "Dungeons and raids: where they are, their bosses and stories, what drops, their quests. And the champions of the world." },
         { "Bot bar: show or hide",  slash = "WOWPLUSBOTS",    tip = "The small bar with Follow, Stay, Attack and the rest." },
         { "Bot bar: put it back",   slash = "WOWPLUSBOTS", arg = "reset", tip = "Moves the bot bar back to where it started." },
         { "Sprint bar: put it back", slash = "WOWPLUSSPRINT", arg = "reset", tip = "Moves the stamina bar back to where it started." },

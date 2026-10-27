@@ -1,6 +1,6 @@
-# Boss loot and the loot book
+# Boss loot
 
-Built on 2026-10-12. The lists and the server part are made and checked; a boss has not been killed in the game with it yet, and the loot book window has not been opened yet.
+Built on 2026-10-12. The lists and the server part are made and checked; a boss has not been killed in the game with it yet. The loot book has since become part of the Guide (Settings/Docs/Guide.md).
 
 ## What a boss drops now
 
@@ -27,15 +27,9 @@ Each boss has about ten drops it does not have in the real game: **one picked fo
 
 Example, Mr. Smite in the Deadmines: he keeps Smite's Reaver, Thief's Blade and Smite's Mighty Hammer, and can also drop Boahn's Fang (warrior), Black Pearl Ring (paladin), Serpent's Shoulders (hunter), Serpent Gloves (priest), Blackened Defias Belt (druid) and four more.
 
-## The loot book
+## Where to see it
 
-`/lootbook`, or **Loot book** in the menu. The addon is `WowPlus Loot Book`; restart the game once after it is first installed.
-
-- **Left:** dungeons or raids (the two buttons above), in order of level. It opens at a dungeon for your level.
-- **Middle:** the bosses of the place you clicked.
-- **Right:** the loot: the game's own with its chance, then "New on this server" with the class each was picked for. Buttons below switch between normal and heroic, or the raid sizes.
-- **Find an item:** type three letters or more and it lists every boss that drops something by that name.
-- Hover for the item's tooltip. Shift-click links it in chat, Ctrl-click tries it on. The game has to have seen an item once for those two; hovering does that.
+In the Guide (`/guide`, or **Guide** in the menu): pick a dungeon or raid, then a boss. The game's own loot is listed with its chance, then "New on this server" with the class each was picked for. Settings/Docs/Guide.md.
 
 The chances are worked out from the game's loot tables and are close, not exact: items that share a "one of these" group are shown with their share of it.
 
@@ -46,13 +40,13 @@ The chances are worked out from the game's loot tables and are close, not exact:
 | For | Where |
 |---|---|
 | The game | the table `acore_world.wowplus_boss_loot`, read by `Server/modules/mod-wowplus/src/WowPlusLoot.cpp` when the server starts |
-| The book | `Client/AddOns/WowPlusLootBook/Data.lua` |
+| The guide | `Client/AddOns/WowPlusGuide/Loot.lua` |
 
 `Settings/Deploy-Settings.ps1` runs it at every server start (about 15 seconds). It needs Python, which the bot chat needs as well. Without Python the server starts anyway and uses the lists from last time.
 
 `python Settings/Scripts/Make-Boss-Loot.py --boss smite` prints one boss.
 
-**After changing the seed**, or anything else that changes the lists: restart the server, then restart the game (or `/reload`) so that the book reads the new file.
+**After changing the seed**, or anything else that changes the lists: restart the server, then restart the game (or `/reload`) so that the guide reads the new file.
 
 ## Settings (`Settings/mod_wowplus.conf`)
 
@@ -69,5 +63,4 @@ The chances are worked out from the game's loot tables and are close, not exact:
 
 ## To try
 
-1. `/lootbook`: does the window open at a dungeon for your level, and do item names and icons show?
 2. Kill a dungeon boss a few times: is there one new drop each time, and is it one of those the book lists for that boss?

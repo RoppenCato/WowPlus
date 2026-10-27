@@ -1,0 +1,9 @@
+## Interface: 30300
+## Title: WowPlus Guide
+## Notes: Dungeons and raids (where, levels, bosses with their stories, loot, quests), the champions of the world, and the lore of the zone you are in. /guide
+## SavedVariablesPerCharacter: WowPlusGuideDB
+
+Loot.lua
+Places.lua
+Lore.lua
+WowPlusGuide.lua

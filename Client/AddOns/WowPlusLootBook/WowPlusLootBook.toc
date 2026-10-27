@@ -1,6 +1,0 @@
-## Interface: 30300
-## Title: WowPlus Loot Book
-## Notes: What every dungeon and raid boss drops on this server: the game's own loot and the drops that are new here. Search by item name. /lootbook
-## SavedVariablesPerCharacter: WowPlusLootBookDB
-Data.lua
-WowPlusLootBook.lua

@@ -125,11 +125,13 @@ if ($short) {
     & $mysql $myini -e "UPDATE acore_playerbots.playerbots_account_type SET account_type = 1 WHERE account_type = 0" 2>&1 | Out-Null
 }
 
-# What bosses drop: the list for the game and the same list for the loot book addon, made from the
-# game's loot tables and the world seed (Settings\Docs\Boss-Loot.md). Needs Python; without it the
-# lists from last time stay.
+# What bosses drop: the list for the game and the same list for the guide addon, made from the
+# game's loot tables and the world seed (Settings\Docs\Boss-Loot.md). Then the rest of what the guide
+# shows: levels, entrances, quests, boss stories, champions (Settings\Docs\Guide.md). Needs Python;
+# without it the lists from last time stay.
 if (Get-Command python -ErrorAction SilentlyContinue) {
     & python (Join-Path $PSScriptRoot 'Scripts\Make-Boss-Loot.py') 2>&1 | ForEach-Object { Write-Host $_ }
+    & python (Join-Path $PSScriptRoot 'Scripts\Make-Guide.py') 2>&1 | ForEach-Object { Write-Host $_ }
 }
 
 # Our own quests: one file each in Settings\Quests, put into the game here (Settings\Quests\README.md).
@@ -140,6 +142,11 @@ if (Get-Command python -ErrorAction SilentlyContinue) {
 # Our own addons (Client\AddOns) are copied into every game copy, so the game always has the
 # version that matches the server. A running game picks them up after /reload or a restart.
 foreach ($client in Get-ChildItem (Join-Path $root 'Client') -Directory -ErrorAction SilentlyContinue | Where-Object { Test-Path (Join-Path $_.FullName 'Wow.exe') }) {
+    # Addons of ours that have been replaced: the Loot Book became the Guide (2026-10-27)
+    foreach ($retired in @('WowPlusLootBook')) {
+        $old = Join-Path $client.FullName "Interface\AddOns\$retired"
+        if (Test-Path $old) { Remove-Item $old -Recurse -Force }
+    }
     foreach ($addon in Get-ChildItem (Join-Path $root 'Client\AddOns') -Directory -ErrorAction SilentlyContinue) {
         $to = Join-Path $client.FullName "Interface\AddOns\$($addon.Name)"
         New-Item -ItemType Directory -Force $to | Out-Null
