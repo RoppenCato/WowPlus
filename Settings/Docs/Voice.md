@@ -32,6 +32,8 @@ Not in the repository (large, and not ours to give away): in each game copy, `In
 
 All from [github.com/rusty-key/spoken-wow/releases](https://github.com/rusty-key/spoken-wow/releases), downloaded on 2026-10-27 and kept in `C:\dev\addon-refs\downloads`. The packs say they are for newer games; their `.toc` files were given `30300` in their `## Interface` line so that the 3.3.5 game loads them without "Load out of date AddOns". To set it up on another PC: unzip the three into the game's `Interface\AddOns` and make that same change.
 
+`SpokenPlayer\Version.lua` and `SpokenQuests\Version.lua` are patched too (2026-10-27, "Doesnt work to paus the speaker"): they read the game's interface number from the fourth value of `GetBuildInfo()`, which the 3.3.5 game may not give, and then took the game for 1.12, whose way of stopping a sound does nothing here. The patch, after the `GetBuildInfo()` line: `if not INTERFACE_VERSION and CLIENT_VERSION and CLIENT_VERSION:match("^3%.3") then INTERFACE_VERSION = 30300 end`. Spoken's own zone pack (`SpokenZonesAudio`) keeps its `## Interface` line as it came: it is only read from, never loaded.
+
 In the repository: `Client/AddOns/SpokenQuestsAudioWowPlus`, our own pack, in the same shape as Spoken's (a `.toc`, `Module.lua`, and the lookups in `generated/`: quest title to quest number, by giver where two of our quests share a title, and each sound's length). Its sounds (`generated/sounds/`, 108 MB) are not committed; `Make-Voices.py` makes them again on any PC.
 
 ## Making our voices
