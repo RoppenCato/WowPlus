@@ -2,6 +2,7 @@
 ## Title: WowPlus Guide
 ## Notes: Dungeons and raids (where, levels, bosses with their stories, loot, quests), the champions of the world, and the lore of the zone you are in. /guide
 ## SavedVariablesPerCharacter: WowPlusGuideDB
+## OptionalDeps: SpokenPlayer
 
 Loot.lua
 Places.lua

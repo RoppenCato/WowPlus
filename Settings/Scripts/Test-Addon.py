@@ -144,6 +144,17 @@ GetRewardText = function() return "Thank you!" end
 GetGreetingText = function() return "Hello." end
 IsQuestCompletable = function() return true end
 GetCoinTextureString = function(n) return tostring(n) .. "c" end
+UnitOnTaxi = function() return false end
+-- Spoken's player (SpokenPlayer), as far as its public interface goes: it prints what it is given to play
+Spoken = { sources = {} }
+function Spoken:IsCompatible(n) return n <= 1 end
+function Spoken:GetSource(key) return self.sources[key] end
+function Spoken:RegisterSource(key, info)
+    local source = { key = key }
+    function source:Enqueue(clip) print("spoken plays: " .. clip.path .. " (" .. clip.length .. " s) " .. clip.present.header .. " / " .. clip.present.label) end
+    self.sources[key] = source
+    return source
+end
 setmetatable(_G, { __index = function(t, k) if type(k) == "string" and (k:match("DB$") or k:match("^WowPlus")) then return nil end return function(...) return Stub() end end })   -- saved variables and our own globals start empty
 '''
 

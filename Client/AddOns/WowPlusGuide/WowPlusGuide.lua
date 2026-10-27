@@ -583,6 +583,49 @@ local loreCredit = lorePane:CreateFontString(nil, "OVERLAY", "GameFontDisableSma
 loreCredit:SetPoint("BOTTOMRIGHT", -10, 6)
 loreCredit:SetText("Text from warcraft.wiki.gg (CC BY-SA 4.0), by way of Spoken")
 
+-- Narration: Spoken's recordings of the same lore, played through Spoken's own player when it is installed
+-- (Interface\AddOns\SpokenPlayer and SpokenZonesAudio; Settings/Docs/Voice.md)
+local narrator
+local function Narrator()
+    if not narrator and Spoken and Spoken.IsCompatible and Spoken:IsCompatible(1) then
+        narrator = Spoken:GetSource("zones") or Spoken:RegisterSource("zones", { title = "Zone lore", addon = "WowPlusGuide", order = 20, queueLimit = 2 })
+    end
+    return narrator
+end
+
+local function FindPlace(lore, name)
+    if not lore or not name or name == "" then return nil end
+    local wanted = strlower(name):gsub("^the ", "")
+    for _, place in ipairs(lore.places) do
+        if strlower(place[1]):gsub("^the ", "") == wanted then return place end
+    end
+end
+
+-- Reads a zone's story, or one place's in it, aloud. Returns whether there was anything to read.
+local function Narrate(zone, place)
+    local lore, source = LORE[zone], Narrator()
+    if not lore or not source then return false end
+    local file, length, label, said = "zone", lore.secs, "", lore.full
+    if place then file, length, label, said = place[4], place[5], place[1], place[2] end
+    if not length or length <= 0 then return false end
+    source:Enqueue({ key = "z:" .. lore.map .. ":" .. file,
+                     path = "Interface\\AddOns\\SpokenZonesAudio\\Sounds\\" .. lore.map .. "\\" .. file .. ".mp3",
+                     length = length,
+                     present = { header = zone, label = label, transcript = said, portrait = { kind = "none" } } })
+    return true
+end
+
+local listenZone = CreateFrame("Button", nil, lorePane, "UIPanelButtonTemplate")
+listenZone:SetWidth(150)
+listenZone:SetHeight(22)
+listenZone:SetPoint("BOTTOMLEFT", 10, 4)
+listenZone:SetScript("OnClick", function() Narrate(view.zone) end)
+local listenPlace = CreateFrame("Button", nil, lorePane, "UIPanelButtonTemplate")
+listenPlace:SetWidth(220)
+listenPlace:SetHeight(22)
+listenPlace:SetPoint("LEFT", listenZone, "RIGHT", 6, 0)
+listenPlace:SetScript("OnClick", function(self) if self.place then Narrate(view.zone, self.place) end end)
+
 -- Search results: every boss and champion that drops an item by that name
 local resultPane = CreateFrame("Frame", nil, content)
 resultPane:SetPoint("TOPLEFT", 0, -below + 30)
@@ -839,6 +882,18 @@ local function ShowLore()
     loreText:SetPieces(pieces)
     if at then loreText:ScrollToPiece(at) end
     if db then db.read[zone] = true end
+
+    local voiced = Narrator() and (lore.secs or 0) > 0
+    listenZone:SetText("Listen: " .. zone)
+    Shown(listenZone, voiced)
+    local place = zone == GetRealZoneText() and FindPlace(lore, here)
+    listenPlace.place = place
+    if voiced and place and (place[5] or 0) > 0 then
+        listenPlace:SetText("Listen: " .. place[1])
+        listenPlace:Show()
+    else
+        listenPlace:Hide()
+    end
 end
 
 function Refresh()
@@ -908,6 +963,12 @@ local function Toggle(arg)
         DEFAULT_CHAT_FRAME:AddMessage("Guide: there is nothing in it yet. The server writes it when it starts (it needs Python); restart the game afterwards.")
         return
     end
+    if arg == "narrate on" or arg == "narrate off" then
+        db.narrate = arg == "narrate on"
+        DEFAULT_CHAT_FRAME:AddMessage("Guide: " .. (db.narrate and "the story of a zone or place is read aloud the first time you come there"
+            .. (Narrator() and "." or ", once Spoken's player is installed (Settings/Docs/Voice.md).") or "no reading aloud by itself; the Listen buttons in Lore still work."))
+        return
+    end
     if arg == "lore" then
         view.tab, view.zone, view.search = 4, LORE[GetRealZoneText()] and GetRealZoneText() or view.zone, ""
         WowPlusGuideSearch:SetText("")
@@ -925,18 +986,29 @@ SlashCmdList["WOWPLUSGUIDE"] = Toggle
 local events = CreateFrame("Frame")
 events:RegisterEvent("ADDON_LOADED")
 events:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+events:RegisterEvent("ZONE_CHANGED")
 events:SetScript("OnEvent", function(self, event, name)
     if event == "ADDON_LOADED" then
         if name ~= "WowPlusGuide" then return end
         WowPlusGuideDB = WowPlusGuideDB or {}
         db = WowPlusGuideDB
-        db.read = db.read or {}
+        db.read, db.heard = db.read or {}, db.heard or {}
+        if db.narrate == nil then db.narrate = true end
         return
     end
+    if not db then return end
     local zone = GetRealZoneText()
-    if db and LORE[zone] and not db.read[zone] and not db["told" .. zone] then
+    local lore = LORE[zone]
+    if lore and not db.read[zone] and not db["told" .. zone] then
         db["told" .. zone] = true
         DEFAULT_CHAT_FRAME:AddMessage("|cffffd100The Guide|r has the story of " .. zone .. ": |cff71d5ff/guide lore|r")
+    end
+    -- The first time you come to a zone, and to each place in it, its story is read aloud (once)
+    if lore and db.narrate and not UnitOnTaxi("player") then
+        if not db.heard[zone] and Narrate(zone) then db.heard[zone] = true end
+        local place = FindPlace(lore, GetSubZoneText())
+        local key = place and (zone .. "/" .. place[1])
+        if key and not db.heard[key] and Narrate(zone, place) then db.heard[key] = true end
     end
     if frame:IsShown() and view.tab == 4 then Refresh() end
 end)

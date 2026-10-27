@@ -1,0 +1,15 @@
+## Interface: 30300
+## Title: Spoken Audio: Quests - WowPlus
+## Notes: The voices of this server's own quests, for Spoken Quests. Made by Settings/Scripts/Make-Voices.py.|n|nIt is |cFF20FF20OK|r for this addon to show as disabled: Spoken Quests loads it when needed.
+## Version: 1.0.0
+## LoadOnDemand: 1
+## X-Part-Of: Spoken
+## X-Child-Of: Spoken_Quests
+## X-SpokenQuests-DataModule-Version: 1
+## X-SpokenQuests-DataModule-Priority: 200
+## X-VoiceOver-DataModule-Version: 1
+## X-VoiceOver-DataModule-Priority: 200
+
+Module.lua
+generated\quest_id_lookups.lua
+generated\sound_length_table.lua

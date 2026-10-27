@@ -14,6 +14,7 @@ Stories.lua), written there from warcraft.wiki.gg and Blizzard's Adventure Guide
 of that file is kept in Settings/Reference/Boss-Stories.lua so that the server does not need the
 download.
 """
+import glob
 import importlib.util
 import io
 import os
@@ -29,6 +30,7 @@ OUT = os.path.join(ROOT, "Client", "AddOns", "WowPlusGuide", "Places.lua")
 STORIES = os.path.join(ROOT, "Settings", "Reference", "Boss-Stories.lua")
 LORE_IN = os.path.join(ROOT, "Settings", "Reference", "Zone-Lore")
 LORE_OUT = os.path.join(ROOT, "Client", "AddOns", "WowPlusGuide", "Lore.lua")
+ZONE_VOICES = "SpokenZonesAudio"                    # Spoken's narrated lore, installed in the game (Settings/Docs/Voice.md)
 
 spec = importlib.util.spec_from_file_location("boss_loot", os.path.join(HERE, "Make-Boss-Loot.py"))
 loot = importlib.util.module_from_spec(spec)
@@ -139,24 +141,52 @@ def write_lore():
     except OSError:
         return 0
     field = lambda block, name: lua_string((re.search(name + r'\s*=\s*"((?:[^"\\]|\\.)*)"', block) or [None, ""])[1])
+    # How long each narration is, where Spoken's zone voices are installed in a game copy
+    sounds = None
+    for folder in glob.glob(os.path.join(ROOT, "Client", "*", "Interface", "AddOns", ZONE_VOICES, "Sounds")):
+        sounds = folder
+        break
+
+    def seconds(map_id, slug):
+        if not sounds:
+            return 0
+        path = os.path.join(sounds, str(map_id), slug + ".mp3")
+        if not os.path.exists(path):
+            return 0
+        try:
+            import soundfile
+            return round(soundfile.info(path).duration, 1)
+        except Exception:
+            return 0
+
+    def slug(name):
+        """How Spoken names a place's sound: lower case, no leading "the", no apostrophes, words joined by dashes."""
+        name = re.sub(r"^the\s+", "", name.lower()).replace("'", "")
+        return re.sub(r"[^a-z0-9]+", "-", name).strip("-")
+
     zones = {}
     for number, block in re.findall(r"\n\t\[(\d+)\] = \{(.*?)\n\t\},", zones_text, re.S):
         if field(block, "full"):
-            zones[int(number)] = {"name": field(block, "name"), "full": field(block, "full"), "source": field(block, "source"), "places": []}
+            zones[int(number)] = {"name": field(block, "name"), "full": field(block, "full"), "source": field(block, "source"), "places": [],
+                                  "map": int(number), "secs": seconds(number, "zone")}
     for number, block in re.findall(r"\n\t\[(\d+)\] = \{(.*?)\n\t\},", subzones_text, re.S):
         zone = zones.get(int(number))
         if not zone:
             continue
         for place in re.findall(r'\n\t\t\["[^"]+"\] = \{(.*?)\n\t\t\},', block, re.S):
             if field(place, "full"):
-                zone["places"].append((field(place, "name"), field(place, "full"), field(place, "source")))
+                name = field(place, "name")
+                zone["places"].append((name, field(place, "full"), field(place, "source"), slug(name), seconds(number, slug(name))))
     out = ["-- Made by Settings/Scripts/Make-Guide.py from Spoken's lore (github.com/rusty-key/spoken-wow, addons/Spoken_Places).",
            "-- The text is from warcraft.wiki.gg, CC BY-SA 4.0 (each entry names its page), except where an entry has no",
-           "-- page: that prose was written for Spoken. Keyed by the zone's English name; places = {name, text, page}.",
+           "-- page: that prose was written for Spoken. Keyed by the zone's English name; map is Spoken's number for it, secs",
+           "-- how long its narration is (0: none); places = {name, text, page, sound file, secs}. The narration is Spoken's",
+           "-- (Interface/AddOns/SpokenZonesAudio, made with ElevenLabs from the same text, CC BY-SA 4.0).",
            "WowPlusGuideLore = {"]
     for zone in sorted(zones.values(), key=lambda zone: zone["name"]):
-        places = ",".join("{%s,%s,%s}" % (lua(n), lua(t), lua(src)) for n, t, src in sorted(zone["places"]))
-        out.append("  [%s] = { full = %s, source = %s, places = {%s} }," % (lua(zone["name"]), lua(zone["full"]), lua(zone["source"]), places))
+        places = ",".join("{%s,%s,%s,%s,%s}" % (lua(n), lua(t), lua(src), lua(sl), secs) for n, t, src, sl, secs in sorted(zone["places"]))
+        out.append("  [%s] = { map = %d, secs = %s, full = %s, source = %s, places = {%s} }," % (
+            lua(zone["name"]), zone["map"], zone["secs"], lua(zone["full"]), lua(zone["source"]), places))
     out.append("}")
     write(LORE_OUT, "\n".join(out) + "\n")
     return len(zones) + sum(len(zone["places"]) for zone in zones.values())

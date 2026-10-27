@@ -23,3 +23,6 @@
 
 # Python leaves these behind
 __pycache__/
+# Our quests' voices are made on this PC by Settings/Scripts/Make-Voices.py (Settings/Docs/Voice.md)
+/Client/AddOns/SpokenQuestsAudioWowPlus/generated/sounds/
+/Client/AddOns/SpokenQuestsAudioWowPlus/generated/made.json
