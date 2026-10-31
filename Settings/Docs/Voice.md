@@ -1,5 +1,13 @@
 # Voices
 
+**Turned off on 2026-10-31**, at Robin's request ("You can disable all the talking addons, lore and quest"). Nothing is deleted:
+
+- In each game copy, the `Spoken*` folders were moved from `Interface\AddOns` to `Interface\AddOns-voices-off`.
+- In `Settings/Deploy-Settings.ps1`, `$voicesOn = $false` stops our pack being copied into the game and new voices being made.
+- Without Spoken's player, and with no zone voices found, the Guide's Listen buttons and first-visit readings do not appear. The lore text is still there.
+
+To turn them on again: move the folders back, set `$voicesOn = $true`, and restart the server and the game. The rest of this page describes them as they were.
+
 Set up on 2026-10-27, from the plan in [Addons-Plan.md](Addons-Plan.md) (step 3). **Not heard in the game yet.**
 
 Quest givers speak their quests aloud, and the story of a zone and of each place in it is read aloud the first time you come there. Three parts:

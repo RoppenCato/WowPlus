@@ -44,7 +44,7 @@ The last five are not in git (see [.gitignore](.gitignore)). `Tools/`, `Build/` 
 | [Housing](Settings/Docs/Housing.md) | Design for a room of your own in the cities: what the game allows, what it would give, what would happen there. Not built. |
 | [The Guide](Settings/Docs/Guide.md) | The in-game book of dungeons, raids, champions and zone lore (`/guide`). |
 | [Map](Settings/Docs/Map.md) | The world map with the unexplored shown faintly, coordinates and pins (`/wpmap`). |
-| [Voices](Settings/Docs/Voice.md) | Quest givers and zone lore read aloud: Spoken's packs for the game's own, Kokoro for ours (`Make-Voices.py`). |
+| [Voices](Settings/Docs/Voice.md) | Turned off for now. Quest givers and zone lore read aloud: how they were made, and how to turn them on again. |
 | [Dialogue](Settings/Docs/Dialogue.md) | Conversations with NPCs up close, a page at a time, instead of the quest and gossip windows (`/dialogue`). |
 | [Bot chat](Settings/Docs/Bot-Chat.md) | Talking to bots through Claude: who answers, who each bot is, what they remember. Its window opens with `Start-Server.bat`. |
 

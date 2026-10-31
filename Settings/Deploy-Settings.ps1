@@ -139,9 +139,10 @@ if (Get-Command python -ErrorAction SilentlyContinue) {
 if (Get-Command python -ErrorAction SilentlyContinue) {
     & python (Join-Path $PSScriptRoot 'Scripts\Make-Quests.py') 2>&1 | ForEach-Object { Write-Host $_ }
     # Their voices, for quests that are new or changed (Settings\Docs\Voice.md). Only where the voice
-    # model is installed; anywhere else the voices from last time stay.
-    & python -c "import kokoro_onnx" 2>$null
-    if ($LASTEXITCODE -eq 0) {
+    # model is installed; anywhere else the voices from last time stay. Voices are off for now.
+    $voicesOn = $false
+    if ($voicesOn) { & python -c "import kokoro_onnx" 2>$null }
+    if ($voicesOn -and $LASTEXITCODE -eq 0) {
         & python (Join-Path $PSScriptRoot 'Scripts\Make-Voices.py') 2>&1 | ForEach-Object { Write-Host $_ }
     }
 }
@@ -155,6 +156,7 @@ foreach ($client in Get-ChildItem (Join-Path $root 'Client') -Directory -ErrorAc
         if (Test-Path $old) { Remove-Item $old -Recurse -Force }
     }
     foreach ($addon in Get-ChildItem (Join-Path $root 'Client\AddOns') -Directory -ErrorAction SilentlyContinue) {
+        if ($addon.Name -eq 'SpokenQuestsAudioWowPlus' -and -not $voicesOn) { continue }
         $to = Join-Path $client.FullName "Interface\AddOns\$($addon.Name)"
         New-Item -ItemType Directory -Force $to | Out-Null
         Copy-Item (Join-Path $addon.FullName '*') $to -Recurse -Force
