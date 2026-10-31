@@ -7,4 +7,5 @@
 Loot.lua
 Places.lua
 Lore.lua
+Maps.lua
 WowPlusGuide.lua

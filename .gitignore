@@ -26,3 +26,5 @@ __pycache__/
 # Our quests' voices are made on this PC by Settings/Scripts/Make-Voices.py (Settings/Docs/Voice.md)
 /Client/AddOns/SpokenQuestsAudioWowPlus/generated/sounds/
 /Client/AddOns/SpokenQuestsAudioWowPlus/generated/made.json
+# The Guide's dungeon maps are drawn on this PC from the extracted map data (Settings/Scripts/Make-Dungeon-Maps.py)
+/Client/AddOns/WowPlusGuide/Maps/

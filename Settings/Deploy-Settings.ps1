@@ -132,6 +132,7 @@ if ($short) {
 if (Get-Command python -ErrorAction SilentlyContinue) {
     & python (Join-Path $PSScriptRoot 'Scripts\Make-Boss-Loot.py') 2>&1 | ForEach-Object { Write-Host $_ }
     & python (Join-Path $PSScriptRoot 'Scripts\Make-Guide.py') 2>&1 | ForEach-Object { Write-Host $_ }
+    & python (Join-Path $PSScriptRoot 'Scripts\Make-Dungeon-Maps.py') 2>&1 | ForEach-Object { Write-Host $_ }
 }
 
 # Our own quests: one file each in Settings\Quests, put into the game here (Settings\Quests\README.md).

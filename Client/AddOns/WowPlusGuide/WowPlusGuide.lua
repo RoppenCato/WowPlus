@@ -2,7 +2,8 @@
 --
 --   Dungeons, Raids  where each place is and for what levels, its bosses (a model you can turn, and
 --                    their story), what each boss drops (the game's own loot and what is new here),
---                    and the quests that belong to it with who gives them.
+--                    the quests that belong to it with who gives them, and a map with the bosses on it
+--                    (drawn by Settings/Scripts/Make-Dungeon-Maps.py).
 --   Champions        the named champions of every zone: where they live, what they drop, the bounty.
 --   Lore             the story of the zone you are in and the places in it, and of every other zone.
 --
@@ -11,10 +12,12 @@
 -- this server. The boss stories and the lore are from Spoken (github.com/rusty-key/spoken-wow), written
 -- from warcraft.wiki.gg: CC BY-SA 4.0. See Settings/Docs/Guide.md.
 --
--- /guide opens and closes it (/guide lore opens the lore of where you are). /lootbook still works.
+-- /guide opens and closes it (/guide lore opens the lore of where you are, /guide map a dungeon's map).
+-- /lootbook still works.
 
 local LOOT, ITEMS = WowPlusGuideLoot or {}, WowPlusGuideItems or {}
 local PLACES, CHAMPIONS, LORE = WowPlusGuidePlaces or {}, WowPlusGuideChampions or {}, WowPlusGuideLore or {}
+local MAPS = WowPlusGuideMaps or {}
 for id, item in pairs(WowPlusGuideMoreItems or {}) do
     if not ITEMS[id] then ITEMS[id] = item end
 end
@@ -249,7 +252,9 @@ for index = 1, LIST_ROWS do
             view.zone = self.value
         else
             view.place, view.boss, view.mode = self.value, self.value.bosses[1], 1
-            view.section = #self.value.bosses > 0 and "bosses" or "quests"
+            if not (view.section == "map" and MAPS[self.value.map]) then
+                view.section = #self.value.bosses > 0 and "bosses" or "quests"
+            end
             offset.bosses, offset.loot, offset.quests = 0, 0, 0
         end
         view.search = ""
@@ -304,6 +309,7 @@ local function SectionButton(text, key, x)
 end
 SectionButton("Bosses", "bosses", 0)
 SectionButton("Quests", "quests", 116)
+SectionButton("Map", "map", 232)
 
 local below = 186                                   -- where the sections start, from the top of the content
 
@@ -535,6 +541,125 @@ end
 local questNone = questPane:CreateFontString(nil, "OVERLAY", "GameFontDisable")
 questNone:SetPoint("TOP", 0, -30)
 questNone:SetText("No quests are known to lead here.")
+
+-- The map: the picture on the left, the bosses by number on the right. It covers the banner, for the room.
+local mapPane = CreateFrame("Frame", nil, content)
+mapPane:SetAllPoints()
+mapPane:SetFrameLevel(content:GetFrameLevel() + 6)
+mapPane:EnableMouse(true)
+local mapBack = mapPane:CreateTexture(nil, "BACKGROUND")
+mapBack:SetAllPoints()
+mapBack:SetTexture(0.04, 0.03, 0.02, 1)
+local MAP_SIZE = 512
+local mapPicture = mapPane:CreateTexture(nil, "ARTWORK")
+mapPicture:SetWidth(MAP_SIZE)
+mapPicture:SetHeight(MAP_SIZE)
+mapPicture:SetPoint("TOPLEFT", 0, -8)
+local mapName = Heading(mapPane, 20)
+mapName:SetPoint("TOPLEFT", MAP_SIZE + 10, -10)
+mapName:SetWidth(162)
+mapName:SetJustifyH("LEFT")
+local mapLine = mapPane:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+mapLine:SetPoint("TOPLEFT", mapName, "BOTTOMLEFT", 0, -4)
+mapLine:SetWidth(162)
+mapLine:SetJustifyH("LEFT")
+
+local function GoToBoss(boss)
+    view.section, view.boss, view.mode, offset.loot = "bosses", boss, 1, 0
+    Refresh()
+end
+
+-- A pin: a dark round mark with a number on it
+local mapPins, mapRows = {}, {}
+local function MapPin(index)
+    local pin = mapPins[index]
+    if pin then return pin end
+    pin = CreateFrame("Button", nil, mapPane)
+    pin:SetWidth(22)
+    pin:SetHeight(22)
+    pin:SetFrameLevel(mapPane:GetFrameLevel() + 2)
+    pin.disc = pin:CreateTexture(nil, "ARTWORK")
+    pin.disc:SetTexture("Interface\\Minimap\\UI-Minimap-Background")
+    pin.disc:SetAllPoints()
+    pin.number = pin:CreateFontString(nil, "OVERLAY")
+    pin.number:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
+    pin.number:SetPoint("CENTER", 0, 0)
+    pin:SetHighlightTexture("Interface\\Minimap\\UI-Minimap-ZoomButton-Highlight", "ADD")
+    pin:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:AddLine(self.label, 1, 0.82, 0)
+        if self.boss then GameTooltip:AddLine("Click for this boss", 0.7, 0.7, 0.7) end
+        GameTooltip:Show()
+        if self.row then self.row:LockHighlight() end
+    end)
+    pin:SetScript("OnLeave", function(self)
+        GameTooltip:Hide()
+        if self.row then self.row:UnlockHighlight() end
+    end)
+    pin:SetScript("OnClick", function(self) if self.boss then GoToBoss(self.boss) end end)
+    mapPins[index] = pin
+    return pin
+end
+
+for index = 1, 18 do
+    local row = CreateFrame("Button", nil, mapPane)
+    row:SetWidth(166)
+    row:SetHeight(22)
+    row:SetPoint("TOPLEFT", MAP_SIZE + 6, -70 - (index - 1) * 22)
+    row:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
+    row.number = row:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    row.number:SetPoint("LEFT", 2, 0)
+    row.number:SetWidth(18)
+    row.name = row:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+    row.name:SetPoint("LEFT", 22, 0)
+    row.name:SetWidth(142)
+    row.name:SetJustifyH("LEFT")
+    row:SetScript("OnEnter", function(self) if self.pin then self.pin:LockHighlight() end end)
+    row:SetScript("OnLeave", function(self) if self.pin then self.pin:UnlockHighlight() end end)
+    row:SetScript("OnClick", function(self) if self.boss then GoToBoss(self.boss) end end)
+    mapRows[index] = row
+end
+
+local function ShowMap(place)
+    local data = MAPS[place.map]
+    if not data then return end
+    if not mapPicture:SetTexture("Interface\\AddOns\\WowPlusGuide\\Maps\\" .. place.map) then
+        mapPicture:SetTexture(0.2, 0.15, 0.1, 1)                -- drawn after the game started: it needs a restart to see new pictures
+    end
+    mapName:SetText(place.name)
+    mapLine:SetText(Levels(place) ~= "" and ("Levels " .. Levels(place)) or "")
+    local used = 0
+    local function Pin(at, label, text, r, g, b)
+        used = used + 1
+        local pin = MapPin(used)
+        pin:ClearAllPoints()
+        pin:SetPoint("CENTER", mapPicture, "TOPLEFT", at[1] / 100 * MAP_SIZE, -at[2] / 100 * MAP_SIZE)
+        pin.label, pin.boss, pin.row = label, nil, nil
+        pin.number:SetText(text)
+        pin.disc:SetVertexColor(r, g, b)
+        pin:Show()
+        return pin
+    end
+    for _, door in ipairs(data.doors or {}) do Pin(door, "The way in", "E", 0.1, 0.6, 0.15) end
+    for index, row in ipairs(mapRows) do
+        local boss = place.bosses[index]
+        row.boss, row.pin = boss, nil
+        if boss then
+            local at = data.bosses and data.bosses[boss.entry]
+            row.number:SetText(at and index or "-")
+            row.name:SetText(boss.name)
+            if at then
+                local pin = Pin(at, boss.name, index, 0.65, 0.08, 0.05)
+                pin.boss, pin.row = boss, row
+                row.pin = pin
+            end
+            row:Show()
+        else
+            row:Hide()
+        end
+    end
+    for i = used + 1, #mapPins do mapPins[i]:Hide() end
+end
 
 -- Champions: one champion, its model, where, its drops
 local championPane = CreateFrame("Frame", nil, content)
@@ -785,9 +910,24 @@ local function ShowPlace()
 
     sectionButtons.bosses:SetText("Bosses (" .. #place.bosses .. ")")
     sectionButtons.quests:SetText("Quests (" .. (info.quests and #info.quests or 0) .. ")")
-    for key, button in pairs(sectionButtons) do
-        button:Show()
+    local onMap = view.section == "map"
+    for index, key in ipairs({ "bosses", "quests", "map" }) do
+        local button = sectionButtons[key]
+        button:ClearAllPoints()
+        if onMap then                                   -- the map covers the banner: down the right-hand side instead
+            button:SetPoint("BOTTOMRIGHT", content, "BOTTOMRIGHT", -30, (3 - index) * 24 + 2)
+            button:SetFrameLevel(mapPane:GetFrameLevel() + 4)
+        else
+            button:SetPoint("TOPLEFT", banner, "BOTTOMLEFT", (index - 1) * 116, -10)
+            button:SetFrameLevel(content:GetFrameLevel() + 1)
+        end
+        Shown(button, key ~= "map" or MAPS[place.map])
         if key == view.section then button:LockHighlight() else button:UnlockHighlight() end
+    end
+    Shown(mapPane, onMap)
+    if onMap then
+        ShowMap(place)
+        return
     end
 
     Shown(bossPane, view.section == "bosses")
@@ -900,7 +1040,7 @@ function Refresh()
     ShowList()
     local searching = view.search ~= ""
     for _, button in pairs(sectionButtons) do button:Hide() end
-    bossPane:Hide() questPane:Hide() championPane:Hide() lorePane:Hide() resultPane:Hide()
+    bossPane:Hide() questPane:Hide() championPane:Hide() lorePane:Hide() resultPane:Hide() mapPane:Hide()
     banner:SetVertexColor(1, 1, 1)
     PanelTemplates_SetTab(frame, view.tab)
 
@@ -967,6 +1107,16 @@ local function Toggle(arg)
         db.narrate = arg == "narrate on"
         DEFAULT_CHAT_FRAME:AddMessage("Guide: " .. (db.narrate and "the story of a zone or place is read aloud the first time you come there"
             .. (Narrator() and "." or ", once Spoken's player is installed (Settings/Docs/Voice.md).") or "no reading aloud by itself; the Listen buttons in Lore still work."))
+        return
+    end
+    if arg == "map" then
+        if view.tab > 2 then view.tab = 1 end
+        view.search = ""
+        if not frame:IsShown() then frame:Show() end
+        if view.place and MAPS[view.place.map] then
+            view.section = "map"
+            Refresh()
+        end
         return
     end
     if arg == "lore" then
