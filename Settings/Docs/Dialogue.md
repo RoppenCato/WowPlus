@@ -1,5 +1,7 @@
 # WowPlus Dialogue
 
+**Turned off on 2026-10-31**, at Robin's request: the game's normal quest and gossip windows are back. Nothing is deleted: in each game copy the folder was moved from `Interface\AddOns` to `Interface\AddOns-off`, and `Settings/Deploy-Settings.ps1` skips it. To turn it on again: remove that line in Deploy, move the folder back, and restart the game. The rest of this page describes it as it was.
+
 Built on 2026-10-27, from the plan in [Addons-Plan.md](Addons-Plan.md) (step 2), in the spirit of the Immersion addon. Written fresh for 3.3.5; nothing of Immersion's code is used. **Not tried in the game yet.**
 
 ## What it does

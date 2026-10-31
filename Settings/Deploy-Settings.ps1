@@ -157,6 +157,7 @@ foreach ($client in Get-ChildItem (Join-Path $root 'Client') -Directory -ErrorAc
     }
     foreach ($addon in Get-ChildItem (Join-Path $root 'Client\AddOns') -Directory -ErrorAction SilentlyContinue) {
         if ($addon.Name -eq 'SpokenQuestsAudioWowPlus' -and -not $voicesOn) { continue }
+        if ($addon.Name -eq 'WowPlusDialogue') { continue }     # turned off for now: the game's own quest windows (Settings\Docs\Dialogue.md)
         $to = Join-Path $client.FullName "Interface\AddOns\$($addon.Name)"
         New-Item -ItemType Directory -Force $to | Out-Null
         Copy-Item (Join-Path $addon.FullName '*') $to -Recurse -Force
