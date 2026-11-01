@@ -24,6 +24,8 @@ Close the window with Ctrl+C rather than the X: the bots then write down what th
 
 A line that is a bot command (`follow`, `stay`, `attack` ...) goes to the bot as a command and gets no chat answer, unless it is a question.
 
+**Talking to all of them.** In party or guild chat, a line with *everyone*, *everybody*, *all of you*, *you all*, *y'all*, *you guys*, *guys* or *tell me all* is answered by every bot there (up to nine, picked at random), one after the other: "Hey everyone. Tell me all where you are from, gender and age". They answer at the same time in the bridge, so they do not see each other's answers.
+
 ## Bots speaking first
 
 - **A greeting.** When you come online, a guild mate usually says hello (70 percent of the time).

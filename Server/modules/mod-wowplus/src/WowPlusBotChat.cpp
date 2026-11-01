@@ -42,6 +42,7 @@
 #include "Chat.h"
 #include "ChatHelper.h"
 #include "Config.h"
+#include "Containers.h"
 #include "Creature.h"
 #include "DBCStores.h"
 #include "DatabaseEnv.h"
@@ -292,6 +293,7 @@ namespace
      *       "known"  no bot: which bots remember this player?
      *       "tell"   the bot says in its own words what `text` describes ("You have arrived at the entrance")
      *       "apply"  the bot asks for a place in the group the player posted
+     *       "everyone"  the player said `text` to all of them: the bot and the others listed each answer
      *       "introduce" the bot has walked up to the player, who is looking for a companion, and says who it is
      */
     void Ask(Player* bot, Player* player, Channel channel, char const* kind, std::string const& text,
@@ -388,6 +390,27 @@ namespace
         }
 
         return false;
+    }
+
+    // "Hey everyone, where are you from?": a line that wants an answer from all of them, not from one
+    bool AddressesEveryone(std::string const& text)
+    {
+        for (char const* words : { "everyone", "everybody", "all of you", "you all", "y'all", "yall", "you guys", "guys", "tell me all" })
+            if (Mentions(text, words))
+                return true;
+
+        return false;
+    }
+
+    // Asks them all, in a different order each time. The bridge answers for up to nine of them.
+    bool AskEveryone(Player* player, Channel channel, std::string const& text, std::vector<Player*> bots)
+    {
+        if (bots.empty() || !AddressesEveryone(text))
+            return false;
+
+        Acore::Containers::RandomShuffle(bots);
+        Ask(bots[0], player, channel, "everyone", text, bots);
+        return true;
     }
 
     // Who of these bots answers a line said to all of them. nullptr: nobody.
@@ -966,6 +989,9 @@ public:
             return true;
 
         std::vector<Player*> const bots = PartyBotsOf(player);
+        if (AskEveryone(player, CHANNEL_PARTY, msg, bots))
+            return true;
+
         if (Player* speaker = ChooseSpeaker(player, CHANNEL_PARTY, msg, bots, partyUnaddressedChance))
             if (!IsBotCommand(speaker, msg))
                 Ask(speaker, player, CHANNEL_PARTY, "reply", msg, bots);
@@ -1010,6 +1036,9 @@ public:
         }
 
         std::vector<Player*> const bots = GuildBotsOf(player);
+        if (AskEveryone(player, CHANNEL_GUILD, msg, bots))
+            return true;
+
         if (Player* speaker = ChooseSpeaker(player, CHANNEL_GUILD, msg, bots, guildUnaddressedChance))
             if (!IsBotCommand(speaker, msg))
                 Ask(speaker, player, CHANNEL_GUILD, "reply", msg, bots);

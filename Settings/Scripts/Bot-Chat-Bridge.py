@@ -439,6 +439,38 @@ def reply_length(q, words):
     return random.choice(pool[:-third] if length == "terse" else pool[third:] if length == "talker" else pool)
 
 
+def everyone(q):
+    """The player said something to all of them: each answers for themselves, at the same time. They see the
+    player's line but not each other's answers, the way people type over each other in chat."""
+    player, text = q["player"], q["text"]
+    key = conversation_key(q)
+    with lock:
+        convo = conversations.setdefault(key, {"turns": [], "last": time.time(), "new": 0, "bots": {}, "player": player})
+        convo["turns"].append((player, text))
+        convo["new"] += 1
+    log(f"[{q.get('channel')}] {player} (to everyone): {text}")
+    task = ("That last line was said to everyone here, you too. Answer it yourself, for yourself and nobody else, in the "
+            "chat. If it asks about you, tell it straight from who you really are. One line, as long as it needs and no longer.")
+    bots = [q] + [dict(q, bot=o["name"], bgender=o.get("gender", ""), brace=o.get("race", ""), bclass=o.get("class", ""),
+                       blevel=o.get("level", "?"), bzone="", rumour="",
+                       others_list=[other for other in q["others_list"] if other is not o] + [{"name": q["bot"]}])
+                    for o in q.get("others_list", [])]
+    answers = [[] for _ in bots]
+
+    def answer(index, who):
+        try:
+            answers[index] = [(who["bot"], line) for line in speak(who, task)[:2]]
+        except Exception as error:      # one who fails to answer must not silence the rest
+            log(f"   ! {error}")
+
+    threads = [threading.Thread(target=answer, args=(i, who), daemon=True) for i, who in enumerate(bots)]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+    return [line for lines in answers for line in lines]
+
+
 def reply(q):
     """The bot answers something the player said."""
     # People answer in kind: a word gets a few words, not a paragraph
@@ -732,6 +764,8 @@ class Handler(BaseHTTPRequestHandler):
                     lines = letter(q)
                 elif kind == "reply" and q.get("text"):
                     lines = reply(q)
+                elif kind == "everyone" and q.get("text"):
+                    lines = everyone(q)
         except Exception as error:          # one bad request must not stop the window
             log(f"   ! {error}")
         body = "\n".join(f"{speaker}\t{line}" for speaker, line in lines).encode("utf-8")
