@@ -44,6 +44,19 @@ The length of an answer is drawn too: often two to five words, now and then more
 
 A bot that joins your party or guild says a short hello in that chat. It does not whisper you unasked, and it does not send the bot module's canned lines ("Hello, I follow you!", "Invite me to your group first").
 
+## Changing one person by hand
+
+`Database/BotChat/Tweaks.json` (belongs to this PC, not in the repository; read again when it changes, no restart) holds changes to the person playing a named bot:
+
+```json
+{ "somebot": { "chatty": true,
+               "hand": { "length": "talker", "exclaim": "some", "smiley": ":)" },
+               "summary": "How they write, in place of the one on their sheet.",
+               "manner": "What matters most about how they talk to you, in the second person." } }
+```
+
+`chatty` gives longer answers (about 8 to 50 words, up to three lines, everyday words and goodbyes too), more questions back and more of their own life. `hand` replaces their typing habits, `summary` the description of how they write, and `manner` goes last in what the model is told, over the rules that keep bots brief.
+
 ## Who a bot is
 
 Each bot is played by one of 300 people. The person is chosen from the bot's name the first time it speaks, and then written down, so a bot stays the same person. Every part of a person, where it is kept and how to change it is in the [character sheet](../Bots/Character-Sheet.md). In short:

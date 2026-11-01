@@ -340,6 +340,11 @@ def manner(memory, person=None, heard=None, joke=False, lean=False):
     """How this one message is to be written: plain unless the dice say otherwise."""
     last = (memory.get("said") or [""])[-1]
     rules = []
+    if minds.tweak(person).get("chatty"):
+        rules.append("You may end with a question back, and often do." if random.random() < 0.6 and not last.rstrip().endswith("?")
+                     else "No question this time: say something of your own instead.")
+        rules.append("You may bring up something from your day or your life.")
+        return " ".join(rules)
     if person and lean and random.random() < LEAN_CHANCE:
         rules.append(f"Your way of taking it this time: {random.choice(minds.leans(person))}.")
     rules.append("You may end with a short question back." if random.random() < QUESTION_CHANCE and not last.rstrip().endswith("?")
@@ -391,11 +396,17 @@ def speak(q, task, heard=None, lean=False):
     joke = random.random() < JOKE_CHANCE
     # A laugh word in every other line is the surest sign of a bot: it stays only with a joke, or when you laughed first
     laugh = joke or bool(heard and LAUGHED.search(heard) and random.random() < LAUGH_BACK_CHANCE)
+    tweak = minds.tweak(person)
+    laugh = laugh or bool(tweak.get("chatty"))
     transcript += (f"\n\nNow: {task}\nFor this message: {manner(memory, person, heard, joke, lean)}\n"
                    f"Write what {bot} types inside <msg></msg>.")
     started = time.time()
     with slots:
-        raw, error = minds.ask(system_prompt(q, memory), transcript)
+        system = system_prompt(q, memory)
+        if tweak.get("manner"):
+            # Last, where it weighs most, and over the rules that keep everyone else brief
+            system += f"\nAbove all, and over any rule above about being short or not keeping the talk going: {tweak['manner']}\n"
+        raw, error = minds.ask(system, transcript)
     if error:
         log(f"   ! {error}")
         return []
@@ -441,14 +452,22 @@ def reply(q):
     else:
         size = f"Answer in one or two short lines, about {about} words in all."
     task = "Answer the way you would in game chat. " + size + " Fewer words is fine, more is not."
-    usual = everyday(q["text"], minds.person_for(q["bot"], q.get("bgender", "")))
+    person = minds.person_for(q["bot"], q.get("bgender", ""))
+    chatty = minds.tweak(person).get("chatty")
+    usual = "" if chatty else everyday(q["text"], person)
+    if chatty:
+        about = random.choice([8, 12, 15, 20] if words <= 3 else [15, 20, 25, 30] if words <= 10 else [25, 30, 40, 50])
+        task = (f"Answer the way you would in game chat, and enjoy the talk: about {about} words, in one to three lines. "
+                "Add something of your own and keep it going.")
     if usual:
         task = usual
     if q.get("rumour") and words > 3:
         task += (f" Something you happen to know: {q['rumour']} {RUMOUR_RULES} Bring it up only if the player asks "
                  "for news, tips, what is worth doing, or what you have seen lately; otherwise leave it out.")
     lines = speak(q, task, heard=q["text"])
-    if usual:
+    if chatty:
+        pass
+    elif usual:
         lines = [first_sentence(lines[0])] if lines else []
     elif words <= 3:
         lines = [first_sentence(lines[0])] if lines else []

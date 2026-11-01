@@ -191,6 +191,24 @@ class Minds:
     # The person, as text for a prompt
     # ------------------------------------------------------------------------------------------
 
+    def tweak(self, person):
+        """What has been changed by hand about the person playing a bot, from Tweaks.json in the state folder
+        (what belongs to this PC; Settings/Docs/Bot-Chat.md). Read again when the file changes, so no restart."""
+        path = os.path.join(self.state_dir, "Tweaks.json")
+        try:
+            stamp = os.path.getmtime(path)
+        except OSError:
+            return {}
+        if stamp != getattr(self, "_tweaks_stamp", None):
+            self._tweaks_stamp, self._tweaks = stamp, self._json(path, {})
+        if not person or not self._tweaks:
+            return {}
+        mine = self.assignments.get(self.game, {})
+        for bot, tweak in self._tweaks.items():
+            if mine.get(bot.lower()) == person["id"]:
+                return tweak
+        return {}
+
     def hand(self, person):
         """How this person types: fixed habits, decided from their number."""
         r = random.Random("hand:%d" % person["id"])
@@ -205,6 +223,7 @@ class Minds:
             hand[key] = r.choice([w for w in words if hand["shorthand"] != "none" or w not in TOO_SHORT_FOR_SOME])
             if "formal" in person.get("style", ""):             # polite people keep to the plain words
                 hand[key] = r.choice(FORMAL[key])
+        hand.update(self.tweak(person).get("hand", {}))
         return hand
 
     def leans(self, person):
@@ -301,8 +320,9 @@ class Minds:
         hand = self.hand(person)
         background = self.background(person) or {}
         written = background.get("voice", {})
+        summary = self.tweak(person).get("summary") or written.get("summary", "").strip()
         text = "How you write, which matters more than anything else here:\n"
-        text += f"- {person['style'].capitalize()}. " + (written.get("summary", "").strip() + "\n" if written.get("summary") else "\n")
+        text += f"- {person['style'].capitalize()}. " + (summary + "\n" if summary else "\n")
         text += ("- You type everything in lower case, 'i' included.\n" if hand["case"] == "lower"
                  else "- You use capitals the normal way.\n")
         text += ("- You end sentences with a full stop.\n" if hand["final_period"]
